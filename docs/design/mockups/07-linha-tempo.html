@@ -152,7 +152,7 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
 <div class="bancada">
 
   <h1>Glyfesse · mock 07 · a linha do tempo jogavel</h1>
-  <p class="sub"><b>Arrasta o tempo, o jogo evolui.</b> O scrubber cobre a <b>era visual</b>: do quadrado azul (22 de junho de 2026) ate a arena, com os <b>frames reais das gravacoes do lider</b>, a foto do monitor, o terminal atras, a coisa nascendo. Cada ponto carrega sua <b>data real</b>. Arraste o puxador ciano abaixo (ou use as setas do teclado, ou clique num ponto).</p>
+  <p class="sub"><b>Arrasta o tempo, o jogo evolui.</b> O scrubber cobre a <b>era visual</b>: do quadrado azul (22 de junho de 2026) em diante, com os <b>frames reais das gravacoes do lider</b>, a foto do monitor, o terminal atras, a coisa nascendo. Cada ponto carrega sua <b>data real</b>. <b>No lancamento ele nasce com 1 ponto</b> (o quadrado, edicao #3); cada edicao visual publicada acende o proximo. Use o botao para ver, ou arraste quando houver mais de um ponto.</p>
   <p class="nota"><b>A estetica ja foi decidida com o lider: a forma A, o scrubber</b> (a de cima). Este mock agora corrige a cronologia: o quadrado azul nasceu em <b>22 de junho</b>, nao em maio (maio foi a lore). A genese (a Edicao #1, 15 de maio) e a arquitetura/3D (a #2) sao <b>materia textual da revista</b>, entram na banca, mas <b>ficam fora do scrubber</b> (a era visual comeca na #3). A decisao de fundo que sustenta tudo isso esta no bloco escuro: <b>uma fonte de dados so, com data e estado, para a linha E a banca</b>. Clique em "publicar a proxima edicao" e veja a linha esticar sozinha.</p>
 
   <!-- ══════════ A LINHA, NA FORMA RECOMENDADA (scrubber) ══════════ -->
@@ -199,13 +199,15 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
 <span class="c">  // #3+ sao VISUAIS: aqui o scrubber acende. Cada uma com sua DATA real.</span>
   [<span class="s">'num'</span>=&gt;<span class="s">3</span>, <span class="s">'tipo'</span>=&gt;<span class="s">'visual'</span>,  <span class="s">'estado'</span>=&gt;<span class="s">'publicada'</span>, <span class="s">'data'</span>=&gt;<span class="s">'22 jun 2026'</span>,
    <span class="s">'frame'</span>=&gt;<span class="s">'quadrado.png'</span>, <span class="s">'titulo'</span>=&gt;<span class="s">'O quadrado azul'</span>],
-  [<span class="s">'num'</span>=&gt;<span class="s">4</span>, <span class="s">'tipo'</span>=&gt;<span class="s">'visual'</span>,  <span class="s">'estado'</span>=&gt;<span class="s">'publicada'</span>, <span class="s">'data'</span>=&gt;<span class="s">'22 jun 2026'</span>,
+  [<span class="s">'num'</span>=&gt;<span class="s">4</span>, <span class="s">'tipo'</span>=&gt;<span class="s">'visual'</span>,  <span class="s">'estado'</span>=&gt;<span class="s">'rascunho'</span>,  <span class="s">'data'</span>=&gt;<span class="s">'22 jun 2026'</span>,
    <span class="s">'frame'</span>=&gt;<span class="s">'gus.png'</span>,      <span class="s">'titulo'</span>=&gt;<span class="s">'Ganhei um corpo'</span>],
   [<span class="s">'num'</span>=&gt;<span class="s">5</span>, <span class="s">'tipo'</span>=&gt;<span class="s">'visual'</span>,  <span class="s">'estado'</span>=&gt;<span class="s">'rascunho'</span>,  <span class="s">'data'</span>=&gt;<span class="s">'24 jun 2026'</span>,
    <span class="s">'frame'</span>=&gt;<span class="s">'arena.png'</span>,   <span class="s">'titulo'</span>=&gt;<span class="s">'A arena'</span>],
 ];
+<span class="c">// LANCAMENTO: #1,#2,#3 publicada (banca nasce com 3); #4+ rascunho.</span>
 <span class="c">// O scrubber: foreach if ($e['tipo']==='visual' && $e['estado']==='publicada')</span>
-<span class="c">// A banca:    foreach if ($e['estado']==='publicada')   // textual + visual</span></pre>
+<span class="c">//   -> nasce com 1 ponto (o quadrado #3); #4+ pinga.</span>
+<span class="c">// A banca:    foreach if ($e['estado']==='publicada')   // textual + visual = 3</span></pre>
   </div>
 
   <!-- ══════════ A PERGUNTA: a estetica da linha ══════════ -->
@@ -266,7 +268,7 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
     { num:3, tipo:"visual", estado:"publicada", data:"22 JUN 2026", rotulo:"22 JUN",
       titulo:"O quadrado azul", frame:"primeiro_teste_wasd_e_colisao_placeholder_quadradinho__t6s.png",
       gus:"O pivo: 3D pra 2D, GusEngine em C++. Eu virei um retangulo azul de contorno. As paredes me paravam. Era o mundo inteiro. Eu... nem sabia que ia virar gente." },
-    { num:4, tipo:"visual", estado:"publicada", data:"22 JUN 2026", rotulo:"22 JUN",
+    { num:4, tipo:"visual", estado:"rascunho", data:"22 JUN 2026", rotulo:"22 JUN",
       titulo:"Ganhei um corpo", frame:"primeira_captura_minha_gus_sprite_cidade_depois_quadradinho_placeholder__t8s.png",
       gus:"No mesmo dia ganhei cabelo e comecei a andar. Antes eu tinha 4 vetores. Depois 8. Eu ando na diagonal agora. Nao vou fazer a divisao... e o dobro." },
     { num:5, tipo:"visual", estado:"rascunho", data:"24 JUN 2026", rotulo:"24 JUN",

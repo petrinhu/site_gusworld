@@ -75,6 +75,27 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
 @keyframes sobe{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .revela .reset{margin-top:16px; font-family:var(--font-display); font-size:10px; letter-spacing:.1em;
   color:var(--tela-texto-3)}
+/* a fala honesta na voz nova (prompt), sobre a tela */
+.revela .gus-line{font-family:var(--font-display); font-size:clamp(11px,1.7vw,14px); line-height:1.7;
+  color:var(--tela-texto-1); margin:14px auto 0; max-width:38ch}
+.revela .gus-line .hh{color:var(--gw-ciano); margin-right:5px}
+.revela .pensa-line{font-family:var(--font-display); font-size:clamp(10px,1.4vw,12px);
+  color:var(--tela-texto-3); margin:5px 0 0; opacity:.85}
+
+/* ★ C+A: aperta START -> BOOT do CRT (reusa a linguagem do em-breve) ~1.3s
+   -> aterrissa na fala honesta que aponta pro quadradinho. */
+.boot{position:absolute; inset:0; z-index:4; display:none; place-content:center;
+  padding:0 8%; background:#05090f}
+.boot::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgb(0 0 0 / .3) 0 1px, #0000 1px 3px)}
+.poster.booting .attract{display:none}
+.poster.booting .boot{display:grid}
+.boot .bl{font-family:var(--font-display); font-size:clamp(11px,1.7vw,14px); letter-spacing:.06em;
+  color:var(--gw-ciano); line-height:1.95; text-shadow:0 0 8px #4dd9e888; text-align:left;
+  margin:0 auto; max-width:32ch}
+.boot .bl b{color:var(--gw-ciano-alto)}
+.boot .cur{display:inline-block; width:.55em; height:1.05em; background:var(--gw-ciano-alto);
+  vertical-align:-.16em; animation:pisca .5s steps(1) infinite}
 
 .dica-ps{font-family:var(--font-display); font-size:10px; color:var(--tinta-2);
   text-align:center; margin:9px 0 0; letter-spacing:.04em}
@@ -99,7 +120,7 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
 
   <h1>Glyfesse · mock 08 · o PRESS START</h1>
   <p class="sub"><b>Aperte START.</b> A key art pintada (a Catedral-Mae) e o poster central da revista, aceso como uma tela de fliperama. <b>Clique nele</b> (ou de foco e aperte Enter/Espaco) e veja o que acontece num jogo que ainda nao saiu.</p>
-  <p class="nota">A pergunta desta rodada e uma so: <b>o que o START faz?</b> O poster abaixo ja mostra a saida que eu recomendo (a A). As tres estao resumidas mais abaixo. A key art aqui esta otimizada (120 KB); em producao entra a versao pintada em alta.</p>
+  <p class="nota"><b>Decidido pelo lider: a combinacao C+A.</b> Apertar START <b>liga o boot do CRT</b> (o payoff de fliperama, reusa o boot do em-breve) e <b>aterrissa numa fala honesta</b> que aponta pro quadradinho ("nao da pra comecar de verdade ainda... mas o quadradinho anda. // eu ando"). Satisfacao E honestidade. Quando o jogo sair, o START passa a funcionar de verdade. O poster abaixo ja faz isso: clique nele. A key art esta otimizada (120 KB); em producao entra a pintada em alta.</p>
 
   <div class="folha-ps">
     <span class="ps-selo">POSTER CENTRAL · A CATEDRAL-MAE</span>
@@ -110,10 +131,14 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
         <div class="insert">INSERT COIN · 0 FICHAS</div>
       </div>
       <div class="arcade-bar"><span>GLYFESSE ARCADE</span><span>(C) 2026 · GUSWORLD</span></div>
+      <div class="boot" aria-hidden="true">
+        <div class="bl">GUSWORLD // BOOT<br>carregando nucleo... <b>ok</b><br>montando o mundo... <b>ok</b><br>procurando o jogo...<span class="cur"></span></div>
+      </div>
       <div class="revela" aria-live="polite">
         <div>
-          <div class="l1">AINDA NAO.</div>
-          <div class="l2">O jogo nao saiu. Eu tambem quero apertar START...<br>mas <b>o quadradinho la em cima anda de verdade.</b><br>vai la. e o unico que ja da pra jogar.</div>
+          <div class="l1">▶ BOOT OK</div>
+          <p class="gus-line"><span class="hh">gus@glyfesse&gt;</span> não dá pra começar de verdade ainda... mas o quadradinho ali em cima anda.</p>
+          <p class="pensa-line">// eu ando</p>
           <div class="seta" aria-hidden="true">↑</div>
           <div class="reset">(clique de novo para voltar ao poster)</div>
         </div>
@@ -123,11 +148,12 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
     <p class="dica-ps">clique no poster para apertar START</p>
   </div>
 
-  <!-- ══════════ A PERGUNTA: o que o START faz ══════════ -->
-  <h1 style="margin-top:32px">O que o START faz</h1>
+  <!-- ══════════ O que o START faz: DECIDIDO (C+A) ══════════ -->
+  <h1 style="margin-top:32px">O que o START faz: decidido, C+A (o boot + a honestidade)</h1>
+  <p class="nota" style="margin:4px 0 0; color:#8e97a4; font-size:13px; max-width:86ch; line-height:1.6">O lider combinou as duas melhores: o <b style="color:#c8cdd6">boot</b> (o payoff, opcao C) com a <b style="color:#c8cdd6">honestidade que aponta pro quadradinho</b> (opcao A). B (levar direto ao quadradinho) ficou de fora. Abaixo, o registro do que foi comparado.</p>
   <div class="opcoes">
     <div class="op">
-      <h3>A · Nao da pra comecar (e aponta pro quadradinho) <span class="rec">[RECOMENDADA]</span></h3>
+      <h3>A · Nao da pra comecar (e aponta pro quadradinho) <span class="rec">[parte da decisao]</span></h3>
       <p class="ver"><span class="pro"><b>A favor:</b></span> e a alma do site num gesto. O jogo nao saiu, e apertar START <b>devolve a propria falta de paciencia</b> ("eu tambem quero"), depois te empurra pro quadradinho, o unico que ja anda. Honesto, engracado, e alimenta o "LANCE LOGO ESSE JOGO". Uma publisher nao poderia fazer isto: ele pode. Quando o jogo sair, o START passa a funcionar de verdade.<br><span class="con"><b>Contra:</b></span> promete um gesto de fliperama e "nega" de proposito; quem quer o jogo agora sente a isca (que e justamente o ponto).</p>
     </div>
     <div class="op">
@@ -135,23 +161,35 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
       <p class="ver"><span class="pro"><b>A favor:</b></span> a promessa do fliperama e cumprida na hora: apertou, ta jogando. Reforca o "brinquedo primeiro" e da um destino imediato.<br><span class="con"><b>Contra:</b></span> gasta o poster pintado como um botao de rolagem. Perde a piada honesta da espera, e o START vira so um atalho. A catedral, que e atmosfera, fica de enfeite.</p>
     </div>
     <div class="op">
-      <h3>C · START liga o boot (o CRT da Edicao #0)</h3>
+      <h3>C · START liga o boot (o CRT da Edicao #0) <span class="rec">[parte da decisao]</span></h3>
       <p class="ver"><span class="pro"><b>A favor:</b></span> cinematografico: apertou, a tela "liga" com o boot do em-breve que ja esta no ar, continuidade total. Um momento de motor ligando.<br><span class="con"><b>Contra:</b></span> e o mais custoso e o menos honesto (finge que algo comeca). Repete o que o em-breve ja faz, e nao entrega jogo nenhum no fim. Bonito, mas anda em circulo.</p>
     </div>
   </div>
 
-  <p class="rodape-q"><b>Sobre a a11y e o prefers-reduced-motion:</b> o poster e um <code style="font-family:var(--font-display);font-size:11px">role="button"</code> focavel, entao Enter e Espaco apertam START e o leitor de tela anuncia a revelacao (<code style="font-family:var(--font-display);font-size:11px">aria-live</code>). Com movimento reduzido, o PRESS START para de piscar mas continua legivel, e a seta nao pula. A key art tem <code style="font-family:var(--font-display);font-size:11px">alt</code> descritivo. <b>Nada depende de animacao para ser entendido.</b> O texto do fliperama (PRESS START, INSERT COIN, a revelacao) fica na tela acesa, entao segue a regra ASCII de tela; a legenda do poster e papel, e ganha acentuacao pt-br completa na passada do ux-writer.</p>
+  <p class="rodape-q"><b>Sobre a a11y e o prefers-reduced-motion:</b> o poster e um <code style="font-family:var(--font-display);font-size:11px">role="button"</code> focavel, entao Enter e Espaco apertam START e o leitor de tela anuncia a revelacao (<code style="font-family:var(--font-display);font-size:11px">aria-live</code>). Com movimento reduzido, o PRESS START para de piscar, o BOOT e pulado (vai direto pra fala honesta, a informacao nao some) e a seta nao pula. A key art tem <code style="font-family:var(--font-display);font-size:11px">alt</code> descritivo. <b>Nada depende de animacao para ser entendido.</b> O texto do fliperama (PRESS START, INSERT COIN, a revelacao) fica na tela acesa, entao segue a regra ASCII de tela; a legenda do poster e papel, e ganha acentuacao pt-br completa na passada do ux-writer.</p>
 
 </div>
 
 <script>
-/* O PRESS START. Apertar (clique, Enter ou Espaco) revela a saida honesta:
-   o jogo nao saiu, mas o quadradinho anda. Comportamento A, o recomendado.
-   Sem framework: um toggle de classe. Respeita reduced-motion pela CSS. */
+/* O PRESS START (C+A, decidido). Apertar (clique, Enter ou Espaco): liga o
+   BOOT do CRT (~1.3s, reusa a linguagem do em-breve) e aterrissa na fala
+   honesta que aponta pro quadradinho. Sem framework: toggles de classe.
+   reduced-motion: pula o boot e vai direto pra fala (a informacao nao some). */
 (function(){
   var poster = document.getElementById("poster");
   if(!poster) return;
-  function apertar(){ poster.classList.toggle("apertou"); }
+  var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var t = null;
+  function apertar(){
+    if(poster.classList.contains("apertou")){          /* volta ao poster */
+      poster.classList.remove("apertou","booting"); clearTimeout(t); return;
+    }
+    if(reduz){ poster.classList.add("apertou"); return; }
+    poster.classList.add("booting");
+    t = setTimeout(function(){
+      poster.classList.remove("booting"); poster.classList.add("apertou");
+    }, 1300);
+  }
   poster.addEventListener("click", apertar);
   poster.addEventListener("keydown", function(e){
     if(e.key==="Enter" || e.key===" "){ e.preventDefault(); apertar(); }
