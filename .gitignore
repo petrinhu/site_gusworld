@@ -1,0 +1,18 @@
+# Arquivo pessoal do líder — NUNCA versionar
+# Gravações e fotos originais do histórico pessoal dele (9 vídeos + 4 fotos, ~41 MB).
+# Decisão dele em 2026-07-15: os ORIGINAIS ficam fora do repo. Ele tem backup próprio
+# além do IDrive. Só os frames extraídos (resources/frames/) entram no git, porque são
+# o que o site usa; o vídeo é a fonte.
+resources/arquivo_pessoal_petrus/
+
+# Binários pesados em geral (o repo do site não deve pesar mais que o jogo: o Animal
+# Well inteiro tem 33 MB). Se precisar publicar vídeo, decidir o rail com o líder.
+*.mp4
+*.mov
+*.mkv
+*.webm
+
+# Sistema
+.DS_Store
+Thumbs.db
+*~
