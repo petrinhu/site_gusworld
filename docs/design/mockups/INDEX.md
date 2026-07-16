@@ -5,13 +5,27 @@ Zero dependência externa: fonte local (CC0), texturas em SVG inline. **O que es
 
 | # | Arquivo | O que decide | Status |
 |---|---|---|---|
-| 00 | [`00-vibe-o-material.html`](00-vibe-o-material.html) | **A vibe: de que MATERIAL o site é feito?** Três direções (papel / tela do Tavus-Drive / papel fotografado), a mesma dobra e o mesmo texto do Gus nas três. | ⏳ **aguardando decisão do líder** |
+| 00 | [`00-vibe-o-material.html`](00-vibe-o-material.html) | **A vibe: de que MATERIAL o site é feito?** Três direções (papel / tela do Tavus-Drive / papel fotografado), a mesma dobra e o mesmo texto do Gus nas três. | ✅ **decidido: papel + foto como tratamento** |
+| 01 | [`01-tokens.html`](01-tokens.html) | **Os tokens.** Os dois materiais lado a lado, a banca envelhecendo por `--idade`, a prova de leitura no papel encardido, e todas as amostras com a razão medida. Não redefine nenhuma cor: consome [`../tokens.css`](../tokens.css), o CSS de produção. | ✅ aprovado no Gecko |
 
 ## Como abrir
 
 ```bash
-firefox docs/design/mockups/00-vibe-o-material.html
+firefox --new-tab docs/design/mockups/01-tokens.html
 ```
+
+## ⚠️ Verificar no Gecko, não no Blink
+
+O líder usa **Firefox**. Esta estética depende de textura, `mix-blend-mode` e filtro SVG, que é **exatamente** onde os motores divergem: um mock aprovado no Blink **não** é um mock aprovado. Já custou um bug real (a fibra do papel sumia no Firefox, e a direção recomendada ia ser julgada sem ela).
+
+```bash
+# screenshot proprio, no motor certo. --new-instance --profile e OBRIGATORIO:
+# sem eles o firefox so anexa na janela ja aberta e sai com exit 0 SEM GERAR NADA.
+MOZ_HEADLESS=1 firefox --headless --new-instance --profile /tmp/ffp \
+  --window-size=1400,2000 --screenshot /tmp/out.png "file://$PWD/01-tokens.html"
+```
+
+**Nunca automatizar a janela do líder** (ambiente médico). Abrir é permitido; dirigir por teclado sintético, não.
 
 ## Convenções destes mocks
 

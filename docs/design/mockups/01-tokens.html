@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse: os tokens (papel e Tavus-Drive)</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   MOCK 01 - OS TOKENS.
+   Este arquivo NAO redefine nenhuma cor: tudo vem de ../tokens.css,
+   que e o CSS de producao. Se um token estiver errado, quebra aqui.
+   ───────────────────────────────────────────────────────────── */
+@font-face{
+  font-family:"PixelOperatorMono";
+  src:url("fonts/PixelOperatorMono.ttf") format("truetype");
+  font-weight:400; font-display:block;
+}
+@font-face{
+  font-family:"PixelOperatorMono";
+  src:url("fonts/PixelOperatorMono-Bold.ttf") format("truetype");
+  font-weight:700; font-display:block;
+}
+
+*{box-sizing:border-box}
+html{background:#22222a}
+body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
+.bancada{max-width:1360px; margin:0 auto; padding:28px 20px}
+h1{
+  font-family:var(--font-display); font-weight:700; font-size:15px;
+  letter-spacing:.14em; color:#9fb0c4; margin:0 0 6px; text-transform:uppercase;
+}
+.sub{margin:0; font-size:15px; color:#c8cdd6; max-width:82ch; line-height:1.55}
+.sub b{color:#fff}
+h2{
+  font-family:var(--font-display); font-weight:700; font-size:13px;
+  letter-spacing:.12em; color:#7e8b9c; text-transform:uppercase;
+  margin:34px 0 10px; padding-bottom:6px; border-bottom:1px solid #3a4150;
+}
+.obs{font-size:13px; color:#98a2af; line-height:1.6; max-width:82ch; margin:8px 0 0}
+.obs b{color:#d8dee6}
+
+/* ── amostras de cor ── */
+.chips{display:grid; grid-template-columns:repeat(auto-fill,minmax(184px,1fr)); gap:9px}
+.chip{border:1px solid #3a4150; overflow:hidden; background:#1b1b22}
+.chip .swatch{height:56px; display:block}
+.chip .txt{padding:6px 8px; font-family:var(--font-display); font-size:9.5px; line-height:1.5; color:#aab4c0}
+.chip .txt b{display:block; color:#fff; font-size:10.5px}
+.chip .txt .r{color:#7fd6a0}
+.chip .txt .r.no{color:#e88a8a}
+
+/* ── os dois materiais lado a lado ── */
+.materiais{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+@media (max-width:980px){ .materiais{grid-template-columns:1fr} }
+
+.objeto{
+  background:var(--pagina-bg); color:var(--texto-1);
+  padding:18px; position:relative; box-shadow:var(--sombra);
+  border-radius:var(--raio); min-height:430px;
+}
+/* a fibra do papel. width/height explicitos: o Gecko nao infere (ver commit 7b9d6c1) */
+[data-material="papel"].objeto::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.16;
+}
+.objeto > *{position:relative; z-index:1}
+.objeto .rotulo{
+  font-family:var(--font-display); font-size:9px; letter-spacing:.1em;
+  color:var(--texto-2); margin:0 0 10px; text-transform:uppercase;
+}
+.objeto h3{
+  font-family:var(--font-display); font-weight:700; font-size:var(--t-lg);
+  margin:0 0 8px; color:var(--texto-1); line-height:1.1;
+}
+.objeto p{font-size:13px; line-height:var(--lh-corpo); margin:0 0 10px; color:var(--texto-1)}
+.objeto .p2{color:var(--texto-2); font-size:12px}
+.objeto a{color:var(--acento); text-underline-offset:3px}
+.badge{
+  font-family:var(--font-display); font-size:9px; letter-spacing:.06em;
+  background:var(--borda-forte); color:var(--pagina-bg);
+  display:inline-block; padding:3px 6px; margin-bottom:9px;
+}
+.nota-cx{
+  border:2px solid var(--borda-forte); padding:7px 9px; margin-top:12px;
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  border-radius:var(--raio);
+}
+.nota-cx .rot{font-family:var(--font-display); font-size:9px; color:var(--texto-2); line-height:1.4}
+.nota-cx .rot b{display:block; color:var(--texto-1); font-size:11px}
+.nota-cx .val{font-family:var(--font-display); font-weight:700; font-size:27px; line-height:1; color:var(--acento-2)}
+
+/* ── a TELA ACESA: o mesmo componente nos dois materiais ── */
+.aceso{
+  background:var(--tela-bg); color:var(--tela-texto-1);
+  border-radius:var(--raio-tela); padding:12px; margin:12px 0;
+  position:relative; overflow:hidden;
+}
+/* no PAPEL, o buraco de tela e impresso: ganha halftone e nao brilha */
+[data-material="papel"] .aceso::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(circle at 50% 50%, #ffffff26 32%, #0000 33%);
+  background-size:3px 3px; mix-blend-mode:screen;
+}
+/* na TELA, ele e o proprio site: brilha */
+[data-material="tela"] .aceso{ box-shadow:var(--brilho-tela) }
+.aceso .cap{
+  font-family:var(--font-display); font-size:9px; color:var(--tela-texto-3);
+  margin:8px 0 0; line-height:1.4;
+}
+.aceso .cap b{color:var(--tela-acento)}
+
+.sala{position:relative; width:100%; aspect-ratio:16/9; background:var(--gw-navy); border:2px solid #b9c6d6}
+.sala i{position:absolute; background:#b9c6d6; display:block}
+.heroi{
+  position:absolute; width:10px; height:10px; border:2.5px solid var(--gw-ciano);
+  background:var(--gw-navy); left:22%; bottom:8%;
+  animation:anda 5.2s ease-in-out infinite alternate;
+}
+[data-material="tela"] .heroi{ box-shadow:0 0 9px #4dd9e888 }
+@keyframes anda{0%{left:22%;bottom:8%} 45%{left:63%;bottom:8%} 100%{left:63%;bottom:56%}}
+
+/* ── a banca: a escala de idade ── */
+.banca{display:grid; grid-template-columns:repeat(6,1fr); gap:10px}
+@media (max-width:860px){ .banca{grid-template-columns:repeat(3,1fr)} }
+.ed{
+  padding:11px 9px; position:relative; box-shadow:var(--sombra-folha);
+  min-height:132px; display:flex; flex-direction:column; justify-content:space-between;
+}
+.ed::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.16;
+}
+.ed > *{position:relative; z-index:1}
+.ed .n{font-family:var(--font-display); font-weight:700; font-size:26px; line-height:1}
+.ed .cham{font-family:var(--font-display); font-size:8px; line-height:1.45; color:var(--tinta-2)}
+.ed .idade{font-family:var(--font-display); font-size:8px; color:var(--tinta-ciano)}
+
+/* ── o teste de leitura no pior papel ── */
+.prova{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:860px){ .prova{grid-template-columns:1fr} }
+.prova .cx{padding:14px}
+.prova .cx p{font-size:12.5px; line-height:1.55; margin:0 0 6px}
+.prova .cx .sec{color:var(--tinta-2); font-size:11.5px}
+.prova .cx .cia{color:var(--tinta-ciano); font-weight:700; font-size:11.5px}
+.prova .cx .mag{color:var(--tinta-magenta); font-weight:700; font-size:11.5px}
+.prova .cx h4{font-family:var(--font-display); font-size:10px; margin:0 0 8px; letter-spacing:.08em}
+</style>
+</head>
+<body>
+<div class="bancada">
+
+  <h1>Glyfesse · mock 01 · os tokens</h1>
+  <p class="sub">Tudo abaixo vem de <b>um arquivo só: <code>docs/design/tokens.css</code></b>, que é o CSS de produção. Este mock não redefine nenhuma cor: se um token estiver errado, quebra aqui. <b>Light e dark não são um tema: são dois materiais.</b></p>
+
+  <!-- ═══════ OS DOIS MATERIAIS ═══════ -->
+  <h2>Os dois materiais (o mesmo componente, os mesmos tokens)</h2>
+  <div class="materiais">
+
+    <div class="objeto folha" data-material="papel" style="--idade:.15">
+      <p class="rotulo">material: papel · a revista · light</p>
+      <span class="badge">EXCLUSIVO</span>
+      <h3>AGORA EU ANDO NA DIAGONAL.</h3>
+      <p>Antes eu tinha 4 vetores. Agora tenho 8. É o dobro.</p>
+
+      <div class="aceso">
+        <div class="sala">
+          <i style="left:34%;top:16%;width:31%;height:9%"></i>
+          <i style="left:44%;top:25%;width:9%;height:22%"></i>
+          <i style="left:33%;top:63%;width:24%;height:8%"></i>
+          <i style="left:66%;top:39%;width:14%;height:23%"></i>
+          <span class="heroi"></span>
+        </div>
+        <p class="cap"><b>FIG. 1</b> · aqui a tela está IMPRESSA: tem halftone e não brilha.</p>
+      </div>
+
+      <p class="p2">O menu tem 4 botões. Levou 3 semanas. Não vou fazer a divisão. <a href="#">Ver o commit</a></p>
+      <div class="nota-cx">
+        <div class="rot">A NOTA DESTA EDIÇÃO<b>GRÁFICOS</b></div>
+        <div class="val">6,0</div>
+      </div>
+    </div>
+
+    <div class="objeto" data-material="tela">
+      <p class="rotulo">material: tela do Tavus-Drive · o Diário · dark</p>
+      <span class="badge">EXCLUSIVO</span>
+      <h3>AGORA EU ANDO NA DIAGONAL.</h3>
+      <p>Antes eu tinha 4 vetores. Agora tenho 8. É o dobro.</p>
+
+      <div class="aceso">
+        <div class="sala">
+          <i style="left:34%;top:16%;width:31%;height:9%"></i>
+          <i style="left:44%;top:25%;width:9%;height:22%"></i>
+          <i style="left:33%;top:63%;width:24%;height:8%"></i>
+          <i style="left:66%;top:39%;width:14%;height:23%"></i>
+          <span class="heroi"></span>
+        </div>
+        <p class="cap"><b>FIG. 1</b> · aqui a tela É o site: ela brilha.</p>
+      </div>
+
+      <p class="p2">O menu tem 4 botões. Levou 3 semanas. Não vou fazer a divisão. <a href="#">Ver o commit</a></p>
+      <div class="nota-cx">
+        <div class="rot">A NOTA DESTA EDIÇÃO<b>GRÁFICOS</b></div>
+        <div class="val">6,0</div>
+      </div>
+    </div>
+  </div>
+  <p class="obs">Repare que <b>não há uma única cor invertida</b>. O papel virou tela: a tinta preta virou luz ciano, o halftone virou brilho, o raio saiu de 0 para 2px (papel não tem canto arredondado; tela tem). <b>É outro objeto, não outro tema.</b></p>
+
+  <!-- ═══════ A BANCA ═══════ -->
+  <h2>A banca: uma variável por edição, e o papel amarela sozinho</h2>
+  <div class="banca">
+    <article class="ed folha" style="--idade:1">
+      <div><div class="n">1</div><div class="cham">O QUADRADINHO<br>ANDA</div></div>
+      <div class="idade">--idade: 1</div>
+    </article>
+    <article class="ed folha" style="--idade:.8">
+      <div><div class="n">2</div><div class="cham">ELE SÓ OLHA<br>PRA UM LADO</div></div>
+      <div class="idade">--idade: .8</div>
+    </article>
+    <article class="ed folha" style="--idade:.6">
+      <div><div class="n">3</div><div class="cham">AGORA EU ANDO<br>NA DIAGONAL</div></div>
+      <div class="idade">--idade: .6</div>
+    </article>
+    <article class="ed folha" style="--idade:.4">
+      <div><div class="n">4</div><div class="cham">OS MENUS<br>FICARAM BONITOS</div></div>
+      <div class="idade">--idade: .4</div>
+    </article>
+    <article class="ed folha" style="--idade:.2">
+      <div><div class="n">5</div><div class="cham">O COCKPIT<br>TÁTICO</div></div>
+      <div class="idade">--idade: .2</div>
+    </article>
+    <article class="ed folha" style="--idade:0">
+      <div><div class="n">6</div><div class="cham">A PRÓXIMA</div></div>
+      <div class="idade">--idade: 0</div>
+    </article>
+  </div>
+  <p class="obs">Cada edição declara <b>uma coisa só</b>: <code>style="--idade: .6"</code>. O amarelamento é <code>color-mix</code> em CSS, <b>zero JS</b>, e no PHP sai do número da edição sozinho. <b>Dá para ver qual é velha só de olhar</b>, que era exatamente o pedido.</p>
+
+  <!-- ═══════ A PROVA ═══════ -->
+  <h2>★ O furo que isso quase abriu, e como fechou</h2>
+  <div class="prova">
+    <div class="cx folha" style="--idade:0">
+      <h4>EDIÇÃO NOVA (--idade: 0)</h4>
+      <p>Texto principal em tinta preta. <b>15.67:1</b></p>
+      <p class="sec">Secundário, legenda, crédito. 6.48:1</p>
+      <p class="cia">Ciano de tinta: link, rótulo. 6.51:1</p>
+      <p class="mag">Magenta de tinta: a nota, o destaque. 6.49:1</p>
+    </div>
+    <div class="cx folha" style="--idade:1">
+      <h4>A EDIÇÃO #1, ENCARDIDA (--idade: 1)</h4>
+      <p>Texto principal em tinta preta. <b>10.90:1</b></p>
+      <p class="sec">Secundário, legenda, crédito. 4.51:1</p>
+      <p class="cia">Ciano de tinta: link, rótulo. 4.53:1</p>
+      <p class="mag">Magenta de tinta: a nota, o destaque. 4.51:1</p>
+    </div>
+  </div>
+  <p class="obs"><b>Envelhecer a página derruba o contraste, e isso não estava no radar de ninguém.</b> O ciano de tinta calibrado no papel novo dava 5.59:1 e <b>caía para 3.89:1 na #1: reprovava</b>. A correção não foi desistir do envelhecimento, foi <b>calibrar toda a tinta no PIOR papel da banca</b>. Agora o mesmo token passa AA na #1 e sobra na edição nova. <b>A revista pode envelhecer para sempre sem nunca ficar ilegível.</b></p>
+
+  <!-- ═══════ OS CHIPS ═══════ -->
+  <h2>Tinta (papel) · calibrada na edição mais velha</h2>
+  <div class="chips">
+    <div class="chip"><span class="swatch" style="background:#1a1614"></span><span class="txt"><b>--tinta-preta</b>#1a1614<span class="r">15.67 novo · 10.90 na #1 · AAA</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#5b544f"></span><span class="txt"><b>--tinta-2</b>#5b544f<span class="r">6.48 · 4.51 na #1 · AA</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#0d5e67"></span><span class="txt"><b>--tinta-ciano</b>#0d5e67<span class="r">6.51 · 4.53 na #1 · AA</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#8d1da1"></span><span class="txt"><b>--tinta-magenta</b>#8d1da1<span class="r">6.49 · 4.51 na #1 · AA</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#f4efe4"></span><span class="txt"><b>--papel-novo</b>#f4efe4<span class="r">a edição desta semana</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#d9c8a3"></span><span class="txt"><b>--papel-fim</b>#d9c8a3<span class="r">o limite: mais velho, a tinta cai</span></span></div>
+  </div>
+
+  <h2>Tela acesa (o buraco de luz no papel · e o site inteiro no dark)</h2>
+  <div class="chips">
+    <div class="chip"><span class="swatch" style="background:#0d1520"></span><span class="txt"><b>--gw-navy</b>#0d1520<span class="r">15.99 sobre papel: JÁ é a tinta preta</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#1a2436"></span><span class="txt"><b>--gw-navy-alto</b>#1a2436<span class="r">superfície elevada</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#dce8f5"></span><span class="txt"><b>--tela-texto-1</b>#dce8f5<span class="r">14.76 · AAA</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#94a9bf"></span><span class="txt"><b>--tela-texto-2</b>#94a9bf<span class="r">7.59 · AAA</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#798da2"></span><span class="txt"><b>--tela-texto-3</b>#798da2<span class="r">5.37 navy · 4.55 alto · AA</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#4dd9e8"></span><span class="txt"><b>--gw-ciano</b>#4dd9e8<span class="r">10.83 · AAA · e 1.48 no papel: SOME</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#6ff0ff"></span><span class="txt"><b>--gw-ciano-alto</b>#6ff0ff<span class="r">13.61 · AAA</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#cd58e1"></span><span class="txt"><b>--gw-magenta</b>#cd58e1<span class="r">5.31 navy · 4.50 alto · AA nos dois</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#c23fd9"></span><span class="txt"><b>--gw-magenta-asset</b>#c23fd9<span class="r no">4.37 · falha AA · só ÁREA, nunca texto</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#486486"></span><span class="txt"><b>--tela-borda-ui</b>#486486<span class="r">3.01 · borda funcional, foco</span></span></div>
+    <div class="chip"><span class="swatch" style="background:#2c3d52"></span><span class="txt"><b>--tela-borda</b>#2c3d52<span class="r no">1.66 · DECORATIVA. nunca sozinha</span></span></div>
+  </div>
+
+  <p class="obs" style="margin-top:22px"><b>O magenta subiu mais um degrau, e há motivo.</b> Eu tinha mandado <code>#cb52e0</code> (5.08:1 sobre o navy). Ele passa sobre o fundo, mas <b>cai para 4.31:1 sobre a superfície elevada</b> <code>--gw-navy-alto</code>, onde a NOTA vive. <code>#cd58e1</code> passa AA nos <b>dois</b> (5.31 e 4.50), mesmo matiz. <b>O magenta original dos assets <code>#c23fd9</code> continua no arquivo, mas proibido como texto:</b> serve para área e preenchimento, que é o que ele é no jogo (portal, drone).</p>
+  <p class="obs"><b>Nada de cor sozinha carregando significado:</b> a NOTA tem o rótulo "GRÁFICOS" escrito, o link tem sublinhado, e a borda decorativa (1.66:1) nunca é o único indicador de nada.</p>
+
+</div>
+</body>
+</html>
