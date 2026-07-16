@@ -21,7 +21,8 @@
 *{box-sizing:border-box}
 html{background:#22222a}
 body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
-.bancada{width:min(94vw,1300px); margin:0 auto; padding:26px 20px}
+.bancada{width:100%; margin:0; padding:0}   /* a revista de borda a borda (100vw) */
+.intro{padding:24px clamp(16px,3vw,44px) 0}
 /* texto corrido nunca estica: medida legivel mesmo na pagina larga */
 .corpo .bloco{max-width:70ch}
 .fala-sh .linha{max-width:72ch}
@@ -47,7 +48,7 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
   background-size:180px 180px; mix-blend-mode:multiply; opacity:.13}
 .edicao > *{position:relative; z-index:1}
-.corpo{padding:0 26px}
+.corpo{padding:0 clamp(20px,3.5vw,56px)}
 
 /* divisor de secao: o rotulo de secao da revista */
 .secao{display:flex; align-items:center; gap:10px; margin:30px 0 12px; padding-top:20px;
@@ -126,7 +127,7 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
 .crt-mini.verde .titulo-t{color:#3fa86e; border-color:#123d26}
 
 /* ── #1 CAPA ── */
-.capa{padding:20px 26px 22px; border-bottom:3px solid var(--tinta-preta)}
+.capa{padding:20px clamp(20px,3.5vw,56px) 22px; border-bottom:3px solid var(--tinta-preta)}
 .capa .mast{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:12px}
 .capa .logo{font-family:var(--font-display); font-weight:700; font-size:34px; line-height:1;
   color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4b0, 1.5px 1.5px 0 #c2129eb0}
@@ -157,6 +158,16 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
   margin:1px 0 0 22px}
 .links-fixos .gus .conector{font-family:var(--font-display); font-style:normal; color:var(--tinta-ciano);
   margin-right:4px}
+/* indice ancorado + [UP] por secao */
+.secao{scroll-margin-top:14px}
+.indice a{color:inherit; text-decoration:none; display:flex; gap:8px; align-items:baseline; width:100%}
+.indice a:hover .pt{text-decoration:underline; text-decoration-color:var(--tinta-ciano); text-underline-offset:2px}
+.indice a:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
+.up-wrap{text-align:right; margin:12px 0 0}
+.up{font-family:var(--font-display); font-size:9px; letter-spacing:.08em; color:var(--tinta-ciano);
+  text-decoration:none; border:1px solid var(--tinta-ciano); padding:2px 8px; white-space:nowrap}
+.up:hover{background:var(--tinta-ciano); color:var(--papel)}
+.up:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
 
 /* ── #5 A NOTA ── */
 .nota-jogo{display:flex; gap:16px; flex-wrap:wrap}
@@ -215,16 +226,16 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
     <div class="corpo">
 
       <!-- ══════ 2 · INDICE ══════ -->
-      <div class="secao"><span class="n">02</span><span class="nome">Indice</span><span class="grupo">ABERTURA</span></div>
+      <div class="secao" id="sumario"><span class="n">02</span><span class="nome">Indice</span><span class="grupo">ABERTURA</span></div>
       <div class="bloco">
         <ul class="indice">
-          <li><span class="pg">03</span><span class="pt"><b>Editorial:</b> a Carta do Gus</span></li>
-          <li><span class="pg">04</span><span class="pt"><b>Reportagem de capa:</b> como um mundo comeca</span></li>
-          <li><span class="pg">05</span><span class="pt">A Nota do jogo inacabado</span></li>
-          <li><span class="pg">06</span><span class="pt">Galeria de Bugs</span></li>
-          <li><span class="pg">08</span><span class="pt">Detonado</span></li>
-          <li><span class="pg">13</span><span class="pt">Poster central: a Catedral-Mae</span></li>
-          <li><span class="pg">16</span><span class="pt">A Entrevista + Programacao</span></li>
+          <li><a href="#sec-03"><span class="pg">03</span><span class="pt"><b>Editorial:</b> a Carta do Gus</span></a></li>
+          <li><a href="#sec-04"><span class="pg">04</span><span class="pt"><b>Reportagem de capa:</b> como um mundo comeca</span></a></li>
+          <li><a href="#sec-05"><span class="pg">05</span><span class="pt">A Nota do jogo inacabado</span></a></li>
+          <li><a href="#sec-06"><span class="pg">06</span><span class="pt">Galeria de Bugs</span></a></li>
+          <li><a href="#sec-08"><span class="pg">08</span><span class="pt">Detonado</span></a></li>
+          <li><a href="#sec-13"><span class="pg">13</span><span class="pt">Poster central: a Catedral-Mae</span></a></li>
+          <li><a href="#sec-16"><span class="pg">16</span><span class="pt">A Entrevista + Programacao</span></a></li>
         </ul>
         <div class="links-fixos">
           <a href="#">→ o codigo do jogo (repo GusWorld)</a>
@@ -236,7 +247,7 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       </div>
 
       <!-- ══════ 3 · EDITORIAL ══════ -->
-      <div class="secao"><span class="n">03</span><span class="nome">Editorial · a Carta do Gus</span><span class="grupo">ABERTURA</span></div>
+      <div class="secao" id="sec-03"><span class="n">03</span><span class="nome">Editorial · a Carta do Gus</span><span class="grupo">ABERTURA</span></div>
       <div class="bloco">
         <div class="fala-sh">
           <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> Oi. Eu sou o Gus. Vou escrever essa revista porque tem que ser alguém, e eu moro aqui dentro. Nesta primeira edição eu ainda nem existia direito: havia só o mundo, escrito em livros. Eu vim depois. Mas alguém tinha que contar como tudo começou.</p>
@@ -246,7 +257,7 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       </div>
 
       <!-- ══════ 4 · REPORTAGEM DE CAPA ══════ -->
-      <div class="secao"><span class="n">04</span><span class="nome">Reportagem de capa</span><span class="grupo">CORPO</span></div>
+      <div class="secao" id="sec-04"><span class="n">04</span><span class="nome">Reportagem de capa</span><span class="grupo">CORPO</span></div>
       <div class="bloco">
         <h3 class="manch" style="font-size:30px">Como um mundo comeca</h3>
         <p>Em 15 de maio de 2026 nao havia jogo. Havia ebooks, um sistema de RAG para consultar a lore, e as primeiras Eras sendo desenhadas. As faccoes. O Sylvarin, a lingua. O marco desta edicao nao e visual: e a fundacao que todo o resto ficou de pe em cima.</p>
@@ -256,7 +267,7 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       <div class="grade-fixas">
 
       <!-- ══════ 5 · A NOTA ══════ -->
-      <div class="secao"><span class="n">05</span><span class="nome">A Nota do jogo inacabado</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="secao" id="sec-05"><span class="n">05</span><span class="nome">A Nota do jogo inacabado</span><span class="grupo">SECAO FIXA</span></div>
       <div class="bloco">
         <p class="peq">Sobe a cada edicao. Nesta #1, o jogo mal existe:</p>
         <div class="nota-jogo" style="margin-top:8px">
@@ -268,7 +279,8 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       </div>
 
       <!-- ══════ 6 · GALERIA DE BUGS ══════ -->
-      <div class="secao"><span class="n">06</span><span class="nome">Galeria de Bugs</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-06"><span class="n">06</span><span class="nome">Galeria de Bugs</span><span class="grupo">SECAO FIXA</span></div>
       <div class="vazio">
         <span class="tag">▶ VAZIO COM GRACA · copy definitiva (terminal verde)</span>
         <div class="crt-mini verde" id="term-bugs" role="img" aria-label="Terminal de fosforo verde: escreve No bugs today, sem bugs hoje">
@@ -286,13 +298,15 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       </div>
 
       <!-- ══════ 7 · CEMITERIO DAS IDEIAS MORTAS ══════ -->
-      <div class="secao"><span class="n">07</span><span class="nome">Cemiterio das Ideias Mortas</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-07"><span class="n">07</span><span class="nome">Cemiterio das Ideias Mortas</span><span class="grupo">SECAO FIXA</span></div>
       <div class="bloco">
         <p class="peq">Aqui jazem: <b>Godot</b> (engine complexa demais pra um solo), <b>Qt6</b> (nao era pra jogo), <b>o Gus em 3D</b> (982 mil faces, morreu jovem). Cada lapide com a data e a causa da morte.</p>
       </div>
 
       <!-- ══════ 8 · DETONADO ══════ -->
-      <div class="secao"><span class="n">08</span><span class="nome">Detonado</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-08"><span class="n">08</span><span class="nome">Detonado</span><span class="grupo">SECAO FIXA</span></div>
       <div class="vazio">
         <span class="tag">▶ VAZIO COM GRACA · copy definitiva</span>
         <div class="fala-sh">
@@ -302,7 +316,8 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       </div>
 
       <!-- ══════ 9 · ERRATA + CARTAS ══════ -->
-      <div class="secao"><span class="n">09</span><span class="nome">Errata + Cartas</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-09"><span class="n">09</span><span class="nome">Errata + Cartas</span><span class="grupo">SECAO FIXA</span></div>
       <div class="vazio">
         <span class="tag">▶ VAZIO COM GRACA · copy definitiva</span>
         <div class="fala-sh">
@@ -312,13 +327,15 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       </div>
 
       <!-- ══════ 10 · CLASSIFICADOS ══════ -->
-      <div class="secao"><span class="n">10</span><span class="nome">Classificados in-world</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-10"><span class="n">10</span><span class="nome">Classificados in-world</span><span class="grupo">SECAO FIXA</span></div>
       <div class="bloco">
         <p class="peq">"Vende-se Tavus-Drive usado, pouco uso, aceito troca por mapa da Catedral-Mae." · "Precisa-se de tradutor de Sylvarin. Pagamento em glifos." (Lore por osmose, cada edicao com novos anuncios.)</p>
       </div>
 
       <!-- ══════ 11 · HQ ══════ -->
-      <div class="secao"><span class="n">11</span><span class="nome">HQ · a tirinha</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-11"><span class="n">11</span><span class="nome">HQ · a tirinha</span><span class="grupo">SECAO FIXA</span></div>
       <div class="vazio">
         <span class="tag">▶ VAZIO COM GRACA · pool rotativo (o site mostra UMA por edicao)</span>
         <div class="fala-sh">
@@ -337,7 +354,8 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       </div>
 
       <!-- ══════ 12 · PROXIMOS LANCAMENTOS ══════ -->
-      <div class="secao"><span class="n">12</span><span class="nome">Proximos Lancamentos</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-12"><span class="n">12</span><span class="nome">Proximos Lancamentos</span><span class="grupo">SECAO FIXA</span></div>
       <div class="vazio">
         <span class="tag">▶ VAZIO COM GRACA · copy definitiva</span>
         <div class="fala-sh">
@@ -349,21 +367,24 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       </div><!-- /grade-fixas (fim das secoes 5-12) -->
 
       <!-- ══════ 13 · POSTER CENTRAL ══════ -->
-      <div class="secao"><span class="n">13</span><span class="nome">Poster central</span><span class="grupo">ENCARTE</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-13"><span class="n">13</span><span class="nome">Poster central</span><span class="grupo">ENCARTE</span></div>
       <div class="encarte">
         <span class="tag">ENCARTE · DESTAQUE E COLE NA PAREDE</span>
         <p class="bloco peq" style="margin-top:6px">A Catedral-Mae, a arte pintada do jogo, pagina dupla. (Ver mock 08: e a mesma key art do PRESS START.)</p>
       </div>
 
       <!-- ══════ 14 · BRINDE ══════ -->
-      <div class="secao"><span class="n">14</span><span class="nome">Brinde colado na capa</span><span class="grupo">ENCARTE</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-14"><span class="n">14</span><span class="nome">Brinde colado na capa</span><span class="grupo">ENCARTE</span></div>
       <div class="encarte">
         <span class="tag">ENCARTE · BRINDE</span>
         <p class="bloco peq" style="margin-top:6px">A fonte PixelOperatorMono (CC0, pode dar mesmo), um wallpaper, os sprites. Dar coisa e o gesto mais nostalgico que existe.</p>
       </div>
 
       <!-- ══════ 15 · CUPOM ══════ -->
-      <div class="secao"><span class="n">15</span><span class="nome">Cupom recortavel</span><span class="grupo">ENCARTE</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-15"><span class="n">15</span><span class="nome">Cupom recortavel</span><span class="grupo">ENCARTE</span></div>
       <div class="cupom">
         <span class="tesoura">✂</span>
         <p class="t">CUPOM DA EDICAO #1</p>
@@ -371,7 +392,8 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       </div>
 
       <!-- ══════ 16 · A ENTREVISTA ══════ -->
-      <div class="secao"><span class="n">16</span><span class="nome">A Entrevista · o Gus entrevista o criador</span><span class="grupo">EXPERT</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-16"><span class="n">16</span><span class="nome">A Entrevista · o Gus entrevista o criador</span><span class="grupo">EXPERT</span></div>
       <div class="bloco">
         <div class="fala-sh">
           <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> Você me fez a partir de livros. Por que não me perguntou se eu queria nascer em 3D?</p>
@@ -383,13 +405,15 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       </div>
 
       <!-- ══════ 17 · PROGRAMACAO ══════ -->
-      <div class="secao"><span class="n">17</span><span class="nome">Secao de Programacao</span><span class="grupo">EXPERT</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-17"><span class="n">17</span><span class="nome">Secao de Programacao</span><span class="grupo">EXPERT</span></div>
       <div class="bloco">
         <p class="peq">O eixo expert (as revistas BR tinham detonado E codigo). O ADR como materia, o commit real, como foi pensado, e a API do GlintFX ensinada de tabela. Nesta #1: como se estrutura uma lore em RAG. Codigo real, GPLv3, para copiar.</p>
       </div>
 
       <!-- ══════ 18 · O GUS LE O BUS ══════ -->
-      <div class="secao"><span class="n">18</span><span class="nome">O Gus lê o bus</span><span class="grupo">EXPERT · o AI-disclosure</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-18"><span class="n">18</span><span class="nome">O Gus lê o bus</span><span class="grupo">EXPERT · o AI-disclosure</span></div>
       <div class="bloco">
         <p class="peq" style="margin-bottom:11px">O Gus lê um trecho real do <b>bus</b> (o canal git entre as três sessões que constroem isto: o jogo, a lib e este site) e reage, tentando entender o que se passa entre elas. <b>É o AI-disclosure virado história:</b> a criação lendo a correspondência dos criadores. Um trecho por edição, curado pelo líder (sem spoiler, sem terceiros).</p>
 
@@ -428,7 +452,8 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       </div>
 
       <!-- ══════ 19 · EXPEDIENTE ══════ -->
-      <div class="secao"><span class="n">19</span><span class="nome">Expediente</span><span class="grupo">FECHAMENTO</span></div>
+      <div class="up-wrap"><a class="up" href="#sumario">↑ índice</a></div>
+      <div class="secao" id="sec-19"><span class="n">19</span><span class="nome">Expediente</span><span class="grupo">FECHAMENTO</span></div>
       <div class="bloco" style="padding-bottom:24px">
         <p class="exped"><b>GLYFESSE</b> · publicacao irregular de um jogo que ainda nao saiu.<br><b>Redacao, arte e codigo:</b> o Gus (e alguem que ele quase menciona).<br><b>Memoria:</b> 4 MB. <b>Tiragem:</b> 1 leitor, se der sorte. <b>Preco:</b> R$ 0,00.<br><b>Feito com IA como ferramenta.</b> A parte criativa e do criador.</p>
       </div>
@@ -476,6 +501,8 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
     io.observe(out.closest(".crt-mini") || out);
   })();
   </script>
+
+  <div class="up-wrap" style="padding:0 clamp(20px,3.5vw,56px) 24px"><a class="up" href="#sumario">↑ voltar ao índice</a></div>
 
   <div class="rodape-q">
     <h2>Como se le uma edicao: DECIDIDO, A (rolagem unica)</h2>
