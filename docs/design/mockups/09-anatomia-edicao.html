@@ -83,6 +83,38 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
   color:var(--tinta-2); opacity:.82}
 .fala-sh .pensa::before{content:"// "}
 
+/* ★ AS DUAS TELAS ACESAS DENTRO DO PAPEL (vazios animados, JS minimo)
+   - .crt-mini.verde : fosforo VERDE (o registro do shell), na Galeria de Bugs
+   - .crt-mini.cor   : CRT colorido (familia do em-breve), o bus renderizado vazio
+   Sao buracos de tela no papel: raio 2px, scanline, e o texto ASCII (regra de tela). */
+.crt-mini{position:relative; border-radius:var(--raio-tela); padding:14px 16px; overflow:hidden;
+  font-family:var(--font-display); font-size:13px; line-height:1.75; isolation:isolate}
+.crt-mini::after{content:""; position:absolute; inset:0; z-index:3; pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgb(0 0 0 / .22) 0 1px, #0000 1px 3px)}
+.crt-mini .l{margin:0; white-space:pre-wrap}
+.crt-mini .cur{display:inline-block; width:.55em; height:1.05em; vertical-align:-.16em;
+  animation:cur 1.05s steps(1) infinite}
+@keyframes cur{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){ .crt-mini .cur{animation:none} }
+
+/* fosforo verde */
+.crt-mini.verde{background:#06120b; color:#5ef08f; text-shadow:0 0 6px #2fff7d99;
+  box-shadow:inset 0 0 0 1px #0f3d24, 0 3px 0 #00000018}
+.crt-mini.verde .cur{background:#7dffab; box-shadow:0 0 8px #2fff7d}
+.crt-mini.verde .dim{color:#2f7d55}
+
+/* CRT colorido (bus): navy + ciano, com a franja rgb do em-breve */
+.crt-mini.cor{background:radial-gradient(120% 120% at 50% 40%, #12233a 0%, #070d16 70%);
+  color:var(--tela-texto-1); box-shadow:inset 0 0 0 1px #2c3d52, 0 3px 0 #00000018}
+.crt-mini.cor::before{content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:repeating-linear-gradient(90deg, rgb(255 0 64 / .03) 0 1px, rgb(0 255 255 / .03) 1px 2px, rgb(0 0 255 / .03) 2px 3px)}
+.crt-mini.cor .cur{background:var(--gw-ciano-alto); box-shadow:0 0 8px var(--gw-ciano)}
+.crt-mini.cor .ok{color:var(--gw-ciano)} .crt-mini.cor .dim{color:var(--tela-texto-3)}
+.crt-mini.cor .zero{color:var(--gw-magenta)}
+.crt-mini .titulo-t{color:var(--tela-texto-2); border-bottom:1px solid #2c3d52; padding-bottom:6px;
+  margin:0 0 8px; letter-spacing:.06em; font-size:11px}
+.crt-mini.verde .titulo-t{color:#3fa86e; border-color:#123d26}
+
 /* ── #1 CAPA ── */
 .capa{padding:20px 26px 22px; border-bottom:3px solid var(--tinta-preta)}
 .capa .mast{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:12px}
@@ -149,7 +181,7 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
 
   <div class="intro">
     <h1>Glyfesse · mock 09 · a anatomia da edicao</h1>
-    <p class="sub"><b>O template de UMA edicao: as 18 secoes fixas, na ordem.</b> Modelo revista cheia (tipo SuperGamePower): leve na frente, expert no fim. Renderei como a Edicao #1, a genese (15 mai 2026). Role para ver as 18 caixas.</p>
+    <p class="sub"><b>O template de UMA edicao: as 19 secoes fixas, na ordem.</b> Modelo revista cheia (tipo SuperGamePower): leve na frente, expert no fim. Renderei como a Edicao #1, a genese (15 mai 2026). Role para ver as 19 caixas. (A 19a, "o Gus le o bus", e o AI-disclosure virado historia.)</p>
     <p class="nota">★ <b>A regra que faz a revista cheia caber no gargalo do lider:</b> seção fixa sem material naquele numero nao vira producao, mostra um <b>vazio com graca</b> na voz do Gus (caixa tracejada em ciano abaixo). <b>A copy de cada vazio e EXEMPLO</b> aqui: a definitiva sai com o lider, uma por vez. O <code>indice</code> e a <code>capa</code> saem do mesmo <code>$edicoes</code> datado da banca e da linha do tempo.</p>
   </div>
 
@@ -225,10 +257,13 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       <!-- ══════ 6 · GALERIA DE BUGS ══════ -->
       <div class="secao"><span class="n">06</span><span class="nome">Galeria de Bugs</span><span class="grupo">SECAO FIXA</span></div>
       <div class="vazio">
-        <span class="tag">▶ VAZIO COM GRACA · copy definitiva</span>
-        <div class="fala-sh">
-          <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> Sem bug pra mostrar hoje. Eu procurei. Procurei mesmo. Tá tudo funcionando.</p>
-          <p class="pensa">e isso me deixa desconfiado</p>
+        <span class="tag">▶ VAZIO COM GRACA · copy definitiva (terminal verde)</span>
+        <div class="crt-mini verde" id="term-bugs" role="img" aria-label="Terminal de fosforo verde: escreve No bugs today, sem bugs hoje">
+          <p class="l" id="term-bugs-out"></p>
+        </div>
+        <div class="fala-sh" style="margin-top:11px">
+          <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> Que bom, sem bug hoje :)</p>
+          <p class="pensa">algo errado... nenhum código roda de primeira. gosto de codar em C++ (a linguagem do jogo), mas é difícil. não ter bug é o próprio bug...</p>
         </div>
       </div>
 
@@ -333,14 +368,82 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
         <p class="peq">O eixo expert (as revistas BR tinham detonado E codigo). O ADR como materia, o commit real, como foi pensado, e a API do GlintFX ensinada de tabela. Nesta #1: como se estrutura uma lore em RAG. Codigo real, GPLv3, para copiar.</p>
       </div>
 
-      <!-- ══════ 18 · EXPEDIENTE ══════ -->
-      <div class="secao"><span class="n">18</span><span class="nome">Expediente</span><span class="grupo">FECHAMENTO</span></div>
+      <!-- ══════ 18 · O GUS LE O BUS ══════ -->
+      <div class="secao"><span class="n">18</span><span class="nome">O Gus lê o bus</span><span class="grupo">EXPERT · o AI-disclosure</span></div>
+      <div class="bloco">
+        <p class="peq" style="margin-bottom:11px">O Gus lê um trecho real do <b>bus</b> (o canal git entre as três sessões que constroem isto: o jogo, a lib e este site) e reage, tentando entender o que se passa entre elas. <b>É o AI-disclosure virado história:</b> a criação lendo a correspondência dos criadores. Um trecho por edição, curado pelo líder (sem spoiler, sem terceiros).</p>
+
+        <!-- estado CHEIO (exemplo marcado) -->
+        <div class="crt-mini cor" role="img" aria-label="Tela do bus com uma mensagem: o motor de cartas fechou">
+          <p class="titulo-t">BUS :: gusworld_ia_autocomm · inbox/site · 1 nova</p>
+          <p class="l"><span class="dim">de:</span> jogo   <span class="dim">para:</span> site   <span class="dim">·</span> 16 jul 2026</p>
+          <p class="l"><span class="ok">&gt;</span> "o motor de cartas fechou. 20 mestres jogaveis."</p>
+        </div>
+        <div class="fala-sh" style="margin-top:11px">
+          <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> achei uma mensagem. "o motor de cartas fechou"</p>
+          <p class="pensa">motor de cartas. eu tenho cartas?</p>
+          <p class="pensa">quem escreveu isso não fui eu</p>
+        </div>
+        <p style="margin:9px 0 18px; font-family:var(--font-display); font-size:8px; letter-spacing:.08em; color:var(--tinta-2)">TRECHO DE EXEMPLO · a cada edição sai um, curadoria do líder, sem spoiler</p>
+
+        <!-- estado VAZIO: o vazio-com-graca DESTA secao (decidido) = o bus renderizado vazio -->
+        <div class="vazio">
+          <span class="tag">▶ VAZIO COM GRACA · quando o cano está em silêncio</span>
+          <div class="crt-mini cor" role="img" aria-label="Tela do bus vazia: inbox sem mensagens">
+            <p class="titulo-t">BUS :: gusworld_ia_autocomm · inbox/site</p>
+            <p class="l"><span class="dim">$</span> git pull</p>
+            <p class="l"><span class="dim">Already up to date.</span></p>
+            <p class="l"><span class="dim">$</span> ls inbox/site/</p>
+            <p class="l"><span class="zero">(vazio)</span> <span class="cur"></span></p>
+          </div>
+          <!-- ⚠️ SPOILER-POLICY: "carta faraday" e um mestre/carta do Codex (jogo).
+               Mantido porque o lider escreveu; MARCAR para o audit de spoiler antes de publicar. -->
+          <div class="fala-sh" style="margin-top:11px">
+            <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> vazio... não entendi. Sem commits nem mensagens entre as IA hoje?</p>
+            <p class="pensa">será interferência? preciso de carta faraday... fui hackeado?</p>
+            <p class="pensa">eu trabalhei hoje. a IA finalmente criou consciência e senciência e tá me trollando? medo. mas é improvável.</p>
+            <p class="pensa">preciso descobrir o que aconteceu. o mais provável é sempre o mais simples (navalha de ockham): o mecanismo do bus quebrou.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════ 19 · EXPEDIENTE ══════ -->
+      <div class="secao"><span class="n">19</span><span class="nome">Expediente</span><span class="grupo">FECHAMENTO</span></div>
       <div class="bloco" style="padding-bottom:24px">
         <p class="exped"><b>GLYFESSE</b> · publicacao irregular de um jogo que ainda nao saiu.<br><b>Redacao, arte e codigo:</b> o Gus (e alguem que ele quase menciona).<br><b>Memoria:</b> 4 MB. <b>Tiragem:</b> 1 leitor, se der sorte. <b>Preco:</b> R$ 0,00.<br><b>Feito com IA como ferramenta.</b> A parte criativa e do criador.</p>
       </div>
 
     </div><!-- /corpo -->
   </div><!-- /edicao -->
+
+  <script>
+  /* O terminal VERDE da Galeria de Bugs: cursor pisca ~1s, digita
+     > "No bugs today" char por char, pula linha e fica >_ piscando.
+     JS minimo (como o glitch do em-breve). Respeita reduced-motion:
+     mostra o estado final estatico, sem digitar. */
+  (function(){
+    var out = document.getElementById("term-bugs-out");
+    if(!out) return;
+    var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
+    var txt = '> "No bugs today"';
+    function cur(){ var s=document.createElement("span"); s.className="cur"; return s; }
+    function fim(){
+      out.textContent = txt;
+      out.appendChild(document.createElement("br"));
+      out.appendChild(document.createTextNode("> "));
+      out.appendChild(cur());
+    }
+    if(reduz){ fim(); return; }
+    out.appendChild(cur());                 /* pisca ~1s antes de digitar */
+    var i = 0;
+    setTimeout(function digita(){
+      out.textContent = txt.slice(0, i);
+      i++;
+      if(i <= txt.length){ setTimeout(digita, 55); }
+      else { fim(); }
+    }, 1000);
+  })();
+  </script>
 
   <div class="rodape-q">
     <h2>Como se le uma edicao: DECIDIDO, A (rolagem unica)</h2>
