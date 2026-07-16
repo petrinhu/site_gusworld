@@ -102,9 +102,15 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 
 .dialogo{display:flex; flex-direction:column; gap:16px; max-width:64ch}
 .fala{margin:0}
-.prompt{font-family:var(--font-display); font-size:14px; color:var(--tinta-ciano); letter-spacing:.01em}
+/* ★ O PREFIXO e a ASSINATURA da voz: NAO pode ser menor que a fala (regra
+   do lider). Casa o tamanho visual com o Vollkorn 17px da fala. Como e
+   pixel-mono (altura-x um pouco menor por px), 16px ja iguala a presenca
+   do serif 17px; a cor (ciano/magenta) da o destaque de assinatura sem
+   precisar de negrito que sufocaria a fala. Hierarquia: prefixo ~ fala
+   (ambos prominentes) > // (menor, esmaecido por cor). */
+.prompt{font-family:var(--font-display); font-size:16px; color:var(--tinta-ciano); letter-spacing:.01em}
 .prompt.root{color:var(--tinta-magenta)}
-.dito{font-family:var(--font-corpo); font-weight:400; font-size:17px; line-height:1.5; color:var(--tinta-preta)}
+.dito{font-family:var(--font-corpo); font-weight:400; font-size:17px; line-height:1.55; color:var(--tinta-preta)}
 
 /* ★ VARIACAO A: o // e o comentario de codigo: verde, MENOR, mesma coluna.
    #35562f = 5.05:1 sobre o pior papel (--papel-fim). De-emphasis pela COR
