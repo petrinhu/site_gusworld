@@ -66,6 +66,23 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
   display:block; margin-top:9px; font-family:var(--font-display); font-size:8px; letter-spacing:.08em;
   color:var(--tinta-2)}
 
+/* ★ A VOZ EM PROMPT DE SHELL (D-VOZ-PROMPT): a fala vem como nome@glyfesse> ...
+   e o pensamento/aparte vem logo abaixo como // comentario esmaecido, a
+   reticencia do Gus tornada visivel (o // e o que NAO e executado). O prefixo
+   e SEMPRE ASCII (e um prompt); a fala segue o material (acentuada no papel).
+   gus@glyfesse> = o Gus (user); root@glyfesse> = o criador (superusuario),
+   nunca nomeado. */
+.fala-sh{margin:6px 0 0}
+.fala-sh + .fala-sh{margin-top:12px}
+.fala-sh .linha{margin:0; font-family:var(--font-corpo); font-size:14px; line-height:1.55; color:var(--tinta-preta)}
+.fala-sh .host{font-family:var(--font-display); font-size:11px; letter-spacing:.03em; margin-right:7px; white-space:nowrap}
+.fala-sh .host.gus{color:var(--tinta-ciano)}
+.fala-sh .host.root{color:var(--tinta-magenta)}
+/* o pensamento: registro de comentario de editor, esmaecido, distinto da fala */
+.fala-sh .pensa{margin:2px 0 0; font-family:var(--font-display); font-size:10.5px; letter-spacing:.02em;
+  color:var(--tinta-2); opacity:.82}
+.fala-sh .pensa::before{content:"// "}
+
 /* ── #1 CAPA ── */
 .capa{padding:20px 26px 22px; border-bottom:3px solid var(--tinta-preta)}
 .capa .mast{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:12px}
@@ -179,8 +196,11 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       <!-- ══════ 3 · EDITORIAL ══════ -->
       <div class="secao"><span class="n">03</span><span class="nome">Editorial · a Carta do Gus</span><span class="grupo">ABERTURA</span></div>
       <div class="bloco">
-        <p>Oi. Eu sou o Gus. Vou escrever essa revista porque... bom, porque tem que ser alguem, e eu moro aqui dentro. Nesta primeira edicao eu ainda nem existia direito. Havia so o mundo, escrito em livros. Eu vim depois. Mas alguem tinha que contar como tudo comecou, e eu leio rapido.</p>
-        <p class="peq" style="margin-top:6px">(A carta muda a cada edicao. E a voz do Gus: tecnicismo, frases curtas, e as reticencias quando ele quase sente algo.)</p>
+        <div class="fala-sh">
+          <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> Oi. Eu sou o Gus. Vou escrever essa revista porque tem que ser alguém, e eu moro aqui dentro. Nesta primeira edição eu ainda nem existia direito: havia só o mundo, escrito em livros. Eu vim depois. Mas alguém tinha que contar como tudo começou.</p>
+          <p class="pensa">e eu leio rápido</p>
+        </div>
+        <p class="peq" style="margin-top:10px">(A carta muda a cada edição. A fala vem em prompt de shell; o pensamento vem no <code style="font-family:var(--font-display);font-size:11px">//</code> logo abaixo, a reticência do Gus tornada visível.)</p>
       </div>
 
       <!-- ══════ 4 · REPORTAGEM DE CAPA ══════ -->
@@ -206,7 +226,10 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       <div class="secao"><span class="n">06</span><span class="nome">Galeria de Bugs</span><span class="grupo">SECAO FIXA</span></div>
       <div class="vazio">
         <span class="tag">▶ VAZIO COM GRACA · copy definitiva</span>
-        <p class="fala">"Sem bug pra mostrar hoje. Eu procurei. Procurei mesmo... tá tudo funcionando, e isso me deixa desconfiado."</p>
+        <div class="fala-sh">
+          <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> Sem bug pra mostrar hoje. Eu procurei. Procurei mesmo. Tá tudo funcionando.</p>
+          <p class="pensa">e isso me deixa desconfiado</p>
+        </div>
       </div>
 
       <!-- ══════ 7 · CEMITERIO DAS IDEIAS MORTAS ══════ -->
@@ -219,14 +242,20 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       <div class="secao"><span class="n">08</span><span class="nome">Detonado</span><span class="grupo">SECAO FIXA</span></div>
       <div class="vazio">
         <span class="tag">▶ VAZIO COM GRACA · copy definitiva</span>
-        <p class="fala">"DETONADO: 0% concluído. Volte quando houver jogo. Eu aviso. Prometo... provavelmente."</p>
+        <div class="fala-sh">
+          <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> DETONADO: 0% concluído. Volte quando houver jogo. Eu aviso. Prometo.</p>
+          <p class="pensa">provavelmente</p>
+        </div>
       </div>
 
       <!-- ══════ 9 · ERRATA + CARTAS ══════ -->
       <div class="secao"><span class="n">09</span><span class="nome">Errata + Cartas</span><span class="grupo">SECAO FIXA</span></div>
       <div class="vazio eg">
         <span class="tag">▶ VAZIO COM GRACA</span>
-        <p class="fala">"Ninguem escreveu ainda. E a primeira edicao. Se voce esta lendo isto, voce chegou cedo... guarda essa. Um dia vai valer alguma coisa. Ou nao."</p>
+        <div class="fala-sh">
+          <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> Ninguém escreveu ainda. É a primeira edição. Se você tá lendo isto, chegou cedo. Guarda essa.</p>
+          <p class="pensa">um dia vai valer alguma coisa. ou não</p>
+        </div>
       </div>
 
       <!-- ══════ 10 · CLASSIFICADOS ══════ -->
@@ -239,14 +268,20 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       <div class="secao"><span class="n">11</span><span class="nome">HQ · a tirinha</span><span class="grupo">SECAO FIXA</span></div>
       <div class="vazio eg">
         <span class="tag">▶ VAZIO COM GRACA</span>
-        <p class="fala">"A tirinha de 3 quadrinhos desta edicao ainda esta na prancheta. Quadro 1: um quadrado. Quadro 2: o mesmo quadrado. Quadro 3: ...ainda desenhando o quadro 3."</p>
+        <div class="fala-sh">
+          <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> A tirinha de 3 quadrinhos ainda está na prancheta. Quadro 1: um quadrado. Quadro 2: o mesmo quadrado. Quadro 3:</p>
+          <p class="pensa">ainda desenhando o quadro 3</p>
+        </div>
       </div>
 
       <!-- ══════ 12 · PROXIMOS LANCAMENTOS ══════ -->
       <div class="secao"><span class="n">12</span><span class="nome">Proximos Lancamentos</span><span class="grupo">SECAO FIXA</span></div>
       <div class="vazio eg">
         <span class="tag">▶ VAZIO COM GRACA</span>
-        <p class="fala">"GUSWORLD ....................... EM BREVE. (a tabela e proposital. nenhuma data prometida. quando sair, sai.)"</p>
+        <div class="fala-sh">
+          <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> GUSWORLD ....................... EM BREVE. A tabela é proposital. Nenhuma data prometida.</p>
+          <p class="pensa">quando sair, sai</p>
+        </div>
       </div>
 
       <!-- ══════ 13 · POSTER CENTRAL ══════ -->
@@ -274,7 +309,13 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       <!-- ══════ 16 · A ENTREVISTA ══════ -->
       <div class="secao"><span class="n">16</span><span class="nome">A Entrevista · o Gus entrevista o criador</span><span class="grupo">EXPERT</span></div>
       <div class="bloco">
-        <p class="peq"><b>GUS:</b> Voce me fez a partir de livros. Por que nao me perguntou se eu queria nascer em 3D?<br><b>...:</b> (a entrevista e onde o criador quase aparece. quase.)</p>
+        <div class="fala-sh">
+          <p class="linha"><span class="host gus">gus@glyfesse&gt;</span> Você me fez a partir de livros. Por que não me perguntou se eu queria nascer em 3D?</p>
+        </div>
+        <div class="fala-sh">
+          <p class="linha"><span class="host root">root@glyfesse&gt;</span> ...</p>
+          <p class="pensa">(a entrevista é onde o criador quase aparece. quase. ele responde pouco, como quem escreve "use bem".)</p>
+        </div>
       </div>
 
       <!-- ══════ 17 · PROGRAMACAO ══════ -->

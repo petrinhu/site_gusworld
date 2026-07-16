@@ -152,6 +152,8 @@ Mock: [`mockups/09-anatomia-edicao.html`](mockups/09-anatomia-edicao.html). Temp
 
 **A regra que sustenta a revista cheia no gargalo do líder:** seção fixa sem material naquele número não vira produção, mostra um vazio-com-graça honesto na voz do Gus (mesmo DNA do detonado em branco). A copy de cada vazio é decidida sempre com o líder, uma por vez; no mock ela está marcada como copy de exemplo. A acentuação pt-br do texto de papel (o texto de tela fica ASCII) é uma passada do `ux-writer`.
 
+**A voz em prompt de shell (`D-VOZ-PROMPT`, memória `voz-prompt-shell`).** Toda fala do Gus vem como `gus@glyfesse> [fala]`, e o pensamento ou aparte vem logo abaixo como `// comentário` esmaecido: o `//` é o que não é executado, a reticência do Gus tornada visível. O prefixo `nome@glyfesse>` é sempre ASCII (é um prompt); a fala depois segue o material (acentuada no papel, ASCII na tela). O criador é `root@glyfesse>` (superusuário), nunca nomeado Pyotor: encoda criador para filho sem dizê-lo. No mock 09 a convenção está aplicada no Editorial, nos vazios-com-graça e na Entrevista (onde o `root@glyfesse>` responde pouco, como quem escreve "use bem").
+
 ---
 
 ## 5. O que a identidade restringe e confirma na stack
