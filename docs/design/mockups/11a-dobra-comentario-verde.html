@@ -226,13 +226,16 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
   </div>
 </div>
 
+<script src="js/quadradinho-core.js"></script>
 <script>
 /* O QUADRADINHO. WASD, colisao, parado ate o input. Depois de 8 passos,
    REVELACAO FRONTAL do Gus ruivo (so existe o sprite front: sem walk
-   direcional). reduced-motion: entra ja virado, no destino. */
+   direcional). reduced-motion: entra ja virado, no destino.
+   A colisao/movimento/mapeamento de tecla vivem no nucleo PURO e testado
+   (js/quadradinho-core.js, sob TDD); aqui so o cola com o DOM. */
 (function(){
   var sala=document.getElementById("jogo"), heroi=document.getElementById("heroi");
-  if(!sala||!heroi) return;
+  if(!sala||!heroi||!window.QuadCore) return;
   var reduz=matchMedia("(prefers-reduced-motion:reduce)").matches;
   var x=0,y=0,virou=false,movs=0,FRAME=10,PASSO=13;
   function tam(){ return virou?{w:30,h:52}:{w:22,h:22}; }
@@ -240,33 +243,28 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
     return Array.prototype.map.call(sala.querySelectorAll(".parede"),function(w){
       var r=w.getBoundingClientRect();
       return {l:r.left-s.left,t:r.top-s.top,r:r.right-s.left,b:r.bottom-s.top}; }); }
-  /* HITBOX NOS PES (convencao do jogo: player AABB ~0.6 tile, ancorado nos
-     pes; ver GusEngine sprite_anchor/city_scene). A caixa de colisao NAO e
-     o sprite inteiro: e uma faixa pequena na BASE, centrada. Assim o corpo
-     sobrepoe a parede (profundidade top-down) e so os PES bloqueiam: nada
-     de esbarrar de longe. */
-  var FEET=0.6;  /* fracao da largura: ~0.6 tile, como o spawn_player_aabb */
-  function feetBox(px,py,t){
-    var fw=Math.round(t.w*FEET), fh=Math.round(t.w*FEET);
-    var fl=px+(t.w-fw)/2, fb=py+t.h;           /* base = os pes do sprite */
-    return {l:fl, t:fb-fh, r:fl+fw, b:fb};
-  }
-  function bate(box,W){ for(var i=0;i<W.length;i++){var q=W[i];
-    if(box.l<q.r-0.5&&box.r>q.l+0.5&&box.t<q.b-0.5&&box.b>q.t+0.5) return true;} return false; }
   function pinta(){ heroi.style.setProperty("--x",x+"px"); heroi.style.setProperty("--y",y+"px"); }
   function reclamp(){ var t=tam();
     x=Math.max(FRAME,Math.min(sala.clientWidth-FRAME-t.w,x));
     y=Math.max(FRAME,Math.min(sala.clientHeight-FRAME-t.h,y)); }
   function evoluir(){ if(virou)return; virou=true; heroi.classList.add("virou"); sala.classList.add("evoluiu"); reclamp(); pinta(); }
   function mover(dir){ var t=tam(),W=paredes();
-    var maxx=sala.clientWidth-FRAME-t.w, maxy=sala.clientHeight-FRAME-t.h, dx=0, dy=0;
-    if(dir==="left")dx=-PASSO; if(dir==="right")dx=PASSO; if(dir==="up")dy=-PASSO; if(dir==="down")dy=PASSO;
-    var nx=Math.max(FRAME,Math.min(maxx,x+dx)); if(!bate(feetBox(nx,y,t),W)) x=nx;
-    var ny=Math.max(FRAME,Math.min(maxy,y+dy)); if(!bate(feetBox(x,ny,t),W)) y=ny;
+    var maxx=sala.clientWidth-FRAME-t.w, maxy=sala.clientHeight-FRAME-t.h;
+    /* candidato JA clampado nas bordas da sala (mesma ordem do original:
+       clampa primeiro, so depois testa colisao com esse candidato). */
+    var nxAlvo=Math.max(FRAME,Math.min(maxx,x+dir.x*PASSO));
+    var nyAlvo=Math.max(FRAME,Math.min(maxy,y+dir.y*PASSO));
+    /* feetHitbox do core so aceita um tileSize quadrado (t.w); quando o
+       sprite vira retangular (30x52), desloca o y de entrada por (t.h-t.w)
+       pra que a base calculada (y+tileSize) continue caindo nos pes reais -
+       mesma matematica do feetBox original, so que via o nucleo puro. */
+    var yAjustado=y+(t.h-t.w);
+    var delta={x:nxAlvo-x,y:nyAlvo-y};
+    var res=QuadCore.resolveMove({x:x,y:yAjustado}, delta, W, t.w);
+    x=res.x; y=res.y-(t.h-t.w);
     pinta(); if(!virou){ movs++; if(movs>=8) evoluir(); } }
   sala.addEventListener("keydown",function(e){
-    var m={KeyW:"up",KeyA:"left",KeyS:"down",KeyD:"right"};
-    var dir=m[e.code]; if(!dir)return; e.preventDefault(); mover(dir); });
+    var dir=QuadCore.keyToDir(e.key); if(!dir)return; e.preventDefault(); mover(dir); });
   var r=sala.getBoundingClientRect();
   x=Math.round(r.width*0.20); y=Math.round(r.height*0.68); reclamp();
   if(reduz || /reveal/.test(location.search)){ evoluir(); } else { pinta(); }

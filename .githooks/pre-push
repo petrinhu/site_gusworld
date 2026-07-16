@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# .githooks/pre-push - roda o gate scripts/preci.sh antes de todo `git push`.
+#
+# NAO esta ativado por padrao. Pra ligar (uma vez, por decisao do lider):
+#   git config core.hooksPath .githooks
+# Pra desligar de volta:
+#   git config --unset core.hooksPath
+
+set -euo pipefail
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+exec "$ROOT/scripts/preci.sh"

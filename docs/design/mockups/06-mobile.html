@@ -123,19 +123,25 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
 
 </div>
 
+<script src="js/quadradinho-core.js"></script>
 <script>
 /* O quadradinho no celular: d-pad de toque, PARADO ate o input (sem
    anda-sozinho), COLISAO real (bate na parede). Vira o Gus depois de mexer
    um pouco, com o sprite gustaf_i_tavus_vance. Pointer Events: funciona com
-   mouse (o lider testa) e com o toque. reduced-motion: entra virado, parado. */
+   mouse (o lider testa) e com o toque. reduced-motion: entra virado, parado.
+   Colisao/movimento/tecla vivem no nucleo PURO testado (js/quadradinho-core.js,
+   compartilhado com 05 e 11a - mesmo teste real, DRY); aqui so o cola com o DOM. */
 (function(){
   var sala  = document.getElementById("jogo");
   var heroi = document.getElementById("heroi");
-  if(!sala || !heroi) return;
+  if(!sala || !heroi || !window.QuadCore) return;
   var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
   var x=0, y=0, virou=false, movimentos=0, FRAME=11, PASSO=13;
   var SPR = { left:"sprites/gus-west.png", right:"sprites/gus-east.png",
               up:"sprites/gus-north.png", down:"sprites/gus-south.png" };
+  /* o d-pad passa o nome da direcao (data-dir); reusa o keyToDir do core
+     via a tecla WASD equivalente, pra nao duplicar o mapeamento de vetor. */
+  var DIR_TECLA = { left:"a", right:"d", up:"w", down:"s" };
   function tam(){ return virou ? {w:30,h:52} : {w:26,h:26}; }
   function paredes(){
     var s=sala.getBoundingClientRect();
@@ -144,21 +150,6 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
       return {l:r.left-s.left, t:r.top-s.top, r:r.right-s.left, b:r.bottom-s.top};
     });
   }
-  /* HITBOX NOS PES (convencao do jogo: player AABB ~0.6 tile, ancorado nos
-     pes; ver GusEngine sprite_anchor/city_scene). A colisao NAO usa o sprite
-     inteiro: uma faixa pequena na BASE, centrada. O corpo sobrepoe a parede
-     (profundidade top-down) e so os PES bloqueiam: sem esbarrar de longe. */
-  var FEET=0.6;  /* fracao da largura: ~0.6 tile, como o spawn_player_aabb */
-  function feetBox(px,py,t){
-    var fw=Math.round(t.w*FEET), fh=Math.round(t.w*FEET);
-    var fl=px+(t.w-fw)/2, fb=py+t.h;           /* base = os pes do sprite */
-    return {l:fl, t:fb-fh, r:fl+fw, b:fb};
-  }
-  function bate(box,W){
-    for(var i=0;i<W.length;i++){ var q=W[i];
-      if(box.l < q.r-0.5 && box.r > q.l+0.5 && box.t < q.b-0.5 && box.b > q.t+0.5) return true; }
-    return false;
-  }
   function pinta(){ heroi.style.setProperty("--x",x+"px"); heroi.style.setProperty("--y",y+"px"); }
   function olhar(d){ if(virou && SPR[d]) heroi.style.setProperty("--sprite","url('"+SPR[d]+"')"); }
   function reclamp(){ var t=tam();
@@ -166,11 +157,18 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
     y=Math.max(FRAME, Math.min(sala.clientHeight-FRAME-t.h, y)); }
   function evoluir(){ if(virou) return; virou=true; heroi.classList.add("virou"); reclamp(); olhar("down"); pinta(); }
   function mover(dir){
+    var dirVec=QuadCore.keyToDir(DIR_TECLA[dir]); if(!dirVec) return;
     var t=tam(), W=paredes();
-    var maxx=sala.clientWidth-FRAME-t.w, maxy=sala.clientHeight-FRAME-t.h, dx=0, dy=0;
-    if(dir==="left")dx=-PASSO; if(dir==="right")dx=PASSO; if(dir==="up")dy=-PASSO; if(dir==="down")dy=PASSO;
-    var nx=Math.max(FRAME, Math.min(maxx, x+dx)); if(!bate(feetBox(nx,y,t),W)) x=nx;
-    var ny=Math.max(FRAME, Math.min(maxy, y+dy)); if(!bate(feetBox(x,ny,t),W)) y=ny;
+    var maxx=sala.clientWidth-FRAME-t.w, maxy=sala.clientHeight-FRAME-t.h;
+    var nxAlvo=Math.max(FRAME, Math.min(maxx, x+dirVec.x*PASSO));
+    var nyAlvo=Math.max(FRAME, Math.min(maxy, y+dirVec.y*PASSO));
+    /* feetHitbox do core e quadrado (tileSize=t.w); com sprite retangular
+       (30x52 depois de virar), desloca o y de entrada por (t.h-t.w) pra
+       base calculada (y+tileSize) continuar caindo nos pes reais. */
+    var yAjustado=y+(t.h-t.w);
+    var delta={x:nxAlvo-x, y:nyAlvo-y};
+    var res=QuadCore.resolveMove({x:x,y:yAjustado}, delta, W, t.w);
+    x=res.x; y=res.y-(t.h-t.w);
     olhar(dir); pinta();
     if(!virou){ movimentos++; if(movimentos>=8) evoluir(); }
   }
