@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse: o PRESS START</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   MOCK 08 - O PRESS START. A key art pintada (catedral_mae) como poster
+   aceso, com PRESS START piscando: a memoria de fliperama. A pergunta:
+   o que acontece quando voce aperta START, num jogo que ainda nao saiu?
+   Tudo vem de ../tokens.css. Verificar no Firefox DELE.
+   ───────────────────────────────────────────────────────────── */
+*{box-sizing:border-box}
+html{background:#22222a}
+body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
+.bancada{max-width:1120px; margin:0 auto; padding:26px 20px}
+h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.14em;
+   color:#9fb0c4; margin:0 0 6px; text-transform:uppercase}
+.sub{margin:0; font-size:15px; color:#c8cdd6; max-width:86ch; line-height:1.55}
+.sub b{color:#fff}
+.nota{margin:12px 0 0; font-size:13px; color:#8e97a4; max-width:86ch; line-height:1.6}
+.nota b{color:#c8cdd6}
+
+/* ═══════════ O POSTER, DENTRO DA REVISTA ═══════════ */
+.folha-ps{position:relative; background:var(--papel); padding:20px; overflow:hidden;
+  box-shadow:var(--sombra-folha); margin-top:26px}
+.folha-ps::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.14}
+.folha-ps > *{position:relative; z-index:1}
+.ps-selo{font-family:var(--font-display); font-size:9px; letter-spacing:.16em; color:var(--tinta-ciano);
+  border-left:2px solid var(--tinta-ciano); padding-left:7px}
+.ps-cap{font-family:var(--font-display); font-size:9px; color:var(--tinta-2); margin:9px 0 0; text-align:right}
+
+/* a tela acesa: a key art pintada. buraco de luz no papel. */
+.aceso.poster{position:relative; margin-top:8px; border-radius:var(--raio-tela); overflow:hidden;
+  aspect-ratio:16/9; background:#05090f center/cover no-repeat;
+  background-image:url("catedral_mae.jpg");
+  box-shadow:inset 0 0 0 1px var(--tela-borda), 0 3px 0 #00000018;
+  cursor:pointer; user-select:none}
+/* brilho de tubo + vinheta: costura a pintura na tela acesa */
+.poster::after{content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:radial-gradient(120% 130% at 50% 62%, #4dd9e81f 0%, #0000 46%, #00000073 100%)}
+.poster:focus-visible{outline:3px solid var(--gw-ciano); outline-offset:3px}
+
+/* o "attract screen": PRESS START piscando, embaixo ao centro */
+.attract{position:absolute; inset:0; z-index:3; display:grid; place-content:end center;
+  padding-bottom:9%; text-align:center; pointer-events:none}
+.press{font-family:var(--font-display); font-weight:700; font-size:clamp(20px,3.6vw,34px);
+  letter-spacing:.18em; color:var(--gw-ciano-alto);
+  text-shadow:0 0 14px #6ff0ffcc, 2px 0 0 #ff004840, -2px 0 0 #00eeff40;
+  animation:pisca 1.15s steps(1) infinite}
+@keyframes pisca{50%{opacity:.18}}
+.insert{font-family:var(--font-display); font-size:clamp(9px,1.5vw,12px); letter-spacing:.14em;
+  color:var(--gw-ciano); margin-top:8px; opacity:.82}
+.arcade-bar{position:absolute; left:0; right:0; bottom:0; z-index:3; pointer-events:none;
+  display:flex; justify-content:space-between; padding:6px 11px;
+  font-family:var(--font-display); font-size:9.5px; letter-spacing:.08em; color:#8ec6ce;
+  background:linear-gradient(0deg,#05090fcc,#0000); text-shadow:0 0 6px #4dd9e855}
+
+/* a revelacao honesta ao apertar START (comportamento A) */
+.revela{position:absolute; inset:0; z-index:4; display:none; place-content:center; text-align:center;
+  padding:0 8%; background:#05090fd9; backdrop-filter:blur(1px)}
+.poster.apertou .attract{display:none}
+.poster.apertou .revela{display:grid}
+.revela .l1{font-family:var(--font-display); font-weight:700; font-size:clamp(22px,4vw,38px);
+  letter-spacing:.14em; color:var(--gw-ciano-alto); text-shadow:0 0 14px #6ff0ffcc}
+.revela .l2{font-family:var(--font-display); font-size:clamp(11px,1.8vw,15px); letter-spacing:.06em;
+  color:var(--tela-texto-1); margin-top:12px; line-height:1.7}
+.revela .l2 b{color:var(--gw-ciano)}
+.revela .seta{display:inline-block; margin-top:14px; font-family:var(--font-display); font-size:22px;
+  color:var(--gw-ciano-alto); text-shadow:0 0 10px #6ff0ffcc; animation:sobe 1.3s ease-in-out infinite}
+@keyframes sobe{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.revela .reset{margin-top:16px; font-family:var(--font-display); font-size:10px; letter-spacing:.1em;
+  color:var(--tela-texto-3)}
+
+.dica-ps{font-family:var(--font-display); font-size:10px; color:var(--tinta-2);
+  text-align:center; margin:9px 0 0; letter-spacing:.04em}
+
+/* ═══════════ AS TRES SAIDAS DO START (a pergunta) ═══════════ */
+.opcoes{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:30px}
+@media (max-width:900px){ .opcoes{grid-template-columns:1fr} }
+.op{background:#1b1f27; border:1px solid #333b47; border-radius:6px; overflow:hidden}
+.op h3{font-family:var(--font-display); font-weight:700; font-size:12px; letter-spacing:.08em;
+  color:#cdd5df; text-transform:uppercase; margin:0; padding:11px 13px 4px}
+.op h3 .rec{color:var(--gw-ciano); font-size:8.5px; letter-spacing:.05em}
+.op .ver{font-size:12.5px; line-height:1.55; color:#98a2af; padding:8px 13px 13px}
+.op .ver b{color:#d8dee6} .op .ver .pro{color:#8fd0b0} .op .ver .con{color:#d9a98f}
+
+.rodape-q{margin:32px auto 0; max-width:86ch; padding:14px 16px; background:#0d152055;
+  border:1px solid #2c3d52; font-size:13.5px; line-height:1.6; color:#b9c2ce}
+.rodape-q b{color:var(--gw-ciano-alto)}
+</style>
+</head>
+<body>
+<div class="bancada">
+
+  <h1>Glyfesse · mock 08 · o PRESS START</h1>
+  <p class="sub"><b>Aperte START.</b> A key art pintada (a Catedral-Mae) e o poster central da revista, aceso como uma tela de fliperama. <b>Clique nele</b> (ou de foco e aperte Enter/Espaco) e veja o que acontece num jogo que ainda nao saiu.</p>
+  <p class="nota">A pergunta desta rodada e uma so: <b>o que o START faz?</b> O poster abaixo ja mostra a saida que eu recomendo (a A). As tres estao resumidas mais abaixo. A key art aqui esta otimizada (120 KB); em producao entra a versao pintada em alta.</p>
+
+  <div class="folha-ps">
+    <span class="ps-selo">POSTER CENTRAL · A CATEDRAL-MAE</span>
+    <div class="aceso poster" id="poster" tabindex="0" role="button"
+         aria-label="Poster jogavel: aperte START">
+      <div class="attract">
+        <div class="press">▶ PRESS START</div>
+        <div class="insert">INSERT COIN · 0 FICHAS</div>
+      </div>
+      <div class="arcade-bar"><span>GLYFESSE ARCADE</span><span>(C) 2026 · GUSWORLD</span></div>
+      <div class="revela" aria-live="polite">
+        <div>
+          <div class="l1">AINDA NAO.</div>
+          <div class="l2">O jogo nao saiu. Eu tambem quero apertar START...<br>mas <b>o quadradinho la em cima anda de verdade.</b><br>vai la. e o unico que ja da pra jogar.</div>
+          <div class="seta" aria-hidden="true">↑</div>
+          <div class="reset">(clique de novo para voltar ao poster)</div>
+        </div>
+      </div>
+    </div>
+    <p class="ps-cap">FIG. · A Catedral-Mae. Poster central, destaque e cole na parede.</p>
+    <p class="dica-ps">clique no poster para apertar START</p>
+  </div>
+
+  <!-- ══════════ A PERGUNTA: o que o START faz ══════════ -->
+  <h1 style="margin-top:32px">O que o START faz</h1>
+  <div class="opcoes">
+    <div class="op">
+      <h3>A · Nao da pra comecar (e aponta pro quadradinho) <span class="rec">[RECOMENDADA]</span></h3>
+      <p class="ver"><span class="pro"><b>A favor:</b></span> e a alma do site num gesto. O jogo nao saiu, e apertar START <b>devolve a propria falta de paciencia</b> ("eu tambem quero"), depois te empurra pro quadradinho, o unico que ja anda. Honesto, engracado, e alimenta o "LANCE LOGO ESSE JOGO". Uma publisher nao poderia fazer isto: ele pode. Quando o jogo sair, o START passa a funcionar de verdade.<br><span class="con"><b>Contra:</b></span> promete um gesto de fliperama e "nega" de proposito; quem quer o jogo agora sente a isca (que e justamente o ponto).</p>
+    </div>
+    <div class="op">
+      <h3>B · START leva direto ao quadradinho</h3>
+      <p class="ver"><span class="pro"><b>A favor:</b></span> a promessa do fliperama e cumprida na hora: apertou, ta jogando. Reforca o "brinquedo primeiro" e da um destino imediato.<br><span class="con"><b>Contra:</b></span> gasta o poster pintado como um botao de rolagem. Perde a piada honesta da espera, e o START vira so um atalho. A catedral, que e atmosfera, fica de enfeite.</p>
+    </div>
+    <div class="op">
+      <h3>C · START liga o boot (o CRT da Edicao #0)</h3>
+      <p class="ver"><span class="pro"><b>A favor:</b></span> cinematografico: apertou, a tela "liga" com o boot do em-breve que ja esta no ar, continuidade total. Um momento de motor ligando.<br><span class="con"><b>Contra:</b></span> e o mais custoso e o menos honesto (finge que algo comeca). Repete o que o em-breve ja faz, e nao entrega jogo nenhum no fim. Bonito, mas anda em circulo.</p>
+    </div>
+  </div>
+
+  <p class="rodape-q"><b>Sobre a a11y e o prefers-reduced-motion:</b> o poster e um <code style="font-family:var(--font-display);font-size:11px">role="button"</code> focavel, entao Enter e Espaco apertam START e o leitor de tela anuncia a revelacao (<code style="font-family:var(--font-display);font-size:11px">aria-live</code>). Com movimento reduzido, o PRESS START para de piscar mas continua legivel, e a seta nao pula. A key art tem <code style="font-family:var(--font-display);font-size:11px">alt</code> descritivo. <b>Nada depende de animacao para ser entendido.</b> O texto do fliperama (PRESS START, INSERT COIN, a revelacao) fica na tela acesa, entao segue a regra ASCII de tela; a legenda do poster e papel, e ganha acentuacao pt-br completa na passada do ux-writer.</p>
+
+</div>
+
+<script>
+/* O PRESS START. Apertar (clique, Enter ou Espaco) revela a saida honesta:
+   o jogo nao saiu, mas o quadradinho anda. Comportamento A, o recomendado.
+   Sem framework: um toggle de classe. Respeita reduced-motion pela CSS. */
+(function(){
+  var poster = document.getElementById("poster");
+  if(!poster) return;
+  function apertar(){ poster.classList.toggle("apertou"); }
+  poster.addEventListener("click", apertar);
+  poster.addEventListener("keydown", function(e){
+    if(e.key==="Enter" || e.key===" "){ e.preventDefault(); apertar(); }
+  });
+})();
+</script>
+</body>
+</html>
