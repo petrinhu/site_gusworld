@@ -96,13 +96,14 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 .instru-fala{margin:0}
 
 /* ── a voz: prompt de shell + pensamento // ── */
+/* o rotulo agora e DEK (abaixo do titulo), nao eyebrow: o titulo e o 1o */
 .kicker{font-family:var(--font-display); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--tinta-ciano); margin:0 0 4px}
+  color:var(--tinta-ciano); margin:0 0 18px}
 /* ★ Titulo menor e MENOS quadrado (regra do lider): a condensada em caixa
    alta + 700 + tracking apertado lia blocky/pesada demais. Sentence case,
    menor e com tracking folgado suaviza o geometrico sem perder a manchete. */
 .titulo-carta{font-family:var(--font-manchete); font-weight:700; font-size:26px; line-height:1.05;
-  letter-spacing:0; color:var(--tinta-preta); margin:0 0 18px}
+  letter-spacing:0; color:var(--tinta-preta); margin:0 0 4px}
 
 .dialogo{display:flex; flex-direction:column; gap:16px; max-width:64ch}
 .fala{margin:0}
@@ -173,8 +174,11 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
          ("se transforma em mim"), por isso vem no FIM, nao na abertura. A
          tela que ela cita esta a esquerda. Reusa o mesmo componente .fala. -->
     <div>
-      <p class="kicker">A carta do Gus · editorial</p>
+      <!-- ★ ORDEM (regra do lider): o TITULO e o PRIMEIRO elemento da coluna
+           de voz (nada acima dele). O rotulo "A carta do Gus" desce pra
+           baixo do titulo (vira dek), nao fica de eyebrow por cima. -->
       <h2 class="titulo-carta">Ele ainda é só um quadrado</h2>
+      <p class="kicker">A carta do Gus · editorial</p>
 
       <!-- ★ Falas do Gus no registro CHAT: tom baixo, sem ponto final (o
            ponto encerra grosseiro online), "..." como assinatura, e 1 typo
