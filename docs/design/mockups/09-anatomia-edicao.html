@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse: a anatomia da edicao (template das 18 secoes)</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   MOCK 09 - A ANATOMIA DA EDICAO. O template com as ~18 secoes fixas
+   (modelo REVISTA CHEIA, tipo SuperGamePower), na ordem classica BR:
+   leve na frente, expert no fim. Cada secao SEM material naquele numero
+   mostra um VAZIO COM GRACA na voz do Gus (nunca vira producao).
+   Renderizado como a Edicao #1 (a genese, 15 mai 2026).
+   Tudo vem de ../tokens.css. Verificar no Firefox DELE.
+
+   ⚠️ A copy de cada vazio-com-graca aqui e EXEMPLO: a definitiva sai COM
+   o lider, uma pergunta por vez. O texto de papel entra sem acento (regra
+   provisoria de mock); o ux-writer aplica a acentuacao pt-br depois.
+   ───────────────────────────────────────────────────────────── */
+*{box-sizing:border-box}
+html{background:#22222a}
+body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
+.bancada{max-width:820px; margin:0 auto; padding:26px 20px}
+.intro h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.14em;
+   color:#9fb0c4; margin:0 0 6px; text-transform:uppercase}
+.intro .sub{margin:0; font-size:15px; color:#c8cdd6; line-height:1.55}
+.intro .sub b{color:#fff}
+.intro .nota{margin:12px 0 0; font-size:13px; color:#8e97a4; line-height:1.6}
+.intro .nota b{color:#c8cdd6}
+.intro .nota code{font-family:var(--font-display); font-size:11px; background:#ffffff10; padding:1px 4px}
+
+/* ── a edicao, uma folha de papel longa ── */
+.edicao{position:relative; background:var(--papel); margin-top:26px; overflow:hidden;
+  box-shadow:var(--sombra-folha)}
+.edicao::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.13}
+.edicao > *{position:relative; z-index:1}
+.corpo{padding:0 26px}
+
+/* divisor de secao: o rotulo de secao da revista */
+.secao{display:flex; align-items:center; gap:10px; margin:30px 0 12px; padding-top:20px;
+  border-top:1px solid #00000018}
+.secao .n{font-family:var(--font-display); font-weight:700; font-size:11px; color:var(--papel);
+  background:var(--tinta-preta); padding:3px 7px; letter-spacing:.06em; flex:0 0 auto}
+.secao .nome{font-family:var(--font-display); font-weight:700; font-size:12px; letter-spacing:.12em;
+  color:var(--tinta-preta); text-transform:uppercase}
+.secao .grupo{margin-left:auto; font-family:var(--font-display); font-size:8.5px; letter-spacing:.1em;
+  color:var(--tinta-2)}
+
+/* conteudo padrao de secao */
+.bloco{font-family:var(--font-corpo); font-size:14px; line-height:1.55; color:var(--tinta-preta)}
+.bloco .peq{font-size:12px; color:var(--tinta-2); line-height:1.5}
+.manch{font-family:var(--font-manchete); font-weight:700; line-height:.95; letter-spacing:-.018em;
+  text-transform:uppercase; color:var(--tinta-preta); margin:0 0 6px}
+
+/* ★ o VAZIO COM GRACA: quando a secao fixa nao tem material naquele numero */
+.vazio{border:1.5px dashed var(--tinta-ciano); padding:14px 15px; margin-top:4px;
+  background:#0d5e670a}
+.vazio .tag{font-family:var(--font-display); font-size:9px; letter-spacing:.12em; color:var(--tinta-ciano);
+  display:inline-block; margin-bottom:6px}
+.vazio .fala{font-family:var(--font-corpo); font-style:italic; font-size:14px; line-height:1.5;
+  color:var(--tinta-preta); margin:0}
+.vazio.eg::after{content:"COPY DE EXEMPLO · a definitiva sai com o lider";
+  display:block; margin-top:9px; font-family:var(--font-display); font-size:8px; letter-spacing:.08em;
+  color:var(--tinta-2)}
+
+/* ── #1 CAPA ── */
+.capa{padding:20px 26px 22px; border-bottom:3px solid var(--tinta-preta)}
+.capa .mast{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:12px}
+.capa .logo{font-family:var(--font-display); font-weight:700; font-size:34px; line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4b0, 1.5px 1.5px 0 #c2129eb0}
+.capa .ed{font-family:var(--font-display); font-size:10px; text-align:right; line-height:1.35; color:var(--tinta-2)}
+.capa .ed b{color:var(--tinta-preta); font-size:15px}
+.capa .cover-titulo{font-family:var(--font-manchete); font-weight:700; font-size:52px; line-height:.9;
+  letter-spacing:-.02em; text-transform:uppercase; color:var(--tinta-preta); margin:6px 0 8px}
+.capa .cover-lide{font-family:var(--font-corpo); font-weight:600; font-size:15px; line-height:1.4;
+  color:var(--tinta-preta); margin:0 0 12px; max-width:52ch}
+.capa .selos{display:flex; gap:6px; flex-wrap:wrap}
+.capa .selo{font-family:var(--font-display); font-size:8.5px; border:1.5px solid var(--tinta-preta);
+  padding:3px 6px; color:var(--tinta-preta)}
+
+/* ── #2 INDICE ── */
+.indice{list-style:none; margin:0; padding:0}
+.indice li{display:flex; align-items:baseline; gap:8px; padding:5px 0; border-bottom:1px dotted #00000022;
+  font-family:var(--font-corpo); font-size:14px; color:var(--tinta-preta)}
+.indice .pg{font-family:var(--font-display); font-size:11px; color:var(--tinta-ciano); flex:0 0 26px}
+.indice .pt{flex:1}
+.indice .pt b{font-weight:600}
+.links-fixos{margin-top:12px; padding:12px 14px; background:#0d152008; border-left:2px solid var(--tinta-ciano)}
+.links-fixos a{font-family:var(--font-display); font-size:12px; color:var(--tinta-ciano); text-decoration:underline;
+  display:block; padding:3px 0}
+.links-fixos .gus{font-family:var(--font-corpo); font-style:italic; font-size:13px; color:var(--tinta-2); margin:8px 0 0}
+
+/* ── #5 A NOTA ── */
+.nota-jogo{display:flex; gap:16px; flex-wrap:wrap}
+.nota-item{font-family:var(--font-display); font-size:11px; color:var(--tinta-2)}
+.nota-item b{display:block; font-size:30px; color:var(--tinta-magenta); line-height:1}
+
+/* encartes marcados */
+.encarte{border:1.5px solid #00000026; padding:14px 15px; margin-top:4px; background:#0000000a}
+.encarte .tag{font-family:var(--font-display); font-size:8.5px; letter-spacing:.14em; color:var(--tinta-2)}
+
+/* cupom recortavel */
+.cupom{border:2px dashed var(--tinta-preta); padding:14px 16px; margin-top:8px; position:relative}
+.cupom .tesoura{position:absolute; top:-9px; left:14px; font-size:15px; background:var(--papel); padding:0 4px}
+.cupom .t{font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:.06em; color:var(--tinta-preta)}
+.cupom .p{font-size:12.5px; color:var(--tinta-2); margin:5px 0 0; line-height:1.5}
+
+/* expediente */
+.exped{font-family:var(--font-display); font-size:10px; line-height:1.7; color:var(--tinta-2); letter-spacing:.03em}
+.exped b{color:var(--tinta-preta)}
+
+/* ── a pergunta desta rodada, no rodape ── */
+.rodape-q{margin:30px auto 0; max-width:820px; padding:15px 17px; background:#0d152055;
+  border:1px solid #2c3d52; font-size:13.5px; line-height:1.6; color:#b9c2ce}
+.rodape-q h2{font-family:var(--font-display); font-size:12px; letter-spacing:.1em; color:var(--gw-ciano-alto);
+  text-transform:uppercase; margin:0 0 8px}
+.rodape-q b{color:#e8e8ea} .rodape-q .rec{color:var(--gw-ciano)}
+.rodape-q ul{margin:8px 0 0; padding-left:18px} .rodape-q li{margin:5px 0}
+</style>
+</head>
+<body>
+<div class="bancada">
+
+  <div class="intro">
+    <h1>Glyfesse · mock 09 · a anatomia da edicao</h1>
+    <p class="sub"><b>O template de UMA edicao: as 18 secoes fixas, na ordem.</b> Modelo revista cheia (tipo SuperGamePower): leve na frente, expert no fim. Renderei como a Edicao #1, a genese (15 mai 2026). Role para ver as 18 caixas.</p>
+    <p class="nota">★ <b>A regra que faz a revista cheia caber no gargalo do lider:</b> seção fixa sem material naquele numero nao vira producao, mostra um <b>vazio com graca</b> na voz do Gus (caixa tracejada em ciano abaixo). <b>A copy de cada vazio e EXEMPLO</b> aqui: a definitiva sai com o lider, uma por vez. O <code>indice</code> e a <code>capa</code> saem do mesmo <code>$edicoes</code> datado da banca e da linha do tempo.</p>
+  </div>
+
+  <div class="edicao">
+
+    <!-- ══════ 1 · CAPA ══════ -->
+    <div class="capa">
+      <div class="mast">
+        <div class="logo">GLYFESSE</div>
+        <div class="ed">ANO 1 · Nº <b>1</b><br>15 MAI 2026<br>gusworld.site</div>
+      </div>
+      <h2 class="cover-titulo">No comeco era a palavra</h2>
+      <p class="cover-lide">Antes do quadrado, antes do Gus, havia um mundo sendo escrito: ebooks, um RAG, e a primeira palavra em Sylvarin. Esta e a edicao da genese.</p>
+      <div class="selos">
+        <span class="selo">A EDICAO #1 EXPLICA O NOME</span>
+        <span class="selo">NOTA DO JOGO: em construcao</span>
+        <span class="selo">POSTER: A CATEDRAL-MAE</span>
+      </div>
+    </div>
+
+    <div class="corpo">
+
+      <!-- ══════ 2 · INDICE ══════ -->
+      <div class="secao"><span class="n">02</span><span class="nome">Indice</span><span class="grupo">ABERTURA</span></div>
+      <div class="bloco">
+        <ul class="indice">
+          <li><span class="pg">03</span><span class="pt"><b>Editorial:</b> a Carta do Gus</span></li>
+          <li><span class="pg">04</span><span class="pt"><b>Reportagem de capa:</b> como um mundo comeca</span></li>
+          <li><span class="pg">05</span><span class="pt">A Nota do jogo inacabado</span></li>
+          <li><span class="pg">06</span><span class="pt">Galeria de Bugs</span></li>
+          <li><span class="pg">08</span><span class="pt">Detonado</span></li>
+          <li><span class="pg">13</span><span class="pt">Poster central: a Catedral-Mae</span></li>
+          <li><span class="pg">16</span><span class="pt">A Entrevista + Programacao</span></li>
+        </ul>
+        <div class="links-fixos">
+          <a href="#">→ o codigo do jogo (repo GusWorld)</a>
+          <a href="#">→ o motor grafico (repo GlintFX)</a>
+          <a href="#">→ o TODO.md vivo do jogo</a>
+          <p class="gus">"DUVIDO VOCE LER! 🤣"</p>
+        </div>
+        <p class="bloco peq" style="margin-top:8px">O indice se monta do <code style="font-family:var(--font-display);font-size:11px">$edicoes</code> (a mesma fonte da banca e da linha do tempo). Os 3 links sao fixos em toda edicao.</p>
+      </div>
+
+      <!-- ══════ 3 · EDITORIAL ══════ -->
+      <div class="secao"><span class="n">03</span><span class="nome">Editorial · a Carta do Gus</span><span class="grupo">ABERTURA</span></div>
+      <div class="bloco">
+        <p>Oi. Eu sou o Gus. Vou escrever essa revista porque... bom, porque tem que ser alguem, e eu moro aqui dentro. Nesta primeira edicao eu ainda nem existia direito. Havia so o mundo, escrito em livros. Eu vim depois. Mas alguem tinha que contar como tudo comecou, e eu leio rapido.</p>
+        <p class="peq" style="margin-top:6px">(A carta muda a cada edicao. E a voz do Gus: tecnicismo, frases curtas, e as reticencias quando ele quase sente algo.)</p>
+      </div>
+
+      <!-- ══════ 4 · REPORTAGEM DE CAPA ══════ -->
+      <div class="secao"><span class="n">04</span><span class="nome">Reportagem de capa</span><span class="grupo">CORPO</span></div>
+      <div class="bloco">
+        <h3 class="manch" style="font-size:30px">Como um mundo comeca</h3>
+        <p>Em 15 de maio de 2026 nao havia jogo. Havia ebooks, um sistema de RAG para consultar a lore, e as primeiras Eras sendo desenhadas. As faccoes. O Sylvarin, a lingua. O marco desta edicao nao e visual: e a fundacao que todo o resto ficou de pe em cima.</p>
+      </div>
+
+      <!-- ══════ 5 · A NOTA ══════ -->
+      <div class="secao"><span class="n">05</span><span class="nome">A Nota do jogo inacabado</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="bloco">
+        <p class="peq">Sobe a cada edicao. Nesta #1, o jogo mal existe:</p>
+        <div class="nota-jogo" style="margin-top:8px">
+          <div class="nota-item"><b>0,0</b>GRAFICOS</div>
+          <div class="nota-item"><b>0,0</b>SOM</div>
+          <div class="nota-item"><b>-</b>JOGABILIDADE</div>
+          <div class="nota-item"><b>10</b>AMBICAO</div>
+        </div>
+      </div>
+
+      <!-- ══════ 6 · GALERIA DE BUGS ══════ -->
+      <div class="secao"><span class="n">06</span><span class="nome">Galeria de Bugs</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="vazio eg">
+        <span class="tag">▶ VAZIO COM GRACA</span>
+        <p class="fala">"Nesta edicao nao teve bug pra rir: o jogo ainda era um documento de texto. Da pra bugar um paragrafo? Semana que vem eu tento."</p>
+      </div>
+
+      <!-- ══════ 7 · CEMITERIO DAS IDEIAS MORTAS ══════ -->
+      <div class="secao"><span class="n">07</span><span class="nome">Cemiterio das Ideias Mortas</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="bloco">
+        <p class="peq">Aqui jazem: <b>Godot</b> (engine complexa demais pra um solo), <b>Qt6</b> (nao era pra jogo), <b>o Gus em 3D</b> (982 mil faces, morreu jovem). Cada lapide com a data e a causa da morte.</p>
+      </div>
+
+      <!-- ══════ 8 · DETONADO ══════ -->
+      <div class="secao"><span class="n">08</span><span class="nome">Detonado</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="vazio eg">
+        <span class="tag">▶ VAZIO COM GRACA</span>
+        <p class="fala">"DETONADO COMPLETO DO JOGO. [pagina em branco] ...AGUARDE. (nao da pra detonar um jogo que nao saiu. mas ja reservei a pagina.)"</p>
+      </div>
+
+      <!-- ══════ 9 · ERRATA + CARTAS ══════ -->
+      <div class="secao"><span class="n">09</span><span class="nome">Errata + Cartas</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="vazio eg">
+        <span class="tag">▶ VAZIO COM GRACA</span>
+        <p class="fala">"Ninguem escreveu ainda. E a primeira edicao. Se voce esta lendo isto, voce chegou cedo... guarda essa. Um dia vai valer alguma coisa. Ou nao."</p>
+      </div>
+
+      <!-- ══════ 10 · CLASSIFICADOS ══════ -->
+      <div class="secao"><span class="n">10</span><span class="nome">Classificados in-world</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="bloco">
+        <p class="peq">"Vende-se Tavus-Drive usado, pouco uso, aceito troca por mapa da Catedral-Mae." · "Precisa-se de tradutor de Sylvarin. Pagamento em glifos." (Lore por osmose, cada edicao com novos anuncios.)</p>
+      </div>
+
+      <!-- ══════ 11 · HQ ══════ -->
+      <div class="secao"><span class="n">11</span><span class="nome">HQ · a tirinha</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="vazio eg">
+        <span class="tag">▶ VAZIO COM GRACA</span>
+        <p class="fala">"A tirinha de 3 quadrinhos desta edicao ainda esta na prancheta. Quadro 1: um quadrado. Quadro 2: o mesmo quadrado. Quadro 3: ...ainda desenhando o quadro 3."</p>
+      </div>
+
+      <!-- ══════ 12 · PROXIMOS LANCAMENTOS ══════ -->
+      <div class="secao"><span class="n">12</span><span class="nome">Proximos Lancamentos</span><span class="grupo">SECAO FIXA</span></div>
+      <div class="vazio eg">
+        <span class="tag">▶ VAZIO COM GRACA</span>
+        <p class="fala">"GUSWORLD ....................... EM BREVE. (a tabela e proposital. nenhuma data prometida. quando sair, sai.)"</p>
+      </div>
+
+      <!-- ══════ 13 · POSTER CENTRAL ══════ -->
+      <div class="secao"><span class="n">13</span><span class="nome">Poster central</span><span class="grupo">ENCARTE</span></div>
+      <div class="encarte">
+        <span class="tag">ENCARTE · DESTAQUE E COLE NA PAREDE</span>
+        <p class="bloco peq" style="margin-top:6px">A Catedral-Mae, a arte pintada do jogo, pagina dupla. (Ver mock 08: e a mesma key art do PRESS START.)</p>
+      </div>
+
+      <!-- ══════ 14 · BRINDE ══════ -->
+      <div class="secao"><span class="n">14</span><span class="nome">Brinde colado na capa</span><span class="grupo">ENCARTE</span></div>
+      <div class="encarte">
+        <span class="tag">ENCARTE · BRINDE</span>
+        <p class="bloco peq" style="margin-top:6px">A fonte PixelOperatorMono (CC0, pode dar mesmo), um wallpaper, os sprites. Dar coisa e o gesto mais nostalgico que existe.</p>
+      </div>
+
+      <!-- ══════ 15 · CUPOM ══════ -->
+      <div class="secao"><span class="n">15</span><span class="nome">Cupom recortavel</span><span class="grupo">ENCARTE</span></div>
+      <div class="cupom">
+        <span class="tesoura">✂</span>
+        <p class="t">CUPOM DA EDICAO #1</p>
+        <p class="p">Recorte, vote no que quer ver no jogo, e o resultado sai na PROXIMA edicao. A lentidao vira estetica. (Da pra recortar torto e perder o voto. Com desfazer.)</p>
+      </div>
+
+      <!-- ══════ 16 · A ENTREVISTA ══════ -->
+      <div class="secao"><span class="n">16</span><span class="nome">A Entrevista · o Gus entrevista o criador</span><span class="grupo">EXPERT</span></div>
+      <div class="bloco">
+        <p class="peq"><b>GUS:</b> Voce me fez a partir de livros. Por que nao me perguntou se eu queria nascer em 3D?<br><b>...:</b> (a entrevista e onde o criador quase aparece. quase.)</p>
+      </div>
+
+      <!-- ══════ 17 · PROGRAMACAO ══════ -->
+      <div class="secao"><span class="n">17</span><span class="nome">Secao de Programacao</span><span class="grupo">EXPERT</span></div>
+      <div class="bloco">
+        <p class="peq">O eixo expert (as revistas BR tinham detonado E codigo). O ADR como materia, o commit real, como foi pensado, e a API do GlintFX ensinada de tabela. Nesta #1: como se estrutura uma lore em RAG. Codigo real, GPLv3, para copiar.</p>
+      </div>
+
+      <!-- ══════ 18 · EXPEDIENTE ══════ -->
+      <div class="secao"><span class="n">18</span><span class="nome">Expediente</span><span class="grupo">FECHAMENTO</span></div>
+      <div class="bloco" style="padding-bottom:24px">
+        <p class="exped"><b>GLYFESSE</b> · publicacao irregular de um jogo que ainda nao saiu.<br><b>Redacao, arte e codigo:</b> o Gus (e alguem que ele quase menciona).<br><b>Memoria:</b> 4 MB. <b>Tiragem:</b> 1 leitor, se der sorte. <b>Preco:</b> R$ 0,00.<br><b>Feito com IA como ferramenta.</b> A parte criativa e do criador.</p>
+      </div>
+
+    </div><!-- /corpo -->
+  </div><!-- /edicao -->
+
+  <div class="rodape-q">
+    <h2>A pergunta desta rodada: como se LE uma edicao?</h2>
+    <p>O esqueleto acima esta na forma <b class="rec">A (rolagem unica)</b>: a edicao inteira e uma pagina que rola, e o indice ancora (clica e pula pra secao). E a estrutura que muda tudo, entao vai como <b>uma pergunta so</b> (recomendada primeiro):</p>
+    <ul>
+      <li><b class="rec">A · Rolagem unica + indice que ancora [RECOMENDADA].</b> A edicao rola de cima a baixo; o indice leva a cada secao. A favor: nativo da web, funciona igual no celular (a crianca chega de celular), custo minimo, e o vazio-com-graca aparece no fluxo sem clique extra. Contra: menos "gesto de revista" que folhear.</li>
+      <li><b>B · Paginas que viram (folhear).</b> Cada secao e uma pagina, voce vira com seta ou swipe. A favor: a nostalgia da revista de verdade. Contra: e o risco de mobile ja conhecido (a metafora A4 nao cabe em 390px), custoso, e esconde conteudo atras de gesto.</li>
+      <li><b>C · Sumario-hub.</b> O indice e a home da edicao; cada secao abre em pagina propria. A favor: menos rolagem por vez. Contra: mais cliques, quebra a leitura corrida, e some com a sensacao de "revista inteira na mao".</li>
+    </ul>
+    <p style="margin-top:8px"><b>Por que a A:</b> resolve o mobile (o maior risco), e web-native, e deixa o vazio-com-graca fazer efeito no fluxo. Depois desta, as proximas perguntas sao a copy de cada vazio-com-graca, uma por vez, com o lider.</p>
+  </div>
+
+</div>
+</body>
+</html>
