@@ -23,5 +23,5 @@ A tabela de pendências e planejamento está em `TODO.md` na raiz (ordenada por 
 
 - **Nunca decidir sozinho** (stack, design, escopo): opções via **AskUserQuestion**, uma por vez, WIP do líder = 1.
 - **`Projects/gusworld/` é READ-ONLY** — proibido modificar sem autorização expressa.
-- **Push de código** (Codeberg do site, produção) **só com autorização por ocasião**. O push do *bus* é o fluxo autorizado acima.
+- **Push do repo é AUTOMÁTICO** (autorização permanente do líder, 2026-07-16: "não espere por mim"). `git push` ao Codeberg salva sem pedir — **desde que a higiene passe**: o nome de batismo do filho (só "Gus Dragon" é permitido) em arquivo/commit BLOQUEIA; segredo/token BLOQUEIA; gitignored fica fora; sem spoiler em mensagem de commit (imutável). ⚠️ **Push de repo ≠ deploy de produção:** `scripts/deploy.sh` (Hostinger) continua **manual e bloqueado** (`D-GO-LIVE`); auto-push nunca vira auto-produção.
 - Mockups de design em `docs/design/`, commitados, verificados no **Firefox (Gecko)**. Integração de design: `reference-integracao-design`.
