@@ -30,24 +30,25 @@ h2{font-family:var(--font-display); font-weight:700; font-size:13px; letter-spac
 /* ═══════════ O QUADRADINHO JOGÁVEL (o coração) ═══════════
    estado 1: um retângulo ciano numa sala. NÃO tem arte. essa é a graça.
    estado 2 (aos 5s ou após andar): VIRA o Gus, e olha pra onde anda.        */
+/* bate com o teste real: sala navy, moldura CLARA grossa, paredes claras,
+   e o QUADRADO CIANO SOLIDO (nao contorno). */
 .sala{
   position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;
-  background:var(--gw-navy); border:3px solid #b9c6d6;
-  touch-action:none;
+  background:var(--gw-navy); touch-action:none;
 }
-.sala .parede{position:absolute; background:#b9c6d6}
+.sala::after{content:""; position:absolute; inset:0; z-index:4; pointer-events:none;
+  border:12px solid #b9c6d6}
+.sala .parede{position:absolute; background:#b9c6d6; z-index:1}
 .heroi{
-  position:absolute; left:0; top:0; width:22px; height:22px;
-  transform:translate(var(--x,120px), var(--y,180px));
-  transition:transform .09s linear;
-  /* estado 1: contorno ciano, sem preenchimento. um retângulo. */
-  border:3px solid var(--gw-ciano); background:#0d152080;
-  box-shadow:0 0 10px #4dd9e8aa;
-  image-rendering:pixelated;
+  position:absolute; left:0; top:0; width:26px; height:26px;
+  transform:translate(var(--x,60px), var(--y,150px));
+  transition:transform .06s linear;
+  background:var(--gw-ciano); box-shadow:0 0 10px #4dd9e8cc;  /* solido, nao contorno */
+  image-rendering:pixelated; z-index:2;
 }
-/* estado 2: virou o Gus. o sprite entra por cima; a borda some. */
+/* estado 2: virou o Gus. o sprite entra por cima. */
 .heroi.virou{
-  width:34px; height:56px; border:0; background:#0000; box-shadow:none;
+  width:30px; height:52px; background:#0000; box-shadow:none;
   background-image:var(--sprite, url("sprites/gus-south.png"));
   background-size:contain; background-repeat:no-repeat; background-position:bottom center;
   filter:drop-shadow(0 0 5px #4dd9e855);
@@ -149,7 +150,7 @@ h2{font-family:var(--font-display); font-weight:700; font-size:13px; letter-spac
 <div class="bancada">
 
   <h1>Glyfesse · mock 05 · a primeira dobra</h1>
-  <p class="sub"><b>O quadradinho abaixo é jogável de verdade.</b> Clique nele e use as <b>setas do teclado</b>. Ele é um retângulo sem graça por 5 segundos; depois <b>vira o Gus</b> e passa a olhar para onde anda. Não tem arte: é um retângulo que anda, e essa é a graça.</p>
+  <p class="sub"><b>O quadradinho abaixo é jogável de verdade.</b> Clique nele e use <b>WASD</b>. Ele fica parado até você mexer, <b>bate nas paredes</b> (não passa por cima), e depois de mexer um pouco <b>vira o Gus</b>, olhando para onde anda. Não tem arte: é um quadrado que anda, e essa é a graça.</p>
   <p class="nota">A pergunta desta rodada é <b>uma só: o que a pessoa vê primeiro?</b> Abaixo, o mesmo quadradinho em três enquadramentos. O <code>MOBILE</code> (o quadradinho quer teclado, e o celular não tem) está mostrado, mas <b>é a próxima pergunta, não esta</b>.</p>
 
   <!-- ══════════ A ══════════ -->
@@ -163,13 +164,13 @@ h2{font-family:var(--font-display); font-weight:700; font-size:13px; letter-spac
       </div>
       <span class="chamada-topo">VOCÊ · O QUADRADINHO · AGORA</span>
       <div class="moldura-tela">
-        <div class="sala crt-scan" id="jogo" tabindex="0" aria-label="Quadradinho jogável: usa as setas do teclado">
+        <div class="sala crt-scan" id="jogo" tabindex="0" aria-label="Quadradinho jogável: clique e use WASD para mover. Bate nas paredes. Depois de mexer vira o Gus.">
           <div class="parede" style="left:34%;top:16%;width:31%;height:9%"></div>
           <div class="parede" style="left:44%;top:25%;width:9%;height:22%"></div>
           <div class="parede" style="left:33%;top:63%;width:24%;height:8%"></div>
           <div class="parede" style="left:66%;top:39%;width:14%;height:23%"></div>
           <div class="selo-fase"><span class="t1">MAIO · placeholder</span><span class="t2">AGOSTO · o Gus</span></div>
-          <div class="ajuda-teclas">← ↑ ↓ →<br>mova</div>
+          <div class="ajuda-teclas">WASD<br>mova</div>
           <div class="heroi" id="heroi"></div>
         </div>
       </div>
@@ -177,7 +178,7 @@ h2{font-family:var(--font-display); font-weight:700; font-size:13px; letter-spac
     </div>
     <div>
       <p class="veredito"><b>A favor:</b> é a régua do projeto cumprida ao pé da letra. A criança chega e <b>mexe em 2 segundos</b>, antes de precisar entender que aquilo é uma revista. O adulto vê a moldura e reconhece a banca. <b>Conversa com o que está no ar</b> (a tela acesa), mas agora ela responde à mão.<br><br><b>Contra:</b> a manchete e a capa ficam menores. Quem quer ler primeiro (o adulto nostálgico) tem que rolar um pouco.</p>
-      <p class="nota" style="margin-top:14px"><b>O que o quadradinho faz, na ordem que o conceito pede:</b><br>1. abre como <b>retângulo ciano</b> numa sala vazia;<br>2. as setas já o movem (é sem graça, de propósito);<br>3. aos <b>5 segundos</b> ele <b>vira o Gus</b>, com sombra e 4 direções;<br>4. a pessoa <b>sentiu</b> a evolução, não leu sobre ela.</p>
+      <p class="nota" style="margin-top:14px"><b>O que o quadradinho faz, na ordem que o conceito pede:</b><br>1. abre como <b>quadrado ciano sólido</b> numa sala, <b>parado</b>;<br>2. o <b>WASD</b> o move, e ele <b>bate nas paredes</b> (é sem graça, de propósito);<br>3. depois de <b>mexer um pouco</b> ele <b>vira o Gus</b>, com 4 direções;<br>4. a pessoa <b>sentiu</b> a evolução, não leu sobre ela.</p>
     </div>
   </div>
 
@@ -276,60 +277,56 @@ h2{font-family:var(--font-display); font-weight:700; font-size:13px; letter-spac
    que justificam JS: o quadradinho, o álbum, o som). Sem isto ele não é
    jogável, e "sentir a evolução na mão" é o ponto inteiro.
    Respeita prefers-reduced-motion: se ligado, já entra virado, no destino. */
+/* Bate com o teste REAL: WASD (nao setas), COLISAO (bate na parede, nao
+   passa), fica PARADO ate o input (sem auto-andar). Vira o Gus depois de
+   mexer um pouco (8 passos), com o sprite gustaf_i_tavus_vance.
+   reduced-motion: entra ja virado, parado. */
 (function(){
   var sala  = document.getElementById("jogo");
   var heroi = document.getElementById("heroi");
   if(!sala || !heroi) return;
-
   var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
-  var x = 120, y = 180, passo = 16, virou = false;
-  var dirSprite = {
-    ArrowLeft:  "sprites/gus-west.png",
-    ArrowRight: "sprites/gus-east.png",
-    ArrowUp:    "sprites/gus-north.png",
-    ArrowDown:  "sprites/gus-south.png"
-  };
-
-  function limites(){
-    var r = sala.getBoundingClientRect();
-    var w = virou ? 34 : 22, h = virou ? 56 : 22;
-    x = Math.max(6, Math.min(r.width  - w - 6, x));
-    y = Math.max(6, Math.min(r.height - h - 6, y));
+  var x=0, y=0, virou=false, movimentos=0, FRAME=12, PASSO=14;
+  var SPR = { left:"sprites/gus-west.png", right:"sprites/gus-east.png",
+              up:"sprites/gus-north.png", down:"sprites/gus-south.png" };
+  function tam(){ return virou ? {w:30,h:52} : {w:26,h:26}; }
+  function paredes(){
+    var s=sala.getBoundingClientRect();
+    return Array.prototype.map.call(sala.querySelectorAll(".parede"), function(w){
+      var r=w.getBoundingClientRect();
+      return {l:r.left-s.left, t:r.top-s.top, r:r.right-s.left, b:r.bottom-s.top};
+    });
   }
-  function pinta(){
-    limites();
-    heroi.style.setProperty("--x", x + "px");
-    heroi.style.setProperty("--y", y + "px");
+  function bate(nx,ny,w,h,W){
+    for(var i=0;i<W.length;i++){ var q=W[i];
+      if(nx < q.r-0.5 && nx+w > q.l+0.5 && ny < q.b-0.5 && ny+h > q.t+0.5) return true; }
+    return false;
   }
-  function evoluir(){
-    if(virou) return;
-    virou = true;
-    heroi.classList.add("virou");
-    sala.classList.add("evoluiu");
-    pinta();
+  function pinta(){ heroi.style.setProperty("--x",x+"px"); heroi.style.setProperty("--y",y+"px"); }
+  function olhar(d){ if(virou && SPR[d]) heroi.style.setProperty("--sprite","url('"+SPR[d]+"')"); }
+  function reclamp(){ var t=tam();
+    x=Math.max(FRAME, Math.min(sala.clientWidth-FRAME-t.w, x));
+    y=Math.max(FRAME, Math.min(sala.clientHeight-FRAME-t.h, y)); }
+  function evoluir(){ if(virou) return; virou=true; heroi.classList.add("virou"); sala.classList.add("evoluiu"); reclamp(); olhar("down"); pinta(); }
+  function mover(dir){
+    var t=tam(), W=paredes();
+    var maxx=sala.clientWidth-FRAME-t.w, maxy=sala.clientHeight-FRAME-t.h, dx=0, dy=0;
+    if(dir==="left")dx=-PASSO; if(dir==="right")dx=PASSO; if(dir==="up")dy=-PASSO; if(dir==="down")dy=PASSO;
+    var nx=Math.max(FRAME, Math.min(maxx, x+dx)); if(!bate(nx,y,t.w,t.h,W)) x=nx;
+    var ny=Math.max(FRAME, Math.min(maxy, y+dy)); if(!bate(x,ny,t.w,t.h,W)) y=ny;
+    olhar(dir); pinta();
+    if(!virou){ movimentos++; if(movimentos>=8) evoluir(); }
   }
-
-  if(reduz){
-    /* sem movimento: já entra no fim da história, olhando pra frente */
-    evoluir();
-    heroi.style.setProperty("--sprite", "url('sprites/gus-south.png')");
-  }else{
-    /* aos 5 segundos, o retângulo vira o Gus mesmo se ninguém tocar */
-    setTimeout(evoluir, 5000);
-  }
-
   sala.addEventListener("keydown", function(e){
-    if(!dirSprite[e.key]) return;
-    e.preventDefault();
-    if(e.key === "ArrowLeft")  x -= passo;
-    if(e.key === "ArrowRight") x += passo;
-    if(e.key === "ArrowUp")    y -= passo;
-    if(e.key === "ArrowDown")  y += passo;
-    if(virou) heroi.style.setProperty("--sprite", "url('" + dirSprite[e.key] + "')");
-    pinta();
+    var m={KeyW:"up",KeyA:"left",KeyS:"down",KeyD:"right"};
+    var dir=m[e.code]; if(!dir) return; e.preventDefault(); mover(dir);
   });
-
-  pinta();
+  function init(){
+    var r=sala.getBoundingClientRect();
+    x=Math.round(r.width*0.18); y=Math.round(r.height*0.70); reclamp();
+    if(reduz){ evoluir(); } else { pinta(); }
+  }
+  init();
 })();
 </script>
 </body>

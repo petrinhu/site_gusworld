@@ -3,51 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Glyfesse: o mobile (como o quadradinho joga sem teclado)</title>
+<title>Glyfesse: o mobile (o quadradinho no celular, decidido)</title>
 <link rel="stylesheet" href="../tokens.css">
 <style>
 /* ─────────────────────────────────────────────────────────────
-   MOCK 06 - O MOBILE. A abertura A ja foi decidida (o quadradinho e a capa).
-   No desktop ele joga com as setas. No celular NAO ha setas, e a crianca
-   chega de celular. A pergunta: como ele joga na mao?
-
-   Cada "telefone" abaixo tem 390px de verdade e e JOGAVEL: os controles
-   usam Pointer Events, entao funcionam com o mouse (arraste/clique numa
-   janela estreita) E com o toque de um celular de verdade. Tudo vem de
-   ../tokens.css. Verificar no Firefox DELE.
+   MOCK 06 - O MOBILE (DECIDIDO). O quadradinho no celular:
+   d-pad de toque + PARADO ate o input (sem anda-sozinho, decisao revista
+   do lider). Mesmo teste real do desktop: quadrado CIANO SOLIDO, moldura e
+   paredes CLARAS, COLISAO que bate. Vira o Gus (gustaf_i_tavus_vance) depois
+   de mexer um pouco. A decisao anterior (auto-anda) foi revertida.
+   Tudo vem de ../tokens.css. Verificar no Firefox DELE.
    ───────────────────────────────────────────────────────────── */
 *{box-sizing:border-box}
 html{background:#22222a}
-body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
-.bancada{max-width:1500px; margin:0 auto; padding:26px 20px}
+body{margin:0; padding:0 0 80px; color:#e8e8ea; font-family:var(--font-corpo)}
+.bancada{max-width:900px; margin:0 auto; padding:26px 20px}
 h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.14em;
    color:#9fb0c4; margin:0 0 6px; text-transform:uppercase}
-.sub{margin:0; font-size:15px; color:#c8cdd6; max-width:88ch; line-height:1.55}
+.sub{margin:0; font-size:15px; color:#c8cdd6; line-height:1.55; max-width:76ch}
 .sub b{color:#fff}
-.nota{margin:12px 0 0; font-size:13px; color:#8e97a4; max-width:88ch; line-height:1.6}
+.nota{margin:12px 0 0; font-size:13px; color:#8e97a4; line-height:1.6; max-width:76ch}
 .nota b{color:#c8cdd6}
-.nota code{font-family:var(--font-display); font-size:11px; background:#ffffff10; padding:1px 4px}
 
-/* a decisao de design que o mobile obriga: a capa A4 vira coluna unica */
-.degrada{margin:16px 0 0; padding:11px 13px; border-left:2px solid var(--gw-ciano);
-  background:#0d152055; font-size:13px; line-height:1.6; color:#b9c2ce; max-width:88ch}
-.degrada b{color:var(--gw-ciano-alto)}
+.linha{display:flex; gap:30px; align-items:flex-start; flex-wrap:wrap; margin-top:26px}
 
-/* ─────────── os quatro telefones lado a lado ─────────── */
-.celulares{display:flex; gap:34px 30px; flex-wrap:wrap; margin-top:30px; align-items:flex-start}
-.candidato{width:390px; max-width:100%}
-.candidato > h2{font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:.1em;
-  color:#7e8b9c; text-transform:uppercase; margin:0 0 3px}
-.candidato > h2 .rec{color:var(--gw-ciano); font-size:9px; letter-spacing:.06em}
-.candidato > .dica{font-family:var(--font-display); font-size:10.5px; color:#7d8794; margin:0 0 12px; line-height:1.5}
-
+/* ── o telefone (390px) com a capa em coluna unica ── */
 .fone{width:390px; max-width:100%; border:9px solid #05070b; border-radius:30px;
   overflow:hidden; box-shadow:0 20px 50px #0009; background:var(--papel)}
 .fone .top{height:24px; background:#05070b; position:relative}
 .fone .top::after{content:""; position:absolute; left:50%; top:9px; translate:-50% 0;
   width:64px; height:6px; border-radius:6px; background:#1a1f27}
-
-/* ── a capa A em coluna unica (a revista degradada para o celular) ── */
 .capa-m{position:relative; background:var(--papel); padding:12px 12px 14px; overflow:hidden}
 .capa-m::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
@@ -64,302 +49,132 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
 
 .moldura-tela{border-radius:var(--raio-tela); padding:5px; background:#05090f;
   box-shadow:inset 0 0 0 1px #2c3d52, 0 2px 0 #00000018}
-/* no mobile a sala e mais alta (retrato): mais area de toque */
+/* a sala: quase quadrada no celular (mais area de dedo). teste real. */
 .sala{position:relative; width:100%; aspect-ratio:1/1; overflow:hidden;
   background:var(--gw-navy); touch-action:none}
-.sala .parede{position:absolute; background:#39516f}
-.heroi{position:absolute; left:0; top:0; width:24px; height:24px;
-  transform:translate(var(--x,150px), var(--y,150px));
-  transition:transform .09s linear;
-  border:3px solid var(--gw-ciano); background:#0d152080;
-  box-shadow:0 0 10px #4dd9e8aa; image-rendering:pixelated; z-index:2}
-.heroi.virou{width:30px; height:50px; border:0; background:#0000; box-shadow:none;
-  background-image:var(--sprite, url("sprites/gus-south.png"));
-  background-size:contain; background-repeat:no-repeat; background-position:bottom center;
-  filter:drop-shadow(0 0 5px #4dd9e855)}
-.heroi.arrastando{transition:none; cursor:grabbing}
-.sala[data-modo="arraste"] .heroi{cursor:grab}
-
+.sala::after{content:""; position:absolute; inset:0; z-index:4; pointer-events:none;
+  border:11px solid #b9c6d6}                 /* moldura clara */
+.sala .parede{position:absolute; background:#b9c6d6; z-index:1}  /* paredes claras solidas */
+.heroi{position:absolute; left:0; top:0; width:26px; height:26px;
+  transform:translate(var(--x,60px), var(--y,150px)); transition:transform .06s linear;
+  background:var(--gw-ciano); box-shadow:0 0 10px #4dd9e8cc; image-rendering:pixelated; z-index:2}
+.heroi.virou{width:30px; height:52px; background:#0000; box-shadow:none;
+  background-image:var(--sprite, url("sprites/gus-south.png")); background-size:contain;
+  background-repeat:no-repeat; background-position:bottom center; filter:drop-shadow(0 0 5px #4dd9e855)}
 .selo-fase{position:absolute; left:8px; top:7px; z-index:3; pointer-events:none;
-  font-family:var(--font-display); font-size:9px; letter-spacing:.06em;
-  color:var(--gw-ciano); text-shadow:0 0 6px #4dd9e8aa}
-
-/* legenda de texto SEMPRE presente: o jogo nunca e o unico caminho da info */
+  font-family:var(--font-display); font-size:9px; letter-spacing:.06em; color:var(--gw-ciano); text-shadow:0 0 6px #4dd9e8aa}
+/* d-pad de toque: sem WASD no celular, sem anda-sozinho */
+.dpad{position:absolute; right:9px; bottom:9px; z-index:5;
+  display:grid; grid-template-columns:repeat(3,36px); grid-template-rows:repeat(3,36px); gap:4px}
+.dpad b{background:#0d1520cc; border:1.6px solid var(--gw-ciano); color:var(--gw-ciano);
+  display:grid; place-items:center; font-family:var(--font-display); font-size:17px; border-radius:5px;
+  user-select:none; cursor:pointer; box-shadow:0 0 8px #4dd9e844; -webkit-tap-highlight-color:transparent}
+.dpad b:active{background:var(--gw-ciano); color:var(--gw-navy)}
+.dpad .u{grid-area:1/2} .dpad .l{grid-area:2/1} .dpad .r{grid-area:2/3} .dpad .d{grid-area:3/2}
 .cap-tela{font-family:var(--font-display); font-size:8.5px; color:var(--tinta-2);
-  margin:7px 0 0; padding-left:6px; border-left:2px solid var(--tinta-ciano); line-height:1.4}
+  margin:8px 0 0; padding-left:6px; border-left:2px solid var(--tinta-ciano); line-height:1.4}
 .cap-tela b{color:var(--tinta-ciano)}
-
-/* a tira de chamadas embaixo (a capa continua ao rolar) */
-.chamadas{display:flex; gap:5px; flex-wrap:wrap; margin-top:9px}
-.selo-cham{font-family:var(--font-display); font-size:8px; border:1.5px solid var(--tinta-preta);
-  padding:2px 5px; color:var(--tinta-preta)}
 .mini-manch{font-family:var(--font-manchete); font-weight:700; font-size:19px; line-height:.95;
   letter-spacing:-.018em; text-transform:uppercase; color:var(--tinta-preta); margin:10px 0 0}
 
-/* ── controle 1 e 3: o D-PAD na tela ── */
-.dpad{position:absolute; right:9px; bottom:9px; z-index:4;
-  display:grid; grid-template-columns:repeat(3,34px); grid-template-rows:repeat(3,34px); gap:4px}
-.dpad b{background:#0d1520cc; border:1.6px solid var(--gw-ciano); color:var(--gw-ciano);
-  display:grid; place-items:center; font-family:var(--font-display); font-size:17px;
-  border-radius:5px; user-select:none; cursor:pointer;
-  box-shadow:0 0 8px #4dd9e844; -webkit-tap-highlight-color:transparent}
-.dpad b:active{background:var(--gw-ciano); color:var(--gw-navy)}
-.dpad .u{grid-area:1/2} .dpad .l{grid-area:2/1} .dpad .r{grid-area:2/3} .dpad .d{grid-area:3/2}
-.dpad.escondido{display:none}
-
-/* ── controle 3: o convite "toque para assumir" ── */
-.assumir{position:absolute; inset:0; z-index:4; display:grid; place-content:center; text-align:center;
-  font-family:var(--font-display); font-size:11px; letter-spacing:.08em; color:var(--gw-ciano-alto);
-  text-shadow:0 0 10px #6ff0ffcc; pointer-events:none; animation:pisca 1.3s steps(1) infinite}
-@keyframes pisca{50%{opacity:.3}}
-.assumir.foi{display:none}
-.assumir small{display:block; font-size:8.5px; color:#8ec6ce; margin-top:5px; letter-spacing:.12em}
-
-/* ── controle 4: desktop-only, o convite de teclado ── */
-.so-desktop{position:absolute; inset:0; z-index:4; display:grid; place-content:center; text-align:center;
-  gap:8px; background:radial-gradient(120% 90% at 50% 45%, #0d152088, #0d1520dd);
-  font-family:var(--font-display); color:var(--tela-texto-1)}
-.so-desktop .kbd{font-size:26px; letter-spacing:.1em; color:var(--gw-ciano); text-shadow:0 0 12px #4dd9e8aa}
-.so-desktop .txt{font-size:10px; letter-spacing:.05em; color:var(--tela-texto-2); line-height:1.5; padding:0 24px}
-
-/* o veredito para o lider ler (fora do telefone) */
+.lado{flex:1; min-width:280px}
 .veredito{font-size:12.5px; line-height:1.55; margin:12px 0 0; padding:9px 11px;
   border-left:2px solid #4a5464; color:#98a2af; background:#00000030}
 .veredito b{color:#d8dee6}
-.veredito .pro{color:#8fd0b0} .veredito .con{color:#d9a98f}
-
-.rodape-q{margin:40px auto 0; max-width:88ch; padding:14px 16px; background:#0d152055;
-  border:1px solid #2c3d52; font-size:13.5px; line-height:1.6; color:#b9c2ce}
-.rodape-q b{color:var(--gw-ciano-alto)}
+.hist{margin-top:16px; font-size:12.5px; line-height:1.6; color:#8e97a4}
+.hist b{color:#c8cdd6} .hist s{color:#6b7480}
 </style>
 </head>
 <body>
 <div class="bancada">
 
-  <h1>Glyfesse · mock 06 · o mobile</h1>
-  <p class="sub"><b>A abertura A ja foi decidida: o quadradinho e a capa.</b> No computador ele joga com as setas do teclado. <b>No celular nao ha teclado, e a crianca chega de celular, por link.</b> A pergunta desta rodada e uma so: como ele joga na mao?</p>
-  <p class="nota">Cada telefone abaixo tem <b>390px de verdade</b> e e <b>jogavel</b>: os controles funcionam com o mouse (clique no d-pad, arraste o quadrado) e com o toque de um celular. Aos 5 segundos o retangulo vira o Gus sozinho, como no desktop. <b>Decida na mao, nao no abstrato.</b></p>
+  <h1>Glyfesse · mock 06 · o mobile (decidido)</h1>
+  <p class="sub"><b>No celular, o quadradinho joga com um d-pad de toque</b>, e fica <b>parado até você tocar</b> (sem anda-sozinho). É o mesmo teste real do desktop: quadrado ciano sólido, paredes que <b>batem</b>, e depois de mexer um pouco ele vira o Gus.</p>
+  <p class="nota">O telefone abaixo tem 390px de verdade e é jogável: o d-pad funciona com o mouse (clique e segure) e com o toque. A capa degrada para <b>coluna única</b> no celular (masthead fino, a sala quase quadrada para ganhar área de dedo, chamadas embaixo).</p>
 
-  <p class="degrada">A metafora de revista e A4, retrato, duas colunas, e <b>nao cabe em 390px</b>. Aqui esta a decisao de design que o celular obriga, e ela e parte da pergunta: <b>a capa vira coluna unica.</b> O masthead afina, a tela (o quadradinho) cresce e vira quase quadrada para ganhar area de dedo, e as chamadas descem para uma tira que continua ao rolar. Ainda e a revista, no formato do celular. Se um candidato exigir mudar isso, esta anotado no veredito dele.</p>
-
-  <div class="celulares">
-
-    <!-- ═══════════ 1 · D-PAD NA TELA ═══════════ -->
-    <div class="candidato">
-      <h2>1 · D-pad na tela</h2>
-      <p class="dica">Setas de toque no canto. Toque nelas para andar.</p>
-      <div class="fone">
-        <div class="top"></div>
-        <div class="capa-m">
-          <div class="mast"><div class="logo">GLYFESSE</div><div class="ed">ANO 1 · Nº <b>3</b><br>gusworld.site</div></div>
-          <span class="chamada-topo">VOCÊ · O QUADRADINHO · AGORA</span>
-          <div class="moldura-tela">
-            <div class="sala" data-modo="dpad">
-              <div class="parede" style="left:30%;top:18%;width:34%;height:8%"></div>
-              <div class="parede" style="left:60%;top:30%;width:9%;height:26%"></div>
-              <div class="parede" style="left:22%;top:66%;width:26%;height:7%"></div>
-              <div class="selo-fase">MAIO · placeholder</div>
-              <div class="heroi"></div>
-              <div class="dpad" aria-hidden="true">
-                <b class="u" data-dir="up">↑</b><b class="l" data-dir="left">←</b>
-                <b class="r" data-dir="right">→</b><b class="d" data-dir="down">↓</b>
-              </div>
-            </div>
+  <div class="linha">
+    <div class="fone">
+      <div class="top"></div>
+      <div class="capa-m">
+        <div class="mast"><div class="logo">GLYFESSE</div><div class="ed">ANO 1 · Nº <b>3</b><br>gusworld.site</div></div>
+        <span class="chamada-topo">VOCÊ · O QUADRADINHO · AGORA</span>
+        <div class="moldura-tela">
+          <div class="sala" id="jogo" aria-label="Quadradinho jogável no celular: toque no d-pad para mover. Bate nas paredes. Vira o Gus.">
+            <div class="parede" style="left:28%;top:20%;width:34%;height:9%"></div>
+            <div class="parede" style="left:44%;top:29%;width:9%;height:22%"></div>
+            <div class="parede" style="left:24%;top:56%;width:28%;height:8%"></div>
+            <div class="parede" style="left:62%;top:34%;width:12%;height:18%"></div>
+            <div class="selo-fase">22 JUN · toque para mover</div>
+            <div class="heroi" id="heroi"></div>
+            <div class="dpad" aria-hidden="true"><b class="u" data-dir="up">↑</b><b class="l" data-dir="left">←</b><b class="r" data-dir="right">→</b><b class="d" data-dir="down">↓</b></div>
           </div>
-          <p class="cap-tela"><b>FIG. 1</b> · maio: um quadrado. depois: o Gus. use as setas na tela.</p>
-          <h3 class="mini-manch">Agora eu ando na diagonal</h3>
-          <div class="chamadas"><span class="selo-cham">NOTA: GRÁFICOS 6,0</span><span class="selo-cham">O ERRO DA SEMANA</span></div>
         </div>
+        <p class="cap-tela"><b>FIG.</b> · quadrado sólido, parado. toque no d-pad; ele bate nas paredes. depois vira o Gus.</p>
+        <h3 class="mini-manch">Agora eu ando na diagonal</h3>
       </div>
-      <p class="veredito"><span class="pro"><b>A favor:</b></span> honesto e imediato, a crianca reconhece o gamepad na hora e nao precisa adivinhar nada. Mesmo gesto do jogo de verdade.<br><span class="con"><b>Contra:</b></span> ocupa um canto da sala e cheira a emulador. O d-pad e sobre a tela, entao rouba area do proprio quadradinho.</p>
     </div>
 
-    <!-- ═══════════ 2 · TOQUE-E-ARRASTE ═══════════ -->
-    <div class="candidato">
-      <h2>2 · Toque e arraste</h2>
-      <p class="dica">Arraste o proprio quadrado com o dedo (ou o mouse).</p>
-      <div class="fone">
-        <div class="top"></div>
-        <div class="capa-m">
-          <div class="mast"><div class="logo">GLYFESSE</div><div class="ed">ANO 1 · Nº <b>3</b><br>gusworld.site</div></div>
-          <span class="chamada-topo">VOCÊ · O QUADRADINHO · AGORA</span>
-          <div class="moldura-tela">
-            <div class="sala" data-modo="arraste">
-              <div class="parede" style="left:30%;top:18%;width:34%;height:8%"></div>
-              <div class="parede" style="left:60%;top:30%;width:9%;height:26%"></div>
-              <div class="parede" style="left:22%;top:66%;width:26%;height:7%"></div>
-              <div class="selo-fase">MAIO · placeholder</div>
-              <div class="heroi"></div>
-            </div>
-          </div>
-          <p class="cap-tela"><b>FIG. 1</b> · maio: um quadrado. depois: o Gus. arraste ele pela sala.</p>
-          <h3 class="mini-manch">Agora eu ando na diagonal</h3>
-          <div class="chamadas"><span class="selo-cham">NOTA: GRÁFICOS 6,0</span><span class="selo-cham">O ERRO DA SEMANA</span></div>
-        </div>
-      </div>
-      <p class="veredito"><span class="pro"><b>A favor:</b></span> zero UI sobre a tela, a sala fica limpa. Direto: o dedo toca a coisa e ela vem junto. Nada para aprender.<br><span class="con"><b>Contra:</b></span> muda a sensacao de <b>pilotar</b> para <b>empurrar</b>. E o dedo tapa o quadradinho no momento de move-lo. A diagonal fica trivial (perde o "antes 4, agora 8").</p>
+    <div class="lado">
+      <p class="veredito"><b>Decidido:</b> d-pad de toque + parado até o input. O líder reverteu o "auto-anda" (achou que começar andando sozinho não faz sentido). Vale em todo lugar: no desktop é clique + WASD; no celular é o d-pad. Sem anda-sozinho, com colisão, quadrado azul sólido e o sprite certo do Gus.</p>
+      <p class="hist"><b>Histórico (o que foi comparado antes da decisão):</b><br>1. <b>D-pad na tela</b> (o escolhido).<br>2. <s>Toque e arraste</s> (vira empurrar em vez de pilotar).<br>3. <s>Auto-anda + toque para assumir</s> (revertido: o "anda sozinho" não fez sentido ao vivo).<br>4. <s>Desktop-only</s> (entregaria o brinquedo a quem menos precisa: a criança chega de celular).</p>
+      <p class="nota" style="margin-top:14px"><b>prefers-reduced-motion:</b> o quadrado entra já virado (o Gus, parado no destino) e a legenda de texto conta a história; o jogo nunca é o único caminho para a informação.</p>
     </div>
-
-    <!-- ═══════════ 3 · AUTO-ANDA + TOQUE PARA ASSUMIR ═══════════ -->
-    <div class="candidato">
-      <h2>3 · Auto-anda, toque para assumir <span class="rec">[RECOMENDADA]</span></h2>
-      <p class="dica">O quadrado anda sozinho ate voce tocar. Ai vira controle.</p>
-      <div class="fone">
-        <div class="top"></div>
-        <div class="capa-m">
-          <div class="mast"><div class="logo">GLYFESSE</div><div class="ed">ANO 1 · Nº <b>3</b><br>gusworld.site</div></div>
-          <span class="chamada-topo">VOCÊ · O QUADRADINHO · AGORA</span>
-          <div class="moldura-tela">
-            <div class="sala" data-modo="auto">
-              <div class="parede" style="left:30%;top:18%;width:34%;height:8%"></div>
-              <div class="parede" style="left:60%;top:30%;width:9%;height:26%"></div>
-              <div class="parede" style="left:22%;top:66%;width:26%;height:7%"></div>
-              <div class="selo-fase">MAIO · placeholder</div>
-              <div class="heroi"></div>
-              <div class="assumir">TOQUE PARA ASSUMIR<small>o controle</small></div>
-              <div class="dpad escondido" aria-hidden="true">
-                <b class="u" data-dir="up">↑</b><b class="l" data-dir="left">←</b>
-                <b class="r" data-dir="right">→</b><b class="d" data-dir="down">↓</b>
-              </div>
-            </div>
-          </div>
-          <p class="cap-tela"><b>FIG. 1</b> · ele anda sozinho, sem graca. toque e assuma: vira o Gus.</p>
-          <h3 class="mini-manch">Agora eu ando na diagonal</h3>
-          <div class="chamadas"><span class="selo-cham">NOTA: GRÁFICOS 6,0</span><span class="selo-cham">O ERRO DA SEMANA</span></div>
-        </div>
-      </div>
-      <p class="veredito"><span class="pro"><b>A favor:</b></span> preserva o "sem graca de proposito, entao evolui" <b>sem exigir teclado</b>: o quadrado ja se mexe quando a pessoa chega, entao ela ve o brinquedo vivo no primeiro segundo, mesmo antes de tocar. Ao assumir, ganha o d-pad. E o unico que mantem o roteiro do conceito no celular.<br><span class="con"><b>Contra:</b></span> tem dois momentos (ver, depois assumir), um passo a mais que os outros. Precisa deixar claro que da para assumir.</p>
-    </div>
-
-    <!-- ═══════════ 4 · DESKTOP-ONLY ═══════════ -->
-    <div class="candidato">
-      <h2>4 · Desktop-only</h2>
-      <p class="dica">No celular, a capa. O jogo e presente de quem esta no PC.</p>
-      <div class="fone">
-        <div class="top"></div>
-        <div class="capa-m">
-          <div class="mast"><div class="logo">GLYFESSE</div><div class="ed">ANO 1 · Nº <b>3</b><br>gusworld.site</div></div>
-          <span class="chamada-topo">VOCÊ · O QUADRADINHO · AGORA</span>
-          <div class="moldura-tela">
-            <div class="sala" data-modo="desktop">
-              <div class="parede" style="left:30%;top:18%;width:34%;height:8%"></div>
-              <div class="parede" style="left:60%;top:30%;width:9%;height:26%"></div>
-              <div class="parede" style="left:22%;top:66%;width:26%;height:7%"></div>
-              <div class="heroi virou" style="--x:150px;--y:150px; --sprite:url('sprites/gus-south.png')"></div>
-              <div class="so-desktop">
-                <div class="kbd">← ↑ ↓ →</div>
-                <div class="txt">no computador, ele joga com as setas. aqui e so a capa.</div>
-              </div>
-            </div>
-          </div>
-          <p class="cap-tela"><b>FIG. 1</b> · o Gus, parado na sala. a versao jogavel mora no desktop.</p>
-          <h3 class="mini-manch">Agora eu ando na diagonal</h3>
-          <div class="chamadas"><span class="selo-cham">NOTA: GRÁFICOS 6,0</span><span class="selo-cham">O ERRO DA SEMANA</span></div>
-        </div>
-      </div>
-      <p class="veredito"><span class="pro"><b>A favor:</b></span> zero risco tecnico, a capa fica linda e imovel, e o jogo vira recompensa de quem abre no PC. Nenhuma girua de controle mobile para manter.<br><span class="con"><b>Contra, e e o risco central:</b></span> <b>a crianca chega de celular</b> e o quadradinho e justamente a peca que deveria fisga-la. Ela ve uma capa parada e sai. Entrega o brinquedo a quem menos precisa dele.</p>
-    </div>
-
   </div>
-
-  <p class="rodape-q"><b>Sobre o prefers-reduced-motion:</b> em todos os quatro, quem desliga movimento ve o Gus <b>parado no destino</b> (ja virado), e a legenda de texto embaixo da tela ("maio: um quadrado. depois: o Gus.") conta a historia por escrito. O jogo nunca e o unico caminho para a informacao, com movimento ou sem. No candidato 3, sem movimento nao ha auto-anda: o quadrado ja entra virado e o d-pad ja aparece.</p>
 
 </div>
 
 <script>
-/* Cada telefone e uma instancia independente. Pointer Events em tudo, entao
-   o mesmo codigo serve para mouse (o lider testa arrastando) e para o toque
-   de um celular. Um dos tres usos de JS que a stack permite (o quadradinho). */
+/* O quadradinho no celular: d-pad de toque, PARADO ate o input (sem
+   anda-sozinho), COLISAO real (bate na parede). Vira o Gus depois de mexer
+   um pouco, com o sprite gustaf_i_tavus_vance. Pointer Events: funciona com
+   mouse (o lider testa) e com o toque. reduced-motion: entra virado, parado. */
 (function(){
+  var sala  = document.getElementById("jogo");
+  var heroi = document.getElementById("heroi");
+  if(!sala || !heroi) return;
   var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var x=0, y=0, virou=false, movimentos=0, FRAME=11, PASSO=13;
   var SPR = { left:"sprites/gus-west.png", right:"sprites/gus-east.png",
               up:"sprites/gus-north.png", down:"sprites/gus-south.png" };
-
-  document.querySelectorAll(".sala").forEach(function(sala){
-    var modo  = sala.dataset.modo;
-    if(modo === "desktop") return;              // 4: nao joga no celular
-    var heroi = sala.querySelector(".heroi");
-    var x = 150, y = 150, virou = false;
-
-    function clamp(){
-      var r = sala.getBoundingClientRect();
-      var w = virou ? 30 : 24, h = virou ? 50 : 24;
-      x = Math.max(6, Math.min(r.width  - w - 6, x));
-      y = Math.max(6, Math.min(r.height - h - 6, y));
-    }
-    function pinta(){ clamp(); heroi.style.setProperty("--x", x+"px"); heroi.style.setProperty("--y", y+"px"); }
-    function evoluir(){ if(virou) return; virou = true; heroi.classList.add("virou"); pinta(); }
-    function olhar(dir){ if(virou && SPR[dir]) heroi.style.setProperty("--sprite", "url('"+SPR[dir]+"')"); }
-    function anda(dir){ var p=20; if(dir==="left")x-=p; if(dir==="right")x+=p; if(dir==="up")y-=p; if(dir==="down")y+=p; olhar(dir); pinta(); }
-
-    /* d-pad: mantem andando enquanto o dedo/mouse segura */
-    function ligaDpad(dpad){
-      dpad.querySelectorAll("b").forEach(function(bt){
-        var t=null, dir=bt.dataset.dir;
-        bt.addEventListener("pointerdown", function(e){
-          e.preventDefault(); anda(dir); clearInterval(t); t=setInterval(function(){anda(dir);},110);
-        });
-        ["pointerup","pointerleave","pointercancel"].forEach(function(ev){
-          bt.addEventListener(ev, function(){ clearInterval(t); });
-        });
-      });
-    }
-
-    if(modo === "dpad"){
-      ligaDpad(sala.querySelector(".dpad"));
-      if(reduz){ evoluir(); olhar("down"); } else { setTimeout(evoluir, 5000); }
-      pinta();
-    }
-
-    if(modo === "arraste"){
-      var arrastando=false, px=0, py=0;
-      heroi.addEventListener("pointerdown", function(e){
-        e.preventDefault(); arrastando=true; heroi.classList.add("arrastando");
-        heroi.setPointerCapture(e.pointerId); px=e.clientX; py=e.clientY;
-        evoluir();                                   // pegar ja mostra que virou
-      });
-      heroi.addEventListener("pointermove", function(e){
-        if(!arrastando) return;
-        var dx=e.clientX-px, dy=e.clientY-py; px=e.clientX; py=e.clientY;
-        x+=dx; y+=dy;
-        if(Math.abs(dx)>Math.abs(dy)) olhar(dx<0?"left":"right"); else if(dy) olhar(dy<0?"up":"down");
-        pinta();
-      });
-      ["pointerup","pointercancel"].forEach(function(ev){
-        heroi.addEventListener(ev, function(){ arrastando=false; heroi.classList.remove("arrastando"); });
-      });
-      if(reduz){ evoluir(); olhar("down"); } else { setTimeout(evoluir, 5000); }
-      pinta();
-    }
-
-    if(modo === "auto"){
-      var assumido=false, vx=1.4, vy=1.0, raf=null;
-      var convite=sala.querySelector(".assumir"), dpad=sala.querySelector(".dpad");
-      function passo(){
-        var r=sala.getBoundingClientRect(), w=24,h=24;
-        x+=vx; y+=vy;
-        if(x<=6||x>=r.width-w-6) vx=-vx;
-        if(y<=6||y>=r.height-h-6) vy=-vy;
-        pinta();
-        raf=requestAnimationFrame(passo);
-      }
-      function assumir(){
-        if(assumido) return; assumido=true;
-        cancelAnimationFrame(raf);
-        convite.classList.add("foi");
-        evoluir();
-        dpad.classList.remove("escondido");
-        ligaDpad(dpad);
-      }
-      sala.addEventListener("pointerdown", assumir);
-      if(reduz){
-        assumido=true; convite.classList.add("foi"); evoluir(); olhar("down");
-        dpad.classList.remove("escondido"); ligaDpad(dpad);
-      }else{
-        pinta(); raf=requestAnimationFrame(passo);
-      }
-    }
+  function tam(){ return virou ? {w:30,h:52} : {w:26,h:26}; }
+  function paredes(){
+    var s=sala.getBoundingClientRect();
+    return Array.prototype.map.call(sala.querySelectorAll(".parede"), function(w){
+      var r=w.getBoundingClientRect();
+      return {l:r.left-s.left, t:r.top-s.top, r:r.right-s.left, b:r.bottom-s.top};
+    });
+  }
+  function bate(nx,ny,w,h,W){
+    for(var i=0;i<W.length;i++){ var q=W[i];
+      if(nx < q.r-0.5 && nx+w > q.l+0.5 && ny < q.b-0.5 && ny+h > q.t+0.5) return true; }
+    return false;
+  }
+  function pinta(){ heroi.style.setProperty("--x",x+"px"); heroi.style.setProperty("--y",y+"px"); }
+  function olhar(d){ if(virou && SPR[d]) heroi.style.setProperty("--sprite","url('"+SPR[d]+"')"); }
+  function reclamp(){ var t=tam();
+    x=Math.max(FRAME, Math.min(sala.clientWidth-FRAME-t.w, x));
+    y=Math.max(FRAME, Math.min(sala.clientHeight-FRAME-t.h, y)); }
+  function evoluir(){ if(virou) return; virou=true; heroi.classList.add("virou"); reclamp(); olhar("down"); pinta(); }
+  function mover(dir){
+    var t=tam(), W=paredes();
+    var maxx=sala.clientWidth-FRAME-t.w, maxy=sala.clientHeight-FRAME-t.h, dx=0, dy=0;
+    if(dir==="left")dx=-PASSO; if(dir==="right")dx=PASSO; if(dir==="up")dy=-PASSO; if(dir==="down")dy=PASSO;
+    var nx=Math.max(FRAME, Math.min(maxx, x+dx)); if(!bate(nx,y,t.w,t.h,W)) x=nx;
+    var ny=Math.max(FRAME, Math.min(maxy, y+dy)); if(!bate(x,ny,t.w,t.h,W)) y=ny;
+    olhar(dir); pinta();
+    if(!virou){ movimentos++; if(movimentos>=8) evoluir(); }
+  }
+  sala.querySelectorAll(".dpad b").forEach(function(bt){
+    var it=null, dir=bt.dataset.dir;
+    bt.addEventListener("pointerdown", function(e){ e.preventDefault(); mover(dir); clearInterval(it); it=setInterval(function(){mover(dir);}, 120); });
+    ["pointerup","pointerleave","pointercancel"].forEach(function(ev){ bt.addEventListener(ev, function(){ clearInterval(it); }); });
   });
+  function init(){
+    var r=sala.getBoundingClientRect();
+    x=Math.round(r.width*0.20); y=Math.round(r.height*0.66); reclamp();
+    if(reduz){ evoluir(); } else { pinta(); }
+  }
+  init();
 })();
 </script>
 </body>
