@@ -21,3 +21,8 @@ Thumbs.db
 # local para historico, NUNCA pushar pro repo publico. Cropar so o post se
 # for preciso publicar.
 resources/historico_do_site/canal_x/
+
+# Lista negra do nome real de menor (guarda de higiene): LOCAL, nunca no repo.
+# scripts/lib-hygiene.sh le daqui; assim o guarda protege o nome sem que o
+# proprio nome fique em arquivo rastreado. So "Gus"/"Gus Dragon" e versionavel.
+scripts/.name-blocklist

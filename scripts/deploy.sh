@@ -47,8 +47,15 @@ command -v ssh   >/dev/null || die "ssh nao encontrado."
 
 # --- 2. higiene: nome real de menor nunca sobe (regra global) ---
 # o filho do lider so aparece como "Gus Dragon"; nome de batismo, nunca.
-if grep -rniE '\bgustavo\b' public_html/ 2>/dev/null | grep -qv -i 'iago'; then
-  die "HIGIENE: nome real de menor encontrado em public_html/. Deploy abortado."
+# A lista negra vive em scripts/.name-blocklist (gitignored): o nome real
+# NAO fica neste script rastreado. Ver scripts/lib-hygiene.sh.
+source "$ROOT/scripts/lib-hygiene.sh"
+if _ere="$(hygiene_name_ere)"; then
+  if grep -rniE "$_ere" public_html/ 2>/dev/null | grep -qv -i 'iago'; then
+    die "HIGIENE: nome real de menor encontrado em public_html/. Deploy abortado."
+  fi
+else
+  die "HIGIENE: scripts/.name-blocklist ausente - nao da pra verificar nome de menor. Deploy abortado (fail-safe)."
 fi
 
 # --- 3. rsync ---

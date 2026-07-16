@@ -43,14 +43,21 @@ if git grep -InE "$SEGREDO_PADRAO" -- . 2>/dev/null; then
 fi
 
 # --- 3. nome de menor ---
-# TODO(lider): a lista negra do nome de batismo real do filho NAO esta aqui
-# de proposito - este script (e o agent que o escreveu) nao a possui e NAO
-# deve inventa-la. So "Gus" / "Gus Dragon" e permitido versionado. A
-# higiene do auto-push do repo (regra global, fora deste script) ja cobre
-# isso hoje; quando o lider fornecer o padrao exato, plugar aqui um
-# `git grep -InE` analogo ao ja existente em scripts/deploy.sh.
+# A lista negra do nome real vive em scripts/.name-blocklist (gitignored):
+# nunca versionada. So "Gus" / "Gus Dragon" e permitido. Ver lib-hygiene.sh.
 say "${C_DIM}[3/4] varredura de nome de menor...${C_NC}"
-say "${C_WARN}  aviso: check de nome de menor e TODO (ver comentario no script) - nao bloqueia por si so aqui.${C_NC}"
+source "$ROOT/scripts/lib-hygiene.sh"
+if _ere="$(hygiene_name_ere)"; then
+  # nao ecoa o nome: mostra so o(s) arquivo(s), nao a linha.
+  _hits="$(git grep -IniE "$_ere" -- . 2>/dev/null | grep -v -i 'iago' || true)"
+  if [[ -n "$_hits" ]]; then
+    say "${C_ERR}  nome de menor em arquivo(s) versionado(s):${C_NC}"
+    printf '%s\n' "$_hits" | cut -d: -f1 | sort -u | sed 's/^/    /' >&2
+    die "HIGIENE: nome real de menor no versionado. Push abortado."
+  fi
+else
+  say "${C_WARN}  aviso: scripts/.name-blocklist ausente - check de nome PULADO (peca a lista ao lider).${C_NC}"
+fi
 
 # --- 4. validador HTML (opcional: nao falha por ferramenta ausente) ---
 say "${C_DIM}[4/4] validador HTML...${C_NC}"
