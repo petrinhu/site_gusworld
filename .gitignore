@@ -16,3 +16,8 @@ resources/arquivo_pessoal_petrus/
 .DS_Store
 Thumbs.db
 *~
+
+# Capturas do canal (feed pessoal do lider + trending de terceiros): guardar
+# local para historico, NUNCA pushar pro repo publico. Cropar so o post se
+# for preciso publicar.
+resources/historico_do_site/canal_x/
