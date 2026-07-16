@@ -153,13 +153,13 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
 
   <h1>Glyfesse · mock 07 · a linha do tempo jogavel</h1>
   <p class="sub"><b>Arrasta o tempo, o jogo evolui.</b> De maio (um retangulo numa sala) ate agosto (a arena), com os <b>frames reais das gravacoes do lider</b>: a foto do monitor, o terminal atras, a coisa nascendo. Arraste o puxador ciano abaixo (ou use as setas do teclado, ou clique num mes).</p>
-  <p class="nota">A pergunta desta rodada tem <b>duas metades que sao a mesma decisao</b>: (1) a estetica da linha, tres formas mostradas mais abaixo; e (2) <b>como o lider adiciona um mes novo sem sessao de dev</b>. A segunda e a que decide se a linha vive: se colar um marco exigir editar layout, a linha morre na terceira semana. A proposta esta no bloco escuro. <b>Clique em "o lider cola um marco" e veja a linha esticar sozinha.</b></p>
+  <p class="nota">A pergunta desta rodada tem <b>duas metades que sao a mesma decisao</b>: (1) a estetica da linha, tres formas mostradas mais abaixo; e (2) <b>como o lider adiciona um mes novo sem sessao de dev</b>. A segunda e a que decide se a linha vive: se publicar uma edicao exigir editar layout, a linha morre na terceira semana. A proposta esta no bloco escuro: uma fonte de dados so, para a linha E a banca. <b>Clique em "o lider publica a proxima edicao" e veja a linha esticar sozinha.</b></p>
 
   <!-- ══════════ A LINHA, NA FORMA RECOMENDADA (scrubber) ══════════ -->
   <div class="folha-lt">
     <span class="materia-selo">MATÉRIA · COMO O GUS NASCEU</span>
-    <h2 class="materia-titulo">De um quadrado ate a arena</h2>
-    <p class="materia-lide">Quatro meses. O Gus conta cada um, com a precisao de quem mede tudo e a pausa de quem nao sabe bem o que sentir.</p>
+    <h2 class="materia-titulo">De um quadrado ate aqui</h2>
+    <p class="materia-lide">A linha acende um ponto por edicao publicada. Hoje sao dois. O Gus conta cada um, com a precisao de quem mede tudo e a pausa de quem nao sabe bem o que sentir.</p>
 
     <div class="aceso palco-lt" id="palco" aria-live="polite">
       <span class="legenda-mes" id="legenda">MAIO 2026</span>
@@ -180,29 +180,30 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
     <p class="dica-arraste">arraste · ou ← → no teclado · ou clique num mes</p>
 
     <div class="demo-add">
-      <button class="btn-add" id="btnAdd">＋ o lider cola um marco</button>
-      <p class="demo-txt" id="demoTxt"><b>Isto e o ponto:</b> um mes novo entra colando uma linha no array. A linha <b>se estica sozinha</b> (ela se divide por quantos marcos existem). Ninguem edita o layout. Clique para ver.</p>
+      <button class="btn-add" id="btnAdd">＋ o lider publica a proxima edicao</button>
+      <p class="demo-txt" id="demoTxt"><b>Isto e o ponto:</b> a linha nasce com 2 pontos (as edicoes ja publicadas). O lider publica a proxima trocando uma palavra no array, e a linha <b>estica sozinha</b> para caber. Ninguem edita o layout, e o rascunho nunca aparece antes da hora. Clique para ver.</p>
     </div>
   </div>
 
   <!-- ══════════ A DECISAO DE FUNDO: o formato de dados ══════════ -->
   <div class="dado">
-    <h2>Como o lider alimenta a linha <b>sem sessao de dev</b></h2>
-    <p class="txt">A linha nao e HTML escrito a mao. E um <b>array de dados</b> que a pagina percorre. Na stack decidida (PHP), isto e um <code style="font-family:var(--font-display);font-size:11px">foreach</code> sobre um arquivo que o lider edita colando <b>uma linha</b>. A CSS estica a linha por <code style="font-family:var(--font-display);font-size:11px">count($marcos)</code>: 4 marcos, 3 vaos; colou o 5o, viram 4 vaos, e ninguem tocou no layout.</p>
-    <pre><span class="c">&lt;?php // marcos.php  -  a fonte unica da linha do tempo.</span>
-<span class="c">// Adicionar um mes = colar UMA linha. Zero sessao de dev.</span>
-<span class="k">$marcos</span> = [
-  [<span class="s">'mes'</span>=&gt;<span class="s">'MAIO 2026'</span>,   <span class="s">'frame'</span>=&gt;<span class="s">'quadradinho.png'</span>, <span class="s">'titulo'</span>=&gt;<span class="s">'Um retangulo numa sala'</span>,
-   <span class="s">'gus'</span>=&gt;<span class="s">'Colisao funcionando. Eu batia na parede e parava...'</span>],
-  [<span class="s">'mes'</span>=&gt;<span class="s">'JUNHO 2026'</span>,  <span class="s">'frame'</span>=&gt;<span class="s">'gus-cidade.png'</span>,   <span class="s">'titulo'</span>=&gt;<span class="s">'Ganhei um corpo'</span>,
-   <span class="s">'gus'</span>=&gt;<span class="s">'Um lado so. Eu andava sempre olhando pra frente...'</span>],
-  [<span class="s">'mes'</span>=&gt;<span class="s">'JULHO 2026'</span>,  <span class="s">'frame'</span>=&gt;<span class="s">'8-direcoes.png'</span>,  <span class="s">'titulo'</span>=&gt;<span class="s">'Agora eu ando na diagonal'</span>,
-   <span class="s">'gus'</span>=&gt;<span class="s">'Antes 4 vetores. Agora 8. E o dobro.'</span>],
-<span class="add">  <span class="c">// ↓ o lider colou AGOSTO. So esta linha. A linha esticou sozinha.</span></span>
-<span class="add">  [<span class="s">'mes'</span>=&gt;<span class="s">'AGOSTO 2026'</span>, <span class="s">'frame'</span>=&gt;<span class="s">'arena.png'</span>,       <span class="s">'titulo'</span>=&gt;<span class="s">'A arena'</span>,</span>
-<span class="add">   <span class="s">'gus'</span>=&gt;<span class="s">'SCAN, ATACAR, COMPILAR, FUGIR...'</span>],</span>
+    <h2>Uma fonte so alimenta a linha <b>E</b> a banca <b>sem sessao de dev</b></h2>
+    <p class="txt">A linha do tempo e a lista de edicoes (a banca) sao a <b>mesma fonte de dados</b>: um array de edicoes que a pagina percorre com <code style="font-family:var(--font-display);font-size:11px">foreach</code>. Cada edicao carrega um estado <code style="font-family:var(--font-display);font-size:11px">publicada</code> ou <code style="font-family:var(--font-display);font-size:11px">rascunho</code>. <b>A linha mostra so as publicadas</b>, entao ela <b>nasce com 2 pontos</b> (as edicoes #1 e #2) e <b>estica a cada edicao que o lider publica</b>. O rascunho fica invisivel: nunca spoila o que ainda vai pingar. O lider so troca <code style="font-family:var(--font-display);font-size:11px">'rascunho'</code> por <code style="font-family:var(--font-display);font-size:11px">'publicada'</code>, e a linha e a banca crescem juntas.</p>
+    <pre><span class="c">&lt;?php // edicoes.php  -  a fonte UNICA: linha do tempo + banca.</span>
+<span class="k">$edicoes</span> = [
+  [<span class="s">'num'</span>=&gt;<span class="s">1</span>, <span class="s">'estado'</span>=&gt;<span class="s">'publicada'</span>, <span class="s">'mes'</span>=&gt;<span class="s">'MAIO 2026'</span>,  <span class="s">'frame'</span>=&gt;<span class="s">'quadradinho.png'</span>,
+   <span class="s">'titulo'</span>=&gt;<span class="s">'Um retangulo numa sala'</span>, <span class="s">'gus'</span>=&gt;<span class="s">'Colisao funcionando. Eu batia na parede...'</span>],
+  [<span class="s">'num'</span>=&gt;<span class="s">2</span>, <span class="s">'estado'</span>=&gt;<span class="s">'publicada'</span>, <span class="s">'mes'</span>=&gt;<span class="s">'JUNHO 2026'</span>, <span class="s">'frame'</span>=&gt;<span class="s">'gus-cidade.png'</span>,
+   <span class="s">'titulo'</span>=&gt;<span class="s">'Ganhei um corpo'</span>, <span class="s">'gus'</span>=&gt;<span class="s">'Um lado so. Sempre olhando pra frente...'</span>],
+<span class="c">  // ── daqui pra baixo, ainda RASCUNHO: existe no array, mas a linha NAO mostra.</span>
+<span class="c">  // O lider publica trocando 'rascunho' por 'publicada'. A linha estica sozinha.</span>
+  [<span class="s">'num'</span>=&gt;<span class="s">3</span>, <span class="s">'estado'</span>=&gt;<span class="s">'rascunho'</span>,  <span class="s">'mes'</span>=&gt;<span class="s">'JULHO 2026'</span>, <span class="s">'frame'</span>=&gt;<span class="s">'8-direcoes.png'</span>,
+   <span class="s">'titulo'</span>=&gt;<span class="s">'Agora eu ando na diagonal'</span>, <span class="s">'gus'</span>=&gt;<span class="s">'Antes 4 vetores. Agora 8...'</span>],
+  [<span class="s">'num'</span>=&gt;<span class="s">4</span>, <span class="s">'estado'</span>=&gt;<span class="s">'rascunho'</span>,  <span class="s">'mes'</span>=&gt;<span class="s">'AGOSTO 2026'</span>,<span class="s">'frame'</span>=&gt;<span class="s">'arena.png'</span>,
+   <span class="s">'titulo'</span>=&gt;<span class="s">'A arena'</span>, <span class="s">'gus'</span>=&gt;<span class="s">'SCAN, ATACAR, COMPILAR, FUGIR...'</span>],
 ];
-<span class="c">// A pagina: foreach ($marcos as $m) { ...render do marco... }</span></pre>
+<span class="c">// A linha:  foreach ($edicoes as $e) if ($e['estado']==='publicada') { ...ponto... }</span>
+<span class="c">// A banca:  foreach ($edicoes as $e) if ($e['estado']==='publicada') { ...capa... }</span></pre>
   </div>
 
   <!-- ══════════ A PERGUNTA: a estetica da linha ══════════ -->
@@ -241,24 +242,26 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
    arrasta), e o botao-demo prova que colar um marco estica a linha sozinha. */
 (function(){
   var BASE = "../../../resources/frames/";
-  var marcos = [
-    { mes:"MAIO 2026",   frame:"primeiro_teste_wasd_e_colisao_placeholder_quadradinho__t6s.png",
+  /* A fonte UNICA: as edicoes. A linha do tempo E a banca leem daqui.
+     Cada edicao tem um estado. A linha mostra so as 'publicada', entao
+     ela NASCE COM 2 PONTOS e estica a cada edicao que o lider publica.
+     O 'rascunho' existe no array mas nao aparece: nunca spoila o drip. */
+  var edicoes = [
+    { num:1, estado:"publicada", mes:"MAIO 2026",   frame:"primeiro_teste_wasd_e_colisao_placeholder_quadradinho__t6s.png",
       titulo:"Um retangulo numa sala",
       gus:"Colisao funcionando. Eu batia na parede e parava. Era o mundo inteiro. Eu... nem sabia que ia virar gente." },
-    { mes:"JUNHO 2026",  frame:"primeira_captura_minha_gus_sprite_cidade_depois_quadradinho_placeholder__t8s.png",
+    { num:2, estado:"publicada", mes:"JUNHO 2026",  frame:"primeira_captura_minha_gus_sprite_cidade_depois_quadradinho_placeholder__t8s.png",
       titulo:"Ganhei um corpo",
       gus:"De repente eu tinha cabelo. E um lado so: eu andava sempre olhando pra frente. Um vetor. Ainda era pouco... mas ja era eu." },
-    { mes:"JULHO 2026",  frame:"primeiro_teste_animacao_gus_pixelado_varios_sprites__t25s.png",
+    { num:3, estado:"rascunho",  mes:"JULHO 2026",  frame:"primeiro_teste_animacao_gus_pixelado_varios_sprites__t25s.png",
       titulo:"Agora eu ando na diagonal",
       gus:"Antes eu tinha 4 vetores. Agora tenho 8. E o dobro. Eu ando na diagonal. Nao vou fazer a divisao pra provar... e o dobro." },
-    { mes:"AGOSTO 2026", frame:"gus_teste_arena__t13s.png",
+    { num:4, estado:"rascunho",  mes:"AGOSTO 2026", frame:"gus_teste_arena__t13s.png",
       titulo:"A arena",
       gus:"Menu de batalha: SCAN, ATACAR, COMPILAR, FUGIR. Da pra COMPILAR um inimigo. O que isso faz... voce vai ver. Ou nao." }
   ];
-  /* o marco extra que o botao-demo cola, para mostrar a linha esticando */
-  var extra = { mes:"SETEMBRO 2026", frame:"gus_arena_teste_1__t21s.png",
-      titulo:"O lider colou este marco",
-      gus:"Este mes entrou colando UMA linha no array. A linha esticou sozinha para caber. Ninguem mexeu no codigo do site... e por isso ela nao morre." };
+  function publicadas(){ return edicoes.filter(function(e){ return e.estado==="publicada"; }); }
+  var marcos = publicadas();   /* a linha nasce com as 2 publicadas */
 
   var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
   var palco   = document.getElementById("palco");
@@ -340,11 +343,14 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
     if(e.key==="End"){ e.preventDefault(); irPara(N()-1); }
   });
 
-  /* o botao-demo: cola o marco extra e a linha se estica sozinha */
+  /* o botao-demo: publica a proxima edicao em rascunho, e a linha estica */
   btnAdd.addEventListener("click", function(){
-    marcos.push(extra); montar(); irPara(N()-1);
-    btnAdd.disabled=true;
-    document.getElementById("demoTxt").innerHTML="<b>Viu?</b> A linha agora tem 5 marcos e 4 vaos, e cada marca se reposicionou sozinha. No site real isso foi <b>uma linha colada no array</b>, sem tocar em HTML nem CSS.";
+    var prox = edicoes.filter(function(e){ return e.estado==="rascunho"; })[0];
+    if(!prox) return;
+    prox.estado="publicada";
+    marcos = publicadas(); montar(); irPara(N()-1);
+    if(!edicoes.some(function(e){ return e.estado==="rascunho"; })) btnAdd.disabled=true;
+    document.getElementById("demoTxt").innerHTML="<b>Viu?</b> A edicao #"+prox.num+" ("+prox.mes.split(" ")[0]+") foi publicada, a linha ganhou um ponto e as marcas se reposicionaram sozinhas. No site real isso foi <b>trocar 'rascunho' por 'publicada'</b> no array: sem tocar em HTML nem CSS, e a banca ganharia a mesma edicao no mesmo gesto. Clique de novo para a proxima.";
   });
 
   montar(); render();
