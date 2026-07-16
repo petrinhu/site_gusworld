@@ -6,12 +6,13 @@ Zero dependência externa: fonte local (CC0), texturas em SVG inline. **O que es
 | # | Arquivo | O que decide | Status |
 |---|---|---|---|
 | 00 | [`00-vibe-o-material.html`](00-vibe-o-material.html) | **A vibe: de que MATERIAL o site é feito?** Três direções (papel / tela do Tavus-Drive / papel fotografado), a mesma dobra e o mesmo texto do Gus nas três. | ✅ **decidido: papel + foto como tratamento** |
+| 02 | [`02-tipografia.html`](02-tipografia.html) | **A tipografia.** Três pares display + corpo, a mesma dobra, com a seção de programação embaixo (o texto mais longo do site) para testar leitura de verdade. Todas OFL e self-hosted. | ⏳ **aguardando decisão do líder** |
 | 01 | [`01-tokens.html`](01-tokens.html) | **Os tokens.** Os dois materiais lado a lado, a banca envelhecendo por `--idade`, a prova de leitura no papel encardido, e todas as amostras com a razão medida. Não redefine nenhuma cor: consome [`../tokens.css`](../tokens.css), o CSS de produção. | ✅ aprovado no Gecko |
 
 ## Como abrir
 
 ```bash
-firefox --new-tab docs/design/mockups/01-tokens.html
+firefox --new-tab docs/design/mockups/02-tipografia.html
 ```
 
 ## ⚠️ Verificar no Gecko, não no Blink
@@ -48,3 +49,18 @@ Calculadas sobre os hex extraídos dos assets do jogo.
 | magenta `#c23fd9` / ciano | **2.48:1** | nunca encostar |
 | tinta ciano `#06687c` / papel | **5.59:1** | AA. É o ciano quando ele é impresso. |
 | tinta magenta `#7d1a8a` / papel | **7.67:1** | AAA |
+
+## Fontes (todas self-hosted, zero terceiro)
+
+Nenhuma fonte vem de CDN externo: Google Fonts transferiria o IP do visitante, **e há criança no público**. Tudo mora em `fonts/` e é servido pelo próprio site.
+
+| Fonte | Licença | Papel | Peso |
+|---|---|---|---|
+| `PixelOperatorMono` | **CC0** | display, rótulo, numeral. **Canônica: é a fonte da UI do jogo** | 34 KB (ttf) |
+| `Vollkorn` | OFL | candidata a corpo (par A) | 78 KB |
+| `Archivo Narrow` | OFL | candidata a manchete (par A) | 11,7 KB |
+| `Newsreader` | OFL | candidata a par único (par B) | 46 KB |
+| `Alegreya` | OFL | candidata a corpo (par C) | 47 KB |
+| `Anton`, `Oswald` | OFL | alternativas de manchete, não usadas nos pares | 31 KB |
+
+**Depois da decisão, as não escolhidas saem do repo.** Só a família vencedora vai a produção.

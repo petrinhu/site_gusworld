@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse: com que letra o Gus escreve? (3 pares)</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   MOCK 02 - A TIPOGRAFIA. Uma pergunta: qual o par display + corpo?
+   Todas as fontes sao OFL e SELF-HOSTED (fonts/), zero terceiro.
+   O logo e os rotulos ficam em PixelOperatorMono nos tres: e canonico
+   (CC0, a fonte da UI do jogo). O que muda e manchete + corpo.
+   ───────────────────────────────────────────────────────────── */
+
+/* canonico: a fonte do jogo */
+@font-face{font-family:"PixelOperatorMono"; src:url("fonts/PixelOperatorMono.ttf") format("truetype"); font-weight:400; font-display:block}
+@font-face{font-family:"PixelOperatorMono"; src:url("fonts/PixelOperatorMono-Bold.ttf") format("truetype"); font-weight:700; font-display:block}
+
+/* candidatas: corpo */
+@font-face{font-family:"Vollkorn"; src:url("fonts/vollkorn-latin-400-normal.woff2") format("woff2"); font-weight:400; font-display:swap}
+@font-face{font-family:"Vollkorn"; src:url("fonts/vollkorn-latin-600-normal.woff2") format("woff2"); font-weight:600; font-display:swap}
+@font-face{font-family:"Vollkorn"; src:url("fonts/vollkorn-latin-400-italic.woff2") format("woff2"); font-weight:400; font-style:italic; font-display:swap}
+@font-face{font-family:"Alegreya"; src:url("fonts/alegreya-latin-400-normal.woff2") format("woff2"); font-weight:400; font-display:swap}
+@font-face{font-family:"Alegreya"; src:url("fonts/alegreya-latin-700-normal.woff2") format("woff2"); font-weight:700; font-display:swap}
+@font-face{font-family:"Newsreader"; src:url("fonts/newsreader-latin-400-normal.woff2") format("woff2"); font-weight:400; font-display:swap}
+@font-face{font-family:"Newsreader"; src:url("fonts/newsreader-latin-600-normal.woff2") format("woff2"); font-weight:600; font-display:swap}
+/* candidatas: manchete */
+@font-face{font-family:"Archivo Narrow"; src:url("fonts/archivo-narrow-latin-700-normal.woff2") format("woff2"); font-weight:700; font-display:swap}
+@font-face{font-family:"Anton"; src:url("fonts/anton-latin-400-normal.woff2") format("woff2"); font-weight:400; font-display:swap}
+@font-face{font-family:"Oswald"; src:url("fonts/oswald-latin-700-normal.woff2") format("woff2"); font-weight:700; font-display:swap}
+
+*{box-sizing:border-box}
+html{background:#22222a}
+body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:"Vollkorn",Georgia,serif}
+.bancada{max-width:1500px; margin:0 auto; padding:28px 20px}
+h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.14em;
+   color:#9fb0c4; margin:0 0 6px; text-transform:uppercase}
+.sub{margin:0 0 4px; font-size:15px; color:#c8cdd6; max-width:80ch; line-height:1.55}
+.sub b{color:#fff}
+.nota{margin:14px 0 0; font-size:13.5px; color:#8e97a4; max-width:80ch; line-height:1.6}
+.nota b{color:#c8cdd6}
+
+.trilho{display:grid; gap:22px; margin-top:26px; grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1240px){ .trilho{grid-template-columns:1fr; max-width:470px; margin-inline:auto} }
+
+.coluna > header{margin:0 0 10px}
+.letra{font-family:var(--font-display); font-weight:700; font-size:12px; letter-spacing:.16em; color:#6f7c8d}
+.titulo{font-family:var(--font-display); font-weight:700; font-size:16px; color:#fff; margin:3px 0 5px}
+.pitch{font-size:13.5px; color:#a8b1bd; line-height:1.55; margin:0; min-height:3.4em; font-family:"Vollkorn",serif}
+.veredito{font-size:12.5px; line-height:1.5; margin:9px 0 0; padding:8px 10px;
+  border-left:2px solid #4a5464; color:#98a2af; background:#00000030; font-family:"Vollkorn",serif}
+.veredito b{color:#d8dee6}
+.specs{font-family:var(--font-display); font-size:9.5px; color:#7d8794; line-height:1.7; margin-top:9px}
+.specs b{color:#9fb0c4}
+
+/* ── a folha ── */
+.pagina{
+  padding:17px 15px; position:relative; overflow:hidden;
+  box-shadow:var(--sombra-folha); min-height:700px;
+}
+.pagina::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.16;
+}
+.pagina > *{position:relative; z-index:1}
+
+.cabeca{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:2.5px solid var(--tinta-preta); padding-bottom:6px; margin-bottom:11px}
+.logo{ /* CANONICO nos tres: a fonte do jogo */
+  font-family:var(--font-display); font-weight:700; font-size:27px; line-height:1;
+  color:var(--tinta-preta); flex:0 1 auto;
+  text-shadow:-1.5px -1.5px 0 #00b6d4b0, 1.5px 1.5px 0 #c2129eb0;
+}
+.edicao{font-family:var(--font-display); font-size:9px; text-align:right; line-height:1.35;
+  color:var(--tinta-2); white-space:nowrap; flex:0 0 auto}
+.edicao b{color:var(--tinta-preta); font-size:15px}
+.chamada{font-family:var(--font-display); font-size:9px; letter-spacing:.06em;
+  background:var(--tinta-preta); color:var(--papel-novo); display:inline-block;
+  padding:3px 6px; margin-bottom:9px}
+
+/* ══ o que MUDA entre os tres ══ */
+.manchete{margin:0 0 8px; color:var(--tinta-preta)}
+.linha-fina{margin:0 0 11px; color:var(--tinta-preta)}
+.corpo{color:var(--tinta-preta)}
+.corpo p{margin:0 0 8px}
+.rt{font-style:italic}
+
+/* A: A BANCA */
+.par-banca .manchete{font-family:"Archivo Narrow",sans-serif; font-weight:700;
+  font-size:35px; line-height:.95; letter-spacing:-.018em; text-transform:uppercase}
+.par-banca .linha-fina{font-family:"Vollkorn",serif; font-size:14px; line-height:1.45; font-weight:600}
+.par-banca .corpo{font-family:"Vollkorn",serif; font-size:13px; line-height:1.5}
+.par-banca .prog{font-family:"Vollkorn",serif}
+
+/* B: O EDITORIAL */
+.par-editorial .manchete{font-family:"Newsreader",serif; font-weight:600;
+  font-size:33px; line-height:1.02; letter-spacing:-.02em}
+.par-editorial .linha-fina{font-family:"Newsreader",serif; font-size:14.5px; line-height:1.45; font-style:italic}
+.par-editorial .corpo{font-family:"Newsreader",serif; font-size:13.5px; line-height:1.52}
+.par-editorial .prog{font-family:"Newsreader",serif}
+
+/* C: O JOGO MANDA */
+.par-jogo .manchete{font-family:var(--font-display); font-weight:700;
+  font-size:24px; line-height:1.15; letter-spacing:0}
+.par-jogo .linha-fina{font-family:"Alegreya",serif; font-size:14.5px; line-height:1.45; font-weight:700}
+.par-jogo .corpo{font-family:"Alegreya",serif; font-size:14px; line-height:1.5}
+.par-jogo .prog{font-family:"Alegreya",serif}
+
+/* ── a tela acesa (igual nos tres) ── */
+.aceso{background:var(--tela-bg); border-radius:var(--raio-tela); padding:11px;
+  margin:0 0 11px; position:relative; overflow:hidden}
+.aceso::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(circle at 50% 50%, #ffffff26 32%, #0000 33%);
+  background-size:3px 3px; mix-blend-mode:screen}
+.sala{position:relative; width:100%; aspect-ratio:16/9; background:var(--gw-navy); border:2px solid #b9c6d6}
+.sala i{position:absolute; background:#b9c6d6; display:block}
+.heroi{position:absolute; width:9px; height:9px; border:2.5px solid var(--gw-ciano);
+  background:var(--gw-navy); left:22%; bottom:8%; animation:anda 5.2s ease-in-out infinite alternate}
+@keyframes anda{0%{left:22%;bottom:8%} 45%{left:63%;bottom:8%} 100%{left:63%;bottom:56%}}
+.legenda{font-family:var(--font-display); font-size:8.5px; line-height:1.45; color:var(--tinta-2);
+  margin:0 0 11px; padding-left:7px; border-left:2px solid var(--tinta-ciano)}
+.legenda b{color:var(--tinta-ciano)}
+
+/* o teste de texto longo: a secao de programacao */
+.prog-cx{border-top:1px solid #00000026; margin-top:11px; padding-top:9px}
+.prog-rot{font-family:var(--font-display); font-size:8.5px; letter-spacing:.08em;
+  color:var(--tinta-ciano); margin:0 0 5px}
+.prog{font-size:11.5px; line-height:1.5; color:var(--tinta-preta); text-align:justify; hyphens:auto}
+.prog p{margin:0 0 6px}
+.prog code{font-family:var(--font-display); font-size:10.5px; background:#00000010; padding:0 3px}
+</style>
+</head>
+<body>
+<div class="bancada">
+
+  <h1>Glyfesse · mock 02 · a tipografia</h1>
+  <p class="sub">Uma pergunta: <b>com que letra o Gus escreve?</b> O logo, os rótulos e os numerais já estão resolvidos e são <b>canônicos: PixelOperatorMono</b>, CC0, a fonte da UI do próprio jogo (é a mesma nos três painéis). <b>O que muda é a manchete e o corpo.</b></p>
+  <p class="nota">Cada painel tem <b>~420px: é o celular</b>. Todas as fontes são <b>OFL e self-hosted</b> (nenhuma vem de CDN de terceiro: o IP do visitante não vai para lugar nenhum, e há criança no público). O bloco de baixo é <b>a seção de programação</b>, que é o texto mais longo do site: é lá que a letra do corpo passa ou reprova.</p>
+
+  <div class="trilho">
+
+    <!-- ══════════ A ══════════ -->
+    <section class="coluna">
+      <header>
+        <div class="letra">PAR A</div>
+        <div class="titulo">A banca</div>
+        <p class="pitch">Manchete em condensada seca; corpo em serifa robusta. <b>Archivo Narrow + Vollkorn.</b></p>
+      </header>
+
+      <div class="pagina folha par-banca" style="--idade:.25">
+        <div class="cabeca">
+          <div class="logo">GLYFESSE</div>
+          <div class="edicao">ANO 1 · Nº <b>3</b></div>
+        </div>
+        <span class="chamada">EXCLUSIVO · SÓ AQUI</span>
+        <h2 class="manchete">Agora eu ando na diagonal</h2>
+        <p class="linha-fina">Antes eu tinha 4 vetores. Agora tenho 8. É o dobro.</p>
+
+        <div class="aceso">
+          <div class="sala">
+            <i style="left:34%;top:16%;width:31%;height:9%"></i>
+            <i style="left:44%;top:25%;width:9%;height:22%"></i>
+            <i style="left:33%;top:63%;width:24%;height:8%"></i>
+            <i style="left:66%;top:39%;width:14%;height:23%"></i>
+            <span class="heroi"></span>
+          </div>
+        </div>
+        <p class="legenda"><b>FIG. 1</b> · A sala de maio. O quadradinho já era ciano.</p>
+
+        <div class="corpo">
+          <p>O bug da parede foi corrigido na build de terça. Eu atravessava a parede oeste em uma janela de 3 frames. Consertaram. Eu<span class="rt">... gostava dele.</span></p>
+        </div>
+
+        <div class="prog-cx">
+          <p class="prog-rot">SEÇÃO DE PROGRAMAÇÃO · O ERRO DA SEMANA</p>
+          <div class="prog">
+            <p>A colisão testava o retângulo inteiro do sprite contra o tile. Funcionava. O problema é que o pé do personagem tem 6 pixels de sombra, e a sombra não é o personagem. Ele parava 6 pixels antes da parede e parecia que flutuava.</p>
+            <p>A correção foi separar a caixa de colisão do quadro de desenho: <code>hitbox</code> não é <code>sprite</code>. Levou 40 minutos para achar e 2 linhas para consertar. Isso é o normal.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="specs"><b>manchete</b> Archivo Narrow 700 · 11,7 KB<br><b>corpo</b> Vollkorn 400/600/itálico · 78 KB<br><b>total</b> ~90 KB · OFL · self-hosted</p>
+      <p class="veredito"><b>A favor:</b> é a letra da banca. A condensada cabe mais palavra por linha, o que <b>importa de verdade nos 390px do celular</b>, e a manchete tem soco. O Vollkorn tem caráter (não é a serifa neutra de sempre) e aguenta texto longo.<br><br><b>Contra:</b> são duas famílias para manter, e a condensada em corpo pequeno cansaria (por isso ela fica só na manchete).</p>
+    </section>
+
+    <!-- ══════════ B ══════════ -->
+    <section class="coluna">
+      <header>
+        <div class="letra">PAR B</div>
+        <div class="titulo">O editorial</div>
+        <p class="pitch">Uma família só, do título ao corpo, em pesos diferentes. <b>Newsreader.</b></p>
+      </header>
+
+      <div class="pagina folha par-editorial" style="--idade:.25">
+        <div class="cabeca">
+          <div class="logo">GLYFESSE</div>
+          <div class="edicao">ANO 1 · Nº <b>3</b></div>
+        </div>
+        <span class="chamada">EXCLUSIVO · SÓ AQUI</span>
+        <h2 class="manchete">Agora eu ando na diagonal</h2>
+        <p class="linha-fina">Antes eu tinha 4 vetores. Agora tenho 8. É o dobro.</p>
+
+        <div class="aceso">
+          <div class="sala">
+            <i style="left:34%;top:16%;width:31%;height:9%"></i>
+            <i style="left:44%;top:25%;width:9%;height:22%"></i>
+            <i style="left:33%;top:63%;width:24%;height:8%"></i>
+            <i style="left:66%;top:39%;width:14%;height:23%"></i>
+            <span class="heroi"></span>
+          </div>
+        </div>
+        <p class="legenda"><b>FIG. 1</b> · A sala de maio. O quadradinho já era ciano.</p>
+
+        <div class="corpo">
+          <p>O bug da parede foi corrigido na build de terça. Eu atravessava a parede oeste em uma janela de 3 frames. Consertaram. Eu<span class="rt">... gostava dele.</span></p>
+        </div>
+
+        <div class="prog-cx">
+          <p class="prog-rot">SEÇÃO DE PROGRAMAÇÃO · O ERRO DA SEMANA</p>
+          <div class="prog">
+            <p>A colisão testava o retângulo inteiro do sprite contra o tile. Funcionava. O problema é que o pé do personagem tem 6 pixels de sombra, e a sombra não é o personagem. Ele parava 6 pixels antes da parede e parecia que flutuava.</p>
+            <p>A correção foi separar a caixa de colisão do quadro de desenho: <code>hitbox</code> não é <code>sprite</code>. Levou 40 minutos para achar e 2 linhas para consertar. Isso é o normal.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="specs"><b>manchete</b> Newsreader 600<br><b>corpo</b> Newsreader 400 · 46 KB<br><b>total</b> ~46 KB · OFL · self-hosted · <b>a mais leve</b></p>
+      <p class="veredito"><b>A favor:</b> <b>a mais leve e a mais coesa</b> (uma família só, menos coisa para manter, e ele é solo). Newsreader foi desenhada para leitura em tela. O texto longo da programação fica ótimo.<br><br><b>Contra (e pesa):</b> tem cara de <b>jornal/suplemento cultural</b>, não de revista de videogame. A manchete não dá soco. <b>Ganha o adulto e perde o menino de 11 anos</b>, que é metade do público.</p>
+    </section>
+
+    <!-- ══════════ C ══════════ -->
+    <section class="coluna">
+      <header>
+        <div class="letra">PAR C</div>
+        <div class="titulo">O jogo manda</div>
+        <p class="pitch">A manchete é a fonte do <b>próprio jogo</b>; o corpo é serifa humanista. <b>PixelOperatorMono + Alegreya.</b></p>
+      </header>
+
+      <div class="pagina folha par-jogo" style="--idade:.25">
+        <div class="cabeca">
+          <div class="logo">GLYFESSE</div>
+          <div class="edicao">ANO 1 · Nº <b>3</b></div>
+        </div>
+        <span class="chamada">EXCLUSIVO · SÓ AQUI</span>
+        <h2 class="manchete">AGORA EU ANDO NA DIAGONAL.</h2>
+        <p class="linha-fina">Antes eu tinha 4 vetores. Agora tenho 8. É o dobro.</p>
+
+        <div class="aceso">
+          <div class="sala">
+            <i style="left:34%;top:16%;width:31%;height:9%"></i>
+            <i style="left:44%;top:25%;width:9%;height:22%"></i>
+            <i style="left:33%;top:63%;width:24%;height:8%"></i>
+            <i style="left:66%;top:39%;width:14%;height:23%"></i>
+            <span class="heroi"></span>
+          </div>
+        </div>
+        <p class="legenda"><b>FIG. 1</b> · A sala de maio. O quadradinho já era ciano.</p>
+
+        <div class="corpo">
+          <p>O bug da parede foi corrigido na build de terça. Eu atravessava a parede oeste em uma janela de 3 frames. Consertaram. Eu<span class="rt">... gostava dele.</span></p>
+        </div>
+
+        <div class="prog-cx">
+          <p class="prog-rot">SEÇÃO DE PROGRAMAÇÃO · O ERRO DA SEMANA</p>
+          <div class="prog">
+            <p>A colisão testava o retângulo inteiro do sprite contra o tile. Funcionava. O problema é que o pé do personagem tem 6 pixels de sombra, e a sombra não é o personagem. Ele parava 6 pixels antes da parede e parecia que flutuava.</p>
+            <p>A correção foi separar a caixa de colisão do quadro de desenho: <code>hitbox</code> não é <code>sprite</code>. Levou 40 minutos para achar e 2 linhas para consertar. Isso é o normal.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="specs"><b>manchete</b> PixelOperatorMono · <b>0 KB (já está no site)</b><br><b>corpo</b> Alegreya 400/700 · 47 KB<br><b>total</b> ~47 KB · CC0 + OFL</p>
+      <p class="veredito"><b>A favor:</b> <b>a manchete passa a ser literalmente a fonte do jogo</b>, então o título não imita a revista, ele vaza do Tavus-Drive. Custo zero (já está no repo). Coerente com "o Gus escreve".<br><br><b>Contra (sério):</b> <b>pixel não escala.</b> Repare que a manchete aqui é a <b>menor das três</b> e mesmo assim ocupa mais linha: fonte pixelada tem largura fixa e não condensa. Em manchete longa no celular ela quebra feio. E o pixel deixa de ser <b>especial</b> se estiver em todo título.</p>
+    </section>
+
+  </div>
+
+  <p class="nota" style="margin-top:26px"><b>O que eu recomendo:</b> o <b>par A</b>. O motivo não é gosto: <b>a condensada é a única que resolve o problema real do projeto</b>, que é caber manchete de revista em 390px. Compare as três manchetes acima: a A diz a frase inteira com o maior corpo e no menor espaço. E o Vollkorn tem cara de coisa impressa, não de site.</p>
+  <p class="nota"><b>Sobre o C, que é o mais tentador:</b> a ideia de a manchete ser a fonte do jogo é bonita e eu queria que funcionasse. Mas <b>o pixel só é especial enquanto é raro</b>. Ele já está no logo, nos rótulos, nos numerais e dentro das telas: se subir também para toda manchete, vira o fundo e para de significar. <b>O lugar do pixel é onde o jogo está</b>, e a manchete é a revista falando, não o jogo.</p>
+
+</div>
+</body>
+</html>

@@ -96,8 +96,26 @@ A stack (`HTML5 → PHP → JS`, sem framework, sem build) **sai reforçada**. N
 - **A tinta é calibrada no pior papel.** Novo token de tinta **tem** que passar AA sobre `--papel-fim`.
 - **Raio zero no papel.** Componente de papel com canto arredondado contradiz o material.
 - **O neon só existe dentro de `.aceso`.** Ciano solto sobre papel é invisível (1.48:1) e está proibido.
-- **Pixel nunca em parágrafo.**
+- **Pixel nunca em parágrafo.** E isto não é regra a decorar: é consequência do material. Tinta em papel quer legibilidade; o pixel vive no título e dentro dos buracos de tela.
+- **Zero terceiro por padrão.** Nenhuma fonte de CDN externo (Google Fonts transfere o IP do visitante, e **há criança no público**). Fonte **self-hosted** ou nativa do sistema, sempre.
 - **CDN é cache:** o poll ao vivo não pode ser cacheado.
+
+### ⚠️ REGRA DE PRODUÇÃO: todo filtro SVG com `width`/`height` explícitos
+
+**Não é uma curiosidade do mock: é o CSS de produção.** O `feTurbulence` da fibra do papel vai estar no site real.
+
+```css
+/* ERRADO: some no Firefox, funciona no Chrome. */
+background-image:url("data:image/svg+xml,%3Csvg xmlns='...'%3E%3Cfilter id='f'%3E...");
+
+/* CERTO: dimensão explícita no <svg> E no <rect>, mais background-size. */
+background-image:url("data:image/svg+xml,%3Csvg xmlns='...' width='180' height='180'%3E...");
+background-size:180px 180px;
+```
+
+O Blink infere a dimensão de um SVG de background pelo tamanho do elemento; **o Gecko não, e descarta a imagem inteira**. O líder usa Firefox. Sem isso, **a fibra do papel some e a revista vira uma div bege**, silenciosamente, só num dos motores.
+
+**Quem implementar (`frontend-engineer`): esta regra vale para qualquer filtro SVG que entrar no site.** Sem ela o bug volta em produção e ninguém vai lembrar por quê.
 
 ---
 
