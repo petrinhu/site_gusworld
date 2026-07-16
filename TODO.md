@@ -261,4 +261,5 @@ Descoberta nova entra aqui primeiro, sem onda e sem prioridade, e só sai depois
 
 | ID | Descoberta | Origem | Data |
 |---|---|---|---|
+| `HISTORICO-DO-SITE` | O site documenta a SI MESMO (build-in-public do próprio site): cada estado do domínio é uma edição perecível. **Edição #0 capturada** (placeholder da Hostinger, `resources/historico_do_site/`). Vira seção 'making-of do site' na Glyfesse; e é rotina: capturar antes de todo deploy que substitui | Líder, 2026-07-16 | 2026-07-16 |
 | — | — | — | — |
