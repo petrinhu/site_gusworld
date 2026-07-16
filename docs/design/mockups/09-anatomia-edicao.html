@@ -21,7 +21,17 @@
 *{box-sizing:border-box}
 html{background:#22222a}
 body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
-.bancada{max-width:820px; margin:0 auto; padding:26px 20px}
+.bancada{width:min(94vw,1300px); margin:0 auto; padding:26px 20px}
+/* texto corrido nunca estica: medida legivel mesmo na pagina larga */
+.corpo .bloco{max-width:70ch}
+.fala-sh .linha{max-width:72ch}
+/* ★ as secoes fixas "fun" (5-12) enchem a largura em COLUNAS (magazine),
+   em vez de uma coluna estreita com espaco vazio. Cada caixa nao se parte. */
+.grade-fixas{columns:340px; column-gap:38px; margin-top:8px}
+.grade-fixas > *{break-inside:avoid; -webkit-column-break-inside:avoid}
+.grade-fixas .secao{margin-top:0; padding-top:20px}
+.grade-fixas .vazio, .grade-fixas .bloco{margin-bottom:14px}
+@media (max-width:560px){ .grade-fixas{columns:1} }
 .intro h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.14em;
    color:#9fb0c4; margin:0 0 6px; text-transform:uppercase}
 .intro .sub{margin:0; font-size:15px; color:#c8cdd6; line-height:1.55}
@@ -93,7 +103,7 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
   background:repeating-linear-gradient(0deg, rgb(0 0 0 / .22) 0 1px, #0000 1px 3px)}
 .crt-mini .l{margin:0; white-space:pre-wrap}
 .crt-mini .cur{display:inline-block; width:.55em; height:1.05em; vertical-align:-.16em;
-  animation:cur 1.05s steps(1) infinite}
+  animation:cur 1.15s steps(1) infinite}   /* mais lento e deliberado */
 @keyframes cur{50%{opacity:0}}
 @media (prefers-reduced-motion:reduce){ .crt-mini .cur{animation:none} }
 
@@ -242,6 +252,9 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
         <p>Em 15 de maio de 2026 nao havia jogo. Havia ebooks, um sistema de RAG para consultar a lore, e as primeiras Eras sendo desenhadas. As faccoes. O Sylvarin, a lingua. O marco desta edicao nao e visual: e a fundacao que todo o resto ficou de pe em cima.</p>
       </div>
 
+      <!-- ══ 5 a 12: as secoes fixas "fun" enchem a largura em colunas ══ -->
+      <div class="grade-fixas">
+
       <!-- ══════ 5 · A NOTA ══════ -->
       <div class="secao"><span class="n">05</span><span class="nome">A Nota do jogo inacabado</span><span class="grupo">SECAO FIXA</span></div>
       <div class="bloco">
@@ -333,6 +346,8 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
         </div>
       </div>
 
+      </div><!-- /grade-fixas (fim das secoes 5-12) -->
+
       <!-- ══════ 13 · POSTER CENTRAL ══════ -->
       <div class="secao"><span class="n">13</span><span class="nome">Poster central</span><span class="grupo">ENCARTE</span></div>
       <div class="encarte">
@@ -422,10 +437,11 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
   </div><!-- /edicao -->
 
   <script>
-  /* O terminal VERDE da Galeria de Bugs: cursor pisca ~1s, digita
-     > "No bugs today" char por char, pula linha e fica >_ piscando.
-     JS minimo (como o glitch do em-breve). Respeita reduced-motion:
-     mostra o estado final estatico, sem digitar. */
+  /* O terminal VERDE da Galeria de Bugs. ★ Dispara QUANDO ENTRA NA VIEWPORT
+     (IntersectionObserver), nao no load: senao ao rolar ate ele a animacao
+     ja acabou. Uma vez so. Ritmo que da pra SENTIR: cursor pisca sozinho
+     ~1.2s -> digita > "No bugs today" char por char (~60ms) -> pausa ->
+     segue >_ piscando. reduced-motion: estado final estatico, sem digitar. */
   (function(){
     var out = document.getElementById("term-bugs-out");
     if(!out) return;
@@ -438,15 +454,26 @@ body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
       out.appendChild(document.createTextNode("> "));
       out.appendChild(cur());
     }
-    if(reduz){ fim(); return; }
-    out.appendChild(cur());                 /* pisca ~1s antes de digitar */
-    var i = 0;
-    setTimeout(function digita(){
-      out.textContent = txt.slice(0, i);
-      i++;
-      if(i <= txt.length){ setTimeout(digita, 55); }
-      else { fim(); }
-    }, 1000);
+    function rodar(){
+      if(reduz){ fim(); return; }
+      out.textContent = "";
+      out.appendChild(cur());               /* comeco: so o cursor, ~1.2s */
+      var i = 0;
+      setTimeout(function digita(){
+        out.textContent = txt.slice(0, i);  /* meio: construindo char a char */
+        i++;
+        if(i <= txt.length){ setTimeout(digita, 60); }
+        else { setTimeout(fim, 350); }      /* pausa, depois >_ piscando */
+      }, 1200);
+    }
+    if(!("IntersectionObserver" in window)){ rodar(); return; }
+    var visto = false;
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(e){
+        if(e.isIntersecting && !visto){ visto = true; io.disconnect(); rodar(); }
+      });
+    }, { threshold:.55 });
+    io.observe(out.closest(".crt-mini") || out);
   })();
   </script>
 

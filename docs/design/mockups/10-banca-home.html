@@ -16,11 +16,11 @@
 *{box-sizing:border-box}
 html{background:#20202a}
 body{margin:0; padding:0 0 70px; color:var(--tinta-preta); font-family:var(--font-corpo)}
-.aviso{max-width:1080px; margin:0 auto; padding:22px 20px 0; color:#8e97a4; font-size:13px; line-height:1.6}
+.aviso{width:min(95vw,1500px); margin:0 auto; padding:22px 20px 0; color:#8e97a4; font-size:13px; line-height:1.6}
 .aviso b{color:#c8cdd6}
 
-/* ═══════════ A HOME (uma folha de papel larga) ═══════════ */
-.home{max-width:1080px; margin:16px auto 0; position:relative; background:var(--papel);
+/* ═══════════ A HOME (a revista enche a largura da tela) ═══════════ */
+.home{width:min(95vw,1500px); margin:16px auto 0; position:relative; background:var(--papel);
   overflow:hidden; box-shadow:0 20px 60px #0007}
 .home::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
@@ -99,7 +99,7 @@ body{margin:0; padding:0 0 70px; color:var(--tinta-preta); font-family:var(--fon
 .ed .selo-jogo::before{content:""; width:8px; height:8px; background:var(--gw-ciano);
   box-shadow:0 0 7px var(--gw-ciano)}
 
-.pe{max-width:1080px; margin:14px auto 0; padding:0 26px; font-family:var(--font-display);
+.pe{width:min(95vw,1500px); margin:14px auto 0; padding:0 26px; font-family:var(--font-display);
   font-size:10px; letter-spacing:.06em; color:#6b7480; text-align:center}
 </style>
 </head>
