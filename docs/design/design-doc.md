@@ -98,6 +98,38 @@ Custom property é substituída **onde é declarada**. Com `--papel` no `:root`,
 
 ---
 
+## 4b. A primeira dobra: a abertura e o mobile (decididos com o líder, 2026-07-16)
+
+O coração do site, decidido vendo e jogando, não no abstrato. Prova renderizada e jogável em [`mockups/05-primeira-dobra.html`](mockups/05-primeira-dobra.html) (desktop) e [`mockups/06-mobile.html`](mockups/06-mobile.html) (o celular). Os dois avançam `QUADRADINHO` e fecham `MOBILE-RISCO` no lado de design.
+
+### A abertura: o quadradinho É a capa (brinquedo primeiro)
+
+**Escolhido: a opção A.** A pessoa cai no site e a primeira coisa é o quadradinho jogável, no centro; a revista emoldura, com um masthead fino. O quadradinho abre como um **retângulo ciano de contorno** numa sala vazia, as setas já o movem (sem graça de propósito por ~5s), e então ele **vira o Gus**, com 4 direções e diagonal. **A pessoa sente a evolução na mão, não lê sobre ela.**
+
+**Por quê, e o número não pode ser esquecido:** é a régua do projeto ao pé da letra, *brinquedo primeiro, memória depois*. A criança de 2026 chega de celular, por link, e **mexe em 2 segundos** antes de precisar entender que aquilo é uma revista; o adulto ainda reconhece a banca na moldura. As recusadas: a **capa de banca** (opção B) é a mais bonita, mas a criança nunca segurou uma revista e sai em 4s sem descobrir que dava para mexer; o **boot CRT** (opção C) adia o papel, a decisão de identidade recém-tomada, e vira "mais um site retrô de tela escura" na primeira dobra. O CRT continua perfeito para o boot da Edição #0 e para o dark mode, **não** para a capa.
+
+### O mobile: auto-anda, toque para assumir
+
+**Escolhido: a opção 3.** No celular não há teclado, e é ali que a criança chega. O quadrado **anda sozinho** quando a pessoa abre a página; ao **tocar**, ela assume o controle e ganha um d-pad na tela.
+
+**Por quê:** é a única das quatro saídas que preserva o roteiro do conceito (*sem graça de propósito, então evolui*) **sem exigir teclado**. A criança vê o **brinquedo vivo no primeiro segundo**, antes mesmo de tocar, e a evolução continua "sentida na mão" no público que mais importa. Custo aceito: dois momentos (ver, depois assumir), um passo a mais, que pede deixar claro que dá para assumir. As recusadas: **d-pad sempre visível** (cheira a emulador e rouba área do quadradinho); **toque-e-arraste** (vira empurrar em vez de pilotar, o dedo tapa o quadrado, e a diagonal fica trivial, perdendo o "antes 4 vetores, agora 8"); **desktop-only** (o risco central do projeto, entrega o brinquedo a quem menos precisa dele, já que a criança chega de celular, vê a capa parada e sai).
+
+### Como a capa A4 degrada para 390px (parte da decisão, não detalhe)
+
+A metáfora de revista é A4, retrato, duas colunas, e **não cabe em 390px**. No celular a capa vira **coluna única**: o masthead afina, a sala (o quadradinho) **cresce e fica quase quadrada** para ganhar área de dedo, e as chamadas descem para uma tira que continua ao rolar. **Ainda é a revista, no formato do celular**, não uma versão amputada dela.
+
+### A garantia de acessibilidade (nos dois tamanhos, desde o mock)
+
+`prefers-reduced-motion` num elemento que **é** movimento não pode virar site quebrado. Quem desliga movimento vê o Gus **parado no destino** (já virado), e uma **legenda escrita** sob a tela ("maio: um quadrado. depois: o Gus.") conta a história por texto. **O jogo nunca é o único caminho para a informação**, com movimento ou sem. No mobile isso vale igual: sem movimento não há auto-anda, o quadrado já entra virado e o d-pad já aparece.
+
+### O que estes dois mocks provaram, e o que falta
+
+**Provado e jogável:** o quadradinho no desktop (setas do teclado, mock 05) e no celular (Pointer Events, mock 06, testável com o mouse numa janela estreita e no toque de um celular de verdade). Um só código de controle serve para os dois, dentro das três exceções de JS que a stack já previa.
+
+**Falta, e é a próxima rodada (sob nova pergunta, o WIP do líder é 1):** a **linha do tempo jogável** (maio quadrado → junho um lado → julho diagonal → agosto cockpit, cada marco esticando a linha sozinho), o **PRESS START** (com a key art `catedral_mae.png`), e a **capa da edição** com as chamadas.
+
+---
+
 ## 5. O que a identidade restringe e confirma na stack
 
 A stack (`HTML5 → PHP → JS`, sem framework, sem build) **sai reforçada**. Nada aqui pede JavaScript.
