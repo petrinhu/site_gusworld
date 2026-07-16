@@ -102,11 +102,15 @@ body{
   position:relative;
   font-family:var(--corpo);
 }
-/* fibra do papel: feTurbulence inline, custo zero de rede */
+/* fibra do papel: feTurbulence inline, custo zero de rede.
+   width/height e o rect SAO obrigatorios em px: o Gecko nao infere a
+   dimensao de um SVG de background como o Blink faz, e sem isso a
+   textura simplesmente nao aparece no Firefox. stitchTiles pra emendar. */
 .papel::before{
   content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.42'/%3E%3C/svg%3E");
-  mix-blend-mode:multiply; opacity:.28;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+  mix-blend-mode:multiply; opacity:.16;
 }
 /* o amarelado das bordas: a idade da edição vive AQUI */
 .papel::after{
