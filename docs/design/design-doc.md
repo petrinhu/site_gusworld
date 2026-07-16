@@ -130,6 +130,30 @@ A metáfora de revista é A4, retrato, duas colunas, e **não cabe em 390px**. N
 
 ---
 
+## 4c. A linha do tempo, o PRESS START e a anatomia da edição (2026-07-16)
+
+Continuação da primeira dobra e início do template da edição. Detalhe canônico na memória `anatomia-da-edicao` e `a-cadencia-editorial`; aqui fica o resumo com ponteiro para os mockups.
+
+### A linha do tempo jogável (`LINHA-TEMPO`) — decidido: A, o scrubber
+
+Mock: [`mockups/07-linha-tempo.html`](mockups/07-linha-tempo.html). Arrasta o tempo, o jogo evolui: a foto de um marco dissolve na do seguinte, com os frames reais das gravações do líder (a estética foto-de-21h, o terminal ao fundo). Escolhida a forma A (scrubber) contra a tira de filme e as abas, porque é a única que faz a evolução ser sentida na mão, o mesmo princípio do quadradinho.
+
+**A correção de cronologia que isso trouxe:** o quadradinho não é o começo. A gênese (ebooks, RAG, lore) é a Edição #1, de 15 de maio de 2026; a era visual (o quadrado azul, GusEngine em C++) começa em 22 de junho. O scrubber cobre só a era visual, com datas reais; a gênese e o 3D abandonado são edições textuais, entram na banca mas ficam fora do scrubber.
+
+**A decisão de fundo (data-driven):** a linha do tempo e a banca leem do mesmo array `$edicoes`, com campos `tipo` (textual/visual), `estado` (publicada/rascunho) e `data`. O scrubber filtra visual e publicada; a banca filtra publicada. O líder publica uma edição trocando uma palavra, e a linha e a banca crescem juntas. Nunca mostra rascunho (não spoila o drip). Quantas nascem publicadas no lançamento é config do líder, ainda pendente.
+
+### O PRESS START (`PRESS-START`) — comportamento pendente
+
+Mock: [`mockups/08-press-start.html`](mockups/08-press-start.html). A key art pintada da Catedral-Mãe (otimizada para 120 KB) como pôster central aceso, com PRESS START piscando; o ciano da catedral casa com a paleta do jogo. Apertar (clique/Enter/Espaço) é interativo. **O comportamento (A não-começa-e-aponta-pro-quadradinho, recomendado; B leva ao quadradinho; C liga o boot) ainda é decisão do líder.**
+
+### A anatomia da edição (`ANATOMIA-DA-EDICAO`) — modelo revista cheia, leitura A
+
+Mock: [`mockups/09-anatomia-edicao.html`](mockups/09-anatomia-edicao.html). Template das 18 seções fixas em toda edição (modelo revista cheia), na ordem clássica BR (leve na frente, expert no fim). O índice e a capa saem do `$edicoes` datado, e o índice fecha com os 3 links fixos (repo GusWorld, GlintFX, TODO.md vivo do jogo). **Leitura decidida: A, rolagem única com o índice ancorando** (web-native, resolve o mobile, e o vazio-com-graça aparece no fluxo).
+
+**A regra que sustenta a revista cheia no gargalo do líder:** seção fixa sem material naquele número não vira produção, mostra um vazio-com-graça honesto na voz do Gus (mesmo DNA do detonado em branco). A copy de cada vazio é decidida sempre com o líder, uma por vez; no mock ela está marcada como copy de exemplo. A acentuação pt-br do texto de papel (o texto de tela fica ASCII) é uma passada do `ux-writer`.
+
+---
+
 ## 5. O que a identidade restringe e confirma na stack
 
 A stack (`HTML5 → PHP → JS`, sem framework, sem build) **sai reforçada**. Nada aqui pede JavaScript.
