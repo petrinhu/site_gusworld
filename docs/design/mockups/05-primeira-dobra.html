@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse: a primeira dobra (como o quadradinho abre)</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   MOCK 05 - A PRIMEIRA DOBRA. A pergunta: o que a pessoa vê PRIMEIRO?
+   O quadradinho é jogável DE VERDADE (setas do teclado, JS mínimo).
+   Três enquadramentos do mesmo quadradinho. Tudo vem de ../tokens.css.
+   ───────────────────────────────────────────────────────────── */
+*{box-sizing:border-box}
+html{background:#22222a}
+body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
+.bancada{max-width:1400px; margin:0 auto; padding:26px 20px}
+h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.14em;
+   color:#9fb0c4; margin:0 0 6px; text-transform:uppercase}
+.sub{margin:0; font-size:15px; color:#c8cdd6; max-width:82ch; line-height:1.55}
+.sub b{color:#fff}
+.nota{margin:12px 0 0; font-size:13px; color:#8e97a4; max-width:82ch; line-height:1.6}
+.nota b{color:#c8cdd6} .nota code{font-family:var(--font-display); font-size:11px; background:#ffffff10; padding:1px 4px}
+h2{font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:.12em;
+   color:#7e8b9c; text-transform:uppercase; margin:36px 0 4px; padding-bottom:6px;
+   border-bottom:1px solid #3a4150}
+.dica{font-family:var(--font-display); font-size:11px; color:#7d8794; margin:6px 0 14px}
+.dica b{color:#9fb0c4}
+
+/* ═══════════ O QUADRADINHO JOGÁVEL (o coração) ═══════════
+   estado 1: um retângulo ciano numa sala. NÃO tem arte. essa é a graça.
+   estado 2 (aos 5s ou após andar): VIRA o Gus, e olha pra onde anda.        */
+.sala{
+  position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;
+  background:var(--gw-navy); border:3px solid #b9c6d6;
+  touch-action:none;
+}
+.sala .parede{position:absolute; background:#b9c6d6}
+.heroi{
+  position:absolute; left:0; top:0; width:22px; height:22px;
+  transform:translate(var(--x,120px), var(--y,180px));
+  transition:transform .09s linear;
+  /* estado 1: contorno ciano, sem preenchimento. um retângulo. */
+  border:3px solid var(--gw-ciano); background:#0d152080;
+  box-shadow:0 0 10px #4dd9e8aa;
+  image-rendering:pixelated;
+}
+/* estado 2: virou o Gus. o sprite entra por cima; a borda some. */
+.heroi.virou{
+  width:34px; height:56px; border:0; background:#0000; box-shadow:none;
+  background-image:var(--sprite, url("sprites/gus-south.png"));
+  background-size:contain; background-repeat:no-repeat; background-position:bottom center;
+  filter:drop-shadow(0 0 5px #4dd9e855);
+}
+.selo-fase{
+  position:absolute; left:10px; top:9px; z-index:3;
+  font-family:var(--font-display); font-size:10px; letter-spacing:.08em;
+  color:var(--gw-ciano); text-shadow:0 0 6px #4dd9e8aa; pointer-events:none;
+}
+.selo-fase .t2{display:none}
+.sala.evoluiu .selo-fase .t1{display:none}
+.sala.evoluiu .selo-fase .t2{display:inline}
+.ajuda-teclas{
+  position:absolute; right:10px; bottom:9px; z-index:3; pointer-events:none;
+  font-family:var(--font-display); font-size:9.5px; color:#6b8199; text-align:right; line-height:1.5;
+}
+
+/* ═══════════ ENQUADRAMENTO A: o quadradinho É a capa ═══════════ */
+.tela-2col{display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start}
+@media (max-width:900px){ .tela-2col{grid-template-columns:1fr} }
+
+.dobra-A{
+  position:relative; background:var(--papel); padding:16px; overflow:hidden;
+  box-shadow:var(--sombra-folha);
+}
+.dobra-A::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.14;
+}
+.dobra-A > *{position:relative; z-index:1}
+.masthead{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:3px solid var(--tinta-preta); padding-bottom:6px; margin-bottom:11px}
+.masthead .logo{font-family:var(--font-display); font-weight:700; font-size:30px; line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4b0, 1.5px 1.5px 0 #c2129eb0}
+.masthead .ed{font-family:var(--font-display); font-size:9px; text-align:right; line-height:1.35; color:var(--tinta-2)}
+.masthead .ed b{color:var(--tinta-preta); font-size:14px}
+.chamada-topo{font-family:var(--font-display); font-size:9px; letter-spacing:.05em;
+  background:var(--tinta-preta); color:var(--papel); display:inline-block; padding:3px 6px; margin-bottom:9px}
+.moldura-tela{
+  border-radius:var(--raio-tela); padding:5px; background:#05090f;
+  box-shadow:inset 0 0 0 1px #2c3d52, 0 2px 0 #00000018;
+}
+.cap-jogo{font-family:var(--font-display); font-size:9px; color:var(--tinta-2);
+  margin:8px 0 0; padding-left:7px; border-left:2px solid var(--tinta-ciano)}
+.cap-jogo b{color:var(--tinta-ciano)}
+
+/* ═══════════ ENQUADRAMENTO B: capa de banca, quadradinho é 1 elemento ═══ */
+.dobra-B{position:relative; background:var(--papel); padding:15px; overflow:hidden; box-shadow:var(--sombra-folha)}
+.dobra-B::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.14}
+.dobra-B > *{position:relative; z-index:1}
+.manchete-capa{font-family:var(--font-manchete); font-weight:700; font-size:40px;
+  line-height:.92; letter-spacing:-.02em; text-transform:uppercase; color:var(--tinta-preta); margin:6px 0 8px}
+.lide-capa{font-family:var(--font-corpo); font-weight:600; font-size:14px; line-height:1.4;
+  color:var(--tinta-preta); margin:0 0 12px; max-width:44ch}
+.mini-tela{width:44%; float:right; margin:0 0 8px 12px}
+.selos{display:flex; gap:6px; flex-wrap:wrap; margin-top:10px}
+.selo-cham{font-family:var(--font-display); font-size:8.5px; border:1.5px solid var(--tinta-preta);
+  padding:3px 6px; color:var(--tinta-preta)}
+
+/* ═══════════ ENQUADRAMENTO C: o CRT continua (conecta com o em-breve) ═══ */
+.dobra-C{position:relative; background:var(--gw-navy); padding:0; overflow:hidden;
+  border-radius:var(--raio-tela); box-shadow:0 2px 0 #0006}
+.crt-topo{display:flex; justify-content:space-between; align-items:center; padding:9px 13px;
+  border-bottom:1px solid #2c3d52; font-family:var(--font-display); font-size:10px; color:#6b8199}
+.crt-topo .logo-c{font-weight:700; font-size:19px; color:var(--gw-ciano); letter-spacing:.02em;
+  text-shadow:0 0 12px #4dd9e880}
+.crt-corpo{padding:14px}
+.crt-scan{position:relative}
+.crt-scan::after{content:""; position:absolute; inset:0; z-index:6; pointer-events:none;
+  background:repeating-linear-gradient(0deg, #0000004d 0 1px, #0000 1px 3px)}
+.press{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.14em;
+  color:var(--gw-ciano-alto); text-align:center; margin:11px 0 3px;
+  text-shadow:0 0 12px #6ff0ffcc, 2px 0 0 #ff004840, -2px 0 0 #00eeff40;
+  animation:pisca 1.1s steps(1) infinite}
+@keyframes pisca{50%{opacity:.25}}
+.crt-cap{font-family:var(--font-display); font-size:9px; color:#6b8199; text-align:center; margin:0}
+
+/* ── mobile: o painel de 390px ── */
+.fone-wrap{display:flex; gap:26px; align-items:flex-start; flex-wrap:wrap}
+.fone{width:390px; max-width:100%; border:8px solid #05070b; border-radius:26px;
+  overflow:hidden; box-shadow:0 20px 50px #0009; background:var(--papel)}
+.fone .top{height:22px; background:#05070b}
+.fone-nota{flex:1; min-width:280px}
+.dpad-demo{position:absolute; left:50%; bottom:12px; translate:-50% 0; z-index:4;
+  display:grid; grid-template-columns:repeat(3,30px); grid-template-rows:repeat(3,30px); gap:3px; opacity:.92}
+.dpad-demo b{background:#0d1520cc; border:1.5px solid var(--gw-ciano); color:var(--gw-ciano);
+  display:grid; place-items:center; font-family:var(--font-display); font-size:14px; border-radius:4px}
+.dpad-demo .u{grid-area:1/2} .dpad-demo .l{grid-area:2/1} .dpad-demo .r{grid-area:2/3} .dpad-demo .d{grid-area:3/2}
+
+.veredito{font-size:12.5px; line-height:1.5; margin:10px 0 0; padding:9px 11px;
+  border-left:2px solid #4a5464; color:#98a2af; background:#00000030}
+.veredito b{color:#d8dee6}
+</style>
+</head>
+<body>
+<div class="bancada">
+
+  <h1>Glyfesse · mock 05 · a primeira dobra</h1>
+  <p class="sub"><b>O quadradinho abaixo é jogável de verdade.</b> Clique nele e use as <b>setas do teclado</b>. Ele é um retângulo sem graça por 5 segundos; depois <b>vira o Gus</b> e passa a olhar para onde anda. Não tem arte: é um retângulo que anda, e essa é a graça.</p>
+  <p class="nota">A pergunta desta rodada é <b>uma só: o que a pessoa vê primeiro?</b> Abaixo, o mesmo quadradinho em três enquadramentos. O <code>MOBILE</code> (o quadradinho quer teclado, e o celular não tem) está mostrado, mas <b>é a próxima pergunta, não esta</b>.</p>
+
+  <!-- ══════════ A ══════════ -->
+  <h2>Enquadramento A · o quadradinho É a capa (brinquedo primeiro)</h2>
+  <p class="dica"><b>Você cai no site e a primeira coisa é mexer.</b> A revista emoldura, discreta. É o "brinquedo primeiro, memória depois".</p>
+  <div class="tela-2col">
+    <div class="dobra-A">
+      <div class="masthead">
+        <div class="logo">GLYFESSE</div>
+        <div class="ed">ANO 1 · Nº <b>3</b><br>gusworld.site</div>
+      </div>
+      <span class="chamada-topo">VOCÊ · O QUADRADINHO · AGORA</span>
+      <div class="moldura-tela">
+        <div class="sala crt-scan" id="jogo" tabindex="0" aria-label="Quadradinho jogável: usa as setas do teclado">
+          <div class="parede" style="left:34%;top:16%;width:31%;height:9%"></div>
+          <div class="parede" style="left:44%;top:25%;width:9%;height:22%"></div>
+          <div class="parede" style="left:33%;top:63%;width:24%;height:8%"></div>
+          <div class="parede" style="left:66%;top:39%;width:14%;height:23%"></div>
+          <div class="selo-fase"><span class="t1">MAIO · placeholder</span><span class="t2">AGOSTO · o Gus</span></div>
+          <div class="ajuda-teclas">← ↑ ↓ →<br>mova</div>
+          <div class="heroi" id="heroi"></div>
+        </div>
+      </div>
+      <p class="cap-jogo"><b>FIG. 1</b> · A sala de maio, jogável. O quadradinho já era ciano.</p>
+    </div>
+    <div>
+      <p class="veredito"><b>A favor:</b> é a régua do projeto cumprida ao pé da letra. A criança chega e <b>mexe em 2 segundos</b>, antes de precisar entender que aquilo é uma revista. O adulto vê a moldura e reconhece a banca. <b>Conversa com o que está no ar</b> (a tela acesa), mas agora ela responde à mão.<br><br><b>Contra:</b> a manchete e a capa ficam menores. Quem quer ler primeiro (o adulto nostálgico) tem que rolar um pouco.</p>
+      <p class="nota" style="margin-top:14px"><b>O que o quadradinho faz, na ordem que o conceito pede:</b><br>1. abre como <b>retângulo ciano</b> numa sala vazia;<br>2. as setas já o movem (é sem graça, de propósito);<br>3. aos <b>5 segundos</b> ele <b>vira o Gus</b>, com sombra e 4 direções;<br>4. a pessoa <b>sentiu</b> a evolução, não leu sobre ela.</p>
+    </div>
+  </div>
+
+  <!-- ══════════ B ══════════ -->
+  <h2>Enquadramento B · a capa de banca (memória primeiro)</h2>
+  <p class="dica"><b>Você vê uma capa de revista de verdade.</b> Manchete grande, e o quadradinho é um elemento dela (a "tela" impressa na capa).</p>
+  <div class="tela-2col">
+    <div class="dobra-B">
+      <div class="masthead">
+        <div class="logo">GLYFESSE</div>
+        <div class="ed">ANO 1 · Nº <b>3</b></div>
+      </div>
+      <div class="mini-tela">
+        <div class="moldura-tela">
+          <div class="sala" aria-hidden="true">
+            <div class="parede" style="left:34%;top:16%;width:31%;height:9%"></div>
+            <div class="parede" style="left:44%;top:25%;width:9%;height:22%"></div>
+            <div class="parede" style="left:33%;top:63%;width:24%;height:8%"></div>
+            <div class="heroi virou" style="--x:60px;--y:70px; --sprite:url('sprites/gus-south.png')"></div>
+          </div>
+        </div>
+      </div>
+      <h3 class="manchete-capa">Agora eu ando na diagonal</h3>
+      <p class="lide-capa">Antes eu tinha 4 vetores. Agora tenho 8. É o dobro. O menu levou 3 semanas. Não vou fazer a divisão.</p>
+      <div class="selos">
+        <span class="selo-cham">NOTA: GRÁFICOS 6,0</span>
+        <span class="selo-cham">DETONADO: PÁGINAS EM BRANCO</span>
+        <span class="selo-cham">O ERRO DA SEMANA</span>
+      </div>
+    </div>
+    <div>
+      <p class="veredito"><b>A favor:</b> é a capa mais bonita, e a mais fiel à ideia de banca. O adulto nostálgico <b>reconhece na hora</b> o objeto. A hierarquia editorial (manchete, lide, chamadas) fica clara.<br><br><b>Contra, e é o risco nomeado no conceito:</b> <b>a criança de 2026 nunca segurou uma revista.</b> Capa é gesto morto para ela. Se o brinquedo está pequeno e à direita, <b>ela sai em 4 segundos</b> sem descobrir que dava para mexer. Aqui o quadradinho está estático de propósito: você teria que ir procurá-lo.</p>
+    </div>
+  </div>
+
+  <!-- ══════════ C ══════════ -->
+  <h2>Enquadramento C · o CRT continua (conecta com o que está no ar)</h2>
+  <p class="dica"><b>O boot da Edição #0 "liga".</b> A mesma tela do <code>em-breve</code>, mas agora ela é jogável. O papel da revista vem quando você rola.</p>
+  <div class="tela-2col">
+    <div class="dobra-C">
+      <div class="crt-topo"><span class="logo-c">GUSWORLD</span><span>V0.0.0.3 · BUILD 3</span></div>
+      <div class="crt-corpo">
+        <div class="moldura-tela" style="background:#05090f">
+          <div class="sala crt-scan" aria-hidden="true">
+            <div class="parede" style="left:34%;top:16%;width:31%;height:9%"></div>
+            <div class="parede" style="left:44%;top:25%;width:9%;height:22%"></div>
+            <div class="parede" style="left:33%;top:63%;width:24%;height:8%"></div>
+            <div class="parede" style="left:66%;top:39%;width:14%;height:23%"></div>
+            <div class="heroi virou" style="--x:150px;--y:120px; --sprite:url('sprites/gus-east.png')"></div>
+          </div>
+        </div>
+        <p class="press">▶ PRESS START</p>
+        <p class="crt-cap">role para abrir a revista</p>
+      </div>
+    </div>
+    <div>
+      <p class="veredito"><b>A favor:</b> <b>continuidade total</b> com o que já está no ar. Quem viu o "em breve" volta e sente que o monitor ganhou vida. O PRESS START é a memória de fliperama que fisga os dois públicos.<br><br><b>Contra (e eu discordo desta como abertura):</b> ela <b>adia o papel</b>, que é a decisão de identidade que você acabou de tomar. Vira "mais um site retrô de tela escura" na primeira dobra, e a revista, que é o diferencial, fica escondida embaixo. O CRT é perfeito <b>para o boot</b> (a Edição #0) e <b>para o dark mode</b>, não para a capa.</p>
+    </div>
+  </div>
+
+  <!-- ══════════ MOBILE ══════════ -->
+  <h2>⚠️ O mobile (a PRÓXIMA pergunta, não esta)</h2>
+  <p class="dica">O quadradinho joga com as setas. <b>No celular não há setas.</b> Aqui vai o enquadramento A em 390px, com <b>uma</b> das saídas possíveis (d-pad na tela) só para você ver o problema. <b>Não é para decidir agora.</b></p>
+  <div class="fone-wrap">
+    <div class="fone">
+      <div class="top"></div>
+      <div class="dobra-A" style="box-shadow:none">
+        <div class="masthead">
+          <div class="logo" style="font-size:24px">GLYFESSE</div>
+          <div class="ed">Nº <b>3</b></div>
+        </div>
+        <span class="chamada-topo">VOCÊ · O QUADRADINHO</span>
+        <div class="moldura-tela">
+          <div class="sala crt-scan" style="position:relative" aria-hidden="true">
+            <div class="parede" style="left:34%;top:16%;width:31%;height:9%"></div>
+            <div class="parede" style="left:44%;top:25%;width:9%;height:22%"></div>
+            <div class="parede" style="left:33%;top:63%;width:24%;height:8%"></div>
+            <div class="heroi virou" style="--x:70px;--y:60px; --sprite:url('sprites/gus-south.png')"></div>
+            <div class="dpad-demo"><b class="u">↑</b><b class="l">←</b><b class="r">→</b><b class="d">↓</b></div>
+          </div>
+        </div>
+        <p class="cap-jogo"><b>FIG. 1</b> · e no celular, como se move?</p>
+      </div>
+    </div>
+    <div class="fone-nota">
+      <p class="nota" style="margin-top:0"><b>As saídas que vou renderizar na próxima rodada</b> (nenhuma decidida):</p>
+      <p class="nota"><b>1. D-pad na tela</b> (mostrado): setas de toque no rodapé da sala. Honesto, mas ocupa espaço e cheira a emulador.<br><b>2. Toque-e-arraste:</b> a criança arrasta o próprio quadrado com o dedo. Direto, mas muda a sensação (empurrar vs pilotar).<br><b>3. Auto-anima + "toque para assumir":</b> no celular o quadrado anda sozinho até você tocar; aí vira controle. Preserva o "sem graça, então evolui" sem exigir teclado.<br><b>4. Desktop-only:</b> o mobile recebe outra abertura (a capa), e o quadradinho jogável é um presente de quem está no computador.</p>
+      <p class="nota"><b>E o <code>prefers-reduced-motion</code>:</b> quem desliga movimento vê o Gus <b>parado no fim da evolução</b> (já virado, no destino), com uma legenda que conta o que aconteceu. O jogo não é o único caminho para a informação.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* O QUADRADINHO JOGÁVEL. JS mínimo, e a stack permite (é uma das 3 coisas
+   que justificam JS: o quadradinho, o álbum, o som). Sem isto ele não é
+   jogável, e "sentir a evolução na mão" é o ponto inteiro.
+   Respeita prefers-reduced-motion: se ligado, já entra virado, no destino. */
+(function(){
+  var sala  = document.getElementById("jogo");
+  var heroi = document.getElementById("heroi");
+  if(!sala || !heroi) return;
+
+  var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var x = 120, y = 180, passo = 16, virou = false;
+  var dirSprite = {
+    ArrowLeft:  "sprites/gus-west.png",
+    ArrowRight: "sprites/gus-east.png",
+    ArrowUp:    "sprites/gus-north.png",
+    ArrowDown:  "sprites/gus-south.png"
+  };
+
+  function limites(){
+    var r = sala.getBoundingClientRect();
+    var w = virou ? 34 : 22, h = virou ? 56 : 22;
+    x = Math.max(6, Math.min(r.width  - w - 6, x));
+    y = Math.max(6, Math.min(r.height - h - 6, y));
+  }
+  function pinta(){
+    limites();
+    heroi.style.setProperty("--x", x + "px");
+    heroi.style.setProperty("--y", y + "px");
+  }
+  function evoluir(){
+    if(virou) return;
+    virou = true;
+    heroi.classList.add("virou");
+    sala.classList.add("evoluiu");
+    pinta();
+  }
+
+  if(reduz){
+    /* sem movimento: já entra no fim da história, olhando pra frente */
+    evoluir();
+    heroi.style.setProperty("--sprite", "url('sprites/gus-south.png')");
+  }else{
+    /* aos 5 segundos, o retângulo vira o Gus mesmo se ninguém tocar */
+    setTimeout(evoluir, 5000);
+  }
+
+  sala.addEventListener("keydown", function(e){
+    if(!dirSprite[e.key]) return;
+    e.preventDefault();
+    if(e.key === "ArrowLeft")  x -= passo;
+    if(e.key === "ArrowRight") x += passo;
+    if(e.key === "ArrowUp")    y -= passo;
+    if(e.key === "ArrowDown")  y += passo;
+    if(virou) heroi.style.setProperty("--sprite", "url('" + dirSprite[e.key] + "')");
+    pinta();
+  });
+
+  pinta();
+})();
+</script>
+</body>
+</html>
