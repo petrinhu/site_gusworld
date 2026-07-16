@@ -1,0 +1,76 @@
+# .bigtech-porte — Marcador de porte e ativação (Cósimo / Chief of Staff)
+# site_gusworld — o site do jogo — classificado 2026-07-15, gravado após o 1º brainstorm
+# NAO CONFUNDIR com Projects/gusworld/.bigtech-porte (o jogo). Projeto distinto.
+
+PORTE_INTRINSECO: Early-stage — site greenfield, solo
+PORTE_EFETIVO: Early-stage-alto — trivial em TECNICA, complexo em SUPERFICIE
+               (publico + bilingue + 3 regimes de licenca + dupla audiencia)
+VARIANTE: Pipeline-Lean-Plus (Lean base; Fase 10 [GTM] na regua Padrao)
+
+# CONFIRMACAO 2026-07-15: as 2 decisoes que o Cosimo esperava chegaram, e ambas
+# BAIXAM a regua em vez de subir:
+#   - Livros NAO vendidos no 1.0 -> sem checkout, sem PCI, sem base de compradores.
+#   - ZERO-DADO -> sem conta, sem login, sem dado pessoal (tudo em localStorage,
+#     credito por apelido). Morreram LGPD art. 14, verificacao parental e gov.br.
+# Efeito: a Fase 8 (Sec/Compliance) DESCE de Padrao para Lean. So a Fase 10 (GTM)
+# permanece na regua Padrao, porque o site EXISTE para marketing.
+
+TESE_DO_SITE: teasing publicitario centrado em UX. Metafora = revista de videogame
+  dos anos 90 + o Diario do Gus. O material E o proprio progresso do jogo
+  (build-in-public). Conceito completo em docs/design/conceito.md
+
+FASE_PIPELINE_ATUAL: 3 (design) — as Fases 0-2 fecharam no brainstorm de 2026-07-15
+CERIMONIA: Kanban solo (TODO.md como board canonico). Sem Scrum, sem RACI.
+SKILL_ENGENHARIA: /proj_software (NAO /proj_jogo — e site, nao game-dev)
+
+C_LEVELS_ATIVOS: Celso(CEO) Capitolino(CPO) Caetano(CTO) Camilo(CMO)
+                 Narciso(CISO) Claudio(CLO) Cosimo(CoS)
+C_LEVELS_DORMENTES: Cosmo(COO) Confucio(CFO) Candido(CDO) Cicero(CRO) Caio(CAIO)
+C_LEVELS_PROFUNDIDADE_AGORA: Capitolino Camilo  (Fase 3 = design e messaging)
+C_LEVELS_MODO_ROADMAP: Caetano Narciso Claudio
+DONO_DE_FATO: Camilo (CMO) — o site existe para marketing.
+
+# GARGALO REAL (medido pela lente de esforco, 2026-07-15):
+#   ~61 pontos SERIAIS na fila do lider; agents absorvem 0% deles.
+#   "Os agents nao aliviam o gargalo, eles o alimentam" — cada entrega vira revisao.
+WIP_LIDER: 1 (sem excecao)   WIP_AGENT: 3   REVISAO_PENDENTE: 2 (o limite que morde)
+AGING_WIP: item com owner=lider parado 14 dias vira CONGELADO e volta ao backlog
+           com o motivo escrito. O board mentir sobre o que esta vivo e pior que
+           o site atrasar.
+
+# CONTEXTO QUE MUDA A NATUREZA DO PROJETO (docs/design/conceito.md secoes 1 e 4):
+#   O lider e medico (6:15 as 20h) e ja escreve uma engine C++ sozinho. O jogo e
+#   um presente pro filho. "Se apenas meu filho jogar, ja fico feliz."
+#   => O sucesso JA ESTA GARANTIDO. Ambicao total, expectativa zero.
+#   => NENHUMA METRICA e criterio de sucesso. Nem visita, nem voto, nem wishlist.
+#   => O inicio longo e DELIBERADO. Tudo passa por ele. Sem pressa e o modo padrao.
+
+RESTRICAO_DURA_1: NUNCA fazer pagina fora da identidade visual (a definir com o
+  lider via /design). Identidade e pre-req de toda pagina.
+RESTRICAO_DURA_2: Projects/gusworld/ e READ-ONLY. Proibido modificar.
+RESTRICAO_DURA_3: o lider NAO e artista digital. Nao propor GIF, desenho, animacao
+  manual nem edicao de video. A animacao vem de codigo (CSS steps() nos walk cycles
+  que ja existem), de sprites prontos e de captura do jogo rodando.
+RESTRICAO_DURA_4: nome real de menor nunca versionado. O filho e "Gus Dragon".
+RESTRICAO_DURA_5: nenhuma decisao de stack/design/escopo sem AskUserQuestion.
+RESTRICAO_HOSTING: Hostinger, plano SEM Node. Requisito e DINAMICO (site parado
+  reprova). A tecnologia NAO foi decidida — "html5/php/mysql" foi EXEMPLO do lider,
+  nao escolha. D-STACK segue aberto.
+
+GATILHO_REROTEAMENTO:
+  (a) D-STACK decidido com backend proprio -> engenharia sobe para Padrao
+  (b) MODERACAO ou MOBILE-RISCO decidindo por UGC/telemetria -> acorda Narciso;
+      exposicao de dado volta a existir
+  (c) venda de livro com checkout proprio -> Padrao; acorda Confucio; abre PCI
+  (d) go-live no dominio -> Narciso full-depth
+  (e) INBOX > ~25 itens sem reorder, ou bloco novo cuja dependencia a thread NAO
+      tenha conduzido em primeira mao -> o gate anti-OE volta a pedir o time
+  (f) WIP do lider > 1 ou revisao pendente > ~5 -> o gargalo mudou de natureza
+
+# Gate anti-OE do --reorder de 2026-07-15: THREAD DIRETA (Cosimo cortou as 4 lentes
+# e o Cosmo). Motivo: o delta nao invalidou as lentes, SIMPLIFICOU. Item fechado nao
+# precisa de lente; e as 17 descobertas sairam de um brainstorm que a thread conduziu
+# em primeira mao. Orquestrar seria pagar 2 round-trips pra reconstruir por leitura o
+# contexto que a thread ja tem — e alimentar o gargalo do lider.
+
+# Re-avaliar a cada marco.
