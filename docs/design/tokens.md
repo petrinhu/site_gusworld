@@ -129,17 +129,55 @@ O `#cb52e0` foi o primeiro candidato, mas a **NOTA vive sobre `--gw-navy-alto`**
 
 ## 7. Tipografia
 
-| Token | Valor | Status |
-|---|---|---|
-| `--font-display` | `PixelOperatorMono` | **Canônico.** CC0, e **é a fonte da UI do jogo** |
-| `--font-revista` | `Noto Serif Condensed` | ⏳ **PROVISÓRIO** |
-| `--font-corpo` | `Noto Serif` | ⏳ **PROVISÓRIO** |
+**Decidida pelo líder em 2026-07-16: o par A**, escolhido vendo os três pares **renderizados lado a lado em 420px** ([`mockups/02-tipografia.html`](mockups/02-tipografia.html)).
 
-⚠️ **Pixel NUNCA em parágrafo.** Só display, título, rótulo, numeral.
-⚠️ **O par de corpo é a próxima pergunta ao líder.** Nada de tipografia está fechado além do display.
+| Token | Fonte | Licença | Peso | Papel |
+|---|---|---|---|---|
+| `--font-display` | **PixelOperatorMono** | **CC0** | 9,1 KB | logo, rótulo, numeral, UI. **É a fonte da UI do jogo** |
+| `--font-manchete` | **Archivo Narrow** 700 | **OFL** | 11,5 KB | manchete, chamada |
+| `--font-corpo` | **Vollkorn** 400/600/itálico | **OFL** | 76,7 KB | corpo, lide, texto longo |
+| | | | **96,7 KB** | **total, tudo self-hosted** |
+
+Valores aprovados (os que o mock usa): `--manchete-peso: 700` · `--manchete-lh: .95` · `--manchete-ls: -.018em` (a condensada pede tracking negativo) · `--corpo-peso: 400` · `--linha-fina-peso: 600`.
+
+⚠️ **O Vollkorn baixado não tem peso 700.** O lide usa **600**. Pedir 700 causa síntese de negrito pelo browser, que fica ruim.
 
 Escala: `--t-xs` 11px · `--t-sm` 12.5 · `--t-base` 15 · `--t-md` 18 · `--t-lg` 24 · `--t-xl` 33 · `--t-display` 48.
 `--lh-corpo: 1.55` é piso, nunca abaixo.
+
+### ★ Por que a condensada, e o número é o motivo (não simplifique isto)
+
+A manchete de revista **tem que caber em 390px**, porque **a criança chega de celular, por link**. No mock 02, com os três pares no mesmo espaço e o mesmo texto:
+
+- **Par A (Archivo Narrow):** diz **"AGORA EU ANDO NA DIAGONAL" inteira, em uma linha, com o maior corpo dos três.**
+- **Par B (Newsreader):** cabe, mas a manchete não dá soco: vira suplemento cultural.
+- **Par C (PixelOperatorMono):** é **a menor das três e ainda assim aperta mais**. Fonte pixelada tem **largura fixa e não condensa**.
+
+**Isto não é gosto: é o único par que resolve o problema.** Se alguém "simplificar" para uma família só para economizar 11 KB, **a manchete quebra no celular** e o motivo terá sido esquecido. Está escrito aqui para não ser desfeito por engano.
+
+### ★ O pixel só é especial enquanto é raro (regra de identidade)
+
+> **O lugar do pixel é onde o JOGO está:** logo, rótulo, numeral, e dentro das telas acesas.
+> **A manchete é a REVISTA falando, não o jogo.**
+
+O par C era o mais tentador: a manchete passaria a ser literalmente a fonte do jogo, vazando do Tavus-Drive, a custo zero. **Perdeu por dois motivos, e os dois valem para sempre:**
+
+1. **Pixel não escala.** Largura fixa, não condensa, quebra feio em manchete longa no celular.
+2. **Se o pixel estiver em todo título, vira o fundo e para de significar.** Ele já está no logo, nos rótulos, nos numerais e dentro de cada tela acesa. **Raridade é o que o faz funcionar.**
+
+**Isto é uma regra de identidade, não uma nota de rodapé.** Quando alguém perguntar "por que não usa a fonte do jogo no título?", a resposta está aqui.
+
+### Licenças (o `AUD-LICENCA` vai cobrar)
+
+| Fonte | Licença | Arquivo no repo | CDN em runtime |
+|---|---|---|---|
+| PixelOperatorMono | **CC0 1.0 Universal** | `fonts/PixelOperator-LICENSE-CC0.txt` | **não** |
+| Archivo Narrow | **SIL OFL 1.1** | `fonts/LICENSE-archivo-narrow.txt` | **não** |
+| Vollkorn | **SIL OFL 1.1** | `fonts/LICENSE-vollkorn.txt` | **não** |
+
+**Todas self-hosted. Nenhuma requisição sai do domínio.** Google Fonts está proibido: transferiria o IP do visitante, **e há criança no público**. O texto de licença de cada uma está commitado ao lado do arquivo, e a OFL exige que acompanhe a fonte.
+
+O `PixelOperatorMono` foi **convertido de TTF para woff2** (74% menor: 33,7 KB para 9,1 KB). O original segue intacto no repo do jogo, que é read-only.
 
 ---
 

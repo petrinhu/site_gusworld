@@ -6,7 +6,7 @@ Zero dependência externa: fonte local (CC0), texturas em SVG inline. **O que es
 | # | Arquivo | O que decide | Status |
 |---|---|---|---|
 | 00 | [`00-vibe-o-material.html`](00-vibe-o-material.html) | **A vibe: de que MATERIAL o site é feito?** Três direções (papel / tela do Tavus-Drive / papel fotografado), a mesma dobra e o mesmo texto do Gus nas três. | ✅ **decidido: papel + foto como tratamento** |
-| 02 | [`02-tipografia.html`](02-tipografia.html) | **A tipografia.** Três pares display + corpo, a mesma dobra, com a seção de programação embaixo (o texto mais longo do site) para testar leitura de verdade. Todas OFL e self-hosted. | ⏳ **aguardando decisão do líder** |
+| 02 | [`02-tipografia.html`](02-tipografia.html) | **A tipografia.** Três pares display + corpo, a mesma dobra, com a seção de programação embaixo (o texto mais longo do site). | ✅ **decidido: par A** (Archivo Narrow + Vollkorn). ⚠️ **histórico:** as fontes dos pares B e C saíram do repo, então os painéis B e C agora caem no fallback serif. Para revê-lo como foi decidido: `git checkout 6ac1841 -- docs/design/mockups/fonts/` |
 | 01 | [`01-tokens.html`](01-tokens.html) | **Os tokens.** Os dois materiais lado a lado, a banca envelhecendo por `--idade`, a prova de leitura no papel encardido, e todas as amostras com a razão medida. Não redefine nenhuma cor: consome [`../tokens.css`](../tokens.css), o CSS de produção. | ✅ aprovado no Gecko |
 
 ## Como abrir
@@ -56,11 +56,11 @@ Nenhuma fonte vem de CDN externo: Google Fonts transferiria o IP do visitante, *
 
 | Fonte | Licença | Papel | Peso |
 |---|---|---|---|
-| `PixelOperatorMono` | **CC0** | display, rótulo, numeral. **Canônica: é a fonte da UI do jogo** | 34 KB (ttf) |
-| `Vollkorn` | OFL | candidata a corpo (par A) | 78 KB |
-| `Archivo Narrow` | OFL | candidata a manchete (par A) | 11,7 KB |
-| `Newsreader` | OFL | candidata a par único (par B) | 46 KB |
-| `Alegreya` | OFL | candidata a corpo (par C) | 47 KB |
-| `Anton`, `Oswald` | OFL | alternativas de manchete, não usadas nos pares | 31 KB |
+| `PixelOperatorMono` | **CC0** | display, rótulo, numeral. **É a fonte da UI do jogo** | **9,1 KB** (woff2) |
+| `Archivo Narrow` 700 | **OFL** | manchete | 11,5 KB |
+| `Vollkorn` 400/600/it | **OFL** | corpo | 76,7 KB |
+| | | **TOTAL** | **96,7 KB** |
 
-**Depois da decisão, as não escolhidas saem do repo.** Só a família vencedora vai a produção.
+✅ **Feito:** as candidatas não escolhidas (Newsreader, Alegreya, Anton, Oswald) foram removidas. O `PixelOperatorMono` foi convertido de TTF para **woff2: 74% menor** (33,7 KB para 9,1 KB); o original segue intacto no repo do jogo, que é read-only.
+
+**Nenhuma fonte vem de CDN em runtime.** O texto da licença de cada uma está commitado ao lado do arquivo (a OFL exige que acompanhe a fonte).

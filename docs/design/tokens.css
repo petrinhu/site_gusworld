@@ -26,6 +26,51 @@
    Sem framework, sem build: este arquivo é o CSS de produção.
    ═══════════════════════════════════════════════════════════════════════ */
 
+/* ═══════════════════════════════════════════════════════════════════════
+   AS FONTES. Todas SELF-HOSTED, zero terceiro em runtime.
+   Nada de Google Fonts: transferiria o IP do visitante, e HÁ CRIANÇA no
+   público. O caminho é relativo a este arquivo; ajustar ao servir.
+
+   PixelOperatorMono   CC0    9,1 KB   a fonte da UI do jogo (do repo dele)
+   Archivo Narrow 700  OFL   11,5 KB   manchete
+   Vollkorn 400/600/it OFL   76,7 KB   corpo
+                                       ───────
+                                       96,7 KB total, e nenhuma requisição
+                                       sai para fora do domínio.
+   ═══════════════════════════════════════════════════════════════════════ */
+@font-face{
+  font-family:"PixelOperatorMono";
+  src:url("mockups/fonts/PixelOperatorMono.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:block;
+}
+@font-face{
+  font-family:"PixelOperatorMono";
+  src:url("mockups/fonts/PixelOperatorMono-Bold.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:block;
+}
+@font-face{
+  font-family:"Archivo Narrow";
+  src:url("mockups/fonts/archivo-narrow-latin-700-normal.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Vollkorn";
+  src:url("mockups/fonts/vollkorn-latin-400-normal.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Vollkorn";
+  src:url("mockups/fonts/vollkorn-latin-600-normal.woff2") format("woff2");
+  font-weight:600; font-style:normal; font-display:swap;
+}
+/* o itálico não é enfeite: é onde as reticências do Gus vivem
+   ("Eu... gostava dele"), o momento em que ele quase sente algo. */
+@font-face{
+  font-family:"Vollkorn";
+  src:url("mockups/fonts/vollkorn-latin-400-italic.woff2") format("woff2");
+  font-weight:400; font-style:italic; font-display:swap;
+}
+
 :root{
 
   /* ─────────────────────────────────────────────────────────────────
@@ -83,14 +128,33 @@
   --tela-borda-ui:  #486486;   /* 3.01 sobre navy: controle, foco, borda funcional */
 
   /* ─────────────────────────────────────────────────────────────────
-     5. TIPOGRAFIA
-        display: PixelOperatorMono, CC0, É a fonte da UI do jogo. Canônica.
-        ⚠️ PIXEL NUNCA EM PARÁGRAFO. Só display, título, rótulo, numeral.
-        ⚠️ --font-corpo é PROVISÓRIO: é a próxima pergunta ao líder.
+     5. TIPOGRAFIA. DECIDIDA pelo líder em 2026-07-16 (o par A), vendo os
+        três pares renderizados lado a lado em 420px.
+
+        --font-display   PixelOperatorMono   CC0   É a fonte da UI do JOGO
+        --font-manchete  Archivo Narrow 700  OFL   a condensada de banca
+        --font-corpo     Vollkorn 400/600/it OFL   a serifa que aguenta ADR
+
+        ★ POR QUE A CONDENSADA, e o número é o motivo: a manchete de revista
+        tem que caber em 390px, porque a criança chega de celular. No mock 02
+        o par A foi o único que disse "AGORA EU ANDO NA DIAGONAL" INTEIRA,
+        em UMA linha, e com o MAIOR corpo dos três. Não é gosto: é o único
+        que resolve o problema. Se alguém "simplificar" isto para uma
+        família só, a manchete quebra no celular. Não simplifique.
+
+        ★ O PIXEL SÓ É ESPECIAL ENQUANTO É RARO.
+        O lugar dele é onde o JOGO está: logo, rótulo, numeral, e dentro das
+        telas acesas. A manchete é a REVISTA falando, não o jogo. Se o pixel
+        subir para todo título, vira o fundo e para de significar. Foi por
+        isso que o par C (manchete em pixel), o mais tentador dos três,
+        perdeu. Ele também não condensa: largura fixa quebra feio no celular.
+
+        ⚠️ PIXEL NUNCA EM PARÁGRAFO. Não é regra a decorar: é consequência
+        do material. Tinta em papel quer legibilidade.
      ───────────────────────────────────────────────────────────────── */
-  --font-display: "PixelOperatorMono", ui-monospace, monospace;
-  --font-revista: "Noto Serif Condensed", "Noto Serif", Georgia, serif;  /* PROVISÓRIO */
-  --font-corpo:   "Noto Serif", "Bitstream Charter", Georgia, serif;     /* PROVISÓRIO */
+  --font-display:  "PixelOperatorMono", ui-monospace, monospace;
+  --font-manchete: "Archivo Narrow", "Noto Sans Condensed", sans-serif;
+  --font-corpo:    "Vollkorn", "Bitstream Charter", Georgia, serif;
 
   --t-xs:    11px;
   --t-sm:    12.5px;
@@ -99,6 +163,13 @@
   --t-lg:    24px;
   --t-xl:    33px;
   --t-display: 48px;
+
+  /* os valores que o mock 02 usou, que são os aprovados */
+  --manchete-peso:   700;
+  --manchete-lh:     .95;
+  --manchete-ls:     -.018em;   /* a condensada pede tracking negativo */
+  --corpo-peso:      400;
+  --linha-fina-peso: 600;       /* Vollkorn 600 no lide. ATENÇÃO: não há 700 baixado */
 
   --lh-apertado: 1.05;   /* manchete */
   --lh-corpo:    1.55;   /* parágrafo. nunca abaixo disto */

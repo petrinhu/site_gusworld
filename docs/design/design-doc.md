@@ -49,6 +49,20 @@ O board registrava "opção 1+2+3" (pixel art + key art pintada + retratos cel-s
 
 ---
 
+## 3b. A decisão: a tipografia
+
+**Escolhido: o par A. Archivo Narrow (manchete) + Vollkorn (corpo) + PixelOperatorMono (display).** Decidido vendo os três **renderizados lado a lado em 420px**, não no abstrato. Detalhe e licenças em [`tokens.md` §7](tokens.md).
+
+**O argumento que decidiu, e o número precisa sobreviver:** a manchete tem que caber em **390px**, porque a criança chega de celular. O par A foi o único que disse a frase inteira em uma linha e com o maior corpo. **Se isto for "simplificado" para uma família só, a manchete quebra no celular.**
+
+### ★ O pixel só é especial enquanto é raro
+
+> **O lugar do pixel é onde o jogo está:** logo, rótulo, numeral, e dentro das telas acesas. **A manchete é a revista falando, não o jogo.**
+
+O par C (manchete na fonte do próprio jogo, custo zero, vazando do Tavus-Drive) era o mais tentador e perdeu por dois motivos permanentes: **pixel não condensa** (largura fixa, quebra no celular), e **se estiver em todo título vira o fundo e para de significar**. É **regra de identidade**, não preferência: quando alguém perguntar "por que não usar a fonte do jogo no título?", a resposta é esta.
+
+---
+
 ## 4. Os achados que mudaram o desenho
 
 Todos vieram de **calcular em vez de estimar**, e nenhum estava no radar.
@@ -90,7 +104,7 @@ A stack (`HTML5 → PHP → JS`, sem framework, sem build) **sai reforçada**. N
 | **O sprite andando** | `steps()` nos walk cycles que já existem | **zero** |
 | **Os dois materiais** | `[data-material]` + `prefers-color-scheme` | **zero** |
 
-**Confirma:** zero dependência de rede (fonte CC0 local, texturas inline). Bom para a CSP, para o "zero terceiro por padrão", e para o peso (o site não pode pesar mais que o jogo).
+**Confirma:** zero dependência de rede. Bom para a CSP, para o "zero terceiro por padrão" e para o peso. **Custo real da identidade: 96,7 KB de fonte, e nada mais.** As texturas (fibra, halftone, dobra, brilho) são geradas em CSS/SVG inline e custam **0 byte de download**. Referência: o Animal Well inteiro tem 33 MB.
 
 **Restringe:**
 - **A tinta é calibrada no pior papel.** Novo token de tinta **tem** que passar AA sobre `--papel-fim`.
@@ -123,11 +137,12 @@ O Blink infere a dimensão de um SVG de background pelo tamanho do elemento; **o
 
 **Nesta rodada (fechado):** a vibe, os dois materiais, a paleta tokenizada com a conta, a escala de idade, e a prova renderizada nos dois motores.
 
+**Nesta rodada também fechou:** a **tipografia** (par A), com as fontes self-hosted, convertidas para woff2 e as licenças commitadas ao lado.
+
 **Aberto, na ordem:**
-1. ⏳ **O par tipográfico de corpo** (a próxima one-way door). O display já é canônico (`PixelOperatorMono`, CC0, a fonte do jogo).
-2. ⏳ **A primeira dobra** com o quadradinho jogável (`QUADRADINHO`, `MOBILE-RISCO`).
-3. ⏳ **Mobile**: a revista é A4 e não cabe em 390px. Os mocks já nascem em ~400px, mas a decisão de degradação é do líder, com protótipo nos dois tamanhos.
-4. ⏳ Scanline desligável; a mancha de café que não cai sobre texto.
+1. ⏳ **A primeira dobra** com o quadradinho jogável (`QUADRADINHO`). O coração do site. Já decidido e não se re-litiga: **não tem arte** (é um retângulo que anda, e **essa é a graça**), **ele já era ciano**, e a evolução se **sente na mão**, não se lê.
+2. ⏳ **Mobile** (`MOBILE-RISCO`, o maior risco prático). A revista é A4 e não cabe em 390px. Os mocks já nascem em ~400px, o que ajuda, mas **falta o problema duro: o quadradinho precisa de teclado, e no celular não há teclado.** O líder quer decidir isto junto.
+3. ⏳ Scanline desligável; a mancha de café que não cai sobre texto.
 
 ---
 
