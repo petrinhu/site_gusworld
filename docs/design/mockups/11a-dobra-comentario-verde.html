@@ -91,8 +91,8 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 .cap-fig{font-family:var(--font-display); font-size:14px; color:var(--tinta-2);
   margin:10px 0 0; padding-left:9px; border-left:2px solid var(--tinta-ciano); line-height:1.5}
 .cap-fig b{color:var(--tinta-ciano)}
-.instru{font-size:15px; color:var(--tinta-2); margin:12px 0 0; line-height:1.5}
-.instru b{color:var(--tinta-preta)}
+/* a instrucao agora e uma fala do Gus (ver HTML); so o espacamento */
+.instru-fala{margin-top:12px}
 
 /* ── a voz: prompt de shell + pensamento // ── */
 .kicker{font-family:var(--font-display); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
@@ -164,7 +164,14 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
         </div>
       </div>
       <figcaption class="cap-fig"><b>FIG. 1</b> · o quadradinho da build 3, jogável. o quadrado já era ciano.</figcaption>
-      <p class="instru">clique na tela e use <b>WASD</b>. ele bate nas paredes, e depois de mexer um pouco <b>vira o Gus</b>.</p>
+      <!-- ★ A instrucao NAO e mais label de UI: e uma FALA do Gus, 1a pessoa
+           ("se transforma em MIM", nao "vira o Gus"). O "ele" = o quadrado
+           que ele ja foi. Registro de voz: prefixo assinatura + fala suave,
+           sem ponto final, "..." presentes. Legivel (instrucao): zero typo. -->
+      <p class="fala instru-fala">
+        <span class="prompt">gus@glyfesse&gt;</span>
+        <span class="dito"> clique na tela e use <b>WASD</b>... ele bate nas paredes, e depois de mexer um pouco... se transforma em mim</span>
+      </p>
     </figure>
 
     <!-- a voz -->
