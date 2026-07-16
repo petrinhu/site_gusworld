@@ -152,14 +152,14 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
 <div class="bancada">
 
   <h1>Glyfesse · mock 07 · a linha do tempo jogavel</h1>
-  <p class="sub"><b>Arrasta o tempo, o jogo evolui.</b> De maio (um retangulo numa sala) ate agosto (a arena), com os <b>frames reais das gravacoes do lider</b>: a foto do monitor, o terminal atras, a coisa nascendo. Arraste o puxador ciano abaixo (ou use as setas do teclado, ou clique num mes).</p>
-  <p class="nota">A pergunta desta rodada tem <b>duas metades que sao a mesma decisao</b>: (1) a estetica da linha, tres formas mostradas mais abaixo; e (2) <b>como o lider adiciona um mes novo sem sessao de dev</b>. A segunda e a que decide se a linha vive: se publicar uma edicao exigir editar layout, a linha morre na terceira semana. A proposta esta no bloco escuro: uma fonte de dados so, para a linha E a banca. <b>Clique em "o lider publica a proxima edicao" e veja a linha esticar sozinha.</b></p>
+  <p class="sub"><b>Arrasta o tempo, o jogo evolui.</b> O scrubber cobre a <b>era visual</b>: do quadrado azul (22 de junho de 2026) ate a arena, com os <b>frames reais das gravacoes do lider</b>, a foto do monitor, o terminal atras, a coisa nascendo. Cada ponto carrega sua <b>data real</b>. Arraste o puxador ciano abaixo (ou use as setas do teclado, ou clique num ponto).</p>
+  <p class="nota"><b>A estetica ja foi decidida com o lider: a forma A, o scrubber</b> (a de cima). Este mock agora corrige a cronologia: o quadrado azul nasceu em <b>22 de junho</b>, nao em maio (maio foi a lore). A genese (a Edicao #1, 15 de maio) e a arquitetura/3D (a #2) sao <b>materia textual da revista</b>, entram na banca, mas <b>ficam fora do scrubber</b> (a era visual comeca na #3). A decisao de fundo que sustenta tudo isso esta no bloco escuro: <b>uma fonte de dados so, com data e estado, para a linha E a banca</b>. Clique em "publicar a proxima edicao" e veja a linha esticar sozinha.</p>
 
   <!-- ══════════ A LINHA, NA FORMA RECOMENDADA (scrubber) ══════════ -->
   <div class="folha-lt">
     <span class="materia-selo">MATÉRIA · COMO O GUS NASCEU</span>
     <h2 class="materia-titulo">De um quadrado ate aqui</h2>
-    <p class="materia-lide">A linha acende um ponto por edicao publicada. Hoje sao dois. O Gus conta cada um, com a precisao de quem mede tudo e a pausa de quem nao sabe bem o que sentir.</p>
+    <p class="materia-lide">A linha acende um ponto por edicao visual publicada, cada uma datada. O Gus conta cada uma, com a precisao de quem mede tudo e a pausa de quem nao sabe bem o que sentir.</p>
 
     <div class="aceso palco-lt" id="palco" aria-live="polite">
       <span class="legenda-mes" id="legenda">MAIO 2026</span>
@@ -180,53 +180,55 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
     <p class="dica-arraste">arraste · ou ← → no teclado · ou clique num mes</p>
 
     <div class="demo-add">
-      <button class="btn-add" id="btnAdd">＋ o lider publica a proxima edicao</button>
-      <p class="demo-txt" id="demoTxt"><b>Isto e o ponto:</b> a linha nasce com 2 pontos (as edicoes ja publicadas). O lider publica a proxima trocando uma palavra no array, e a linha <b>estica sozinha</b> para caber. Ninguem edita o layout, e o rascunho nunca aparece antes da hora. Clique para ver.</p>
+      <button class="btn-add" id="btnAdd">＋ publicar a proxima edicao</button>
+      <p class="demo-txt" id="demoTxt"><b>Isto e o ponto:</b> o lider publica a proxima edicao visual trocando uma palavra no array (rascunho para publicada), e a linha <b>estica sozinha</b> para caber o ponto novo, com a data dele. Ninguem edita o layout, e o rascunho nunca aparece antes da hora. Clique para ver.</p>
     </div>
   </div>
 
   <!-- ══════════ A DECISAO DE FUNDO: o formato de dados ══════════ -->
   <div class="dado">
-    <h2>Uma fonte so alimenta a linha <b>E</b> a banca <b>sem sessao de dev</b></h2>
-    <p class="txt">A linha do tempo e a lista de edicoes (a banca) sao a <b>mesma fonte de dados</b>: um array de edicoes que a pagina percorre com <code style="font-family:var(--font-display);font-size:11px">foreach</code>. Cada edicao carrega um estado <code style="font-family:var(--font-display);font-size:11px">publicada</code> ou <code style="font-family:var(--font-display);font-size:11px">rascunho</code>. <b>A linha mostra so as publicadas</b>, entao ela <b>nasce com 2 pontos</b> (as edicoes #1 e #2) e <b>estica a cada edicao que o lider publica</b>. O rascunho fica invisivel: nunca spoila o que ainda vai pingar. O lider so troca <code style="font-family:var(--font-display);font-size:11px">'rascunho'</code> por <code style="font-family:var(--font-display);font-size:11px">'publicada'</code>, e a linha e a banca crescem juntas.</p>
+    <h2>Uma fonte so: a linha do tempo <b>E</b> a banca, <b>com data e estado</b></h2>
+    <p class="txt">A linha do tempo e a banca leem do <b>mesmo array de edicoes</b>. Cada edicao carrega <code style="font-family:var(--font-display);font-size:11px">tipo</code> (textual ou visual), <code style="font-family:var(--font-display);font-size:11px">estado</code> (publicada/rascunho) e a sua <code style="font-family:var(--font-display);font-size:11px">data</code> real. <b>O scrubber e a era VISUAL</b>: mostra so <code style="font-family:var(--font-display);font-size:11px">tipo==='visual'</code> publicada. A <b>genese (#1) e a arquitetura (#2) sao textuais</b>: viram materia e entram na banca, mas nao sao pontos arrastaveis. O rascunho fica invisivel, nunca spoila o drip. O lider publica trocando uma palavra, e a linha e a banca crescem juntas. <b>Quantas nascem publicadas no lancamento e config do lider, nao estrutura.</b></p>
     <pre><span class="c">&lt;?php // edicoes.php  -  a fonte UNICA: linha do tempo + banca.</span>
 <span class="k">$edicoes</span> = [
-  [<span class="s">'num'</span>=&gt;<span class="s">1</span>, <span class="s">'estado'</span>=&gt;<span class="s">'publicada'</span>, <span class="s">'mes'</span>=&gt;<span class="s">'MAIO 2026'</span>,  <span class="s">'frame'</span>=&gt;<span class="s">'quadradinho.png'</span>,
-   <span class="s">'titulo'</span>=&gt;<span class="s">'Um retangulo numa sala'</span>, <span class="s">'gus'</span>=&gt;<span class="s">'Colisao funcionando. Eu batia na parede...'</span>],
-  [<span class="s">'num'</span>=&gt;<span class="s">2</span>, <span class="s">'estado'</span>=&gt;<span class="s">'publicada'</span>, <span class="s">'mes'</span>=&gt;<span class="s">'JUNHO 2026'</span>, <span class="s">'frame'</span>=&gt;<span class="s">'gus-cidade.png'</span>,
-   <span class="s">'titulo'</span>=&gt;<span class="s">'Ganhei um corpo'</span>, <span class="s">'gus'</span>=&gt;<span class="s">'Um lado so. Sempre olhando pra frente...'</span>],
-<span class="c">  // ── daqui pra baixo, ainda RASCUNHO: existe no array, mas a linha NAO mostra.</span>
-<span class="c">  // O lider publica trocando 'rascunho' por 'publicada'. A linha estica sozinha.</span>
-  [<span class="s">'num'</span>=&gt;<span class="s">3</span>, <span class="s">'estado'</span>=&gt;<span class="s">'rascunho'</span>,  <span class="s">'mes'</span>=&gt;<span class="s">'JULHO 2026'</span>, <span class="s">'frame'</span>=&gt;<span class="s">'8-direcoes.png'</span>,
-   <span class="s">'titulo'</span>=&gt;<span class="s">'Agora eu ando na diagonal'</span>, <span class="s">'gus'</span>=&gt;<span class="s">'Antes 4 vetores. Agora 8...'</span>],
-  [<span class="s">'num'</span>=&gt;<span class="s">4</span>, <span class="s">'estado'</span>=&gt;<span class="s">'rascunho'</span>,  <span class="s">'mes'</span>=&gt;<span class="s">'AGOSTO 2026'</span>,<span class="s">'frame'</span>=&gt;<span class="s">'arena.png'</span>,
-   <span class="s">'titulo'</span>=&gt;<span class="s">'A arena'</span>, <span class="s">'gus'</span>=&gt;<span class="s">'SCAN, ATACAR, COMPILAR, FUGIR...'</span>],
+<span class="c">  // #1 e #2 sao TEXTUAIS: materia e banca, NAO pontos do scrubber.</span>
+  [<span class="s">'num'</span>=&gt;<span class="s">1</span>, <span class="s">'tipo'</span>=&gt;<span class="s">'textual'</span>, <span class="s">'estado'</span>=&gt;<span class="s">'publicada'</span>, <span class="s">'data'</span>=&gt;<span class="s">'15 mai 2026'</span>,
+   <span class="s">'titulo'</span>=&gt;<span class="s">'A genese: ebooks, RAG, a lore'</span>],
+  [<span class="s">'num'</span>=&gt;<span class="s">2</span>, <span class="s">'tipo'</span>=&gt;<span class="s">'textual'</span>, <span class="s">'estado'</span>=&gt;<span class="s">'publicada'</span>, <span class="s">'data'</span>=&gt;<span class="s">'18 mai a 4 jun'</span>,
+   <span class="s">'titulo'</span>=&gt;<span class="s">'A arquitetura, e o 3D que morreu'</span>],
+<span class="c">  // #3+ sao VISUAIS: aqui o scrubber acende. Cada uma com sua DATA real.</span>
+  [<span class="s">'num'</span>=&gt;<span class="s">3</span>, <span class="s">'tipo'</span>=&gt;<span class="s">'visual'</span>,  <span class="s">'estado'</span>=&gt;<span class="s">'publicada'</span>, <span class="s">'data'</span>=&gt;<span class="s">'22 jun 2026'</span>,
+   <span class="s">'frame'</span>=&gt;<span class="s">'quadrado.png'</span>, <span class="s">'titulo'</span>=&gt;<span class="s">'O quadrado azul'</span>],
+  [<span class="s">'num'</span>=&gt;<span class="s">4</span>, <span class="s">'tipo'</span>=&gt;<span class="s">'visual'</span>,  <span class="s">'estado'</span>=&gt;<span class="s">'publicada'</span>, <span class="s">'data'</span>=&gt;<span class="s">'22 jun 2026'</span>,
+   <span class="s">'frame'</span>=&gt;<span class="s">'gus.png'</span>,      <span class="s">'titulo'</span>=&gt;<span class="s">'Ganhei um corpo'</span>],
+  [<span class="s">'num'</span>=&gt;<span class="s">5</span>, <span class="s">'tipo'</span>=&gt;<span class="s">'visual'</span>,  <span class="s">'estado'</span>=&gt;<span class="s">'rascunho'</span>,  <span class="s">'data'</span>=&gt;<span class="s">'24 jun 2026'</span>,
+   <span class="s">'frame'</span>=&gt;<span class="s">'arena.png'</span>,   <span class="s">'titulo'</span>=&gt;<span class="s">'A arena'</span>],
 ];
-<span class="c">// A linha:  foreach ($edicoes as $e) if ($e['estado']==='publicada') { ...ponto... }</span>
-<span class="c">// A banca:  foreach ($edicoes as $e) if ($e['estado']==='publicada') { ...capa... }</span></pre>
+<span class="c">// O scrubber: foreach if ($e['tipo']==='visual' && $e['estado']==='publicada')</span>
+<span class="c">// A banca:    foreach if ($e['estado']==='publicada')   // textual + visual</span></pre>
   </div>
 
   <!-- ══════════ A PERGUNTA: a estetica da linha ══════════ -->
-  <h1 style="margin-top:34px">A estetica da linha (a metade 1 da pergunta)</h1>
-  <p class="nota" style="margin-top:4px">A de cima ja esta na forma <b>A (o scrubber)</b>, minha recomendada, jogavel. Abaixo, as tres formas resumidas para comparar. As tres consomem o <b>mesmo</b> array: a escolha e de sensacao, nao de dados.</p>
+  <h1 style="margin-top:34px">A estetica da linha (decidida: A, o scrubber)</h1>
+  <p class="nota" style="margin-top:4px">O lider escolheu a forma <b>A (o scrubber)</b>, jogavel acima. B e C ficam aqui so como registro do que foi comparado. As tres liam o <b>mesmo</b> array: a escolha foi de sensacao, nao de dados.</p>
 
   <div class="opcoes">
     <div class="op">
       <h3>A · Scrubber <span class="rec">[RECOMENDADA]</span></h3>
       <div class="demo">
-        <span class="mini-a-legenda">JULHO 2026</span>
+        <span class="mini-a-legenda">EDICAO #4 · 22 JUN</span>
         <div class="mini-scrub"><b></b><i></i></div>
       </div>
       <p class="ver"><span class="pro"><b>A favor:</b></span> a evolucao vira algo que voce <b>faz com a mao</b>, igual ao quadradinho. "Arrasta o tempo, o jogo evolui" ao pe da letra: a foto de um mes dissolve na do seguinte enquanto voce arrasta.<br><span class="con"><b>Contra:</b></span> arrastar e menos obvio que clicar, e pede o cuidado de teclado e clique (ja incluidos aqui).</p>
     </div>
     <div class="op">
       <h3>B · Tira de filme</h3>
-      <div class="demo"><div class="mini-strip"><u data-m="MAIO"></u><u data-m="JUNHO"></u><u data-m="JULHO"></u></div></div>
+      <div class="demo"><div class="mini-strip"><u data-m="22 JUN"></u><u data-m="22 JUN"></u><u data-m="24 JUN"></u></div></div>
       <p class="ver"><span class="pro"><b>A favor:</b></span> le como uma <b>materia de revista</b>: cada mes e um quadro com foto, data e a fala do Gus, um ao lado do outro. Rola e ve tudo de uma vez. Marco novo = um quadro a mais no fim.<br><span class="con"><b>Contra:</b></span> nao tem o gesto de "arrastar o tempo": e leitura, nao brinquedo. A evolucao se ve, nao se sente.</p>
     </div>
     <div class="op">
       <h3>C · Estagios em abas</h3>
-      <div class="demo"><div class="mini-abas"><div class="fila"><span>MAI</span><span class="on">JUN</span><span>JUL</span><span>AGO</span></div><em>clique um mes</em></div></div>
+      <div class="demo"><div class="mini-abas"><div class="fila"><span>#3</span><span class="on">#4</span><span>#5</span><span>#6</span></div><em>clique uma edicao</em></div></div>
       <p class="ver"><span class="pro"><b>A favor:</b></span> o mais simples e o mais acessivel: botoes de mes, clica e pula. Teclado de graca, zero ambiguidade.<br><span class="con"><b>Contra:</b></span> e o mais frio dos tres. Sem transicao entre os meses, a linha vira um seletor, nao uma historia. Perde o "a coisa foi virando".</p>
     </div>
   </div>
@@ -243,25 +245,39 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
 (function(){
   var BASE = "../../../resources/frames/";
   /* A fonte UNICA: as edicoes. A linha do tempo E a banca leem daqui.
-     Cada edicao tem um estado. A linha mostra so as 'publicada', entao
-     ela NASCE COM 2 PONTOS e estica a cada edicao que o lider publica.
-     O 'rascunho' existe no array mas nao aparece: nunca spoila o drip. */
+     Campos que decidem o comportamento:
+       tipo:   'textual' (a genese, a arquitetura) ou 'visual' (o jogo aparece)
+       estado: 'publicada' | 'rascunho'
+     ★ O SCRUBBER e a ERA VISUAL: mostra so tipo 'visual' e publicada. A
+       GENESE (#1) e a ARQUITETURA/3D (#2) sao TEXTUAIS: viram materia e
+       entram na banca, mas NAO sao pontos arrastaveis. E cada ponto carrega
+       sua DATA REAL (os commits do jogo: o quadrado nasceu em 22/jun, nao
+       em maio; maio foi a lore).
+     ⚠️ Quantas edicoes nascem publicadas no lancamento e DECISAO DO LIDER,
+       ainda pendente. Aqui, para a demo, as 2 primeiras visuais entram
+       publicadas so para o scrubber ter pontos. Nao e a config final. */
   var edicoes = [
-    { num:1, estado:"publicada", mes:"MAIO 2026",   frame:"primeiro_teste_wasd_e_colisao_placeholder_quadradinho__t6s.png",
-      titulo:"Um retangulo numa sala",
-      gus:"Colisao funcionando. Eu batia na parede e parava. Era o mundo inteiro. Eu... nem sabia que ia virar gente." },
-    { num:2, estado:"publicada", mes:"JUNHO 2026",  frame:"primeira_captura_minha_gus_sprite_cidade_depois_quadradinho_placeholder__t8s.png",
-      titulo:"Ganhei um corpo",
-      gus:"De repente eu tinha cabelo. E um lado so: eu andava sempre olhando pra frente. Um vetor. Ainda era pouco... mas ja era eu." },
-    { num:3, estado:"rascunho",  mes:"JULHO 2026",  frame:"primeiro_teste_animacao_gus_pixelado_varios_sprites__t25s.png",
-      titulo:"Agora eu ando na diagonal",
-      gus:"Antes eu tinha 4 vetores. Agora tenho 8. E o dobro. Eu ando na diagonal. Nao vou fazer a divisao pra provar... e o dobro." },
-    { num:4, estado:"rascunho",  mes:"AGOSTO 2026", frame:"gus_teste_arena__t13s.png",
-      titulo:"A arena",
-      gus:"Menu de batalha: SCAN, ATACAR, COMPILAR, FUGIR. Da pra COMPILAR um inimigo. O que isso faz... voce vai ver. Ou nao." }
+    { num:1, tipo:"textual", estado:"publicada", data:"15 MAI 2026", rotulo:"",
+      titulo:"A genese", frame:null,
+      gus:"No comeco nao havia jogo. Havia ebooks, um RAG, e um mundo sendo escrito. As Eras. As faccoes. O Sylvarin. Eu ainda nao existia... a lore, sim." },
+    { num:2, tipo:"textual", estado:"publicada", data:"18 MAI a 4 JUN 2026", rotulo:"",
+      titulo:"A arquitetura, e o 3D que morreu", frame:null,
+      gus:"Tentaram me fazer em 3D. Godot, C#, 982 mil faces. Nao deu pra um dev solo. O 3D morreu aqui. Eu... quase nasci quatro vezes." },
+    { num:3, tipo:"visual", estado:"publicada", data:"22 JUN 2026", rotulo:"22 JUN",
+      titulo:"O quadrado azul", frame:"primeiro_teste_wasd_e_colisao_placeholder_quadradinho__t6s.png",
+      gus:"O pivo: 3D pra 2D, GusEngine em C++. Eu virei um retangulo azul de contorno. As paredes me paravam. Era o mundo inteiro. Eu... nem sabia que ia virar gente." },
+    { num:4, tipo:"visual", estado:"publicada", data:"22 JUN 2026", rotulo:"22 JUN",
+      titulo:"Ganhei um corpo", frame:"primeira_captura_minha_gus_sprite_cidade_depois_quadradinho_placeholder__t8s.png",
+      gus:"No mesmo dia ganhei cabelo e comecei a andar. Antes eu tinha 4 vetores. Depois 8. Eu ando na diagonal agora. Nao vou fazer a divisao... e o dobro." },
+    { num:5, tipo:"visual", estado:"rascunho", data:"24 JUN 2026", rotulo:"24 JUN",
+      titulo:"A arena", frame:"gus_teste_arena__t13s.png",
+      gus:"Menu de batalha: SCAN, ATACAR, COMPILAR, FUGIR. Da pra COMPILAR um inimigo. O que isso faz... voce vai ver. Ou nao." },
+    { num:6, tipo:"visual", estado:"rascunho", data:"JUL 2026", rotulo:"JUL",
+      titulo:"A batalha ganha corpo", frame:"gus_arena_teste_1__t21s.png",
+      gus:"Julho inteiro: dialogo, menus, o motor de cartas. Vinte mestres jogaveis. Eu... tenho com quem jogar agora." }
   ];
-  function publicadas(){ return edicoes.filter(function(e){ return e.estado==="publicada"; }); }
-  var marcos = publicadas();   /* a linha nasce com as 2 publicadas */
+  function visiveis(){ return edicoes.filter(function(e){ return e.tipo==="visual" && e.estado==="publicada"; }); }
+  var marcos = visiveis();   /* o scrubber e a era visual publicada */
 
   var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
   var palco   = document.getElementById("palco");
@@ -288,7 +304,7 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
     marcas = marcos.map(function(m,i){
       var mk=document.createElement("div"); mk.className="marca";
       mk.style.left = (N()===1?0:(i/(N()-1)*100))+"%";
-      mk.innerHTML = '<span class="rot">'+m.mes.split(" ")[0]+'</span>';
+      mk.innerHTML = '<span class="rot">'+m.rotulo+'</span>';
       mk.addEventListener("click", function(){ irPara(i); });
       trilho.parentNode.insertBefore(mk, puxador); return mk;
     });
@@ -303,9 +319,10 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
       fr.style.opacity=o;
     });
     var near = Math.round(pos), m = marcos[near];
-    elLeg.textContent=m.mes; elTit.textContent=m.titulo; elGus.textContent=m.gus;
+    elLeg.textContent="EDICAO #"+m.num+" · "+m.data;
+    elTit.textContent=m.titulo; elGus.textContent=m.gus;
     puxador.setAttribute("aria-valuenow", near);
-    puxador.setAttribute("aria-valuetext", m.mes+", "+m.titulo);
+    puxador.setAttribute("aria-valuetext", "Edicao "+m.num+", "+m.data+", "+m.titulo);
     var pct = N()===1?0 : pos/(N()-1)*100;
     puxador.style.setProperty("--px", pct+"%");
     feito.style.setProperty("--p", pct+"%");
@@ -345,12 +362,12 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
 
   /* o botao-demo: publica a proxima edicao em rascunho, e a linha estica */
   btnAdd.addEventListener("click", function(){
-    var prox = edicoes.filter(function(e){ return e.estado==="rascunho"; })[0];
+    var prox = edicoes.filter(function(e){ return e.tipo==="visual" && e.estado==="rascunho"; })[0];
     if(!prox) return;
     prox.estado="publicada";
-    marcos = publicadas(); montar(); irPara(N()-1);
-    if(!edicoes.some(function(e){ return e.estado==="rascunho"; })) btnAdd.disabled=true;
-    document.getElementById("demoTxt").innerHTML="<b>Viu?</b> A edicao #"+prox.num+" ("+prox.mes.split(" ")[0]+") foi publicada, a linha ganhou um ponto e as marcas se reposicionaram sozinhas. No site real isso foi <b>trocar 'rascunho' por 'publicada'</b> no array: sem tocar em HTML nem CSS, e a banca ganharia a mesma edicao no mesmo gesto. Clique de novo para a proxima.";
+    marcos = visiveis(); montar(); irPara(N()-1);
+    if(!edicoes.some(function(e){ return e.tipo==="visual" && e.estado==="rascunho"; })) btnAdd.disabled=true;
+    document.getElementById("demoTxt").innerHTML="<b>Viu?</b> A edicao #"+prox.num+" ("+prox.data+") foi publicada, a linha ganhou um ponto e as marcas se reposicionaram sozinhas. No site real isso foi <b>trocar 'rascunho' por 'publicada'</b> no array: sem tocar em HTML nem CSS, e a banca ganharia a mesma edicao no mesmo gesto. Clique de novo para a proxima.";
   });
 
   montar(); render();
