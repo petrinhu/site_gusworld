@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse: a linha do tempo jogavel</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   MOCK 07 - A LINHA DO TEMPO JOGAVEL. Arrasta o tempo, o jogo evolui.
+   Maio (o quadradinho) ate agosto (a arena), com os FRAMES REAIS das
+   gravacoes do lider (resources/frames/): a estetica "foto de 21h", o
+   terminal do Claude Code atras, o fantasma do maker nunca dito.
+
+   ★ A decisao de fundo esta embutida: a linha e DATA-DRIVEN. Um array
+   (aqui em JS; em producao um array PHP percorrido por foreach). O lider
+   adiciona um mes colando UMA linha, e a linha se estica sozinha. O botao
+   "o lider cola um marco" demonstra isso ao vivo.
+   Tudo vem de ../tokens.css. Verificar no Firefox DELE.
+   ───────────────────────────────────────────────────────────── */
+*{box-sizing:border-box}
+html{background:#22222a}
+body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
+.bancada{max-width:1180px; margin:0 auto; padding:26px 20px}
+h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.14em;
+   color:#9fb0c4; margin:0 0 6px; text-transform:uppercase}
+.sub{margin:0; font-size:15px; color:#c8cdd6; max-width:86ch; line-height:1.55}
+.sub b{color:#fff}
+.nota{margin:12px 0 0; font-size:13px; color:#8e97a4; max-width:86ch; line-height:1.6}
+.nota b{color:#c8cdd6} .nota code{font-family:var(--font-display); font-size:11px; background:#ffffff10; padding:1px 4px}
+
+/* ═══════════ A LINHA DO TEMPO, DENTRO DA REVISTA ═══════════ */
+.folha-lt{position:relative; background:var(--papel); padding:22px 22px 26px; overflow:hidden;
+  box-shadow:var(--sombra-folha); margin-top:26px}
+.folha-lt::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.14}
+.folha-lt > *{position:relative; z-index:1}
+.materia-selo{font-family:var(--font-display); font-size:9px; letter-spacing:.16em;
+  color:var(--tinta-ciano); border-left:2px solid var(--tinta-ciano); padding-left:7px}
+.materia-titulo{font-family:var(--font-manchete); font-weight:700; font-size:38px; line-height:.95;
+  letter-spacing:-.018em; text-transform:uppercase; color:var(--tinta-preta); margin:5px 0 3px}
+.materia-lide{font-family:var(--font-corpo); font-weight:600; font-size:14.5px; line-height:1.45;
+  color:var(--tinta-preta); margin:0 0 16px; max-width:62ch}
+
+/* a "tela acesa": o buraco de luz onde o frame do mes vive */
+.aceso.palco-lt{position:relative; border-radius:var(--raio-tela); overflow:hidden;
+  background:#05090f; box-shadow:inset 0 0 0 1px var(--tela-borda), 0 3px 0 #00000018;
+  aspect-ratio:16/9}
+.frame{position:absolute; inset:0; opacity:0; transition:opacity var(--dur-lento) var(--ease)}
+.frame img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.92) brightness(.96)}
+/* o brilho de tubo por cima da foto: costura a foto de arquivo na tela acesa */
+.palco-lt::after{content:""; position:absolute; inset:0; z-index:3; pointer-events:none;
+  background:radial-gradient(130% 120% at 50% 42%, #4dd9e814 0%, #0000 55%, #0000009e 100%)}
+.legenda-mes{position:absolute; left:12px; top:10px; z-index:4;
+  font-family:var(--font-display); font-size:12px; letter-spacing:.1em; color:var(--gw-ciano-alto);
+  text-shadow:0 0 8px #4dd9e8cc; background:#05090fb0; padding:3px 8px; border-radius:2px}
+
+/* a fala do Gus embaixo da tela (na voz dele, tecnicismo + reticencias) */
+.fala{margin:12px 0 0; min-height:3.4em}
+.fala .titulo-mes{font-family:var(--font-manchete); font-weight:700; font-size:22px; line-height:1;
+  letter-spacing:-.018em; text-transform:uppercase; color:var(--tinta-preta); margin:0 0 4px}
+.fala .gus{font-family:var(--font-corpo); font-style:italic; font-size:15px; line-height:1.5;
+  color:var(--tinta-preta); margin:0; max-width:66ch}
+
+/* ── O SCRUBBER: arrasta o tempo ── */
+.scrub{margin:20px 0 4px; position:relative; height:54px; user-select:none; touch-action:none}
+.trilho{position:absolute; left:10px; right:10px; top:20px; height:3px; background:#00000022}
+.trilho .feito{position:absolute; left:0; top:0; height:100%; background:var(--tinta-ciano);
+  width:var(--p,0%); transition:width var(--dur-medio) var(--ease)}
+.marca{position:absolute; top:20px; translate:-50% -50%; width:15px; height:15px; border-radius:50%;
+  background:var(--papel); border:2.5px solid var(--tinta-2); cursor:pointer; z-index:2;
+  transition:border-color var(--dur-rapido), background var(--dur-rapido)}
+.marca[data-on="1"]{border-color:var(--tinta-ciano); background:var(--tinta-ciano)}
+.marca .rot{position:absolute; top:20px; left:50%; translate:-50% 0; white-space:nowrap;
+  font-family:var(--font-display); font-size:9.5px; letter-spacing:.06em; color:var(--tinta-2)}
+.marca[data-on="1"] .rot{color:var(--tinta-preta)}
+.puxador{position:absolute; top:20px; translate:-50% -50%; width:24px; height:24px; border-radius:50%;
+  background:var(--tinta-preta); border:3px solid var(--gw-ciano); cursor:grab; z-index:3;
+  box-shadow:0 0 10px #4dd9e855, 0 2px 4px #00000040; left:var(--px,0%);
+  transition:left var(--dur-medio) var(--ease)}
+.scrub.arrastando .puxador{cursor:grabbing; transition:none}
+.scrub.arrastando .trilho .feito{transition:none}
+.puxador:focus-visible{outline:3px solid var(--tinta-ciano); outline-offset:3px}
+.dica-arraste{font-family:var(--font-display); font-size:10px; color:var(--tinta-2);
+  text-align:center; margin:2px 0 0; letter-spacing:.04em}
+
+/* ── o botao-demo: a linha estica sozinha ── */
+.demo-add{margin-top:18px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  padding-top:14px; border-top:1px dashed #00000026}
+.btn-add{font-family:var(--font-display); font-size:11px; letter-spacing:.05em; cursor:pointer;
+  background:var(--tinta-preta); color:var(--papel); border:0; padding:7px 12px; border-radius:2px}
+.btn-add:disabled{opacity:.4; cursor:default}
+.demo-txt{font-size:12.5px; color:var(--tinta-2); line-height:1.5; max-width:56ch}
+.demo-txt b{color:var(--tinta-preta)}
+
+/* ═══════════ O QUE A LINHA CUSTA PARA ALIMENTAR (a decisao de fundo) ═══════════ */
+.dado{margin-top:30px; background:#0d1520; border:1px solid var(--tela-borda); border-radius:var(--raio-tela);
+  overflow:hidden}
+.dado h2{font-family:var(--font-display); font-weight:700; font-size:12px; letter-spacing:.1em;
+  color:var(--tela-texto-1); text-transform:uppercase; margin:0; padding:11px 15px;
+  border-bottom:1px solid var(--tela-borda); background:#0a111b}
+.dado h2 b{color:var(--gw-ciano)}
+.dado .txt{padding:13px 15px 4px; font-size:13px; line-height:1.6; color:var(--tela-texto-2); max-width:82ch}
+.dado .txt b{color:var(--tela-texto-1)}
+.dado pre{margin:6px 15px 16px; padding:13px 15px; background:#060b12; border:1px solid var(--tela-borda);
+  border-radius:2px; overflow-x:auto; font-family:var(--font-display); font-size:12px; line-height:1.65;
+  color:var(--tela-texto-1)}
+.dado pre .c{color:var(--tela-texto-3)} .dado pre .s{color:var(--gw-ciano)} .dado pre .k{color:var(--gw-magenta)}
+.dado pre .add{color:var(--gw-ciano-alto); background:#4dd9e81a; display:block}
+
+/* ═══════════ AS TRES ESTETICAS (a pergunta) ═══════════ */
+.opcoes{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:30px}
+@media (max-width:900px){ .opcoes{grid-template-columns:1fr} }
+.op{background:#1b1f27; border:1px solid #333b47; border-radius:6px; overflow:hidden}
+.op h3{font-family:var(--font-display); font-weight:700; font-size:12px; letter-spacing:.08em;
+  color:#cdd5df; text-transform:uppercase; margin:0; padding:11px 13px 4px}
+.op h3 .rec{color:var(--gw-ciano); font-size:8.5px; letter-spacing:.05em}
+.op .demo{height:120px; margin:0 13px; border-radius:3px; background:#05090f; position:relative; overflow:hidden;
+  box-shadow:inset 0 0 0 1px var(--tela-borda)}
+.op .ver{font-size:12px; line-height:1.5; color:#98a2af; padding:10px 13px 13px}
+.op .ver b{color:#d8dee6} .op .ver .pro{color:#8fd0b0} .op .ver .con{color:#d9a98f}
+
+/* mini-demo A: scrubber */
+.mini-scrub{position:absolute; left:12px; right:12px; bottom:16px; height:3px; background:#ffffff1a}
+.mini-scrub i{position:absolute; top:50%; translate:-50% -50%; width:14px; height:14px; border-radius:50%;
+  background:#0d1520; border:2.5px solid var(--gw-ciano); left:62%; box-shadow:0 0 8px #4dd9e8aa}
+.mini-scrub b{position:absolute; top:50%; translate:0 -50%; height:100%; width:62%; background:var(--gw-ciano)}
+.mini-a-legenda{position:absolute; left:10px; top:9px; font-family:var(--font-display); font-size:9px;
+  color:var(--gw-ciano-alto); text-shadow:0 0 6px #4dd9e8aa}
+/* mini-demo B: filmstrip */
+.mini-strip{position:absolute; inset:0; display:flex; gap:6px; padding:12px; align-items:center}
+.mini-strip u{flex:0 0 46%; height:74%; border-radius:2px; background:linear-gradient(135deg,#12233a,#0a1524);
+  box-shadow:inset 0 0 0 1px var(--tela-borda); position:relative}
+.mini-strip u::after{content:attr(data-m); position:absolute; left:5px; bottom:4px;
+  font-family:var(--font-display); font-size:8px; color:var(--tela-texto-2)}
+/* mini-demo C: abas */
+.mini-abas{position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:9px; padding:14px}
+.mini-abas .fila{display:flex; gap:6px; justify-content:center}
+.mini-abas span{font-family:var(--font-display); font-size:8.5px; letter-spacing:.04em; padding:3px 7px;
+  border:1px solid var(--tela-borda); color:var(--tela-texto-2); border-radius:2px}
+.mini-abas span.on{border-color:var(--gw-ciano); color:var(--gw-ciano); background:#4dd9e81a}
+.mini-abas em{display:block; text-align:center; font-family:var(--font-display); font-size:9px;
+  color:var(--tela-texto-3); font-style:normal}
+
+.rodape-q{margin:34px auto 0; max-width:86ch; padding:14px 16px; background:#0d152055;
+  border:1px solid #2c3d52; font-size:13.5px; line-height:1.6; color:#b9c2ce}
+.rodape-q b{color:var(--gw-ciano-alto)}
+</style>
+</head>
+<body>
+<div class="bancada">
+
+  <h1>Glyfesse · mock 07 · a linha do tempo jogavel</h1>
+  <p class="sub"><b>Arrasta o tempo, o jogo evolui.</b> De maio (um retangulo numa sala) ate agosto (a arena), com os <b>frames reais das gravacoes do lider</b>: a foto do monitor, o terminal atras, a coisa nascendo. Arraste o puxador ciano abaixo (ou use as setas do teclado, ou clique num mes).</p>
+  <p class="nota">A pergunta desta rodada tem <b>duas metades que sao a mesma decisao</b>: (1) a estetica da linha, tres formas mostradas mais abaixo; e (2) <b>como o lider adiciona um mes novo sem sessao de dev</b>. A segunda e a que decide se a linha vive: se colar um marco exigir editar layout, a linha morre na terceira semana. A proposta esta no bloco escuro. <b>Clique em "o lider cola um marco" e veja a linha esticar sozinha.</b></p>
+
+  <!-- ══════════ A LINHA, NA FORMA RECOMENDADA (scrubber) ══════════ -->
+  <div class="folha-lt">
+    <span class="materia-selo">MATÉRIA · COMO O GUS NASCEU</span>
+    <h2 class="materia-titulo">De um quadrado ate a arena</h2>
+    <p class="materia-lide">Quatro meses. O Gus conta cada um, com a precisao de quem mede tudo e a pausa de quem nao sabe bem o que sentir.</p>
+
+    <div class="aceso palco-lt" id="palco" aria-live="polite">
+      <span class="legenda-mes" id="legenda">MAIO 2026</span>
+      <!-- os frames sao empilhados; o scrub cruza a opacidade (o jogo "evolui") -->
+    </div>
+
+    <div class="fala">
+      <p class="titulo-mes" id="titulo">Um retangulo numa sala</p>
+      <p class="gus" id="gus"></p>
+    </div>
+
+    <div class="scrub" id="scrub">
+      <div class="trilho"><div class="feito"></div></div>
+      <!-- marcas e puxador entram por JS (data-driven) -->
+      <div class="puxador" id="puxador" tabindex="0" role="slider"
+           aria-label="Linha do tempo do jogo" aria-valuemin="0"></div>
+    </div>
+    <p class="dica-arraste">arraste · ou ← → no teclado · ou clique num mes</p>
+
+    <div class="demo-add">
+      <button class="btn-add" id="btnAdd">＋ o lider cola um marco</button>
+      <p class="demo-txt" id="demoTxt"><b>Isto e o ponto:</b> um mes novo entra colando uma linha no array. A linha <b>se estica sozinha</b> (ela se divide por quantos marcos existem). Ninguem edita o layout. Clique para ver.</p>
+    </div>
+  </div>
+
+  <!-- ══════════ A DECISAO DE FUNDO: o formato de dados ══════════ -->
+  <div class="dado">
+    <h2>Como o lider alimenta a linha <b>sem sessao de dev</b></h2>
+    <p class="txt">A linha nao e HTML escrito a mao. E um <b>array de dados</b> que a pagina percorre. Na stack decidida (PHP), isto e um <code style="font-family:var(--font-display);font-size:11px">foreach</code> sobre um arquivo que o lider edita colando <b>uma linha</b>. A CSS estica a linha por <code style="font-family:var(--font-display);font-size:11px">count($marcos)</code>: 4 marcos, 3 vaos; colou o 5o, viram 4 vaos, e ninguem tocou no layout.</p>
+    <pre><span class="c">&lt;?php // marcos.php  -  a fonte unica da linha do tempo.</span>
+<span class="c">// Adicionar um mes = colar UMA linha. Zero sessao de dev.</span>
+<span class="k">$marcos</span> = [
+  [<span class="s">'mes'</span>=&gt;<span class="s">'MAIO 2026'</span>,   <span class="s">'frame'</span>=&gt;<span class="s">'quadradinho.png'</span>, <span class="s">'titulo'</span>=&gt;<span class="s">'Um retangulo numa sala'</span>,
+   <span class="s">'gus'</span>=&gt;<span class="s">'Colisao funcionando. Eu batia na parede e parava...'</span>],
+  [<span class="s">'mes'</span>=&gt;<span class="s">'JUNHO 2026'</span>,  <span class="s">'frame'</span>=&gt;<span class="s">'gus-cidade.png'</span>,   <span class="s">'titulo'</span>=&gt;<span class="s">'Ganhei um corpo'</span>,
+   <span class="s">'gus'</span>=&gt;<span class="s">'Um lado so. Eu andava sempre olhando pra frente...'</span>],
+  [<span class="s">'mes'</span>=&gt;<span class="s">'JULHO 2026'</span>,  <span class="s">'frame'</span>=&gt;<span class="s">'8-direcoes.png'</span>,  <span class="s">'titulo'</span>=&gt;<span class="s">'Agora eu ando na diagonal'</span>,
+   <span class="s">'gus'</span>=&gt;<span class="s">'Antes 4 vetores. Agora 8. E o dobro.'</span>],
+<span class="add">  <span class="c">// ↓ o lider colou AGOSTO. So esta linha. A linha esticou sozinha.</span></span>
+<span class="add">  [<span class="s">'mes'</span>=&gt;<span class="s">'AGOSTO 2026'</span>, <span class="s">'frame'</span>=&gt;<span class="s">'arena.png'</span>,       <span class="s">'titulo'</span>=&gt;<span class="s">'A arena'</span>,</span>
+<span class="add">   <span class="s">'gus'</span>=&gt;<span class="s">'SCAN, ATACAR, COMPILAR, FUGIR...'</span>],</span>
+];
+<span class="c">// A pagina: foreach ($marcos as $m) { ...render do marco... }</span></pre>
+  </div>
+
+  <!-- ══════════ A PERGUNTA: a estetica da linha ══════════ -->
+  <h1 style="margin-top:34px">A estetica da linha (a metade 1 da pergunta)</h1>
+  <p class="nota" style="margin-top:4px">A de cima ja esta na forma <b>A (o scrubber)</b>, minha recomendada, jogavel. Abaixo, as tres formas resumidas para comparar. As tres consomem o <b>mesmo</b> array: a escolha e de sensacao, nao de dados.</p>
+
+  <div class="opcoes">
+    <div class="op">
+      <h3>A · Scrubber <span class="rec">[RECOMENDADA]</span></h3>
+      <div class="demo">
+        <span class="mini-a-legenda">JULHO 2026</span>
+        <div class="mini-scrub"><b></b><i></i></div>
+      </div>
+      <p class="ver"><span class="pro"><b>A favor:</b></span> a evolucao vira algo que voce <b>faz com a mao</b>, igual ao quadradinho. "Arrasta o tempo, o jogo evolui" ao pe da letra: a foto de um mes dissolve na do seguinte enquanto voce arrasta.<br><span class="con"><b>Contra:</b></span> arrastar e menos obvio que clicar, e pede o cuidado de teclado e clique (ja incluidos aqui).</p>
+    </div>
+    <div class="op">
+      <h3>B · Tira de filme</h3>
+      <div class="demo"><div class="mini-strip"><u data-m="MAIO"></u><u data-m="JUNHO"></u><u data-m="JULHO"></u></div></div>
+      <p class="ver"><span class="pro"><b>A favor:</b></span> le como uma <b>materia de revista</b>: cada mes e um quadro com foto, data e a fala do Gus, um ao lado do outro. Rola e ve tudo de uma vez. Marco novo = um quadro a mais no fim.<br><span class="con"><b>Contra:</b></span> nao tem o gesto de "arrastar o tempo": e leitura, nao brinquedo. A evolucao se ve, nao se sente.</p>
+    </div>
+    <div class="op">
+      <h3>C · Estagios em abas</h3>
+      <div class="demo"><div class="mini-abas"><div class="fila"><span>MAI</span><span class="on">JUN</span><span>JUL</span><span>AGO</span></div><em>clique um mes</em></div></div>
+      <p class="ver"><span class="pro"><b>A favor:</b></span> o mais simples e o mais acessivel: botoes de mes, clica e pula. Teclado de graca, zero ambiguidade.<br><span class="con"><b>Contra:</b></span> e o mais frio dos tres. Sem transicao entre os meses, a linha vira um seletor, nao uma historia. Perde o "a coisa foi virando".</p>
+    </div>
+  </div>
+
+  <p class="rodape-q"><b>Sobre o prefers-reduced-motion e a a11y:</b> a forma A ja vem com teclado (o puxador e um <code style="font-family:var(--font-display);font-size:11px">role="slider"</code>, setas movem) e com os meses clicaveis, entao arrastar nunca e o unico caminho. Com movimento reduzido, a foto troca sem dissolver (corte seco), e o titulo e a fala do Gus, que sao texto, contam a evolucao por escrito. <b>A linha nunca depende de animacao para ser entendida.</b> As fotos aqui sao pesadas (originais de camera): em producao entram otimizadas.</p>
+
+</div>
+
+<script>
+/* A LINHA DO TEMPO, DATA-DRIVEN. Este array e o espelho do $marcos do PHP:
+   em producao o foreach gera o mesmo DOM. Aqui o JS monta as marcas, o
+   scrub cruza a opacidade dos frames (o jogo "evolui" enquanto voce
+   arrasta), e o botao-demo prova que colar um marco estica a linha sozinha. */
+(function(){
+  var BASE = "../../../resources/frames/";
+  var marcos = [
+    { mes:"MAIO 2026",   frame:"primeiro_teste_wasd_e_colisao_placeholder_quadradinho__t6s.png",
+      titulo:"Um retangulo numa sala",
+      gus:"Colisao funcionando. Eu batia na parede e parava. Era o mundo inteiro. Eu... nem sabia que ia virar gente." },
+    { mes:"JUNHO 2026",  frame:"primeira_captura_minha_gus_sprite_cidade_depois_quadradinho_placeholder__t8s.png",
+      titulo:"Ganhei um corpo",
+      gus:"De repente eu tinha cabelo. E um lado so: eu andava sempre olhando pra frente. Um vetor. Ainda era pouco... mas ja era eu." },
+    { mes:"JULHO 2026",  frame:"primeiro_teste_animacao_gus_pixelado_varios_sprites__t25s.png",
+      titulo:"Agora eu ando na diagonal",
+      gus:"Antes eu tinha 4 vetores. Agora tenho 8. E o dobro. Eu ando na diagonal. Nao vou fazer a divisao pra provar... e o dobro." },
+    { mes:"AGOSTO 2026", frame:"gus_teste_arena__t13s.png",
+      titulo:"A arena",
+      gus:"Menu de batalha: SCAN, ATACAR, COMPILAR, FUGIR. Da pra COMPILAR um inimigo. O que isso faz... voce vai ver. Ou nao." }
+  ];
+  /* o marco extra que o botao-demo cola, para mostrar a linha esticando */
+  var extra = { mes:"SETEMBRO 2026", frame:"gus_arena_teste_1__t21s.png",
+      titulo:"O lider colou este marco",
+      gus:"Este mes entrou colando UMA linha no array. A linha esticou sozinha para caber. Ninguem mexeu no codigo do site... e por isso ela nao morre." };
+
+  var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var palco   = document.getElementById("palco");
+  var scrub   = document.getElementById("scrub");
+  var puxador = document.getElementById("puxador");
+  var trilho  = scrub.querySelector(".trilho");
+  var feito   = scrub.querySelector(".feito");
+  var elLeg = document.getElementById("legenda"), elTit = document.getElementById("titulo"),
+      elGus = document.getElementById("gus"), btnAdd = document.getElementById("btnAdd");
+  var frames=[], marcas=[], pos=0;   /* pos: continuo em [0, N-1] */
+
+  function N(){ return marcos.length; }
+
+  function montar(){
+    /* frames empilhados */
+    palco.querySelectorAll(".frame").forEach(function(f){f.remove()});
+    frames = marcos.map(function(m){
+      var d=document.createElement("div"); d.className="frame";
+      var img=document.createElement("img"); img.src=BASE+m.frame; img.alt=m.titulo+" ("+m.mes+")";
+      d.appendChild(img); palco.insertBefore(d, palco.firstChild.nextSibling); return d;
+    });
+    /* marcas no trilho */
+    marcas.forEach(function(mk){mk.remove()});
+    marcas = marcos.map(function(m,i){
+      var mk=document.createElement("div"); mk.className="marca";
+      mk.style.left = (N()===1?0:(i/(N()-1)*100))+"%";
+      mk.innerHTML = '<span class="rot">'+m.mes.split(" ")[0]+'</span>';
+      mk.addEventListener("click", function(){ irPara(i); });
+      trilho.parentNode.insertBefore(mk, puxador); return mk;
+    });
+    puxador.setAttribute("aria-valuemax", N()-1);
+  }
+
+  function render(){
+    var i=Math.floor(pos), f=pos-i, j=Math.min(i+1,N()-1);
+    frames.forEach(function(fr,k){
+      var o = (k===i)? (1-f) : (k===j? f : 0);
+      if(reduz) o = (k===Math.round(pos))?1:0;
+      fr.style.opacity=o;
+    });
+    var near = Math.round(pos), m = marcos[near];
+    elLeg.textContent=m.mes; elTit.textContent=m.titulo; elGus.textContent=m.gus;
+    puxador.setAttribute("aria-valuenow", near);
+    puxador.setAttribute("aria-valuetext", m.mes+", "+m.titulo);
+    var pct = N()===1?0 : pos/(N()-1)*100;
+    puxador.style.setProperty("--px", pct+"%");
+    feito.style.setProperty("--p", pct+"%");
+    marcas.forEach(function(mk,k){ mk.dataset.on = (k===near)?"1":"0"; });
+  }
+
+  function irPara(i){ pos=i; render(); }
+
+  /* arraste (Pointer Events: mouse e toque) */
+  var arrastando=false;
+  function posDeX(clientX){
+    var r=trilho.getBoundingClientRect();
+    var t=Math.max(0,Math.min(1,(clientX-r.left)/r.width));
+    return t*(N()-1);
+  }
+  scrub.addEventListener("pointerdown", function(e){
+    if(e.target.classList.contains("marca")||e.target.classList.contains("rot")) return;
+    arrastando=true; scrub.classList.add("arrastando");
+    scrub.setPointerCapture(e.pointerId);
+    pos=posDeX(e.clientX); render();
+  });
+  scrub.addEventListener("pointermove", function(e){ if(arrastando){ pos=posDeX(e.clientX); render(); } });
+  ["pointerup","pointercancel"].forEach(function(ev){
+    scrub.addEventListener(ev, function(){
+      if(!arrastando) return;
+      arrastando=false; scrub.classList.remove("arrastando");
+      pos=Math.round(pos); render();   /* solta e encaixa no mes mais perto */
+    });
+  });
+  /* teclado */
+  puxador.addEventListener("keydown", function(e){
+    if(e.key==="ArrowRight"||e.key==="ArrowUp"){ e.preventDefault(); irPara(Math.min(N()-1,Math.round(pos)+1)); }
+    if(e.key==="ArrowLeft"||e.key==="ArrowDown"){ e.preventDefault(); irPara(Math.max(0,Math.round(pos)-1)); }
+    if(e.key==="Home"){ e.preventDefault(); irPara(0); }
+    if(e.key==="End"){ e.preventDefault(); irPara(N()-1); }
+  });
+
+  /* o botao-demo: cola o marco extra e a linha se estica sozinha */
+  btnAdd.addEventListener("click", function(){
+    marcos.push(extra); montar(); irPara(N()-1);
+    btnAdd.disabled=true;
+    document.getElementById("demoTxt").innerHTML="<b>Viu?</b> A linha agora tem 5 marcos e 4 vaos, e cada marca se reposicionou sozinha. No site real isso foi <b>uma linha colada no array</b>, sem tocar em HTML nem CSS.";
+  });
+
+  montar(); render();
+})();
+</script>
+</body>
+</html>
