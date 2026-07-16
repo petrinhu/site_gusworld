@@ -155,6 +155,11 @@ body{
   filter:drop-shadow(0 0 5px rgba(77,217,232,.35));  /* leve halo de tubo */
 }
 
+/* versao na tela, tipo firmware de BIOS/CRT */
+.versao{position:absolute; z-index:5; right:9%; bottom:6%;
+  font-size:clamp(9px,1.3vw,13px); letter-spacing:.14em;
+  color:var(--ciano); opacity:.55; text-shadow:0 0 5px rgba(77,217,232,.5)}
+
 .baixo{position:fixed; bottom:12px; left:0; right:0; z-index:9; text-align:center;
   font-size:11px; letter-spacing:.3em; color:#41414b}
 
@@ -172,6 +177,7 @@ body{
     <div class="fantasma" aria-hidden="true"></div>
     <div class="conteudo">
       <p class="selo"><b>GUS</b>WORLD<span class="dom">gusworld.site</span></p>
+      <p class="versao">V0.0.0.0...</p>
       <div class="centro">
         <div class="soon">SOON</div>
         <div class="embreve">EM BREVE<span class="cursor" aria-hidden="true"></span></div>
