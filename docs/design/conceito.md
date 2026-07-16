@@ -68,6 +68,27 @@ Corroborado pela pesquisa: a equipe de **Hypnospace Outlaw** gastou meses **pior
 
 ## 3. A metáfora-mãe: revista dos anos 90 + Diário do Gus
 
+### A revista se chama **GLYFESSE**
+
+Do léxico **Sylvarin** do próprio jogo (`docs/narrative/lingua/02-lexico-semente.md`):
+
+- **`glyfa-`** = glifo, palavra-código. Âncora canon: C-Arcane, o cripto-glifo da Era 1.
+- **`-esse`** = sufixo de abstrato/coletivo (o mesmo de `rimesse`, "a Ordem, o Cômputo").
+
+**`Glyfesse` = "a Escrita" / "a Compilação".**
+
+**★ E o nome não é uma escolha estética: é uma consequência do idioma.** A regra de derivação diz:
+
+> **`-e` verbo (infinitivo):** *tave* (executar), *lhine* (cantar/falar), **`glyfe` (escrever/compilar)**
+
+**Em Sylvarin, escrever e compilar são o mesmo verbo.** Logo **"Glyfesse #7" é, literalmente, a sétima edição E o sétimo build.** O build-in-public está embutido no nome, sem metáfora e sem explicação. E amarra no que já era canon: **"Compilação do Codex"** é a mecânica de combate do jogo (`pillars.md:46`).
+
+**SERP virgem** (verificado): busca exata por "Glyfesse" retorna **zero resultados**. É o oposto de "GusWorld", que é composto genérico e disputa o termo. **Quem buscar a palavra só pode estar procurando isto.**
+
+**Requisito do líder: a Edição #1 explica o nome.** É a **única coisa que se explica no site** — todo o resto fica sob "nunca dito, só sentido" (§5). E ela faz quatro coisas de graça: ensina uma palavra de Sylvarin na abertura (a camada que pai e filho decifram **juntos**), estabelece o tom do Gus (ele explicaria com precisão exagerada), **prepara o ARG sem anunciar** (glifo é cifra), e justifica a numeração. **Quem explica é o Gus.**
+
+---
+
 **A revista é a casca. O Diário é a voz.**
 
 - **Revista de videogame dos anos 90** (Ação Games, SuperGamePower): edições, capa, sumário, seções fixas, cupom recortável. Resolve o problema estrutural do projeto: **revista tem edição, e edição sai quando sai. A demora vira formato, não defeito.**
