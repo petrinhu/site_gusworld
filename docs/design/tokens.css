@@ -58,10 +58,15 @@
   src:url("mockups/fonts/vollkorn-latin-400-normal.woff2") format("woff2");
   font-weight:400; font-style:normal; font-display:swap;
 }
+/* ⚠️ GUARD: o Vollkorn baixado NÃO tem arquivo de peso 700.
+   O range "600 700" faz o browser usar ESTE arquivo quando alguém pedir
+   700, em vez de sintetizar um negrito falso (que fica gordo e borrado).
+   Se um dia baixarem o 700 de verdade, troque o range para 600 e
+   adicione o @font-face novo. Ver tokens.md §7. */
 @font-face{
   font-family:"Vollkorn";
   src:url("mockups/fonts/vollkorn-latin-600-normal.woff2") format("woff2");
-  font-weight:600; font-style:normal; font-display:swap;
+  font-weight:600 700; font-style:normal; font-display:swap;
 }
 /* o itálico não é enfeite: é onde as reticências do Gus vivem
    ("Eu... gostava dele"), o momento em que ele quase sente algo. */
@@ -200,12 +205,62 @@
 
   /* ─────────────────────────────────────────────────────────────────
      7. MOTION. Um site que É movimento precisa que a versão reduzida
-        continue fazendo sentido. Ver §8.
+        continue fazendo sentido. Ver §9.
      ───────────────────────────────────────────────────────────────── */
   --dur-rapido: 90ms;
   --dur-medio:  180ms;
   --dur-lento:  420ms;
   --ease:       cubic-bezier(.2,.7,.3,1);
+
+  /* ─────────────────────────────────────────────────────────────────
+     8. OS DOIS VÉUS: o CRT e o café. Os dois ESCURECEM o que está
+        embaixo, então os dois são risco de contraste. Medidos, não
+        chutados.
+
+     ── O CRT (scanline) ──
+     Achado que surpreende: o scanline cai por cima do texto E do fundo,
+     na mesma proporção, então a RAZÃO quase não muda. Ele é bem menos
+     perigoso do que parecia. MAS só enquanto ficar por cima dos dois:
+     se cair só no fundo, quebra na hora.
+
+     Medido sobre a tela acesa, com --crt-alpha 0.27:
+       texto-1  14.76 -> 8.09  AA ok
+       ciano    10.83 -> 6.07  AA ok
+       magenta   5.31 -> 3.26  ⚠️ SÓ TEXTO GRANDE (a NOTA). passa 3:1.
+
+     ⚠️ TETO: 0.35. Acima disso o ciano cai abaixo de 4.5:1.
+     ⚠️ Com o CRT ligado o magenta NÃO serve como texto normal. Ele já
+        só é usado em numeral grande (a NOTA), então está coberto, mas
+        não invente magenta em parágrafo.
+     ───────────────────────────────────────────────────────────────── */
+  --crt-alpha:  .27;   /* teto seguro: .35 */
+  --crt-passo:  3px;   /* 1px de linha a cada 3px */
+
+  /* ── O CAFÉ ──
+     ★ A conta que decide o desenho: sobre a edição #1 encardida, a
+     mancha derruba o texto secundário abaixo de AA JÁ COM ALPHA 0.08,
+     quando ela é quase invisível:
+
+       alpha .08 sobre a #1 -> secundário 4.04 · ciano 4.06   FALHA AA
+
+     Ou seja: NÃO EXISTE mancha de café visível que possa cair sobre
+     texto na edição velha sem quebrar a leitura. Isso não é preferência
+     estética, é aritmética. Por isso ela não é "posicionada com cuidado":
+     ela é CLIPADA por uma zona segura (.zona-cafe), e o overflow:hidden
+     é o guard. Se alguém errar a coordenada, a mancha é cortada em vez
+     de invadir o texto.
+
+     Onde ela PODE cair: margem externa, rodapé, e por cima da tela acesa
+     (derramar café na foto da revista é natural, e lá não há parágrafo).
+  */
+     ★ E aqui está a consequência boa de ter o guard: COMO a zona garante
+     que não há texto embaixo, o alpha do café é LIVRE. Ele não precisa
+     ser tímido. O 0.18 seria o teto se a mancha pudesse encostar em
+     texto; como não pode, ela pode ser uma mancha de café de verdade.
+     Resolver o problema direito é o que permite a coisa ser bonita.
+  */
+  --cafe-alpha: .42;   /* livre: a zona garante que não há texto embaixo */
+  --cafe-cor:   #5a3418;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -287,9 +342,110 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   8. MOTION REDUZIDO
+   A MANCHA DE CAFÉ (de outra pessoa)
+   ═══════════════════════════════════════════════════════════════════
+   "A única marca que insinua comunidade sem contador de visitas."
+
+   Uso, e a zona NÃO é opcional:
+
+     <div class="zona-cafe">
+       <i class="cafe" style="--cafe-x:30%; --cafe-y:55%"></i>
+     </div>
+
+   A .zona-cafe é o guard: ela tem overflow:hidden e só é colocada onde
+   NÃO há parágrafo (margem, rodapé, sobre a tela acesa). Se a coordenada
+   estiver errada, a mancha é CORTADA em vez de invadir o texto. Ver §8.
+
+   Nunca ponha .cafe solto dentro de uma coluna de texto: a conta de §8
+   diz que na edição #1 até uma mancha quase invisível reprova AA.
+   ═══════════════════════════════════════════════════════════════════ */
+.zona-cafe{
+  position:absolute; overflow:hidden;   /* ← este overflow É o guard */
+  pointer-events:none; z-index:0;
+  inset:auto 0 0 auto;                  /* default: canto inferior externo */
+  width:38%; height:34%;
+}
+.cafe{
+  position:absolute; display:block; pointer-events:none;
+  left:var(--cafe-x,50%); top:var(--cafe-y,50%);
+  width:var(--cafe-tam,116px); aspect-ratio:1.15;
+  translate:-50% -50%; rotate:var(--cafe-giro,-8deg);
+  border-radius:47% 53% 44% 56% / 52% 45% 55% 48%;
+  /* café seco deixa ANEL: a borda fica bem mais escura que o miolo, porque
+     o líquido evapora e empurra o pigmento pra fora (o coffee-ring effect).
+     ⚠️ a intensidade vem do opacity do elemento, NÃO de color-mix com
+     calc() dentro: calc(var(--x) * 70%) dentro de color-mix não resolve, e
+     a mancha some inteira, sem erro nenhum no console. */
+  background:
+    radial-gradient(ellipse at 50% 50%,
+      #0000 60%,
+      rgb(90 52 24 / .62) 68%,
+      rgb(90 52 24 / .92) 76%,
+      rgb(90 52 24 / .40) 84%,
+      #0000 92%),
+    radial-gradient(ellipse at 44% 42%,
+      rgb(90 52 24 / .34) 0 52%,
+      rgb(90 52 24 / .20) 62%,
+      #0000 74%);
+  opacity:var(--cafe-alpha);
+  mix-blend-mode:multiply;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   O CRT / SCANLINE, DESLIGÁVEL SEM UMA LINHA DE JAVASCRIPT
+   ═══════════════════════════════════════════════════════════════════
+   O checkbox nativo guarda o estado; o :has() aplica. Zero JS.
+   Persistir entre páginas: cookie no PHP escrevendo data-crt no <html>
+   (continua zero JS). O <input> real fica escondido mas focável, e o
+   <label> é o botão: funciona no teclado e no leitor de tela de graça.
+
+   O CRT só cai DENTRO da tela acesa: é a tela do jogo que tem scanline,
+   não o papel. Papel não é CRT.
+   ═══════════════════════════════════════════════════════════════════ */
+.aceso{ position:relative }
+
+:root:has(#crt:checked) .aceso::before,
+[data-crt="on"] .aceso::before{
+  content:""; position:absolute; inset:0; z-index:4; pointer-events:none;
+  background:repeating-linear-gradient(
+    0deg,
+    rgb(0 0 0 / var(--crt-alpha)) 0 1px,
+    #0000 1px var(--crt-passo));
+}
+/* o abaulamento do tubo: sutil, e some junto com o scanline */
+:root:has(#crt:checked) .aceso::after,
+[data-crt="on"] .aceso::after{
+  content:""; position:absolute; inset:0; z-index:5; pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 45%, #4dd9e814 0%, #0000 62%, #0000008c 100%);
+}
+
+.crt-switch{
+  display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+  font-family:var(--font-display); font-size:10px; letter-spacing:.06em;
+  color:var(--texto-2); user-select:none;
+}
+.crt-switch input{
+  /* escondido do olho, NUNCA do teclado nem do leitor de tela */
+  position:absolute; width:1px; height:1px; margin:-1px; padding:0;
+  overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0;
+}
+.crt-switch .luz{
+  width:9px; height:9px; border:1.5px solid var(--borda-forte);
+  background:#0000; transition:background var(--dur-rapido) var(--ease);
+}
+.crt-switch input:checked ~ .luz{ background:var(--acento) }
+.crt-switch input:focus-visible ~ .luz{ outline:2px solid var(--acento); outline-offset:2px }
+/* o texto do rótulo diz o estado: a cor NUNCA é o único indicador */
+.crt-switch .off{display:inline}
+.crt-switch .on{display:none}
+.crt-switch input:checked ~ .off{display:none}
+.crt-switch input:checked ~ .on{display:inline}
+
+/* ═══════════════════════════════════════════════════════════════════
+   9. MOTION REDUZIDO
    O site É movimento. A regra: o movimento pode sumir, a INFORMAÇÃO não.
-   Quem desliga motion vê o quadradinho parado NO DESTINO, não some.
+   Quem desliga motion vê o quadradinho parado NO DESTINO, não sumido, e
+   a página continua contando a mesma coisa.
    ═══════════════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce){
   :root{ --dur-rapido:0ms; --dur-medio:0ms; --dur-lento:0ms; }
@@ -297,5 +453,6 @@
     animation-duration:1ms !important;
     animation-iteration-count:1 !important;
     transition-duration:1ms !important;
+    scroll-behavior:auto !important;
   }
 }

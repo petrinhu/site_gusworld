@@ -86,6 +86,13 @@ Verifiquei no Blink; o líder vê no Gecko. O `feTurbulence` sem `width`/`height
 
 **Vale em produção, não só no mock: todo filtro SVG com dimensão explícita.** E todo mock se verifica **no browser do líder**, porque esta estética depende inteira de textura, blend mode e filtro SVG, que é onde os motores divergem.
 
+### 4.6b O CRT era menos perigoso, e o café era muito pior
+
+Os dois véus foram medidos, e os dois surpreenderam **em direções opostas**:
+
+- **O scanline** cai por cima do texto **e** do fundo, na mesma proporção, então **a razão quase não muda** (texto-1 vai de 14.76 para 8.09 e segue AA). Ele só é perigoso se cair só no fundo. **Consequência real:** com o CRT ligado o magenta cai para 3.26 e **deixa de servir como texto normal**, o que está coberto porque ele só é numeral grande.
+- **A mancha de café** derruba o secundário abaixo de AA **já com alpha 0.08**, na edição encardida, quando está quase invisível. **Não existe mancha visível que possa cair sobre texto.** Virou restrição estrutural: a `.zona-cafe` com `overflow:hidden` **clipa** a mancha, então errar a coordenada corta a mancha em vez de invadir o texto. **E como o guard resolve o problema, o alpha do café ficou livre (.42): ela pode ser uma mancha de verdade.**
+
 ### 4.6 ★ O `color-mix` no `:root` não envelhece nada
 Custom property é substituída **onde é declarada**. Com `--papel` no `:root`, o `--idade` do filho é ignorado e **a banca inteira sai da mesma cor**. Tem que ser declarado na `.folha`. Detalhe em [`tokens.md` §3](tokens.md).
 
@@ -142,7 +149,7 @@ O Blink infere a dimensão de um SVG de background pelo tamanho do elemento; **o
 **Aberto, na ordem:**
 1. ⏳ **A primeira dobra** com o quadradinho jogável (`QUADRADINHO`). O coração do site. Já decidido e não se re-litiga: **não tem arte** (é um retângulo que anda, e **essa é a graça**), **ele já era ciano**, e a evolução se **sente na mão**, não se lê.
 2. ⏳ **Mobile** (`MOBILE-RISCO`, o maior risco prático). A revista é A4 e não cabe em 390px. Os mocks já nascem em ~400px, o que ajuda, mas **falta o problema duro: o quadradinho precisa de teclado, e no celular não há teclado.** O líder quer decidir isto junto.
-3. ⏳ Scanline desligável; a mancha de café que não cai sobre texto.
+**Também fechou nesta rodada** (aplicação, sem decisão nova): o **CRT desligável com zero JS**, a **mancha de café com o guard de zona segura**, e o **motion reduzido**. Detalhe em [`tokens.md` §10](tokens.md).
 
 ---
 

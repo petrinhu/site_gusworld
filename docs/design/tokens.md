@@ -201,8 +201,63 @@ O `PixelOperatorMono` foi **convertido de TTF para woff2** (74% menor: 33,7 KB p
 
 ---
 
-## 10. Pendente
+## 10. Os dois véus: o CRT e o café
 
-- ⏳ **O par tipográfico de corpo** (próxima pergunta ao líder).
-- ⏳ **Scanline/CRT sobre texto derruba contraste**: precisa ser desligável, e o botão já está no conceito.
-- ⏳ **A mancha de café não pode cair sobre texto** (já anotado no `TODO.md`).
+Os dois **escurecem o que está embaixo**, então os dois são risco de contraste. Medidos, não chutados. Prova renderizada: [`mockups/03-crt-cafe-motion.html`](mockups/03-crt-cafe-motion.html).
+
+### 10.1 O CRT (scanline), desligável, com zero JavaScript
+
+**Achado que contraria a intuição:** o scanline cai por cima **do texto e do fundo juntos**, na mesma proporção, então **a razão de contraste quase não muda**. O CRT é bem menos perigoso do que a literatura sugere. Isso **só vale enquanto ele ficar por cima dos dois**: se cair só no fundo, quebra na hora.
+
+Medido sobre a tela acesa com `--crt-alpha: .27`:
+
+| | sem CRT | com CRT | |
+|---|---|---|---|
+| `--tela-texto-1` | 14.76 | **8.09** | AA |
+| ciano | 10.83 | **6.07** | AA |
+| magenta | 5.31 | **3.26** | ⚠️ **só texto grande** |
+
+- **Teto: `.35`.** Em `.45` o ciano cai para 3.78 e reprova AA.
+- ⚠️ **Com o CRT ligado, o magenta deixa de servir como texto normal.** Ele já só é usado em numeral grande (a NOTA "6,0", que precisa de 3:1 e passa), então está coberto. **Mas não invente magenta em parágrafo.**
+- **O CRT só cai dentro de `.aceso`.** É a tela do jogo que tem scanline. **Papel não é tubo.**
+
+**Sem JS:** `<input type="checkbox">` nativo + `:has()`. O input é real (só escondido do olho), então **Tab + Espaço funciona e o leitor de tela anuncia o estado**; o rótulo **escreve** "LIGAR"/"DESLIGAR", então a cor da luzinha nunca é o único indicador. Persistir entre páginas continua sem JS: o PHP grava um cookie e escreve `data-crt="on"` no `<html>`. O CSS aceita os dois caminhos.
+
+### 10.2 A mancha de café, e o guard que ela exige
+
+> "A única marca que insinua comunidade sem contador de visitas."
+
+**★ A conta que decide o desenho:** sobre a edição #1 encardida, a mancha derruba o texto secundário **abaixo de AA já com alpha 0.08**, quando ela está quase invisível:
+
+| | secundário | ciano de tinta | |
+|---|---|---|---|
+| alpha .08 sobre a #1 | **4.04** | **4.06** | **FALHA AA** |
+
+**Não existe mancha de café visível que possa cair sobre texto na edição velha.** Isso não é preferência estética: **é aritmética.**
+
+**Por isso ela não é "posicionada com cuidado": ela é clipada por uma zona segura.**
+
+```html
+<div class="zona-cafe">
+  <i class="cafe" style="--cafe-x:30%; --cafe-y:55%"></i>
+</div>
+```
+
+**O guard é o `overflow:hidden` da `.zona-cafe`**, e é isso que o torna confiável: **se alguém errar a coordenada, a mancha é cortada em vez de invadir o texto.** Não depende de ninguém lembrar da regra daqui a seis meses. A zona só é colocada onde não há parágrafo: **margem, rodapé, ou por cima da tela acesa** (derramar café na foto da revista é natural, e ali não há texto).
+
+**★ E a consequência boa de ter resolvido direito:** como a zona garante que não há texto embaixo, **o alpha do café é livre** (`.42`). Ele não precisa ser tímido. O `.18` seria o teto se a mancha pudesse encostar em texto; como não pode, ela pode ser uma mancha de café de verdade. **Resolver o problema direito é o que permite a coisa ser bonita.**
+
+⚠️ **Armadilha de CSS encontrada aqui:** `calc(var(--x) * 70%)` **dentro de `color-mix()` não resolve**, e a mancha some inteira, **sem erro nenhum no console**. A intensidade vem do `opacity` do elemento e os alphas do gradiente são fixos.
+
+### 10.3 Motion reduzido
+
+O site **é** movimento, então a versão reduzida não pode virar site quebrado. A regra: **o movimento pode sumir, a informação não.** Quem desliga motion vê o quadradinho **parado no destino** (onde ele chegou), não sumido, e a página continua contando a mesma coisa. **Nada depende de animação para ser entendido.**
+
+Conferir: no Firefox, `about:config` → `ui.prefersReducedMotion` = `1`.
+
+---
+
+## 11. Pendente
+
+- ⏳ **A primeira dobra** com o quadradinho jogável (`QUADRADINHO`).
+- ⏳ **Mobile** (`MOBILE-RISCO`): o quadradinho precisa de teclado, e no celular não há teclado. **Decisão do líder, com protótipo nos dois tamanhos.**

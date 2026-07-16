@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse: o CRT, o café e o motion reduzido</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   MOCK 03 - aplicacao de decisoes JA TOMADAS. Nada novo pra decidir.
+   O CRT desligavel, a mancha de cafe que nao cai sobre texto, e o
+   prefers-reduced-motion. Tudo vem de ../tokens.css. ZERO JavaScript.
+   ───────────────────────────────────────────────────────────── */
+*{box-sizing:border-box}
+html{background:#22222a}
+body{margin:0; padding:0 0 90px; color:#e8e8ea; font-family:var(--font-corpo)}
+.bancada{max-width:1400px; margin:0 auto; padding:28px 20px}
+h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.14em;
+   color:#9fb0c4; margin:0 0 6px; text-transform:uppercase}
+.sub{margin:0; font-size:15px; color:#c8cdd6; max-width:82ch; line-height:1.55}
+.sub b{color:#fff}
+h2{font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:.12em;
+   color:#7e8b9c; text-transform:uppercase; margin:34px 0 10px; padding-bottom:6px;
+   border-bottom:1px solid #3a4150}
+.obs{font-size:13px; color:#98a2af; line-height:1.6; max-width:82ch; margin:8px 0 0}
+.obs b{color:#d8dee6}
+.obs code{font-family:var(--font-display); font-size:11.5px; background:#ffffff10; padding:1px 4px}
+
+.par{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+@media (max-width:940px){ .par{grid-template-columns:1fr} }
+
+.pag{padding:16px 15px; position:relative; overflow:hidden; box-shadow:var(--sombra-folha)}
+.pag::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.16;
+}
+.pag > *{position:relative; z-index:1}
+.cabeca{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:2.5px solid var(--tinta-preta); padding-bottom:6px; margin-bottom:10px}
+.logo{font-family:var(--font-display); font-weight:700; font-size:24px; line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4b0, 1.5px 1.5px 0 #c2129eb0}
+.manchete{font-family:var(--font-manchete); font-weight:var(--manchete-peso);
+  font-size:29px; line-height:var(--manchete-lh); letter-spacing:var(--manchete-ls);
+  text-transform:uppercase; margin:0 0 7px; color:var(--tinta-preta)}
+.lide{font-family:var(--font-corpo); font-weight:var(--linha-fina-peso); font-size:13px;
+  line-height:1.45; margin:0 0 10px; color:var(--tinta-preta)}
+.txt{font-family:var(--font-corpo); font-size:12.5px; line-height:var(--lh-corpo); color:var(--tinta-preta)}
+.txt p{margin:0 0 7px}
+.rt{font-style:italic}
+.sec{color:var(--tinta-2); font-size:11.5px}
+.cia{color:var(--tinta-ciano); font-weight:600; font-size:11.5px}
+
+.sala{position:relative; width:100%; aspect-ratio:16/9; background:var(--gw-navy); border:2px solid #b9c6d6}
+.sala i{position:absolute; background:#b9c6d6; display:block}
+.heroi{position:absolute; width:10px; height:10px; border:2.5px solid var(--gw-ciano);
+  background:var(--gw-navy); left:22%; bottom:8%;
+  animation:anda 5.2s ease-in-out infinite alternate}
+@keyframes anda{0%{left:22%;bottom:8%} 45%{left:63%;bottom:8%} 100%{left:63%;bottom:56%}}
+.aceso{border-radius:var(--raio-tela); padding:10px; margin:0 0 9px; overflow:hidden}
+.legenda{font-family:var(--font-display); font-size:8.5px; color:var(--tinta-2);
+  margin:0 0 9px; padding-left:6px; border-left:2px solid var(--tinta-ciano)}
+.nota-cx{border:2px solid var(--tinta-preta); padding:6px 8px; margin-top:9px;
+  display:flex; align-items:center; justify-content:space-between}
+.nota-cx .rot{font-family:var(--font-display); font-size:8.5px; color:var(--tinta-2); line-height:1.4}
+.nota-cx .rot b{display:block; color:var(--tinta-preta); font-size:10.5px}
+.nota-cx .val{font-family:var(--font-display); font-weight:700; font-size:25px; line-height:1;
+  color:var(--tinta-magenta)}
+
+.barra{display:flex; gap:14px; align-items:center; margin:0 0 12px; flex-wrap:wrap}
+.medida{font-family:var(--font-display); font-size:9.5px; color:#7d8794; line-height:1.7; margin-top:9px}
+.medida .ok{color:#7fd6a0} .medida .no{color:#e88a8a} .medida .warn{color:#e8c98a}
+
+/* a demonstracao do guard: a MESMA mancha, na zona certa e solta */
+.demo-zona{position:relative; overflow:hidden; padding:14px; min-height:190px}
+.zona-cafe.aqui{inset:auto 0 0 auto; width:44%; height:52%; outline:1px dashed #0d5e6770; outline-offset:-1px}
+.errado .cafe{ /* sem zona: cai onde quiser, inclusive sobre o texto */
+  position:absolute; left:34%; top:44%; z-index:0;
+}
+.rotulo-demo{font-family:var(--font-display); font-size:9px; letter-spacing:.06em;
+  color:var(--tinta-2); margin:0 0 7px}
+</style>
+</head>
+<body>
+<div class="bancada">
+
+  <h1>Glyfesse · mock 03 · o CRT, o café e o motion</h1>
+  <p class="sub">Nada aqui é decisão nova: é <b>aplicação do que já foi decidido</b>. Os três vêm de <code>../tokens.css</code> e custam <b>zero JavaScript</b>. O botão do CRT é um <code>&lt;input type="checkbox"&gt;</code> nativo com <code>:has()</code>.</p>
+
+  <!-- ═══════ CRT ═══════ -->
+  <h2>1. O CRT, desligável, sem uma linha de JS</h2>
+  <div class="barra">
+    <label class="crt-switch" for="crt" style="--texto-2:#9fb0c4; --borda-forte:#6f7c8d; --acento:#4dd9e8">
+      <input type="checkbox" id="crt">
+      <span class="luz"></span>
+      <span class="off">LIGAR O CRT</span>
+      <span class="on">DESLIGAR O CRT</span>
+    </label>
+    <span style="font-family:var(--font-display); font-size:9.5px; color:#7d8794">← clique (ou Tab + Espaço: funciona no teclado)</span>
+  </div>
+
+  <div class="par">
+    <div class="pag folha" style="--idade:.3">
+      <div class="cabeca"><div class="logo">GLYFESSE</div></div>
+      <h2 class="manchete" style="margin-top:0">Agora eu ando na diagonal</h2>
+      <p class="lide">Antes eu tinha 4 vetores. Agora tenho 8. É o dobro.</p>
+      <div class="aceso">
+        <div class="sala">
+          <i style="left:34%;top:16%;width:31%;height:9%"></i>
+          <i style="left:44%;top:25%;width:9%;height:22%"></i>
+          <i style="left:33%;top:63%;width:24%;height:8%"></i>
+          <i style="left:66%;top:39%;width:14%;height:23%"></i>
+          <span class="heroi"></span>
+        </div>
+      </div>
+      <p class="legenda"><b>FIG. 1</b> · O CRT cai <b>só aqui dentro</b>. Papel não é tubo.</p>
+      <div class="txt">
+        <p>O bug da parede foi corrigido na build de terça. Consertaram. Eu<span class="rt">... gostava dele.</span></p>
+      </div>
+      <div class="nota-cx">
+        <div class="rot">A NOTA DESTA EDIÇÃO<b>GRÁFICOS</b></div>
+        <div class="val">6,0</div>
+      </div>
+    </div>
+
+    <div>
+      <p class="obs" style="margin-top:0"><b>O achado, e ele surpreende:</b> o scanline cai por cima <b>do texto e do fundo juntos</b>, na mesma proporção, então <b>a razão de contraste quase não muda.</b> O CRT é bem menos perigoso do que a literatura sugere. Só continua valendo enquanto ele ficar por cima dos dois: se cair só no fundo, quebra na hora.</p>
+      <p class="medida" style="margin-top:14px">com <b>--crt-alpha .27</b>, medido sobre a tela acesa:<br>
+        texto-1 &nbsp;14.76 → <span class="ok">8.09 AA</span><br>
+        ciano &nbsp;&nbsp;&nbsp;10.83 → <span class="ok">6.07 AA</span><br>
+        magenta &nbsp;&nbsp;5.31 → <span class="warn">3.26 só texto GRANDE</span><br>
+        <br>teto seguro: <b>.35</b> <span class="no">(em .45 o ciano cai a 3.78)</span></p>
+      <p class="obs"><b>A consequência real:</b> com o CRT ligado, <b>o magenta deixa de servir como texto normal</b>. Ele já só é usado em numeral grande (a NOTA "6,0", que precisa de 3:1 e passa), então está coberto. Mas ficou escrito no <code>tokens.css</code>: <b>não invente magenta em parágrafo.</b></p>
+      <p class="obs"><b>Acessibilidade de graça:</b> o <code>&lt;input&gt;</code> é real, só está escondido do olho, então <b>Tab + Espaço funciona</b> e o leitor de tela anuncia o estado. E o rótulo <b>escreve</b> "LIGAR"/"DESLIGAR": a cor da luzinha nunca é o único indicador.</p>
+      <p class="obs"><b>Persistir entre páginas</b> continua sem JS: o PHP grava um cookie e escreve <code>data-crt="on"</code> no <code>&lt;html&gt;</code>. O CSS já aceita os dois caminhos.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ CAFÉ ═══════ -->
+  <h2>2. A mancha de café, e por que ela precisa de um guard</h2>
+  <p class="obs" style="margin-bottom:14px"><b>Isto não é preferência estética, é aritmética:</b> sobre a edição #1 encardida, a mancha derruba o texto secundário abaixo de AA <b>já com alpha 0.08</b>, quando ela está quase invisível. <b>Não existe mancha visível que possa cair sobre texto na edição velha.</b> Por isso ela não é "posicionada com cuidado": ela é <b>clipada por uma zona segura</b>.</p>
+
+  <div class="par">
+    <div class="pag folha" style="--idade:.85">
+      <p class="rotulo-demo">✓ CERTO · a mancha vive na <b>.zona-cafe</b> (tracejado)</p>
+      <div class="demo-zona">
+        <div class="zona-cafe aqui">
+          <i class="cafe" style="--cafe-x:52%; --cafe-y:46%; --cafe-tam:132px"></i>
+        </div>
+        <div class="txt" style="max-width:62%">
+          <p>O menu tem 4 botões. Levou 3 semanas. Não vou fazer a divisão.</p>
+          <p class="sec">Secundário: 4.51:1 na #1 encardida.</p>
+          <p class="cia">Ciano de tinta: 4.53:1.</p>
+        </div>
+      </div>
+      <p class="legenda" style="margin-top:8px"><b>O texto continua em 4.51:1.</b> A mancha nunca o encosta.</p>
+    </div>
+
+    <div class="pag folha errado" style="--idade:.85">
+      <p class="rotulo-demo">✗ ERRADO · a mesma mancha, <b>sem zona</b></p>
+      <div class="demo-zona">
+        <i class="cafe" style="--cafe-tam:132px"></i>
+        <div class="txt" style="max-width:62%">
+          <p>O menu tem 4 botões. Levou 3 semanas. Não vou fazer a divisão.</p>
+          <p class="sec">Secundário: cai para ~3.5:1. Reprova.</p>
+          <p class="cia">Ciano de tinta: cai junto.</p>
+        </div>
+      </div>
+      <p class="legenda" style="margin-top:8px"><b>Repare no secundário sob a mancha.</b> É este o bug que a zona impede.</p>
+    </div>
+  </div>
+  <p class="obs"><b>O guard é o <code>overflow:hidden</code> da <code>.zona-cafe</code></b>, e é isso que o torna confiável: <b>se alguém errar a coordenada, a mancha é cortada em vez de invadir o texto.</b> Não depende de ninguém lembrar da regra daqui a seis meses. A zona só é colocada onde não há parágrafo: margem, rodapé, ou <b>por cima da tela acesa</b> (derramar café na foto da revista é natural, e ali não há texto).</p>
+
+  <!-- ═══════ MOTION ═══════ -->
+  <h2>3. Motion reduzido: o movimento some, a informação não</h2>
+  <p class="obs" style="margin-bottom:12px">O site <b>é</b> movimento, então a versão reduzida não pode virar site quebrado. A regra que ficou no <code>tokens.css</code>: <b>o movimento pode sumir, a informação não.</b> Quem desliga motion vê o quadradinho <b>parado no destino</b> (onde ele chegou), não sumido, e a página continua contando a mesma coisa. Nada aqui depende de animação para ser entendido.</p>
+  <p class="obs"><b>Para conferir agora:</b> no Firefox, <code>about:config</code> → <code>ui.prefersReducedMotion</code> = <code>1</code>. O quadradinho para no canto de cima, que é exatamente onde a frase "agora eu ando na diagonal" queria chegar. <b>A informação é o destino, não o trajeto.</b></p>
+
+</div>
+</body>
+</html>

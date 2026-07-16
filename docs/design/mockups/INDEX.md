@@ -6,13 +6,14 @@ Zero dependência externa: fonte local (CC0), texturas em SVG inline. **O que es
 | # | Arquivo | O que decide | Status |
 |---|---|---|---|
 | 00 | [`00-vibe-o-material.html`](00-vibe-o-material.html) | **A vibe: de que MATERIAL o site é feito?** Três direções (papel / tela do Tavus-Drive / papel fotografado), a mesma dobra e o mesmo texto do Gus nas três. | ✅ **decidido: papel + foto como tratamento** |
+| 03 | [`03-crt-cafe-motion.html`](03-crt-cafe-motion.html) | **O CRT desligável (zero JS), a mancha de café com o guard, e o motion reduzido.** Aplicação de decisões já tomadas. Traz a demonstração lado a lado do que a `.zona-cafe` impede. | ✅ pronto |
 | 02 | [`02-tipografia.html`](02-tipografia.html) | **A tipografia.** Três pares display + corpo, a mesma dobra, com a seção de programação embaixo (o texto mais longo do site). | ✅ **decidido: par A** (Archivo Narrow + Vollkorn). ⚠️ **histórico:** as fontes dos pares B e C saíram do repo, então os painéis B e C agora caem no fallback serif. Para revê-lo como foi decidido: `git checkout 6ac1841 -- docs/design/mockups/fonts/` |
 | 01 | [`01-tokens.html`](01-tokens.html) | **Os tokens.** Os dois materiais lado a lado, a banca envelhecendo por `--idade`, a prova de leitura no papel encardido, e todas as amostras com a razão medida. Não redefine nenhuma cor: consome [`../tokens.css`](../tokens.css), o CSS de produção. | ✅ aprovado no Gecko |
 
 ## Como abrir
 
 ```bash
-firefox --new-tab docs/design/mockups/02-tipografia.html
+firefox --new-tab docs/design/mockups/03-crt-cafe-motion.html
 ```
 
 ## ⚠️ Verificar no Gecko, não no Blink
