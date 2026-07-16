@@ -144,9 +144,19 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
       return {l:r.left-s.left, t:r.top-s.top, r:r.right-s.left, b:r.bottom-s.top};
     });
   }
-  function bate(nx,ny,w,h,W){
+  /* HITBOX NOS PES (convencao do jogo: player AABB ~0.6 tile, ancorado nos
+     pes; ver GusEngine sprite_anchor/city_scene). A colisao NAO usa o sprite
+     inteiro: uma faixa pequena na BASE, centrada. O corpo sobrepoe a parede
+     (profundidade top-down) e so os PES bloqueiam: sem esbarrar de longe. */
+  var FEET=0.6;  /* fracao da largura: ~0.6 tile, como o spawn_player_aabb */
+  function feetBox(px,py,t){
+    var fw=Math.round(t.w*FEET), fh=Math.round(t.w*FEET);
+    var fl=px+(t.w-fw)/2, fb=py+t.h;           /* base = os pes do sprite */
+    return {l:fl, t:fb-fh, r:fl+fw, b:fb};
+  }
+  function bate(box,W){
     for(var i=0;i<W.length;i++){ var q=W[i];
-      if(nx < q.r-0.5 && nx+w > q.l+0.5 && ny < q.b-0.5 && ny+h > q.t+0.5) return true; }
+      if(box.l < q.r-0.5 && box.r > q.l+0.5 && box.t < q.b-0.5 && box.b > q.t+0.5) return true; }
     return false;
   }
   function pinta(){ heroi.style.setProperty("--x",x+"px"); heroi.style.setProperty("--y",y+"px"); }
@@ -159,8 +169,8 @@ h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spac
     var t=tam(), W=paredes();
     var maxx=sala.clientWidth-FRAME-t.w, maxy=sala.clientHeight-FRAME-t.h, dx=0, dy=0;
     if(dir==="left")dx=-PASSO; if(dir==="right")dx=PASSO; if(dir==="up")dy=-PASSO; if(dir==="down")dy=PASSO;
-    var nx=Math.max(FRAME, Math.min(maxx, x+dx)); if(!bate(nx,y,t.w,t.h,W)) x=nx;
-    var ny=Math.max(FRAME, Math.min(maxy, y+dy)); if(!bate(x,ny,t.w,t.h,W)) y=ny;
+    var nx=Math.max(FRAME, Math.min(maxx, x+dx)); if(!bate(feetBox(nx,y,t),W)) x=nx;
+    var ny=Math.max(FRAME, Math.min(maxy, y+dy)); if(!bate(feetBox(x,ny,t),W)) y=ny;
     olhar(dir); pinta();
     if(!virou){ movimentos++; if(movimentos>=8) evoluir(); }
   }
