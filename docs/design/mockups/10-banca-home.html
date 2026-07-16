@@ -16,12 +16,12 @@
 *{box-sizing:border-box}
 html{background:#20202a}
 body{margin:0; padding:0 0 70px; color:var(--tinta-preta); font-family:var(--font-corpo)}
-.aviso{width:min(95vw,1500px); margin:0 auto; padding:22px 20px 0; color:#8e97a4; font-size:13px; line-height:1.6}
+.aviso{width:100%; margin:0; padding:18px clamp(16px,3vw,40px) 0; color:#8e97a4; font-size:13px; line-height:1.6}
 .aviso b{color:#c8cdd6}
 
-/* ═══════════ A HOME (a revista enche a largura da tela) ═══════════ */
-.home{width:min(95vw,1500px); margin:16px auto 0; position:relative; background:var(--papel);
-  overflow:hidden; box-shadow:0 20px 60px #0007}
+/* ═══════════ A HOME (a revista de BORDA A BORDA, 100vw) ═══════════ */
+.home{width:100%; margin:12px 0 0; position:relative; background:var(--papel);
+  overflow:hidden; box-shadow:0 -1px 0 #0006}
 .home::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
   background-size:180px 180px; mix-blend-mode:multiply; opacity:.13}
@@ -41,16 +41,32 @@ body{margin:0; padding:0 0 70px; color:var(--tinta-preta); font-family:var(--fon
   border-left:2px solid var(--tinta-ciano); padding-left:7px}
 .moldura{margin-top:9px; border-radius:var(--raio-tela); padding:6px; background:#05090f;
   box-shadow:inset 0 0 0 1px var(--tela-borda), 0 2px 0 #00000018}
-.sala{position:relative; width:100%; aspect-ratio:24/9; overflow:hidden; background:var(--gw-navy);
+/* bate com o teste real (primeiro_teste_wasd_e_colisao_placeholder_quadradinho):
+   sala navy com moldura CLARA, paredes CLARAS solidas, quadrado CIANO solido. */
+.sala{position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:var(--gw-navy);
   touch-action:none; outline:none}
-.sala .parede{position:absolute; background:#39516f}
-.heroi{position:absolute; left:0; top:0; width:22px; height:22px;
-  transform:translate(var(--x,140px), var(--y,120px)); transition:transform .09s linear;
-  border:3px solid var(--gw-ciano); background:#0d152080; box-shadow:0 0 10px #4dd9e8aa;
-  image-rendering:pixelated; z-index:2}
-.heroi.virou{width:30px; height:50px; border:0; background:#0000; box-shadow:none;
+.sala::after{content:""; position:absolute; inset:0; z-index:4; pointer-events:none;
+  border:12px solid #b9c6d6}                 /* a moldura clara da sala */
+.sala .parede{position:absolute; background:#b9c6d6; z-index:1}  /* paredes claras, solidas */
+.heroi{position:absolute; left:0; top:0; width:26px; height:26px;
+  transform:translate(var(--x,60px), var(--y,150px)); transition:transform .06s linear;
+  background:var(--gw-ciano); box-shadow:0 0 10px #4dd9e8cc; image-rendering:pixelated; z-index:2}
+.heroi.virou{width:30px; height:52px; background:#0000; box-shadow:none;
   background-image:var(--sprite, url("sprites/gus-south.png")); background-size:contain;
   background-repeat:no-repeat; background-position:bottom center; filter:drop-shadow(0 0 5px #4dd9e855)}
+/* o d-pad de toque (mobile): sem WASD no celular, sem anda-sozinho */
+.dpad{position:absolute; right:10px; bottom:10px; z-index:5; display:none;
+  grid-template-columns:repeat(3,34px); grid-template-rows:repeat(3,34px); gap:4px}
+.dpad b{background:#0d1520cc; border:1.6px solid var(--gw-ciano); color:var(--gw-ciano);
+  display:grid; place-items:center; font-family:var(--font-display); font-size:16px; border-radius:5px;
+  user-select:none; cursor:pointer; -webkit-tap-highlight-color:transparent}
+.dpad b:active{background:var(--gw-ciano); color:var(--gw-navy)}
+.dpad .u{grid-area:1/2} .dpad .l{grid-area:2/1} .dpad .r{grid-area:2/3} .dpad .d{grid-area:3/2}
+.instru{font-family:var(--font-display); font-size:11px; letter-spacing:.04em; color:var(--tinta-2);
+  margin:9px 0 0; padding-left:7px}
+.instru b{color:var(--tinta-preta)}
+@media (max-width:760px){ .dpad{display:grid} .instru .kb{display:none} .instru .tc{display:inline} }
+.instru .tc{display:none}
 .sel{position:absolute; left:9px; top:8px; z-index:3; pointer-events:none;
   font-family:var(--font-display); font-size:10px; letter-spacing:.06em; color:var(--gw-ciano);
   text-shadow:0 0 6px #4dd9e8aa}
@@ -99,7 +115,7 @@ body{margin:0; padding:0 0 70px; color:var(--tinta-preta); font-family:var(--fon
 .ed .selo-jogo::before{content:""; width:8px; height:8px; background:var(--gw-ciano);
   box-shadow:0 0 7px var(--gw-ciano)}
 
-.pe{width:min(95vw,1500px); margin:14px auto 0; padding:0 26px; font-family:var(--font-display);
+.pe{width:100%; margin:14px 0 0; padding:0 clamp(16px,3vw,40px); font-family:var(--font-display);
   font-size:10px; letter-spacing:.06em; color:#6b7480; text-align:center}
 </style>
 </head>
@@ -117,17 +133,18 @@ body{margin:0; padding:0 0 70px; color:var(--tinta-preta); font-family:var(--fon
   <div class="hero">
     <span class="rot">VOCÊ JOGA · EDIÇÃO #3 · O QUADRADO AZUL</span>
     <div class="moldura">
-      <div class="sala" id="hero-sala" tabindex="0" role="application" aria-label="Quadradinho jogável: setas do teclado, ou toque. Ele vira o Gus.">
-        <div class="parede" style="left:33%;top:17%;width:31%;height:9%"></div>
-        <div class="parede" style="left:45%;top:26%;width:8%;height:24%"></div>
-        <div class="parede" style="left:32%;top:64%;width:24%;height:8%"></div>
-        <div class="parede" style="left:67%;top:40%;width:12%;height:22%"></div>
+      <div class="sala" id="hero-sala" tabindex="0" role="application" aria-label="Quadradinho: clique e use WASD (ou o d-pad no celular) para movimentar. Ele bate nas paredes. Depois de um tempo vira o Gus.">
+        <div class="parede" style="left:30%;top:22%;width:30%;height:10%"></div>
+        <div class="parede" style="left:42%;top:32%;width:8%;height:22%"></div>
+        <div class="parede" style="left:26%;top:50%;width:26%;height:9%"></div>
+        <div class="parede" style="left:60%;top:34%;width:11%;height:20%"></div>
         <div class="sel">22 JUN 2026</div>
-        <div class="ajuda">← ↑ ↓ →<br>ou toque</div>
         <div class="heroi" id="hero-heroi"></div>
+        <div class="dpad" aria-hidden="true"><b class="u" data-dir="up">↑</b><b class="l" data-dir="left">←</b><b class="r" data-dir="right">→</b><b class="d" data-dir="down">↓</b></div>
       </div>
     </div>
-    <p class="cap"><b>o quadrado azul.</b> um retângulo numa sala. as setas movem; aos 5s ele vira o Gus. essa é a edição #3, e o brinquedo é a capa.</p>
+    <p class="instru"><span class="kb">clique na tela e use <b>WASD</b> para movimentar.</span><span class="tc">toque no <b>d-pad</b> para movimentar.</span></p>
+    <p class="cap"><b>o quadrado azul.</b> um retângulo sólido numa sala; ele bate nas paredes, não passa por cima. depois de um tempo mexendo, vira o Gus. essa é a edição #3, e o brinquedo é a capa.</p>
   </div>
 
   <!-- ── A BANCA ── -->
@@ -172,42 +189,71 @@ body{margin:0; padding:0 0 70px; color:var(--tinta-preta); font-family:var(--fon
 <p class="pe">GLYFESSE // gusworld.site // a banca é a home · as bordas amarelam com a idade real de cada edição</p>
 
 <script>
-/* O HERO: o quadradinho da #3, jogavel. Anda sozinho quando voce chega (vivo
-   em 1s), as setas assumem no desktop e o toque assume no celular; aos 5s
-   vira o Gus. E a mecanica decidida (mock 05/06) instanciada como hero da home.
-   reduced-motion: entra virado, parado. */
+/* O HERO: o quadradinho da #3, como o teste REAL (WASD + colisao). Fica
+   PARADO ate o input (NAO anda sozinho). Desktop: WASD. Mobile: d-pad.
+   COLISAO real: bate nas paredes, nao passa por cima. Depois de mexer um
+   pouco (8 passos), vira o GUS (sprite gustaf_i_tavus_vance). reduced-motion:
+   entra ja virado, parado. */
 (function(){
   var sala  = document.getElementById("hero-sala");
   var heroi = document.getElementById("hero-heroi");
   if(!sala || !heroi) return;
   var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
-  var x=140, y=120, virou=false, assumido=false, vx=1.3, vy=1.0, raf=null;
+  var x=0, y=0, virou=false, movimentos=0;
   var SPR = { left:"sprites/gus-west.png", right:"sprites/gus-east.png",
               up:"sprites/gus-north.png", down:"sprites/gus-south.png" };
-  function clamp(){
-    var r=sala.getBoundingClientRect(), w=virou?30:22, h=virou?50:22;
-    x=Math.max(6, Math.min(r.width-w-6, x));
-    y=Math.max(6, Math.min(r.height-h-6, y));
+  var FRAME=12, PASSO=14;
+  function tam(){ return virou ? {w:30,h:52} : {w:26,h:26}; }
+  function paredes(){
+    var s=sala.getBoundingClientRect();
+    return Array.prototype.map.call(sala.querySelectorAll(".parede"), function(w){
+      var r=w.getBoundingClientRect();
+      return {l:r.left-s.left, t:r.top-s.top, r:r.right-s.left, b:r.bottom-s.top};
+    });
   }
-  function pinta(){ clamp(); heroi.style.setProperty("--x",x+"px"); heroi.style.setProperty("--y",y+"px"); }
-  function evoluir(){ if(virou) return; virou=true; heroi.classList.add("virou"); pinta(); }
+  function bate(nx,ny,w,h,W){
+    for(var i=0;i<W.length;i++){ var q=W[i];
+      if(nx < q.r-0.5 && nx+w > q.l+0.5 && ny < q.b-0.5 && ny+h > q.t+0.5) return true; }
+    return false;
+  }
+  function pinta(){ heroi.style.setProperty("--x", x+"px"); heroi.style.setProperty("--y", y+"px"); }
   function olhar(d){ if(virou && SPR[d]) heroi.style.setProperty("--sprite","url('"+SPR[d]+"')"); }
-  function anda(d){ var p=18; if(d==="left")x-=p; if(d==="right")x+=p; if(d==="up")y-=p; if(d==="down")y+=p; olhar(d); pinta(); }
-  function assumir(){ if(assumido) return; assumido=true; cancelAnimationFrame(raf); }
-  function passo(){
-    var r=sala.getBoundingClientRect();
-    x+=vx; y+=vy;
-    if(x<=6 || x>=r.width-28) vx=-vx;
-    if(y<=6 || y>=r.height-28) vy=-vy;
-    pinta(); raf=requestAnimationFrame(passo);
+  function reclamp(){
+    var t=tam();
+    x=Math.max(FRAME, Math.min(sala.clientWidth-FRAME-t.w, x));
+    y=Math.max(FRAME, Math.min(sala.clientHeight-FRAME-t.h, y));
   }
+  function evoluir(){ if(virou) return; virou=true; heroi.classList.add("virou"); reclamp(); olhar("down"); pinta(); }
+  function mover(dir){
+    var t=tam(), W=paredes();
+    var maxx=sala.clientWidth-FRAME-t.w, maxy=sala.clientHeight-FRAME-t.h;
+    var dx=0, dy=0;
+    if(dir==="left")dx=-PASSO; if(dir==="right")dx=PASSO; if(dir==="up")dy=-PASSO; if(dir==="down")dy=PASSO;
+    var nx=Math.max(FRAME, Math.min(maxx, x+dx));   /* eixo X, so anda se nao bater */
+    if(!bate(nx,y,t.w,t.h,W)) x=nx;
+    var ny=Math.max(FRAME, Math.min(maxy, y+dy));   /* eixo Y, idem (desliza na parede) */
+    if(!bate(x,ny,t.w,t.h,W)) y=ny;
+    olhar(dir); pinta();
+    if(!virou){ movimentos++; if(movimentos>=8) evoluir(); }
+  }
+  /* teclado WASD (desktop) */
   sala.addEventListener("keydown", function(e){
-    var m={ArrowLeft:"left",ArrowRight:"right",ArrowUp:"up",ArrowDown:"down"};
-    if(!m[e.key]) return; e.preventDefault(); assumir(); anda(m[e.key]);
+    var m={KeyW:"up",KeyA:"left",KeyS:"down",KeyD:"right"};
+    var dir=m[e.code]; if(!dir) return; e.preventDefault(); mover(dir);
   });
-  sala.addEventListener("pointerdown", function(){ assumir(); });
-  if(reduz){ assumido=true; evoluir(); olhar("down"); pinta(); }
-  else { pinta(); setTimeout(evoluir, 5000); raf=requestAnimationFrame(passo); }
+  /* d-pad de toque (mobile): segurar repete */
+  sala.querySelectorAll(".dpad b").forEach(function(bt){
+    var it=null, dir=bt.dataset.dir;
+    bt.addEventListener("pointerdown", function(e){ e.preventDefault(); mover(dir); clearInterval(it); it=setInterval(function(){mover(dir);}, 120); });
+    ["pointerup","pointerleave","pointercancel"].forEach(function(ev){ bt.addEventListener(ev, function(){ clearInterval(it); }); });
+  });
+  /* posicao inicial: canto inferior esquerdo, como no teste real. PARADO. */
+  function init(){
+    var r=sala.getBoundingClientRect();
+    x=Math.round(r.width*0.18); y=Math.round(r.height*0.70); reclamp();
+    if(reduz){ evoluir(); } else { pinta(); }
+  }
+  init();
 })();
 </script>
 </body>
