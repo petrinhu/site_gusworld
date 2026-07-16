@@ -91,9 +91,9 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 .cap-fig{font-family:var(--font-display); font-size:14px; color:var(--tinta-2);
   margin:10px 0 0; padding-left:9px; border-left:2px solid var(--tinta-ciano); line-height:1.5}
 .cap-fig b{color:var(--tinta-ciano)}
-/* a instrucao e uma fala do Gus no TOPO da coluna de voz (alinha com a
-   carta); separa do kicker abaixo. Mesmo componente .fala das outras. */
-.instru-fala{margin:0 0 22px}
+/* a instrucao e a ULTIMA fala da coluna de voz (o convite que fecha a
+   conversa), dentro do .dialogo: usa o gap uniforme, alinhada com as demais. */
+.instru-fala{margin:0}
 
 /* ── a voz: prompt de shell + pensamento // ── */
 .kicker{font-family:var(--font-display); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
@@ -167,19 +167,12 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
       <figcaption class="cap-fig"><b>FIG. 1</b> · o quadradinho da build 3, jogável. o quadrado já era ciano.</figcaption>
     </figure>
 
-    <!-- a voz. ★ A fala-instrucao mora AQUI, no topo da coluna de voz (a tela
-         que ela cita esta a esquerda), e nao sob a figura: assim TODOS os
-         gus@glyfesse> (instrucao + carta) alinham na MESMA vertical e leem
-         como uma coluna de voz so. Antes ela estava na coluna esquerda e o
-         prefixo "pulava" pra fora. Reusa o mesmo componente .fala. -->
+    <!-- a voz. ★ Toda a coluna direita e a voz do Gus, alinhada numa vertical
+         so: [titulo] no topo -> [falas normais] (a carta) -> [fala-instrucao]
+         por ULTIMO. A instrucao fecha a conversa como convite pra brincar
+         ("se transforma em mim"), por isso vem no FIM, nao na abertura. A
+         tela que ela cita esta a esquerda. Reusa o mesmo componente .fala. -->
     <div>
-      <!-- ★ A instrucao e uma FALA do Gus, 1a pessoa ("se transforma em MIM",
-           nao "vira o Gus"). O "ele" = o quadrado que ele ja foi. Sem ponto
-           final, "..." presentes. Legivel (instrucao): zero typo. -->
-      <p class="fala instru-fala">
-        <span class="prompt">gus@glyfesse&gt;</span>
-        <span class="dito"> clique na tela e use <b>WASD</b>... ele bate nas paredes, e depois de mexer um pouco... se transforma em mim</span>
-      </p>
       <p class="kicker">A carta do Gus · editorial</p>
       <h2 class="titulo-carta">Ele ainda é só um quadrado</h2>
 
@@ -207,6 +200,15 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
         <p class="fala">
           <span class="prompt root">root@glyfesse&gt;</span>
           <span class="dito"> aqui... sempre estive</span>
+        </p>
+        <!-- ★ A fala-instrucao fecha a conversa: o convite pra brincar, em 1a
+             pessoa ("se transforma em MIM", nao "vira o Gus"; o "ele" = o
+             quadrado que ele ja foi). Ultima da coluna de voz, alinhada com
+             as demais (mesmo componente .fala). Sem ponto final, "..."
+             presentes. Legivel (instrucao): zero typo. -->
+        <p class="fala instru-fala">
+          <span class="prompt">gus@glyfesse&gt;</span>
+          <span class="dito"> clique na tela e use <b>WASD</b>... ele bate nas paredes, e depois de mexer um pouco... se transforma em mim</span>
         </p>
       </div>
     </div>
