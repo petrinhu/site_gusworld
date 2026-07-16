@@ -97,8 +97,11 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 /* ── a voz: prompt de shell + pensamento // ── */
 .kicker{font-family:var(--font-display); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
   color:var(--tinta-ciano); margin:0 0 4px}
-.titulo-carta{font-family:var(--font-manchete); font-weight:700; font-size:34px; line-height:.98;
-  letter-spacing:-.018em; text-transform:uppercase; color:var(--tinta-preta); margin:0 0 18px}
+/* ★ Titulo menor e MENOS quadrado (regra do lider): a condensada em caixa
+   alta + 700 + tracking apertado lia blocky/pesada demais. Sentence case,
+   menor e com tracking folgado suaviza o geometrico sem perder a manchete. */
+.titulo-carta{font-family:var(--font-manchete); font-weight:700; font-size:26px; line-height:1.05;
+  letter-spacing:0; color:var(--tinta-preta); margin:0 0 18px}
 
 .dialogo{display:flex; flex-direction:column; gap:16px; max-width:64ch}
 .fala{margin:0}
@@ -110,7 +113,11 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
    (ambos prominentes) > // (menor, esmaecido por cor). */
 .prompt{font-family:var(--font-display); font-size:16px; color:var(--tinta-ciano); letter-spacing:.01em}
 .prompt.root{color:var(--tinta-magenta)}
-.dito{font-family:var(--font-corpo); font-weight:400; font-size:17px; line-height:1.55; color:var(--tinta-preta)}
+/* ★ A fala do Gus le BAIXINHO, nao grita (regra do lider): a tinta-preta
+   cheia + grande soava manchete/GRITO mesmo em minuscula. Trocada pela
+   --tinta-2 (mais suave, ainda AA no pior papel: 4.51:1) e 17->16px. A
+   legibilidade fica (>=16px); o volume cai. Ele sussurra, nao anuncia. */
+.dito{font-family:var(--font-corpo); font-weight:400; font-size:16px; line-height:1.55; color:var(--tinta-2)}
 
 /* ★ VARIACAO A: o // e o comentario de codigo: verde, MENOR, mesma coluna.
    #35562f = 5.05:1 sobre o pior papel (--papel-fim). De-emphasis pela COR
@@ -130,8 +137,8 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 <body>
 
 <div class="ctx">
-  <h1>Glyfesse · mock 11a · variacao A</h1>
-  <p>O <span class="tag">//</span> (pensamento) e um <b>comentario de codigo verde</b>, um degrau <b>menor</b> que a fala, mas AA. Corpo da fala 17px. A tela de jogo e <b>contida (~34%)</b>. O quadrado vira o <b>Gus ruivo</b> (revelacao frontal). Clique na tela e use WASD.</p>
+  <h1>Glyfesse · mock 11a · vencedor (ajustado)</h1>
+  <p>Ajustes do lider: <b>titulo menor e menos blocky</b>; a fala do Gus le <b>baixinho</b> (tinta suave, 16px, sem grito) com <b>typo leve ocasional + sem ponto final</b> (registro chat); prefixo <b>casado</b> com a fala; <span class="tag">//</span> verde menor AA. Tela contida ~34%, <b>Gus ruivo</b>, hitbox nos pes. Clique na tela e use WASD.</p>
 </div>
 
 <div class="folha-dobra">
@@ -139,7 +146,7 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
     <div class="logo">GLYFESSE</div>
     <div class="ed">ANO 1 · Nº <b>3</b><br>gusworld.site</div>
   </div>
-  <span class="chamada-topo">VOCE · O QUADRADINHO · AGORA</span>
+  <span class="chamada-topo">VOCÊ · O QUADRADINHO · AGORA</span>
 
   <div class="dobra">
 
@@ -156,34 +163,39 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
           <div class="heroi" id="heroi"></div>
         </div>
       </div>
-      <figcaption class="cap-fig"><b>FIG. 1</b> · o quadradinho da build 3, jogavel. o quadrado ja era ciano.</figcaption>
+      <figcaption class="cap-fig"><b>FIG. 1</b> · o quadradinho da build 3, jogável. o quadrado já era ciano.</figcaption>
       <p class="instru">clique na tela e use <b>WASD</b>. ele bate nas paredes, e depois de mexer um pouco <b>vira o Gus</b>.</p>
     </figure>
 
     <!-- a voz -->
     <div>
       <p class="kicker">A carta do Gus · editorial</p>
-      <h2 class="titulo-carta">Ele ainda e so um quadrado</h2>
+      <h2 class="titulo-carta">Ele ainda é só um quadrado</h2>
 
+      <!-- ★ Falas do Gus no registro CHAT: tom baixo, sem ponto final (o
+           ponto encerra grosseiro online), "..." como assinatura, e 1 typo
+           leve a cada poucas linhas (direcoes sem til; alguem sem acento).
+           O root (o criador) fala limpo: o typo e trace do menino, nao dele.
+           O // pensamento nao e "enviado", entao mantem pontuacao normal. -->
       <div class="dialogo">
         <p class="fala">
           <span class="prompt">gus@glyfesse&gt;</span>
-          <span class="dito"> build 3 no ar. o quadrado anda em oito direcoes agora.</span>
-          <span class="pensa">antes eram quatro. o menu levou tres semanas. nao vou fazer a conta.</span>
+          <span class="dito"> build 3 no ar... o quadrado anda em oito direçoes agora</span>
+          <span class="pensa">antes eram quatro. o menu levou três semanas, não vou fazer a conta</span>
         </p>
         <p class="fala">
           <span class="prompt">gus@glyfesse&gt;</span>
-          <span class="dito"> ele ainda e so um quadrado. mas e o meu quadrado, e ele colide.</span>
-          <span class="pensa">bater na parede e nao atravessar levou mais tempo do que eu queria admitir.</span>
+          <span class="dito"> ele ainda é só um quadrado, mas é o meu quadrado... e ele colide</span>
+          <span class="pensa">bater na parede e não atravessar levou mais tempo do que eu queria admitir</span>
         </p>
         <p class="fala">
           <span class="prompt">gus@glyfesse&gt;</span>
-          <span class="dito"> deixei a caixa do bus aberta, caso alguem compile junto.</span>
-          <span class="pensa">ninguem apareceu ainda. tudo bem. eu espero.</span>
+          <span class="dito"> deixei a caixa do bus aberta, caso alguem apareça pra compilar junto</span>
+          <span class="pensa">ninguém apareceu ainda... tudo bem, eu espero</span>
         </p>
         <p class="fala">
           <span class="prompt root">root@glyfesse&gt;</span>
-          <span class="dito"> aqui. sempre estive.</span>
+          <span class="dito"> aqui... sempre estive</span>
         </p>
       </div>
     </div>
@@ -192,7 +204,7 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
   <div class="rodape">
     <span><b>GLYFESSE</b> · a revista do GusWorld</span>
     <span>build 3 · o quadrado que colide</span>
-    <span>role para abrir a edicao</span>
+    <span>role para abrir a edição</span>
   </div>
 </div>
 
