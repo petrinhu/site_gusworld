@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse: a banca (a home)</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   MOCK 10 - A BANCA / HOME (1o rascunho). Execucao do layout decidido
+   (D-BRINQUEDOS): a HOME e a banca; o hero e o quadradinho da edicao #3
+   (brinquedo primeiro); as 3 edicoes de lancamento enfileiradas; as bordas
+   AMARELAM pela idade real datada (#1 15 mai = mais velha; #3 22 jun = nova).
+   Tudo vem de ../tokens.css. Verificar no Firefox DELE.
+   ───────────────────────────────────────────────────────────── */
+*{box-sizing:border-box}
+html{background:#20202a}
+body{margin:0; padding:0 0 70px; color:var(--tinta-preta); font-family:var(--font-corpo)}
+.aviso{max-width:1080px; margin:0 auto; padding:22px 20px 0; color:#8e97a4; font-size:13px; line-height:1.6}
+.aviso b{color:#c8cdd6}
+
+/* ═══════════ A HOME (uma folha de papel larga) ═══════════ */
+.home{max-width:1080px; margin:16px auto 0; position:relative; background:var(--papel);
+  overflow:hidden; box-shadow:0 20px 60px #0007}
+.home::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.13}
+.home > *{position:relative; z-index:1}
+
+/* masthead da home */
+.mast{display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+  padding:20px 26px 12px; border-bottom:3px solid var(--tinta-preta)}
+.mast .logo{font-family:var(--font-display); font-weight:700; font-size:38px; line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.6px -1.6px 0 #00b6d4b0, 1.6px 1.6px 0 #c2129eb0}
+.mast .tag{font-family:var(--font-corpo); font-style:italic; font-size:13.5px; color:var(--tinta-2);
+  text-align:right; max-width:34ch; line-height:1.35}
+
+/* ── HERO: o quadradinho da #3 (brinquedo primeiro) ── */
+.hero{padding:18px 26px 6px}
+.hero .rot{font-family:var(--font-display); font-size:9.5px; letter-spacing:.14em; color:var(--tinta-ciano);
+  border-left:2px solid var(--tinta-ciano); padding-left:7px}
+.moldura{margin-top:9px; border-radius:var(--raio-tela); padding:6px; background:#05090f;
+  box-shadow:inset 0 0 0 1px var(--tela-borda), 0 2px 0 #00000018}
+.sala{position:relative; width:100%; aspect-ratio:24/9; overflow:hidden; background:var(--gw-navy);
+  touch-action:none; outline:none}
+.sala .parede{position:absolute; background:#39516f}
+.heroi{position:absolute; left:0; top:0; width:22px; height:22px;
+  transform:translate(var(--x,140px), var(--y,120px)); transition:transform .09s linear;
+  border:3px solid var(--gw-ciano); background:#0d152080; box-shadow:0 0 10px #4dd9e8aa;
+  image-rendering:pixelated; z-index:2}
+.heroi.virou{width:30px; height:50px; border:0; background:#0000; box-shadow:none;
+  background-image:var(--sprite, url("sprites/gus-south.png")); background-size:contain;
+  background-repeat:no-repeat; background-position:bottom center; filter:drop-shadow(0 0 5px #4dd9e855)}
+.sel{position:absolute; left:9px; top:8px; z-index:3; pointer-events:none;
+  font-family:var(--font-display); font-size:10px; letter-spacing:.06em; color:var(--gw-ciano);
+  text-shadow:0 0 6px #4dd9e8aa}
+.ajuda{position:absolute; right:9px; bottom:8px; z-index:3; pointer-events:none;
+  font-family:var(--font-display); font-size:9.5px; color:#6b8199; text-align:right; line-height:1.5}
+.hero .cap{font-family:var(--font-display); font-size:10px; color:var(--tinta-2); margin:8px 0 0;
+  padding-left:7px; border-left:2px solid var(--tinta-ciano)}
+.hero .cap b{color:var(--tinta-ciano)}
+
+/* ═══════════ A BANCA: as edicoes enfileiradas ═══════════ */
+.banca{padding:22px 26px 28px}
+.banca-tit{display:flex; align-items:baseline; gap:10px; border-top:1px solid #00000018; padding-top:18px}
+.banca-tit h2{font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:.12em;
+  color:var(--tinta-preta); text-transform:uppercase; margin:0}
+.banca-tit span{font-family:var(--font-display); font-size:9px; color:var(--tinta-2); letter-spacing:.08em}
+.banca-tit .drip{margin-left:auto; font-family:var(--font-corpo); font-style:italic; font-size:12.5px; color:var(--tinta-2)}
+
+.prateleira{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:16px; align-items:end}
+@media (max-width:760px){ .prateleira{grid-template-columns:1fr} }
+
+/* cada edicao e uma FOLHA com IDADE (o .folha do tokens.css amarela sozinho) */
+.ed{position:relative; display:block; text-decoration:none; color:var(--tinta-preta);
+  padding:14px 15px 15px; box-shadow:var(--sombra-folha); border-top:3px solid var(--tinta-preta);
+  transition:transform var(--dur-medio) var(--ease), box-shadow var(--dur-medio) var(--ease)}
+.ed::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:150px 150px; mix-blend-mode:multiply; opacity:.16}
+.ed > *{position:relative; z-index:1}
+.ed:hover{transform:translateY(-4px); box-shadow:0 3px 0 #00000012, 0 16px 34px #00000026}
+.ed:focus-visible{outline:3px solid var(--tinta-ciano); outline-offset:3px}
+.ed .mini-mast{display:flex; justify-content:space-between; align-items:baseline;
+  font-family:var(--font-display); border-bottom:1.5px solid var(--tinta-preta); padding-bottom:5px}
+.ed .mini-mast .l{font-weight:700; font-size:15px; color:var(--tinta-preta)}
+.ed .mini-mast .n{font-size:9px; color:var(--tinta-2); text-align:right; line-height:1.3}
+.ed .mini-mast .n b{color:var(--tinta-preta); font-size:12px; display:block}
+.ed .ct{font-family:var(--font-manchete); font-weight:700; font-size:26px; line-height:.92;
+  letter-spacing:-.018em; text-transform:uppercase; color:var(--tinta-preta); margin:11px 0 7px; min-height:2.4em}
+.ed .ch{font-family:var(--font-corpo); font-weight:600; font-size:13px; line-height:1.4; color:var(--tinta-preta); margin:0}
+.ed .tipo{margin-top:11px; font-family:var(--font-display); font-size:8px; letter-spacing:.1em; color:var(--tinta-2)}
+.ed .nova{position:absolute; top:-11px; right:10px; z-index:2; font-family:var(--font-display);
+  font-size:9px; font-weight:700; letter-spacing:.1em; color:var(--papel); background:var(--tinta-ciano);
+  padding:3px 7px}
+/* a #3 tem a "tela" jogavel dentro: um lembrete de que o hero e ela */
+.ed .selo-jogo{display:inline-flex; align-items:center; gap:5px; margin-top:11px;
+  font-family:var(--font-display); font-size:9px; letter-spacing:.06em; color:var(--tinta-ciano)}
+.ed .selo-jogo::before{content:""; width:8px; height:8px; background:var(--gw-ciano);
+  box-shadow:0 0 7px var(--gw-ciano)}
+
+.pe{max-width:1080px; margin:14px auto 0; padding:0 26px; font-family:var(--font-display);
+  font-size:10px; letter-spacing:.06em; color:#6b7480; text-align:center}
+</style>
+</head>
+<body>
+<div class="aviso"><b>Mock 10 · a banca (a home), 1o rascunho.</b> A home É a banca: o quadradinho da edição #3 é o hero (jogue com as setas, ou toque; ele anda sozinho até você assumir), e as 3 edições de lançamento ficam enfileiradas abaixo, <b>amarelando pela idade real</b> (a #1 de maio é a mais velha; a #3 de junho, nova). Renderiza o que já foi decidido; as perguntas que surgirem vão uma por vez.</div>
+
+<div class="home">
+
+  <div class="mast">
+    <div class="logo">GLYFESSE</div>
+    <div class="tag">a revista de um jogo que ainda não saiu.<br>escrita por quem mora dentro dele.</div>
+  </div>
+
+  <!-- ── HERO: o quadradinho da #3 ── -->
+  <div class="hero">
+    <span class="rot">VOCÊ JOGA · EDIÇÃO #3 · O QUADRADO AZUL</span>
+    <div class="moldura">
+      <div class="sala" id="hero-sala" tabindex="0" role="application" aria-label="Quadradinho jogável: setas do teclado, ou toque. Ele vira o Gus.">
+        <div class="parede" style="left:33%;top:17%;width:31%;height:9%"></div>
+        <div class="parede" style="left:45%;top:26%;width:8%;height:24%"></div>
+        <div class="parede" style="left:32%;top:64%;width:24%;height:8%"></div>
+        <div class="parede" style="left:67%;top:40%;width:12%;height:22%"></div>
+        <div class="sel">22 JUN 2026</div>
+        <div class="ajuda">← ↑ ↓ →<br>ou toque</div>
+        <div class="heroi" id="hero-heroi"></div>
+      </div>
+    </div>
+    <p class="cap"><b>o quadrado azul.</b> um retângulo numa sala. as setas movem; aos 5s ele vira o Gus. essa é a edição #3, e o brinquedo é a capa.</p>
+  </div>
+
+  <!-- ── A BANCA ── -->
+  <div class="banca">
+    <div class="banca-tit">
+      <h2>A banca</h2><span>3 edições · jul 2026</span>
+      <span class="drip">o resto pinga, uma de cada vez...</span>
+    </div>
+    <div class="prateleira">
+
+      <!-- #1 gênese (a mais velha: 15 mai) -->
+      <a class="ed folha" style="--idade:.55" href="#">
+        <div class="mini-mast"><span class="l">GLYFESSE</span><span class="n">ANO 1<b>Nº 1</b>15 MAI 2026</span></div>
+        <h3 class="ct">No começo era a palavra</h3>
+        <p class="ch">Antes do quadrado: ebooks, um RAG, e a primeira palavra em Sylvarin.</p>
+        <div class="tipo">MATÉRIA TEXTUAL · a gênese</div>
+      </a>
+
+      <!-- #2 arquitetura / 3D (mid: 18 mai a 4 jun) -->
+      <a class="ed folha" style="--idade:.3" href="#">
+        <div class="mini-mast"><span class="l">GLYFESSE</span><span class="n">ANO 1<b>Nº 2</b>18 MAI-4 JUN</span></div>
+        <h3 class="ct">A arquitetura, e o 3D que morreu</h3>
+        <p class="ch">Godot, C#, 982 mil faces. Não deu pra um dev solo. O 3D morreu aqui.</p>
+        <div class="tipo">MATÉRIA TEXTUAL · o beco sem saída</div>
+      </a>
+
+      <!-- #3 o quadrado azul (nova: 22 jun) -->
+      <a class="ed folha" style="--idade:.08" href="#">
+        <span class="nova">NOVA</span>
+        <div class="mini-mast"><span class="l">GLYFESSE</span><span class="n">ANO 1<b>Nº 3</b>22 JUN 2026</span></div>
+        <h3 class="ct">O quadrado azul</h3>
+        <p class="ch">O pivô: 3D pra 2D, GusEngine em C++. Um retângulo que anda. Era o mundo inteiro.</p>
+        <span class="selo-jogo">JOGÁVEL · é o hero lá em cima</span>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+<p class="pe">GLYFESSE // gusworld.site // a banca é a home · as bordas amarelam com a idade real de cada edição</p>
+
+<script>
+/* O HERO: o quadradinho da #3, jogavel. Anda sozinho quando voce chega (vivo
+   em 1s), as setas assumem no desktop e o toque assume no celular; aos 5s
+   vira o Gus. E a mecanica decidida (mock 05/06) instanciada como hero da home.
+   reduced-motion: entra virado, parado. */
+(function(){
+  var sala  = document.getElementById("hero-sala");
+  var heroi = document.getElementById("hero-heroi");
+  if(!sala || !heroi) return;
+  var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var x=140, y=120, virou=false, assumido=false, vx=1.3, vy=1.0, raf=null;
+  var SPR = { left:"sprites/gus-west.png", right:"sprites/gus-east.png",
+              up:"sprites/gus-north.png", down:"sprites/gus-south.png" };
+  function clamp(){
+    var r=sala.getBoundingClientRect(), w=virou?30:22, h=virou?50:22;
+    x=Math.max(6, Math.min(r.width-w-6, x));
+    y=Math.max(6, Math.min(r.height-h-6, y));
+  }
+  function pinta(){ clamp(); heroi.style.setProperty("--x",x+"px"); heroi.style.setProperty("--y",y+"px"); }
+  function evoluir(){ if(virou) return; virou=true; heroi.classList.add("virou"); pinta(); }
+  function olhar(d){ if(virou && SPR[d]) heroi.style.setProperty("--sprite","url('"+SPR[d]+"')"); }
+  function anda(d){ var p=18; if(d==="left")x-=p; if(d==="right")x+=p; if(d==="up")y-=p; if(d==="down")y+=p; olhar(d); pinta(); }
+  function assumir(){ if(assumido) return; assumido=true; cancelAnimationFrame(raf); }
+  function passo(){
+    var r=sala.getBoundingClientRect();
+    x+=vx; y+=vy;
+    if(x<=6 || x>=r.width-28) vx=-vx;
+    if(y<=6 || y>=r.height-28) vy=-vy;
+    pinta(); raf=requestAnimationFrame(passo);
+  }
+  sala.addEventListener("keydown", function(e){
+    var m={ArrowLeft:"left",ArrowRight:"right",ArrowUp:"up",ArrowDown:"down"};
+    if(!m[e.key]) return; e.preventDefault(); assumir(); anda(m[e.key]);
+  });
+  sala.addEventListener("pointerdown", function(){ assumir(); });
+  if(reduz){ assumido=true; evoluir(); olhar("down"); pinta(); }
+  else { pinta(); setTimeout(evoluir, 5000); raf=requestAnimationFrame(passo); }
+})();
+</script>
+</body>
+</html>
