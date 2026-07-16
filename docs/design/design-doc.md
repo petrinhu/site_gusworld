@@ -140,11 +140,17 @@ Mock: [`mockups/07-linha-tempo.html`](mockups/07-linha-tempo.html). Arrasta o te
 
 **A correção de cronologia que isso trouxe:** o quadradinho não é o começo. A gênese (ebooks, RAG, lore) é a Edição #1, de 15 de maio de 2026; a era visual (o quadrado azul, GusEngine em C++) começa em 22 de junho. O scrubber cobre só a era visual, com datas reais; a gênese e o 3D abandonado são edições textuais, entram na banca mas ficam fora do scrubber.
 
-**A decisão de fundo (data-driven):** a linha do tempo e a banca leem do mesmo array `$edicoes`, com campos `tipo` (textual/visual), `estado` (publicada/rascunho) e `data`. O scrubber filtra visual e publicada; a banca filtra publicada. O líder publica uma edição trocando uma palavra, e a linha e a banca crescem juntas. Nunca mostra rascunho (não spoila o drip). Quantas nascem publicadas no lançamento é config do líder, ainda pendente.
+**A decisão de fundo (data-driven):** a linha do tempo e a banca leem do mesmo array `$edicoes`, com campos `tipo` (textual/visual), `estado` (publicada/rascunho) e `data`. O scrubber filtra visual e publicada; a banca filtra publicada. O líder publica uma edição trocando uma palavra, e a linha e a banca crescem juntas. Nunca mostra rascunho (não spoila o drip).
 
-### O PRESS START (`PRESS-START`) — comportamento pendente
+**O lançamento (decidido):** o site nasce com **3 edições publicadas**, o suficiente para chegar ao quadradinho: #1 gênese (textual, 15 mai), #2 arquitetura + 3D (textual), #3 o quadrado azul (visual, 22 jun). No `$edicoes`, #1 a #3 ficam `publicada` e #4 em diante `rascunho`. Assim a **banca nasce com 3 edições** e o **scrubber (só visual) nasce com 1 ponto** (o quadrado, #3); #4+ pinga. Isso faz a edição do quadradinho sair junto com o quadradinho jogável da home, então banca e home batem.
 
-Mock: [`mockups/08-press-start.html`](mockups/08-press-start.html). A key art pintada da Catedral-Mãe (otimizada para 120 KB) como pôster central aceso, com PRESS START piscando; o ciano da catedral casa com a paleta do jogo. Apertar (clique/Enter/Espaço) é interativo. **O comportamento (A não-começa-e-aponta-pro-quadradinho, recomendado; B leva ao quadradinho; C liga o boot) ainda é decisão do líder.**
+### Brinquedos por edição, e a home é a banca (decidido)
+
+**Não há chrome persistente de brinquedos.** Cada edição carrega seus próprios interativos (a #3 tem o quadradinho; a #6, a bancada de cartas; etc.), instanciados de componentes reusáveis, não copiados à mão. A **banca só enfileira** as edições. Isso reconcilia "o quadradinho é a capa": a **home É a banca**, e o **hero/capa da home é o quadradinho** (o interativo da edição #3, em destaque). O layout home ↔ edição sai disto: a home é a banca com o quadradinho no topo; cada edição, aberta, é o template das 19 seções em rolagem única.
+
+### O PRESS START (`PRESS-START`) — decidido: C+A (o boot + a honestidade)
+
+Mock: [`mockups/08-press-start.html`](mockups/08-press-start.html). A key art pintada da Catedral-Mãe (otimizada para 120 KB) como pôster central aceso, com PRESS START piscando; o ciano da catedral casa com a paleta do jogo. **Decidido: a combinação C+A.** Apertar START liga o boot do CRT (o payoff de fliperama, reusa a linguagem do em-breve, ~1.3s) e aterrissa numa fala honesta na voz nova (`gus@glyfesse> não dá pra começar de verdade ainda... mas o quadradinho anda. // eu ando`) que aponta pro quadradinho, o único jogável hoje. Satisfação e honestidade no mesmo gesto; quando o jogo sair, o START passa a funcionar de verdade. B (levar direto ao quadradinho) ficou de fora. O `prefers-reduced-motion` pula o boot e vai direto para a fala.
 
 ### A anatomia da edição (`ANATOMIA-DA-EDICAO`) — modelo revista cheia, leitura A
 
