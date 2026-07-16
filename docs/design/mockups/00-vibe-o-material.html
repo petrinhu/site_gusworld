@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse: de que MATERIAL o site é feito? (3 direções)</title>
+<style>
+/* ─────────────────────────────────────────────────────────────
+   MOCK 00 - A VIBE. Uma pergunta só: de que material o site é feito?
+   A mesma dobra, o mesmo conteúdo real, em três materiais.
+   Zero dependência externa: fonte local, texturas em SVG inline.
+   ───────────────────────────────────────────────────────────── */
+
+@font-face{
+  font-family:"PixelOperatorMono";
+  src:url("fonts/PixelOperatorMono.ttf") format("truetype");
+  font-weight:400; font-display:block;
+}
+@font-face{
+  font-family:"PixelOperatorMono";
+  src:url("fonts/PixelOperatorMono-Bold.ttf") format("truetype");
+  font-weight:700; font-display:block;
+}
+
+:root{
+  /* AS CORES DO JOGO (medidas nos assets, não inventadas) */
+  --jogo-navy:      #0d1520;
+  --jogo-navy-alto: #1a2436;
+  --jogo-ciano:     #4dd9e8;
+  --jogo-ciano-alto:#6ff0ff;
+  --jogo-magenta:   #c23fd9;   /* 4.37:1 sobre navy: falha AA texto normal */
+  --jogo-magenta-aa:#cb52e0;   /* 5.08:1 sobre navy: passa AA. um degrau acima */
+
+  /* AS MESMAS CORES COMO TINTA (papel absorve, tela emite) */
+  --papel-novo:     #f4efe4;
+  --papel-velho:    #e8dcc0;
+  --tinta-preta:    #1a1614;   /* 15.7:1 sobre papel */
+  --tinta-ciano:    #06687c;   /* 5.59:1. o ciano do jogo dá 1.48:1, invisível */
+  --tinta-magenta:  #7d1a8a;   /* 7.67:1 */
+
+  --pixel:"PixelOperatorMono", ui-monospace, monospace;
+  --revista:"Noto Serif Condensed","Noto Serif", Georgia, serif;
+  --corpo:"Noto Serif","Bitstream Charter", Georgia, serif;
+}
+
+*{box-sizing:border-box}
+html{background:#2b2b31}
+body{
+  margin:0; padding:0 0 80px;
+  font-family:var(--corpo);
+  color:#e8e8ea;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* moldura da apresentação (isto NÃO é o site, é a bancada) */
+.bancada{max-width:1500px; margin:0 auto; padding:28px 20px}
+.bancada h1{
+  font-family:var(--pixel); font-weight:700;
+  font-size:15px; letter-spacing:.14em; color:#9fb0c4;
+  margin:0 0 6px; text-transform:uppercase;
+}
+.bancada .sub{margin:0 0 4px; font-size:15px; color:#c8cdd6; max-width:78ch; line-height:1.55}
+.bancada .sub b{color:#fff}
+.bancada .nota{margin:14px 0 0; font-size:13.5px; color:#8e97a4; max-width:78ch; line-height:1.6}
+.bancada .nota b{color:#c8cdd6}
+
+.trilho{
+  display:grid; gap:22px; margin-top:26px;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+}
+@media (max-width:1180px){ .trilho{grid-template-columns:1fr; max-width:460px; margin-inline:auto} }
+
+.coluna > header{margin:0 0 10px}
+.coluna .letra{
+  font-family:var(--pixel); font-weight:700; font-size:12px;
+  letter-spacing:.16em; color:#6f7c8d;
+}
+.coluna .titulo{
+  font-family:var(--pixel); font-weight:700; font-size:17px;
+  color:#fff; margin:3px 0 5px; letter-spacing:.02em;
+}
+.coluna .pitch{font-size:13.5px; color:#a8b1bd; line-height:1.55; min-height:3.4em; margin:0}
+.coluna .veredito{
+  font-size:12.5px; line-height:1.5; margin:9px 0 0; padding:8px 10px;
+  border-left:2px solid #4a5464; color:#98a2af; background:#00000030;
+}
+.coluna .veredito b{color:#d8dee6}
+
+/* o retângulo onde a dobra vive: 400px ≈ celular. o teste mobile já está aqui. */
+.tela{
+  width:100%; height:690px; overflow:hidden; position:relative;
+  border-radius:3px; box-shadow:0 18px 44px #0009;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   A - A REVISTA É PAPEL. O jogo está IMPRESSO nela.
+   ══════════════════════════════════════════════════════════════ */
+.papel{
+  background-color:var(--papel-novo);
+  color:var(--tinta-preta);
+  padding:16px 15px;
+  position:relative;
+  font-family:var(--corpo);
+}
+/* fibra do papel: feTurbulence inline, custo zero de rede */
+.papel::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.42'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply; opacity:.28;
+}
+/* o amarelado das bordas: a idade da edição vive AQUI */
+.papel::after{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background:
+    radial-gradient(120% 80% at 50% 50%, #0000 52%, #b98c3a26 82%, #9c6b2140 100%),
+    linear-gradient(93deg, #0000 88%, #00000012 100%);
+}
+.papel > *{position:relative; z-index:2}
+
+.cabeca{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:2.5px solid var(--tinta-preta); padding-bottom:6px; margin-bottom:11px;
+}
+/* ★ o registro fora do lugar: ciano e magenta 1px deslocados da chapa preta.
+   é o erro da gráfica barata, e é a razão de o logo ser desta paleta. */
+.logo{
+  font-family:var(--pixel); font-weight:700;
+  font-size:28px; line-height:1; letter-spacing:-.01em;
+  color:var(--tinta-preta); min-width:0; flex:0 1 auto;
+  text-shadow:-1.5px -1.5px 0 #00b6d4b0, 1.5px 1.5px 0 #c2129eb0;
+}
+.edicao{
+  font-family:var(--pixel); font-size:9px; text-align:right;
+  line-height:1.35; color:#4a4340; white-space:nowrap; flex:0 0 auto;
+}
+.edicao b{color:var(--tinta-preta); font-size:15px; letter-spacing:-.02em}
+.edicao .preco{
+  display:inline-block; margin-top:2px; padding:1px 4px;
+  background:var(--tinta-preta); color:var(--papel-novo); letter-spacing:.04em;
+}
+
+.chamada{
+  font-family:var(--pixel); font-size:9.5px; letter-spacing:.06em;
+  background:var(--tinta-preta); color:var(--papel-novo);
+  display:inline-block; padding:3px 6px; margin-bottom:9px;
+}
+.manchete{
+  font-family:var(--revista); font-weight:900;
+  font-size:33px; line-height:.94; letter-spacing:-.022em;
+  margin:0 0 8px; text-transform:uppercase;
+}
+.linha-fina{
+  font-family:var(--corpo); font-size:13.5px; line-height:1.5;
+  margin:0 0 12px; color:#3b3532;
+}
+.linha-fina b{font-weight:700; color:var(--tinta-preta)}
+
+/* a tela do jogo IMPRESSA: halftone por cima, tinta chapada por baixo */
+.impresso{
+  position:relative; background:var(--jogo-navy);
+  padding:14px; margin:0 0 11px; overflow:hidden;
+  box-shadow:0 1px 0 #0000001a;
+}
+.impresso::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(circle at 50% 50%, #ffffff26 32%, #0000 33%);
+  background-size:3px 3px; mix-blend-mode:screen;
+}
+.legenda{
+  font-family:var(--pixel); font-size:9px; line-height:1.45;
+  color:#4a4340; margin:0 0 12px; padding-left:7px;
+  border-left:2px solid var(--tinta-ciano);
+}
+.legenda b{color:var(--tinta-ciano)}
+
+.duas-colunas{
+  column-count:2; column-gap:13px; column-rule:1px solid #00000020;
+  font-size:11.6px; line-height:1.52; color:#332e2b; text-align:justify;
+  hyphens:auto;
+}
+.duas-colunas p{margin:0 0 7px}
+.duas-colunas p:first-child::first-letter{
+  font-family:var(--revista); font-weight:900; font-size:2.9em;
+  float:left; line-height:.82; padding:2px 4px 0 0; color:var(--tinta-magenta);
+}
+.reticencia{color:var(--tinta-preta); font-style:italic}
+
+.nota-caixa{
+  margin-top:11px; border:2px solid var(--tinta-preta); padding:7px 9px;
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+}
+.nota-caixa .rot{font-family:var(--pixel); font-size:9px; line-height:1.4; color:#4a4340}
+.nota-caixa .rot b{display:block; color:var(--tinta-preta); font-size:11px}
+.nota-caixa .val{
+  font-family:var(--pixel); font-weight:700; font-size:27px; line-height:1;
+  color:var(--tinta-magenta);
+}
+/* a dobra: prova que você voltou. sobre PAPEL ela é uma sombra, não um efeito.
+   vai no canto INFERIOR externo: é onde a mão dobra a página pra marcar onde parou.
+   (no canto de cima ela cobriria o número da edição, e ninguém dobra por lá.) */
+.dobra{
+  position:absolute; bottom:0; right:0; width:58px; height:58px; z-index:3;
+  background:linear-gradient(315deg, var(--papel-velho) 0 48%, #00000026 49% 51%, #0000 52%);
+  box-shadow:-2px -2px 6px #0000002e;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   B - O SITE É A TELA DO TAVUS-DRIVE.
+   ══════════════════════════════════════════════════════════════ */
+.crt{
+  background:var(--jogo-navy); color:#c9d6e4;
+  font-family:var(--pixel); padding:16px 15px; position:relative;
+}
+.crt::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:5;
+  background:repeating-linear-gradient(0deg, #00000045 0 1px, #0000 1px 3px);
+}
+.crt::after{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:4;
+  background:radial-gradient(120% 90% at 50% 45%, #4dd9e814 0%, #0000 60%, #000000a8 100%);
+}
+.crt > *{position:relative; z-index:3}
+.crt-barra{
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom:1px solid #2c3d52; padding-bottom:7px; margin-bottom:12px;
+  font-size:10px; color:#6b8199;
+}
+.crt-logo{
+  font-weight:700; font-size:26px; color:var(--jogo-ciano); letter-spacing:.02em;
+  text-shadow:0 0 14px #4dd9e880;
+}
+.crt-chamada{
+  font-size:9.5px; letter-spacing:.06em; color:var(--jogo-navy);
+  background:var(--jogo-ciano); display:inline-block; padding:3px 6px; margin-bottom:10px;
+}
+.crt-manchete{
+  font-weight:700; font-size:24px; line-height:1.08; margin:0 0 9px;
+  color:#eaf6ff; text-shadow:0 0 18px #4dd9e83a;
+}
+.crt-lide{font-size:11px; line-height:1.6; color:#94a9bf; margin:0 0 13px}
+.crt-lide b{color:var(--jogo-ciano)}
+.crt-janela{
+  border:1px solid #2c3d52; background:#0a1119; padding:13px; margin-bottom:12px;
+}
+.crt-corpo{font-size:10.5px; line-height:1.68; color:#8fa4ba}
+.crt-corpo p{margin:0 0 9px}
+.crt-corpo .rt{color:#c9d6e4}
+.crt-nota{
+  border:1px solid var(--jogo-magenta-aa); padding:7px 9px; margin-top:11px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.crt-nota .rot{font-size:9px; color:#6b8199; line-height:1.4}
+.crt-nota .rot b{display:block; color:#c9d6e4; font-size:11px}
+.crt-nota .val{font-weight:700; font-size:27px; line-height:1; color:var(--jogo-magenta-aa)}
+.crt-cursor{
+  display:inline-block; width:7px; height:12px; background:var(--jogo-ciano);
+  vertical-align:-1px; animation:pisca 1.06s steps(1,end) infinite;
+}
+@keyframes pisca{50%{opacity:0}}
+
+/* ══════════════════════════════════════════════════════════════
+   C - O PAPEL FOTOGRAFADO ÀS 21H (com o celular, como as 27 capturas)
+   ══════════════════════════════════════════════════════════════ */
+.foto{background:#151519; position:relative; overflow:hidden}
+.foto .folha{
+  position:absolute; inset:-2% -3%;
+  transform:rotate(-1.15deg) perspective(1400px) rotateY(2.4deg) scale(1.015);
+  transform-origin:50% 22%;
+  background-color:#e9e2d2; color:var(--tinta-preta);
+  padding:26px 24px; font-family:var(--corpo);
+  filter:saturate(.86) contrast(1.06);
+}
+/* luz de tungstênio do quarto: quente de um lado, sombra do outro */
+.foto .folha::before{
+  content:""; position:absolute; inset:0; z-index:6; pointer-events:none;
+  background:
+    linear-gradient(118deg, #ffd9a033 0%, #0000 38%),
+    linear-gradient(300deg, #000c1e5c 0%, #0000 46%);
+}
+/* moiré: a câmera fotografando pixels. é o artefato que prova que é foto. */
+.foto .folha::after{
+  content:""; position:absolute; inset:0; z-index:7; pointer-events:none;
+  background:repeating-linear-gradient(74deg, #00000014 0 2px, #ffffff0a 2px 4px);
+  opacity:.9;
+}
+.foto .brilho{
+  position:absolute; z-index:8; inset:0; pointer-events:none;
+  background:linear-gradient(200deg, #0000 42%, #ffffff26 52%, #ffffff0d 58%, #0000 66%);
+}
+.foto .vinheta{
+  position:absolute; z-index:9; inset:0; pointer-events:none;
+  background:radial-gradient(105% 78% at 46% 44%, #0000 40%, #000000a0 100%);
+}
+.foto .exif{
+  position:absolute; z-index:10; left:10px; bottom:9px;
+  font-family:var(--pixel); font-size:8.5px; color:#ffffff70; letter-spacing:.05em;
+}
+
+/* legendas de contraste, medidas */
+.medida{
+  font-family:var(--pixel); font-size:9.5px; letter-spacing:.03em;
+  margin-top:9px; color:#7d8794; line-height:1.7;
+}
+.medida .ok{color:#7fd6a0}
+.medida .no{color:#e88a8a}
+
+/* o quadradinho (recriado do frame real: sala em traço claro, herói em contorno ciano) */
+.sala{position:relative; width:100%; aspect-ratio:16/9; background:#0d1520; border:3px solid #b9c6d6}
+.sala i{position:absolute; background:#b9c6d6; display:block}
+.heroi{
+  position:absolute; width:11px; height:11px; border:2.5px solid var(--jogo-ciano);
+  background:#0d1520; box-shadow:0 0 9px #4dd9e888;
+  left:22%; bottom:8%;
+  animation:anda 5.2s ease-in-out infinite alternate;
+}
+@keyframes anda{
+  0%{left:22%; bottom:8%} 45%{left:63%; bottom:8%} 100%{left:63%; bottom:56%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important; transition:none!important}
+  .heroi{left:63%; bottom:56%}
+}
+</style>
+</head>
+<body>
+<div class="bancada">
+
+  <h1>Glyfesse · mock 00 · a vibe</h1>
+  <p class="sub">Uma pergunta só: <b>de que MATERIAL o site é feito?</b> É a decisão que trava as outras: ela define a cor de fundo, o que amarela, onde o pixel pode entrar, e o que é light e dark. Abaixo, <b>a mesma dobra, o mesmo texto do Gus, em três materiais.</b></p>
+  <p class="nota">Cada painel tem <b>~400px de largura: é o tamanho de um celular</b>. O que você vê já é a versão mobile, não uma promessa dela. Tipografia de corpo, escala e a página inteira vêm depois. Aqui só o material.</p>
+
+  <div class="trilho">
+
+    <!-- ══════════ A ══════════ -->
+    <section class="coluna">
+      <header>
+        <div class="letra">DIREÇÃO A</div>
+        <div class="titulo">A revista é papel</div>
+        <p class="pitch">O site é papel impresso. O jogo aparece <b>dentro</b> dele, como tinta. O neon só existe onde há tela.</p>
+      </header>
+
+      <div class="tela papel">
+        <div class="dobra"></div>
+
+        <div class="cabeca">
+          <div class="logo">GLYFESSE</div>
+          <div class="edicao">ANO 1 · Nº <b>3</b><br><span class="preco">R$ 0,00</span></div>
+        </div>
+
+        <span class="chamada">EXCLUSIVO · SÓ AQUI</span>
+        <h2 class="manchete">Agora eu ando na diagonal</h2>
+        <p class="linha-fina">Antes eu tinha 4 vetores. Agora tenho 8. <b>É o dobro.</b></p>
+
+        <div class="impresso">
+          <div class="sala">
+            <i style="left:34%; top:16%; width:31%; height:9%"></i>
+            <i style="left:44%; top:25%; width:9%; height:22%"></i>
+            <i style="left:33%; top:63%; width:24%; height:8%"></i>
+            <i style="left:66%; top:39%; width:14%; height:23%"></i>
+            <span class="heroi"></span>
+          </div>
+        </div>
+        <p class="legenda"><b>FIG. 1</b> · A sala de maio. O quadradinho já era ciano.</p>
+
+        <div class="duas-colunas">
+          <p>O bug da parede foi corrigido na build de terça. Eu atravessava a parede oeste em uma janela de 3 frames. Consertaram. Eu<span class="reticencia">... gostava dele.</span></p>
+          <p>O menu tem 4 botões. Levou 3 semanas. Não vou fazer a divisão.</p>
+        </div>
+
+        <div class="nota-caixa">
+          <div class="rot">A NOTA DESTA EDIÇÃO<b>GRÁFICOS</b></div>
+          <div class="val">6,0</div>
+        </div>
+      </div>
+
+      <p class="medida">tinta preta / papel <span class="ok">15.7:1 AAA</span><br>tinta ciano / papel <span class="ok">5.59:1 AA</span><br>ciano do jogo / papel <span class="no">1.48:1 FALHA</span> vira tela</p>
+      <p class="veredito"><b>A favor:</b> as 5 peças que você já aprovou (amarelar, dobrar, amassar, café, cupom) só existem em papel. Parágrafo em tinta preta passa AAA sem esforço. E o pixel fica onde deve: no título e na tela.<br><br><b>Contra:</b> papel falso mal-feito é a coisa mais cafona que existe. E a primeira dobra abre <b>clara</b>, não neon.</p>
+    </section>
+
+    <!-- ══════════ B ══════════ -->
+    <section class="coluna">
+      <header>
+        <div class="letra">DIREÇÃO B</div>
+        <div class="titulo">O site é a tela do Tavus-Drive</div>
+        <p class="pitch">Tudo é o laptop do Gus. A revista é um arquivo que ele abre. Navy, ciano, mono, CRT.</p>
+      </header>
+
+      <div class="tela crt">
+        <div class="crt-barra"><span>~/diario/glyfesse_03.txt</span><span>UPTIME 41d</span></div>
+        <div class="crt-logo">GLYFESSE</div>
+        <div class="crt-barra" style="border:0; padding:0; margin:4px 0 11px"><span>ANO 1 · Nº 3 · R$ 0,00</span><span>BUILD 3</span></div>
+
+        <span class="crt-chamada">EXCLUSIVO · SÓ AQUI</span>
+        <h2 class="crt-manchete">AGORA EU ANDO<br>NA DIAGONAL.</h2>
+        <p class="crt-lide">Antes eu tinha 4 vetores. Agora tenho 8. <b>É o dobro.</b></p>
+
+        <div class="crt-janela">
+          <div class="sala">
+            <i style="left:34%; top:16%; width:31%; height:9%"></i>
+            <i style="left:44%; top:25%; width:9%; height:22%"></i>
+            <i style="left:33%; top:63%; width:24%; height:8%"></i>
+            <i style="left:66%; top:39%; width:14%; height:23%"></i>
+            <span class="heroi"></span>
+          </div>
+        </div>
+
+        <div class="crt-corpo">
+          <p>O bug da parede foi corrigido na build de terça. Eu atravessava a parede oeste em uma janela de 3 frames. Consertaram. Eu<span class="rt">... gostava dele.</span></p>
+          <p>O menu tem 4 botões. Levou 3 semanas. Não vou fazer a divisão.<span class="crt-cursor"></span></p>
+        </div>
+
+        <div class="crt-nota">
+          <div class="rot">A NOTA DESTA EDIÇÃO<b>GRÁFICOS</b></div>
+          <div class="val">6,0</div>
+        </div>
+      </div>
+
+      <p class="medida">ciano / navy <span class="ok">10.83:1 AAA</span><br>magenta #cb52e0 / navy <span class="ok">5.08:1 AA</span><br>magenta #c23fd9 / navy <span class="no">4.37:1 falha</span></p>
+      <p class="veredito"><b>A favor:</b> a paleta do jogo entra sem tradução, o impacto é imediato, e o CRT pertence ao lugar.<br><br><b>Contra (e é sério):</b> isto é <b>o visual padrão de indie retrô em 2026</b>: terminal escuro, neon, mono. É o "pixel sem motivo" de que a pesquisa fala. A revista deixa de ser objeto e vira skin: o adulto de 1991 não sente banca, sente hacker. <b>E tela não amarela</b>, então o envelhecimento, que é a peça mais original do projeto, perde o sentido.</p>
+    </section>
+
+    <!-- ══════════ C ══════════ -->
+    <section class="coluna">
+      <header>
+        <div class="letra">DIREÇÃO C</div>
+        <div class="titulo">O papel fotografado às 21h</div>
+        <p class="pitch">O site é a <b>foto</b> do material, feita com o celular. Reflexo, moiré, luz do quarto. Como as suas 27 capturas.</p>
+      </header>
+
+      <div class="tela foto">
+        <div class="folha">
+          <div class="cabeca">
+            <div class="logo">GLYFESSE</div>
+            <div class="edicao">ANO 1 · Nº <b>3</b><br><span class="preco">R$ 0,00</span></div>
+          </div>
+          <span class="chamada">EXCLUSIVO · SÓ AQUI</span>
+          <h2 class="manchete">Agora eu ando na diagonal</h2>
+          <p class="linha-fina">Antes eu tinha 4 vetores. Agora tenho 8. <b>É o dobro.</b></p>
+          <div class="impresso">
+            <div class="sala">
+              <i style="left:34%; top:16%; width:31%; height:9%"></i>
+              <i style="left:44%; top:25%; width:9%; height:22%"></i>
+              <i style="left:33%; top:63%; width:24%; height:8%"></i>
+              <i style="left:66%; top:39%; width:14%; height:23%"></i>
+              <span class="heroi"></span>
+            </div>
+          </div>
+          <p class="legenda"><b>FIG. 1</b> · A sala de maio. O quadradinho já era ciano.</p>
+          <div class="duas-colunas">
+            <p>O bug da parede foi corrigido na build de terça. Eu atravessava a parede oeste em uma janela de 3 frames. Consertaram. Eu<span class="reticencia">... gostava dele.</span></p>
+            <p>O menu tem 4 botões. Levou 3 semanas. Não vou fazer a divisão.</p>
+          </div>
+        </div>
+        <div class="brilho"></div>
+        <div class="vinheta"></div>
+        <div class="exif">21:47 · ISO 3200 · f/1.8</div>
+      </div>
+
+      <p class="medida">tinta / papel sob reflexo <span class="no">cai para ~4:1 no brilho</span><br>o contraste vira <span class="no">variável por região</span></p>
+      <p class="veredito"><b>A favor:</b> é o <b>único material que você de fato tem</b>: as 27 capturas são fotos de tela, com reflexo e moldura. Nenhum estúdio consegue fingir isso, e é a prova visual de "alguém fazendo isso às 21h".<br><br><b>Contra:</b> repare que o texto ficou <b>mais difícil de ler</b> aqui, e o contraste passa a depender de onde o reflexo cai. É insalvável como material do site inteiro. <b>Isto quer ser um TRATAMENTO</b> (das fotos de arquivo, do pôster), não o chão.</p>
+    </section>
+
+  </div>
+
+  <p class="nota" style="margin-top:26px"><b>O que eu recomendo, e por quê:</b> a <b>A</b>, com a <b>C</b> reservada como tratamento das fotos de arquivo. A conta que decidiu: <b>o navy do jogo dá 15.99:1 sobre papel</b>, ou seja, ele já é a tinta preta da revista, e a mesma cor serve nos dois materiais. E <b>o ciano dá 1.48:1 sobre papel: some.</b> Isso não é um defeito da paleta, é a informação: <b>a paleta do jogo é feita de LUZ.</b> No papel ela só aparece onde há tela, que é exatamente onde o Gus vive. O site vira um objeto impresso com <b>buracos de tela acesa</b> nele.</p>
+  <p class="nota">A <b>B</b> não está morta: ela é o que o <b>Diário do Gus</b> deveria ser <b>por dentro</b> da revista, e é o candidato natural a dark mode. Não como inversão, mas como <b>outro objeto</b>: de dia você lê a revista, de noite você está no Tavus-Drive dele.</p>
+
+</div>
+</body>
+</html>
