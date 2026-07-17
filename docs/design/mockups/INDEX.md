@@ -19,6 +19,8 @@ Zero dependência externa: fonte local (CC0), texturas em SVG inline. **O que es
 | 11b | [`11b-dobra-comentario-italico.html`](11b-dobra-comentario-italico.html) | **Idem, tratamento B.** O `//` é um **sussurro itálico recuado** (Vollkorn itálico, verde AA, tique verde à esquerda): o registro onde as reticências do Gus vivem. | ❌ recusado (venceu 11a) |
 | 11c | [`11c-dobra-comentario-tarja.html`](11c-dobra-comentario-tarja.html) | **Idem, tratamento C.** O `//` vive numa **tarja de comentário levíssima** (fundo verde 6%, barra-acento à esquerda, texto verde `#2f4d29` 5.31:1 no pior papel): o bloco de comentário do editor de código trazido pro papel. | ❌ recusado (venceu 11a) |
 
+| 12 | [`12-capa-edicao-1.html`](12-capa-edicao-1.html) | **A capa cheia da Edição #1 (a gênese).** Direção A "no começo era texto": força tipográfica + conceitual (a #1 não tem quadradinho nem screenshot). Papel o mais encardido. **Hook = o glyfe literal:** um campo de glifos onde a 1ª linha do mundo **compila** (resolve esq→dir) ao clicar. Lógica pura testada em `js/compile-core.js` (12/12). A capa só chama pra explicação do nome (pág 3). | ⏳ **pendente QA** (escolhido pelo líder: direção A) |
+
 ## Como abrir
 
 ```bash

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse · 12 · a capa da Edicao #1 (a genese)</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   MOCK 12: A CAPA DA EDICAO #1, a GENESE (15 mai 2026).
+   Direcao A escolhida pelo lider: "NO COMECO ERA TEXTO". A forca e
+   TIPOGRAFICA + CONCEITUAL: a #1 nao tem quadradinho nem screenshot de
+   jogo (nessa epoca o mundo era so texto: ebooks -> RAG -> lore). O
+   HOOK e o glyfe literal: um campo de glifos ilegiveis onde a 1a linha
+   do mundo COMPILA (resolve esq->dir) ao clicar. Logica pura e testada
+   em js/compile-core.js (node --test). Papel MAIS encardido da banca.
+   A capa so CHAMA pra explicacao do nome (pag 3), nao explica.
+   Tudo herda de ../tokens.css. Papel = acentuado; os glifos = textura.
+   ───────────────────────────────────────────────────────────── */
+*{box-sizing:border-box}
+html{background:#2b2620}
+body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-corpo)}
+
+/* faixa de contexto do mock (anotacao de dev, NAO e o design) */
+.ctx{max-width:1080px; margin:0 auto; padding:22px 24px 4px; color:#cdbfa6}
+.ctx h1{font-family:var(--font-display); font-weight:700; font-size:14px; letter-spacing:.12em;
+  text-transform:uppercase; color:#e6d9bf; margin:0 0 6px}
+.ctx p{font-size:15px; line-height:1.5; margin:0; max-width:78ch; color:#bcaf95}
+.ctx b{color:#e6d9bf}
+
+/* ═══════════ A CAPA (a folha de papel, a MAIS velha da banca) ═══════════ */
+.capa{
+  --idade:.88;   /* a #1: a mais encardida. o papel amarela sozinho (color-mix na .folha) */
+  max-width:1080px; margin:20px auto 0; position:relative; overflow:hidden;
+  padding:30px 34px 40px; box-shadow:var(--sombra-folha);
+}
+/* fibra do papel: SVG com dimensao explicita (senao some no Gecko) */
+.capa::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.16;
+}
+.capa > *{position:relative; z-index:1}
+
+/* mancha de cafe de outra pessoa: a #1 e velha, natural ter uma. Fica na
+   ZONA guardada (canto sup-direito, fora de qualquer texto). */
+.zona-cafe.canto{inset:6px 6px auto auto; width:30%; height:26%}
+
+.masthead{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:3px solid var(--tinta-preta); padding-bottom:9px; margin-bottom:6px; gap:14px}
+.masthead .logo{font-family:var(--font-display); font-weight:700; font-size:clamp(30px,7vw,46px); line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4a0, 1.5px 1.5px 0 #c2129ea0}
+.masthead .meta{font-family:var(--font-display); font-size:11px; text-align:right; line-height:1.55; color:var(--tinta-2)}
+.masthead .meta b{color:var(--tinta-preta); font-size:15px}
+
+/* ── a manchete tipografica: a REVISTA falando (Archivo Narrow, nao pixel) ── */
+.manchete{
+  font-family:var(--font-manchete); font-weight:700; text-transform:uppercase;
+  font-size:clamp(46px,13vw,116px); line-height:.9; letter-spacing:-.01em;
+  color:var(--tinta-preta); margin:18px 0 4px;
+}
+.manchete .l2{color:var(--tinta-preta); -webkit-text-stroke:2px var(--tinta-preta)}
+.dek{font-family:var(--font-corpo); font-style:italic; font-size:clamp(16px,2.4vw,21px);
+  color:var(--tinta-2); margin:0 0 22px; max-width:52ch; line-height:1.4}
+
+/* ── o campo de glifos (a parede de ebooks) + a linha que COMPILA ── */
+.genese{position:relative; border-top:1px solid var(--borda); padding-top:20px; margin-top:6px}
+.rotulo-fig{font-family:var(--font-display); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--tinta-ciano); margin:0 0 12px}
+.campo{position:relative; margin:0 0 6px; user-select:none}
+.glifo-row{font-family:var(--font-display); font-size:clamp(12px,1.5vw,15px); line-height:1.5;
+  color:var(--tinta-2); opacity:.34; white-space:pre; overflow:hidden; letter-spacing:.02em}
+
+/* a 1a linha legivel do mundo: o HOOK. Comeca ilegivel (glifos), COMPILA no
+   clique/Enter. Tinta cheia (e a que importa), fonte-glifo (o codigo). */
+.linha-compila{
+  font-family:var(--font-display); font-weight:700;
+  font-size:clamp(18px,3.4vw,30px); line-height:1.25; letter-spacing:.01em;
+  color:var(--tinta-preta); white-space:pre-wrap; word-break:break-word;
+  margin:4px 0 0; padding:10px 12px; cursor:pointer;
+  border:1px dashed var(--tinta-ciano); background:#0d5e6710;
+  transition:background var(--dur-medio) var(--ease);
+}
+.linha-compila:hover,.linha-compila:focus-visible{background:#0d5e671f; outline:none}
+.linha-compila:focus-visible{box-shadow:0 0 0 2px var(--tinta-ciano)}
+.linha-compila.compilado{border-style:solid; cursor:default; background:#0d5e6708}
+.compila-hint{font-family:var(--font-display); font-size:12.5px; color:var(--tinta-2);
+  margin:9px 0 0; display:flex; align-items:center; gap:8px}
+.compila-hint .tecla{border:1px solid var(--tinta-2); border-radius:3px; padding:0 5px; font-size:11px}
+body.compilou .compila-hint{display:none}
+
+/* o payoff: uma linha do Gus aparece quando o mundo compila (fala suave,
+   sem ponto final, "..." de assinatura; o // e o pensamento). */
+.pos-compila{margin:16px 0 0; opacity:0; max-height:0; overflow:hidden;
+  transition:opacity var(--dur-lento) var(--ease)}
+body.compilou .pos-compila{opacity:1; max-height:200px}
+.pos-compila .prompt{font-family:var(--font-display); font-size:16px; color:var(--tinta-ciano)}
+.pos-compila .dito{font-family:var(--font-corpo); font-size:16px; color:var(--tinta-2); line-height:1.55}
+.pos-compila .pensa{display:block; font-family:var(--font-display); font-size:14px; color:#35562f; margin:3px 0 0}
+.pos-compila .pensa::before{content:"// "; opacity:.85}
+
+/* ── chamadas da capa (teasers), incl. a OBRIGATORIA do nome ── */
+.chamadas{list-style:none; margin:26px 0 0; padding:16px 0 0; border-top:1px solid var(--borda);
+  display:flex; flex-direction:column; gap:11px}
+.chamadas li{font-family:var(--font-display); font-size:clamp(13px,1.7vw,16px); color:var(--tinta-preta); line-height:1.4}
+.chamadas .pg{color:var(--tinta-ciano)}
+.chamadas .destaque{color:var(--tinta-ciano)}
+
+.rodape{margin:24px 0 0; padding-top:12px; border-top:1px solid var(--borda);
+  font-family:var(--font-display); font-size:12px; color:var(--tinta-2); display:flex; gap:18px; flex-wrap:wrap}
+.rodape b{color:var(--tinta-preta)}
+</style>
+</head>
+<body>
+
+<div class="ctx">
+  <h1>Glyfesse · mock 12 · a capa da Edicao #1 (a genese)</h1>
+  <p>Direcao A: <b>"no comeco era texto"</b>. A #1 nao tem quadradinho nem screenshot (o mundo era so texto). O <b>hook</b>: clique na linha destacada e ela <b>compila</b> (glifos resolvem esq->dir) na 1a linha legivel do mundo. Papel <b>o mais encardido</b> da banca. A capa so <b>chama</b> pra explicacao do nome (pag 3), nao explica. Logica testada em <b>js/compile-core.js</b> (12/12).</p>
+</div>
+
+<article class="capa folha" style="--idade:.88">
+  <div class="zona-cafe canto"><i class="cafe" style="--cafe-x:60%;--cafe-y:45%;--cafe-tam:120px"></i></div>
+
+  <header class="masthead">
+    <div class="logo">GLYFESSE</div>
+    <div class="meta">ANO 1 · Nº <b>1</b><br>15 de maio de 2026<br>gusworld.site</div>
+  </header>
+
+  <h2 class="manchete">No começo<br><span class="l2">era texto</span></h2>
+  <p class="dek">Antes do primeiro pixel, antes do primeiro quadrado que anda, este mundo foi dezenas de milhares de palavras. Um mundo que se lê antes de existir.</p>
+
+  <section class="genese" aria-label="A primeira linha do mundo, compilando">
+    <p class="rotulo-fig">Fig. 0 · a primeira linha do mundo</p>
+    <div class="campo" id="campo" aria-hidden="true"></div>
+
+    <p class="linha-compila" id="compila" role="button" tabindex="0"
+       data-alvo="o mundo inteiro cabia numa frase"
+       aria-label="Clique para compilar a primeira linha do mundo: o mundo inteiro cabia numa frase">/{&gt;(#|=&lt;) }[@*+ ]&lt;/|# }%$&amp;( )=+{&gt;/</p>
+    <p class="compila-hint"><span class="tecla">clique</span> ou <span class="tecla">Enter</span> para compilar a primeira linha do mundo</p>
+
+    <div class="pos-compila">
+      <span class="prompt">gus@glyfesse&gt;</span>
+      <span class="dito"> pronto... agora existe</span>
+      <span class="pensa">faltava alguém ler primeiro</span>
+    </div>
+  </section>
+
+  <ul class="chamadas">
+    <li><span class="destaque">EXCLUSIVO</span> · o nome deste mundo, explicado pelo Gus <span class="pg">· pág 3</span></li>
+    <li>15 de maio: o dia em que só havia texto <span class="pg">· pág 6</span></li>
+    <li>por que "Glyfesse" quer dizer duas coisas ao mesmo tempo <span class="pg">· pág 3</span></li>
+  </ul>
+
+  <footer class="rodape">
+    <span><b>GLYFESSE</b> · a revista do GusWorld</span>
+    <span>edição #1 · a gênese</span>
+    <span>role para abrir a edição</span>
+  </footer>
+</article>
+
+<script src="js/compile-core.js"></script>
+<script>
+/* Glue MINIMO: a logica (qual char assentou, qual glifo cobre o resto) mora
+   em CompileCore (testado). Aqui so: preencher a parede decorativa, animar
+   no clique/Enter, e respeitar reduced-motion (entra ja compilado). O param
+   ?compiled forca o estado final pro print estatico. */
+(function(){
+  var C = window.CompileCore;
+  var linha = document.getElementById("compila");
+  var campo = document.getElementById("campo");
+  if(!C || !linha) return;
+  var ALVO = linha.getAttribute("data-alvo");
+  var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var forca = /compil/.test(location.search);   /* ?compiled: print ja compilado */
+
+  /* a parede de ebooks: linhas de glifos decorativas (aria-hidden) */
+  if(campo){
+    for(var r=0;r<7;r++){
+      var n = 46 + ((r*13) % 22), s = "";
+      for(var i=0;i<n;i++){ s += ((i%9===8)?" ":C.scrambleChar(i + r*5, r*3 + 1)); }
+      var row = document.createElement("div");
+      row.className = "glifo-row"; row.textContent = s;
+      campo.appendChild(row);
+    }
+  }
+
+  var tick=0, timer=null, rodando=false;
+  function render(t){ linha.textContent = t; }
+  function parar(){ if(timer){ clearInterval(timer); timer=null; } rodando=false; }
+  function concluir(){ render(ALVO); linha.classList.add("compilado"); document.body.classList.add("compilou"); parar(); }
+  function compilar(){
+    if(rodando || linha.classList.contains("compilado")) return;
+    rodando=true; tick=0;
+    timer = setInterval(function(){
+      tick++;
+      render(C.compileText(ALVO, tick, 2));
+      if(C.isDone(ALVO, tick, 2)) concluir();
+    }, 45);
+  }
+  linha.addEventListener("click", compilar);
+  linha.addEventListener("keydown", function(e){
+    if(e.key==="Enter" || e.key===" "){ e.preventDefault(); compilar(); }
+  });
+
+  if(reduz || forca){ concluir(); }
+  else { render(C.compileText(ALVO, 0, 2)); }   /* estado inicial: ilegivel */
+})();
+</script>
+</body>
+</html>
