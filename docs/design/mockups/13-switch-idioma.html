@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse · 13 · o switch de idioma (edição pt-br)</title>
+
+<!-- ★ O PAR RECIPROCO. Nao e enfeite: e o motivo de o switch NAVEGAR em vez
+     de trocar texto no cliente. Cada lingua tem URL propria, canonica e
+     indexavel, e as duas se apontam. Em producao: /pt/edicao-1 e /en/edicao-1
+     (aqui sao dois arquivos irmaos, pra o clique ser real no file://). -->
+<link rel="alternate" hreflang="pt-br" href="13-switch-idioma.html">
+<link rel="alternate" hreflang="en" href="13-switch-idioma-en.html">
+<link rel="alternate" hreflang="x-default" href="13-switch-idioma.html">
+
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="13-switch-idioma.css">
+
+<!-- ⚠️ NO <head> DE PROPOSITO, e so isto: ler o hash e marcar o <html> ANTES
+     do 1o paint, senao o texto pisca legivel antes de "ser impresso". Quem
+     ANIMA e o CSS, sozinho, no load; este script so marca. Se ele nao rodar
+     (JS off), nada anima e a revista ja esta legivel: o switch foi so um link
+     que funcionou. Os dois .js sao locais (~4 KB), zero terceiro. -->
+<script src="js/compile-core.js"></script>
+<script src="js/lang-core.js"></script>
+<script>
+  if (window.LangCore && LangCore.shouldCompile(location.hash)) {
+    document.documentElement.classList.add("vai-recompilar");
+  }
+</script>
+</head>
+<body>
+
+<div class="ctx">
+  <h1>Glyfesse · mock 13 · o switch de idioma · edição pt-br</h1>
+  <p><b>Clique na telinha do masthead</b> (canto sup. direito): a página <b>navega de verdade</b> pra edição em inglês e <b>recompila na chegada</b>. Depois clique de volta. <b class="ok">É navegação real entre dois arquivos</b>, igual a produção (<code>/pt/edicao-1</code> ⇄ <code>/en/edicao-1</code>), não é troca de texto no cliente.</p>
+  <p>O conceito: <b>glyfe = escrever E compilar</b>, então trocar de língua é <b>RECOMPILAR a revista</b>. <b>Zero bandeira, zero splash.</b> A tensão papel×tela se resolve assim: o controle é <b>um buraco de tela acesa</b> (a menor do site) impresso no masthead; o comando e o neon são legítimos porque ali <b>é tela</b>. Na troca, <b>a tela compila</b> (glifos) e <b>o papel é impresso</b> (a tinta assenta): dois materiais, dois movimentos. Lógica pura testada em <b>js/lang-core.js</b> (21/21).</p>
+  <p>Sem o bloco da gênese do mock 12 <b>de propósito</b>: duas animações de compilação na mesma tela competiriam. Aqui o assunto é o switch. Os <b>3 tratamentos</b> estão comparados embaixo da capa.</p>
+</div>
+
+<article class="capa folha" style="--idade:.88">
+  <!-- (a .zona-cafe do mock 12 nao entra aqui de proposito: ela hoje nao
+       renderiza nada, e o canto onde ela mora nao e zona segura. Motivo
+       completo no 13-switch-idioma.css.) -->
+  <header class="masthead">
+    <div class="logo">GLYFESSE</div>
+
+    <div class="col-meta">
+      <div class="meta">ANO 1 · Nº <b>1</b><br>15 de maio de 2026<br>gusworld.site</div>
+
+      <!-- ★ TRATAMENTO A: a LCD de expediente. Link REAL (funciona sem JS),
+           com hreflang e lang no destino. O nome acessivel sai como
+           "glyfe --en / English edition": contem o rotulo VISIVEL (WCAG
+           2.5.3) e ainda diz o que faz, pra quem nao le jargao de shell.
+           O nome da lingua vem NA PROPRIA LINGUA ("English"), que e a
+           convencao certa, e ja resolve o zero-bandeira sem perder nada. -->
+      <a class="imprint aceso" id="imprint"
+         href="13-switch-idioma-en.html#glyfe" hreflang="en" lang="en"
+         data-log1="glyfe --lang=pt" data-log2="build ok · pt-br">
+        <span class="l1" aria-hidden="true">BUILD pt-br</span>
+        <span class="l2"><span class="cmd">glyfe --en</span><i class="run" aria-hidden="true"></i></span>
+        <span class="sr">English edition</span>
+      </a>
+    </div>
+  </header>
+
+  <h2 class="manchete">No começo<br>era texto</h2>
+  <p class="dek">Antes do primeiro pixel, antes do primeiro quadrado que anda, este mundo foi dezenas de milhares de palavras. Um mundo que se lê antes de existir.</p>
+
+  <ul class="chamadas">
+    <li><span class="destaque">EXCLUSIVO</span> · o nome deste mundo, explicado pelo Gus <span class="pg">· pág 3</span></li>
+    <li>15 de maio: o dia em que só havia texto <span class="pg">· pág 6</span></li>
+    <li>por que "Glyfesse" quer dizer duas coisas ao mesmo tempo <span class="pg">· pág 3</span></li>
+  </ul>
+
+  <footer class="rodape">
+    <span><b>GLYFESSE</b> · a revista do GusWorld</span>
+    <span>edição #1 · a gênese</span>
+    <span>role para abrir a edição</span>
+  </footer>
+</article>
+
+<!-- ═══════ os 3 tratamentos, tamanho real ═══════ -->
+<section class="compara">
+  <h2>os 3 tratamentos · a mesma pergunta, 3 respostas</h2>
+  <p>A pergunta não é "que cor tem o botão". É: <b>o controle é papel ou é tela?</b> Cada tratamento responde diferente. Todos: zero bandeira, mesmo lugar (o expediente do masthead), mesmo link real.</p>
+
+  <div class="tira">
+
+    <div class="trat">
+      <p class="selo">A · o expediente aceso <span class="rec">◆ recomendado</span></p>
+      <div class="mini-mast">
+        <div class="mini-logo">GLYFESSE</div>
+        <div class="col-meta">
+          <div class="mini-meta">ANO 1 · Nº 1<br>15 mai 2026</div>
+          <a class="imprint aceso" href="13-switch-idioma-en.html#glyfe" hreflang="en" lang="en" style="font-size:10px">
+            <span class="l1" aria-hidden="true">BUILD pt-br</span>
+            <span class="l2"><span class="cmd">glyfe --en</span><i class="run" aria-hidden="true"></i></span>
+            <span class="sr">English edition</span>
+          </a>
+        </div>
+      </div>
+      <p class="por"><b>Resolve a tensão em vez de fugir dela:</b> o comando é tecnologia, e tecnologia mora na tela. O papel continua papel, o neon continua só onde há tela.</p>
+      <p class="contra">Custo: é o único que acende luz no masthead. Se a #1 tiver muita tela, a raridade cai.</p>
+    </div>
+
+    <div class="trat">
+      <p class="selo">B · o colofão em tinta</p>
+      <div class="mini-mast">
+        <div class="mini-logo">GLYFESSE</div>
+        <div class="colofao">
+          ANO 1 · Nº 1 · 15 mai 2026<br>
+          EDIÇÃO BRASILEIRA<br>
+          <a href="13-switch-idioma-en.html#glyfe" hreflang="en" lang="en">English edition</a>
+        </div>
+      </div>
+      <p class="por"><b>100% fiel ao papel</b>, e é o que uma revista de verdade faz: a língua é linha de expediente, a outra edição é uma remissão.</p>
+      <p class="contra">Custo: <b>não lembra tecnologia nenhuma.</b> É a direção que o líder pediu e esta não entrega. E é a mais fácil de não achar.</p>
+    </div>
+
+    <div class="trat">
+      <p class="selo">C · o comando em tinta</p>
+      <div class="mini-mast">
+        <div class="mini-logo">GLYFESSE</div>
+        <div class="cmd-tinta">
+          ANO 1 · Nº 1 · 15 mai 2026<br>
+          BUILD pt-br<br>
+          <a href="13-switch-idioma-en.html#glyfe" hreflang="en" lang="en">glyfe --en</a>
+        </div>
+      </div>
+      <p class="por">O híbrido: o mesmo comando do A, <b>sem a tela em volta</b>. Discretíssimo, e o pixel-mono já é permitido em rótulo.</p>
+      <p class="contra">Custo: <b>a tecnologia vaza pro papel.</b> Um comando impresso em tinta diz que a revista é um terminal, que é justo o "indie retrô genérico" que a identidade recusou.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+/* Glue MINIMO da LCD. A maquina de estado do log (quais linhas ja
+   apareceram, como esta a linha que compila) mora no nucleo PURO e testado
+   (js/lang-core.js, 21/21); aqui so o cola com o DOM.
+   So roda na CHEGADA por switch (#glyfe): quem vem de busca ou link direto
+   ve a LCD parada, como deve ser. */
+(function(){
+  var L = window.LangCore;
+  var imp = document.getElementById("imprint");
+  if(!L || !imp || !L.shouldCompile(location.hash)) return;
+
+  var l1 = imp.querySelector(".l1");
+  var cmd = imp.querySelector(".cmd");
+  var repouso1 = l1.textContent, repouso2 = cmd.textContent;   /* o repouso volta no fim */
+  var SCRIPT = [imp.getAttribute("data-log1"), imp.getAttribute("data-log2")];
+  var TPC = 1, MS = 24, ESPERA = 700;   /* 28 ticks x 24ms ~= 670ms: casa com a tinta assentando */
+
+  function pinta(st){
+    l1.textContent = st.lines[0] || "";
+    cmd.textContent = st.lines[1] || "";
+  }
+  function repousar(){
+    imp.classList.remove("buildando");
+    l1.textContent = repouso1;
+    cmd.textContent = repouso2;
+  }
+
+  /* ?tick=N: SO scaffolding de mock. Congela a LCD num frame exato pra o
+     print headless do QA ser deterministico (o mesmo papel do ?compiled do
+     mock 12; o frame e estavel porque o nucleo nao usa random). Vem da
+     querystring, entao entra validado e estrito, nunca confiado
+     (CONVENCOES-JS-PHP). Nao existe em producao. */
+  var congela = /^\?tick=(\d{1,3})$/.exec(location.search);
+  if(congela){
+    imp.classList.add("buildando");
+    pinta(L.logStateAt(Number(congela[1]), SCRIPT, TPC));
+    return;
+  }
+
+  /* reduced-motion: sem log, sem espera. A LCD ja esta no repouso e a
+     informacao e a mesma (tokens.css §9: o movimento pode sumir, a
+     informacao nao). */
+  if(matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+
+  imp.classList.add("buildando");
+  var tick = 0;
+  var timer = setInterval(function(){
+    var st = L.logStateAt(tick, SCRIPT, TPC);
+    pinta(st);
+    if(st.done){ clearInterval(timer); setTimeout(repousar, ESPERA); }
+    tick++;
+  }, MS);
+})();
+</script>
+</body>
+</html>

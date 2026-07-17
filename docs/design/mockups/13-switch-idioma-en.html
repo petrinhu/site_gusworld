@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse · 13 · the language switch (English edition)</title>
+
+<!-- ★ O PAR RECIPROCO (o espelho de 13-switch-idioma.html). O hreflang so
+     conta se as duas paginas se apontam: e por isso que o switch NAVEGA. -->
+<link rel="alternate" hreflang="pt-br" href="13-switch-idioma.html">
+<link rel="alternate" hreflang="en" href="13-switch-idioma-en.html">
+<link rel="alternate" hreflang="x-default" href="13-switch-idioma.html">
+
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="13-switch-idioma.css">
+
+<script src="js/compile-core.js"></script>
+<script src="js/lang-core.js"></script>
+<script>
+  if (window.LangCore && LangCore.shouldCompile(location.hash)) {
+    document.documentElement.classList.add("vai-recompilar");
+  }
+</script>
+</head>
+<body>
+
+<div class="ctx" lang="pt-br">
+  <h1>Glyfesse · mock 13 · o switch de idioma · edição EN</h1>
+  <p>Esta é a <b>outra edição</b>, um arquivo de verdade. Se você chegou aqui pelo switch, a <b>telinha do masthead compilou o build</b> e o <b>papel foi impresso</b> (a tinta assenta). <b>Clique na telinha</b> pra voltar ao pt-br: mesmo mecanismo, sentido inverso.</p>
+  <p>Repare que a LCD <b>não muda de tamanho</b> entre o repouso e o log (2 linhas nos dois estados): zero layout shift num elemento que fica no topo de toda página.</p>
+</div>
+
+<article class="capa folha" style="--idade:.88">
+  <header class="masthead">
+    <div class="logo">GLYFESSE</div>
+
+    <div class="col-meta">
+      <div class="meta">YEAR 1 · No. <b>1</b><br>May 15, 2026<br>gusworld.site</div>
+
+      <!-- o espelho: o nome da lingua na PROPRIA lingua ("português"), e o
+           lang/hreflang apontando pro destino pt-br. -->
+      <a class="imprint aceso" id="imprint"
+         href="13-switch-idioma.html#glyfe" hreflang="pt-br" lang="pt-br"
+         data-log1="glyfe --lang=en" data-log2="build ok · en">
+        <span class="l1" aria-hidden="true">BUILD en</span>
+        <span class="l2"><span class="cmd">glyfe --pt</span><i class="run" aria-hidden="true"></i></span>
+        <span class="sr">edição em português</span>
+      </a>
+    </div>
+  </header>
+
+  <h2 class="manchete">In the beginning<br>was text</h2>
+  <p class="dek">Before the first pixel, before the first square that walks, this world was tens of thousands of words. A world you read before it exists.</p>
+
+  <ul class="chamadas">
+    <li><span class="destaque">EXCLUSIVE</span> · the name of this world, explained by Gus <span class="pg">· p. 3</span></li>
+    <li>May 15: the day there was only text <span class="pg">· p. 6</span></li>
+    <li>why "Glyfesse" means two things at once <span class="pg">· p. 3</span></li>
+  </ul>
+
+  <footer class="rodape">
+    <span><b>GLYFESSE</b> · the GusWorld magazine</span>
+    <span>issue #1 · the genesis</span>
+    <span>scroll to open the issue</span>
+  </footer>
+</article>
+
+<script>
+/* Espelho exato do glue da pagina pt-br. Em producao isto e UM arquivo
+   incluido pelas duas (o <?php include ?> que mata a duplicacao); aqui sao
+   dois arquivos porque o mock precisa que o clique NAVEGUE de verdade. */
+(function(){
+  var L = window.LangCore;
+  var imp = document.getElementById("imprint");
+  if(!L || !imp || !L.shouldCompile(location.hash)) return;
+
+  var l1 = imp.querySelector(".l1");
+  var cmd = imp.querySelector(".cmd");
+  var repouso1 = l1.textContent, repouso2 = cmd.textContent;
+  var SCRIPT = [imp.getAttribute("data-log1"), imp.getAttribute("data-log2")];
+  var TPC = 1, MS = 24, ESPERA = 700;
+
+  function pinta(st){
+    l1.textContent = st.lines[0] || "";
+    cmd.textContent = st.lines[1] || "";
+  }
+  function repousar(){
+    imp.classList.remove("buildando");
+    l1.textContent = repouso1;
+    cmd.textContent = repouso2;
+  }
+
+  /* ?tick=N: scaffolding de mock (print deterministico do QA). Ver o gemeo
+     em 13-switch-idioma.html. Nao existe em producao. */
+  var congela = /^\?tick=(\d{1,3})$/.exec(location.search);
+  if(congela){
+    imp.classList.add("buildando");
+    pinta(L.logStateAt(Number(congela[1]), SCRIPT, TPC));
+    return;
+  }
+
+  if(matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+
+  imp.classList.add("buildando");
+  var tick = 0;
+  var timer = setInterval(function(){
+    var st = L.logStateAt(tick, SCRIPT, TPC);
+    pinta(st);
+    if(st.done){ clearInterval(timer); setTimeout(repousar, ESPERA); }
+    tick++;
+  }, MS);
+})();
+</script>
+</body>
+</html>

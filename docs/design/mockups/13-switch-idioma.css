@@ -1,0 +1,273 @@
+/* ═══════════════════════════════════════════════════════════════════
+   MOCK 13 - O SWITCH DE IDIOMA (EN <-> PT-BR)
+   ═══════════════════════════════════════════════════════════════════
+   CSS compartilhado pelas DUAS edicoes (13-switch-idioma.html = pt-br e
+   13-switch-idioma-en.html = en). Ele e compartilhado de proposito: as
+   duas paginas SAO a mesma pagina em duas linguas, que e exatamente a
+   duplicacao que o <?php include ?> resolve em producao. Um <style> por
+   arquivo aqui ja nasceria com duas copias pra divergir.
+
+   ─── A TENSAO QUE O LIDER APONTOU, E A RESOLUCAO ───
+   "o prompt de shell e TELA; o controle vive no PAPEL."
+
+   A regra da identidade (a-vibe-papel-e-tela): o neon SO existe onde ha
+   tela; o papel e tinta. Entao o controle nao vira tinta nem o papel vira
+   terminal. O switch e UM BURACO DE TELA ACESA no masthead - a menor
+   tela do site, uma LCD impressa na revista. Dentro dela o neon e o
+   comando sao legitimos, porque ali E tela. O papel continua papel.
+
+   ★ E a mesma regra vale pro MOVIMENTO, que e a parte que quase passou
+   batido: o embaralhar de glifos e um efeito de TELA (e compilacao, e o
+   Tavus-Drive). PAPEL NAO EMBARALHA - papel e IMPRESSO. Por isso, na
+   troca de lingua, cada material faz o seu:
+     tela  -> a LCD compila o log do build (glifos resolvendo, mono)
+     papel -> a manchete/dek/chamadas ASSENTAM como tinta (blur->nitido)
+   Dois materiais, dois movimentos, um evento so.
+
+   ⚠️ E POR ISSO a manchete NAO embaralha: alem de quebrar a regra, o
+   Archivo Narrow e proporcional - embaralhar caractere a caractere faria
+   a largura pular a cada frame e a manchete tremer/refluir. O scramble
+   pede mono, e mono e a fonte da tela. A regra e a solucao tecnica sao a
+   mesma coisa aqui.
+
+   ─── O QUE NAO SE USA, E POR QUE ───
+   ⚠️ ZERO BANDEIRA (ordem do lider) e ZERO splash de selecao.
+   ⚠️ A LCD NAO usa o prompt `nome@glyfesse>`. Aquele prefixo e a
+      ASSINATURA DA VOZ do Gus (voz-prompt-shell), nao um enfeite de
+      terminal. Um botao vestindo a assinatura dele diluiria justo o que
+      torna a voz reconhecivel - o mesmo argumento do "o pixel so e
+      especial enquanto e raro". A LCD e um MOSTRADOR DE MAQUINA: ganha a
+      mono e a tela, nunca o prompt.
+
+   Tudo herda de ../tokens.css. Zero terceiro, zero CDN.
+   ═══════════════════════════════════════════════════════════════════ */
+
+*{box-sizing:border-box}
+html{background:#2b2620}
+body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-corpo)}
+
+/* faixa de contexto do mock (anotacao de dev, NAO e o design) */
+.ctx{max-width:1080px; margin:0 auto; padding:22px 24px 4px; color:#cdbfa6}
+.ctx h1{font-family:var(--font-display); font-weight:700; font-size:14px; letter-spacing:.12em;
+  text-transform:uppercase; color:#e6d9bf; margin:0 0 6px}
+.ctx p{font-size:15px; line-height:1.5; margin:0 0 8px; max-width:80ch; color:#bcaf95}
+.ctx b{color:#e6d9bf}
+.ctx .ok{color:#7bd06a}
+
+/* ═══════════ A CAPA (a folha de papel, a #1: a mais velha da banca) ═══════════ */
+.capa{
+  --idade:.88;
+  max-width:1080px; margin:20px auto 0; position:relative; overflow:hidden;
+  padding:30px 34px 40px; box-shadow:var(--sombra-folha);
+}
+/* fibra do papel: SVG com dimensao explicita (senao some no Gecko) */
+.capa::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.16;
+}
+.capa > *{position:relative; z-index:1}
+
+/* ⚠️ SEM MANCHA DE CAFE NESTE MOCK, e nao e esquecimento. O mock 12 tem a
+   .zona-cafe no canto sup-direito, mas ela HOJE NAO RENDERIZA NADA (provado
+   em screenshot): a regra `.capa > *{position:relative}` acima ganha da
+   `.zona-cafe{position:absolute}` do tokens.css (mesma especificidade, e
+   esta folha carrega depois), a zona vira bloco de altura 0 e o
+   overflow:hidden (que e o guard) recorta a mancha inteira.
+   E quando se corrige a posicao, aparece o problema DE BAIXO: aquele canto
+   e exatamente onde mora o texto do expediente ("15 de maio de 2026",
+   "gusworld.site") - e o tokens.css §8 e taxativo, na #1 encardida a mancha
+   reprova AA em texto secundario ja com alpha .08. Ou seja: o canto sup-
+   direito nao e zona segura, e agora ainda tem a LCD nele.
+   Reproduzir isso aqui seria carregar bug alheio pra dentro do mock do
+   switch; corrigir seria mexer numa capa ja aprovada sem ordem. Reportado
+   ao lider, que decide. Ver o relato do mock 13. */
+
+.masthead{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:3px solid var(--tinta-preta); padding-bottom:9px; margin-bottom:6px; gap:14px}
+.masthead .logo{font-family:var(--font-display); font-weight:700; font-size:clamp(30px,7vw,46px); line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4a0, 1.5px 1.5px 0 #c2129ea0}
+/* a coluna direita do masthead: o expediente da edicao + a LCD embaixo dele.
+   ★ E aqui que o switch vive, e o lugar nao e decorativo: numa revista de
+   verdade a LINGUA E UMA PROPRIEDADE DA EDICAO ("edicao brasileira"), e
+   propriedade de edicao mora no expediente do masthead. Nao e widget
+   flutuante - e a linha de expediente, que por acaso e uma tela. */
+/* nao escopar em .masthead: a tira de comparacao reusa a mesma coluna, e
+   escopada ela virava bloco solto la (a LCD desalinhava do expediente). */
+.col-meta{display:flex; flex-direction:column; align-items:flex-end; gap:7px}
+.masthead .meta{font-family:var(--font-display); font-size:11px; text-align:right; line-height:1.55; color:var(--tinta-2)}
+.masthead .meta b{color:var(--tinta-preta); font-size:15px}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ★ TRATAMENTO A - O EXPEDIENTE ACESO (a recomendacao)
+   A menor tela do site: uma LCD de status impressa no masthead de papel.
+   ═══════════════════════════════════════════════════════════════════
+   ⚠️ TAMANHO FIXO, e nao e detalhe: em repouso a LCD mostra 2 linhas
+   (BUILD atual + o comando); durante a troca ela mostra 2 linhas de log.
+   Mesma caixa, mesmo numero de linhas => ZERO layout shift (CLS) num
+   elemento que fica no topo de toda pagina. Se um dia o log ganhar uma
+   3a linha, a caixa cresce primeiro, nao o log.
+   A classe .aceso vem do tokens.css: alem de marcar semanticamente "aqui
+   e tela", ela faz a LCD herdar o CRT de graca quando o leitor liga o
+   scanline (:has(#crt:checked)). */
+.imprint{
+  /* ⚠️ A largura e em COLUNAS, como todo mostrador de maquina: a LCD tem
+     que caber a linha mais longa do log ("glyfe --lang=en" = 15 col), com
+     1 de folga. E o +18px NAO e chute: com box-sizing:border-box o padding
+     come de dentro, entao `width:16ch` cru dava ~13 colunas uteis e o log
+     saia cortado ("glyfe --lang=e") - sem erro nenhum, porque o
+     overflow:hidden das linhas engolia o resto calado. Pego no print.
+     Trocar a fonte-display ou o padding => refazer esta conta. */
+  --lcd-cols:16;
+  display:block; text-decoration:none; cursor:pointer;
+  background:var(--tela-bg); border-radius:var(--raio-tela);
+  padding:7px 9px; width:calc(var(--lcd-cols) * 1ch + 18px);
+  font-family:var(--font-display); font-size:11px; line-height:1.5;
+  box-shadow:inset 0 0 0 1px var(--tela-borda-ui), 0 0 0 1px #00000026, var(--brilho-tela);
+  transition:box-shadow var(--dur-medio) var(--ease);
+}
+/* ⚠️ O min-height NAO e margem de seguranca: e o que segura a promessa de
+   "zero layout shift". No 1o trecho do log a linha 2 ainda nao nasceu e
+   fica com texto vazio; bloco vazio tem altura ZERO, entao a LCD encolhia
+   pra 1 linha e o masthead pulava - exatamente o CLS que ela existe pra
+   nao ter. A linha e reservada mesmo vazia (1.5em = o proprio line-height).
+   Pego no print, nao na leitura do codigo. */
+.imprint .l1,.imprint .l2{display:block; white-space:pre; overflow:hidden; min-height:1.5em}
+
+/* ★ O texto que SO o leitor de tela ouve. "glyfe --en" e claro pra quem le
+   shell e opaco pra todo mundo, entao o nome acessivel do link vira
+   "glyfe --en / English edition": diz o que faz E contem o rotulo visivel
+   (WCAG 2.5.3 Label in Name, que quebraria se o aria-label SUBSTITUISSE o
+   texto visto). Escondido do olho, NUNCA do teclado nem do leitor. */
+.sr{
+  position:absolute; width:1px; height:1px; margin:-1px; padding:0;
+  overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0;
+}
+/* l1 = o rotulo do build atual (informacao). l2 = o comando (a acao). */
+.imprint .l1{color:var(--tela-texto-2)}   /* 7.59:1 sobre navy - AAA */
+.imprint .l2{color:var(--tela-acento); display:flex; align-items:center; gap:6px} /* ciano 10.83:1 - AAA */
+
+/* o "executar": triangulo desenhado em CSS, ZERO dependencia de fonte.
+   (o pool de glifos do mock 12 e ASCII puro pelo mesmo motivo: a
+   PixelOperatorMono nao cobre seta unicode, e tofu num mostrador de
+   maquina seria justo o oposto de "funcional".) */
+.imprint .run{
+  width:0; height:0; border-style:solid; border-width:3.5px 0 3.5px 5px;
+  border-color:#0000 #0000 #0000 var(--tela-acento);
+  transition:transform var(--dur-medio) var(--ease);
+}
+.imprint:hover{box-shadow:inset 0 0 0 1px var(--tela-acento), 0 0 0 1px #00000026, 0 0 18px #4dd9e8b0}
+.imprint:hover .run{transform:translateX(2px)}
+/* o foco e um anel de tinta POR FORA da tela: no papel ele tem que ser
+   visivel contra o papel, nao contra o navy. */
+.imprint:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
+
+/* enquanto o build roda: o comando ecoa em ciano, a resposta em branco de
+   tela, e o triangulo some (nao ha o que executar - ja esta executando). */
+.imprint.buildando{cursor:default}
+.imprint.buildando .l1{color:var(--tela-acento)}
+.imprint.buildando .l2{color:var(--tela-texto-1)}
+.imprint.buildando .run{display:none}
+
+/* ── a manchete e o corpo (papel) ── */
+.manchete{
+  font-family:var(--font-manchete); font-weight:700; text-transform:uppercase;
+  font-size:clamp(46px,13vw,116px); line-height:.9; letter-spacing:-.01em;
+  color:var(--tinta-preta); margin:18px 0 4px;
+}
+.dek{font-family:var(--font-corpo); font-style:italic; font-size:clamp(16px,2.4vw,21px);
+  color:var(--tinta-2); margin:0 0 22px; max-width:52ch; line-height:1.4}
+
+.chamadas{list-style:none; margin:26px 0 0; padding:16px 0 0; border-top:1px solid var(--borda);
+  display:flex; flex-direction:column; gap:11px}
+.chamadas li{font-family:var(--font-display); font-size:clamp(13px,1.7vw,16px); color:var(--tinta-preta); line-height:1.4}
+.chamadas .pg,.chamadas .destaque{color:var(--tinta-ciano)}
+
+.rodape{margin:24px 0 0; padding-top:12px; border-top:1px solid var(--borda);
+  font-family:var(--font-display); font-size:12px; color:var(--tinta-2); display:flex; gap:18px; flex-wrap:wrap}
+.rodape b{color:var(--tinta-preta)}
+
+/* ═══════════════════════════════════════════════════════════════════
+   A CHEGADA: o PAPEL sendo IMPRESSO (nao embaralhado)
+   ═══════════════════════════════════════════════════════════════════
+   ★ Progressive enhancement de verdade, e a ordem importa:
+   1. Sem JS: a classe .vai-recompilar nunca entra, nada anima, e a pagina
+      inteira ja esta legivel. O switch e um link comum que funcionou.
+   2. Com JS: um script no <head> le o hash ANTES do 1o paint e marca o
+      <html>. A animacao e CSS PURO e dispara sozinha no load - o JS so
+      marca, nao anima. Se o script de baixo quebrar, o texto aparece
+      assim mesmo (o `both` termina em opacity:1). Nunca ha um estado em
+      que um bug de JS deixe a revista invisivel.
+   3. prefers-reduced-motion: o tokens.css §9 zera a duracao - o leitor
+      cai na pagina ja impressa, com a MESMA informacao. */
+@keyframes tinta-assenta{
+  from{opacity:0; filter:blur(1.4px); transform:translateY(2px)}
+  to{opacity:1; filter:none; transform:none}
+}
+html.vai-recompilar .manchete,
+html.vai-recompilar .dek,
+html.vai-recompilar .chamadas,
+html.vai-recompilar .rodape{animation:tinta-assenta 380ms var(--ease) both}
+html.vai-recompilar .dek{animation-delay:110ms}
+html.vai-recompilar .chamadas{animation-delay:220ms}
+html.vai-recompilar .rodape{animation-delay:300ms}
+
+/* ═══════════════════════════════════════════════════════════════════
+   A TIRA DE COMPARACAO (so do mock: os 3 tratamentos, tamanho real)
+   ═══════════════════════════════════════════════════════════════════
+   Os tres respondem a MESMA pergunta - "o controle e papel ou e tela?" -
+   de tres jeitos diferentes. Nao sao variacoes de gosto. */
+.compara{max-width:1080px; margin:34px auto 0; padding:0 4px}
+.compara > h2{font-family:var(--font-display); font-size:13px; letter-spacing:.12em; text-transform:uppercase;
+  color:#e6d9bf; margin:0 0 4px}
+.compara > p{font-size:14px; line-height:1.5; color:#bcaf95; margin:0 0 16px; max-width:80ch}
+.tira{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+@media (max-width:860px){ .tira{grid-template-columns:1fr} }
+.trat{background:var(--papel-fim); padding:14px 16px 16px; position:relative}
+.trat .selo{font-family:var(--font-display); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--tinta-2); margin:0 0 10px}
+/* ⚠️ #35562f e o MESMO verde-comentario do mock 11a, e nao e escolha de
+   gosto: e o unico verde ja calibrado no PIOR papel (5.05:1 sobre
+   --papel-fim, que e o fundo destes cartoes). O verde que eu tinha posto
+   aqui antes dava 3.99:1 e REPROVAVA AA - a armadilha exata que o
+   tokens.css §3 documenta (calibrar na #1 encardida, nunca no papel novo).
+   ⚠️ Ele esta hardcodado aqui e no 11a: ja e a 2a copia. Merece virar
+   --tinta-comentario no tokens.css (a DoD pede token, nao hex solto). */
+.trat .selo .rec{color:#35562f; font-weight:700}
+.trat .mini-mast{display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
+  border-bottom:2px solid var(--tinta-preta); padding-bottom:7px}
+.trat .mini-logo{font-family:var(--font-display); font-weight:700; font-size:21px; line-height:1; color:var(--tinta-preta);
+  text-shadow:-1px -1px 0 #00b6d4a0, 1px 1px 0 #c2129ea0}
+.trat .mini-meta{font-family:var(--font-display); font-size:9px; text-align:right; line-height:1.5; color:var(--tinta-2)}
+.trat .por{font-family:var(--font-corpo); font-size:13.5px; line-height:1.5; color:var(--tinta-preta); margin:12px 0 0}
+.trat .por b{color:#35562f}   /* mesmo verde AA-no-pior-papel do .rec */
+.trat .contra{font-family:var(--font-corpo); font-size:13.5px; line-height:1.5; color:var(--tinta-2); margin:6px 0 0}
+
+/* B - o colofao em TINTA: sem tela nenhuma. A lingua e uma linha de
+   expediente impressa, e a outra edicao e uma remissao (o "veja tambem"
+   da revista). E o unico dos tres 100% fiel ao papel. */
+.colofao{font-family:var(--font-display); font-size:10px; line-height:1.6; text-align:right; color:var(--tinta-2)}
+.colofao a{color:var(--tinta-preta); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px}
+.colofao a:hover{color:var(--tinta-ciano)}
+
+/* C - o comando em TINTA: a tecnologia vaza pro papel. Mesmo comando do
+   A, sem a tela em volta. */
+.cmd-tinta{font-family:var(--font-display); font-size:10.5px; text-align:right; color:var(--tinta-2); line-height:1.6}
+.cmd-tinta a{color:var(--tinta-preta); text-decoration:none; border-bottom:1px dashed var(--tinta-ciano); padding-bottom:1px}
+.cmd-tinta a:hover{color:var(--tinta-ciano)}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MOBILE 390px - o numero que manda no projeto (a crianca chega de
+   celular). O masthead empilha e a LCD passa a ocupar a largura, mas
+   NUNCA muda de altura: continua com as 2 linhas.
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width:560px){
+  .capa{padding:20px 16px 28px}
+  .masthead{flex-direction:column; align-items:flex-start; gap:10px}
+  .masthead .col-meta{align-items:flex-start; width:100%}
+  .masthead .meta{text-align:left}
+  /* a LCD NAO estica no celular: a largura dela e a linha mais longa do log
+     (--lcd-cols), e esticar so criaria vazio dentro da tela. Ela ja e
+     pequena o bastante pra caber ao lado do expediente em 390px. */
+  .ctx{padding:16px 16px 4px}
+}

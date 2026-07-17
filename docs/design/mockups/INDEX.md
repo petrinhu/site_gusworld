@@ -21,6 +21,8 @@ Zero dependência externa: fonte local (CC0), texturas em SVG inline. **O que es
 
 | 12 | [`12-capa-edicao-1.html`](12-capa-edicao-1.html) | **A capa cheia da Edição #1 (a gênese).** Direção A "no começo era texto": força tipográfica + conceitual (a #1 não tem quadradinho nem screenshot). Papel o mais encardido. **Hook = o glyfe literal:** um campo de glifos onde a 1ª linha do mundo **compila** (resolve esq→dir) ao clicar. Lógica pura testada em `js/compile-core.js` (12/12). A capa só chama pra explicação do nome (pág 3). | ⏳ **pendente QA** (escolhido pelo líder: direção A) |
 
+| 13 | [`13-switch-idioma.html`](13-switch-idioma.html) ⇄ [`13-switch-idioma-en.html`](13-switch-idioma-en.html) | **O switch de idioma (EN ⇄ PT-BR), um botão por página.** Conceito: **`glyfe` = escrever E compilar**, então trocar de língua é **RECOMPILAR a revista**. Zero bandeira, zero splash. Resolve a tensão papel×tela pondo o controle **dentro de um buraco de tela acesa** (uma LCD de expediente no masthead): o comando e o neon são legítimos porque ali **é tela**. Na troca, **a tela compila** (glifos, mono) e **o papel é impresso** (a tinta assenta): dois materiais, dois movimentos. **São 2 arquivos**, então o clique **navega de verdade** (como `/pt/` ⇄ `/en/` em produção), com `hreflang` recíproco e funcionando **sem JS**. 3 tratamentos comparados. Lógica pura em `js/lang-core.js` (21/21). | ⏳ **pendente QA + decisão do líder** (A/B/C; recomendado **A**) |
+
 ## Como abrir
 
 ```bash
