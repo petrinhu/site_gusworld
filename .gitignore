@@ -26,3 +26,8 @@ resources/historico_do_site/canal_x/
 # scripts/lib-hygiene.sh le daqui; assim o guarda protege o nome sem que o
 # proprio nome fique em arquivo rastreado. So "Gus"/"Gus Dragon" e versionavel.
 scripts/.name-blocklist
+
+# Inventario de planejamento: referencia a never-reveal list (spoiler) e o
+# repo e PUBLICO. Planning LOCAL; para rastrear, redigir sem os nomes. Ver
+# AUD-SPOILER + project_spoiler_policy.
+docs/inventario-publicavel.md
