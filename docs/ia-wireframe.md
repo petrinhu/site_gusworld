@@ -30,7 +30,8 @@ gusworld.site
 ├── /pt/edicao-1                         → EDIÇÃO #1 · A Gênese         ⇄ /en/edition-1
 ├── /pt/edicao-2                         → EDIÇÃO #2 · Arquitetura      ⇄ /en/edition-2
 ├── /pt/edicao-3                         → EDIÇÃO #3 · O quadrado azul  ⇄ /en/edition-3
-├── /pt/<slug-nao-adivinhavel>           → página secreta do ARG (fora do índice, não indexável) — ver §7
+├── /pt/<slug-secreto-pt>                → página secreta do ARG pt (fora do índice, noindex) — §7.1
+├── /en/<slug-secreto-en>                → página secreta do ARG en (slug INDEPENDENTE; não linkada à pt) — §7.1
 ├── /pt/404 · /en/404                    → 404 por idioma (ErrorDocument por diretório)
 ├── /pt/rss.xml · /en/rss.xml            → feeds (gerados de $edicoes) — ver §7
 ├── /sitemap.xml                         → gerado de $edicoes (exclui a secreta)
@@ -52,8 +53,11 @@ graph TD
   E1PT -.hreflang.- E1EN
   E2PT -.hreflang.- E2EN
   E3PT -.hreflang.- E3EN
-  SEC["página secreta do ARG (fora do índice, noindex)"]
-  PT -. "sem link; só via enigma" .-> SEC
+  SECPT["secreta ARG pt (fora do índice, noindex)"]
+  SECEN["secreta ARG en (slug independente, noindex)"]
+  PT -. "sem link; só via enigma" .-> SECPT
+  EN -. "sem link; só via enigma" .-> SECEN
+  SECPT -. "NÃO se linkam (hreflang revelaria o gêmeo)" .- SECEN
 ```
 
 ### 1.2 Tabela por rota
@@ -62,7 +66,7 @@ graph TD
 |---|---|---|---|---|---|---|
 | `/pt/` | `/en/` | banca (home) | Sim | Não | pt-br ⇄ en, x-default=pt | PHP data-driven (`foreach $edicoes`) |
 | `/pt/edicao-N` | `/en/edition-N` | edição | Sim | Não | pt-br ⇄ en, x-default=pt | PHP estático + include header/footer (a #3 instancia o quadradinho) |
-| `/pt/<slug secreto>` | (recomendado: nenhuma — §7) | secreta-ARG | **Não** | **Sim** (`noindex,nofollow`) | **nenhum** | PHP estático, sem link de entrada |
+| `/pt/<slug secreto pt>` | `/en/<slug secreto en>` (independente, §7.1) | secreta-ARG | **Não** | **Sim** (`noindex,nofollow`) | **nenhum** (nunca cruzado — revelaria o gêmeo) | PHP estático, sem link de entrada; uma por idioma |
 | `/pt/404` | `/en/404` | 404 | Não | Sim (`noindex,follow`) | nenhum | `ErrorDocument 404` por diretório (`.htaccess`) |
 | `/` | — | redirect 301 fixo | Não | — | — | config de servidor |
 | `/pt/rss.xml` | `/en/rss.xml` | feed | Não (referenciado via `<link rel="alternate" type="application/rss+xml">` no `<head>`) | — | — | PHP gerado de `$edicoes`, filtrado por idioma |
@@ -78,13 +82,13 @@ graph TD
 ```
 banca (pt+en)                 2
 edições (3 × pt+en)           6
-secreta do ARG (1, monolíngue) 1
+secreta do ARG (2, bilíngue)  2   ← líder escolheu paridade (§7.1); 2 slugs independentes
 404 (pt+en)                   2
 ──────────────────────────────
-TOTAL NO LANÇAMENTO          11 páginas HTML
+TOTAL NO LANÇAMENTO          12 páginas HTML
 ```
 
-⚠️ Se o líder preferir a secreta em par bilíngue (§7.1), o total sobe para **12**. Baseline do `D-STACK`: **11, com ressalva de ±1**.
+✅ Resolvido (§7.1): a secreta é **bilíngue** (uma por idioma, slugs independentes, não interligadas) → total **12**. Baseline do `D-STACK`: **12**.
 
 **Endpoints não-página:** 1 backend vivo (`/api/cupom-voto.php`), 2 feeds RSS, 1 `sitemap.xml`, 1 `robots.txt`, 1 conjunto de ícones, 1 regra de redirect (`/`→`/pt/`).
 
@@ -143,7 +147,7 @@ Não há mais nada: sem "sobre", sem "contato" (contato = e-mail no rodapé, `MO
 
 - **`x-default` = sempre o par `/pt/`** `[recomendação]`: espelha a regra já fixada do redirect da raiz — o humano sem preferência e o buscador sem preferência caem no mesmo lugar. Não fere "nenhum idioma é de primeira classe" (essa regra é sobre estrutura de URL, não sobre destino-padrão).
 - **404:** sem `hreflang`/`canonical`; `noindex, follow`; `lang` conforme o diretório que serviu.
-- **Secreta:** nenhum `hreflang`; `noindex, nofollow`; `[recomendação]` canonical-self defensivo.
+- **Secreta (bilíngue, §7.1):** as duas — pt e en — sem `hreflang`, sem `canonical` cruzado (só canonical-self defensivo), `noindex, nofollow`. NUNCA se apontam uma pra outra (nem por `hreflang`, nem pela LCD): a interligação revelaria o gêmeo. A LCD do masthead não se aplica (a secreta não tem masthead — §3.3).
 - **Assimetria tolerada:** edição publicada só em pt sai com aviso honesto e **sem** o par `hreflang="en"` (nunca alternate apontando pra URL inexistente); o par recíproco entra nas duas páginas no mesmo commit quando a tradução chega. Nunca existe página órfã de `hreflang`.
 - **Ids de âncora idênticos em pt e en** (`#sec-04` é `#sec-04` nas duas línguas): link profundo tem gêmeo exato, e a LCD troca só o prefixo de URL mantendo o fragmento.
 
@@ -252,7 +256,7 @@ Modelo `[canon]`: **rolagem única + índice que ancora**. Toda seção existe e
 
 ### 3.3 Tipo 3 — Página secreta do ARG
 
-Conteúdo, mecânica e gatilho **fora de escopo aqui e sempre** (spoiler-safe). Esqueleto mínimo: sem link em menu/índice/rodapé/sitemap; não referenciada por nenhuma outra página; `noindex, nofollow`; **não entra no robots.txt** (listar lá a revelaria). Chrome (com ou sem masthead): `[ABERTO]` §7.2. Slug: não-adivinhável, escolha do líder/ux-writer (§7.4).
+Conteúdo, mecânica e gatilho **fora de escopo aqui e sempre** (spoiler-safe). Esqueleto mínimo: sem link em menu/índice/rodapé/sitemap; não referenciada por nenhuma outra página; `noindex, nofollow`; **não entra no robots.txt** (listar lá a revelaria). **Bilíngue (§7.1):** duas páginas independentes (pt/en), slugs distintos, que NÃO se linkam. **Chrome → SEM chrome de revista (§7.2):** reusa só os tokens (cor/fonte), sem masthead nem rodapé — efeito "isto vazou de fora do site". Slug: não-adivinhável, escolha do `ux-writer` + líder (§7.4) — agora são dois.
 
 ### 3.4 Tipo 4 — O 404
 
@@ -308,7 +312,7 @@ flowchart TD
 
 O `D-STACK` é **decisão exclusiva do líder**; isto é o insumo que faltava, não a decisão.
 
-1. **Volume: 11 páginas HTML no lançamento** (±1, §7.1) + fórmula de crescimento **+2 URLs por edição publicada** — a stack precisa tornar isso barato (include + `foreach`), nunca re-edição de navegação.
+1. **Volume: 12 páginas HTML no lançamento** (§7.1 fechado: secreta bilíngue) + fórmula de crescimento **+2 URLs por edição publicada** — a stack precisa tornar isso barato (include + `foreach`), nunca re-edição de navegação.
 2. **i18n de URL:** dois prefixos simétricos `/pt/`⇄`/en/` como pastas físicas; redirect 301 fixo da raiz; `hreflang` recíproco + `x-default` emitido pelo servidor; href do par gêmeo gerado no PHP (sem mapeador JS).
 3. **Fonte única `$edicoes`** (array/JSON: data, frame, legenda, estado) percorrida por banca, linha do tempo, `sitemap.xml` e 2 feeds RSS — publicar = trocar `rascunho`→`publicada`, zero HTML tocado.
 4. **RSS por idioma** (2 feeds gerados do mesmo array — §7.5) + `sitemap.xml` gerado + `robots.txt`.
@@ -336,11 +340,15 @@ Spoiler-safe: nenhuma menção a conteúdo da never-reveal list nem a sistema/ea
 
 ---
 
-## 7. Questões abertas (decisão do líder — via AskUserQuestion, nunca aqui)
+## 7. Questões abertas — RESOLVIDAS (líder, 2026-07-17, via AskUserQuestion)
 
-1. **Secreta do ARG: monolíngue (pt) × par bilíngue.** Recomendação do time: **monolíngue** — está fora do contrato de `hreflang`/indexação, meia superfície de slug a proteger, caso puro da assimetria tolerada. ⚠️ Toca a regra dura dita noutro contexto ("TEM de ser as 2 línguas"); se ele quiser paridade: custo +1 página (total 12) e **dois slugs independentes** (nunca o mesmo texto sob os dois prefixos).
-2. **Chrome da secreta e posição do PRESS START.** (a) Secreta **sem** o chrome de revista (efeito "isto vazou de fora do site", reusando só os tokens) × chrome mínimo (só o logo, por consistência/anti-phishing). (b) PRESS START como **bloco próprio logo abaixo do hero** (recomendado — 2 alvos claros, mocks 08 e 10 nunca foram integrados) × dentro do hero.
-3. **Landmark da fileira de capas:** `<section>` (recomendado — é o corpo editorial da banca, não um menu) × `<nav aria-label="Edições publicadas">`. Técnica, não bloqueante; pode fechar com o dev.
-4. **String do slug secreto:** escolha do líder/ux-writer — recomendado gerado/não-adivinhável, nunca palavra temática deduzível do enigma.
-5. **RSS: 2 feeds por idioma** (recomendado — mantém "cada URL é monolíngue") × 1 feed misto. Custo desprezível em ambos.
-6. **Manifest PWA (`site.webmanifest`) opcional:** barato (ícones já existem em 5 resoluções), mas não é requisito de nenhum item do board — sinalizado como opção, não incluído.
+1. **Secreta do ARG: idioma → ★ NAS 2 LÍNGUAS (paridade).** O líder honrou a régua "TEM de ser as 2 línguas". Consequências arquiteturais duras:
+   - **Total sobe para 12 páginas** (§1.3 atualizado).
+   - **Dois slugs independentes e não-adivinháveis**, um por prefixo (`/pt/<slug-a>`, `/en/<slug-b>`) — NUNCA o mesmo texto de slug sob os dois prefixos.
+   - ⚠️ **Os dois NÃO se linkam por `hreflang` nem pela LCD** — um alternate/canonical cruzado revelaria o gêmeo. São duas páginas secretas *independentes*, cada uma `noindex, nofollow`, fora de todo sitemap/robots/índice, canonical-self defensivo. A paridade é de existência (as duas línguas têm sua secreta), não de interligação.
+2. **Chrome da secreta → ★ SEM CHROME DE REVISTA.** Reusa só os tokens (cor/fonte), sem masthead nem rodapé — efeito "isto vazou de fora do site"; a página é um achado, não parte da banca. (§3.3 atualizado.)
+   **Posição do PRESS START → ★ BLOCO PRÓPRIO ABAIXO DO HERO.** 2 alvos claros (quadradinho e START separados), evita toque trocado no mobile. (§3.1 já modela como bloco próprio; os mocks 08 e 10 se integram nesse bloco.)
+3. **Landmark da fileira de capas → `<section>`** `[recomendação, fecha com o dev]` — é o corpo editorial da banca, não um menu. Não bloqueante; confirmável na implementação.
+4. **String do slug secreto → slot do `ux-writer` + líder** na hora de construir a secreta: gerado/não-adivinhável, nunca palavra temática deduzível do enigma. Agora são DOIS (um por idioma).
+5. **RSS → ★ 2 FEEDS POR IDIOMA** (`/pt/rss.xml`, `/en/rss.xml`), mantendo "cada URL é monolíngue". Mesmo `$edicoes`, filtrado por idioma.
+6. **Manifest PWA → deixado de fora do 1.0** `[recomendação]`: não é requisito de nenhum item do board; os ícones (5 resoluções) já existem, então é adição barata e reversível numa edição futura se surgir necessidade real. Não incluído agora (anti-OE).

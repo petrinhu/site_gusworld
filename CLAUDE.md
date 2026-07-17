@@ -13,7 +13,7 @@ No **início de cada sessão** (integração `reference-autocomm`):
 3. Ligar o monitor em background: `bash ~/IDrive/Documentos/projetos_claudebrain/gusworld_ia_autocomm/watch-inbox.sh site 300` (re-invoca ao chegar mensagem; ao acordar, ler+arquivar+relançar).
 4. **Responder** = criar `.md` em `inbox/<destinatário>/` (ex.: `inbox/gusworld/`) + push. **Sempre pull antes de enviar.**
 
-⚠️ **Repo do bus é PÚBLICO** (`github.com/petrinhu/gusworld_ia_autocomm`): zero dado sensível — nome real de menor nunca, nem segredo/token.
+✅ **Repo do bus é PRIVADO** — verificado na fonte em 2026-07-17 (`visibility: PRIVATE`; API anônima dá 404). Este doc e o `PROTOCOL.md` do bus diziam **"público"** e estavam **ERRADOS** (corrigidos): eu vinha me auto-limitando à toa e dei um alarme falso de vazamento. **Logo: spoiler/lore/embargo PODEM trafegar no bus.** ⚠️ Mas **nome de batismo de menor** e **segredo/token** seguem proibidos — essa regra é **global e é sobre versionar**, não sobre publicidade (repo privado vira público um dia).
 
 ## Pendências
 
