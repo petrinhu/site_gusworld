@@ -65,7 +65,9 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 
 /* ── o campo de glifos (a parede de ebooks) + a linha que COMPILA ── */
 .genese{position:relative; border-top:1px solid var(--borda); padding-top:20px; margin-top:6px}
-.rotulo-fig{font-family:var(--font-display); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+/* labels pixel em minuscula (decisao de sistema 2026-07-17): o N maiusculo
+   quebra <15px na PixelOperatorMono; o n minusculo renderiza limpo. */
+.rotulo-fig{font-family:var(--font-display); font-size:11px; letter-spacing:.1em;
   color:var(--tinta-ciano); margin:0 0 12px}
 .campo{position:relative; margin:0 0 6px; user-select:none}
 .glifo-row{font-family:var(--font-display); font-size:clamp(12px,1.5vw,15px); line-height:1.5;
@@ -123,14 +125,14 @@ body.compilou .pos-compila{opacity:1; max-height:200px}
 
   <header class="masthead">
     <div class="logo">GLYFESSE</div>
-    <div class="meta">ANO 1 · Nº <b>1</b><br>15 de maio de 2026<br>gusworld.site</div>
+    <div class="meta">ano 1 · nº <b>1</b><br>15 de maio de 2026<br>gusworld.site</div>
   </header>
 
   <h2 class="manchete">No começo<br><span class="l2">era texto</span></h2>
   <p class="dek">Antes do primeiro pixel, antes do primeiro quadrado que anda, este mundo foi dezenas de milhares de palavras. Um mundo que se lê antes de existir.</p>
 
   <section class="genese" aria-label="A primeira linha do mundo, compilando">
-    <p class="rotulo-fig">Fig. 0 · a primeira linha do mundo</p>
+    <p class="rotulo-fig">fig. 0 · a primeira linha do mundo</p>
     <div class="campo" id="campo" aria-hidden="true"></div>
 
     <p class="linha-compila" id="compila" role="button" tabindex="0"
@@ -146,7 +148,7 @@ body.compilou .pos-compila{opacity:1; max-height:200px}
   </section>
 
   <ul class="chamadas">
-    <li><span class="destaque">EXCLUSIVO</span> · o nome deste mundo, explicado pelo Gus <span class="pg">· pág 3</span></li>
+    <li><span class="destaque">exclusivo</span> · o nome deste mundo, explicado pelo Gus <span class="pg">· pág 3</span></li>
     <li>15 de maio: o dia em que só havia texto <span class="pg">· pág 6</span></li>
     <li>por que "Glyfesse" quer dizer duas coisas ao mesmo tempo <span class="pg">· pág 3</span></li>
   </ul>

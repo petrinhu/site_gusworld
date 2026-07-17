@@ -224,7 +224,9 @@ html.vai-recompilar .rodape{animation-delay:300ms}
 .tira{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
 @media (max-width:860px){ .tira{grid-template-columns:1fr} }
 .trat{background:var(--papel-fim); padding:14px 16px 16px; position:relative}
-.trat .selo{font-family:var(--font-display); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+/* labels pixel em minuscula (decisao de sistema 2026-07-17): o N maiusculo
+   quebra <15px na PixelOperatorMono; o n minusculo renderiza limpo. */
+.trat .selo{font-family:var(--font-display); font-size:10px; letter-spacing:.1em;
   color:var(--tinta-2); margin:0 0 10px}
 /* ⚠️ #35562f e o MESMO verde-comentario do mock 11a, e nao e escolha de
    gosto: e o unico verde ja calibrado no PIOR papel (5.05:1 sobre

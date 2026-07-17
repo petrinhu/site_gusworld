@@ -61,7 +61,10 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
   background:var(--tinta-preta); color:var(--papel); display:inline-block; padding:4px 8px; margin-bottom:18px}
 
 /* ── cabecalho da secao ── */
-.kicker{font-family:var(--font-display); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+/* labels pixel em minuscula (decisao de sistema 2026-07-17): o N maiusculo
+   quebra <15px na PixelOperatorMono; o n minusculo renderiza limpo em
+   qualquer tamanho, e o registro lowercase casa com a voz de shell. */
+.kicker{font-family:var(--font-display); font-size:12px; letter-spacing:.1em;
   color:var(--tinta-ciano); margin:0 0 4px}
 .titulo{font-family:var(--font-manchete); font-weight:700; font-size:34px; line-height:1.0;
   letter-spacing:var(--manchete-ls); color:var(--tinta-preta); margin:0 0 12px}
@@ -80,7 +83,7 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 .grupo-cab h3{font-family:var(--font-manchete); font-weight:700; font-size:21px; line-height:1;
   letter-spacing:var(--manchete-ls); color:var(--tinta-preta); margin:0}
 .grupo-cab .real{font-family:var(--font-display); font-size:11px; letter-spacing:.05em;
-  color:var(--tinta-2); text-transform:uppercase}
+  color:var(--tinta-2)}
 
 /* ── um aparte ── */
 .aparte{margin:0 0 26px}
@@ -106,7 +109,7 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 /* ── o bilhete dourado (TEASE, embargado) ── */
 .bilhete{margin:40px 0 0; padding:18px 18px 16px; position:relative;
   border:2px dashed #8a6a1f; background:#f6eccf80}
-.bilhete .selo{font-family:var(--font-display); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+.bilhete .selo{font-family:var(--font-display); font-size:11px; letter-spacing:.1em;
   color:#8a6a1f; margin:0 0 8px; display:flex; align-items:center; gap:7px}
 .bilhete .fala .prompt{color:var(--tinta-magenta)}   /* raro: sai do ciano de sempre */
 .bilhete .fala .dito{color:var(--tinta-preta)}
@@ -129,11 +132,11 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 <article class="folha" style="--idade:.12">
   <div class="masthead">
     <div class="logo">GLYFESSE</div>
-    <div class="ed">ANO 1 · Nº <b>3</b><br>gusworld.site</div>
+    <div class="ed">ano 1 · nº <b>3</b><br>gusworld.site</div>
   </div>
-  <span class="chamada-topo">O EIXO EXPERT · NA VOZ DELE</span>
+  <span class="chamada-topo">o eixo expert · na voz dele</span>
 
-  <p class="kicker">C-Arcane, segundo o Gus</p>
+  <p class="kicker">c-arcane, segundo o gus</p>
   <h2 class="titulo">Ele não mente. Ele implica.</h2>
   <p class="intro">Toda edição, o Gus solta uma no meio do caminho. Fanboy de <span class="fio">C-Arcane</span>, ele alfineta as outras linguagens do mundo, mas nunca inventa: por cima vem a piada, e logo embaixo, no comentário verde, vem o fato e a fonte que o sustentam. A alfinetada é dele; a verdade é de quem escreveu a documentação.</p>
   <p class="leg-formato">como ler: <span class="p">gus@glyfesse&gt;</span> é a alfinetada (a voz do Gus) · <span class="c">// </span>é o fato técnico e a fonte primária (a honestidade embaixo da piada)</p>

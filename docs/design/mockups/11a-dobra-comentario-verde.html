@@ -97,7 +97,9 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 
 /* ── a voz: prompt de shell + pensamento // ── */
 /* kicker = eyebrow ACIMA do titulo (convencao de revista, escolha do lider) */
-.kicker{font-family:var(--font-display); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+/* labels pixel em minuscula (decisao de sistema 2026-07-17): o N maiusculo
+   quebra <15px na PixelOperatorMono; o n minusculo renderiza limpo. */
+.kicker{font-family:var(--font-display); font-size:12px; letter-spacing:.1em;
   color:var(--tinta-ciano); margin:0 0 4px}
 /* ★ Titulo menor e MENOS quadrado (regra do lider): a condensada em caixa
    alta + 700 + tracking apertado lia blocky/pesada demais. Sentence case,
@@ -146,9 +148,9 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 <div class="folha-dobra">
   <div class="masthead">
     <div class="logo">GLYFESSE</div>
-    <div class="ed">ANO 1 · Nº <b>3</b><br>gusworld.site</div>
+    <div class="ed">ano 1 · nº <b>3</b><br>gusworld.site</div>
   </div>
-  <span class="chamada-topo">VOCÊ · O QUADRADINHO · AGORA</span>
+  <span class="chamada-topo">você · o quadradinho · agora</span>
 
   <div class="dobra">
 
@@ -165,7 +167,7 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
           <div class="heroi" id="heroi"></div>
         </div>
       </div>
-      <figcaption class="cap-fig"><b>FIG. 1</b> · o quadradinho da build 3, jogável. o quadrado já era ciano.</figcaption>
+      <figcaption class="cap-fig"><b>fig. 1</b> · o quadradinho da build 3, jogável. o quadrado já era ciano.</figcaption>
     </figure>
 
     <!-- a voz. ★ Coluna direita, topo -> baixo: kicker -> titulo -> falas do
@@ -176,7 +178,7 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
     <div>
       <!-- kicker (eyebrow) ACIMA do titulo: convencao de revista (escolha do
            lider). A regra "nada acima do titulo" valia so pra fala-instrucao. -->
-      <p class="kicker">A carta do Gus · editorial</p>
+      <p class="kicker">a carta do gus · editorial</p>
       <h2 class="titulo-carta">Ele ainda é só um quadrado</h2>
 
       <!-- ★ Falas do Gus no registro CHAT: tom baixo, sem ponto final (o
