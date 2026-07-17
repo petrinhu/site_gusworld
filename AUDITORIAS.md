@@ -18,7 +18,7 @@
 
 **O que auditar:**
 
-- **Nada de:** o [redigido], o [redigido], a [redigido], o clímax do ato 3, a [redigido], o [redigido]. *(Sterling Locke em si é **seguro**: vilão canônico desde o início, não é twist.)*
+- **Nada de:** os twists, o clímax do ato 3, e os sistemas/eventos de fim de jogo — a **lista específica** de never-reveal vive na **lore privada do líder**, **não é enumerada aqui** (enumerá-la num arquivo público seria o próprio spoiler; por isso foi redigida). *(Sterling Locke em si é **seguro**: vilão canônico desde o início, não é twist.)*
 - **Regra canônica do jogo: easter egg NUNCA é rotulado em material público.** O elemento pode aparecer; **a palavra que nomeia o sistema, nunca**. Nem densidade, nem percentual.
 - **A superfície inclui o que ninguém lembra de checar:**
   - **`alt-text` de imagem** (é texto público).
