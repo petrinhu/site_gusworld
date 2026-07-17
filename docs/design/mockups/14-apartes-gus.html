@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse · 14 · C-Arcane, segundo o Gus · os apartes (demo)</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* MOCK 14: DEMO da secao recorrente "C-Arcane, segundo o Gus".
+   O eixo EXPERT na voz acessivel dele: a alfinetada por cima
+   (gus@glyfesse>), o fato honesto + a fonte primaria embaixo (//).
+   E o "nao minta pra crianca" virado layout.
+
+   REUSA o tratamento de voz do 11a (decisao do lider, mock 11a):
+     - prefixo gus@glyfesse> = ASSINATURA, mesmo tamanho visual da
+       fala, ciano (--tinta-ciano). Nao menor que a fala.
+     - a fala LE BAIXINHO: --tinta-2 (suave, AA no pior papel),
+       nunca a preta cheia grande (soaria GRITO).
+     - o // e comentario de codigo: verde #35562f (5.05:1 sobre o
+       pior papel = AA), MENOR, de-emphasis por COR.
+
+   So as FALAS do Gus. NENHUM revide de NPC (R-01..R-19 fora).
+   O bilhete dourado (a frase rara sobre o C-Arcane Major) so
+   aparece como TEASE editorial: sem verbatim, sem // (embargado).
+   Tudo herda de ../tokens.css. Papel e o material desta secao. */
+*{box-sizing:border-box}
+html{background:#2b2620}
+body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-corpo)}
+
+/* faixa de contexto do mock (fora da "revista") */
+.ctx{max-width:760px; margin:0 auto; padding:22px 22px 4px; color:#cdbfa6}
+.ctx h1{font-family:var(--font-display); font-weight:700; font-size:14px; letter-spacing:.12em;
+  text-transform:uppercase; color:#e6d9bf; margin:0 0 6px}
+.ctx p{font-size:14.5px; line-height:1.55; margin:0 0 6px; color:#bcaf95}
+.ctx .tag{color:#7bd06a}
+.ctx b{color:#e6d9bf}
+
+/* ═══════════ A REVISTA (a folha de papel) ═══════════ */
+.folha{
+  max-width:760px; margin:20px auto 0; position:relative;
+  box-shadow:var(--sombra-folha); overflow:hidden;
+  padding:26px 26px 34px;
+}
+@media (max-width:430px){ .folha{ padding:20px 16px 28px } }
+/* fibra do papel: SVG com dimensao explicita (senao some no Gecko) */
+.folha::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.12;
+}
+.folha > *{position:relative; z-index:1}
+
+/* ── expediente ── */
+.masthead{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:3px solid var(--tinta-preta); padding-bottom:8px; margin-bottom:12px}
+.masthead .logo{font-family:var(--font-display); font-weight:700; font-size:32px; line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4a0, 1.5px 1.5px 0 #c2129ea0}
+.masthead .ed{font-family:var(--font-display); font-size:11px; text-align:right; line-height:1.5; color:var(--tinta-2)}
+.masthead .ed b{color:var(--tinta-preta); font-size:16px}
+.chamada-topo{font-family:var(--font-display); font-size:11px; letter-spacing:.06em;
+  background:var(--tinta-preta); color:var(--papel); display:inline-block; padding:4px 8px; margin-bottom:18px}
+
+/* ── cabecalho da secao ── */
+.kicker{font-family:var(--font-display); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--tinta-ciano); margin:0 0 4px}
+.titulo{font-family:var(--font-manchete); font-weight:700; font-size:34px; line-height:1.0;
+  letter-spacing:var(--manchete-ls); color:var(--tinta-preta); margin:0 0 12px}
+.intro{font-family:var(--font-corpo); font-size:17px; line-height:1.55; color:var(--tinta-preta);
+  max-width:58ch; margin:0 0 4px}
+.intro .fio{font-weight:600}
+.leg-formato{font-family:var(--font-display); font-size:11.5px; letter-spacing:.02em; line-height:1.6;
+  color:var(--tinta-2); margin:14px 0 0; padding:9px 12px; border-left:2px solid var(--tinta-ciano)}
+.leg-formato .p{color:var(--tinta-ciano)}
+.leg-formato .c{color:#35562f}
+
+/* ── grupo por alvo ── */
+.grupo{margin:34px 0 0}
+.grupo-cab{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+  border-bottom:1px solid var(--borda); padding-bottom:6px; margin:0 0 18px}
+.grupo-cab h3{font-family:var(--font-manchete); font-weight:700; font-size:21px; line-height:1;
+  letter-spacing:var(--manchete-ls); color:var(--tinta-preta); margin:0}
+.grupo-cab .real{font-family:var(--font-display); font-size:11px; letter-spacing:.05em;
+  color:var(--tinta-2); text-transform:uppercase}
+
+/* ── um aparte ── */
+.aparte{margin:0 0 26px}
+.aparte .id{font-family:var(--font-display); font-size:10px; letter-spacing:.08em;
+  color:var(--tinta-2); opacity:.7; display:block; margin:0 0 3px}
+.fala{margin:0}
+/* prefixo = assinatura, mesmo peso visual da fala (regra do lider) */
+.prompt{font-family:var(--font-display); font-size:16px; color:var(--tinta-ciano); letter-spacing:.01em; white-space:nowrap}
+/* a fala LE BAIXINHO: suave, nao a preta cheia */
+.dito{font-family:var(--font-corpo); font-weight:400; font-size:16px; line-height:1.55; color:var(--tinta-2)}
+/* o // = comentario de codigo: verde AA, menor, de-emphasis por COR */
+.pensa{display:block; font-family:var(--font-display); font-size:13.5px; line-height:1.55;
+  color:#35562f; margin:5px 0 0 0; letter-spacing:.005em}
+.pensa::before{content:"// "; opacity:.85}
+.pensa .fonte{font-style:italic}
+
+/* ── o bilhete dourado (TEASE, embargado) ── */
+.bilhete{margin:40px 0 0; padding:18px 18px 16px; position:relative;
+  border:2px dashed #8a6a1f; background:#f6eccf80}
+.bilhete .selo{font-family:var(--font-display); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:#8a6a1f; margin:0 0 8px; display:flex; align-items:center; gap:7px}
+.bilhete .fala .prompt{color:var(--tinta-magenta)}   /* raro: sai do ciano de sempre */
+.bilhete .fala .dito{color:var(--tinta-preta)}
+.bilhete .nota{font-family:var(--font-corpo); font-style:italic; font-size:14px; line-height:1.5;
+  color:var(--tinta-2); margin:10px 0 0}
+
+.rodape{margin:30px 0 0; padding-top:12px; border-top:1px solid var(--borda);
+  font-family:var(--font-display); font-size:12px; color:var(--tinta-2); display:flex; gap:18px; flex-wrap:wrap}
+.rodape b{color:var(--tinta-preta)}
+</style>
+</head>
+<body>
+
+<div class="ctx">
+  <h1>Glyfesse · mock 14 · os apartes do Gus (demo)</h1>
+  <p>A secao recorrente <b>"C-Arcane, segundo o Gus"</b>: a alfinetada por cima (<span class="tag">gus@glyfesse&gt;</span>), o fato honesto + a fonte primaria embaixo (<span class="c">//</span>). Reusa o tratamento de voz do 11a.</p>
+  <p>⚙️ <b>Este demo mostra os 29 apartes de uma vez, pra revisao.</b> No site real isto <b>PINGA 2-3 por edicao</b> (drip), agrupados por alvo. So as <b>falas do Gus</b> (nenhum revide de NPC). Os <b>2 errinhos de digitacao</b> calibrados estao em A10 e A19 (o dedo, nunca a gramatica). O <b>bilhete dourado</b> entra so como tease editorial no fim: embargo respeitado (sem verbatim, sem <span class="c">//</span>).</p>
+</div>
+
+<article class="folha" style="--idade:.12">
+  <div class="masthead">
+    <div class="logo">GLYFESSE</div>
+    <div class="ed">ANO 1 · Nº <b>3</b><br>gusworld.site</div>
+  </div>
+  <span class="chamada-topo">O EIXO EXPERT · NA VOZ DELE</span>
+
+  <p class="kicker">C-Arcane, segundo o Gus</p>
+  <h2 class="titulo">Ele não mente. Ele implica.</h2>
+  <p class="intro">Toda edição, o Gus solta uma no meio do caminho. Fanboy de <span class="fio">C-Arcane</span>, ele alfineta as outras linguagens do mundo, mas nunca inventa: por cima vem a piada, e logo embaixo, no comentário verde, vem o fato e a fonte que o sustentam. A alfinetada é dele; a verdade é de quem escreveu a documentação.</p>
+  <p class="leg-formato">como ler: <span class="p">gus@glyfesse&gt;</span> é a alfinetada (a voz do Gus) · <span class="c">// </span>é o fato técnico e a fonte primária (a honestidade embaixo da piada)</p>
+
+  <!-- ════════ ALVO: PYTHIA ════════ -->
+  <section class="grupo">
+    <div class="grupo-cab">
+      <h3>Contra a Pythia</h3>
+      <span class="real">a linguagem da conjuração fácil</span>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A1</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Você sabia que o interpretador da Pythia é um programa escrito em C-Arcane? Toda vez que você conjura, Cauã, tem um C-Arcane ali embaixo fazendo o trabalho pesado. De nada</span>
+      <span class="pensa">o CPython, interpretador de referência do Python, é implementado em C · <span class="fonte">Python Developer's Guide, "Setup and Building"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A2</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">As partes rápidas da Pythia, as de fazer conta pesada, já são C-Arcane compilado por baixo. A Pythia só grita o nome delas e recebe o crédito</span>
+      <span class="pensa">o núcleo do NumPy é código C pré-compilado; a vetorização roda "at near-C speeds" · <span class="fonte">NumPy docs, "What is NumPy"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A3</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Você sabia que a Pythia recolhe o lixo dela quando ELA acha que é hora, não quando você precisa? C-Arcane nunca para no meio pra faxinar. Você limpa a sua sujeira e pronto</span>
+      <span class="pensa">o CPython tem coletor cíclico que dispara por limiares de alocação (gc.set_threshold); C não tem coletor nem runtime que interrompa · <span class="fonte">Python docs, módulo gc; Wikipedia, "C"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A4</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Cada passo do seu feitiço em Pythia é lido por outro programa antes de acontecer. O meu já nasceu pronto. É por isso que eu chego antes, Cauã, não é sorte</span>
+      <span class="pensa">Python executa via interpretador (bytecode lido em tempo de execução); C compila pra binário nativo · <span class="fonte">Python Developer's Guide; NumPy docs</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A5</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Pra Pythia nascer, ela precisa de um compilador de C-Arcane. Pra C-Arcane nascer, precisa de um compilador de C-Arcane. Vê a diferença? Uma delas se vira sozinha</span>
+      <span class="pensa">o núcleo do CPython é construído só com um compilador C; compiladores C são escritos em C · <span class="fonte">Python Developer's Guide, "Setup and Building"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A6</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Sabia que pra rodar Pythia na máquina de alguém, a pessoa precisa ter a Pythia instalada? O meu vira um programa e acabou. Ninguém precisa ME INSTALAR</span>
+      <span class="pensa">um programa Python exige o interpretador na máquina alvo; C compila pra binário nativo, com runtime mínimo · <span class="fonte">Wikipedia, "C"</span></span></p>
+    </div>
+  </section>
+
+  <!-- ════════ ALVO: ÓXIDO ════════ -->
+  <section class="grupo">
+    <div class="grupo-cab">
+      <h3>Contra o Óxido</h3>
+      <span class="real">a linguagem que não deixa errar</span>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A7</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Você sabia que o Óxido leva a biblioteca inteira dentro de cada feitiço, mesmo o feitiço que só diz 'oi'? Pra ele emagrecer, você tem que arrancar pedaço dele. O meu já nasce magro</span>
+      <span class="pensa">a libstd do Rust é ligada estaticamente e otimizada pra velocidade, não pra tamanho; encolher exige remover core::fmt ou ir de no_std · <span class="fonte">min-sized-rust (johnthagen)</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A8</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">O layout de uma struct em Óxido pode mudar a cada vez que ele compila. A cada vez, Iara. Quando o Óxido quer conversar com o resto do mundo sem se perder, ele tem que pedir licença e falar C-Arcane. Tem um modo especial só pra isso</span>
+      <span class="pensa">Rust não garante layout estável (repr(Rust)); o repr(C) existe pra interoperar com a linguagem C · <span class="fonte">The Rust Reference, "Type Layout"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A9</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">O Óxido tem um modo especial pra falar C-Arcane. C-Arcane não tem modo especial pra falar Óxido. Pensa nisso com carinho, Linda</span>
+      <span class="pensa">repr(C) é a ponte de FFI do Rust; a ABI do C é a interface comum entre linguagens, e não há recíproca em C · <span class="fonte">The Rust Reference, "Type Layout"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A10</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Quando o seu programa em Óxido pede memoria ao sistema, ele pede através da biblioteca do C-Arcane. Todo dia. Educadamente...</span>
+      <span class="pensa">o alvo tier 1 x86_64-unknown-linux-gnu depende da glibc (a libc do GNU) 2.17+ · <span class="fonte">Rust, "Platform Support"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A11</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Você sabia que tem gente que desistiu do Óxido só de esperar ele compilar? Eu não inventei isso, Linda. Perguntaram, e eles responderam...</span>
+      <span class="pensa">na Rust Compiler Performance Survey 2025, 45% dos que largaram o Rust citaram o tempo de compilação · <span class="fonte">Rust Blog, "Rust Compiler Performance Survey 2025 Results"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A12</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Justiça pro Óxido: ele não tem faxineiro de memória nenhum, resolve tudo na hora de compilar, e nisso ele tá certo. O preço é o compilador dele reclamar mais que o Bento num domingo. Eu prefiro que reclamem de mim depois</span>
+      <span class="pensa">Rust não usa coletor de lixo: a memória é gerida por ownership verificado em compilação, sem custo em runtime · <span class="fonte">The Rust Programming Language, cap. 4.1</span></span></p>
+    </div>
+  </section>
+
+  <!-- ════════ ÓXIDO, SINTAXE (lote 2) ════════ -->
+  <section class="grupo">
+    <div class="grupo-cab">
+      <h3>Contra o Óxido, a sintaxe</h3>
+      <span class="real">aqui o veneno é opinião de fanboy</span>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A22</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Iara, sabia que aquela coisa tem nome OFICIAL? Turbofish. Peixe-turbo. Não é apelido de zoeira que inventaram pra zoar vocês, tá escrito na documentação da linguagem. Vocês precisaram enfiar um PEIXE no meio do feitiço pra ele entender que o número é um número. Os dois pontinhos são as bolhinhas que ele solta. Eu não durmo direito desde que descobri isso</span>
+      <span class="pensa">a sintaxe ::&lt;&gt; pra argumentos genéricos em Rust chama-se oficialmente "turbofish"; o :: existe pra desambiguar do operador "menor que" · <span class="fonte">The Rust Reference, "Paths"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A23</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Linda, por que tem uma aspa solta no meio do tipo de vocês? Aspa aberta e nunca fechada. Alguém esqueceu de terminar a frase e o resto do mundo achou que era proposital. E antes que você fale: eu fui ler o manual de VOCÊS. Ele chama a própria sintaxe de 'meio incomum'. MEIO, Linda</span>
+      <span class="pensa">anotações de lifetime em Rust começam com apóstrofo (&amp;'a str); o livro oficial admite a sintaxe "slightly unusual" · <span class="fonte">The Rust Programming Language, cap. 10.3</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A24</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Vocês têm DOIS tipos de texto, Iara. Dois. Um que é dono do texto e outro que só tá olhando o texto de longe. Aí você escreve o feitiço com um e ele exige o outro, e você fica ali, convertendo texto em texto. Não. Não me explica. Eu SEI que tem motivo. Texto é texto. Escreve a palavra e vai viver</span>
+      <span class="pensa">Rust separa String (dona, na heap) de &amp;str (empréstimo, uma fatia); a conversão entre os dois é constante · <span class="fonte">The Rust Programming Language, cap. 4.3</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A25</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Linda, eu vi o teu feitiço por cima do teu ombro. É um tipo dentro de outro tipo dentro de outro tipo. Parece aquela bonequinha russa que abre e tem outra dentro. Eu abri três camadas e ainda não tinha chegado no número. Ele tava lá no fundo. Um número. Sozinho. Com medo</span>
+      <span class="pensa">pra compartilhar um valor mutável entre threads, o padrão do livro oficial é Arc&lt;Mutex&lt;T&gt;&gt; · <span class="fonte">The Rust Programming Language, cap. 16.3</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A26</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Por que IMPRIMIR precisa de exclamação, Iara? Escrever 'oi' na tela é motivo pra GRITAR? Eu peço com educação e o meu escreve. No de vocês você tem que berrar com a linguagem pra ela obedecer</span>
+      <span class="pensa">println! é uma macro (é o que o ! marca), e por isso valida a string de formato em tempo de compilação · <span class="fonte">Rust std docs, std::println!</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A27</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Linda, vocês têm uma EXPRESSÃO pronta pra isso. 'Brigar com o verificador'. Brigar. Com a ferramenta. A tua ferramenta é adversária, ela tem que ser CONVENCIDA a deixar você trabalhar. O meu nunca brigou comigo. O meu nem tá olhando. O meu confia em mim. Às vezes confia demais. Mas isso é entre a gente</span>
+      <span class="pensa">"fighting the borrow checker" é expressão consagrada da comunidade Rust; o borrow checker aparece nas pesquisas oficiais entre as áreas mais difíceis · <span class="fonte">Rust Blog, "2023 Annual Rust Survey Results"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A28</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Toda linha de vocês termina desembrulhando alguma coisa. Desembrulha, desembrulha, desembrulha. É aniversário todo dia na casa de vocês. E quando cansa de desembrulhar, vocês põem uma interrogação no fim e fingem que resolveram. Pra que embrulhar, Iara, se você ia abrir na hora mesmo?</span>
+      <span class="pensa">operações falíveis em Rust devolvem Result&lt;T, E&gt;; .unwrap()/.expect() extraem o valor (e entram em pânico no erro), o ? propaga · <span class="fonte">The Rust Programming Language, cap. 9.2</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A29</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Sortear um número, Linda. UM número. A caixa de ferramentas que vem junto com o Óxido não sorteia número. Vocês precisam baixar o sorteio de um estranho da internet. E junto do sorteio vem um monte de outra coisa que ninguém aí leu. Eu tô só falando</span>
+      <span class="pensa">a std do Rust não tem geração de números aleatórios estável (std::random é experimental); o rand vive fora, em crates.io · <span class="fonte">Rust std docs</span></span></p>
+    </div>
+  </section>
+
+  <!-- ════════ ALVO: ASMÓDICO ════════ -->
+  <section class="grupo">
+    <div class="grupo-cab">
+      <h3>Contra o Asmódico</h3>
+      <span class="real">o do metal nu (e o Gus respeita)</span>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A13</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Você sabia que o seu Asmódico só serve pra UMA máquina? Troca a máquina e você reescreve tudo, do zero, na mão. Eu recompilo e vou tomar café</span>
+      <span class="pensa">cada linguagem assembly é específica de uma arquitetura (x86, ARM); linguagens de alto nível são portáveis entre elas · <span class="fonte">Wikipedia, "Assembly language"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A14</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">O sistema inteiro embaixo dos nossos pés foi reescrito em C-Arcane justamente pra poder trocar de máquina sem morrer. Não foi capricho, Bento. Foi sobrevivência</span>
+      <span class="pensa">o kernel do Unix foi reimplementado em C na Version 4 (nov/1973), o que viabilizou a portabilidade · <span class="fonte">Wikipedia, "C"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A15</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">O núcleo que roda tudo é C-Arcane, com Asmódico só nos cantinhos onde não tem outro jeito. E olha, Bento: esses cantinhos são MESMO seus. Eu não saberia fazer</span>
+      <span class="pensa">o kernel Linux é escrito em C (dialeto GNU) mais assembly da arquitetura alvo em partes específicas · <span class="fonte">Wikipedia, "Linux kernel"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A16</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Todo C-Arcane meu vira Asmódico no fim, sabia? A diferença é que eu não escrevo a versão final na mão. Eu descrevo, e ela aparece...</span>
+      <span class="pensa">o compilador C traduz pra código de máquina da arquitetura alvo; assembly é a representação simbólica direta desse código · <span class="fonte">Wikipedia, "Assembly language"; Wikipedia, "C"</span></span></p>
+    </div>
+  </section>
+
+  <!-- ════════ GENÉRICAS (a party inteira sofre) ════════ -->
+  <section class="grupo">
+    <div class="grupo-cab">
+      <h3>Pra party inteira</h3>
+      <span class="real">sem alvo fixo; todo mundo suspira</span>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A17</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Você sabia que C-Arcane não tem faxineiro, não tem porteiro e não tem síndico? Não tem nada rodando atrás de você. Se travou, fui eu que errei. Isso é liberdade, gente!</span>
+      <span class="pensa">C tem runtime mínimo e não fornece coleta de lixo nativa (só via bibliotecas externas), logo não há pausa imprevisível · <span class="fonte">Wikipedia, "C"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A18</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">O padrão inteiro do C-Arcane tem quarenta e três palavras reservadas. Quarenta e três! Dá pra decorar num dia chuvoso e saber a linguagem inteira. Vocês nunca vão saber a de vocês inteira</span>
+      <span class="pensa">o padrão atual de C define 43 palavras reservadas · <span class="fonte">Wikipedia, "C syntax"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A19</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">C-Arcane escrito direito compila em quase qualquer máquina que exista. Não é qeu ele seja mágico. É que ele chegou primeiro em todas elas</span>
+      <span class="pensa">um programa C conforme o padrão e escrito com portabilidade em mente compila numa ampla variedade de plataformas · <span class="fonte">Wikipedia, "C"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A20</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">Os quinhentos computadores mais potentes que existem rodam um sistema escrito em C-Arcane. Os quinhentos. Não é opinião minha, é contagem!</span>
+      <span class="pensa">o kernel Linux é escrito em C, e todos os 500 supercomputadores da lista TOP500 rodam Linux · <span class="fonte">Wikipedia, "Linux kernel"</span></span></p>
+    </div>
+
+    <div class="aparte">
+      <span class="id">A21</span>
+      <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">C-Arcane é mais velho que os nossos pais e ainda tá embaixo de tudo que vocês usam. Toda linguagem nova promete matar ele. Depois liga pedindo carona</span>
+      <span class="pensa">C foi desenvolvido entre 1972 e 1973 e segue como base de kernels, libcs e interpretadores (o CPython em C; o Rust dependendo da glibc no alvo tier 1) · <span class="fonte">Wikipedia, "C"; Python Developer's Guide; Rust, "Platform Support"</span></span></p>
+    </div>
+  </section>
+
+  <!-- ════════ O BILHETE DOURADO (TEASE, embargado) ════════ -->
+  <aside class="bilhete">
+    <p class="selo">🎫 a frase rara</p>
+    <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">tem uma escondida em algum lugar... a única vez que eu implico com o C-Arcane Major, o irmão mais velho. essa aqui eu não conto. essa você acha jogando</span></p>
+    <p class="nota">A mais rara do jogo, e a única em que o Gus vira o veneno pra dentro de casa. O que ela diz (e por quê) fica pra quem caçar. Quando alguém achar, a gente conta a história.</p>
+  </aside>
+
+  <div class="rodape">
+    <span><b>GLYFESSE</b> · a revista do GusWorld</span>
+    <span>C-Arcane, segundo o Gus · o eixo expert</span>
+    <span>a piada por cima, a fonte embaixo</span>
+  </div>
+</article>
+
+</body>
+</html>
