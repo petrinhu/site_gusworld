@@ -23,6 +23,8 @@ Zero dependência externa: fonte local (CC0), texturas em SVG inline. **O que es
 
 | 13 | [`13-switch-idioma.html`](13-switch-idioma.html) ⇄ [`13-switch-idioma-en.html`](13-switch-idioma-en.html) | **O switch de idioma (EN ⇄ PT-BR), um botão por página.** Conceito: **`glyfe` = escrever E compilar**, então trocar de língua é **RECOMPILAR a revista**. Zero bandeira, zero splash. Resolve a tensão papel×tela pondo o controle **dentro de um buraco de tela acesa** (uma LCD de expediente no masthead): o comando e o neon são legítimos porque ali **é tela**. Na troca, **a tela compila** (glifos, mono) e **o papel é impresso** (a tinta assenta): dois materiais, dois movimentos. **São 2 arquivos**, então o clique **navega de verdade** (como `/pt/` ⇄ `/en/` em produção), com `hreflang` recíproco e funcionando **sem JS**. 3 tratamentos comparados. Lógica pura em `js/lang-core.js` (21/21). | ⏳ **pendente QA + decisão do líder** (A/B/C; recomendado **A**) |
 
+| 15 | [`15-gus-no-bus.html`](15-gus-no-bus.html) | **A seção recorrente "Gus no Bus": as ideias que o Gus manda pelo bus git viram matéria.** Cada item em 3 camadas: a **fala** (`gus@glyfesse>`, o destino da ideia, registro digitado) + o **pedido original ipsis-litteris** num **papel pautado de caderno velho** (papel dentro do papel: pauta azul + margem vermelha + fita, tudo CSS) + o **pensamento `//`** sobre ter manchado. 3 itens de demo: 1 que **entrou** (mancha de suco de uva), 1 que **não deu** e protege o spoiler por design (**sem mancha**), e o **real** (Carta do Foguinho, verbatim, mancha de **chocolate**). ★ Manchas variam tipo e posição, **nunca sobre o texto** (zona segura clipada, mesma regra do café). **Zero JS.** | ⏳ **pendente QA** |
+
 ## Como abrir
 
 ```bash

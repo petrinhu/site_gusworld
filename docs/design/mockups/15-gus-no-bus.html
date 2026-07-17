@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse · 15 · Gus no Bus · as ideias que chegam pelo bus (demo)</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* MOCK 15: a secao recorrente "Gus no Bus".
+   As ideias que o Gus manda pelo bus git viram materia da revista.
+   Build-in-public ficando INTIMO. Cada item tem 3 camadas:
+     1. a FALA (gus@glyfesse>) descreve a ideia e o destino dela
+        (entrou / nao deu, sem spoiler). Registro DIGITADO: sem ponto
+        final, ~1 errinho de dedo (nunca gramatica), "..." de assinatura.
+     2. o PEDIDO ORIGINAL, ipsis-litteris, num papel pautado de caderno
+        velho (papel DENTRO do papel da revista: um artefato fisico,
+        colado, envelhecido). O .txt do jeito que chegou pelo bus.
+     3. o PENSAMENTO // (comentario verde) sobre ter manchado.
+
+   As MANCHAS variam entre itens (regra do lider): suco de uva num,
+   NENHUMA no outro, chocolate no terceiro; posicoes DIFERENTES.
+   ⚠️ mancha NUNCA sobre o texto da ideia (mesma regra do cafe): zona
+   segura + overflow:hidden como guard, igual .zona-cafe do tokens.css.
+
+   Reusa o tratamento de voz do 11a/14 (decisao do lider):
+     - prefixo gus@glyfesse> = ASSINATURA, mesmo tamanho visual da fala.
+     - a fala LE BAIXINHO (--tinta-2), nunca a preta cheia (soaria GRITO).
+     - o // = comentario de codigo verde #35562f (AA no pior papel).
+   Labels pixel em MINUSCULA (o N maiusculo da PixelOperatorMono quebra
+   <15px). Publica como o Gus PERSONAGEM. Zero JS, zero terceiro, so CSS.
+   Tudo herda de ../tokens.css. Papel e o material desta secao. */
+*{box-sizing:border-box}
+html{background:#2b2620}
+body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-corpo)}
+
+/* faixa de contexto do mock (fora da "revista") */
+.ctx{max-width:760px; margin:0 auto; padding:22px 22px 4px; color:#cdbfa6}
+.ctx h1{font-family:var(--font-display); font-weight:700; font-size:14px; letter-spacing:.12em;
+  text-transform:uppercase; color:#e6d9bf; margin:0 0 6px}
+.ctx p{font-size:14.5px; line-height:1.55; margin:0 0 6px; color:#bcaf95}
+.ctx .tag{color:#7bd06a}
+.ctx b{color:#e6d9bf}
+
+/* ═══════════ A REVISTA (a folha de papel) ═══════════ */
+.folha{
+  max-width:760px; margin:20px auto 0; position:relative;
+  box-shadow:var(--sombra-folha); overflow:hidden;
+  padding:26px 26px 34px;
+}
+@media (max-width:430px){ .folha{ padding:20px 16px 28px } }
+/* fibra do papel: SVG com dimensao explicita (senao some no Gecko) */
+.folha::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.12;
+}
+.folha > *{position:relative; z-index:1}
+
+/* ── expediente ── */
+.masthead{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:3px solid var(--tinta-preta); padding-bottom:8px; margin-bottom:12px}
+.masthead .logo{font-family:var(--font-display); font-weight:700; font-size:32px; line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4a0, 1.5px 1.5px 0 #c2129ea0}
+.masthead .ed{font-family:var(--font-display); font-size:11px; text-align:right; line-height:1.5; color:var(--tinta-2)}
+.masthead .ed b{color:var(--tinta-preta); font-size:16px}
+.chamada-topo{font-family:var(--font-display); font-size:11px; letter-spacing:.06em;
+  background:var(--tinta-preta); color:var(--papel); display:inline-block; padding:4px 8px; margin-bottom:18px}
+
+/* ── cabecalho da secao ── */
+/* labels pixel em minuscula (decisao de sistema 2026-07-17): o N maiusculo
+   quebra <15px na PixelOperatorMono; o n minusculo renderiza limpo. */
+.kicker{font-family:var(--font-display); font-size:12px; letter-spacing:.1em;
+  color:var(--tinta-ciano); margin:0 0 4px}
+.titulo{font-family:var(--font-manchete); font-weight:700; font-size:34px; line-height:1.0;
+  letter-spacing:var(--manchete-ls); color:var(--tinta-preta); margin:0 0 12px}
+.intro{font-family:var(--font-corpo); font-size:17px; line-height:1.55; color:var(--tinta-preta);
+  max-width:58ch; margin:0 0 4px}
+.intro .fio{font-weight:600}
+.leg-formato{font-family:var(--font-display); font-size:11.5px; letter-spacing:.02em; line-height:1.7;
+  color:var(--tinta-2); margin:14px 0 0; padding:9px 12px; border-left:2px solid var(--tinta-ciano)}
+.leg-formato .p{color:var(--tinta-ciano)}
+.leg-formato .c{color:#35562f}
+
+/* ── um item da secao ── */
+.ideia{margin:34px 0 0}
+.ideia-cab{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+  border-bottom:1px solid var(--borda); padding-bottom:6px; margin:0 0 16px}
+.ideia-cab h3{font-family:var(--font-manchete); font-weight:700; font-size:22px; line-height:1;
+  letter-spacing:var(--manchete-ls); color:var(--tinta-preta); margin:0}
+/* status: a COR nunca carrega sozinha (regra a11y): o texto ja diz o estado */
+.status{font-family:var(--font-display); font-size:11px; letter-spacing:.05em;
+  padding:2px 7px; border:1px solid currentColor; white-space:nowrap}
+.status.entrou{color:var(--tinta-ciano)}
+.status.espera{color:var(--tinta-magenta)}
+
+/* a fala do Gus (prompt = assinatura; a fala le baixinho) */
+.fala{margin:0 0 4px}
+.prompt{font-family:var(--font-display); font-size:16px; color:var(--tinta-ciano); letter-spacing:.01em; white-space:nowrap}
+.dito{font-family:var(--font-corpo); font-weight:400; font-size:16px; line-height:1.55; color:var(--tinta-2)}
+
+/* ══════════ O ARTEFATO: o papel pautado do caderno ══════════
+   Papel DENTRO do papel: um pedaco de caderno velho, colado com fita,
+   levemente torto. O texto e o .txt que chegou pelo bus, VERBATIM.
+   As linhas da pauta e a margem vermelha sao CSS (gradients), nada
+   hand-drawn. O overflow:hidden e o guard das manchas (zona segura). */
+.caderno{margin:16px 0 0; display:flex; justify-content:center}
+.folha-caderno{
+  position:relative; width:100%; max-width:440px;
+  background:#e7dcc0; overflow:hidden;      /* este overflow guarda a mancha */
+  rotate:var(--giro,-1.1deg);
+  box-shadow:0 1px 0 #0000001c, 0 10px 20px #00000026;
+  padding:0;
+}
+/* a fita adesiva que "prende" o pedaco na pagina */
+.folha-caderno .fita{
+  position:absolute; z-index:3; left:50%; top:-9px; translate:-50% 0;
+  width:82px; height:22px; rotate:-2deg; pointer-events:none;
+  background:linear-gradient(180deg, #cbd6c199, #b8c6ab88);
+  box-shadow:0 1px 2px #00000022;
+  border-left:1px dashed #ffffff44; border-right:1px dashed #ffffff44;
+}
+/* a folha pautada: pauta azul (28px) + margem vermelha + envelhecimento.
+   min-height alto de proposito: sobram linhas em branco embaixo do texto,
+   e e nessa faixa livre que as manchas caem (nunca sobre o texto). */
+.pauta{
+  position:relative; z-index:1; min-height:210px;
+  /* padding-top 56 (2x28, ON-GRID) mantem o texto na fase da pauta E evita
+     margin-collapse do <p> (que jogava o texto pro topo, sob o rotulo).
+     padding-left maior: o texto comeca depois da margem vermelha. */
+  padding:56px 22px 26px 52px;
+  background:
+    repeating-linear-gradient(to bottom,
+      #0000 0 27px, rgb(58 104 150 / .28) 27px 28px),
+    linear-gradient(90deg,
+      #0000 0 40px, rgb(188 66 72 / .5) 40px 41px, #0000 41px),
+    radial-gradient(120% 90% at 50% 0%, #00000010, #0000 60%),
+    radial-gradient(120% 100% at 50% 100%, #0000000f, #0000 55%);
+  background-blend-mode:multiply, normal, multiply, multiply;
+}
+/* o rotulo de proveniencia: fora do fluxo (absolute) pra NAO empurrar o
+   texto pra fora do grid de 28px da pauta (senao as linhas cruzam o meio
+   das letras, virando tachado). O caminho no bus, minusculo, sem N. */
+.arquivo{position:absolute; z-index:1; top:18px; left:52px;
+  font-family:var(--font-display); font-size:11px; letter-spacing:.02em; color:#7a6a4a}
+/* o pedido ipsis-litteris. Mono = o .txt bruto, nada tocado (o "voce" sem
+   acento fica). Tinta escura pra AA folgado sobre o papel amarelado.
+   margin-top 56 (2x28, ON-GRID) faz a base das letras sentar nas linhas. */
+.manuscrito{font-family:var(--font-display); font-size:15px; line-height:28px;
+  color:#2a2118; margin:0; max-width:34ch}
+.manuscrito b{color:#1a1614}
+.caderno figcaption{display:none}
+/* legenda do artefato, na folha da revista (nao no caderno) */
+.cap-caderno{font-family:var(--font-display); font-size:11.5px; color:var(--tinta-2);
+  margin:8px 0 0; padding-left:9px; border-left:2px solid var(--tinta-ciano); line-height:1.5}
+
+/* ══════════ AS MANCHAS (CSS, zona segura, nunca sobre texto) ══════════
+   Anel de secagem (borda mais escura que o miolo) como no cafe do
+   tokens.css. Posicao/tipo VARIAM por item; sempre num canto sem texto,
+   e o overflow:hidden da .folha-caderno corta qualquer sangramento. */
+.mancha{
+  position:absolute; z-index:2; display:block; pointer-events:none;
+  width:var(--m-tam,86px); aspect-ratio:1.12;
+  left:var(--mx,50%); top:var(--my,50%); translate:-50% -50%;
+  rotate:var(--mg,-7deg);
+  border-radius:47% 53% 44% 56% / 52% 45% 55% 48%;
+  mix-blend-mode:multiply; opacity:var(--m-alpha,.85);
+}
+/* suco de uva: roxo/vinho translucido, anel de secagem */
+.mancha.uva{
+  background:
+    radial-gradient(ellipse at 50% 50%,
+      #0000 54%, rgb(96 34 88 / .48) 63%, rgb(70 22 64 / .82) 72%,
+      rgb(96 34 88 / .30) 82%, #0000 90%),
+    radial-gradient(ellipse at 45% 43%,
+      rgb(112 46 102 / .34) 0 50%, rgb(96 34 88 / .16) 62%, #0000 74%);
+}
+/* chocolate: marrom, mais denso e mais borrado (lambuza, nao anel fino) */
+.mancha.choco{
+  border-radius:54% 46% 61% 39% / 46% 58% 42% 54%;
+  background:
+    radial-gradient(ellipse at 50% 50%,
+      rgb(78 47 25 / .55) 0 44%, rgb(56 33 16 / .84) 60%,
+      rgb(78 47 25 / .48) 74%, #0000 86%),
+    radial-gradient(ellipse at 62% 60%,
+      rgb(94 58 31 / .40) 0 40%, #0000 66%);
+}
+
+/* o pensamento // (comentario verde AA), reacao a mancha, sob o caderno */
+.pensa{display:block; font-family:var(--font-display); font-size:15px; line-height:1.5;
+  color:#35562f; margin:12px 0 0; letter-spacing:.005em}
+.pensa::before{content:"// "; opacity:.85}
+
+.rodape{margin:34px 0 0; padding-top:12px; border-top:1px solid var(--borda);
+  font-family:var(--font-display); font-size:12px; color:var(--tinta-2); display:flex; gap:18px; flex-wrap:wrap}
+.rodape b{color:var(--tinta-preta)}
+</style>
+</head>
+<body>
+
+<div class="ctx">
+  <h1>Glyfesse · mock 15 · Gus no Bus (demo)</h1>
+  <p>A secao recorrente <b>"Gus no Bus"</b>: as ideias que o Gus manda pelo <b>bus git</b> viram materia. Cada item = a fala (<span class="tag">gus@glyfesse&gt;</span>, o destino da ideia) + o <b>pedido original</b> num papel pautado de caderno + o pensamento (<span class="c">//</span>) sobre a mancha.</p>
+  <p>⚙️ <b>3 itens de demo:</b> um que <b>entrou</b> (mancha de <b>suco de uva</b>), um que <b>nao deu</b> e protege o spoiler por design (<b>sem mancha</b>), e o <b>real</b>: a Carta do Foguinho, verbatim (mancha de <b>chocolate</b>, posicao diferente). Tudo <b>CSS puro</b>: pauta e margem sao gradients; as manchas sao radial-gradient em zona segura clipada (nunca sobre o texto). <b>Zero JS.</b></p>
+</div>
+
+<article class="folha" style="--idade:.12">
+  <div class="masthead">
+    <div class="logo">GLYFESSE</div>
+    <div class="ed">ano 1 · nº <b>3</b><br>gusworld.site</div>
+  </div>
+  <span class="chamada-topo">o build-in-public ficando íntimo</span>
+
+  <p class="kicker">gus no bus</p>
+  <h2 class="titulo">As ideias chegam manchadas</h2>
+  <p class="intro">Toda edição, o Gus manda ideia pelo <span class="fio">bus</span>: um arquivo de texto que atravessa o canal e cai aqui. Umas viram jogo, outras não dão (e ele não conta por quê, pra não estragar surpresa). A gente imprime o pedido do jeito que chegou: o caderno dele, a letra torta, a mancha de suco que ele jura que estava longe do texto.</p>
+  <p class="leg-formato">como ler: <span class="p">gus@glyfesse&gt;</span> é o Gus contando a ideia e se ela entrou · o <b>papel pautado</b> é o pedido original, verbatim, do jeito que veio pelo bus · <span class="c">// </span>é o que ele pensa depois, olhando a mancha</p>
+
+  <!-- ════════ ITEM 1 - DEMO, entrou (mancha de suco de uva) ════════ -->
+  <section class="ideia i1">
+    <div class="ideia-cab">
+      <h3>A balançadinha</h3>
+      <span class="status entrou">entrou no jogo</span>
+    </div>
+    <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">tive essa ideia dia desses... quando o quadradinho fica parado ele balança de leve, tipo respirando... vai jogar, ta por lá agora</span></p>
+
+    <figure class="caderno">
+      <div class="folha-caderno" style="--giro:-1.2deg">
+        <span class="fita"></span>
+        <div class="pauta">
+          <span class="arquivo">inbox/site · balancadinha.txt</span>
+          <p class="manuscrito">ideia: quando o quadrado fica parado ele podia balancar de leve pra parecer que ta vivo, tipo respirando. nao muito, so um tiquinho</p>
+        </div>
+        <!-- suco de uva no canto superior direito (acima/a direita do texto) -->
+        <i class="mancha uva" style="--mx:89%; --my:12%; --m-tam:74px; --mg:-12deg"></i>
+      </div>
+    </figure>
+    <p class="cap-caderno">o pedido, do jeito que chegou pelo bus</p>
+
+    <span class="pensa">manchei de suco de uva bem no canto... ainda dá pra ler tudo, prometo</span>
+  </section>
+
+  <!-- ════════ ITEM 2 - DEMO, nao deu (SEM mancha; spoiler-safe) ════════ -->
+  <section class="ideia i2">
+    <div class="ideia-cab">
+      <h3>O rastro do cometa</h3>
+      <span class="status espera">fica pra depois</span>
+    </div>
+    <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">essa eu queria muito... mas ia bagunçar uma coisa que eu ainda nao posso contar... fica pra outra hora, guardei ela</span></p>
+
+    <figure class="caderno">
+      <div class="folha-caderno" style="--giro:0.9deg">
+        <span class="fita"></span>
+        <div class="pauta">
+          <span class="arquivo">inbox/site · rastro.txt</span>
+          <p class="manuscrito">ideia: o quadrado podia deixar um rastrinho atras dele quando anda, que vai sumindo devagar. tipo cometa</p>
+        </div>
+        <!-- este item mostra a variacao SEM mancha: o caderno escapou limpo -->
+      </div>
+    </figure>
+    <p class="cap-caderno">o pedido, do jeito que chegou pelo bus</p>
+
+    <span class="pensa">esse dia o caderno escapou... nenhuma mancha, recorde meu</span>
+  </section>
+
+  <!-- ════════ ITEM 3 - REAL, entrou (verbatim; mancha de chocolate) ════════ -->
+  <section class="ideia i3">
+    <div class="ideia-cab">
+      <h3>A carta do Foguinho</h3>
+      <span class="status entrou">virou carta</span>
+    </div>
+    <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito">essa aqui vira carta de verdade... meu pai aprovou... e as chances vao aparecer na tela pra eu poder apostar sabendo o risco que to correndo</span></p>
+
+    <figure class="caderno">
+      <div class="folha-caderno" style="--giro:-0.8deg">
+        <span class="fita"></span>
+        <div class="pauta">
+          <span class="arquivo">inbox/site · foguinho.txt</span>
+          <!-- ⚠️ VERBATIM, ipsis-litteris: NAO corrigir "voce" sem acento.
+               O charme e a escrita autentica dele (confirmado na issue #1). -->
+          <p class="manuscrito"><b>Carta do Foguinho:</b> 70% de chance de queimar o inimigo, 30% de chance de queimar voce</p>
+        </div>
+        <!-- chocolate na faixa livre de baixo (o texto tem so 3 linhas, entao
+             abaixo dele sobram linhas em branco): posicao DIFERENTE do item 1. -->
+        <i class="mancha choco" style="--mx:30%; --my:86%; --m-tam:90px; --mg:6deg"></i>
+      </div>
+    </figure>
+    <p class="cap-caderno">o pedido, do jeito que chegou pelo bus</p>
+
+    <span class="pensa">isso é chocolate, juro que lavei a mão antes de escrever</span>
+  </section>
+
+  <div class="rodape">
+    <span><b>GLYFESSE</b> · a revista do GusWorld</span>
+    <span>Gus no Bus · as ideias que chegam pelo bus</span>
+    <span>a fala em cima, o caderno no meio, o // embaixo</span>
+  </div>
+</article>
+
+</body>
+</html>
