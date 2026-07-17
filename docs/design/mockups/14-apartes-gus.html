@@ -91,8 +91,14 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 .prompt{font-family:var(--font-display); font-size:16px; color:var(--tinta-ciano); letter-spacing:.01em; white-space:nowrap}
 /* a fala LE BAIXINHO: suave, nao a preta cheia */
 .dito{font-family:var(--font-corpo); font-weight:400; font-size:16px; line-height:1.55; color:var(--tinta-2)}
-/* o // = comentario de codigo: verde AA, menor, de-emphasis por COR */
-.pensa{display:block; font-family:var(--font-display); font-size:13.5px; line-height:1.55;
+/* o // = comentario de codigo: verde AA, menor, de-emphasis por COR.
+   ⚠️ 15px NAO e arbitrario: PixelOperatorMono rasteriza o N maiusculo
+   como H abaixo de 15px (fora do grid nativo). O // e a camada HONESTA
+   (fonte conferivel), entao "NumPy" TEM que ler NumPy, nao HumPy. 15px e
+   o minimo onde o N volta a renderizar limpo, e ainda < 16px da fala:
+   a de-emphasis segue pela COR verde (+1px so). NUNCA baixar de 15px num
+   texto pixel com N maiusculo. Ver memoria/tokens (achado 2026-07-17). */
+.pensa{display:block; font-family:var(--font-display); font-size:15px; line-height:1.5;
   color:#35562f; margin:5px 0 0 0; letter-spacing:.005em}
 .pensa::before{content:"// "; opacity:.85}
 .pensa .fonte{font-style:italic}
