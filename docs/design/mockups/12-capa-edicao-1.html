@@ -56,12 +56,32 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 /* ── a manchete tipografica: a REVISTA falando (Archivo Narrow, nao pixel) ── */
 .manchete{
   font-family:var(--font-manchete); font-weight:700; text-transform:uppercase;
-  font-size:clamp(46px,13vw,116px); line-height:.9; letter-spacing:-.01em;
-  color:var(--tinta-preta); margin:18px 0 4px;
+  font-size:clamp(46px,12vw,108px); line-height:.9; letter-spacing:-.01em;
+  color:var(--tinta-preta); margin:0 0 4px;
 }
 .manchete .l2{color:var(--tinta-preta); -webkit-text-stroke:2px var(--tinta-preta)}
 .dek{font-family:var(--font-corpo); font-style:italic; font-size:clamp(16px,2.4vw,21px);
-  color:var(--tinta-2); margin:0 0 22px; max-width:52ch; line-height:1.4}
+  color:var(--tinta-2); margin:0; max-width:48ch; line-height:1.4}
+
+/* ── o topo: manchete (esq) + coverlines (canto sup-direito) ──
+   A #1 nao tem arte; a manchete e as chamadas de capa dividem a folha em
+   duas colunas como uma capa de revista 90s de verdade. O vazio da direita
+   vira LINGUAGEM (coverline empilhada), nao buraco. */
+.topo{display:grid; grid-template-columns:1fr minmax(210px,33%); gap:26px;
+  align-items:start; margin:18px 0 22px}
+
+/* as coverlines: teasers reais empilhados no canto, alinhados a direita.
+   Voz da REVISTA -> Archivo Narrow condensada (nao pixel: pixel e do jogo). */
+.coverlines{list-style:none; margin:0; padding:0; text-align:right;
+  display:flex; flex-direction:column; gap:15px}
+.coverlines li{padding-top:9px; border-top:2px solid var(--tinta-preta)}
+.coverlines .kicker{display:block; font-family:var(--font-display);
+  font-size:11px; letter-spacing:.14em; color:var(--tinta-ciano); margin:0 0 4px}
+.coverlines .cl{display:block; font-family:var(--font-manchete); font-weight:700;
+  text-transform:uppercase; font-size:clamp(16px,2vw,21px); line-height:1.04;
+  letter-spacing:-.01em; color:var(--tinta-preta)}
+.coverlines .pg{display:block; font-family:var(--font-display); font-size:11px;
+  letter-spacing:.06em; color:var(--tinta-ciano); margin:5px 0 0}
 
 /* ── o campo de glifos (a parede de ebooks) + a linha que COMPILA ── */
 .genese{position:relative; border-top:1px solid var(--borda); padding-top:20px; margin-top:6px}
@@ -101,12 +121,18 @@ body.compilou .pos-compila{opacity:1; max-height:200px}
 .pos-compila .pensa{display:block; font-family:var(--font-display); font-size:14px; color:#35562f; margin:3px 0 0}
 .pos-compila .pensa::before{content:"// "; opacity:.85}
 
-/* ── chamadas da capa (teasers), incl. a OBRIGATORIA do nome ── */
-.chamadas{list-style:none; margin:26px 0 0; padding:16px 0 0; border-top:1px solid var(--borda);
-  display:flex; flex-direction:column; gap:11px}
-.chamadas li{font-family:var(--font-display); font-size:clamp(13px,1.7vw,16px); color:var(--tinta-preta); line-height:1.4}
-.chamadas .pg{color:var(--tinta-ciano)}
-.chamadas .destaque{color:var(--tinta-ciano)}
+/* ?compiled / reduced-motion = FRAME ESTATICO: sem transicao, o payoff do Gus
+   ja nasce revelado (senao o print headless captura no meio dos 420ms e a
+   fala do Gus some). Congela tambem qualquer motion pra o print ser fiel. */
+body.estatico *, body.estatico *::before, body.estatico *::after{
+  transition:none !important; animation:none !important;
+}
+
+/* ── mobile: as duas colunas do topo colapsam em uma so ── */
+@media (max-width:640px){
+  .topo{grid-template-columns:1fr; gap:16px; margin-top:12px}
+  .coverlines{gap:12px}
+}
 
 .rodape{margin:24px 0 0; padding-top:12px; border-top:1px solid var(--borda);
   font-family:var(--font-display); font-size:12px; color:var(--tinta-2); display:flex; gap:18px; flex-wrap:wrap}
@@ -128,8 +154,27 @@ body.compilou .pos-compila{opacity:1; max-height:200px}
     <div class="meta">ano 1 · nº <b>1</b><br>15 de maio de 2026<br>gusworld.site</div>
   </header>
 
-  <h2 class="manchete">No começo<br><span class="l2">era texto</span></h2>
-  <p class="dek">Antes do primeiro pixel, antes do primeiro quadrado que anda, este mundo foi dezenas de milhares de palavras. Um mundo que se lê antes de existir.</p>
+  <div class="topo">
+    <div class="titulo">
+      <h2 class="manchete">No começo<br><span class="l2">era texto</span></h2>
+      <p class="dek">Antes do primeiro pixel, antes do primeiro quadrado que anda, este mundo foi dezenas de milhares de palavras. Um mundo que se lê antes de existir.</p>
+    </div>
+    <ul class="coverlines" aria-label="Chamadas desta edição">
+      <li>
+        <span class="kicker">exclusivo</span>
+        <span class="cl">o nome deste mundo, explicado pelo Gus</span>
+        <span class="pg">pág 3</span>
+      </li>
+      <li>
+        <span class="cl">15 de maio: o dia em que só havia texto</span>
+        <span class="pg">pág 6</span>
+      </li>
+      <li>
+        <span class="cl">por que "Glyfesse" quer dizer duas coisas ao mesmo tempo</span>
+        <span class="pg">pág 3</span>
+      </li>
+    </ul>
+  </div>
 
   <section class="genese" aria-label="A primeira linha do mundo, compilando">
     <p class="rotulo-fig">fig. 0 · a primeira linha do mundo</p>
@@ -146,12 +191,6 @@ body.compilou .pos-compila{opacity:1; max-height:200px}
       <span class="pensa">faltava alguém ler primeiro</span>
     </div>
   </section>
-
-  <ul class="chamadas">
-    <li><span class="destaque">exclusivo</span> · o nome deste mundo, explicado pelo Gus <span class="pg">· pág 3</span></li>
-    <li>15 de maio: o dia em que só havia texto <span class="pg">· pág 6</span></li>
-    <li>por que "Glyfesse" quer dizer duas coisas ao mesmo tempo <span class="pg">· pág 3</span></li>
-  </ul>
 
   <footer class="rodape">
     <span><b>GLYFESSE</b> · a revista do GusWorld</span>
@@ -175,10 +214,14 @@ body.compilou .pos-compila{opacity:1; max-height:200px}
   var reduz = matchMedia("(prefers-reduced-motion:reduce)").matches;
   var forca = /compil/.test(location.search);   /* ?compiled: print ja compilado */
 
-  /* a parede de ebooks: linhas de glifos decorativas (aria-hidden) */
+  /* a parede de ebooks: linhas de glifos decorativas (aria-hidden). Chars
+     por linha generosos (118..151) pra a parede ir de BORDA A BORDA da folha
+     em qualquer largura; o overflow:hidden da .glifo-row corta o excesso.
+     E o conceito ("dezenas de milhares de palavras") virando a imagem que a
+     #1 nao tem, com a unica linha que COMPILA brilhando contra o muro cheio. */
   if(campo){
     for(var r=0;r<7;r++){
-      var n = 46 + ((r*13) % 22), s = "";
+      var n = 118 + ((r*13) % 34), s = "";
       for(var i=0;i<n;i++){ s += ((i%9===8)?" ":C.scrambleChar(i + r*5, r*3 + 1)); }
       var row = document.createElement("div");
       row.className = "glifo-row"; row.textContent = s;
@@ -204,7 +247,7 @@ body.compilou .pos-compila{opacity:1; max-height:200px}
     if(e.key==="Enter" || e.key===" "){ e.preventDefault(); compilar(); }
   });
 
-  if(reduz || forca){ concluir(); }
+  if(reduz || forca){ document.body.classList.add("estatico"); concluir(); }
   else { render(C.compileText(ALVO, 0, 2)); }   /* estado inicial: ilegivel */
 })();
 </script>
