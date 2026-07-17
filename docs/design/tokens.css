@@ -252,7 +252,7 @@
 
      Onde ela PODE cair: margem externa, rodapé, e por cima da tela acesa
      (derramar café na foto da revista é natural, e lá não há parágrafo).
-  */
+
      ★ E aqui está a consequência boa de ter o guard: COMO a zona garante
      que não há texto embaixo, o alpha do café é LIVRE. Ele não precisa
      ser tímido. O 0.18 seria o teto se a mancha pudesse encostar em
@@ -358,6 +358,15 @@
 
    Nunca ponha .cafe solto dentro de uma coluna de texto: a conta de §8
    diz que na edição #1 até uma mancha quase invisível reprova AA.
+
+   ⚠️ O canto superior direito NÃO é zona segura pro café. Ali vivem o
+   expediente (data, gusworld.site) e agora a LCD do switch de idioma.
+   O §8 deste arquivo é taxativo: na #1 encardida o café reprova AA sobre
+   texto secundário já com alpha .08. Quem for reativar/reposicionar a
+   mancha: escolha outra zona e prove por render — não "conserte" o
+   clipping sem resolver a posição, ou publica mancha sobre texto na
+   edição mais velha da banca. (achado do líder, registrado pra impedir
+   erro futuro)
    ═══════════════════════════════════════════════════════════════════ */
 .zona-cafe{
   position:absolute; overflow:hidden;   /* ← este overflow É o guard */
