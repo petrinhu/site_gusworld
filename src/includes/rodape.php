@@ -16,15 +16,11 @@ declare(strict_types=1);
 <footer class="rodape" role="contentinfo">
   <div class="rodape-inner">
     <div class="som" aria-label="Som">
-      <button type="button" class="som-btn" data-som="efeitos" aria-pressed="true"
-              data-label-on="<?= h((string) $t['rodape_som_ef_on']) ?>"
-              data-label-off="<?= h((string) $t['rodape_som_ef_off']) ?>">
-        <span class="luz" aria-hidden="true"></span><span class="som-label" data-ghost="<?= h((string) $t['rodape_som_ef_off']) ?>"><?= h((string) $t['rodape_som_ef_on']) ?></span>
+      <button type="button" class="som-btn" data-som="efeitos" aria-pressed="true">
+        <span class="luz" aria-hidden="true"></span><?= h((string) $t['rodape_som_ef']) ?>
       </button>
-      <button type="button" class="som-btn" data-som="musica" aria-pressed="false"
-              data-label-on="<?= h((string) $t['rodape_som_mus_on']) ?>"
-              data-label-off="<?= h((string) $t['rodape_som_mus_off']) ?>">
-        <span class="luz" aria-hidden="true"></span><span class="som-label" data-ghost="<?= h((string) $t['rodape_som_mus_off']) ?>"><?= h((string) $t['rodape_som_mus_off']) ?></span>
+      <button type="button" class="som-btn" data-som="musica" aria-pressed="false">
+        <span class="luz" aria-hidden="true"></span><?= h((string) $t['rodape_som_mus']) ?>
       </button>
     </div>
 

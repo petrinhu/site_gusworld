@@ -223,11 +223,6 @@ main{display:block}
   color:var(--tinta-preta); background:#0000;
   border:1px solid var(--borda-forte); padding:8px 12px; min-height:44px;
 }
-/* label com largura FIXA no maior estado: um "fantasma" (::after com o proprio
-   texto do off-label via data-ghost) reserva a largura EXATA (imune a fonte e
-   letter-spacing) → o botao NAO muda de tamanho no toggle nem empurra o vizinho. */
-.som-label{display:inline-block}
-.som-label::after{content:attr(data-ghost); display:block; height:0; overflow:hidden; visibility:hidden; white-space:nowrap}
 .som-btn .luz{width:9px; height:9px; border:1.5px solid var(--borda-forte); background:#0000}
 .som-btn[aria-pressed="true"] .luz{background:var(--tinta-ciano)}
 .som-btn:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}

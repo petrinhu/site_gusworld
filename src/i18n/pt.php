@@ -174,10 +174,8 @@ return [
     'scaffold_texto'   => 'Seção em scaffold. A copy definitiva (cheia ou vazio-com-graça, na voz do Gus) é co-decidida com o líder (W5).',
 
     // rodapé
-    'rodape_som_ef_on'  => 'Efeitos: ligados',
-    'rodape_som_ef_off' => 'Efeitos: desligados',
-    'rodape_som_mus_on' => 'Música: ligada',
-    'rodape_som_mus_off'=> 'Música: desligada',
+    'rodape_som_ef'     => 'Efeitos',   // rótulo FIXO: o estado é sinalizado pelo LED (.luz), como no hardware real
+    'rodape_som_mus'    => 'Música',
     'rodape_licenca'    => 'Conteúdo sob licença livre. Feito com IA como ferramenta; a parte criativa é do criador.',
     'rodape_contato'    => 'Fale com a redação',
 

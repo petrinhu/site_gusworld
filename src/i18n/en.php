@@ -169,10 +169,8 @@ return [
     'scaffold_texto'   => "Section scaffold. The final copy (full or graceful-empty, in Gus's voice) is co-decided with the lead (W5).",
 
     // footer
-    'rodape_som_ef_on'  => 'Effects: on',
-    'rodape_som_ef_off' => 'Effects: off',
-    'rodape_som_mus_on' => 'Music: on',
-    'rodape_som_mus_off'=> 'Music: off',
+    'rodape_som_ef'     => 'Effects',   // FIXED label: state is signaled by the LED (.luz), like real hardware
+    'rodape_som_mus'    => 'Music',
     'rodape_licenca'    => 'Content under a free license. Made with AI as a tool; the creative part is the creator\'s.',
     'rodape_contato'    => 'Contact the newsroom',
 
