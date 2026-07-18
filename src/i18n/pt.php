@@ -41,6 +41,27 @@ return [
         'sr'   => 'English edition',
     ],
 
+    // ── A BANCA (home) ──
+    // Rótulos pixel pequenos (<15px) são minúsculos: o guard N→H
+    // (reference-pixelfont-n-maiusculo) rasteriza o N maiúsculo como H. A 'lede'
+    // é PLACEHOLDER (texto do mock 10); a copy final é co-decidida no W5.
+    'banca' => [
+        'lede'         => 'a revista de um jogo que ainda não saiu. escrita por quem mora dentro dele.',
+        'skip'         => 'Pular para a banca',
+        'secao_titulo' => 'A banca',
+        'secao_meta'   => 'edições publicadas',
+        'nova'         => 'nova',      // badge da mais recente (minúsculo: guard N→H)
+        'jogavel'      => 'jogável',   // selo da edição-hero (é o quadradinho da home)
+        'w6_tag'       => 'interativo pendente · w6',
+        // os ganchos dos interativos (scaffold; implementação é item W6)
+        'ganchos' => [
+            'hero'       => ['label' => 'Quadradinho jogável', 'nome' => 'O quadradinho'],
+            'pressstart' => ['label' => 'Poster PRESS START',  'nome' => 'PRESS START'],
+            'chamadas'   => ['label' => 'Chamadas de capa',    'nome' => 'Chamadas de capa'],
+            'linha'      => ['label' => 'Linha do tempo',      'nome' => 'Linha do tempo'],
+        ],
+    ],
+
     // índice
     'indice_titulo'    => 'Índice',
     'indice_nota'      => 'O índice se monta de $edicoes (a mesma fonte da banca e da linha do tempo). Os 3 links são fixos em toda edição.',

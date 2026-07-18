@@ -1,0 +1,13 @@
+# public_html/.htaccess — raiz do site (IA-WIREFRAME §1, §3.5).
+# Hostinger Premium (Apache + mod_rewrite, sem Node).
+
+# A home de cada idioma é servida pelo index.php da pasta.
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Raiz "/" → 301 FIXO para /pt/ (o idioma-padrão). NUNCA por IP nem por
+  # Accept-Language: a raiz não é tela seletora (IA-WIREFRAME §3.5).
+  RewriteRule ^$ /pt/ [R=301,L]
+</IfModule>

@@ -11,35 +11,9 @@ declare(strict_types=1);
  */
 
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/view.php';
 require_once __DIR__ . '/../../data/edicoes-helpers.php';
 require_once __DIR__ . '/contexto-edicao.php';
-
-/** Escapa saída para HTML (XSS — CONVENCOES-JS-PHP / OWASP A03). */
-function h(string $s): string
-{
-    return htmlspecialchars($s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-}
-
-/**
- * Formata a data ISO da edição no idioma (ex.: "22 de junho de 2026" /
- * "June 22, 2026"). Fail-fast: data inválida cai para a própria string ISO.
- *
- * @param array<string, mixed> $t  o mapa de i18n do idioma
- */
-function data_por_extenso(string $iso, string $idioma, array $t): string
-{
-    $ts = strtotime($iso);
-    if ($ts === false) {
-        return $iso;
-    }
-    $dia = (int) date('j', $ts);
-    $mes = $t['meses'][(int) date('n', $ts)] ?? '';
-    $ano = (int) date('Y', $ts);
-
-    return $idioma === 'pt'
-        ? "{$dia} de {$mes} de {$ano}"
-        : "{$mes} {$dia}, {$ano}";
-}
 
 /**
  * Descobre o slug pedido: prioriza ?slug= (a .htaccess de produção o passa);

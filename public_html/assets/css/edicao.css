@@ -354,3 +354,109 @@ main{display:block}
   .col-meta{align-items:flex-start; width:100%}
   .meta{text-align:left}
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   A BANCA (home) — mock 10 · IA-WIREFRAME §3.1.
+   Herda a MESMA .pagina.folha + .bancada da edição (acima). Aqui só o que a
+   home acrescenta: a fileira de capas (o coração) e os ganchos W6 em scaffold.
+   Mobile-first: base = 1 coluna; o grid de 3 colunas entra no desktop.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* o wordmark é o <h1> da home: zera a margem/tamanho default do h1, o visual
+   fica todo no .logo (herdado do masthead) */
+.logo-h1{margin:0; font-size:inherit; font-weight:inherit; line-height:0}
+
+/* a goteira de página da home: o mesmo recuo impresso do masthead/rodapé e do
+   corpo da edição (.edicao), para o conteúdo do <main> alinhar com o topo */
+.banca-corpo{padding-top:6px; padding-inline:clamp(20px,3.5vw,56px)}
+
+/* a lede da home (W5 placeholder): a voz do Gus logo abaixo do masthead */
+.banca-lede{
+  font-family:var(--font-corpo); font-style:italic;
+  font-size:clamp(15px,2.2vw,19px); line-height:1.45;
+  color:var(--tinta-2); margin:clamp(14px,2.4vw,20px) 0 0; max-width:56ch;
+}
+
+/* ── os ganchos W6: cada interativo é uma seção reservada (scaffold) ── */
+.gancho-w6{scroll-margin-top:12px; margin-top:clamp(18px,3vw,24px)}
+.gancho-w6 .scaffold{margin-top:0}
+
+/* ── A FILEIRA DE CAPAS ── */
+.banca{padding:clamp(20px,3.5vw,28px) 0 0}
+.banca-tit{
+  display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid #00000018; padding-top:18px;
+}
+/* .secao-nome (h2) já vem do bloco da edição: display, 15px, guard N→H ok */
+.banca-tit .conta{
+  font-family:var(--font-display); font-size:11px; letter-spacing:.04em;
+  color:var(--tinta-2);
+}
+
+.prateleira{display:grid; grid-template-columns:1fr; gap:16px; margin-top:16px}
+
+/* cada capa = uma FOLHA com IDADE própria (o .folha do tokens.css amarela
+   sozinho pelo --idade inline). É um <a> de bloco inteiro → alvo grande. */
+.ed{
+  position:relative; display:block; text-decoration:none; color:var(--tinta-preta);
+  padding:14px 15px 16px; box-shadow:var(--sombra-folha);
+  border-top:3px solid var(--tinta-preta);
+  transition:transform var(--dur-medio) var(--ease), box-shadow var(--dur-medio) var(--ease);
+}
+/* fibra do papel do card (dimensão explícita: some no Gecko sem ela) */
+.ed::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:150px 150px; mix-blend-mode:multiply; opacity:.15;
+}
+.ed > *{position:relative; z-index:1}
+.ed:hover{transform:translateY(-4px); box-shadow:0 3px 0 #00000012, 0 16px 34px #00000026}
+.ed:focus-visible{outline:3px solid var(--tinta-ciano); outline-offset:3px}
+
+.ed .mini-mast{
+  display:flex; justify-content:space-between; align-items:baseline; gap:8px;
+  font-family:var(--font-display); border-bottom:1.5px solid var(--tinta-preta);
+  padding-bottom:5px;
+}
+.ed .mini-mast .marca{font-weight:700; font-size:15px; color:var(--tinta-preta)}
+/* .ref é pixel <15px → minúsculo no HTML (guard N→H); aqui só o tamanho */
+.ed .mini-mast .ref{font-size:11px; color:var(--tinta-2); text-align:right; line-height:1.3}
+
+.ed .ct{
+  font-family:var(--font-manchete); font-weight:700; text-transform:uppercase;
+  font-size:clamp(22px,3.2vw,27px); line-height:.94; letter-spacing:-.015em;
+  color:var(--tinta-preta); margin:11px 0 7px;
+}
+.ed .ch{
+  font-family:var(--font-corpo); font-weight:600; font-size:13.5px; line-height:1.42;
+  color:var(--tinta-preta); margin:0;
+}
+
+/* o frame: um buraco de tela acesa no papel (mesmo raio/brilho da capa da
+   edição), miniatura sem CLS (dims no img) */
+.ed-frame{
+  margin:12px 0 0; position:relative; border-radius:var(--raio-tela); overflow:hidden;
+  box-shadow:inset 0 0 0 1px var(--tela-borda-ui), var(--brilho-tela); background:var(--tela-bg);
+}
+.ed-frame img{display:block; width:100%; height:auto; image-rendering:pixelated}
+
+/* badge "nova" da capa mais recente (minúsculo: guard N→H) */
+.ed .nova{
+  position:absolute; top:-11px; right:10px; z-index:2;
+  font-family:var(--font-display); font-size:10px; font-weight:700; letter-spacing:.08em;
+  color:var(--papel); background:var(--tinta-ciano); padding:3px 8px;
+}
+/* selo da edição-hero: a capa cujo brinquedo é o quadradinho da home */
+.ed .selo-jogo{
+  display:inline-flex; align-items:center; gap:6px; margin-top:11px;
+  font-family:var(--font-display); font-size:10px; letter-spacing:.05em; color:var(--tinta-ciano);
+}
+.ed .selo-jogo::before{
+  content:""; width:8px; height:8px; background:var(--gw-ciano); box-shadow:0 0 7px var(--gw-ciano);
+}
+
+/* ── desktop: a prateleira vira 3 colunas (as capas lado a lado na banca) ── */
+@media (min-width:768px){
+  .prateleira{grid-template-columns:repeat(3,1fr); gap:18px; align-items:start}
+}
+

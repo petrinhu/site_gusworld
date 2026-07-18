@@ -40,6 +40,26 @@ return [
         'sr'   => 'Edição em português',
     ],
 
+    // ── THE STAND (home) ──
+    // Small pixel labels (<15px) are lowercase: the N→H guard
+    // (reference-pixelfont-n-maiusculo) renders an uppercase N as an H. 'lede'
+    // is a PLACEHOLDER (mock 10 text); final copy is co-decided in W5.
+    'banca' => [
+        'lede'         => 'the magazine of a game that has not shipped yet. written by someone who lives inside it.',
+        'skip'         => 'Skip to the stand',
+        'secao_titulo' => 'The stand',
+        'secao_meta'   => 'published editions',
+        'nova'         => 'new',
+        'jogavel'      => 'playable',
+        'w6_tag'       => 'interactive pending · w6',
+        'ganchos' => [
+            'hero'       => ['label' => 'Playable square',    'nome' => 'The square'],
+            'pressstart' => ['label' => 'PRESS START poster', 'nome' => 'PRESS START'],
+            'chamadas'   => ['label' => 'Cover blurbs',       'nome' => 'Cover blurbs'],
+            'linha'      => ['label' => 'Timeline',           'nome' => 'Timeline'],
+        ],
+    ],
+
     // index
     'indice_titulo'    => 'Contents',
     'indice_nota'      => 'The index builds itself from $edicoes (the same source as the stand and the timeline). The 3 links are fixed in every edition.',

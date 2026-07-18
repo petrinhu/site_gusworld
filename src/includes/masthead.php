@@ -3,29 +3,38 @@ declare(strict_types=1);
 /**
  * src/includes/masthead.php — o header[banner]: wordmark + expediente + LCD.
  *
- * Espera $ctx (contexto da edição) e $t (i18n do idioma). Reusável por edição,
- * banca e 404 (o 404 chama com um $ctx reduzido).
+ * Espera $ctx (contexto) e $t (i18n do idioma). Reusável por edição, banca e
+ * 404. O campo $ctx['modo'] alterna o enquadramento:
+ *   'edicao' (default) → wordmark é link + expediente (ano/nº/data);
+ *   'banca'            → wordmark vira <h1> (heading primário da home) e o
+ *                        expediente some (a home não tem número de edição). A
+ *                        LCD é comum aos dois.
  *
  * A LCD (mock 13, tratamento A) é um <a> REAL para a URL gêmea: funciona sem
  * JS (é navegação, não troca de texto no cliente). O fragmento #glyfe só liga
  * o efeito visual de "recompilar" na chegada (progressive enhancement). A LCD
  * NÃO veste o prompt de voz do Gus — é mostrador de máquina (project-i18n-switch).
  */
-$exp_ano    = h((string) $t['exp_ano']);
-$exp_numero = h((string) $t['exp_numero']);
-$par        = h((string) $ctx['idioma_par']);
-$lcd        = $t['lcd'];
+$modo = (string) ($ctx['modo'] ?? 'edicao');
+$par  = h((string) $ctx['idioma_par']);
+$lcd  = $t['lcd'];
 ?>
 <header class="masthead" role="banner">
   <div class="masthead-inner">
+    <?php if ($modo === 'banca'): ?>
+    <h1 class="logo-h1"><a class="logo" href="<?= h((string) $ctx['url_banca']) ?>" title="<?= h((string) $t['wordmark_titulo']) ?>">GLYFESSE</a></h1>
+    <?php else: ?>
     <a class="logo" href="<?= h((string) $ctx['url_banca']) ?>" title="<?= h((string) $t['wordmark_titulo']) ?>">GLYFESSE</a>
+    <?php endif; ?>
 
     <div class="col-meta">
+      <?php if ($modo !== 'banca'): ?>
       <p class="meta">
-        <?= $exp_ano ?> 1 · <?= $exp_numero ?> <b><?= h((string) $ctx['numero']) ?></b><br>
+        <?= h((string) $t['exp_ano']) ?> 1 · <?= h((string) $t['exp_numero']) ?> <b><?= h((string) $ctx['numero']) ?></b><br>
         <?= h(data_por_extenso((string) $ctx['data'], (string) $ctx['idioma'], $t)) ?><br>
         gusworld.site
       </p>
+      <?php endif; ?>
 
       <a class="imprint aceso" id="imprint"
          href="<?= h((string) $ctx['url_par']) ?>#glyfe"
