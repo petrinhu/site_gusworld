@@ -112,9 +112,11 @@ $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs
 
 </div><!-- /.pagina -->
 
-<?php /* GANCHO (W6+): aqui entra o enhancement client-side — a LCD "recompilando"
-   na chegada por #glyfe (js/lang-core.js) e o toggle de som. Tudo é progressive
-   enhancement: sem JS a página já navega, lê e troca de idioma. Não implementado
-   neste esqueleto (anti-OE). */ ?>
+<?php /* GANCHO (W6+): a LCD "recompilando" na chegada por #glyfe (js/lang-core.js)
+   ainda é gancho. O SOM já é real: os 2 botões do rodapé (efeitos ON / música
+   OFF) com o SFX real do jogo. Progressive enhancement: sem JS a página navega,
+   lê, troca de idioma e mostra os botões no default, inertes. */ ?>
+<script src="/assets/js/som-core.js" defer></script>
+<script src="/assets/js/som.js" defer></script>
 </body>
 </html>

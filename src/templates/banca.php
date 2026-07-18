@@ -259,5 +259,7 @@ require __DIR__ . '/../includes/head.php';
 <script src="/assets/js/press-start.js" defer></script>
 <script src="/assets/js/linha-tempo-core.js" defer></script>
 <script src="/assets/js/linha-tempo.js" defer></script>
+<script src="/assets/js/som-core.js" defer></script>
+<script src="/assets/js/som.js" defer></script>
 </body>
 </html>

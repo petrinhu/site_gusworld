@@ -6,10 +6,11 @@ declare(strict_types=1);
  * Espera $t (i18n do idioma). SEM lista de navegação: não há outras páginas a
  * listar (IA-WIREFRAME §3.1) — a banca é o hub, o índice é o roteador interno.
  *
- * Os 2 botões de som são MARCAÇÃO apenas: o áudio (efeitos ON / música OFF por
- * padrão) é peça posterior. O estado default vai no aria-pressed; ao ligar o
- * áudio, o JS de enhancement passa a refleti-lo. O e-mail é o real (MODERACAO:
- * endereço exibido, sem formulário).
+ * Os 2 botões de som (efeitos ON / música OFF por padrão) já são reais: o estado
+ * default vai no aria-pressed aqui, e o JS de enhancement (som-core.js + som.js)
+ * reflete/persiste a preferência e toca o SFX real do jogo. Sem JS: aparecem no
+ * default, inertes. O e-mail é o real (MODERACAO: endereço exibido, sem
+ * formulário).
  */
 ?>
 <footer class="rodape" role="contentinfo">
