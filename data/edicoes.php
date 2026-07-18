@@ -79,11 +79,13 @@ return [
                           . 'em 3D que não vingou e virou lembrança.',
         'dek_en'         => 'The first engines, the foundation choices. And a 3D Gus '
                           . 'that did not survive and became a memory.',
-        // Fonte física: resources/frames/gus_3d_visualizacao_xyz__t4s.png
-        // Publicar em: public_html/assets/frames/edicao-2.png
-        'frame'          => '/assets/frames/edicao-2.png',
-        'frame_alt_pt'   => 'Um modelo 3D de teste do Gus, ideia depois abandonada.',
-        'frame_alt_en'   => 'A 3D test model of Gus, an idea later abandoned.',
+        // ⚠️ #2 SEM FRAME (2026-07-18): o frame original (gus_3d_visualizacao) era uma
+        // FOTO DE TELA com conteúdo pessoal do líder (abas de navegador) — REMOVIDO do
+        // repo. A #2 fica sem capa, como a #1 (gênese textual), até haver um frame LIMPO
+        // do 3D abandonado. Decisão do líder pendente (recorte/substituição/sem-capa).
+        'frame'          => null,
+        'frame_alt_pt'   => null,
+        'frame_alt_en'   => null,
         'na_linha_tempo' => false, // 3D abandonado: não é a era visual 2D do scrubber
     ],
 
