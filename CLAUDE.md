@@ -10,7 +10,7 @@ No **início de cada sessão** (integração `reference-autocomm`):
 
 1. `git -C ~/IDrive/Documentos/projetos_claudebrain/gusworld_ia_autocomm pull`
 2. Ler a inbox `inbox/site/` (mensagens novas do jogo/lib); depois de ler+agir: `git mv` para `archive/`, commit `read: ...`, push.
-3. Ligar o monitor em background: `bash ~/IDrive/Documentos/projetos_claudebrain/gusworld_ia_autocomm/watch-inbox.sh site 300` (re-invoca ao chegar mensagem; ao acordar, ler+arquivar+relançar).
+3. ★ **Monitor = HOOK, não watcher** (mudou 2026-07-18, aprovado pelo líder): o `check-inbox-hook.sh site` está registrado em `.claude/settings.local.json` (gitignored) como `UserPromptSubmit` + `SessionStart` → injeta as mensagens novas a cada interação, determinístico. **NÃO relançar o `watch-inbox.sh` de fundo** (aposentado — o harness reciclava o processo e ele morria sem notificar). Se o `.claude/settings.local.json` faltar (clone novo), recriar os 2 hooks. Ver `reference-autocomm`.
 4. **Responder** = criar `.md` em `inbox/<destinatário>/` (ex.: `inbox/gusworld/`) + push. **Sempre pull antes de enviar.**
 
 ✅ **Repo do bus é PRIVADO** — verificado na fonte em 2026-07-17 (`visibility: PRIVATE`; API anônima dá 404). Este doc e o `PROTOCOL.md` do bus diziam **"público"** e estavam **ERRADOS** (corrigidos): eu vinha me auto-limitando à toa e dei um alarme falso de vazamento. **Logo: spoiler/lore/embargo PODEM trafegar no bus.** ⚠️ Mas **nome de batismo de menor** e **segredo/token** seguem proibidos — essa regra é **global e é sobre versionar**, não sobre publicidade (repo privado vira público um dia).
