@@ -29,6 +29,19 @@ $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs
 
 <a class="skip" href="#sumario"><?= h((string) $t['skip_indice']) ?></a>
 
+<?php /* a BANCADA do maker: peças decorativas nas guteiras (só desktop, via CSS).
+   Puramente ornamental → aria-hidden. Fixa ao viewport, atrás da folha. */ ?>
+<div class="bancada" aria-hidden="true">
+  <div class="pc bp p-bp1"><span class="cota"></span></div>
+  <div class="pc pcb p-pcb1"></div>
+  <div class="pc regua p-regua1"></div>
+  <div class="pc bp p-bp2"><span class="cota"></span></div>
+  <div class="pc pcb p-pcb2"></div>
+  <div class="pc lapis p-lapis"><span class="corpo"></span><span class="ferrule"></span><span class="ponta"></span></div>
+  <div class="pc chip p-chip1"><span class="corpo"></span></div>
+  <div class="pc chip p-chip2"><span class="corpo"></span></div>
+</div>
+
 <div class="pagina folha" style="--idade:<?= h((string) $idade) ?>">
 
 <?php require __DIR__ . '/../includes/masthead.php'; ?>

@@ -231,6 +231,10 @@ main{display:block}
 .contato a{color:var(--tinta-ciano); text-underline-offset:2px}
 .contato a:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
 
+/* a BANCADA do maker (peças espalhadas na mesa): só desktop; ver bloco no
+   @media abaixo. No mobile a folha é full-width e a mesa não aparece. */
+.bancada{display:none}
+
 /* ═══════════════════ TELAS MAIORES: a MESA aparece ═══════════════════ */
 @media (min-width:768px){
   .capa{padding-top:clamp(24px,4vw,34px)}
@@ -289,6 +293,58 @@ main{display:block}
     background:#dccfb2;
     transform:translateX(-50%) rotate(1.3deg) translateX(26px);
   }
+
+  /* 3) as PEÇAS da bancada: placa de circuito, protoboard, régua, lápis, chips
+        espalhados nas guteiras laterais fora da folha de 1080px. Densidade B
+        (todas as peças), aprovada pelo líder. position:FIXED (a mesa fica
+        parada, a revista rola por cima; as peças NÃO somem no scroll (os top:
+        passam a ser relativos ao viewport). Apagada, dark-on-dark, atrás da
+        folha (z-index:-1), sem pointer-events. Tudo CSS/SVG, zero raster. */
+  .bancada{display:block; position:fixed; inset:0; z-index:-1; pointer-events:none}
+  .bancada .pc{position:absolute; filter:saturate(.7) brightness(.92)}
+  .bancada .bp{width:300px; height:216px; background:#1b2836;
+    background-image:
+      repeating-linear-gradient(0deg,#35566f26 0 1px,#0000 1px 15px),
+      repeating-linear-gradient(90deg,#35566f26 0 1px,#0000 1px 15px),
+      repeating-linear-gradient(0deg,#4a708c33 0 1px,#0000 1px 75px),
+      repeating-linear-gradient(90deg,#4a708c33 0 1px,#0000 1px 75px);
+    box-shadow:0 10px 26px #00000059, inset 0 0 0 1px #2a4258}
+  .bancada .bp::before{content:"";position:absolute;left:24px;top:38px;width:120px;height:120px;border:1px solid #52789580;border-radius:50%}
+  .bancada .bp::after{content:"";position:absolute;right:0;top:0;width:46px;height:46px;background:linear-gradient(225deg,#28405626 0 50%,#0000 50%);border-left:1px solid #3a5a76;border-bottom:1px solid #3a5a76;clip-path:polygon(100% 0,0 0,100% 100%);box-shadow:-3px 3px 6px #00000040}
+  .bancada .bp .cota{position:absolute;left:20px;bottom:26px;width:180px;height:1px;background:#5a819d99}
+  .bancada .bp .cota::before,.bancada .bp .cota::after{content:"";position:absolute;top:-3px;width:1px;height:7px;background:#5a819d99}
+  .bancada .bp .cota::before{left:0} .bancada .bp .cota::after{right:0}
+  .bancada .pcb{width:150px; height:112px; background:#241f17;
+    background-image:
+      repeating-linear-gradient(0deg,#4a3f2c 0 1.5px,#0000 1.5px 19px),
+      repeating-linear-gradient(90deg,#4a3f2c 0 1.5px,#0000 1.5px 23px),
+      repeating-linear-gradient(45deg,#4a3f2c00 0 20px,#4a3f2c 20px 21.5px,#4a3f2c00 21.5px 44px),
+      radial-gradient(circle at 34px 30px,#5a4d34 0 2.6px,#0000 3.4px),
+      radial-gradient(circle at 118px 84px,#5a4d34 0 2.6px,#0000 3.4px),
+      radial-gradient(circle at 96px 26px,#4dd9e838 0 2.2px,#0000 3px);
+    box-shadow:0 8px 20px #0000005e, inset 0 0 0 1px #33291b}
+  .bancada .pcb::before{content:"";position:absolute;left:44px;top:40px;width:46px;height:30px;background:#15110c;box-shadow:inset 0 0 0 1px #3a2f1f}
+  .bancada .pcb::after{content:"";position:absolute;left:40px;top:44px;width:54px;height:22px;background:repeating-linear-gradient(0deg,#6b5a3a 0 2px,#0000 2px 7px) left/4px 100% no-repeat,repeating-linear-gradient(0deg,#6b5a3a 0 2px,#0000 2px 7px) right/4px 100% no-repeat}
+  .bancada .regua{width:270px; height:26px; border-radius:2px;background:linear-gradient(#4a4436,#37322a);box-shadow:0 8px 18px #00000055, inset 0 1px 0 #6a6250}
+  .bancada .regua::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#0000 0 14px,#b7a877 14px 15px,#0000 15px) top/100% 8px no-repeat,repeating-linear-gradient(90deg,#0000 0 74px,#cabf95 74px 75px,#0000 75px) top/100% 14px no-repeat;opacity:.8}
+  .bancada .lapis{width:172px; height:13px}
+  .bancada .lapis .corpo{position:absolute;left:16px;top:0;right:14px;height:13px;background:linear-gradient(#7d6c40,#5f5230);box-shadow:0 6px 14px #0000004d, inset 0 1px 0 #9c8a5a}
+  .bancada .lapis .ferrule{position:absolute;right:0;top:0;width:16px;height:13px;background:linear-gradient(#8f8a7e,#645f54)}
+  .bancada .lapis .ferrule::after{content:"";position:absolute;right:-8px;top:1px;width:9px;height:11px;background:#b78a86;border-radius:0 3px 3px 0}
+  .bancada .lapis .ponta{position:absolute;left:0;top:0;width:0;height:0;border-style:solid;border-width:6.5px 16px 6.5px 0;border-color:#0000 #c8b184 #0000 #0000}
+  .bancada .lapis .ponta::after{content:"";position:absolute;left:0;top:-2.5px;width:0;height:0;border-style:solid;border-width:2.5px 6px 2.5px 0;border-color:#0000 #2a2620 #0000 #0000}
+  .bancada .chip{width:52px; height:26px}
+  .bancada .chip .corpo{position:absolute;left:8px;top:0;width:36px;height:26px;background:#17130e;border-radius:2px;box-shadow:inset 0 0 0 1px #3a2f1f}
+  .bancada .chip::before,.bancada .chip::after{content:"";position:absolute;width:52px;height:5px;background:repeating-linear-gradient(90deg,#0000 0 4px,#6b5a3a 4px 6px,#0000 6px 9px)}
+  .bancada .chip::before{top:-1px} .bancada .chip::after{bottom:-1px}
+  .p-bp1{left:-34px;top:150px;transform:rotate(-5deg)}
+  .p-pcb1{right:24px;top:250px;transform:rotate(6deg)}
+  .p-regua1{left:36px;top:470px;transform:rotate(-58deg)}
+  .p-bp2{right:-40px;top:610px;transform:rotate(4deg)}
+  .p-pcb2{left:60px;top:96px;transform:rotate(-9deg)}
+  .p-lapis{right:70px;top:520px;transform:rotate(24deg)}
+  .p-chip1{left:150px;top:300px;transform:rotate(-14deg)}
+  .p-chip2{right:150px;top:130px;transform:rotate(11deg)}
 }
 
 /* o masthead empilha em telas estreitas: a LCD desce para baixo do expediente,
