@@ -31,3 +31,9 @@ scripts/.name-blocklist
 # repo e PUBLICO. Planning LOCAL; para rastrear, redigir sem os nomes. Ver
 # AUD-SPOILER + project_spoiler_policy.
 docs/inventario-publicavel.md
+
+# Estado de RUNTIME do poll do cupom (o unico backend vivo). Os votos e o lock
+# sao gravados pelo servidor (producao), nao sao codigo — nao versionar. O
+# endpoint (api/cupom-voto.php) recria do zero se ausente (parse tolerante).
+data/cupom-votos.json
+data/cupom-votos.lock

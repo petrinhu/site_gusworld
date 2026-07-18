@@ -59,6 +59,7 @@ return [
             'pressstart' => ['label' => 'Poster PRESS START',  'nome' => 'PRESS START'],
             'glyfa'      => ['label' => 'A Glyfa: forja de nomes', 'nome' => 'A Glyfa'],
             'album'      => ['label' => 'O álbum de figurinhas', 'nome' => 'O álbum'],
+            'cupom'      => ['label' => 'O cupom recortável: a enquete', 'nome' => 'O cupom'],
             'chamadas'   => ['label' => 'Chamadas de capa',    'nome' => 'Chamadas de capa'],
         ],
         // O QUADRADINHO (hero real · item W6): rótulos do jogo e a legenda
@@ -154,6 +155,38 @@ return [
             'ex_glifo'  => 'mor-',
             'ex_glosa'  => 'sombra',
             'cap'       => 'FIG. · o álbum de cromos. cole os 13 glifos.',
+        ],
+        // O CUPOM (recortável · item W6 · CUPOM): o ÚNICO backend vivo do site (o
+        // poll). Recorte, escolha, mande de volta — o resultado sai na PRÓXIMA
+        // edição (a lentidão vira estética: enquete aberta = "aguardando", não site
+        // morto). Zero conta, zero dado (só localStorage marca "já votou", best-
+        // effort). ⚠️ A PERGUNTA e as OPÇÕES são PLACEHOLDER — o líder define as
+        // reais depois; trocar = trocar o array 'opcoes' aqui + a whitelist do
+        // cliente (cupom-core.js) e do servidor (api/cupom-voto.php). Degrada sem
+        // JS: é um <form method=post> nativo. Rótulos pixel são minúsculos (guard N→H).
+        'cupom' => [
+            'titulo'    => 'o cupom',
+            'meta'      => 'enquete recortável',
+            'lide'      => 'O cupom da edição: recorte no pontilhado, escolha e mande de volta. O resultado sai na próxima edição. Enquete de revista não tem pressa.',
+            // ⚠️ PLACEHOLDER (pergunta + opções): copy definitiva co-decidida com o líder
+            'pergunta'  => 'o que você quer ver mais na próxima edição?',
+            'legenda'   => 'escolha uma opção e mande o cupom de volta',
+            'opcoes'    => [
+                'mais-jogo'       => 'mais do jogo',
+                'mais-bastidores' => 'mais dos bastidores',
+                'mais-gus'        => 'mais do Gus',
+            ],
+            'recorte'   => 'recorte aqui',   // rótulo do pontilhado (aria/legenda da tesoura)
+            'enviar'    => 'mandar o cupom',
+            'rasgar'    => 'rasgar no pontilhado',
+            'desfazer'  => 'colar de volta',
+            'espera'    => 'resultado na próxima edição',
+            // estados que só o JS mostra (enhancement):
+            'obrigado'  => 'cupom na urna. o resultado sai na próxima edição.',
+            'ja_votou'  => 'você já mandou seu cupom desta edição. o resultado sai na próxima.',
+            'erro'      => 'não deu pra mandar agora. tente de novo daqui a pouco.',
+            'off'       => 'sem memória no navegador: seu cupom vale, só não vou lembrar que você votou.',
+            'cap'       => 'FIG. · o cupom recortável. escolha e mande de volta.',
         ],
     ],
 

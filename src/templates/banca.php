@@ -258,6 +258,76 @@ require __DIR__ . '/../includes/head.php';
     <p class="album-cap"><?= h((string) $al['cap']) ?></p>
   </section>
 
+  <?php /* ══ O CUPOM · a ENQUETE RECORTÁVEL (item W6 · CUPOM) ══
+     O ÚNICO backend VIVO do site: o poll (api/cupom-voto.php). Ao contrário da
+     Glyfa/álbum (que são TELA navy acesa), o cupom é PAPEL — um encarte recortável
+     no pontilhado, com tesoura, na cor da tinta. O resultado sai na PRÓXIMA EDIÇÃO
+     (a lentidão é estética: enquete aberta = "aguardando", não site morto).
+     ★ Progressive enhancement: o estado-base é um <form method="post" action="/api/
+     cupom-voto.php"> NATIVO que VOTA SEM JS — o browser navega pro endpoint, que
+     responde uma página in-world "resultado na próxima edição". cupom.js troca o
+     submit nativo por fetch (fica na página), liga o RASGAR/DESFAZER (a máquina de
+     estado pura testada em cupom-core.js — dá pra rasgar errado e desfazer, nunca
+     trava) e a idempotência SUAVE "já votou" (localStorage; zero conta, zero dado).
+     ⚠️ A PERGUNTA e as OPÇÕES são PLACEHOLDER: o líder define as reais (a whitelist
+     casa 1:1 no cliente cupom-core.js e no servidor api/cupom-voto.php). */ ?>
+  <?php $cp = $banca['cupom']; ?>
+  <section class="cupom-hero" id="gancho-cupom" aria-labelledby="cupom-h2"
+           data-lang="<?= h($idioma) ?>"
+           data-msg-obrigado="<?= h((string) $cp['obrigado']) ?>"
+           data-msg-javotou="<?= h((string) $cp['ja_votou']) ?>"
+           data-msg-erro="<?= h((string) $cp['erro']) ?>"
+           data-msg-off="<?= h((string) $cp['off']) ?>">
+    <div class="cupom-cab">
+      <h2 class="secao-nome" id="cupom-h2"><?= h((string) $cp['titulo']) ?></h2>
+      <span class="conta"><?= h((string) $cp['meta']) ?></span>
+    </div>
+    <p class="cupom-lide"><?= h((string) $cp['lide']) ?></p>
+
+    <?php /* O CUPOM = um <form> nativo. Sem JS: seleciona + envia → POST nativo pro
+       endpoint (required no 1º radio impede envio vazio; o endpoint revalida a
+       whitelist de qualquer jeito). Com JS: cupom.js intercepta e faz fetch. */ ?>
+    <form class="cupom" id="cupom" method="post" action="/api/cupom-voto.php">
+      <input type="hidden" name="lang" value="<?= h($idioma) ?>">
+
+      <?php /* a serrilha de recorte: pontilhado + tesoura. Decorativa (aria-hidden);
+         cupom.js a transforma no gatilho do RASGAR. */ ?>
+      <div class="cupom-serra" aria-hidden="true">
+        <span class="cupom-tesoura">&#9986;</span>
+        <span class="cupom-recorte"><?= h((string) $cp['recorte']) ?></span>
+      </div>
+
+      <div class="cupom-papel">
+        <fieldset class="cupom-campo">
+          <legend class="cupom-pergunta"><?= h((string) $cp['pergunta']) ?></legend>
+          <p class="cupom-dica"><?= h((string) $cp['legenda']) ?></p>
+          <?php $i = 0; foreach ((array) $cp['opcoes'] as $oid => $olbl): $i++; ?>
+          <label class="cupom-opcao">
+            <input type="radio" name="opcao" value="<?= h((string) $oid) ?>"<?= $i === 1 ? ' required' : '' ?>>
+            <span class="cupom-marca" aria-hidden="true"></span>
+            <span class="cupom-txt"><?= h((string) $olbl) ?></span>
+          </label>
+          <?php endforeach; ?>
+        </fieldset>
+
+        <div class="cupom-acao">
+          <?php /* rasgar/desfazer aparecem só com JS (hidden por padrão). O ENVIAR
+             funciona sempre — é o submit real do form. */ ?>
+          <button type="button" class="cupom-rasgar" id="cupom-rasgar" hidden><?= h((string) $cp['rasgar']) ?></button>
+          <button type="button" class="cupom-desfazer" id="cupom-desfazer" hidden><?= h((string) $cp['desfazer']) ?></button>
+          <button type="submit" class="cupom-btn" id="cupom-enviar"><?= h((string) $cp['enviar']) ?></button>
+        </div>
+
+        <p class="cupom-espera"><?= h((string) $cp['espera']) ?></p>
+      </div>
+
+      <?php /* status: cupom.js anuncia aqui (obrigado / já votou / erro / storage off) */ ?>
+      <p class="cupom-status" id="cupom-status" role="status" aria-live="polite" hidden></p>
+    </form>
+
+    <p class="cupom-cap"><?= h((string) $cp['cap']) ?></p>
+  </section>
+
   <?php /* ══ GANCHOS W6 restantes · os interativos ainda em scaffold ══
      Cada um é uma <section> reservada, igual ao scaffold das seções da edição.
      A ordem segue o wireframe §3.1 (o hero e o PRESS START acima já são reais). */ ?>
@@ -395,6 +465,8 @@ require __DIR__ . '/../includes/head.php';
 <script src="/assets/js/glyfa.js" defer></script>
 <script src="/assets/js/album-core.js" defer></script>
 <script src="/assets/js/album.js" defer></script>
+<script src="/assets/js/cupom-core.js" defer></script>
+<script src="/assets/js/cupom.js" defer></script>
 <script src="/assets/js/som-core.js" defer></script>
 <script src="/assets/js/som.js" defer></script>
 </body>

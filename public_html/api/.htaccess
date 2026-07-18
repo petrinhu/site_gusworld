@@ -1,0 +1,19 @@
+# public_html/api/.htaccess — o UNICO backend vivo do site (o poll do cupom).
+# Hostinger Premium (Apache + mod_rewrite, sem Node).
+#
+# /api/* faz BYPASS da CDN e NUNCA e cacheado (ADR-001 §Cache/CDN por rota): o
+# poll e ao vivo. O proprio cupom-voto.php ja manda Cache-Control: no-store; este
+# header aqui e cinto-e-suspensorio (vale pra qualquer resposta da pasta, incl. erros).
+
+# nunca listar o diretorio
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header always set Cache-Control "no-store, max-age=0"
+  Header always set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# a pasta /api/ nao e indexavel por buscador (e endpoint, nao conteudo)
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow"
+</IfModule>

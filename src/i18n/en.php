@@ -57,6 +57,7 @@ return [
             'pressstart' => ['label' => 'PRESS START poster', 'nome' => 'PRESS START'],
             'glyfa'      => ['label' => 'The Glyfa: name forge', 'nome' => 'The Glyfa'],
             'album'      => ['label' => 'The sticker album',   'nome' => 'The album'],
+            'cupom'      => ['label' => 'The cut-out coupon: the poll', 'nome' => 'The coupon'],
             'chamadas'   => ['label' => 'Cover blurbs',       'nome' => 'Cover blurbs'],
         ],
         // THE SQUARE (real hero · W6 item): game labels + the static caption
@@ -149,6 +150,37 @@ return [
             'ex_glifo'  => 'mor-',
             'ex_glosa'  => 'shadow',
             'cap'       => 'FIG. · the sticker album. stick all 13 glyphs.',
+        ],
+        // THE COUPON (cut-out · W6 item · CUPOM): the site's ONLY live backend (the
+        // poll). Cut it out, pick, send it back — the result comes in the NEXT
+        // edition (slowness as an aesthetic: an open poll = "waiting", not a dead
+        // site). Zero account, zero data (localStorage only marks "already voted",
+        // best-effort). ⚠️ The QUESTION and OPTIONS are PLACEHOLDER — the lead sets
+        // the real ones later; swapping = swapping the 'opcoes' array here + the
+        // client (cupom-core.js) and server (api/cupom-voto.php) whitelists. Degrades
+        // without JS: a native <form method=post>. Pixel labels are lowercase (N→H guard).
+        'cupom' => [
+            'titulo'    => 'the coupon',
+            'meta'      => 'cut-out poll',
+            'lide'      => 'The edition coupon: cut along the dotted line, pick one and send it back. The result comes in the next edition. A magazine poll is in no hurry.',
+            // ⚠️ PLACEHOLDER (question + options): final copy co-decided with the lead
+            'pergunta'  => 'what do you want to see more of in the next edition?',
+            'legenda'   => 'pick one and send the coupon back',
+            'opcoes'    => [
+                'mais-jogo'       => 'more of the game',
+                'mais-bastidores' => 'more behind-the-scenes',
+                'mais-gus'        => 'more of Gus',
+            ],
+            'recorte'   => 'cut here',
+            'enviar'    => 'send the coupon',
+            'rasgar'    => 'tear along the dotted line',
+            'desfazer'  => 'stick it back',
+            'espera'    => 'result in the next edition',
+            'obrigado'  => 'coupon in the box. the result comes in the next edition.',
+            'ja_votou'  => 'you already sent your coupon this edition. the result comes in the next one.',
+            'erro'      => 'could not send right now. try again in a bit.',
+            'off'       => 'no browser memory: your coupon counts, I just won\'t remember you voted.',
+            'cap'       => 'FIG. · the cut-out coupon. pick one and send it back.',
         ],
     ],
 

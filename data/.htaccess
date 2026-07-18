@@ -1,0 +1,18 @@
+# data/.htaccess — DEFESA EM PROFUNDIDADE.
+#
+# Esta pasta e IRMA de public_html/ — o docroot da Hostinger aponta pra public_html/,
+# entao data/ ja fica FORA da web (inalcancavel por URL). Este arquivo e um seguro
+# extra: SE algum dia o docroot for mal-configurado pra raiz do projeto, negar
+# tudo aqui impede servir os votos do poll (data/cupom-votos.json) ou o $edicoes.
+# Os votos sao zero-dado, mas o principio de menor exposicao vale de qualquer jeito.
+
+# Apache 2.4+
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+
+# Apache 2.2 (fallback)
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>
