@@ -19,7 +19,7 @@ return [
 
     // navigation / a11y
     'skip_indice'      => 'Skip to contents',
-    'wordmark_titulo'  => 'GLYFESSE — back to the stand',
+    'wordmark_titulo'  => 'GLYFESSE: back to the stand',
     'up_indice'        => '↑ contents',
     'up_voltar'        => '↑ back to contents',
 
@@ -54,7 +54,7 @@ return [
 
     // section scaffold placeholder (NOT final copy)
     'scaffold_tag'     => 'content pending',
-    'scaffold_texto'   => "Section scaffold. The final copy (full or graceful-empty, in Gus's voice) is co-decided with the lead — W5.",
+    'scaffold_texto'   => "Section scaffold. The final copy (full or graceful-empty, in Gus's voice) is co-decided with the lead (W5).",
 
     // footer
     'rodape_som_ef_on'  => 'Effects: on',

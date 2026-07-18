@@ -19,7 +19,7 @@ return [
 
     // navegação / a11y
     'skip_indice'      => 'Pular para o índice',
-    'wordmark_titulo'  => 'GLYFESSE — voltar à banca',
+    'wordmark_titulo'  => 'GLYFESSE: voltar à banca',
     'up_indice'        => '↑ índice',
     'up_voltar'        => '↑ voltar ao índice',
 
@@ -55,7 +55,7 @@ return [
 
     // placeholder de seção em scaffold (NÃO é copy final)
     'scaffold_tag'     => 'conteúdo pendente',
-    'scaffold_texto'   => 'Seção em scaffold. A copy definitiva (cheia ou vazio-com-graça, na voz do Gus) é co-decidida com o líder — W5.',
+    'scaffold_texto'   => 'Seção em scaffold. A copy definitiva (cheia ou vazio-com-graça, na voz do Gus) é co-decidida com o líder (W5).',
 
     // rodapé
     'rodape_som_ef_on'  => 'Efeitos: ligados',
