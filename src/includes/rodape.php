@@ -19,12 +19,12 @@ declare(strict_types=1);
       <button type="button" class="som-btn" data-som="efeitos" aria-pressed="true"
               data-label-on="<?= h((string) $t['rodape_som_ef_on']) ?>"
               data-label-off="<?= h((string) $t['rodape_som_ef_off']) ?>">
-        <span class="luz" aria-hidden="true"></span><span class="som-label"><?= h((string) $t['rodape_som_ef_on']) ?></span>
+        <span class="luz" aria-hidden="true"></span><span class="som-label" data-ghost="<?= h((string) $t['rodape_som_ef_off']) ?>"><?= h((string) $t['rodape_som_ef_on']) ?></span>
       </button>
       <button type="button" class="som-btn" data-som="musica" aria-pressed="false"
               data-label-on="<?= h((string) $t['rodape_som_mus_on']) ?>"
               data-label-off="<?= h((string) $t['rodape_som_mus_off']) ?>">
-        <span class="luz" aria-hidden="true"></span><span class="som-label"><?= h((string) $t['rodape_som_mus_off']) ?></span>
+        <span class="luz" aria-hidden="true"></span><span class="som-label" data-ghost="<?= h((string) $t['rodape_som_mus_off']) ?>"><?= h((string) $t['rodape_som_mus_off']) ?></span>
       </button>
     </div>
 
