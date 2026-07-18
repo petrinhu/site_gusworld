@@ -44,15 +44,24 @@ body{
    folha; só o texto de leitura é limitado. */
 .indice,.indice-nota,.scaffold{max-width:74ch}
 
-/* ── skip-link: escondido até receber foco ── */
+/* ── skip-link: escondido até receber foco ──
+   Clipado por padrão (width/height 1px + clip-path), NÃO só empurrado pra fora
+   com top negativo: o top negativo dependia do contexto de posição, e quando a
+   mesa passou a estabelecer um (body:position:relative para as folhas soltas) o
+   link reaparecia. O clip é independente de stacking/posição — a mesa não pode
+   revelá-lo. Continua focável no teclado (Tab) e aparece ao receber foco. */
 .skip{
-  position:absolute; left:8px; top:-48px; z-index:50;
+  position:absolute; left:8px; top:8px; z-index:50;
+  width:1px; height:1px; padding:0; overflow:hidden;
+  clip-path:inset(50%); white-space:nowrap;
   background:var(--tela-bg); color:var(--tela-acento);
   font-family:var(--font-display); font-size:13px;
-  padding:8px 12px; border-radius:var(--raio-tela); text-decoration:none;
-  transition:top var(--dur-rapido) var(--ease);
+  border-radius:var(--raio-tela); text-decoration:none;
 }
-.skip:focus{top:8px; outline:2px solid var(--tela-acento); outline-offset:2px}
+.skip:focus{
+  width:auto; height:auto; padding:8px 12px; overflow:visible;
+  clip-path:none; outline:2px solid var(--tela-acento); outline-offset:2px;
+}
 
 /* ═══════════════════ MASTHEAD (header[banner]) ═══════════════════ */
 .masthead{padding-top:clamp(16px,4vw,26px)}
@@ -232,6 +241,53 @@ main{display:block}
     margin-block:clamp(16px,2.6vw,34px);
     min-height:calc(100dvh - 2 * clamp(16px,2.6vw,34px));
     box-shadow:var(--sombra-folha);
+  }
+
+  /* ═════════════ A MESA = a BANCADA de quem faz o jogo ═════════════
+     Build-in-public: a revista está sobre a mesa do dev. Só desktop — no
+     mobile a folha é full-width e a mesa não aparece (ver base). Tratamento
+     escolhido pelo líder: "bancada do maker" (combo).
+
+     ★ "A mesa NÃO é tela" (a_vibe_papel_e_tela): dark-on-dark, APAGADA, sem
+     neon forte. A folha segue o ponto de maior contraste; a mesa nunca a
+     ofusca. Tudo em CSS/SVG — zero arte, zero raster novo. */
+
+  /* 1) textura técnica sob a revista: traços de placa MUITO sutis + vias
+        raras. O único aceno de tela é um ciano PÁLIDO e pontual (as vias);
+        o resto é cobre apagado sobre o marrom da mesa. */
+  html{
+    background:
+      radial-gradient(circle at 26px 30px,   #4dd9e80f 0 1.3px, #0000 2.2px) 0 0/260px 220px,
+      radial-gradient(circle at 150px 128px, #6b5f4a24 0 1.8px, #0000 2.6px) 0 0/260px 220px,
+      repeating-linear-gradient(45deg, #0000 0 78px, #332d26 78px 79px, #0000 79px 190px),
+      repeating-linear-gradient(0deg,  #0000 0 60px, #322d26 60px 61px, #0000 61px 128px),
+      repeating-linear-gradient(90deg, #0000 0 50px, #322d26 50px 51px, #0000 51px 104px),
+      var(--mesa);
+    /* as folhas soltas giradas balançam os cantos pra fora: clipa o X para
+       nunca gerar scroll horizontal (clip não cria scroll container nem
+       mexe no scroll-behavior:smooth, ao contrário de overflow:hidden). */
+    overflow-x:clip;
+  }
+
+  /* 2) as FOLHAS SOLTAS: rascunhos/outras edições espiando por trás da
+        revista. 2 papéis envelhecidos em tons distintos (uma pilha), de leve
+        girados, atrás da folha (z-index:-1), com sombra. A revista pousa
+        fisicamente sobre a bancada. body:relative é o contexto de posição das
+        folhas (o skip-link já é clipado, imune a isto). */
+  body{position:relative}
+  body::before,
+  body::after{
+    content:""; position:absolute; z-index:-1; top:22px; bottom:22px;
+    width:min(1080px,94vw); left:50%; pointer-events:none;
+    box-shadow:0 10px 34px #0000004d;
+  }
+  body::before{
+    background:#e6dcc6;
+    transform:translateX(-50%) rotate(-1.5deg) translateX(-28px);
+  }
+  body::after{
+    background:#dccfb2;
+    transform:translateX(-50%) rotate(1.3deg) translateX(26px);
   }
 }
 
