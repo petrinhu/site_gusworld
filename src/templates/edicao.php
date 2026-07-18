@@ -25,9 +25,11 @@ require __DIR__ . '/../includes/head.php';
 $frame_fs = $ctx['frame'] !== null ? __DIR__ . '/../../public_html' . $ctx['frame'] : null;
 $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs) : false;
 ?>
-<body class="folha" data-material="papel" style="--idade:<?= h((string) $idade) ?>">
+<body data-material="papel">
 
 <a class="skip" href="#sumario"><?= h((string) $t['skip_indice']) ?></a>
+
+<div class="pagina folha" style="--idade:<?= h((string) $idade) ?>">
 
 <?php require __DIR__ . '/../includes/masthead.php'; ?>
 
@@ -94,6 +96,8 @@ $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs
 </main>
 
 <?php require __DIR__ . '/../includes/rodape.php'; ?>
+
+</div><!-- /.pagina -->
 
 <?php /* GANCHO (W6+): aqui entra o enhancement client-side — a LCD "recompilando"
    na chegada por #glyfe (js/lang-core.js) e o toggle de som. Tudo é progressive

@@ -12,26 +12,37 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth; --mesa:#2b2620; background:var(--mesa)}
 body{
-  margin:0; padding:0 0 clamp(48px,8vw,88px);
+  margin:0; padding:0;
   font-family:var(--font-corpo); color:var(--texto-1);
-  /* .folha (tokens.css) já pinta o papel com a idade da edição */
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   A FOLHA = a PÁGINA da revista, sobre a MESA escura (mocks 12/09).
+   O html é a mesa (#2b2620); a folha de papel envelhecido é LIMITADA e
+   centrada — não o viewport inteiro. Sem isto, num monitor largo as laterais
+   viravam papel morto. Mobile-first: base = a folha ocupa a largura toda
+   (sem mesa visível, como o líder aprovou); a mesa só aparece no desktop.
+   ═══════════════════════════════════════════════════════════════════════ */
+.pagina{position:relative; padding-bottom:clamp(48px,8vw,88px)}
+/* .pagina.folha herda o papel de .folha (tokens.css) recalculado por --idade */
+
 /* fibra do papel: SVG com dimensão explícita (senão some no Gecko) */
-body.folha::before{
-  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+.pagina.folha::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
   background-size:180px 180px; mix-blend-mode:multiply; opacity:.12;
 }
-body > *{position:relative; z-index:1}
+.pagina > *{position:relative; z-index:1}
 
-/* a coluna legível: largura de conteúdo, centrada (mock 09: ~70ch) */
-.masthead-inner,.edicao{
-  max-width:74ch; margin-inline:auto;
-  padding-inline:clamp(16px,4vw,40px);
-}
+/* o gutter de página: a margem impressa da revista, dentro da folha */
+.masthead-inner,.edicao{padding-inline:clamp(20px,3.5vw,56px)}
+
+/* a coluna de LEITURA ~74ch DENTRO da folha (corpo/índice; legibilidade) —
+   o líder confirmou manter isto. Os divisores de seção e a capa spanam a
+   folha; só o texto de leitura é limitado. */
+.indice,.indice-nota,.scaffold{max-width:74ch}
 
 /* ── skip-link: escondido até receber foco ── */
 .skip{
@@ -193,7 +204,7 @@ main{display:block}
 /* ═══════════════════ RODAPÉ (footer[contentinfo]) ═══════════════════ */
 .rodape{border-top:3px solid var(--tinta-preta); margin-top:clamp(24px,5vw,40px)}
 .rodape-inner{
-  max-width:74ch; margin-inline:auto; padding:clamp(16px,3vw,22px) clamp(16px,4vw,40px) 0;
+  padding:clamp(16px,3vw,22px) clamp(20px,3.5vw,56px) 0;
   display:flex; flex-direction:column; gap:12px;
 }
 .som{display:flex; gap:12px; flex-wrap:wrap}
@@ -211,11 +222,17 @@ main{display:block}
 .contato a{color:var(--tinta-ciano); text-underline-offset:2px}
 .contato a:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
 
-/* ═══════════════════ TELAS MAIORES ═══════════════════ */
+/* ═══════════════════ TELAS MAIORES: a MESA aparece ═══════════════════ */
 @media (min-width:768px){
   .capa{padding-top:clamp(24px,4vw,34px)}
-  /* a mancha de conteúdo já é limitada por max-width:74ch nas colunas;
-     em telas largas o papel continua full-bleed e a coluna fica centrada. */
+  /* a folha vira uma PÁGINA de ~1080px centrada sobre a mesa escura (mock 12).
+     As laterais no desktop são a mesa emoldurando a revista, não papel morto. */
+  .pagina{
+    max-width:1080px; margin-inline:auto;
+    margin-block:clamp(16px,2.6vw,34px);
+    min-height:calc(100dvh - 2 * clamp(16px,2.6vw,34px));
+    box-shadow:var(--sombra-folha);
+  }
 }
 
 /* o masthead empilha em telas estreitas: a LCD desce para baixo do expediente,

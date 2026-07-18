@@ -8,8 +8,8 @@ declare(strict_types=1);
  *
  * Os 2 botões de som são MARCAÇÃO apenas: o áudio (efeitos ON / música OFF por
  * padrão) é peça posterior. O estado default vai no aria-pressed; ao ligar o
- * áudio, o JS de enhancement passa a refleti-lo. GANCHO: o e-mail de contato
- * abaixo é placeholder — confirmar o endereço real com o líder (MODERACAO).
+ * áudio, o JS de enhancement passa a refleti-lo. O e-mail é o real (MODERACAO:
+ * endereço exibido, sem formulário).
  */
 ?>
 <footer class="rodape" role="contentinfo">
@@ -26,7 +26,7 @@ declare(strict_types=1);
     <p class="licenca"><?= h((string) $t['rodape_licenca']) ?></p>
 
     <p class="contato">
-      <a href="mailto:contato@gusworld.site"><?= h((string) $t['rodape_contato']) ?></a>
+      <a href="mailto:gusworld@gusworld.site"><?= h((string) $t['rodape_contato']) ?></a>
     </p>
   </div>
 </footer>

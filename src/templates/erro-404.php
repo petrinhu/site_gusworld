@@ -17,9 +17,11 @@ $head = [
 ];
 require __DIR__ . '/../includes/head.php';
 ?>
-<body class="folha" data-material="papel" style="--idade:.5">
+<body data-material="papel">
 
 <a class="skip" href="#erro-404"><?= h((string) $t['skip_indice']) ?></a>
+
+<div class="pagina folha" style="--idade:.5">
 
 <header class="masthead" role="banner">
   <div class="masthead-inner">
@@ -45,5 +47,7 @@ require __DIR__ . '/../includes/head.php';
 </main>
 
 <?php require __DIR__ . '/../includes/rodape.php'; ?>
+
+</div><!-- /.pagina -->
 </body>
 </html>
