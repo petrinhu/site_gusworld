@@ -76,7 +76,7 @@ return [
         'press' => [
             'poster_aria' => 'PRESS START poster: press to boot the arcade',
             'press'       => '▶ PRESS START',
-            'insert'      => 'CREDIT 0 · FREE PLAY',
+            'insert'      => 'CREDIT 1 · TOKENS 0',
             'boot'        => [
                 'GUSWORLD // BOOT',
                 'loading the core... ok',

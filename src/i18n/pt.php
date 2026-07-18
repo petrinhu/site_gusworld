@@ -78,7 +78,7 @@ return [
         'press' => [
             'poster_aria' => 'Pôster PRESS START: aperte para ligar o fliperama',
             'press'       => '▶ PRESS START',
-            'insert'      => 'CREDITO 0 · FICHAS 0',
+            'insert'      => 'CREDITO 1 · FICHAS 0',
             // linhas do BIOS falso (impressas uma a uma no boot; spoiler-safe)
             'boot'        => [
                 'GUSWORLD // BOOT',
