@@ -1,0 +1,98 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * src/i18n/en.php — fixed CHROME strings in English. Twin of src/i18n/pt.php.
+ *
+ * Not an i18n framework: a plain string map for the frame (masthead, index,
+ * labels, footer). Section CONTENT (copy, Gus's lines) does NOT live here — it
+ * is co-decided with the lead (W5). The section names below are STRUCTURAL
+ * labels from the approved anatomy, not editorial text.
+ *
+ * @return array<string, mixed>
+ */
+
+return [
+    'html_lang'        => 'en',
+    'og_locale'        => 'en_US',
+
+    // navigation / a11y
+    'skip_indice'      => 'Skip to contents',
+    'wordmark_titulo'  => 'GLYFESSE — back to the stand',
+    'up_indice'        => '↑ contents',
+    'up_voltar'        => '↑ back to contents',
+
+    // masthead / imprint
+    'exp_ano'          => 'year',
+    'exp_numero'       => 'no.',
+    'meses'            => [
+        1 => 'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December',
+    ],
+
+    // language switch LCD (mock 13, treatment A). This page is en → the LCD
+    // NAVIGATES to the Portuguese edition. Labels = a machine readout; the LCD
+    // never wears Gus's voice prompt (project-i18n-switch).
+    'lcd' => [
+        'l1'   => 'BUILD en',
+        'cmd'  => 'glyfe --pt',
+        'sr'   => 'Edição em português',
+    ],
+
+    // index
+    'indice_titulo'    => 'Contents',
+    'indice_nota'      => 'The index builds itself from $edicoes (the same source as the stand and the timeline). The 3 links are fixed in every edition.',
+
+    // the 3 fixed links (canon: edition anatomy)
+    'links_fixos' => [
+        'repo_jogo'  => '→ the game code (GusWorld repo)',
+        'repo_motor' => '→ the graphics engine (GlintFX repo)',
+        'todo_jogo'  => "→ the game's live TODO.md",
+        'gus'        => "BET YOU WON'T READ IT! 🤣",
+    ],
+
+    // section scaffold placeholder (NOT final copy)
+    'scaffold_tag'     => 'content pending',
+    'scaffold_texto'   => "Section scaffold. The final copy (full or graceful-empty, in Gus's voice) is co-decided with the lead — W5.",
+
+    // footer
+    'rodape_som_ef_on'  => 'Effects: on',
+    'rodape_som_mus_off'=> 'Music: off',
+    'rodape_licenca'    => 'Content under a free license. Made with AI as a tool; the creative part is the creator\'s.',
+    'rodape_contato'    => 'Contact the newsroom',
+
+    // 404 (minimal — the in-world microcopy is a ux-writer + lead slot)
+    'erro_404_titulo'  => 'Page not found',
+    'erro_404_texto'   => 'This edition does not exist (yet) or the address changed.',
+    'erro_404_voltar'  => 'Back to the stand',
+
+    // STRUCTURAL section names (anatomy labels, not content)
+    'grupos' => [
+        'abertura'   => 'opening',
+        'corpo'      => 'body',
+        'fixa'       => 'standing',
+        'encarte'    => 'insert',
+        'expert'     => 'expert',
+        'fechamento' => 'closing',
+    ],
+    'secoes' => [
+        'editorial'     => "Editorial · Gus's Letter",
+        'reportagem'    => 'Cover Story',
+        'nota'          => "The Unfinished Game's Score",
+        'bugs'          => 'Bug Gallery',
+        'cemiterio'     => 'Graveyard of Dead Ideas',
+        'detonado'      => 'Walkthrough',
+        'errata'        => 'Errata + Letters',
+        'classificados' => 'In-world Classifieds',
+        'hq'            => 'Comic Strip',
+        'proximos'      => 'Upcoming Releases',
+        'poster'        => 'Centerfold Poster',
+        'brinde'        => 'Cover-mounted Freebie',
+        'cupom'         => 'Cut-out Coupon',
+        'entrevista'    => 'The Interview',
+        'programacao'   => 'Programming Section',
+        'bus'           => 'Gus Reads the Bus',
+        'expediente'    => 'Colophon',
+    ],
+];

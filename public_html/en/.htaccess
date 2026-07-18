@@ -1,0 +1,15 @@
+# /en/ — pretty URL of editions + per-directory 404 (IA-WIREFRAME §1, §4.9).
+# Hostinger Premium (Apache + mod_rewrite, no Node).
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /en/
+
+  # /en/edition-N (no .php, no visible querystring) → the front controller
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(edition-[a-z0-9-]+)/?$ edition.php?slug=$1 [L,QSA]
+</IfModule>
+
+# In-world 404 for this folder's language (microcopy is a ux-writer + lead slot)
+ErrorDocument 404 /en/edition.php

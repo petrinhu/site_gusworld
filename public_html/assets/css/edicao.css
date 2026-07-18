@@ -1,0 +1,227 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   GLYFESSE / edicao.css — o CSS do TEMPLATE DA EDIÇÃO (esqueleto).
+   Reproduz a ESTRUTURA aprovada (mocks 09 anatomia · 12 capa · 13 switch)
+   com os tokens reais de tokens.css. Zero token novo, zero terceiro.
+   Mobile-first: base = 390px; @media (min-width) adiciona para telas maiores.
+
+   ⚠️ GUARD PIXEL N→H (reference-pixelfont-n-maiusculo): a PixelOperatorMono
+   rasteriza o N MAIÚSCULO como H abaixo de 15px (e uppercase-transform
+   dispara o mesmo). Logo: todo rótulo pixel decorativo <15px aqui é minúsculo
+   (lowercase, sem uppercase-transform); o nome de seção, que é title-case,
+   fica no piso seguro de 15px.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; padding:0 0 clamp(48px,8vw,88px);
+  font-family:var(--font-corpo); color:var(--texto-1);
+  /* .folha (tokens.css) já pinta o papel com a idade da edição */
+}
+
+/* fibra do papel: SVG com dimensão explícita (senão some no Gecko) */
+body.folha::before{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.12;
+}
+body > *{position:relative; z-index:1}
+
+/* a coluna legível: largura de conteúdo, centrada (mock 09: ~70ch) */
+.masthead-inner,.edicao{
+  max-width:74ch; margin-inline:auto;
+  padding-inline:clamp(16px,4vw,40px);
+}
+
+/* ── skip-link: escondido até receber foco ── */
+.skip{
+  position:absolute; left:8px; top:-48px; z-index:50;
+  background:var(--tela-bg); color:var(--tela-acento);
+  font-family:var(--font-display); font-size:13px;
+  padding:8px 12px; border-radius:var(--raio-tela); text-decoration:none;
+  transition:top var(--dur-rapido) var(--ease);
+}
+.skip:focus{top:8px; outline:2px solid var(--tela-acento); outline-offset:2px}
+
+/* ═══════════════════ MASTHEAD (header[banner]) ═══════════════════ */
+.masthead{padding-top:clamp(16px,4vw,26px)}
+.masthead-inner{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+  border-bottom:3px solid var(--tinta-preta); padding-bottom:9px;
+}
+.logo{
+  font-family:var(--font-display); font-weight:700; line-height:1;
+  font-size:clamp(30px,7vw,46px); color:var(--tinta-preta); text-decoration:none;
+  text-shadow:-1.5px -1.5px 0 #00b6d4a0, 1.5px 1.5px 0 #c2129ea0;
+}
+.logo:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:3px}
+.col-meta{display:flex; flex-direction:column; align-items:flex-end; gap:7px}
+.meta{
+  font-family:var(--font-display); font-size:11px; text-align:right;
+  line-height:1.55; color:var(--tinta-2); margin:0;
+}
+.meta b{color:var(--tinta-preta); font-size:15px}
+
+/* ── a LCD do switch de idioma (mock 13, tratamento A) ──
+   Um buraco de tela acesa no papel: a menor tela do site. Herda .aceso do
+   tokens.css (ganha o CRT de graça quando o leitor liga o scanline). */
+.imprint{
+  --lcd-cols:16;    /* colunas: cabe a linha mais longa do log + folga (mock 13) */
+  display:block; text-decoration:none; cursor:pointer;
+  background:var(--tela-bg); border-radius:var(--raio-tela);
+  padding:7px 9px; width:calc(var(--lcd-cols) * 1ch + 18px);
+  font-family:var(--font-display); font-size:11px; line-height:1.5;
+  box-shadow:inset 0 0 0 1px var(--tela-borda-ui), 0 0 0 1px #00000026, var(--brilho-tela);
+  transition:box-shadow var(--dur-medio) var(--ease);
+}
+/* min-height reserva a 2ª linha mesmo vazia = zero layout shift (mock 13) */
+.imprint .l1,.imprint .l2{display:block; white-space:pre; overflow:hidden; min-height:1.5em}
+.imprint .l1{color:var(--tela-texto-2)}                                   /* 7.59:1 AAA */
+.imprint .l2{color:var(--tela-acento); display:flex; align-items:center; gap:6px} /* 10.83:1 AAA */
+/* o "executar": triângulo em CSS puro, zero dependência de fonte */
+.imprint .run{
+  width:0; height:0; border-style:solid; border-width:3.5px 0 3.5px 5px;
+  border-color:#0000 #0000 #0000 var(--tela-acento);
+  transition:transform var(--dur-medio) var(--ease);
+}
+.imprint:hover{box-shadow:inset 0 0 0 1px var(--tela-acento), 0 0 0 1px #00000026, 0 0 18px #4dd9e8b0}
+.imprint:hover .run{transform:translateX(2px)}
+.imprint:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
+/* texto só-leitor-de-tela: diz o que o comando faz sem substituir o rótulo visível */
+.sr{position:absolute; width:1px; height:1px; margin:-1px; padding:0;
+  overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0}
+
+/* ═══════════════════ MAIN / a folha da edição ═══════════════════ */
+main{display:block}
+.edicao{padding-top:6px}
+
+/* ── 01 · CAPA ── */
+.capa{padding:clamp(18px,4vw,28px) 0 clamp(16px,3vw,22px); border-bottom:3px solid var(--tinta-preta)}
+.manchete{
+  font-family:var(--font-manchete); font-weight:700; text-transform:uppercase;
+  font-size:clamp(46px,13vw,104px); line-height:.9; letter-spacing:var(--manchete-ls);
+  color:var(--tinta-preta); margin:0 0 6px;
+}
+.dek{
+  font-family:var(--font-corpo); font-style:italic; font-weight:400;
+  font-size:clamp(16px,2.4vw,21px); line-height:1.4;
+  color:var(--tinta-2); margin:0; max-width:52ch;
+}
+/* o frame: buraco de tela acesa no papel (raio de tela), sem CLS (dims no img) */
+.capa-frame{
+  margin:clamp(16px,3vw,22px) 0 0; position:relative;
+  border-radius:var(--raio-tela); overflow:hidden;
+  box-shadow:inset 0 0 0 1px var(--tela-borda-ui), var(--brilho-tela); background:var(--tela-bg);
+}
+.capa-frame img{display:block; width:100%; height:auto; image-rendering:pixelated}
+
+/* ── 02 · ÍNDICE (#sumario) ── */
+.sumario{scroll-margin-top:12px; padding:clamp(18px,3vw,24px) 0}
+.indice{list-style:none; margin:0; padding:0}
+.indice li{border-bottom:1px dotted #00000022}
+.indice a{
+  display:flex; align-items:baseline; gap:10px; width:100%;
+  padding:6px 0; color:var(--tinta-preta); text-decoration:none;
+  font-family:var(--font-corpo); font-size:15px;
+}
+.indice .pg{font-family:var(--font-display); font-size:11px; color:var(--tinta-ciano); flex:0 0 26px}
+.indice .pt{flex:1}
+.indice a:hover .pt{text-decoration:underline; text-decoration-color:var(--tinta-ciano); text-underline-offset:2px}
+.indice a:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
+
+.links-fixos{margin-top:14px; padding:12px 14px; background:#0d152008; border-left:2px solid var(--tinta-ciano)}
+.links-fixos a{
+  display:block; padding:4px 0; font-family:var(--font-display); font-size:13px;
+  color:var(--tinta-ciano); text-decoration:underline; text-underline-offset:2px;
+}
+.links-fixos a:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
+.links-fixos .gus{
+  font-family:var(--font-corpo); font-style:italic; font-size:13px;
+  color:var(--tinta-2); margin:2px 0 0 22px;
+}
+.links-fixos .gus .conector{font-style:normal; color:var(--tinta-ciano); margin-right:4px}
+/* rótulo pixel <15px → minúsculo (guard N→H) */
+.indice-nota{font-family:var(--font-display); font-size:11px; color:var(--tinta-2); line-height:1.6; margin:12px 0 0}
+
+/* ── 03…19 · divisor de seção + scaffold ── */
+.secao-bloco{scroll-margin-top:12px}
+.secao{
+  display:flex; align-items:center; gap:10px;
+  margin:clamp(24px,4vw,32px) 0 12px; padding-top:20px; border-top:1px solid #00000018;
+}
+.secao .n{
+  font-family:var(--font-display); font-weight:700; font-size:11px;
+  color:var(--papel); background:var(--tinta-preta);
+  padding:3px 7px; letter-spacing:.06em; flex:0 0 auto;
+}
+/* nome de seção: title-case → piso seguro de 15px pra o N não virar H */
+.secao-nome{
+  font-family:var(--font-display); font-weight:700; font-size:15px;
+  letter-spacing:.02em; color:var(--tinta-preta); margin:0;
+}
+/* rótulo de grupo pixel <15px → minúsculo (guard N→H) */
+.secao .grupo{
+  margin-left:auto; font-family:var(--font-display); font-size:9px;
+  letter-spacing:.1em; color:var(--tinta-2);
+}
+
+/* o placeholder de scaffold: NÃO é o vazio-com-graça final; é o marcador de dev */
+.scaffold{
+  border:1.5px dashed var(--tinta-ciano); background:#0d5e670a;
+  padding:14px 15px; margin-top:4px;
+}
+.scaffold .tag{
+  display:inline-block; margin-bottom:6px; font-family:var(--font-display);
+  font-size:10px; letter-spacing:.1em; color:var(--tinta-ciano);
+}
+.scaffold p{font-family:var(--font-corpo); font-size:14px; line-height:1.5; color:var(--tinta-2); margin:0}
+
+/* voltar ao índice: discreto, ao fim de cada seção (mock 09) */
+.up-wrap{text-align:right; margin:12px 0 0}
+.up{
+  font-family:var(--font-display); font-size:11px; letter-spacing:.08em;
+  color:var(--tinta-ciano); text-decoration:none;
+  border:1px solid var(--tinta-ciano); padding:3px 9px; white-space:nowrap;
+}
+.up:hover{background:var(--tinta-ciano); color:var(--papel)}
+.up:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
+.up-fim{margin-top:clamp(20px,4vw,30px)}
+
+/* ── 404 ── */
+.erro-404{padding:clamp(24px,6vw,48px) 0}
+
+/* ═══════════════════ RODAPÉ (footer[contentinfo]) ═══════════════════ */
+.rodape{border-top:3px solid var(--tinta-preta); margin-top:clamp(24px,5vw,40px)}
+.rodape-inner{
+  max-width:74ch; margin-inline:auto; padding:clamp(16px,3vw,22px) clamp(16px,4vw,40px) 0;
+  display:flex; flex-direction:column; gap:12px;
+}
+.som{display:flex; gap:12px; flex-wrap:wrap}
+.som-btn{
+  display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+  font-family:var(--font-display); font-size:11px; letter-spacing:.04em;
+  color:var(--tinta-preta); background:#0000;
+  border:1px solid var(--borda-forte); padding:8px 12px; min-height:44px;
+}
+.som-btn .luz{width:9px; height:9px; border:1.5px solid var(--borda-forte); background:#0000}
+.som-btn[aria-pressed="true"] .luz{background:var(--tinta-ciano)}
+.som-btn:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
+.licenca{font-family:var(--font-corpo); font-size:13px; line-height:1.55; color:var(--tinta-2); margin:0; max-width:60ch}
+.contato{margin:0; font-family:var(--font-display); font-size:12px}
+.contato a{color:var(--tinta-ciano); text-underline-offset:2px}
+.contato a:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
+
+/* ═══════════════════ TELAS MAIORES ═══════════════════ */
+@media (min-width:768px){
+  .capa{padding-top:clamp(24px,4vw,34px)}
+  /* a mancha de conteúdo já é limitada por max-width:74ch nas colunas;
+     em telas largas o papel continua full-bleed e a coluna fica centrada. */
+}
+
+/* o masthead empilha em telas estreitas: a LCD desce para baixo do expediente,
+   mas nunca muda de altura (mantém as 2 linhas) — zero CLS no topo. */
+@media (max-width:560px){
+  .masthead-inner{flex-direction:column; align-items:flex-start; gap:10px}
+  .col-meta{align-items:flex-start; width:100%}
+  .meta{text-align:left}
+}

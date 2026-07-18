@@ -1,0 +1,15 @@
+# /pt/ — pretty URL das edições + 404 por diretório (IA-WIREFRAME §1, §4.9).
+# Hostinger Premium (Apache + mod_rewrite, sem Node).
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /pt/
+
+  # /pt/edicao-N (sem .php, sem querystring visível) → o front controller
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(edicao-[a-z0-9-]+)/?$ edicao.php?slug=$1 [L,QSA]
+</IfModule>
+
+# 404 in-world do idioma desta pasta (a microcopy é slot do ux-writer + líder)
+ErrorDocument 404 /pt/edicao.php

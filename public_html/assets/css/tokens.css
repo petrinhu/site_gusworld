@@ -1,0 +1,469 @@
+/* GERADO por scripts/sync-tokens.sh a partir de docs/design/tokens.css.
+   NÃO edite à mão: edite o canônico de design e rode o script. */
+/* ═══════════════════════════════════════════════════════════════════════
+   GLYFESSE / TOKENS CANÔNICOS
+   ═══════════════════════════════════════════════════════════════════════
+   Decisão do líder (2026-07-16): o site é PAPEL, com BURACOS DE TELA ACESA.
+
+   A conta que decidiu:
+     navy  #0d1520 sobre papel = 15.99:1  o navy do jogo JÁ é a tinta preta
+     ciano #4dd9e8 sobre papel =  1.48:1  some
+
+   "A paleta do jogo é feita de LUZ. No papel ela só aparece onde há tela,
+    que é exatamente onde o Gus vive."
+
+   Daí a arquitetura destes tokens, e ela não é a de um tema comum:
+
+     LIGHT e DARK NÃO SÃO O MESMO OBJETO COM CORES TROCADAS.
+     São dois MATERIAIS:
+       light = o papel da revista
+       dark  = a tela do Tavus-Drive (o Diário do Gus por dentro)
+     "De dia você lê a revista, de noite você está no laptop dele."
+
+   E existe um terceiro elemento que ATRAVESSA os dois: a TELA ACESA.
+   No papel ela é um buraco de luz na página; no dark ela é o site inteiro.
+   Por isso os tokens --tela-* são CONSTANTES: a paleta do jogo é ela mesma
+   nos dois materiais, e é o único lugar onde o neon existe.
+
+   Sem framework, sem build: este arquivo é o CSS de produção.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════
+   AS FONTES. Todas SELF-HOSTED, zero terceiro em runtime.
+   Nada de Google Fonts: transferiria o IP do visitante, e HÁ CRIANÇA no
+   público. O caminho é relativo a este arquivo; ajustar ao servir.
+
+   PixelOperatorMono   CC0    9,1 KB   a fonte da UI do jogo (do repo dele)
+   Archivo Narrow 700  OFL   11,5 KB   manchete
+   Vollkorn 400/600/it OFL   76,7 KB   corpo
+                                       ───────
+                                       96,7 KB total, e nenhuma requisição
+                                       sai para fora do domínio.
+   ═══════════════════════════════════════════════════════════════════════ */
+@font-face{
+  font-family:"PixelOperatorMono";
+  src:url("../fonts/PixelOperatorMono.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:block;
+}
+@font-face{
+  font-family:"PixelOperatorMono";
+  src:url("../fonts/PixelOperatorMono-Bold.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:block;
+}
+@font-face{
+  font-family:"Archivo Narrow";
+  src:url("../fonts/archivo-narrow-latin-700-normal.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Vollkorn";
+  src:url("../fonts/vollkorn-latin-400-normal.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+/* ⚠️ GUARD: o Vollkorn baixado NÃO tem arquivo de peso 700.
+   O range "600 700" faz o browser usar ESTE arquivo quando alguém pedir
+   700, em vez de sintetizar um negrito falso (que fica gordo e borrado).
+   Se um dia baixarem o 700 de verdade, troque o range para 600 e
+   adicione o @font-face novo. Ver tokens.md §7. */
+@font-face{
+  font-family:"Vollkorn";
+  src:url("../fonts/vollkorn-latin-600-normal.woff2") format("woff2");
+  font-weight:600 700; font-style:normal; font-display:swap;
+}
+/* o itálico não é enfeite: é onde as reticências do Gus vivem
+   ("Eu... gostava dele"), o momento em que ele quase sente algo. */
+@font-face{
+  font-family:"Vollkorn";
+  src:url("../fonts/vollkorn-latin-400-italic.woff2") format("woff2");
+  font-weight:400; font-style:italic; font-display:swap;
+}
+
+:root{
+
+  /* ─────────────────────────────────────────────────────────────────
+     1. MARCA. As cores do jogo, MEDIDAS nos assets (não inventadas).
+        Nunca usar direto num componente: use os semânticos abaixo.
+     ───────────────────────────────────────────────────────────────── */
+  --gw-navy:        #0d1520;   /* base do jogo. e a tinta preta da revista */
+  --gw-navy-alto:   #1a2436;   /* superfície elevada dentro da tela */
+  --gw-ciano:       #4dd9e8;   /* óculos do Gus, holograma, HUD */
+  --gw-ciano-alto:  #6ff0ff;
+  --gw-magenta:     #cd58e1;   /* portal, board, drones. CORRIGIDO, ver §5 */
+
+  /* O magenta ORIGINAL dos assets do jogo. Só área/preenchimento.
+     PROIBIDO como texto: 4.37:1 sobre navy falha AA. Ver tokens.md §5. */
+  --gw-magenta-asset: #c23fd9;
+
+  /* ─────────────────────────────────────────────────────────────────
+     2. PAPEL. A escala de IDADE da edição.
+        "As bordas amarelam com a idade: a #1 encardida, a nova branquinha.
+         Na banca dá pra ver qual é velha só de olhar."
+        --idade: 0 (edição nova) .. 1 (a #1, a mais velha da banca).
+        Cada <article> de edição só declara --idade. O papel amarela sozinho.
+        Zero JS: é color-mix.
+     ───────────────────────────────────────────────────────────────── */
+  --papel-novo:     #f4efe4;
+  --papel-fim:      #d9c8a3;   /* o limite: mais velho que isto, a tinta cai */
+  --idade:          0;
+  --papel:          var(--papel-novo);   /* default; quem envelhece é .folha */
+
+  /* ─────────────────────────────────────────────────────────────────
+     3. TINTA. As cores quando IMPRESSAS (papel absorve, tela emite).
+        ★ CALIBRADAS NO PIOR PAPEL, não no novo: cada uma passa AA 4.5:1
+        sobre --papel-fim (a #1 encardida). Assim o MESMO token serve em
+        qualquer edição da banca, e envelhecer a página nunca quebra a
+        leitura. Era um furo real do conceito: o ciano de tinta calibrado
+        no papel novo caía para 3.89:1 na #1.
+     ───────────────────────────────────────────────────────────────── */
+  --tinta-preta:    #1a1614;   /* 15.67 no papel novo · 10.90 na #1 · AAA sempre */
+  --tinta-2:        #5b544f;   /*  6.48 ·  4.51 · secundário, legenda, crédito */
+  --tinta-ciano:    #0d5e67;   /*  6.51 ·  4.53 · o ciano do jogo, impresso */
+  --tinta-magenta:  #8d1da1;   /*  6.49 ·  4.51 · o magenta do jogo, impresso */
+
+  /* ─────────────────────────────────────────────────────────────────
+     4. TELA ACESA. Constante nos dois materiais: é a paleta do jogo
+        sendo ela mesma. No papel = buraco de luz. No dark = o site.
+     ───────────────────────────────────────────────────────────────── */
+  --tela-bg:        var(--gw-navy);
+  --tela-alto:      var(--gw-navy-alto);
+  --tela-texto-1:   #dce8f5;   /* 14.76 sobre navy · AAA */
+  --tela-texto-2:   #94a9bf;   /*  7.59 · AAA */
+  --tela-texto-3:   #798da2;   /*  5.37 sobre navy · 4.55 sobre --tela-alto */
+  --tela-acento:    var(--gw-ciano);      /* 10.83 · AAA */
+  --tela-acento-2:  var(--gw-magenta);    /*  5.31 navy · 4.50 alto · AA nos dois */
+  --tela-borda:     #2c3d52;   /* DECORATIVA. 1.66: nunca carrega significado */
+  --tela-borda-ui:  #486486;   /* 3.01 sobre navy: controle, foco, borda funcional */
+
+  /* ─────────────────────────────────────────────────────────────────
+     5. TIPOGRAFIA. DECIDIDA pelo líder em 2026-07-16 (o par A), vendo os
+        três pares renderizados lado a lado em 420px.
+
+        --font-display   PixelOperatorMono   CC0   É a fonte da UI do JOGO
+        --font-manchete  Archivo Narrow 700  OFL   a condensada de banca
+        --font-corpo     Vollkorn 400/600/it OFL   a serifa que aguenta ADR
+
+        ★ POR QUE A CONDENSADA, e o número é o motivo: a manchete de revista
+        tem que caber em 390px, porque a criança chega de celular. No mock 02
+        o par A foi o único que disse "AGORA EU ANDO NA DIAGONAL" INTEIRA,
+        em UMA linha, e com o MAIOR corpo dos três. Não é gosto: é o único
+        que resolve o problema. Se alguém "simplificar" isto para uma
+        família só, a manchete quebra no celular. Não simplifique.
+
+        ★ O PIXEL SÓ É ESPECIAL ENQUANTO É RARO.
+        O lugar dele é onde o JOGO está: logo, rótulo, numeral, e dentro das
+        telas acesas. A manchete é a REVISTA falando, não o jogo. Se o pixel
+        subir para todo título, vira o fundo e para de significar. Foi por
+        isso que o par C (manchete em pixel), o mais tentador dos três,
+        perdeu. Ele também não condensa: largura fixa quebra feio no celular.
+
+        ⚠️ PIXEL NUNCA EM PARÁGRAFO. Não é regra a decorar: é consequência
+        do material. Tinta em papel quer legibilidade.
+     ───────────────────────────────────────────────────────────────── */
+  --font-display:  "PixelOperatorMono", ui-monospace, monospace;
+  --font-manchete: "Archivo Narrow", "Noto Sans Condensed", sans-serif;
+  --font-corpo:    "Vollkorn", "Bitstream Charter", Georgia, serif;
+
+  --t-xs:    11px;
+  --t-sm:    12.5px;
+  --t-base:  15px;
+  --t-md:    18px;
+  --t-lg:    24px;
+  --t-xl:    33px;
+  --t-display: 48px;
+
+  /* os valores que o mock 02 usou, que são os aprovados */
+  --manchete-peso:   700;
+  --manchete-lh:     .95;
+  --manchete-ls:     -.018em;   /* a condensada pede tracking negativo */
+  --corpo-peso:      400;
+  --linha-fina-peso: 600;       /* Vollkorn 600 no lide. ATENÇÃO: não há 700 baixado */
+
+  --lh-apertado: 1.05;   /* manchete */
+  --lh-corpo:    1.55;   /* parágrafo. nunca abaixo disto */
+
+  /* ─────────────────────────────────────────────────────────────────
+     6. FORMA
+        ★ RAIO ZERO, e não é preguiça: papel não tem canto arredondado e
+        tinta não tem raio. O único raio do site é a moldura do buraco de
+        tela, porque tela de verdade tem canto. É a forma dizendo de que
+        material a coisa é feita.
+     ───────────────────────────────────────────────────────────────── */
+  --raio-papel: 0;
+  --raio-tela:  2px;
+
+  --espaco:    8px;
+  --espaco-1:  4px;
+  --espaco-2:  8px;
+  --espaco-3:  12px;
+  --espaco-4:  16px;
+  --espaco-6:  24px;
+  --espaco-8:  32px;
+
+  /* elevação de PAPEL: sombra de folha, não de material design */
+  --sombra-folha: 0 1px 0 #0000001a, 0 10px 26px #0000001f;
+  --sombra-dobra: -2px -2px 6px #0000002e;
+  /* elevação de TELA: a luz vaza, não projeta sombra */
+  --brilho-tela: 0 0 14px #4dd9e880;
+
+  /* ─────────────────────────────────────────────────────────────────
+     7. MOTION. Um site que É movimento precisa que a versão reduzida
+        continue fazendo sentido. Ver §9.
+     ───────────────────────────────────────────────────────────────── */
+  --dur-rapido: 90ms;
+  --dur-medio:  180ms;
+  --dur-lento:  420ms;
+  --ease:       cubic-bezier(.2,.7,.3,1);
+
+  /* ─────────────────────────────────────────────────────────────────
+     8. OS DOIS VÉUS: o CRT e o café. Os dois ESCURECEM o que está
+        embaixo, então os dois são risco de contraste. Medidos, não
+        chutados.
+
+     ── O CRT (scanline) ──
+     Achado que surpreende: o scanline cai por cima do texto E do fundo,
+     na mesma proporção, então a RAZÃO quase não muda. Ele é bem menos
+     perigoso do que parecia. MAS só enquanto ficar por cima dos dois:
+     se cair só no fundo, quebra na hora.
+
+     Medido sobre a tela acesa, com --crt-alpha 0.27:
+       texto-1  14.76 -> 8.09  AA ok
+       ciano    10.83 -> 6.07  AA ok
+       magenta   5.31 -> 3.26  ⚠️ SÓ TEXTO GRANDE (a NOTA). passa 3:1.
+
+     ⚠️ TETO: 0.35. Acima disso o ciano cai abaixo de 4.5:1.
+     ⚠️ Com o CRT ligado o magenta NÃO serve como texto normal. Ele já
+        só é usado em numeral grande (a NOTA), então está coberto, mas
+        não invente magenta em parágrafo.
+     ───────────────────────────────────────────────────────────────── */
+  --crt-alpha:  .27;   /* teto seguro: .35 */
+  --crt-passo:  3px;   /* 1px de linha a cada 3px */
+
+  /* ── O CAFÉ ──
+     ★ A conta que decide o desenho: sobre a edição #1 encardida, a
+     mancha derruba o texto secundário abaixo de AA JÁ COM ALPHA 0.08,
+     quando ela é quase invisível:
+
+       alpha .08 sobre a #1 -> secundário 4.04 · ciano 4.06   FALHA AA
+
+     Ou seja: NÃO EXISTE mancha de café visível que possa cair sobre
+     texto na edição velha sem quebrar a leitura. Isso não é preferência
+     estética, é aritmética. Por isso ela não é "posicionada com cuidado":
+     ela é CLIPADA por uma zona segura (.zona-cafe), e o overflow:hidden
+     é o guard. Se alguém errar a coordenada, a mancha é cortada em vez
+     de invadir o texto.
+
+     Onde ela PODE cair: margem externa, rodapé, e por cima da tela acesa
+     (derramar café na foto da revista é natural, e lá não há parágrafo).
+
+     ★ E aqui está a consequência boa de ter o guard: COMO a zona garante
+     que não há texto embaixo, o alpha do café é LIVRE. Ele não precisa
+     ser tímido. O 0.18 seria o teto se a mancha pudesse encostar em
+     texto; como não pode, ela pode ser uma mancha de café de verdade.
+     Resolver o problema direito é o que permite a coisa ser bonita.
+  */
+  --cafe-alpha: .42;   /* livre: a zona garante que não há texto embaixo */
+  --cafe-cor:   #5a3418;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   .folha - UMA FOLHA DE PAPEL QUE TEM IDADE
+   ═══════════════════════════════════════════════════════════════════
+   ⚠️ ARMADILHA DE CSS, e ela custou um mock: o color-mix TEM que ser
+   declarado AQUI, na própria folha, e não no :root.
+
+   Custom property é substituída no elemento onde é DECLARADA. Se
+   --papel:color-mix(...var(--idade)...) mora no :root, o --idade
+   resolve com o valor do :root (0) e o filho herda a cor JÁ PRONTA.
+   Trocar --idade no filho não recalcula nada: a banca inteira sai da
+   mesma cor. Foi exatamente o que aconteceu, e só o render mostrou.
+
+   Declarando na .folha, o var(--idade) resolve no elemento que o
+   declarou, e cada edição amarela sozinha.
+
+   Uso:  <article class="folha" style="--idade:.6">
+   No PHP:  style="--idade:<?= $idade ?>"    (1 = a mais velha da banca)
+   ═══════════════════════════════════════════════════════════════════ */
+.folha{
+  --papel: color-mix(in oklab,
+             var(--papel-novo),
+             var(--papel-fim) calc(var(--idade) * 100%));
+  --pagina-bg:  var(--papel);
+  --superficie: var(--papel);
+  background-color: var(--papel);
+  color: var(--texto-1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MATERIAL: PAPEL (o chão do site; o default)
+   ═══════════════════════════════════════════════════════════════════ */
+:root,
+[data-material="papel"]{
+  --pagina-bg:    var(--papel);
+  --superficie:   var(--papel);
+  --texto-1:      var(--tinta-preta);
+  --texto-2:      var(--tinta-2);
+  --acento:       var(--tinta-ciano);
+  --acento-2:     var(--tinta-magenta);
+  --borda:        #00000026;
+  --borda-forte:  var(--tinta-preta);
+  --raio:         var(--raio-papel);
+  --sombra:       var(--sombra-folha);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MATERIAL: TELA DO TAVUS-DRIVE (o dark; o Diário do Gus por dentro)
+   Não é o papel invertido. É outro objeto.
+   ═══════════════════════════════════════════════════════════════════ */
+[data-material="tela"]{
+  --pagina-bg:    var(--tela-bg);
+  --superficie:   var(--tela-alto);
+  --texto-1:      var(--tela-texto-1);
+  --texto-2:      var(--tela-texto-2);
+  --acento:       var(--tela-acento);
+  --acento-2:     var(--tela-acento-2);
+  --borda:        var(--tela-borda);
+  --borda-forte:  var(--tela-borda-ui);
+  --raio:         var(--raio-tela);
+  --sombra:       none;
+}
+
+/* respeitar a preferência do sistema quando o líder não fixou o material */
+@media (prefers-color-scheme: dark){
+  :root:not([data-material="papel"]){
+    --pagina-bg:    var(--tela-bg);
+    --superficie:   var(--tela-alto);
+    --texto-1:      var(--tela-texto-1);
+    --texto-2:      var(--tela-texto-2);
+    --acento:       var(--tela-acento);
+    --acento-2:     var(--tela-acento-2);
+    --borda:        var(--tela-borda);
+    --borda-forte:  var(--tela-borda-ui);
+    --raio:         var(--raio-tela);
+    --sombra:       none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   A MANCHA DE CAFÉ (de outra pessoa)
+   ═══════════════════════════════════════════════════════════════════
+   "A única marca que insinua comunidade sem contador de visitas."
+
+   Uso, e a zona NÃO é opcional:
+
+     <div class="zona-cafe">
+       <i class="cafe" style="--cafe-x:30%; --cafe-y:55%"></i>
+     </div>
+
+   A .zona-cafe é o guard: ela tem overflow:hidden e só é colocada onde
+   NÃO há parágrafo (margem, rodapé, sobre a tela acesa). Se a coordenada
+   estiver errada, a mancha é CORTADA em vez de invadir o texto. Ver §8.
+
+   Nunca ponha .cafe solto dentro de uma coluna de texto: a conta de §8
+   diz que na edição #1 até uma mancha quase invisível reprova AA.
+
+   ⚠️ O canto superior direito NÃO é zona segura pro café. Ali vivem o
+   expediente (data, gusworld.site) e agora a LCD do switch de idioma.
+   O §8 deste arquivo é taxativo: na #1 encardida o café reprova AA sobre
+   texto secundário já com alpha .08. Quem for reativar/reposicionar a
+   mancha: escolha outra zona e prove por render — não "conserte" o
+   clipping sem resolver a posição, ou publica mancha sobre texto na
+   edição mais velha da banca. (achado do líder, registrado pra impedir
+   erro futuro)
+   ═══════════════════════════════════════════════════════════════════ */
+.zona-cafe{
+  position:absolute; overflow:hidden;   /* ← este overflow É o guard */
+  pointer-events:none; z-index:0;
+  inset:auto 0 0 auto;                  /* default: canto inferior externo */
+  width:38%; height:34%;
+}
+.cafe{
+  position:absolute; display:block; pointer-events:none;
+  left:var(--cafe-x,50%); top:var(--cafe-y,50%);
+  width:var(--cafe-tam,116px); aspect-ratio:1.15;
+  translate:-50% -50%; rotate:var(--cafe-giro,-8deg);
+  border-radius:47% 53% 44% 56% / 52% 45% 55% 48%;
+  /* café seco deixa ANEL: a borda fica bem mais escura que o miolo, porque
+     o líquido evapora e empurra o pigmento pra fora (o coffee-ring effect).
+     ⚠️ a intensidade vem do opacity do elemento, NÃO de color-mix com
+     calc() dentro: calc(var(--x) * 70%) dentro de color-mix não resolve, e
+     a mancha some inteira, sem erro nenhum no console. */
+  background:
+    radial-gradient(ellipse at 50% 50%,
+      #0000 60%,
+      rgb(90 52 24 / .62) 68%,
+      rgb(90 52 24 / .92) 76%,
+      rgb(90 52 24 / .40) 84%,
+      #0000 92%),
+    radial-gradient(ellipse at 44% 42%,
+      rgb(90 52 24 / .34) 0 52%,
+      rgb(90 52 24 / .20) 62%,
+      #0000 74%);
+  opacity:var(--cafe-alpha);
+  mix-blend-mode:multiply;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   O CRT / SCANLINE, DESLIGÁVEL SEM UMA LINHA DE JAVASCRIPT
+   ═══════════════════════════════════════════════════════════════════
+   O checkbox nativo guarda o estado; o :has() aplica. Zero JS.
+   Persistir entre páginas: cookie no PHP escrevendo data-crt no <html>
+   (continua zero JS). O <input> real fica escondido mas focável, e o
+   <label> é o botão: funciona no teclado e no leitor de tela de graça.
+
+   O CRT só cai DENTRO da tela acesa: é a tela do jogo que tem scanline,
+   não o papel. Papel não é CRT.
+   ═══════════════════════════════════════════════════════════════════ */
+.aceso{ position:relative }
+
+:root:has(#crt:checked) .aceso::before,
+[data-crt="on"] .aceso::before{
+  content:""; position:absolute; inset:0; z-index:4; pointer-events:none;
+  background:repeating-linear-gradient(
+    0deg,
+    rgb(0 0 0 / var(--crt-alpha)) 0 1px,
+    #0000 1px var(--crt-passo));
+}
+/* o abaulamento do tubo: sutil, e some junto com o scanline */
+:root:has(#crt:checked) .aceso::after,
+[data-crt="on"] .aceso::after{
+  content:""; position:absolute; inset:0; z-index:5; pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 45%, #4dd9e814 0%, #0000 62%, #0000008c 100%);
+}
+
+.crt-switch{
+  display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+  font-family:var(--font-display); font-size:10px; letter-spacing:.06em;
+  color:var(--texto-2); user-select:none;
+}
+.crt-switch input{
+  /* escondido do olho, NUNCA do teclado nem do leitor de tela */
+  position:absolute; width:1px; height:1px; margin:-1px; padding:0;
+  overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0;
+}
+.crt-switch .luz{
+  width:9px; height:9px; border:1.5px solid var(--borda-forte);
+  background:#0000; transition:background var(--dur-rapido) var(--ease);
+}
+.crt-switch input:checked ~ .luz{ background:var(--acento) }
+.crt-switch input:focus-visible ~ .luz{ outline:2px solid var(--acento); outline-offset:2px }
+/* o texto do rótulo diz o estado: a cor NUNCA é o único indicador */
+.crt-switch .off{display:inline}
+.crt-switch .on{display:none}
+.crt-switch input:checked ~ .off{display:none}
+.crt-switch input:checked ~ .on{display:inline}
+
+/* ═══════════════════════════════════════════════════════════════════
+   9. MOTION REDUZIDO
+   O site É movimento. A regra: o movimento pode sumir, a INFORMAÇÃO não.
+   Quem desliga motion vê o quadradinho parado NO DESTINO, não sumido, e
+   a página continua contando a mesma coisa.
+   ═══════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce){
+  :root{ --dur-rapido:0ms; --dur-medio:0ms; --dur-lento:0ms; }
+  *,*::before,*::after{
+    animation-duration:1ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:1ms !important;
+    scroll-behavior:auto !important;
+  }
+}
