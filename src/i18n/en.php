@@ -56,6 +56,7 @@ return [
             'hero'       => ['label' => 'Playable square',    'nome' => 'The square'],
             'pressstart' => ['label' => 'PRESS START poster', 'nome' => 'PRESS START'],
             'glyfa'      => ['label' => 'The Glyfa: name forge', 'nome' => 'The Glyfa'],
+            'album'      => ['label' => 'The sticker album',   'nome' => 'The album'],
             'chamadas'   => ['label' => 'Cover blurbs',       'nome' => 'Cover blurbs'],
         ],
         // THE SQUARE (real hero · W6 item): game labels + the static caption
@@ -127,6 +128,27 @@ return [
             'ex_nome'   => 'Morlhin',
             'ex_sig'    => 'voice-shadow',
             'cap'       => 'FIG. · the name forge. combine two roots.',
+        ],
+        // THE ALBUM (stickers in localStorage · W6 item · ALBUM): kids stick it,
+        // adults COLLECTED it. Zero account, zero data (localStorage only). ⚠️ The
+        // sticker THEME is a PLACEHOLDER: the 13 Sylvarin glyphs (the Glyfa roots),
+        // drawn in typography — no new art, no character sprite. The final theme/
+        // art is the lead's call (co-decided, not defined yet). Pixel labels stay
+        // lowercase (N→H guard); {n}/{total} are swapped in JS.
+        'album' => [
+            'titulo'    => 'the album',
+            'meta'      => 'glyph stickers',
+            'lide'      => 'A sticker album, the old-fashioned way. Each sticker is a Sylvarin glyph. Stick them as you explore the site; the collection is saved in your browser, no account, no sign-up.',
+            'contador'  => '{n} of {total} stuck',    // {n}/{total} swapped in JS
+            'completo'  => 'album complete!',
+            'colar'     => 'stick a sticker',
+            'off'       => 'no browser memory: the album only lasts this visit.',
+            'falta'     => 'sticker not stuck yet',
+            'colada'    => 'stuck',
+            'estatico'  => 'stickers get stuck as you explore the site.',
+            'ex_glifo'  => 'mor-',
+            'ex_glosa'  => 'shadow',
+            'cap'       => 'FIG. · the sticker album. stick all 13 glyphs.',
         ],
     ],
 

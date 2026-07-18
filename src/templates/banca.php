@@ -192,6 +192,72 @@ require __DIR__ . '/../includes/head.php';
     <p class="glyfa-cap"><?= h((string) $gf['cap']) ?></p>
   </section>
 
+  <?php /* ══ O ÁLBUM · CROMOS DE GLIFO (item W6 · ALBUM) ══
+     Um álbum de figurinhas em localStorage: cola criança, colecionou adulto — o
+     mesmo objeto pega os dois públicos. Zero conta, zero dado. ⚠️ O TEMA das
+     figurinhas é PLACEHOLDER SEGURO: os 13 glifos do Sylvarin (as raízes da
+     Glyfa), desenhados em TIPOGRAFIA — zero arte nova, zero sprite de personagem.
+     O tema/arte FINAL é decisão do líder (co-decidido, ainda não definido): trocar
+     o tema = trocar o array de catálogo em album.js, sem tocar no núcleo nem aqui.
+     Progressive enhancement: o estado-base (sem JS) já mostra a grade ESTÁTICA
+     (silhuetas + o cromo-exemplo canon + a legenda), nunca um bloco vazio. album.js
+     reconstrói a grade do léxico do núcleo (assets/js/album-core.js, testado),
+     aplica o álbum salvo e liga o botão de colar. Degradação: localStorage off/
+     cheio/anônimo → a loja cai pra in-memory (o núcleo garante) e a UI avisa com
+     graça; perder o álbum NÃO quebra a página. É TELA: os cromos colados brilham
+     (ciano) DENTRO da moldura; o papel em volta segue sem glow. Glifos/glosas são
+     minúsculos → guard N→H do pixel não dispara. */ ?>
+  <?php $al = $banca['album']; ?>
+  <section class="album-hero" id="gancho-album" aria-labelledby="album-h2"
+           data-lang="<?= h($idioma) ?>"
+           data-lbl-contador="<?= h((string) $al['contador']) ?>"
+           data-lbl-completo="<?= h((string) $al['completo']) ?>"
+           data-lbl-off="<?= h((string) $al['off']) ?>"
+           data-lbl-falta="<?= h((string) $al['falta']) ?>"
+           data-lbl-colada="<?= h((string) $al['colada']) ?>">
+    <div class="album-cab">
+      <h2 class="secao-nome" id="album-h2"><?= h((string) $al['titulo']) ?></h2>
+      <span class="conta"><?= h((string) $al['meta']) ?></span>
+    </div>
+    <p class="album-lide"><?= h((string) $al['lide']) ?></p>
+
+    <div class="album-moldura">
+      <div class="album-tela">
+
+        <?php /* o contador: no estado-base explica a mecânica; album.js o troca por
+           "X de N coladas" (aria-live anuncia cada figurinha nova). */ ?>
+        <p class="album-contador" id="album-contador" aria-live="polite"><?= h((string) $al['estatico']) ?></p>
+
+        <?php /* ESTADO-BASE (sem JS): a grade estática. O 1º slot mostra o cromo-
+           exemplo canon (mor- · sombra) pra comunicar o conceito; os outros são
+           silhuetas. album.js reconstrói a grade inteira do léxico e aplica o
+           estado salvo — sem JS, esta grade já lê como um álbum. */ ?>
+        <ul class="album-grade" id="album-grade" aria-label="<?= h((string) $ganchos['album']['label']) ?>">
+          <li class="album-slot colada">
+            <span class="album-q" aria-hidden="true">?</span>
+            <span class="album-glifo"><?= h((string) $al['ex_glifo']) ?></span>
+            <span class="album-glosa"><?= h((string) $al['ex_glosa']) ?></span>
+          </li>
+          <?php for ($n = 0; $n < 12; $n++): ?>
+          <li class="album-slot"><span class="album-q" aria-hidden="true">?</span></li>
+          <?php endfor; ?>
+        </ul>
+
+        <?php /* o botão de colar só aparece com JS (o estado-base não tem como
+           colar); album.js faz btn.hidden=false e liga o clique. */ ?>
+        <div class="album-acao">
+          <button type="button" class="album-btn" id="album-btn" hidden><?= h((string) $al['colar']) ?></button>
+        </div>
+
+        <?php /* aviso de storage off (com graça): album.js revela quando a memória
+           do navegador não vale (anônimo / cheio / bloqueado). */ ?>
+        <p class="album-nota" id="album-nota" hidden></p>
+
+      </div>
+    </div>
+    <p class="album-cap"><?= h((string) $al['cap']) ?></p>
+  </section>
+
   <?php /* ══ GANCHOS W6 restantes · os interativos ainda em scaffold ══
      Cada um é uma <section> reservada, igual ao scaffold das seções da edição.
      A ordem segue o wireframe §3.1 (o hero e o PRESS START acima já são reais). */ ?>
@@ -327,6 +393,8 @@ require __DIR__ . '/../includes/head.php';
 <script src="/assets/js/linha-tempo.js" defer></script>
 <script src="/assets/js/glyfa-core.js" defer></script>
 <script src="/assets/js/glyfa.js" defer></script>
+<script src="/assets/js/album-core.js" defer></script>
+<script src="/assets/js/album.js" defer></script>
 <script src="/assets/js/som-core.js" defer></script>
 <script src="/assets/js/som.js" defer></script>
 </body>

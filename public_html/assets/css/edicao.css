@@ -680,6 +680,121 @@ main{display:block}
   color:var(--tinta-2); text-align:center; margin:9px 0 0;
 }
 
+/* ── O ÁLBUM · cromos de glifo (item W6 · ALBUM) ──
+   Herda a MESMA tela do jogo da Glyfa (moldura navy + scanline): os cromos são
+   LUZ, acendem em ciano DENTRO da moldura; o papel em volta segue sem glow. Os
+   glifos/glosas são minúsculos → guard N→H do pixel não dispara. */
+.album-hero{scroll-margin-top:12px; margin-top:clamp(18px,3vw,24px)}
+.album-cab{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.album-cab .conta{
+  font-family:var(--font-display); font-size:11px; letter-spacing:.04em;
+  color:var(--tinta-2);
+}
+.album-lide{
+  font-family:var(--font-corpo); font-size:clamp(14px,1.7vw,16px);
+  line-height:1.55; color:var(--tinta-2); margin:8px 0 0; max-width:60ch;
+}
+
+.album-moldura{
+  margin-top:clamp(12px,2vw,16px);
+  border-radius:var(--raio-tela); padding:5px; background:#05090f;
+  box-shadow:inset 0 0 0 1px #2c3d52, 0 2px 0 #00000018;
+}
+.album-tela{
+  position:relative; border-radius:calc(var(--raio-tela) - 3px); overflow:hidden;
+  padding:clamp(16px,3vw,24px) clamp(12px,3vw,22px);
+  background:radial-gradient(120% 130% at 50% 30%, #12324a 0%, var(--gw-navy) 62%);
+}
+.album-tela::after{
+  content:""; position:absolute; inset:0; z-index:6; pointer-events:none;
+  border-radius:inherit;
+  background:
+    radial-gradient(120% 130% at 50% 30%, #4dd9e816 0%, #0000 52%, #00000066 100%),
+    repeating-linear-gradient(0deg, #0000000d 0 1px, #0000 1px 3px);
+}
+
+.album-contador{
+  position:relative; z-index:3; margin:0 0 clamp(12px,2vw,16px); text-align:center;
+  font-family:var(--font-display); font-size:clamp(12px,1.7vw,14px);
+  letter-spacing:.03em; color:var(--tela-texto-2);
+}
+
+/* a grade de slots: mobile-first 3 colunas, sobe a 5 e 7 por CONTEÚDO */
+.album-grade{
+  position:relative; z-index:3; list-style:none; margin:0; padding:0;
+  display:grid; gap:clamp(8px,1.6vw,12px); grid-template-columns:repeat(3,1fr);
+}
+@media (min-width:32rem){.album-grade{grid-template-columns:repeat(5,1fr)}}
+@media (min-width:52rem){.album-grade{grid-template-columns:repeat(7,1fr)}}
+
+/* o cromo: o VERSO (silhueta com ?) por padrão; acende quando colado */
+.album-slot{
+  position:relative; aspect-ratio:3/4; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:3px; padding:6px 4px;
+  border:1px solid var(--tela-borda); border-radius:6px; background:var(--tela-alto);
+  overflow:hidden;
+}
+.album-q{
+  font-family:var(--font-display); font-size:clamp(18px,4vw,26px);
+  color:var(--tela-texto-3); opacity:.5;
+}
+.album-glifo{
+  display:none; font-family:var(--font-display); font-weight:700;
+  font-size:clamp(15px,3.4vw,22px); letter-spacing:.02em; text-align:center;
+  color:var(--gw-ciano-alto); text-shadow:0 0 10px #6ff0ff88; word-break:break-word;
+}
+.album-glosa{
+  display:none; font-family:var(--font-display); font-size:clamp(9px,1.8vw,11px);
+  color:var(--tela-texto-2); text-align:center;
+}
+/* colado: acende — glifo+glosa aparecem, o ? some, a borda vira ciano */
+.album-slot.colada{
+  border-color:var(--tela-borda-ui);
+  background:linear-gradient(160deg,#123048,#0b1a28);
+  box-shadow:inset 0 0 12px #4dd9e820;
+}
+.album-slot.colada .album-q{display:none}
+.album-slot.colada .album-glifo,.album-slot.colada .album-glosa{display:block}
+
+/* o carimbo de colar (reveal da figurinha nova): reduced-motion desliga */
+.album-slot.colando{animation:album-colar var(--dur-medio,180ms) ease-out}
+@keyframes album-colar{
+  0%{transform:scale(.8) rotate(-4deg); opacity:.2}
+  60%{transform:scale(1.06) rotate(1deg)}
+  100%{transform:scale(1) rotate(0); opacity:1}
+}
+@media (prefers-reduced-motion:reduce){.album-slot.colando{animation:none}}
+
+.album-acao{
+  position:relative; z-index:3; display:flex; justify-content:center;
+  margin-top:clamp(14px,2.5vw,18px);
+}
+.album-btn{
+  font-family:var(--font-display); font-size:13px; letter-spacing:.06em;
+  color:var(--gw-navy); background:var(--gw-ciano); border:0; border-radius:5px;
+  padding:9px 18px; cursor:pointer; box-shadow:0 0 12px #4dd9e84d;
+}
+.album-btn[hidden]{display:none}
+.album-btn:hover{background:var(--gw-ciano-alto)}
+.album-btn:active{transform:translateY(1px)}
+.album-btn:focus-visible{outline:2px solid var(--gw-ciano-alto); outline-offset:3px}
+.album-btn:disabled{
+  background:var(--tela-alto); color:var(--tela-texto-2);
+  box-shadow:none; cursor:default;
+}
+
+.album-nota{
+  position:relative; z-index:3; margin:clamp(10px,2vw,14px) 0 0; text-align:center;
+  font-family:var(--font-display); font-size:11px; letter-spacing:.02em;
+  color:var(--tela-texto-3);
+}
+.album-nota[hidden]{display:none}
+
+.album-cap{
+  font-family:var(--font-corpo); font-size:13px; line-height:1.5;
+  color:var(--tinta-2); text-align:center; margin:9px 0 0;
+}
+
 /* ── A FILEIRA DE CAPAS ── */
 .banca{padding:clamp(20px,3.5vw,28px) 0 0}
 .banca-tit{

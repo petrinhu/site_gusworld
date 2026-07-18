@@ -58,6 +58,7 @@ return [
             'hero'       => ['label' => 'Quadradinho jogável', 'nome' => 'O quadradinho'],
             'pressstart' => ['label' => 'Poster PRESS START',  'nome' => 'PRESS START'],
             'glyfa'      => ['label' => 'A Glyfa: forja de nomes', 'nome' => 'A Glyfa'],
+            'album'      => ['label' => 'O álbum de figurinhas', 'nome' => 'O álbum'],
             'chamadas'   => ['label' => 'Chamadas de capa',    'nome' => 'Chamadas de capa'],
         ],
         // O QUADRADINHO (hero real · item W6): rótulos do jogo e a legenda
@@ -131,6 +132,28 @@ return [
             'ex_nome'   => 'Morlhin',
             'ex_sig'    => 'voz-sombra',
             'cap'       => 'FIG. · a forja de nomes. combine duas raízes.',
+        ],
+        // O ÁLBUM (figurinhas em localStorage · item W6 · ALBUM): cola criança,
+        // colecionou adulto. Zero conta, zero dado (só localStorage). ⚠️ O TEMA
+        // das figurinhas é PLACEHOLDER: os 13 glifos do Sylvarin (as raízes da
+        // Glyfa), desenhados em tipografia — zero arte nova, zero sprite. O tema/
+        // arte FINAL é decisão do líder (co-decidido, ainda não definido). Os
+        // rótulos pixel são minúsculos (guard N→H); {n}/{total} são trocados no JS.
+        'album' => [
+            'titulo'    => 'o álbum',
+            'meta'      => 'cromos de glifo',
+            'lide'      => 'Um álbum de figurinhas, do jeito antigo. Cada cromo é um glifo do Sylvarin. Cole conforme explora o site; a coleção fica salva no seu navegador, sem conta e sem cadastro.',
+            'contador'  => '{n} de {total} coladas',   // {n}/{total} trocados no JS
+            'completo'  => 'álbum completo!',
+            'colar'     => 'colar figurinha',
+            'off'       => 'sem memória no navegador: o álbum vale só nesta visita.',
+            'falta'     => 'figurinha ainda não colada',
+            'colada'    => 'colada',
+            'estatico'  => 'as figurinhas se colam conforme você explora o site.',
+            // o exemplo colado no estado-base (sem JS): o glifo que o líder canonizou
+            'ex_glifo'  => 'mor-',
+            'ex_glosa'  => 'sombra',
+            'cap'       => 'FIG. · o álbum de cromos. cole os 13 glifos.',
         ],
     ],
 
