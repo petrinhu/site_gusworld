@@ -414,7 +414,7 @@ main{display:block}
   image-rendering:pixelated; z-index:2;
 }
 .quad-heroi.virou{
-  width:30px; height:52px; background:#0000; box-shadow:none;
+  width:60px; height:104px; background:#0000; box-shadow:none;
   background-image:var(--sprite, url("/assets/sprites/gus-south.png"));
   background-size:contain; background-repeat:no-repeat; background-position:bottom center;
   filter:drop-shadow(0 0 5px #4dd9e855);

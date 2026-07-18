@@ -175,6 +175,8 @@ return [
 
     // rodapé
     'rodape_som_ef_on'  => 'Efeitos: ligados',
+    'rodape_som_ef_off' => 'Efeitos: desligados',
+    'rodape_som_mus_on' => 'Música: ligada',
     'rodape_som_mus_off'=> 'Música: desligada',
     'rodape_licenca'    => 'Conteúdo sob licença livre. Feito com IA como ferramenta; a parte criativa é do criador.',
     'rodape_contato'    => 'Fale com a redação',

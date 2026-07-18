@@ -82,11 +82,17 @@
     try { musica.pause(); } catch (err) { /* idem */ }
   }
 
-  // ── pintura: reflete o estado nos dois botoes (aria-pressed dirige o CSS) ────
+  // ── pintura: reflete o estado nos dois botoes (aria-pressed dirige o CSS,
+  //    e o TEXTO do label troca ligado/desligado via data-label-on/off) ─────────
   function reflete() {
     for (var canal in botoes) {
       if (botoes.hasOwnProperty(canal)) {
-        botoes[canal].setAttribute("aria-pressed", estado[canal] ? "true" : "false");
+        var b = botoes[canal];
+        var ligado = !!estado[canal];
+        b.setAttribute("aria-pressed", ligado ? "true" : "false");
+        var lab = b.querySelector(".som-label");
+        var txt = b.getAttribute(ligado ? "data-label-on" : "data-label-off");
+        if (lab && txt) lab.textContent = txt;
       }
     }
   }
