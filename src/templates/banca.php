@@ -88,10 +88,48 @@ require __DIR__ . '/../includes/head.php';
     <p class="quad-legenda"><?= h((string) $q['legenda']) ?></p>
   </section>
 
+  <?php /* ══ PRESS START · O PÔSTER DA BANCA (item W6 · D-PRESS-START) ══
+     Um pôster-tela de fliperama abaixo do quadradinho (wireframe §3.1, mock 08).
+     Progressive enhancement: o estado-base (sem JS / reduced-motion) mostra a
+     MENSAGEM honesta ESTÁTICA — a fala do Gus + a seta (um <a> real) que aponta
+     pro quadradinho. press-start.js liga o attract "PRESS START" e o boot do CRT
+     (~1.3s), aterrissando na mesma mensagem honesta. A máquina de estado vive no
+     núcleo PURO testado (assets/js/press-start-core.js). É TELA: a luz (ciano/
+     glow) é permitida DENTRO da moldura; o papel em volta segue sem glow. */ ?>
+  <?php $ps = $banca['press']; ?>
+  <section class="ps-hero" id="gancho-pressstart" aria-label="<?= h((string) $ganchos['pressstart']['label']) ?>">
+    <div class="ps-moldura">
+      <div class="ps-poster" id="press-start" aria-label="<?= h((string) $ps['poster_aria']) ?>">
+
+        <?php /* attract: só aparece com JS+motion (.ps-poster[data-st=attract]) */ ?>
+        <div class="ps-attract" aria-hidden="true">
+          <p class="ps-press"><?= h((string) $ps['press']) ?></p>
+          <p class="ps-insert"><?= h((string) $ps['insert']) ?></p>
+        </div>
+
+        <?php /* boot: o BIOS falso imprime linha a linha (só com JS+motion) */ ?>
+        <div class="ps-boot" aria-hidden="true">
+          <p class="ps-boot-txt"><?php foreach ((array) $ps['boot'] as $bl): ?><span class="ps-bl"><?= h((string) $bl) ?></span><?php endforeach; ?><span class="ps-cur" aria-hidden="true"></span></p>
+        </div>
+
+        <?php /* a MENSAGEM honesta: o ESTADO-BASE (sem JS mostra isto direto) e o
+           destino do boot. aria-live anuncia quando o boot aterrissa aqui. */ ?>
+        <div class="ps-msg" aria-live="polite">
+          <p class="ps-msg-l1"><?= h((string) $ps['boot_ok']) ?></p>
+          <p class="ps-fala"><span class="hh">gus@glyfesse&gt;</span> <?= h((string) $ps['fala']) ?></p>
+          <p class="ps-pensa">// <?= h((string) $ps['pensa']) ?></p>
+          <a class="ps-seta" href="#gancho-hero"><?= h((string) $ps['ir_quad']) ?></a>
+        </div>
+
+      </div>
+    </div>
+    <p class="ps-cap"><?= h((string) $ps['cap']) ?></p>
+  </section>
+
   <?php /* ══ GANCHOS W6 restantes · os interativos ainda em scaffold ══
      Cada um é uma <section> reservada, igual ao scaffold das seções da edição.
-     A ordem segue o wireframe §3.1 (o hero acima já é real). */ ?>
-  <?php foreach (['pressstart', 'chamadas', 'linha'] as $g): ?>
+     A ordem segue o wireframe §3.1 (o hero e o PRESS START acima já são reais). */ ?>
+  <?php foreach (['chamadas', 'linha'] as $g): ?>
   <section class="gancho-w6" id="gancho-<?= h($g) ?>" aria-label="<?= h((string) $ganchos[$g]['label']) ?>">
     <div class="scaffold">
       <span class="tag"><?= h((string) $banca['w6_tag']) ?></span>
@@ -159,5 +197,7 @@ require __DIR__ . '/../includes/head.php';
    PRESS START, scrubber e LCD "recompilando" seguem como scaffold (W6). */ ?>
 <script src="/assets/js/quadradinho-core.js" defer></script>
 <script src="/assets/js/quadradinho.js" defer></script>
+<script src="/assets/js/press-start-core.js" defer></script>
+<script src="/assets/js/press-start.js" defer></script>
 </body>
 </html>

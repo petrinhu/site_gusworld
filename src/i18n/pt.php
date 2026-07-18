@@ -72,6 +72,27 @@ return [
             'instr'     => 'clique na tela e use WASD para movimentar',
             'legenda'   => 'maio: um quadrado. agosto: o Gus.',
         ],
+        // O PRESS START (pôster da banca · item W6 · D-PRESS-START): os rótulos
+        // do fliperama (chrome ASCII na tela; sem N maiúsculo <15px, guard N→H)
+        // e a MENSAGEM honesta (a voz do Gus, acentuada). A 'fala' é PLACEHOLDER
+        // honesto — a copy definitiva é co-decidida com o líder.
+        'press' => [
+            'poster_aria' => 'Pôster PRESS START: aperte para ligar o fliperama',
+            'press'       => '▶ PRESS START',
+            'insert'      => 'CREDITO 0 · FICHAS 0',
+            // linhas do BIOS falso (impressas uma a uma no boot; spoiler-safe)
+            'boot'        => [
+                'GUSWORLD // BOOT',
+                'carregando o núcleo... ok',
+                'montando o mundo... ok',
+                'procurando o jogo...',
+            ],
+            'boot_ok'     => '▶ BOOT OK',
+            'fala'        => 'não dá pra começar de verdade ainda... mas o quadradinho ali em cima anda.',
+            'pensa'       => 'eu ando',
+            'ir_quad'     => 'ir pro quadradinho ↑',
+            'cap'         => 'FIG. · o pôster central. aperte START.',
+        ],
     ],
 
     // índice

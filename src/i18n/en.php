@@ -70,6 +70,26 @@ return [
             'instr'     => 'click the screen and use WASD to move',
             'legenda'   => 'may: a square. august: Gus.',
         ],
+        // PRESS START (stand poster · W6 item · D-PRESS-START): arcade labels
+        // (ASCII screen chrome; no uppercase N under 15px, N→H guard) and the
+        // honest MESSAGE (Gus's voice). 'fala' is an honest PLACEHOLDER — the
+        // final copy is co-decided with the lead.
+        'press' => [
+            'poster_aria' => 'PRESS START poster: press to boot the arcade',
+            'press'       => '▶ PRESS START',
+            'insert'      => 'CREDIT 0 · FREE PLAY',
+            'boot'        => [
+                'GUSWORLD // BOOT',
+                'loading the core... ok',
+                'building the world... ok',
+                'looking for the game...',
+            ],
+            'boot_ok'     => '▶ BOOT OK',
+            'fala'        => "can't really start yet... but the little square up there does move.",
+            'pensa'       => 'i move',
+            'ir_quad'     => 'go to the square ↑',
+            'cap'         => 'FIG. · the center poster. press START.',
+        ],
     ],
 
     // index
