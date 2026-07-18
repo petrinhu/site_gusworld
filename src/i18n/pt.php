@@ -57,6 +57,7 @@ return [
         'ganchos' => [
             'hero'       => ['label' => 'Quadradinho jogável', 'nome' => 'O quadradinho'],
             'pressstart' => ['label' => 'Poster PRESS START',  'nome' => 'PRESS START'],
+            'glyfa'      => ['label' => 'A Glyfa: forja de nomes', 'nome' => 'A Glyfa'],
             'chamadas'   => ['label' => 'Chamadas de capa',    'nome' => 'Chamadas de capa'],
         ],
         // O QUADRADINHO (hero real · item W6): rótulos do jogo e a legenda
@@ -104,6 +105,32 @@ return [
             'slider' => 'Linha do tempo do jogo',
             'edicao' => 'edição',
             'vazio'  => 'A linha do tempo acende quando a primeira edição visual for publicada.',
+        ],
+        // A GLYFA (forja de nomes · item W6 · GLYFA): combine duas raízes do
+        // Sylvarin e veja o nome nascer com o significado. Vocabulário FECHADO =
+        // moderação por design (nenhum palavrão sai daqui, TST-GLYFA-PALAVRAO).
+        // O nome forjado é grande (≥15px) → guard N→H do pixel não dispara; as
+        // glosas são minúsculas → seguras. O léxico (raízes+glosas) vive no
+        // core JS: aqui só o chrome (rótulos), sem duplicar o dicionário.
+        'glyfa' => [
+            'titulo'    => 'a glyfa',
+            'meta'      => 'forja de nomes',
+            'lide'      => 'No Sylvarin, o idioma do jogo, um nome é feito de raízes. Escolha duas e a forja mostra o que ele significa. O vocabulário é fechado de propósito: nada impróprio nasce daqui.',
+            'raiz_a'    => 'primeira raiz',
+            'raiz_b'    => 'segunda raiz',
+            'mais'      => '+',
+            'forjar'    => 'forjar',
+            'significa' => 'significa',
+            'iguais'    => 'escolha duas raízes diferentes',
+            // o exemplo ESTÁTICO (estado-base sem JS): o par que o líder canonizou
+            'ex_pre'    => 'exemplo:',
+            'ex_a'      => 'mor-',
+            'ex_a_g'    => 'sombra',
+            'ex_b'      => 'lhin-',
+            'ex_b_g'    => 'voz',
+            'ex_nome'   => 'Morlhin',
+            'ex_sig'    => 'voz-sombra',
+            'cap'       => 'FIG. · a forja de nomes. combine duas raízes.',
         ],
     ],
 

@@ -561,6 +561,125 @@ main{display:block}
   .ps-press,.ps-cur,.ps-seta{animation:none}
 }
 
+/* ══ A GLYFA · A FORJA DE NOMES (item W6 · GLYFA) ══
+   Uma forja de nomes em Sylvarin: 2 seletores -> o nome nasce brilhando DENTRO
+   da tela (o buraco de luz), com o significado. O papel em volta segue sem glow.
+   O nome forjado e GRANDE (>=15px) -> o guard N->H do pixel nao dispara. */
+.glyfa-hero{scroll-margin-top:12px; margin-top:clamp(18px,3vw,24px)}
+.glyfa-cab{
+  display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+}
+.glyfa-cab .conta{
+  font-family:var(--font-display); font-size:11px; letter-spacing:.04em;
+  color:var(--tinta-2);
+}
+.glyfa-lide{
+  font-family:var(--font-corpo); font-size:clamp(14px,1.7vw,16px);
+  line-height:1.55; color:var(--tinta-2); margin:8px 0 0; max-width:60ch;
+}
+
+.glyfa-moldura{
+  margin-top:clamp(12px,2vw,16px);
+  border-radius:var(--raio-tela); padding:5px; background:#05090f;
+  box-shadow:inset 0 0 0 1px #2c3d52, 0 2px 0 #00000018;
+}
+.glyfa-tela{
+  position:relative; border-radius:calc(var(--raio-tela) - 3px); overflow:hidden;
+  padding:clamp(18px,3.5vw,28px) clamp(14px,4vw,26px);
+  background:radial-gradient(120% 130% at 50% 40%, #12324a 0%, var(--gw-navy) 62%);
+}
+/* scanline + brilho de tubo embutido (a tela do jogo, independente do CRT global) */
+.glyfa-tela::after{
+  content:""; position:absolute; inset:0; z-index:6; pointer-events:none;
+  border-radius:inherit;
+  background:
+    radial-gradient(120% 130% at 50% 40%, #4dd9e816 0%, #0000 52%, #00000066 100%),
+    repeating-linear-gradient(0deg, #0000000d 0 1px, #0000 1px 3px);
+}
+
+/* ── ESTADO-BASE (sem JS): o exemplo estatico canon ── */
+.glyfa-base{
+  position:relative; z-index:3; margin:0; text-align:center;
+  font-family:var(--font-display); font-size:clamp(12px,1.8vw,15px);
+  line-height:1.9; color:var(--tela-texto-1); letter-spacing:.02em;
+}
+.glyfa-ex-pre{color:var(--tela-texto-3); margin-right:6px}
+.glyfa-ex-raiz{color:var(--tela-acento)}
+.glyfa-ex-g{color:var(--tela-texto-2)}
+.glyfa-ex-igual,.glyfa-mais{color:var(--tela-texto-3); margin:0 4px}
+.glyfa-ex-nome{
+  font-weight:700; font-size:1.5em; color:var(--gw-ciano-alto);
+  text-shadow:0 0 12px #6ff0ffaa; letter-spacing:.04em; display:inline-block;
+  margin:0 4px;
+}
+.glyfa-ex-sig{display:block; color:var(--tela-texto-2); font-size:.92em; margin-top:4px}
+
+/* ── A FORJA interativa (revelada por JS) ── */
+.glyfa-forja[hidden]{display:none}
+.glyfa-forja{position:relative; z-index:3; display:grid; gap:clamp(14px,2.5vw,20px)}
+.glyfa-sels{
+  display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:center;
+  gap:10px 12px;
+}
+.glyfa-campo{display:flex; flex-direction:column; gap:4px}
+.glyfa-lbl{
+  font-family:var(--font-display); font-size:11px; letter-spacing:.06em;
+  color:var(--tela-texto-3);
+}
+.glyfa-op{
+  align-self:center; font-family:var(--font-display); font-size:18px;
+  color:var(--gw-ciano); padding-bottom:6px;
+}
+.glyfa-sel{
+  font-family:var(--font-display); font-size:14px; color:var(--tela-texto-1);
+  background:var(--tela-alto); border:1px solid var(--tela-borda-ui);
+  border-radius:5px; padding:7px 10px; min-width:16ch; cursor:pointer;
+  appearance:none; -webkit-appearance:none;
+  background-image:linear-gradient(45deg,#0000 50%,var(--gw-ciano) 50%),linear-gradient(135deg,var(--gw-ciano) 50%,#0000 50%);
+  background-position:calc(100% - 15px) 50%,calc(100% - 10px) 50%;
+  background-size:5px 5px,5px 5px; background-repeat:no-repeat; padding-right:30px;
+}
+.glyfa-sel:focus-visible{outline:2px solid var(--gw-ciano); outline-offset:2px}
+.glyfa-btn{
+  font-family:var(--font-display); font-size:13px; letter-spacing:.06em;
+  color:var(--gw-navy); background:var(--gw-ciano); border:0; border-radius:5px;
+  padding:9px 18px; cursor:pointer; align-self:flex-end;
+  box-shadow:0 0 12px #4dd9e84d;
+}
+.glyfa-btn:hover{background:var(--gw-ciano-alto)}
+.glyfa-btn:active{transform:translateY(1px)}
+.glyfa-btn:focus-visible{outline:2px solid var(--gw-ciano-alto); outline-offset:3px}
+
+.glyfa-out{
+  display:block; text-align:center;
+  border-top:1px solid var(--tela-borda); padding-top:clamp(12px,2vw,16px);
+}
+.glyfa-nome{
+  display:block; font-family:var(--font-display); font-weight:700;
+  font-size:clamp(28px,6vw,52px); letter-spacing:.05em;
+  color:var(--gw-ciano-alto); text-shadow:0 0 16px #6ff0ffcc;
+}
+.glyfa-sig{
+  display:block; font-family:var(--font-display); font-size:clamp(12px,1.8vw,15px);
+  color:var(--tela-texto-1); margin-top:8px;
+}
+/* o reveal da forja: um "carimbo" curto quando o nome nasce (re-disparado por .aceso) */
+.glyfa-out.aceso .glyfa-nome{animation:glyfa-forjar var(--dur-medio,260ms) ease-out}
+@keyframes glyfa-forjar{
+  0%{transform:scale(.86); opacity:.2; text-shadow:0 0 2px #6ff0ff44}
+  60%{transform:scale(1.04); text-shadow:0 0 26px #6ff0ffee}
+  100%{transform:scale(1); opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+  .glyfa-out.aceso .glyfa-nome{animation:none}
+}
+
+/* legenda de papel abaixo da forja (fora da tela: sem glow) */
+.glyfa-cap{
+  font-family:var(--font-corpo); font-size:13px; line-height:1.5;
+  color:var(--tinta-2); text-align:center; margin:9px 0 0;
+}
+
 /* ── A FILEIRA DE CAPAS ── */
 .banca{padding:clamp(20px,3.5vw,28px) 0 0}
 .banca-tit{

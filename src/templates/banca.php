@@ -126,6 +126,72 @@ require __DIR__ . '/../includes/head.php';
     <p class="ps-cap"><?= h((string) $ps['cap']) ?></p>
   </section>
 
+  <?php /* ══ A GLYFA · A FORJA DE NOMES (item W6 · GLYFA) ══
+     Uma forja de nomes em Sylvarin (o idioma do jogo): o leitor combina duas
+     raízes e vê o nome nascer com o significado. O vocabulário é FECHADO — é o
+     que torna o UGC seguro com criança e dev solo (moderação por design; nenhum
+     palavrão sai daqui, garantido pelo núcleo testado + TST-GLYFA-PALAVRAO).
+     Progressive enhancement: o estado-base (sem JS) mostra o exemplo ESTÁTICO
+     que o líder canonizou (mor- + lhin- = Morlhin · voz-sombra) + a explicação,
+     nunca um bloco vazio. glyfa.js esconde o exemplo, popula os 2 seletores a
+     partir do léxico do núcleo (assets/js/glyfa-core.js, testado) e forja ao
+     vivo. É TELA: o nome forjado brilha (ciano) DENTRO da moldura; o papel em
+     volta segue sem glow. O nome é grande (≥15px) → guard N→H do pixel não
+     dispara; as glosas são minúsculas → seguras. */ ?>
+  <?php $gf = $banca['glyfa']; ?>
+  <section class="glyfa-hero" id="gancho-glyfa" aria-labelledby="glyfa-h2"
+           data-lang="<?= h($idioma) ?>"
+           data-lbl-significa="<?= h((string) $gf['significa']) ?>"
+           data-lbl-iguais="<?= h((string) $gf['iguais']) ?>">
+    <div class="glyfa-cab">
+      <h2 class="secao-nome" id="glyfa-h2"><?= h((string) $gf['titulo']) ?></h2>
+      <span class="conta"><?= h((string) $gf['meta']) ?></span>
+    </div>
+    <p class="glyfa-lide"><?= h((string) $gf['lide']) ?></p>
+
+    <div class="glyfa-moldura">
+      <div class="glyfa-tela">
+
+        <?php /* ESTADO-BASE (sem JS): o exemplo estático canon. glyfa.js o esconde. */ ?>
+        <p class="glyfa-base">
+          <span class="glyfa-ex-pre"><?= h((string) $gf['ex_pre']) ?></span>
+          <span class="glyfa-ex-raiz"><?= h((string) $gf['ex_a']) ?></span>
+          <span class="glyfa-ex-g">(<?= h((string) $gf['ex_a_g']) ?>)</span>
+          <span class="glyfa-mais" aria-hidden="true"><?= h((string) $gf['mais']) ?></span>
+          <span class="glyfa-ex-raiz"><?= h((string) $gf['ex_b']) ?></span>
+          <span class="glyfa-ex-g">(<?= h((string) $gf['ex_b_g']) ?>)</span>
+          <span class="glyfa-ex-igual" aria-hidden="true">=</span>
+          <b class="glyfa-ex-nome"><?= h((string) $gf['ex_nome']) ?></b>
+          <span class="glyfa-ex-sig"><?= h((string) $gf['significa']) ?> &ldquo;<?= h((string) $gf['ex_sig']) ?>&rdquo;</span>
+        </p>
+
+        <?php /* A FORJA interativa (só com JS): 2 seletores + o resultado ao vivo.
+           Os <select> nascem VAZIOS e hidden; glyfa.js os popula do léxico do
+           núcleo e revela — sem JS ficam fora do caminho (o exemplo acima basta). */ ?>
+        <div class="glyfa-forja" hidden>
+          <div class="glyfa-sels">
+            <span class="glyfa-campo">
+              <label class="glyfa-lbl" for="glyfa-a"><?= h((string) $gf['raiz_a']) ?></label>
+              <select class="glyfa-sel" id="glyfa-a"></select>
+            </span>
+            <span class="glyfa-op" aria-hidden="true"><?= h((string) $gf['mais']) ?></span>
+            <span class="glyfa-campo">
+              <label class="glyfa-lbl" for="glyfa-b"><?= h((string) $gf['raiz_b']) ?></label>
+              <select class="glyfa-sel" id="glyfa-b"></select>
+            </span>
+            <button type="button" class="glyfa-btn" id="glyfa-btn"><?= h((string) $gf['forjar']) ?></button>
+          </div>
+          <output class="glyfa-out" id="glyfa-out" for="glyfa-a glyfa-b" aria-live="polite">
+            <span class="glyfa-nome"><?= h((string) $gf['ex_nome']) ?></span>
+            <span class="glyfa-sig"><?= h((string) $gf['significa']) ?> &ldquo;<?= h((string) $gf['ex_sig']) ?>&rdquo;</span>
+          </output>
+        </div>
+
+      </div>
+    </div>
+    <p class="glyfa-cap"><?= h((string) $gf['cap']) ?></p>
+  </section>
+
   <?php /* ══ GANCHOS W6 restantes · os interativos ainda em scaffold ══
      Cada um é uma <section> reservada, igual ao scaffold das seções da edição.
      A ordem segue o wireframe §3.1 (o hero e o PRESS START acima já são reais). */ ?>
@@ -259,6 +325,8 @@ require __DIR__ . '/../includes/head.php';
 <script src="/assets/js/press-start.js" defer></script>
 <script src="/assets/js/linha-tempo-core.js" defer></script>
 <script src="/assets/js/linha-tempo.js" defer></script>
+<script src="/assets/js/glyfa-core.js" defer></script>
+<script src="/assets/js/glyfa.js" defer></script>
 <script src="/assets/js/som-core.js" defer></script>
 <script src="/assets/js/som.js" defer></script>
 </body>

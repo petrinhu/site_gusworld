@@ -55,6 +55,7 @@ return [
         'ganchos' => [
             'hero'       => ['label' => 'Playable square',    'nome' => 'The square'],
             'pressstart' => ['label' => 'PRESS START poster', 'nome' => 'PRESS START'],
+            'glyfa'      => ['label' => 'The Glyfa: name forge', 'nome' => 'The Glyfa'],
             'chamadas'   => ['label' => 'Cover blurbs',       'nome' => 'Cover blurbs'],
         ],
         // THE SQUARE (real hero · W6 item): game labels + the static caption
@@ -101,6 +102,31 @@ return [
             'slider' => 'Game timeline',
             'edicao' => 'edition',
             'vazio'  => 'The timeline lights up once the first visual edition is published.',
+        ],
+        // THE GLYFA (name forge · W6 item · GLYFA): combine two Sylvarin roots
+        // and watch the name appear with its meaning. The vocabulary is CLOSED =
+        // moderation by design (no profanity comes out, TST-GLYFA-PALAVRAO). The
+        // forged name is large (>=15px) → pixel N→H guard won't fire; the glosses
+        // are lowercase → safe. The lexicon (roots+glosses) lives in the JS core:
+        // here only the chrome (labels), no duplicated dictionary.
+        'glyfa' => [
+            'titulo'    => 'the glyfa',
+            'meta'      => 'name forge',
+            'lide'      => "In Sylvarin, the game's language, a name is made of roots. Pick two and the forge shows what it means. The vocabulary is closed on purpose: nothing improper is born here.",
+            'raiz_a'    => 'first root',
+            'raiz_b'    => 'second root',
+            'mais'      => '+',
+            'forjar'    => 'forge',
+            'significa' => 'means',
+            'iguais'    => 'pick two different roots',
+            'ex_pre'    => 'example:',
+            'ex_a'      => 'mor-',
+            'ex_a_g'    => 'shadow',
+            'ex_b'      => 'lhin-',
+            'ex_b_g'    => 'voice',
+            'ex_nome'   => 'Morlhin',
+            'ex_sig'    => 'voice-shadow',
+            'cap'       => 'FIG. · the name forge. combine two roots.',
         ],
     ],
 

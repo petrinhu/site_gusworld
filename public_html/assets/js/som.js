@@ -136,7 +136,7 @@
   // ── SFX de clique nos brinquedos e links da home (quando efeitos ON) ────────
   // delegado, passivo: NUNCA preventDefault — os mini-apps (quadradinho, PRESS
   // START, linha do tempo) e a navegacao seguem intactos; so ganham o som.
-  var GATILHOS = ".som-btn,.quad-dpad button,#press-start,.banca a,.contato a";
+  var GATILHOS = ".som-btn,.quad-dpad button,#press-start,.banca a,.contato a,.glyfa-btn";
   document.addEventListener("click", function (e) {
     var alvo = e.target && e.target.closest ? e.target.closest(GATILHOS) : null;
     if (!alvo) return;
