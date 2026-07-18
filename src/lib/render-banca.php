@@ -47,6 +47,35 @@ function render_banca(string $idioma): void
         ];
     }
 
+    // A LINHA DO TEMPO (scrubber W6): só a era VISUAL publicada, em ordem
+    // cronológica ASCENDENTE (é como a linha se lê da esquerda p/ direita). O
+    // guard anti-rascunho + o recorte da era visual moram em edicoes_na_linha_tempo()
+    // — nunca se refaz o filtro aqui. Hoje = 1 ponto (a #3, o quadrado azul).
+    // Uma edição visual publicada sem frame não vira ponto (sem frame não há
+    // crossfade); ela continua aparecendo na banca, só fica fora do scrubber.
+    $linha_tempo = [];
+    foreach (edicoes_na_linha_tempo($edicoes) as $e) {
+        if ($e['frame'] === null) {
+            continue;
+        }
+        $iso = (string) $e['data'];
+        $ts  = strtotime($iso);
+        $mes = $ts !== false ? mb_substr((string) ($t['meses'][(int) date('n', $ts)] ?? ''), 0, 3) : '';
+        $dia = $ts !== false ? (int) date('j', $ts) : 0;
+        // rótulo curto da marca (pixel <15px, minúsculo): "22 jun" / "jun 22".
+        $rotulo = $ts === false ? $iso : ($idioma === 'pt' ? "{$dia} {$mes}" : "{$mes} {$dia}");
+        $linha_tempo[] = [
+            'numero'    => (int) $e['numero'],
+            'titulo'    => (string) $e['titulo_' . $idioma],
+            'dek'       => (string) $e['dek_' . $idioma],
+            'data'      => $iso,
+            'data_ext'  => data_por_extenso($iso, $idioma, $t),
+            'rotulo'    => $rotulo,
+            'frame'     => (string) $e['frame'],
+            'frame_alt' => $e['frame_alt_' . $idioma] !== null ? (string) $e['frame_alt_' . $idioma] : '',
+        ];
+    }
+
     // Contexto do chrome (masthead/head): a banca não tem número de edição.
     $ctx = [
         'modo'       => 'banca',

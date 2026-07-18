@@ -129,7 +129,7 @@ require __DIR__ . '/../includes/head.php';
   <?php /* ══ GANCHOS W6 restantes · os interativos ainda em scaffold ══
      Cada um é uma <section> reservada, igual ao scaffold das seções da edição.
      A ordem segue o wireframe §3.1 (o hero e o PRESS START acima já são reais). */ ?>
-  <?php foreach (['chamadas', 'linha'] as $g): ?>
+  <?php foreach (['chamadas'] as $g): ?>
   <section class="gancho-w6" id="gancho-<?= h($g) ?>" aria-label="<?= h((string) $ganchos[$g]['label']) ?>">
     <div class="scaffold">
       <span class="tag"><?= h((string) $banca['w6_tag']) ?></span>
@@ -137,6 +137,63 @@ require __DIR__ . '/../includes/head.php';
     </div>
   </section>
   <?php endforeach; ?>
+
+  <?php /* ══ LINHA DO TEMPO · O SCRUBBER (item W6 · LINHA-TEMPO) ══
+     A era VISUAL do jogo: do quadrado azul (22/jun) em diante, um ponto por
+     edição visual publicada, cada uma datada. Nasce com 1 ponto e estica sozinha.
+     Progressive enhancement: o estado-base (sem JS / reduced-motion) é a LISTA
+     estática abaixo (o frame + a data + o título + o dek de cada edição visual)
+     — legível, nunca um bloco vazio. linha-tempo.js lê os data-* da lista, monta
+     o SCRUBBER (uma tela só, crossfade de frames ao arrastar) e esconde a lista.
+     A lógica pura (crossfade por tempo real, pos↔data, passo, clique) vive no
+     núcleo testado (assets/js/linha-tempo-core.js). Mock 07. */ ?>
+  <?php $lt = $banca['linha_tempo']; ?>
+  <section class="lt-hero" id="gancho-linha" aria-labelledby="lt-h2"
+           data-lbl-edicao="<?= h((string) $lt['edicao']) ?>"
+           data-lbl-slider="<?= h((string) $lt['slider']) ?>"
+           data-lbl-dica="<?= h((string) $lt['dica']) ?>">
+    <div class="lt-cab">
+      <h2 class="secao-nome" id="lt-h2"><?= h((string) $lt['titulo']) ?></h2>
+      <span class="conta"><?= h((string) $lt['meta']) ?></span>
+    </div>
+    <p class="lt-lide"><?= h((string) $lt['lide']) ?></p>
+
+    <?php if ($linha_tempo === []): ?>
+    <p class="lt-vazio"><?= h((string) $lt['vazio']) ?></p>
+    <?php else: ?>
+    <?php /* ESTADO-BASE + FONTE DE DADOS do JS. Cada <li> carrega os data-* que
+       linha-tempo.js lê pra montar o scrubber (frame, data ISO, rótulo curto,
+       nº, título); o dek e a data por extenso saem do próprio texto renderizado
+       (o JS fica sem i18n). Só era visual PUBLICADA entra (guard no helper). */ ?>
+    <ol class="lt-lista" id="lt-lista">
+      <?php foreach ($linha_tempo as $p): ?>
+      <?php
+        $frame_fs  = __DIR__ . '/../../public_html' . $p['frame'];
+        $frame_dim = is_file($frame_fs) ? getimagesize($frame_fs) : false;
+      ?>
+      <li class="lt-item"
+          data-num="<?= (int) $p['numero'] ?>"
+          data-data="<?= h((string) $p['data']) ?>"
+          data-rotulo="<?= h((string) $p['rotulo']) ?>"
+          data-frame="<?= h((string) $p['frame']) ?>">
+        <?php if ($frame_dim !== false): ?>
+        <figure class="lt-item-frame aceso">
+          <img src="<?= h((string) $p['frame']) ?>"
+               alt="<?= h((string) $p['frame_alt']) ?>"
+               width="<?= (int) $frame_dim[0] ?>" height="<?= (int) $frame_dim[1] ?>"
+               loading="lazy" decoding="async">
+        </figure>
+        <?php endif; ?>
+        <div class="lt-item-txt">
+          <span class="lt-item-data"><?= h((string) $p['data_ext']) ?></span>
+          <h3 class="lt-item-titulo"><?= h((string) $p['titulo']) ?></h3>
+          <p class="lt-item-dek"><?= h((string) $p['dek']) ?></p>
+        </div>
+      </li>
+      <?php endforeach; ?>
+    </ol>
+    <?php endif; ?>
+  </section>
 
   <?php /* ══ A FILEIRA DE CAPAS · o coração da banca (data-driven de $capas) ══
      Landmark = <section> (não <nav>): é o corpo editorial da banca, não um menu
@@ -194,10 +251,13 @@ require __DIR__ . '/../includes/head.php';
 <?php /* Enhancement client-side dos interativos da home. O QUADRADINHO (hero) já
    é real: o núcleo PURO testado + a cola DOM. Progressive enhancement — sem JS
    a banca lê, navega e troca de idioma, e o hero mostra o quadrado + a legenda.
-   PRESS START, scrubber e LCD "recompilando" seguem como scaffold (W6). */ ?>
+   O QUADRADINHO, o PRESS START e a LINHA DO TEMPO já são reais (núcleo testado +
+   cola DOM); só as CHAMADAS de capa seguem como scaffold (W6). */ ?>
 <script src="/assets/js/quadradinho-core.js" defer></script>
 <script src="/assets/js/quadradinho.js" defer></script>
 <script src="/assets/js/press-start-core.js" defer></script>
 <script src="/assets/js/press-start.js" defer></script>
+<script src="/assets/js/linha-tempo-core.js" defer></script>
+<script src="/assets/js/linha-tempo.js" defer></script>
 </body>
 </html>

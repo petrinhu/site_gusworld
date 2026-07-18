@@ -56,7 +56,6 @@ return [
             'hero'       => ['label' => 'Playable square',    'nome' => 'The square'],
             'pressstart' => ['label' => 'PRESS START poster', 'nome' => 'PRESS START'],
             'chamadas'   => ['label' => 'Cover blurbs',       'nome' => 'Cover blurbs'],
-            'linha'      => ['label' => 'Timeline',           'nome' => 'Timeline'],
         ],
         // THE SQUARE (real hero · W6 item): game labels + the static caption
         // (the no-JS / reduced-motion path to the same information).
@@ -89,6 +88,19 @@ return [
             'pensa'       => 'i move',
             'ir_quad'     => 'go to the square ↑',
             'cap'         => 'FIG. · the center poster. press START.',
+        ],
+        // THE TIMELINE (scrubber · W6 item · LINHA-TEMPO): the game's VISUAL era,
+        // from the blue square (Jun 22) onward. Pixel labels under 15px stay
+        // lowercase (N→H guard). 'lide'/'vazio'/'slider' are not pixel: accents
+        // and caps are free. 'edicao' composes the "edition #N" caption.
+        'linha_tempo' => [
+            'titulo' => 'timeline',
+            'meta'   => 'visual era',
+            'lide'   => 'Drag the time and watch the game evolve: each dot is a published visual edition, on its real date.',
+            'dica'   => 'drag · or ← → on the keyboard · or click a dot',
+            'slider' => 'Game timeline',
+            'edicao' => 'edition',
+            'vazio'  => 'The timeline lights up once the first visual edition is published.',
         ],
     ],
 

@@ -58,7 +58,6 @@ return [
             'hero'       => ['label' => 'Quadradinho jogável', 'nome' => 'O quadradinho'],
             'pressstart' => ['label' => 'Poster PRESS START',  'nome' => 'PRESS START'],
             'chamadas'   => ['label' => 'Chamadas de capa',    'nome' => 'Chamadas de capa'],
-            'linha'      => ['label' => 'Linha do tempo',      'nome' => 'Linha do tempo'],
         ],
         // O QUADRADINHO (hero real · item W6): rótulos do jogo e a legenda
         // estática (o caminho sem-JS/reduced-motion pra mesma informação).
@@ -92,6 +91,19 @@ return [
             'pensa'       => 'eu ando',
             'ir_quad'     => 'ir pro quadradinho ↑',
             'cap'         => 'FIG. · o pôster central. aperte START.',
+        ],
+        // A LINHA DO TEMPO (scrubber · item W6 · LINHA-TEMPO): a era VISUAL do
+        // jogo, do quadrado azul (22 jun) em diante. Rótulos pixel <15px são
+        // minúsculos (guard N→H). 'lide'/'vazio'/'slider' não são pixel:
+        // acento e maiúscula livres. 'edicao' compõe a legenda "edição #N".
+        'linha_tempo' => [
+            'titulo' => 'linha do tempo',
+            'meta'   => 'era visual',
+            'lide'   => 'Arraste o tempo e veja o jogo evoluir: cada ponto é uma edição visual publicada, na data real dela.',
+            'dica'   => 'arraste · ou ← → no teclado · ou clique num ponto',
+            'slider' => 'Linha do tempo do jogo',
+            'edicao' => 'edição',
+            'vazio'  => 'A linha do tempo acende quando a primeira edição visual for publicada.',
         ],
     ],
 
