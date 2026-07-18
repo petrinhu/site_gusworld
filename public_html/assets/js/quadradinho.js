@@ -35,7 +35,7 @@
   var ultimoMs = 0; // performance.now() do passo anterior (relogio fica AQUI)
 
   function tam() {
-    return fase.nome === Core.FASE.GUS ? { w: 60, h: 104 } : { w: 26, h: 26 };
+    return fase.nome === Core.FASE.GUS ? { w: 120, h: 208 } : { w: 26, h: 26 };
   }
 
   function paredes() {
