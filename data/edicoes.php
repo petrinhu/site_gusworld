@@ -75,9 +75,9 @@ return [
         'slug_en'        => 'edition-2',
         'titulo_pt'      => 'Arquitetura',
         'titulo_en'      => 'Architecture',
-        'dek_pt'         => 'As primeiras engines, as escolhas de fundação — e um Gus '
+        'dek_pt'         => 'As primeiras engines, as escolhas de fundação. E um Gus '
                           . 'em 3D que não vingou e virou lembrança.',
-        'dek_en'         => 'The first engines, the foundation choices — and a 3D Gus '
+        'dek_en'         => 'The first engines, the foundation choices. And a 3D Gus '
                           . 'that did not survive and became a memory.',
         // Fonte física: resources/frames/gus_3d_visualizacao_xyz__t4s.png
         // Publicar em: public_html/assets/frames/edicao-2.png
