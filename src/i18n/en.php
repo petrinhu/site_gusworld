@@ -58,6 +58,18 @@ return [
             'chamadas'   => ['label' => 'Cover blurbs',       'nome' => 'Cover blurbs'],
             'linha'      => ['label' => 'Timeline',           'nome' => 'Timeline'],
         ],
+        // THE SQUARE (real hero · W6 item): game labels + the static caption
+        // (the no-JS / reduced-motion path to the same information).
+        'quad' => [
+            'sala_aria' => 'Playable square: click and use WASD to move. The square bumps into the walls, then turns into Gus.',
+            'dpad_aria' => 'Directional pad',
+            'cima'      => 'Move up',
+            'baixo'     => 'Move down',
+            'esquerda'  => 'Move left',
+            'direita'   => 'Move right',
+            'instr'     => 'click the screen and use WASD to move',
+            'legenda'   => 'may: a square. august: Gus.',
+        ],
     ],
 
     // index

@@ -57,10 +57,41 @@ require __DIR__ . '/../includes/head.php';
   <?php /* lede da home (W5 placeholder — copy final co-decidida com o líder) */ ?>
   <p class="banca-lede"><?= h((string) $banca['lede']) ?></p>
 
-  <?php /* ══ GANCHOS W6 · os interativos (NÃO implementados aqui) ══
-     Cada um é uma <section> reservada com scaffold explícito, igual ao scaffold
-     das seções da edição. A ordem segue o wireframe §3.1. */ ?>
-  <?php foreach (['hero', 'pressstart', 'chamadas', 'linha'] as $g): ?>
+  <?php /* ══ HERO · O QUADRADINHO (item W6 · QUADRADINHO) ══
+     A capa da banca é o brinquedo. Progressive enhancement: o estado-base
+     (sem JS) já mostra o quadrado parado + a legenda escrita; quadradinho.js
+     liga o jogo (clique+WASD no desktop, d-pad no mobile) e a evolução pro Gus.
+     A lógica (colisão nos pés, movimento, transição) vive no núcleo PURO
+     testado (assets/js/quadradinho-core.js). As paredes batem com o mock 05. */ ?>
+  <?php $q = $banca['quad']; ?>
+  <section class="quad-hero" id="gancho-hero" aria-label="<?= h((string) $ganchos['hero']['label']) ?>">
+    <div class="quad-moldura">
+      <div class="quad-sala" id="quadradinho" tabindex="0" role="application" aria-label="<?= h((string) $q['sala_aria']) ?>">
+        <?php foreach ([
+          'left:34%;top:16%;width:31%;height:9%',
+          'left:44%;top:25%;width:9%;height:22%',
+          'left:33%;top:63%;width:24%;height:8%',
+          'left:66%;top:39%;width:14%;height:23%',
+        ] as $parede): ?>
+        <div class="quad-parede" style="<?= h($parede) ?>"></div>
+        <?php endforeach; ?>
+        <div class="quad-heroi" aria-hidden="true"></div>
+        <div class="quad-dpad" role="group" aria-label="<?= h((string) $q['dpad_aria']) ?>">
+          <button type="button" class="dp u" data-dir="w" aria-label="<?= h((string) $q['cima']) ?>"><span aria-hidden="true">▲</span></button>
+          <button type="button" class="dp l" data-dir="a" aria-label="<?= h((string) $q['esquerda']) ?>"><span aria-hidden="true">◀</span></button>
+          <button type="button" class="dp r" data-dir="d" aria-label="<?= h((string) $q['direita']) ?>"><span aria-hidden="true">▶</span></button>
+          <button type="button" class="dp d" data-dir="s" aria-label="<?= h((string) $q['baixo']) ?>"><span aria-hidden="true">▼</span></button>
+        </div>
+      </div>
+    </div>
+    <p class="quad-instr"><?= h((string) $q['instr']) ?></p>
+    <p class="quad-legenda"><?= h((string) $q['legenda']) ?></p>
+  </section>
+
+  <?php /* ══ GANCHOS W6 restantes · os interativos ainda em scaffold ══
+     Cada um é uma <section> reservada, igual ao scaffold das seções da edição.
+     A ordem segue o wireframe §3.1 (o hero acima já é real). */ ?>
+  <?php foreach (['pressstart', 'chamadas', 'linha'] as $g): ?>
   <section class="gancho-w6" id="gancho-<?= h($g) ?>" aria-label="<?= h((string) $ganchos[$g]['label']) ?>">
     <div class="scaffold">
       <span class="tag"><?= h((string) $banca['w6_tag']) ?></span>
@@ -122,9 +153,11 @@ require __DIR__ . '/../includes/head.php';
 
 </div><!-- /.pagina -->
 
-<?php /* GANCHO (W6+): aqui entra o enhancement client-side dos interativos da
-   home — o quadradinho jogável (hero), o PRESS START (boot CRT), o scrubber da
-   linha do tempo e a LCD "recompilando". Tudo é progressive enhancement: sem JS
-   a banca já lê, navega e troca de idioma. Não implementado aqui (anti-OE). */ ?>
+<?php /* Enhancement client-side dos interativos da home. O QUADRADINHO (hero) já
+   é real: o núcleo PURO testado + a cola DOM. Progressive enhancement — sem JS
+   a banca lê, navega e troca de idioma, e o hero mostra o quadrado + a legenda.
+   PRESS START, scrubber e LCD "recompilando" seguem como scaffold (W6). */ ?>
+<script src="/assets/js/quadradinho-core.js" defer></script>
+<script src="/assets/js/quadradinho.js" defer></script>
 </body>
 </html>

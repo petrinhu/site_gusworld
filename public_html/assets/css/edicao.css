@@ -381,6 +381,78 @@ main{display:block}
 .gancho-w6{scroll-margin-top:12px; margin-top:clamp(18px,3vw,24px)}
 .gancho-w6 .scaffold{margin-top:0}
 
+/* ═══ O QUADRADINHO (hero da banca · item W6) ═══════════════════════════════
+   A capa é o brinquedo. Estado-base (sem JS): o quadrado ciano parado + a
+   legenda escrita — nunca um bloco vazio. .ligado (JS): mostra a instrução e o
+   d-pad, e o jogo roda. .reduz (prefers-reduced-motion): o Gus parado + a
+   legenda. A cor da tela é LUZ (a sala é a --gw-navy do jogo; o quadrado é o
+   --gw-ciano sólido, com brilho). Bate com o mock 05. */
+.quad-hero{scroll-margin-top:12px; margin-top:clamp(18px,3vw,24px)}
+.quad-moldura{
+  border-radius:var(--raio-tela); padding:5px; background:#05090f;
+  box-shadow:inset 0 0 0 1px #2c3d52, 0 2px 0 #00000018;
+}
+.quad-sala{
+  position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;
+  background:var(--gw-navy); touch-action:none; outline:none;
+}
+/* moldura interna clara (a "tela" impressa) + scanline sutil */
+.quad-sala::after{
+  content:""; position:absolute; inset:0; z-index:4; pointer-events:none;
+  border:12px solid #b9c6d6;
+  background:repeating-linear-gradient(0deg, #0000000d 0 1px, #0000 1px 3px);
+}
+.quad-sala:focus-visible{box-shadow:inset 0 0 0 3px var(--gw-ciano)}
+.quad-parede{position:absolute; background:#b9c6d6; z-index:1}
+
+/* o herói: quadrado CIANO SÓLIDO (não contorno), com brilho. Vira o Gus. */
+.quad-heroi{
+  position:absolute; left:0; top:0; width:26px; height:26px;
+  transform:translate(var(--x,60px), var(--y,150px));
+  transition:transform .06s linear;
+  background:var(--gw-ciano); box-shadow:0 0 10px #4dd9e8cc;
+  image-rendering:pixelated; z-index:2;
+}
+.quad-heroi.virou{
+  width:30px; height:52px; background:#0000; box-shadow:none;
+  background-image:var(--sprite, url("/assets/sprites/gus-south.png"));
+  background-size:contain; background-repeat:no-repeat; background-position:bottom center;
+  filter:drop-shadow(0 0 5px #4dd9e855);
+}
+
+/* o d-pad: só quando há JS (.ligado) e em telas de toque/estreitas. Botões
+   reais ≥44px (alvo de dedo). Escondido sem JS (nada de botão morto). */
+.quad-dpad{
+  position:absolute; left:50%; bottom:14px; translate:-50% 0; z-index:5;
+  display:none; grid-template-columns:repeat(3,46px); grid-template-rows:repeat(3,46px); gap:4px;
+}
+.quad-dpad .dp{
+  appearance:none; -webkit-appearance:none; padding:0; cursor:pointer;
+  background:#0d1520cc; border:1.5px solid var(--gw-ciano); color:var(--gw-ciano);
+  display:grid; place-items:center; font-size:18px; line-height:1;
+  border-radius:6px; touch-action:manipulation;
+}
+.quad-dpad .dp:active{background:var(--gw-ciano); color:var(--gw-navy)}
+.quad-dpad .dp:focus-visible{outline:2px solid var(--gw-ciano-alto); outline-offset:2px}
+.quad-dpad .u{grid-area:1/2} .quad-dpad .l{grid-area:2/1}
+.quad-dpad .r{grid-area:2/3} .quad-dpad .d{grid-area:3/2}
+@media (max-width:640px){ .quad-hero.ligado .quad-dpad{display:grid} }
+
+/* a instrução (só com JS) × a legenda (estado-base / reduced-motion) */
+.quad-instr, .quad-legenda{
+  font-family:var(--font-corpo); font-size:13px; line-height:1.5;
+  color:var(--tinta-2); margin:9px 0 0; text-align:center;
+}
+.quad-instr b{color:var(--tinta-ciano); font-weight:600}
+.quad-instr{display:none}
+.quad-hero.ligado .quad-instr{display:block}
+.quad-hero.ligado .quad-legenda{display:none}
+.quad-hero.reduz .quad-instr{display:none}
+
+@media (prefers-reduced-motion:reduce){
+  .quad-heroi{transition:none}
+}
+
 /* ── A FILEIRA DE CAPAS ── */
 .banca{padding:clamp(20px,3.5vw,28px) 0 0}
 .banca-tit{

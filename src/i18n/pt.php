@@ -60,6 +60,18 @@ return [
             'chamadas'   => ['label' => 'Chamadas de capa',    'nome' => 'Chamadas de capa'],
             'linha'      => ['label' => 'Linha do tempo',      'nome' => 'Linha do tempo'],
         ],
+        // O QUADRADINHO (hero real · item W6): rótulos do jogo e a legenda
+        // estática (o caminho sem-JS/reduced-motion pra mesma informação).
+        'quad' => [
+            'sala_aria' => 'Quadradinho jogável: clique e use WASD para mover. O quadrado bate nas paredes e depois vira o Gus.',
+            'dpad_aria' => 'Controle direcional',
+            'cima'      => 'Mover para cima',
+            'baixo'     => 'Mover para baixo',
+            'esquerda'  => 'Mover para a esquerda',
+            'direita'   => 'Mover para a direita',
+            'instr'     => 'clique na tela e use WASD para movimentar',
+            'legenda'   => 'maio: um quadrado. agosto: o Gus.',
+        ],
     ],
 
     // índice
