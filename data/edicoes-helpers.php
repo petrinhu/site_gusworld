@@ -1,0 +1,108 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * data/edicoes-helpers.php — filtros PUROS sobre `$edicoes`.
+ *
+ * Ponto ÚNICO de enforcement das invariantes de exibição. Todos os 4
+ * consumidores (banca, linha do tempo, sitemap, RSS) chamam estas funções em
+ * vez de refazer o `array_filter` à mão — assim a regra "nunca mostrar
+ * rascunho" mora num lugar só e não pode ser esquecida em um consumidor
+ * (o esquecimento seria um vazamento de spoiler, irreversível).
+ *
+ * Funções puras (CONTRACT §5): sem I/O, sem estado global, sem DOM. Recebem o
+ * array, devolvem um array novo — testáveis em isolamento.
+ *
+ * Uso:
+ *   $edicoes    = require __DIR__ . '/edicoes.php';
+ *   $publicadas = edicoes_publicadas($edicoes);          // banca, sitemap, RSS
+ *   $scrubber   = edicoes_na_linha_tempo($edicoes);      // linha do tempo
+ */
+
+const EDICAO_ESTADO_PUBLICADA = 'publicada';
+const EDICAO_ESTADO_RASCUNHO  = 'rascunho';
+
+/**
+ * Só as edições publicadas, ordenadas cronologicamente (mais nova primeiro).
+ *
+ * É o filtro que TODO consumidor de conteúdo público deve aplicar: banca,
+ * sitemap e os 2 RSS. Rascunho JAMAIS passa por aqui.
+ *
+ * @param array<int, array<string, mixed>> $edicoes
+ * @return array<int, array<string, mixed>>
+ */
+function edicoes_publicadas(array $edicoes): array
+{
+    $publicadas = array_filter(
+        $edicoes,
+        static fn (array $e): bool => ($e['estado'] ?? '') === EDICAO_ESTADO_PUBLICADA
+    );
+
+    return edicoes_ordena_desc($publicadas);
+}
+
+/**
+ * Só as edições que entram no scrubber da linha do tempo: publicadas E da era
+ * VISUAL (`na_linha_tempo` verdadeiro). A gênese textual (#1) e o 3D abandonado
+ * (#2) ficam fora — o scrubber cobre da #3 (o quadrado) em diante.
+ *
+ * Ordenadas cronologicamente ASCENDENTE (mais antiga primeiro), que é como a
+ * linha do tempo é lida da esquerda para a direita.
+ *
+ * @param array<int, array<string, mixed>> $edicoes
+ * @return array<int, array<string, mixed>>
+ */
+function edicoes_na_linha_tempo(array $edicoes): array
+{
+    $visuais = array_filter(
+        edicoes_publicadas($edicoes),
+        static fn (array $e): bool => ($e['na_linha_tempo'] ?? false) === true
+    );
+
+    return array_reverse(array_values($visuais));
+}
+
+/**
+ * A data mais recente entre as edições publicadas (para `<lastmod>` global do
+ * sitemap e `<lastBuildDate>` do RSS). Devolve string ISO 8601 ou null se
+ * não houver nenhuma publicada.
+ *
+ * @param array<int, array<string, mixed>> $edicoes
+ */
+function edicoes_ultima_atualizacao(array $edicoes): ?string
+{
+    $datas = array_map(
+        static fn (array $e): string => (string) ($e['atualizada_em'] ?? $e['data'] ?? ''),
+        edicoes_publicadas($edicoes)
+    );
+    $datas = array_filter($datas, static fn (string $d): bool => $d !== '');
+
+    if ($datas === []) {
+        return null;
+    }
+
+    rsort($datas); // ISO 8601 ordena lexicograficamente = cronologicamente
+
+    return $datas[0];
+}
+
+/**
+ * Ordena edições por `data` decrescente (mais nova primeiro) e reindexa.
+ * Interno; empate de data resolvido por `numero` decrescente (estável).
+ *
+ * @param array<int, array<string, mixed>> $edicoes
+ * @return array<int, array<string, mixed>>
+ */
+function edicoes_ordena_desc(array $edicoes): array
+{
+    $lista = array_values($edicoes);
+
+    usort($lista, static function (array $a, array $b): int {
+        $cmp = strcmp((string) ($b['data'] ?? ''), (string) ($a['data'] ?? ''));
+
+        return $cmp !== 0 ? $cmp : ((int) ($b['numero'] ?? 0) <=> (int) ($a['numero'] ?? 0));
+    });
+
+    return $lista;
+}

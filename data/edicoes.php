@@ -1,0 +1,137 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * data/edicoes.php — a FONTE DE DADOS ÚNICA da Glyfesse (`$edicoes`).
+ *
+ * Item de board: CRONOLOGIA-DADOS. Este array é o motor único que a BANCA, a
+ * LINHA DO TEMPO (scrubber), o SITEMAP.XML e os 2 FEEDS RSS percorrem num
+ * `foreach`. Um só lugar de verdade — publicar uma edição é trocar
+ * `estado` de 'rascunho' para 'publicada' AQUI, sem tocar em HTML.
+ *
+ * Uso: `$edicoes = require __DIR__ . '/edicoes.php';`
+ * Filtros seguros (por estado / linha do tempo) em `data/edicoes-helpers.php`.
+ *
+ * ────────────────────────────────────────────────────────────────────────────
+ * INVARIANTES (as duas são irreversíveis; quebrar = dano público permanente):
+ *
+ * 1. NUNCA renderizar 'rascunho' na banca nem na linha do tempo — isso spoila
+ *    o drip (a cadência editorial). Sempre filtre por estado 'publicada' antes
+ *    de exibir. Use `edicoes_publicadas()` — não refaça o filtro à mão em cada
+ *    consumidor (um esquecimento = vazamento). Ver a-cadencia-editorial.
+ *
+ * 2. Toda legenda/dek/alt-text é SPOILER-SAFE (política conservadora,
+ *    project-spoiler-policy): descreve o MARCO DE PROGRESSO (o que ficou
+ *    visível no build-in-public), nunca lore/feature não anunciada. Datas são
+ *    fatos e podem aparecer ("ponha a data das coisas" — o líder). Alt-text é
+ *    texto público (AUD-SPOILER) — vale a mesma régua.
+ * ────────────────────────────────────────────────────────────────────────────
+ *
+ * Crescimento (a IA é estável sob o drip): adicionar uma edição = +1 entrada
+ * neste array. Os 4 consumidores crescem sozinhos pelo mesmo `foreach`; nenhuma
+ * navegação global é re-editada. Ver docs/schema-edicoes.md.
+ *
+ * Datas: cronologia REAL dos 717 commits do jogo (cronologia-real-datada).
+ * Nasce com 3 edições publicadas (#1, #2, #3 — até o quadrado azul). #4+ pinga.
+ */
+
+return [
+
+    // ── #1 · A GÊNESE ────────────────────────────────────────────────────────
+    // 15/mai/2026: data INICIAL fixada (1º commit rastreável; ebooks + RAG de
+    // imediatamente antes, pré-git). A escrita vem antes da compilação — é o
+    // `glyfe`. Sem screenshot: a gênese é texto, não imagem jogável.
+    [
+        'numero'         => 1,
+        'estado'         => 'publicada',
+        'data'           => '2026-05-15',
+        'atualizada_em'  => '2026-05-15',
+        'slug_pt'        => 'edicao-1',
+        'slug_en'        => 'edition-1',
+        'titulo_pt'      => 'A Gênese',
+        'titulo_en'      => 'The Genesis',
+        'dek_pt'         => 'Antes de existir uma linha de código, existiu o texto: '
+                          . 'um acervo de ebooks, uma máquina de leitura e um mundo '
+                          . 'nascendo em palavras.',
+        'dek_en'         => 'Before a single line of code, there was text: a shelf of '
+                          . 'ebooks, a reading machine, and a world being born in words.',
+        'frame'          => null, // gênese textual — sem captura
+        'frame_alt_pt'   => null,
+        'frame_alt_en'   => null,
+        'na_linha_tempo' => false, // era textual: fora do scrubber (só era visual)
+    ],
+
+    // ── #2 · ARQUITETURA ─────────────────────────────────────────────────────
+    // 18/mai–4/jun/2026: as primeiras engines, as fundações — e um Gus 3D que
+    // foi abandonado (cemitério das ideias mortas; dead-end é público e honesto,
+    // não é spoiler). Ainda pré-era-visual jogável: fora do scrubber.
+    [
+        'numero'         => 2,
+        'estado'         => 'publicada',
+        'data'           => '2026-06-04',
+        'atualizada_em'  => '2026-06-04',
+        'slug_pt'        => 'edicao-2',
+        'slug_en'        => 'edition-2',
+        'titulo_pt'      => 'Arquitetura',
+        'titulo_en'      => 'Architecture',
+        'dek_pt'         => 'As primeiras engines, as escolhas de fundação — e um Gus '
+                          . 'em 3D que não vingou e virou lembrança.',
+        'dek_en'         => 'The first engines, the foundation choices — and a 3D Gus '
+                          . 'that did not survive and became a memory.',
+        // Fonte física: resources/frames/gus_3d_visualizacao_xyz__t4s.png
+        // Publicar em: public_html/assets/frames/edicao-2.png
+        'frame'          => '/assets/frames/edicao-2.png',
+        'frame_alt_pt'   => 'Um modelo 3D de teste do Gus, ideia depois abandonada.',
+        'frame_alt_en'   => 'A 3D test model of Gus, an idea later abandoned.',
+        'na_linha_tempo' => false, // 3D abandonado: não é a era visual 2D do scrubber
+    ],
+
+    // ── #3 · O QUADRADO AZUL ─────────────────────────────────────────────────
+    // 22/jun/2026: a primeira coisa jogável de verdade. É onde a era VISUAL
+    // começa (1º ponto do scrubber) e é a edição que sai junto do quadradinho
+    // da primeira dobra — banca e home batem.
+    [
+        'numero'         => 3,
+        'estado'         => 'publicada',
+        'data'           => '2026-06-22',
+        'atualizada_em'  => '2026-06-22',
+        'slug_pt'        => 'edicao-3',
+        'slug_en'        => 'edition-3',
+        'titulo_pt'      => 'O Quadrado Azul',
+        'titulo_en'      => 'The Blue Square',
+        'dek_pt'         => 'A primeira coisa jogável: um quadrado azul que anda, '
+                          . 'escorrega e esbarra nas paredes.',
+        'dek_en'         => 'The first playable thing: a blue square that walks, '
+                          . 'slides, and bumps into walls.',
+        // Fonte física: resources/frames/primeiro_teste_wasd_e_colisao_placeholder_quadradinho__t2s.png
+        // Publicar em: public_html/assets/frames/edicao-3.png
+        'frame'          => '/assets/frames/edicao-3.png',
+        'frame_alt_pt'   => 'Um quadrado azul num cenário de teste, o primeiro protótipo jogável.',
+        'frame_alt_en'   => 'A blue square in a test scene, the first playable prototype.',
+        'na_linha_tempo' => true, // 1º (e único, no lançamento) ponto visual do scrubber
+    ],
+
+    // ── #4+ · EXEMPLO DE RASCUNHO (NÃO renderizado) ──────────────────────────
+    // Demonstra o mecanismo do drip: estado 'rascunho' fica no array mas NUNCA
+    // aparece na banca/linha (os helpers o filtram). Publicar = trocar a string
+    // abaixo para 'publicada'. Mantido deliberadamente vago e sem frame para
+    // não spoilar nada. Preencher titulo/dek/frame reais só na hora de publicar.
+    [
+        'numero'         => 4,
+        'estado'         => 'rascunho',
+        'data'           => '2026-06-22',
+        'atualizada_em'  => '2026-06-22',
+        'slug_pt'        => 'edicao-4',
+        'slug_en'        => 'edition-4',
+        'titulo_pt'      => '',
+        'titulo_en'      => '',
+        'dek_pt'         => '',
+        'dek_en'         => '',
+        'frame'          => null,
+        'frame_alt_pt'   => null,
+        'frame_alt_en'   => null,
+        'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
+    ],
+
+];
