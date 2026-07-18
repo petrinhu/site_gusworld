@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse · 404 · a sala vazia · B (um facho de luz só nele)</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   MOCK 16-B · 404 "A SALA VAZIA" · variação B: o facho de luz.
+   Standalone. Herda tudo de ../tokens.css. Zero token novo.
+   A sala quase preta (a tela do jogo apagando), e um único facho
+   dim cai só sobre o Gus. O resto some no escuro. "Ninguém aqui"
+   vira literal: a luz não alcança mais nada.
+   Fundo = PAPEL (chrome). A sala = TELA (glow ok, aqui o glow é o facho).
+   ───────────────────────────────────────────────────────────── */
+*{box-sizing:border-box}
+html{background:#e6ddc9}
+body{margin:0; min-height:100vh; display:grid; place-items:center;
+  padding:34px 18px; color:var(--tinta-preta); font-family:var(--font-corpo)}
+
+.pagina{position:relative; width:100%; max-width:940px; background:var(--papel);
+  padding:22px 24px 26px; box-shadow:var(--sombra-folha); overflow:hidden}
+.pagina::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.13}
+.pagina > *{position:relative; z-index:1}
+
+.masthead{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:3px solid var(--tinta-preta); padding-bottom:7px; margin-bottom:14px; gap:12px}
+.masthead .logo{font-family:var(--font-display); font-weight:700; font-size:30px; line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4b0, 1.5px 1.5px 0 #c2129eb0}
+.masthead .ed{font-family:var(--font-display); font-size:9px; text-align:right;
+  line-height:1.4; color:var(--tinta-2)}
+.masthead .ed b{color:var(--tinta-preta); font-size:13px}
+
+.erro-tag{font-family:var(--font-display); font-size:9px; letter-spacing:.06em;
+  background:var(--tinta-preta); color:var(--papel); display:inline-block;
+  padding:3px 7px; margin-bottom:12px}
+
+.moldura-tela{border-radius:var(--raio-tela); padding:5px; background:#05090f;
+  box-shadow:inset 0 0 0 1px #2c3d52, 0 2px 0 #00000018}
+
+/* ── A SALA quase apagada ── */
+.sala{position:relative; width:100%; aspect-ratio:16/10; overflow:hidden;
+  background:#060a11; display:grid; place-items:end center}
+/* o facho: um cone de luz dim descendo sobre o centro-baixo, onde ele está */
+.sala::before{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    radial-gradient(60% 78% at 50% 96%, #3a516e40 0%, #1a263a1f 42%, #0000 70%),
+    radial-gradient(20% 60% at 50% 100%, #4dd9e820 0%, #0000 60%)}
+/* a moldura clara, mas engolida pela escuridão (mais apagada que a normal) */
+.sala::after{content:""; position:absolute; inset:0; z-index:6; pointer-events:none;
+  border:12px solid #b9c6d6; opacity:.42}
+
+/* o 404 quase invisível no escuro, no alto */
+.n404{position:absolute; z-index:0; top:11%; left:50%; translate:-50% 0;
+  font-family:var(--font-display); font-weight:700; font-size:clamp(64px, 16vw, 128px);
+  line-height:1; color:var(--tela-texto-1); opacity:.06; user-select:none}
+
+/* o Gus: iluminado pelo facho, o resto no breu */
+.gus{position:relative; z-index:3; display:block; width:auto; height:150px;
+  margin-bottom:10%; image-rendering:pixelated;
+  filter:drop-shadow(0 10px 16px #000c) drop-shadow(0 0 16px #4dd9e83a) brightness(1.04);
+  animation:respira 5.5s var(--ease) infinite}
+@keyframes respira{50%{translate:0 -2.2%}}
+/* o halo do facho no chão, atrás dos pés */
+.halo{position:absolute; z-index:2; left:50%; bottom:8%; translate:-50% 0;
+  width:190px; height:44px; border-radius:50%;
+  background:radial-gradient(ellipse at 50% 50%, #4dd9e826 0%, #4dd9e80f 45%, #0000 72%);
+  pointer-events:none}
+
+/* a fala, dentro do facho de luz */
+.fala{position:absolute; z-index:4; left:50%; bottom:8%; translate:-50% 0;
+  width:min(86%, 44ch); text-align:center; line-height:1.5}
+.fala .cmt{font-family:var(--font-display); font-size:13px; color:var(--tela-acento);
+  opacity:.9; margin-right:.35em; text-shadow:0 0 8px #4dd9e866}
+.fala i{font-family:var(--font-corpo); font-style:italic; font-size:16px;
+  color:var(--tela-texto-2)}
+
+.rodape{display:flex; align-items:center; justify-content:space-between;
+  margin-top:14px; gap:12px; flex-wrap:wrap}
+.voltar{font-family:var(--font-display); font-size:12px; letter-spacing:.04em;
+  color:var(--tinta-preta); text-decoration:none; display:inline-flex; align-items:center;
+  gap:7px; border:1.5px solid var(--tinta-preta); padding:7px 12px; background:#0000;
+  transition:background var(--dur-rapido) var(--ease), color var(--dur-rapido) var(--ease)}
+.voltar:hover, .voltar:focus-visible{background:var(--tinta-preta); color:var(--papel); outline:none}
+.voltar .seta{font-size:14px}
+.legenda{font-family:var(--font-display); font-size:9px; color:var(--tinta-2); text-align:right}
+.legenda b{color:var(--tinta-ciano)}
+
+@media (max-width:560px){
+  .masthead .logo{font-size:23px}
+  .sala{aspect-ratio:4/5}
+  .gus{height:104px; margin-bottom:30%}
+  .halo{bottom:26%; width:150px; height:38px}
+  .fala{bottom:7%}
+  .fala i{font-size:14px}
+}
+</style>
+</head>
+<body>
+  <div class="pagina">
+    <div class="masthead">
+      <div class="logo">GLYFESSE</div>
+      <div class="ed">ANO 1 · Nº <b>3</b><br>gusworld.site</div>
+    </div>
+    <span class="erro-tag">ERRO 404 · PÁGINA NÃO ENCONTRADA</span>
+
+    <div class="moldura-tela">
+      <div class="sala aceso" role="img"
+           aria-label="A sala do jogo quase toda no escuro. Um único facho de luz dim cai sobre o Gus, parado sozinho; o resto some no breu.">
+        <div class="n404" aria-hidden="true">404</div>
+        <div class="halo" aria-hidden="true"></div>
+        <img class="gus" src="sprites/gus-front.png" alt="">
+        <p class="fala"><span class="cmt">//</span><i>hmmm… acho que errei o caminho… de novo. Ninguém aqui…</i></p>
+      </div>
+    </div>
+
+    <div class="rodape">
+      <a class="voltar" href="#"><span class="seta">‹</span> voltar à banca</a>
+      <p class="legenda">variação <b>B</b> · um facho de luz só nele</p>
+    </div>
+  </div>
+</body>
+</html>
