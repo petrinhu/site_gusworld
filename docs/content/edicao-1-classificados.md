@@ -49,14 +49,14 @@ BUYING: card batteries. the good ones run out fast and I dont want to be left wi
 **10.3 — anonymous**
 
 SEEKING: company for a long road. They say it leads to the Trilha das Sementes. Don't ask where to. Those who've been only say it was worth it.
-Interested: classificados@glyfesse.gu · Subject: ad ID 227de71d. The Glyfesse team forwards it.
+Interested: classifieds@glyfesse.gu · Subject: ad ID 227de71d. The Glyfesse team forwards it.
 
 **10.4 — anonymous**
 
 FOR SALE, URGENT: a map with a piece missing. A stretch of the Orla Recursiva that never closes. The missing piece is the best part. Good price.
-Interested: classificados@glyfesse.gu · Subject: ad ID 30b929f2. The Glyfesse team forwards it.
+Interested: classifieds@glyfesse.gu · Subject: ad ID 30b929f2. The Glyfesse team forwards it.
 
 **10.5 — anonymous**
 
 BUYING: a light that won't go out in the dark. Tried a candle, tried a torch. The dark of the Selve Sombria is different.
-Interested: classificados@glyfesse.gu · Subject: ad ID 911620cb. The Glyfesse team forwards it.
+Interested: classifieds@glyfesse.gu · Subject: ad ID 911620cb. The Glyfesse team forwards it.
