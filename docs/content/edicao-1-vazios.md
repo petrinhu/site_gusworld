@@ -83,7 +83,7 @@ Detonar o quê? Não tem jogo. Uma bateria de lítio velha no ferro velho?... P�
 
 `gus@glyfesse>` walkthrough
 
-Walk through what? There's no game. Maybe a lone trail at the Selve?... Blank pages and a STAND BY.
+Walk through what? There's no game. Maybe a lone trail @ the selve?... Blank pages and a STAND BY.
 
 ---
 
