@@ -1,7 +1,7 @@
 # Pipeline editorial canônico da Glyfesse
 
-> **STATUS: RASCUNHO (modelo revisado).** Incorpora as **decisões do editor-geral (o líder) de 2026-07-19** e aguarda a **ratificação do modelo revisado** para virar CANON.
-> Enquanto não ratificado, nada aqui é regra fixa. Depois de aprovado, este doc rege a produção de **toda** edição.
+> **STATUS: ✅ CANON (ratificado pelo editor-geral em 2026-07-19).** Este doc rege a produção de **TODA** edição da Glyfesse. Alterá-lo exige nova aprovação do editor-geral (o líder).
+> Incorpora as decisões do editor-geral de 2026-07-19 (§9): gates alto-toque item-a-item, sem fact-check formal, arte reaproveitada não re-gate, **todo vazio re-gate sempre**, spoiler = líder único decisor.
 >
 > Autor do rascunho: `product-manager` (managing editor). Data da revisão: 2026-07-19.
 > Mudança grande desta revisão: **gates alto-toque, item por item** (o líder opina em CADA etapa com julgamento editorial, em rodadas separadas — não mais 7 gates batelados) e **remoção do fact-check como estágio formal**.
@@ -254,9 +254,9 @@ Registradas aqui como firmes; **falta ratificar o modelo revisado inteiro** (o a
 6. **Vazio com graça:** a copy de cada vazio é **SEMPRE** co-decidida com o líder (GATE-COPY vale para os vazios). ✔ ratificado.
 7. **Nome do artefato:** este pipeline é o **`PIPELINE-EDICAO`**, item canônico no `TODO.md`, **pré-requisito dos `COPY-*`** e da montagem de qualquer edição. ✔ ratificado.
 
-### Ponto de atenção que o bigtech sinaliza (não decide)
+### 8. Gate dos vazios com graça — DECIDIDO pelo editor-geral (2026-07-19)
 
-O alto-toque item-a-item é praticável para as seções "caras" (2-3 por número → ~10-15 gates). O **custo escondido são os ~14 vazios**: se cada vazio exige GATE-COPY **e** GATE-RENDER próprios, isso são ~28 aprovações por edição só para seções de "custo quase zero" — o dobro do trabalho de gate das seções que importam. **Recomendação (o líder decide):** aplicar aos vazios a mesma lógica da **arte reaproveitada** — um vazio cuja copy **e** layout são idênticos aos da edição anterior (a mesma piada, o mesmo papel pautado) não re-gate; só vazio com **piada nova ou layout alterado** dispara GATE-COPY/GATE-RENDER. Isso preserva o "sempre co-decidido" (a decisão foi tomada na primeira vez) sem transformar 14 piadas repetidas em 28 cliques por número. Sinalizado para o líder ponderar; não alterei o fluxo sem a decisão dele.
+O bigtech sinalizou o custo (~14 vazios × GATE-COPY + GATE-RENDER = ~28 aprovações/edição, mesmo idênticos ao número anterior) e recomendou a lógica da arte reaproveitada. **O líder decidiu o contrário: RE-GATE TODO VAZIO, SEMPRE.** Cada um dos ~14 vazios passa pelo seu GATE-COPY e GATE-RENDER a **cada** edição, mesmo que a piada e o layout sejam idênticos ao número anterior. Controle total do editor-geral sobre cada peça, coerente com o alto-toque item-a-item. O custo de tempo é aceito e deliberado. **Não aplicar a lógica de reaproveitamento aos vazios** (só à arte de seções, decisão 3).
 
 ---
 
