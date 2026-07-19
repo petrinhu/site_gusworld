@@ -42,3 +42,11 @@ Teasing = insinua o mundo e cria desejo, sem revelar (ex.: "baterias de cartas" 
 
 ## Seções que precisam de REDAÇÃO/ARTE nova (o loop das seções, uma por uma)
 Editorial (3), Reportagem (4), Classificados (10), HQ (11), Pôster (13), Programação (16), Gus lê o bus (17), Entrevista (18) + a copy dos vazios (5,6,7,8,9,12) + a nota de curadoria (19). As data-driven (1,2,15) e o brinde (14) são quase-automáticas.
+
+## ★ Detalhes da Seção de Programação (#16) — o eixo expert, DETALHADO (técnico vai fundo, não limitado aos 2 parágrafos)
+
+A #1 documenta **a gênese do MÉTODO** (não do código, que não existe em maio). Escrita: `technical-writer`. Componha:
+1. **O primeiro prompt** (recriado em terminal) — o mandato: "você é meu coder apenas, o criativo é MEU, apresente 2-3 opções e aguarde minha aprovação". Ref: `resources/referencias/tui_claude2.png`.
+2. **Vibe coding × AI-assisted coding** — o primeiro prompt é a PROVA de que isto é AI-assisted (o líder arquiteta/decide tudo; a IA executa/propõe, nunca decide), não vibe coding. Defesa-por-método do AI-disclosure.
+3. ★ **A documentação de "como começou tudo"** (ordem do líder 2026-07-19): o líder **reuniu ebooks/livros**, e **construiu ELE MESMO o programa de RAG** (retrieval-augmented generation) sobre eles — usando **`ollama`** com o modelo de embeddings **`bge-m3:latest`**. Foi assim que a lore massiva (~365k palavras) virou consultável. Detalhe técnico à vontade (é o eixo expert: "publique o raciocínio").
+4. ★ **O laptop onde o mundo nasceu** (⚠️ **marca OMITIDA por ordem do líder** — nunca dizer que é Acer): **Intel Core i5-12500H** (16 threads), **~32 GB RAM**, **NVIDIA GeForce RTX 3050 Mobile** (+ Intel Iris Xe integrada), **Fedora Linux** (kernel fc44), disco ~196 GB. A história: um mundo inteiro construído num laptop. ⚠️ nunca hostname/usuário/serial — só o hardware de componente.
