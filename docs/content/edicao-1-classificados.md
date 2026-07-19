@@ -20,15 +20,18 @@ COMPRO: baterias de cartas. as boas somem rápido e eu nao quero ficar sem reser
 
 **10.3 — anônimo**
 
-PROCURO: companhia para uma estrada longa. Não pergunte pra onde. Quem já foi só diz que valeu.
+PROCURO: companhia para uma estrada longa. Dizem que dá na Trilha das Sementes. Não pergunte pra onde. Quem já foi só diz que valeu.
+Interessados: classificados@glyfesse.gu · Assunto: anúncio ID 227de71d. A equipe Glyfesse repassa.
 
 **10.4 — anônimo**
 
-VENDE-SE, URGENTE: mapa com um pedaço faltando. O pedaço que falta é o melhor. Faço bom preço.
+VENDE-SE, URGENTE: mapa com um pedaço faltando. Um trecho da Orla Recursiva que nunca fecha. O pedaço que falta é o melhor. Faço bom preço.
+Interessados: classificados@glyfesse.gu · Assunto: anúncio ID 30b929f2. A equipe Glyfesse repassa.
 
 **10.5 — anônimo**
 
-COMPRO: luz que não apaga no escuro. Já tentei vela, tentei facho. O escuro daqui é diferente.
+COMPRO: luz que não apaga no escuro. Já tentei vela, tentei facho. O escuro da Selve Sombria é diferente.
+Interessados: classificados@glyfesse.gu · Assunto: anúncio ID 911620cb. A equipe Glyfesse repassa.
 
 ---
 
@@ -45,12 +48,15 @@ BUYING: card batteries. the good ones run out fast and I dont want to be left wi
 
 **10.3 — anonymous**
 
-SEEKING: company for a long road. Don't ask where to. Those who've been only say it was worth it.
+SEEKING: company for a long road. They say it leads to the Trilha das Sementes. Don't ask where to. Those who've been only say it was worth it.
+Interested: classificados@glyfesse.gu · Subject: ad ID 227de71d. The Glyfesse team forwards it.
 
 **10.4 — anonymous**
 
-FOR SALE, URGENT: a map with a piece missing. The missing piece is the best part. Good price.
+FOR SALE, URGENT: a map with a piece missing. A stretch of the Orla Recursiva that never closes. The missing piece is the best part. Good price.
+Interested: classificados@glyfesse.gu · Subject: ad ID 30b929f2. The Glyfesse team forwards it.
 
 **10.5 — anonymous**
 
-BUYING: a light that won't go out in the dark. Tried a candle, tried a torch. The dark around here is different.
+BUYING: a light that won't go out in the dark. Tried a candle, tried a torch. The dark of the Selve Sombria is different.
+Interested: classificados@glyfesse.gu · Subject: ad ID 911620cb. The Glyfesse team forwards it.
