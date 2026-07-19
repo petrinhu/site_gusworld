@@ -1,5 +1,9 @@
 # public_html/.htaccess — raiz do site (IA-WIREFRAME §1, §3.5).
 # Hostinger Premium (Apache + mod_rewrite, sem Node).
+#
+# Arquivo CONSOLIDADO (2026-07-19): junta a config do repo (DirectoryIndex +
+# reescrita da raiz) com o hardening do 404 que subiu manual em 2026-07-18
+# (ErrorDocument + headers). Config versionada — o deploy publica ESTE arquivo.
 
 # A home de cada idioma é servida pelo index.php da pasta.
 DirectoryIndex index.php
@@ -10,4 +14,20 @@ DirectoryIndex index.php
   # Raiz "/" → 301 FIXO para /pt/ (o idioma-padrão). NUNCA por IP nem por
   # Accept-Language: a raiz não é tela seletora (IA-WIREFRAME §3.5).
   RewriteRule ^$ /pt/ [R=301,L]
+</IfModule>
+
+# 404 do Gus (Glyfesse) no nível da raiz. As pastas /pt/ e /en/ sobrescrevem
+# com o próprio ErrorDocument in-world (edicao.php / edition.php).
+ErrorDocument 404 /404.html
+
+# Hardening proporcional pra página de erro estática sem input. Escopo <Files>:
+# o CSP `default-src 'none'` vale SÓ pro 404.html — o site dinâmico (banca/edição
+# em PHP, com fontes/css/js/mini-apps) NÃO é afetado. IfModule = fail-safe: se
+# mod_headers faltar, o site não quebra (ignora o bloco).
+<IfModule mod_headers.c>
+  <Files "404.html">
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Content-Security-Policy "default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+    Header always set Referrer-Policy "no-referrer"
+  </Files>
 </IfModule>
