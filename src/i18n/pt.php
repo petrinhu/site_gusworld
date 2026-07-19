@@ -164,26 +164,35 @@ return [
         // reais depois; trocar = trocar o array 'opcoes' aqui + a whitelist do
         // cliente (cupom-core.js) e do servidor (api/cupom-voto.php). Degrada sem
         // JS: é um <form method=post> nativo. Rótulos pixel são minúsculos (guard N→H).
+        // ⚠️ A resposta ao voto mostra o resultado AO VIVO, mas SÓ em % (nunca o
+        // número absoluto — Decisão do líder 2026-07-19). Os rótulos abaixo são a
+        // COPY REAL (co-decidida); os slugs NÃO mudam (a whitelist casa 1:1).
         'cupom' => [
             'titulo'    => 'o cupom',
             'meta'      => 'enquete recortável',
             'lide'      => 'O cupom da edição: recorte no pontilhado, escolha e mande de volta. O resultado sai na próxima edição. Enquete de revista não tem pressa.',
-            // ⚠️ PLACEHOLDER (pergunta + opções): copy definitiva co-decidida com o líder
-            'pergunta'  => 'o que você quer ver mais na próxima edição?',
+            // é PAPEL (não é tela) → com acento pt-br. Na voz do Gus (registro seco).
+            'pergunta'  => 'O que você quer ver mais na próxima Glyfesse?',
             'legenda'   => 'escolha uma opção e mande o cupom de volta',
             'opcoes'    => [
                 'mais-jogo'       => 'mais do jogo',
-                'mais-bastidores' => 'mais dos bastidores',
+                'mais-bastidores' => 'mais bastidores',
                 'mais-gus'        => 'mais do Gus',
             ],
             'recorte'   => 'recorte aqui',   // rótulo do pontilhado (aria/legenda da tesoura)
             'enviar'    => 'mandar o cupom',
             'rasgar'    => 'rasgar no pontilhado',
             'desfazer'  => 'colar de volta',
-            'espera'    => 'resultado na próxima edição',
+            'espera'    => 'resultado ao vivo, edição a edição',
+            // o RESULTADO (server-render quando o cookie diz "já votou" + o cliente
+            // pinta depois do voto). Só proporção — sem número absoluto.
+            'resultado'    => 'o que a banca quer (até agora)',
+            'res_nota'     => 'ao vivo · só a proporção, sem número absoluto',
+            'res_vazia'    => 'urna ainda vazia por aqui. seja o primeiro.',
+            'voto_seu'     => 'seu voto',
             // estados que só o JS mostra (enhancement):
-            'obrigado'  => 'cupom na urna. o resultado sai na próxima edição.',
-            'ja_votou'  => 'você já mandou seu cupom desta edição. o resultado sai na próxima.',
+            'obrigado'  => 'cupom na urna. veja como anda a votação.',
+            'ja_votou'  => 'você já mandou seu cupom. veja como anda a votação.',
             'erro'      => 'não deu pra mandar agora. tente de novo daqui a pouco.',
             'off'       => 'sem memória no navegador: seu cupom vale, só não vou lembrar que você votou.',
             'cap'       => 'FIG. · o cupom recortável. escolha e mande de volta.',

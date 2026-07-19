@@ -16,6 +16,7 @@ require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/view.php';
 require_once __DIR__ . '/../../data/edicoes-helpers.php';
 require_once __DIR__ . '/contexto-edicao.php'; // idade_folha()
+require_once __DIR__ . '/cupom.php';           // cupom_votou_cookie() + resultado (%)
 
 /**
  * Ponto de entrada dos front controllers da home. Recebe o idioma da pasta.
@@ -89,6 +90,31 @@ function render_banca(string $idioma): void
             'x-default' => url_banca(SITE_IDIOMA_PADRAO),
         ],
     ];
+
+    // ── O CUPOM: estado votado server-side (Decisao do lider 2026-07-19) ────────
+    // O cookie booleano "ja votou" e o sinal canonico: se presente, a home
+    // server-renderiza o RESULTADO (%) no lugar do form — funciona SEM JS.
+    // ⚠️ So PERCENTUAL sai daqui (nunca a contagem crua). O $cupom_total e uso
+    // INTERNO (decide "urna vazia"), nunca vai ao HTML como numero.
+    $cupom_votou = cupom_votou_cookie();
+    $cupom_pct   = null;
+    $cupom_total = 0;
+    if ($cupom_votou) {
+        $tally       = cupom_ler_tally(CUPOM_STORE);
+        $cupom_pct   = cupom_percentuais($tally);
+        $cupom_total = cupom_total($tally);
+    }
+
+    // ⚠️ CACHE: como a home passa a VARIAR pelo cookie do cupom (form × resultado),
+    // ela nao pode ser servida de um cache compartilhado/CDN sem discriminar o
+    // cookie. private + no-cache mantem a corretude (o browser revalida; o CDN nao
+    // guarda uma versao pro proximo visitante). Vary: Cookie documenta a variacao.
+    // (Trade-off sinalizado ao lider: server-render sem-JS do voto custa o cache
+    // compartilhado da home. A alternativa seria revelar o resultado so via JS.)
+    if (!headers_sent()) {
+        header('Cache-Control: private, no-cache, must-revalidate');
+        header('Vary: Cookie');
+    }
 
     include __DIR__ . '/../templates/banca.php';
 }

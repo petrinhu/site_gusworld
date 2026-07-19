@@ -165,6 +165,79 @@ test("rasgar/desfazer INVARIANTE: fuzz — feito sempre em [0, segmentos]", () =
   }
 });
 
+// ── resultado: contagem → percentual (Decisao do lider: so %, nunca absoluto) ─
+// ⚠️ percentuais() e o ESPELHO de PHP cupom_percentuais() (src/lib/cupom.php).
+// Estes casos valem pros DOIS lados; o gemeo PHP roda em tests/cupom-pct.test.php.
+function soma(pct) {
+  let s = 0;
+  for (const k in pct) s += pct[k];
+  return s;
+}
+
+test("percentuais: soma sempre 100 quando ha voto", () => {
+  const p = Core.percentuais({ [OPS[0]]: 2, [OPS[1]]: 40, [OPS[2]]: 1 });
+  assert.equal(soma(p), 100, "os % fecham 100 (maior resto trata a sobra)");
+});
+
+test("percentuais: caso limpo 60/30/10", () => {
+  const p = Core.percentuais({ [OPS[0]]: 6, [OPS[1]]: 3, [OPS[2]]: 1 });
+  assert.deepEqual(p, { [OPS[0]]: 60, [OPS[1]]: 30, [OPS[2]]: 10 });
+});
+
+test("percentuais: arredondamento — 1/1/1 vira 34/33/33 (soma 100)", () => {
+  const p = Core.percentuais({ [OPS[0]]: 1, [OPS[1]]: 1, [OPS[2]]: 1 });
+  assert.equal(soma(p), 100);
+  // 33.33 cada; a sobra (1 ponto) vai pro primeiro no desempate estavel
+  assert.deepEqual(p, { [OPS[0]]: 34, [OPS[1]]: 33, [OPS[2]]: 33 });
+});
+
+test("percentuais: 0 votos degrada pra tudo 0 (sem divisao por zero)", () => {
+  const p = Core.percentuais({ [OPS[0]]: 0, [OPS[1]]: 0, [OPS[2]]: 0 });
+  assert.deepEqual(p, { [OPS[0]]: 0, [OPS[1]]: 0, [OPS[2]]: 0 });
+  assert.deepEqual(Core.percentuais({}), { [OPS[0]]: 0, [OPS[1]]: 0, [OPS[2]]: 0 });
+  assert.deepEqual(Core.percentuais(null), { [OPS[0]]: 0, [OPS[1]]: 0, [OPS[2]]: 0 });
+});
+
+test("percentuais: uma opcao com 100%", () => {
+  const p = Core.percentuais({ [OPS[0]]: 7, [OPS[1]]: 0, [OPS[2]]: 0 });
+  assert.deepEqual(p, { [OPS[0]]: 100, [OPS[1]]: 0, [OPS[2]]: 0 });
+});
+
+test("percentuais: contagem-lixo (negativa/NaN/string) conta como 0", () => {
+  const p = Core.percentuais({ [OPS[0]]: -5, [OPS[1]]: "40", [OPS[2]]: 3 });
+  // so a 3 e valida → 100% nela; soma 100
+  assert.deepEqual(p, { [OPS[0]]: 0, [OPS[1]]: 0, [OPS[2]]: 100 });
+});
+
+test("percentuais: maior resto — 1/1/1/1 (custom) soma 100 e distribui a sobra", () => {
+  const p = Core.percentuais({ a: 1, b: 1, c: 1, d: 1 }, ["a", "b", "c", "d"]);
+  assert.equal(soma(p), 100);
+  // 25 cada → exato, sem sobra
+  assert.deepEqual(p, { a: 25, b: 25, c: 25, d: 25 });
+});
+
+test("normPct: saneia resposta do servidor (clamp, nao-numero → 0)", () => {
+  const p = Core.normPct({ [OPS[0]]: 60, [OPS[1]]: -3, [OPS[2]]: 999 });
+  assert.deepEqual(p, { [OPS[0]]: 60, [OPS[1]]: 0, [OPS[2]]: 100 });
+  const q = Core.normPct({ [OPS[0]]: "x", [OPS[1]]: NaN });
+  assert.deepEqual(q, { [OPS[0]]: 0, [OPS[1]]: 0, [OPS[2]]: 0 });
+  assert.deepEqual(Core.normPct(null), { [OPS[0]]: 0, [OPS[1]]: 0, [OPS[2]]: 0 });
+});
+
+test("ordenarPct: modelo de barras ordenado por % desc, sem 'idx' vazando", () => {
+  const arr = Core.ordenarPct({ [OPS[0]]: 10, [OPS[1]]: 60, [OPS[2]]: 30 });
+  assert.deepEqual(arr, [
+    { op: OPS[1], pct: 60 },
+    { op: OPS[2], pct: 30 },
+    { op: OPS[0], pct: 10 },
+  ]);
+});
+
+test("ordenarPct: empate mantem a ordem da whitelist (estavel)", () => {
+  const arr = Core.ordenarPct({ [OPS[0]]: 33, [OPS[1]]: 33, [OPS[2]]: 34 });
+  assert.deepEqual(arr.map((x) => x.op), [OPS[2], OPS[0], OPS[1]]);
+});
+
 // ── loja "ja votou": serializacao ────────────────────────────────────────────
 test("estadoInicial: ninguem votou ainda", () => {
   assert.deepEqual(Core.estadoInicial(), { opcao: null });

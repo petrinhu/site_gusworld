@@ -159,25 +159,33 @@ return [
         // the real ones later; swapping = swapping the 'opcoes' array here + the
         // client (cupom-core.js) and server (api/cupom-voto.php) whitelists. Degrades
         // without JS: a native <form method=post>. Pixel labels are lowercase (N→H guard).
+        // ⚠️ The vote response shows the result LIVE, but ONLY as a % (never the
+        // absolute count — lead's decision 2026-07-19). Labels below are the REAL
+        // copy (co-decided); the slugs do NOT change (the whitelist matches 1:1).
         'cupom' => [
             'titulo'    => 'the coupon',
             'meta'      => 'cut-out poll',
             'lide'      => 'The edition coupon: cut along the dotted line, pick one and send it back. The result comes in the next edition. A magazine poll is in no hurry.',
-            // ⚠️ PLACEHOLDER (question + options): final copy co-decided with the lead
-            'pergunta'  => 'what do you want to see more of in the next edition?',
+            'pergunta'  => 'What do you want more of in the next Glyfesse?',
             'legenda'   => 'pick one and send the coupon back',
             'opcoes'    => [
-                'mais-jogo'       => 'more of the game',
+                'mais-jogo'       => 'more game',
                 'mais-bastidores' => 'more behind-the-scenes',
-                'mais-gus'        => 'more of Gus',
+                'mais-gus'        => 'more Gus',
             ],
             'recorte'   => 'cut here',
             'enviar'    => 'send the coupon',
             'rasgar'    => 'tear along the dotted line',
             'desfazer'  => 'stick it back',
-            'espera'    => 'result in the next edition',
-            'obrigado'  => 'coupon in the box. the result comes in the next edition.',
-            'ja_votou'  => 'you already sent your coupon this edition. the result comes in the next one.',
+            'espera'    => 'live result, edition by edition',
+            // the RESULT (server-rendered when the cookie says "already voted" + the
+            // client paints it after voting). Proportion only — no absolute count.
+            'resultado'    => 'what the stand wants (so far)',
+            'res_nota'     => 'live · proportion only, no absolute count',
+            'res_vazia'    => 'the box is still empty here. be the first.',
+            'voto_seu'     => 'your vote',
+            'obrigado'  => 'coupon in the box. see how the vote is going.',
+            'ja_votou'  => 'you already sent your coupon. see how the vote is going.',
             'erro'      => 'could not send right now. try again in a bit.',
             'off'       => 'no browser memory: your coupon counts, I just won\'t remember you voted.',
             'cap'       => 'FIG. · the cut-out coupon. pick one and send it back.',

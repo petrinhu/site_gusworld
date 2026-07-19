@@ -943,6 +943,60 @@ main{display:block}
   color:var(--tinta-2); text-align:center; margin:9px 0 0;
 }
 
+/* ── O RESULTADO · barras de % (Decisão do líder 2026-07-19) ──
+   Sai AO VIVO, mas SÓ proporção — nunca o número absoluto. É PAPEL (na cor da
+   tinta), no mesmo cartão tracejado do cupom. Server-render (sem-JS, quando o
+   cookie diz "já votou") e o caminho JS (depois do voto) compartilham esta marcação.
+   A largura da barra = calc(--pct * 1%); --pct é inteiro 0..100. Sem animação
+   contínua (papel assenta, não pisca) → reduced-motion não precisa desligar nada. */
+.cupom-resultado{
+  position:relative; margin-top:clamp(12px,2vw,16px);
+  border:2px dashed var(--tinta-ciano); border-radius:6px;
+  background:#0d5e6708; padding:clamp(14px,3vw,22px) clamp(14px,4vw,26px);
+}
+.cupom-res-tit{
+  font-family:var(--font-manchete); font-weight:700;
+  font-size:clamp(16px,2.4vw,20px); line-height:1.2; color:var(--tinta-preta);
+  margin:0 0 clamp(12px,2vw,16px);
+}
+.cupom-res-vazia{
+  font-family:var(--font-corpo); font-size:clamp(14px,1.8vw,16px);
+  color:var(--tinta-2); margin:0;
+}
+.cupom-barras{list-style:none; margin:0; padding:0; display:grid; gap:clamp(10px,2vw,14px)}
+.cupom-barra{
+  display:grid; grid-template-columns:1fr auto; align-items:baseline;
+  column-gap:10px; row-gap:5px;
+}
+.cupom-barra-lbl{
+  font-family:var(--font-corpo); font-size:clamp(14px,1.8vw,16px);
+  color:var(--tinta-preta); line-height:1.3;
+}
+.cupom-barra-eu{
+  font-family:var(--font-display); font-size:10px; letter-spacing:.06em;
+  color:var(--papel); background:var(--tinta-ciano);
+  border-radius:3px; padding:1px 6px; vertical-align:middle;
+}
+.cupom-barra-pct{
+  font-family:var(--font-display); font-size:13px; letter-spacing:.03em;
+  color:var(--tinta-ciano); font-variant-numeric:tabular-nums; text-align:right;
+}
+.cupom-barra-trilho{
+  grid-column:1 / -1; display:block; height:10px; border-radius:5px;
+  background:#0d5e6714; overflow:hidden;
+}
+.cupom-barra-fill{
+  display:block; height:100%; width:calc(var(--pct,0) * 1%);
+  background:var(--tinta-ciano); border-radius:5px;
+}
+/* a barra do "seu voto" ganha um traço mais forte (só no caminho JS) */
+.cupom-barra[data-eu] .cupom-barra-fill{background:var(--tinta-magenta)}
+.cupom-barra[data-eu] .cupom-barra-pct{color:var(--tinta-magenta)}
+.cupom-res-nota{
+  font-family:var(--font-display); font-size:11px; letter-spacing:.04em;
+  color:var(--tinta-2); margin:clamp(12px,2vw,16px) 0 0; text-transform:none;
+}
+
 /* ── A FILEIRA DE CAPAS ── */
 .banca{padding:clamp(20px,3.5vw,28px) 0 0}
 .banca-tit{

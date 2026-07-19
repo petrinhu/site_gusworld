@@ -272,18 +272,66 @@ require __DIR__ . '/../includes/head.php';
      ⚠️ A PERGUNTA e as OPÇÕES são PLACEHOLDER: o líder define as reais (a whitelist
      casa 1:1 no cliente cupom-core.js e no servidor api/cupom-voto.php). */ ?>
   <?php $cp = $banca['cupom']; ?>
+  <?php /* ⚠️ RESULTADO: só PERCENTUAL, nunca a contagem absoluta (Decisão do líder).
+     data-msg-* levam a copy que o cliente pinta (resultado/nota/voto/estados). O
+     cliente lê o `pct` da resposta do endpoint (o servidor não manda contagem crua)
+     e ordena com CupomCore.ordenarPct. As opções (slug→rótulo) o cliente colhe do
+     próprio form. */ ?>
   <section class="cupom-hero" id="gancho-cupom" aria-labelledby="cupom-h2"
            data-lang="<?= h($idioma) ?>"
            data-msg-obrigado="<?= h((string) $cp['obrigado']) ?>"
            data-msg-javotou="<?= h((string) $cp['ja_votou']) ?>"
            data-msg-erro="<?= h((string) $cp['erro']) ?>"
-           data-msg-off="<?= h((string) $cp['off']) ?>">
+           data-msg-off="<?= h((string) $cp['off']) ?>"
+           data-msg-resultado="<?= h((string) $cp['resultado']) ?>"
+           data-msg-resnota="<?= h((string) $cp['res_nota']) ?>"
+           data-msg-resvazia="<?= h((string) $cp['res_vazia']) ?>"
+           data-msg-votoseu="<?= h((string) $cp['voto_seu']) ?>">
     <div class="cupom-cab">
       <h2 class="secao-nome" id="cupom-h2"><?= h((string) $cp['titulo']) ?></h2>
       <span class="conta"><?= h((string) $cp['meta']) ?></span>
     </div>
     <p class="cupom-lide"><?= h((string) $cp['lide']) ?></p>
 
+    <?php if ($cupom_votou): ?>
+    <?php /* JÁ VOTOU (cookie) → RESULTADO server-side, funciona SEM JS. Só as barras
+       de %; nenhum número absoluto no HTML. O servidor não sabe QUAL opção este
+       visitante marcou (zero-dado: o cookie é só booleano) → sem marca "seu voto"
+       aqui; ela só aparece no caminho JS (localStorage). */ ?>
+    <div class="cupom-resultado" id="cupom-resultado" role="group" aria-labelledby="cupom-res-tit">
+      <p class="cupom-res-tit" id="cupom-res-tit"><?= h((string) $cp['resultado']) ?></p>
+      <?php if ($cupom_total <= 0): ?>
+      <p class="cupom-res-vazia"><?= h((string) $cp['res_vazia']) ?></p>
+      <?php else: ?>
+      <?php
+        // ordena as opções por % desc (o gêmeo do CupomCore.ordenarPct no cliente),
+        // desempatando pela ordem da whitelist (estável).
+        $ord = [];
+        $ix = 0;
+        foreach ((array) $cp['opcoes'] as $oid => $olbl) {
+            $ord[] = ['oid' => (string) $oid, 'lbl' => (string) $olbl,
+                      'pct' => (int) ($cupom_pct[$oid] ?? 0), 'ix' => $ix++];
+        }
+        usort($ord, static function ($a, $b) {
+            return $a['pct'] !== $b['pct'] ? $b['pct'] <=> $a['pct'] : $a['ix'] <=> $b['ix'];
+        });
+      ?>
+      <ul class="cupom-barras">
+        <?php foreach ($ord as $b): ?>
+        <li class="cupom-barra">
+          <span class="cupom-barra-lbl"><?= h($b['lbl']) ?></span>
+          <span class="cupom-barra-trilho" aria-hidden="true">
+            <span class="cupom-barra-fill" style="--pct:<?= $b['pct'] ?>"></span>
+          </span>
+          <span class="cupom-barra-pct"><?= $b['pct'] ?>%</span>
+        </li>
+        <?php endforeach; ?>
+      </ul>
+      <?php endif; ?>
+      <p class="cupom-res-nota"><?= h((string) $cp['res_nota']) ?></p>
+    </div>
+
+    <?php else: ?>
     <?php /* O CUPOM = um <form> nativo. Sem JS: seleciona + envia → POST nativo pro
        endpoint (required no 1º radio impede envio vazio; o endpoint revalida a
        whitelist de qualquer jeito). Com JS: cupom.js intercepta e faz fetch. */ ?>
@@ -324,6 +372,7 @@ require __DIR__ . '/../includes/head.php';
       <?php /* status: cupom.js anuncia aqui (obrigado / já votou / erro / storage off) */ ?>
       <p class="cupom-status" id="cupom-status" role="status" aria-live="polite" hidden></p>
     </form>
+    <?php endif; ?>
 
     <p class="cupom-cap"><?= h((string) $cp['cap']) ?></p>
   </section>

@@ -26,27 +26,28 @@ declare(strict_types=1);
  *  - Cache-Control: no-store (o /api/* faz bypass da CDN — ADR §Cache/CDN por rota).
  *  - Erros: mensagem clara + status certo, SEM stack trace / SEM vazar caminho.
  *
- * ⚠️ A PERGUNTA/OPCOES do poll sao PLACEHOLDER — o lider define as reais depois.
- * Trocar o poll = trocar CUPOM_OPCOES aqui E o gemeo no cliente (cupom-core.js
- * OPCOES). A whitelist e a MESMA verdade nos dois lados.
+ * ★★ DECISAO DO LIDER (2026-07-19): a resposta mostra o resultado AO VIVO, mas
+ * SO em PERCENTUAL — o numero ABSOLUTO NUNCA sai daqui (anti-scraping: um scraper
+ * nao deduz a contagem crua de um % arredondado). A conversao contagem→percentual
+ * e a lib compartilhada (cupom_percentuais); a resposta leva `pct`, jamais `votos`.
+ * No sucesso o endpoint tambem seta um COOKIE funcional booleano ("ja votou"),
+ * o sinal canonico do estado votado (server-render mostra o resultado no reload).
+ *
+ * A WHITELIST (CUPOM_OPCOES), os caminhos do storage, o nome do cookie e o
+ * read+transform do tally moram em src/lib/cupom.php — a MESMA verdade que o
+ * render da banca usa pra mostrar o resultado sem-JS. So a ESCRITA
+ * (cupom_gravar_tally) fica aqui: e a unica peca que escreve.
  */
 
-// ── whitelist das opcoes (⚠️ PLACEHOLDER — casa 1:1 com cupom-core.js OPCOES) ──
-const CUPOM_OPCOES = ['mais-jogo', 'mais-bastidores', 'mais-gus'];
-
-// storage FIXO, FORA do public_html (nao servido pela web). Como data/edicoes.php.
-const CUPOM_STORE = __DIR__ . '/../../data/cupom-votos.json';
-// arquivo de lock dedicado: o flock mora nele, nao no store (que o rename troca).
-const CUPOM_LOCK  = __DIR__ . '/../../data/cupom-votos.lock';
+require_once __DIR__ . '/../../src/lib/cupom.php';
 
 // o corpo e minusculo ({"opcao":"mais-bastidores"} ~ 34 bytes). Teto folgado.
 const CUPOM_MAX_BODY = 256;
 
-// expor o tally atual na resposta? O conceito e "resultado na PROXIMA EDICAO" —
-// o CLIENTE deliberadamente NAO exibe os numeros. Fica true (o endpoint devolve
-// pra debug/teste); o lider pode virar false se quiser o tally 100% oculto ate
-// a revelacao editorial.
-const CUPOM_EXPOR_TALLY = true;
+// expor o resultado na resposta? Quando true, a resposta leva `pct` (PERCENTUAL
+// inteiro, NUNCA a contagem crua). O lider pode virar false pra ocultar o tally
+// 100% ate a revelacao editorial — ai o cliente cai no "obrigado" sem barras.
+const CUPOM_EXPOR_PCT = true;
 
 header('Cache-Control: no-store, max-age=0');
 header('Vary: Accept');
@@ -115,38 +116,8 @@ function cupom_responder(int $status, array $payload): never
     exit;
 }
 
-/**
- * Le o tally do JSON. TOLERANTE: ausente/vazio/corrompido/tipo-errado → zera.
- * So conta as chaves da whitelist (ignora qualquer lixo que tenha entrado no
- * arquivo). Contador negativo ou nao-inteiro vira 0. Nunca lanca.
- *
- * @return array<string,int>
- */
-function cupom_ler_tally(string $path): array
-{
-    $tally = array_fill_keys(CUPOM_OPCOES, 0);
-    if (!is_file($path)) {
-        return $tally;
-    }
-    $raw = @file_get_contents($path);
-    if ($raw === false || $raw === '') {
-        return $tally;
-    }
-    $dados = json_decode($raw, true);
-    if (!is_array($dados)) {
-        return $tally; // corrompido → recomeca do zero
-    }
-    foreach (CUPOM_OPCOES as $op) {
-        $v = $dados[$op] ?? 0;
-        if (is_int($v) && $v >= 0) {
-            $tally[$op] = $v;
-        } elseif (is_float($v) && $v >= 0 && is_finite($v)) {
-            $tally[$op] = (int) $v;
-        }
-        // qualquer outra coisa (string, negativo, NaN, array) fica em 0
-    }
-    return $tally;
-}
+// cupom_ler_tally() / cupom_percentuais() / cupom_votou_cookie() e as consts
+// (CUPOM_OPCOES, CUPOM_STORE, CUPOM_LOCK, CUPOM_COOKIE) vem de src/lib/cupom.php.
 
 /**
  * Grava o tally de forma ATOMICA: escreve num tmp no MESMO diretorio e rename()
@@ -250,10 +221,26 @@ if (!$gravou) {
     cupom_responder(503, ['ok' => false, 'erro' => 'indisponivel']);
 }
 
-// 6) sucesso. O tally vai na resposta (CUPOM_EXPOR_TALLY); o CLIENTE nao o exibe
-//    — "resultado na proxima edicao" e o conceito.
+// 6) sucesso. Seta o COOKIE funcional booleano (o sinal canonico do "ja votou":
+//    no reload o server-render mostra o resultado sem-JS). HttpOnly — so o PHP o
+//    le (o cliente decide o estado pelo pct da resposta / localStorage); Secure so
+//    em https (dev roda http). SameSite=Lax. Zero-dado: so um "1", sem ID.
+//    setcookie() manda um header → tem que vir ANTES de qualquer echo do corpo.
+$secure = (!empty($_SERVER['HTTPS']) && strtolower((string) $_SERVER['HTTPS']) !== 'off')
+    || ((string) ($_SERVER['SERVER_PORT'] ?? '') === '443');
+setcookie(CUPOM_COOKIE, '1', [
+    'expires'  => time() + CUPOM_COOKIE_VIDA,
+    'path'     => '/',
+    'samesite' => 'Lax',
+    'secure'   => $secure,
+    'httponly' => true,
+]);
+
+// A resposta leva SO o PERCENTUAL (Decisao do lider): calculado no servidor a
+// partir do tally, NUNCA a contagem crua. `pct` inteiro somando 100 (ou tudo 0).
+// ⚠️ Nada de `votos` absoluto aqui — senao um scraper leria o numero direto.
 $resposta = ['ok' => true, 'opcao' => $opcao];
-if (CUPOM_EXPOR_TALLY) {
-    $resposta['votos'] = $tally;
+if (CUPOM_EXPOR_PCT) {
+    $resposta['pct'] = cupom_percentuais($tally);
 }
 cupom_responder(200, $resposta);

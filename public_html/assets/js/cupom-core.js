@@ -109,6 +109,77 @@
     return b.segmentos === 0 ? 0 : b.feito / b.segmentos;
   }
 
+  // ── RESULTADO: contagem → PERCENTUAL (Decisao do lider 2026-07-19) ──────────
+  // ★★ O resultado sai AO VIVO, mas SO em % — o numero absoluto NUNCA aparece.
+  // No runtime o cliente recebe `pct` PRONTO do servidor (o endpoint nunca manda
+  // a contagem crua); estas funcoes puras (1) ESPELHAM a formula do servidor
+  // (cupom_percentuais em src/lib/cupom.php) pra ela ficar testada por node --test
+  // aqui, e (2) SANEIAM/ORDENAM o pct que veio do servidor pra pintura das barras.
+  //
+  // ⚠️ ESPELHO: percentuais() e o gemeo de PHP cupom_percentuais() — MESMO
+  // algoritmo (maior resto / Hamilton). Mudou aqui, mude la (e o teste PHP).
+
+  // maior valor >=0 e finito, senao 0 (base robusta pras contas de %).
+  function inteiroNaoNeg(v) {
+    return (typeof v === "number" && isFinite(v) && v > 0) ? Math.floor(v) : 0;
+  }
+
+  // contagem → percentual inteiro somando 100 (maior resto). 0 votos → tudo 0
+  // (sem divisao por zero). Desempate ESTAVEL pela ordem da whitelist.
+  function percentuais(tally, lista) {
+    var ops = (lista && typeof lista.length === "number") ? lista : OPCOES;
+    var pct = {}, limpo = {}, total = 0, i;
+    for (i = 0; i < ops.length; i++) {
+      pct[ops[i]] = 0;
+      limpo[ops[i]] = tally ? inteiroNaoNeg(tally[ops[i]]) : 0;
+      total += limpo[ops[i]];
+    }
+    if (total <= 0) return pct;             // urna vazia → tudo 0
+    var itens = [], soma = 0;
+    for (i = 0; i < ops.length; i++) {
+      var exato = limpo[ops[i]] * 100 / total;
+      var piso = Math.floor(exato);
+      pct[ops[i]] = piso;
+      soma += piso;
+      itens.push({ op: ops[i], resto: exato - piso, idx: i });
+    }
+    var sobra = 100 - soma;                 // pontos a distribuir (0..n-1)
+    itens.sort(function (a, b) {
+      if (a.resto !== b.resto) return b.resto - a.resto; // maior resto primeiro
+      return a.idx - b.idx;                              // empate → whitelist
+    });
+    for (var k = 0; k < sobra && k < itens.length; k++) pct[itens[k].op]++;
+    return pct;
+  }
+
+  // saneia o pct que VEIO do servidor pra exibir: cada opcao vira inteiro 0..100
+  // (nao-numero/negativo/alem → clamp). NUNCA lanca; a barra sempre desenha.
+  function normPct(pct, lista) {
+    var ops = (lista && typeof lista.length === "number") ? lista : OPCOES;
+    var out = {};
+    for (var i = 0; i < ops.length; i++) {
+      var v = (pct && typeof pct[ops[i]] === "number" && isFinite(pct[ops[i]]))
+        ? Math.floor(pct[ops[i]]) : 0;
+      if (v < 0) v = 0; else if (v > 100) v = 100;
+      out[ops[i]] = v;
+    }
+    return out;
+  }
+
+  // ordena as opcoes por % desc (empate estavel pela whitelist) pro modelo de
+  // barras da UI: [{ op, pct }]. Usa normPct (defesa contra resposta torta).
+  function ordenarPct(pct, lista) {
+    var ops = (lista && typeof lista.length === "number") ? lista : OPCOES;
+    var p = normPct(pct, ops), arr = [], i;
+    for (i = 0; i < ops.length; i++) arr.push({ op: ops[i], pct: p[ops[i]], idx: i });
+    arr.sort(function (a, b) {
+      if (a.pct !== b.pct) return b.pct - a.pct;
+      return a.idx - b.idx;
+    });
+    for (i = 0; i < arr.length; i++) delete arr[i].idx;
+    return arr;
+  }
+
   // ── loja "ja votou": idempotencia SUAVE no cliente (zero-dado) ──────────────
   // O servidor aceita SEMPRE (best-effort, anti-OE — o lider aceita "12 votos");
   // o cliente so LEMBRA que ja votou (e em que opcao) pra nao empurrar de novo.
@@ -194,6 +265,10 @@
     resetar: resetar,
     destacado: destacado,
     progresso: progresso,
+    // resultado (contagem→% + saneamento/ordenacao pra pintar as barras)
+    percentuais: percentuais,
+    normPct: normPct,
+    ordenarPct: ordenarPct,
     // ja votou
     estadoInicial: estadoInicial,
     normalizar: normalizar,
