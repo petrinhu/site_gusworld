@@ -43,11 +43,15 @@ Writing: 10. It's all there is.
 
 Nenhum bug esta edição. Não porque o código é perfeito: porque não existe código. Volte na #3.
 
+`// impossível algo não ter bug. não falo só de TI...`
+
 ### EN
 
 `gus@glyfesse>` gallery of bugs
 
 No bugs this edition. Not because the code is perfect: because there is no code. Come back in #3.
+
+`// impossible for anything to be bug-free. and i don't mean just IT...`
 
 ---
 
@@ -57,13 +61,13 @@ No bugs this edition. Not because the code is perfect: because there is no code.
 
 `gus@glyfesse>` cemitério de ideias mortas
 
-O cemitério ainda está vazio. Em maio, tudo é possível. Os mortos (o Godot, o 3D, o Qt) chegam com o código, de junho em diante.
+O cemitério ainda está vazio. Em maio, tudo é possível. Os mortos 🧟 (o Godot, o 3D, o Qt) chegam com o código, de junho em diante.
 
 ### EN
 
 `gus@glyfesse>` graveyard of dead ideas
 
-The graveyard is still empty. In May, everything is still possible. The dead (Godot, the 3D, the Qt) arrive with the code, from June on.
+The graveyard is still empty. In May, everything is still possible. The dead 🧟 (Godot, the 3D, the Qt) arrive with the code, from June on.
 
 ---
 
@@ -73,13 +77,13 @@ The graveyard is still empty. In May, everything is still possible. The dead (Go
 
 `gus@glyfesse>` detonado
 
-Detonar o quê? Não tem jogo. Páginas em branco e um AGUARDE.
+Detonar o quê? Não tem jogo. Uma bateria de lítio velha no ferro velho?... Páginas em branco e um AGUARDE.
 
 ### EN
 
 `gus@glyfesse>` walkthrough
 
-Walk through what? There's no game. Blank pages and a STAND BY.
+Walk through what? There's no game. Maybe a lone trail to nowhere?... Blank pages and a STAND BY.
 
 ---
 
@@ -91,11 +95,15 @@ Walk through what? There's no game. Blank pages and a STAND BY.
 
 Sem errata: é a primeira edição, ainda não deu tempo de errar em público. Sem cartas: ninguém escreveu. Seja o primeiro (o e-mail está no rodapé).
 
+`// não posso escrever carta pra mim mesmo. seria desonesto...`
+
 ### EN
 
 `gus@glyfesse>` errata + letters
 
 No errata: it's the first edition, there hasn't been time to be wrong in public yet. No letters: nobody has written. Be the first (the e-mail is in the footer).
+
+`// i can't write a letter to myself. that would be dishonest...`
 
 ---
 
