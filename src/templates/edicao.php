@@ -87,18 +87,32 @@ $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs
       <p class="indice-nota"><?= h((string) $t['indice_nota']) ?></p>
     </nav>
 
-    <?php /* ══ 03 … 19 · as seções fixas em SCAFFOLD ══ */ ?>
+    <?php /* ══ 03 … 19 · as seções fixas ══
+       Para cada seção, tenta o partial de conteúdo (src/content/edicao-<n>/<lang>/
+       <id>.php, resolvido pela função pura caminho_conteudo_secao). Existe →
+       renderiza no lugar do bloco; NÃO existe → cai para o .scaffold (rascunho /
+       seção-sem-conteúdo segue seguro, nada de meio-pronto vaza). D-STACK:
+       publicar uma seção é o arquivo passar a existir, sem tocar em HTML. */ ?>
+    <?php require_once __DIR__ . '/../lib/conteudo.php'; ?>
     <?php foreach ($secoes as $s): ?>
+    <?php
+      $partial = caminho_conteudo_secao(__DIR__ . '/../content', (int) $ctx['numero'], (string) $ctx['idioma'], $s['id']);
+      $tem_conteudo = $partial !== null && is_file($partial);
+    ?>
     <section class="secao-bloco" id="<?= h($s['id']) ?>">
       <div class="secao">
         <span class="n"><?= h($s['num']) ?></span>
         <h2 class="secao-nome"><?= h((string) $t['secoes'][$s['nome']]) ?></h2>
         <span class="grupo"><?= h((string) $t['grupos'][$s['grupo']]) ?></span>
       </div>
+      <?php if ($tem_conteudo): ?>
+      <div class="conteudo"><?php include $partial; ?></div>
+      <?php else: ?>
       <div class="scaffold">
         <span class="tag"><?= h((string) $t['scaffold_tag']) ?></span>
         <p><?= h((string) $t['scaffold_texto']) ?></p>
       </div>
+      <?php endif; ?>
       <p class="up-wrap"><a class="up" href="#sumario"><?= h((string) $t['up_indice']) ?></a></p>
     </section>
     <?php endforeach; ?>

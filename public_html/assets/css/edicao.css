@@ -42,7 +42,7 @@ body{
 /* a coluna de LEITURA ~74ch DENTRO da folha (corpo/índice; legibilidade) —
    o líder confirmou manter isto. Os divisores de seção e a capa spanam a
    folha; só o texto de leitura é limitado. */
-.indice,.indice-nota,.scaffold{max-width:74ch}
+.indice,.indice-nota,.scaffold,.conteudo{max-width:74ch}
 
 /* ── skip-link: escondido até receber foco ──
    Clipado por padrão (width/height 1px + clip-path), NÃO só empurrado pra fora
@@ -206,6 +206,184 @@ main{display:block}
 .up:hover{background:var(--tinta-ciano); color:var(--papel)}
 .up:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
 .up-fim{margin-top:clamp(20px,4vw,30px)}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   O CONTEÚDO DA SEÇÃO (.conteudo) — substitui o .scaffold quando o partial
+   src/content/edicao-<n>/<lang>/<id>.php existe. Reproduz o tratamento de VOZ
+   dos mocks 14 (apartes) e 15 (Gus no Bus), portado 1:1 para os tokens reais:
+   a fala (prompt = assinatura ciano · o dito lê baixinho) e o pensamento // (o
+   comentário verde AA). Zero token/estética nova. Sem em-dash.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* prosa de papel: a serifa de corpo, tinta cheia, coluna de leitura já ~74ch */
+.conteudo{font-family:var(--font-corpo); color:var(--tinta-preta)}
+.conteudo > p{font-size:clamp(15.5px,2.1vw,17px); line-height:1.6; margin:0 0 clamp(12px,2vw,16px)}
+.conteudo h3{
+  font-family:var(--font-manchete); font-weight:700; letter-spacing:var(--manchete-ls);
+  font-size:clamp(20px,3vw,26px); line-height:1.06; color:var(--tinta-preta);
+  margin:clamp(20px,3.5vw,30px) 0 10px;
+}
+.conteudo strong{font-weight:600; color:var(--tinta-preta)}
+
+/* tokens de código na prosa (D-ACENTOS): monospace de sistema, ASCII, tinta
+   levemente destacada. NÃO usa a pixel (--font-display) pra não disparar o
+   guard N→H em corpo pequeno; um mono real lê limpo em qualquer tamanho. */
+.conteudo code{
+  font-family:ui-monospace,"Cascadia Code","Source Code Pro",Menlo,Consolas,monospace;
+  font-size:.86em; background:#0d152010; color:var(--tinta-preta);
+  padding:1px 5px; border-radius:3px; word-break:break-word;
+}
+
+/* ── a VOZ: a fala (prompt + dito) e o pensamento // ── */
+.conteudo .fala{margin:0 0 clamp(10px,1.6vw,14px)}
+/* o prompt é ASSINATURA: mesmo peso visual da fala, ciano, nunca menor (regra
+   do líder nos mocks 11a/14). Fica em ASCII, monospace pixel. */
+.conteudo .prompt{
+  font-family:var(--font-display); font-size:16px; color:var(--tinta-ciano);
+  letter-spacing:.01em; white-space:nowrap;
+}
+/* a fala LE BAIXINHO: suave (--tinta-2, AA no pior papel), não a preta cheia */
+.conteudo .dito{
+  font-family:var(--font-corpo); font-weight:400; font-size:16px; line-height:1.55;
+  color:var(--tinta-2);
+}
+/* o // = comentário de código: verde AA (5.05:1 sobre o pior papel), de-emphasis
+   por COR. ⚠️ 15px é o piso do guard N→H (a pixel rasteriza N como H abaixo
+   disso); o // é a camada honesta, tem que ler limpo. NUNCA baixar de 15px. */
+.conteudo .pensa{
+  display:block; font-family:var(--font-display); font-size:15px; line-height:1.5;
+  color:#35562f; letter-spacing:.005em; margin:5px 0 clamp(10px,1.6vw,14px);
+}
+.conteudo .pensa::before{content:"// "; opacity:.85}
+/* a nota "prezado leitor" (bloco //): mesma cor, um respiro à esquerda */
+.conteudo .pensa.nota-leitor{
+  padding:8px 12px; border-left:2px solid #35562f66; margin-top:clamp(12px,2vw,16px);
+}
+.conteudo .pensa.assinatura{margin-top:2px; opacity:.9}
+
+/* ── §5 A NOTA: o placar (gráficos/jogabilidade/texto) ── */
+.conteudo .placar{list-style:none; margin:0 0 clamp(12px,2vw,16px); padding:0}
+.conteudo .placar li{
+  font-family:var(--font-corpo); font-size:16px; line-height:1.7;
+  padding:3px 0; border-bottom:1px dotted #00000018;
+}
+/* o [ícone de imagem quebrada]: placeholder textual (o quadro-rachado CSS/SVG
+   é de outra leva). Monospace apagado, entre colchetes, como um alt-text nu. */
+.conteudo .img-quebrada{
+  font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.8em;
+  color:var(--tinta-2); background:#0d152010; padding:1px 6px; border-radius:3px;
+}
+
+/* ── §10 CLASSIFICADOS: fragmentos curtos, um anúncio por bloco ── */
+.conteudo .classificados{
+  display:grid; gap:clamp(14px,2.4vw,20px); margin:0;
+}
+@media (min-width:560px){ .conteudo .classificados{grid-template-columns:1fr 1fr} }
+.conteudo .classificado{
+  padding:12px 14px; border:1px solid var(--borda); border-left:3px solid var(--tinta-ciano);
+  background:#0d152006;
+}
+.conteudo .classificado.anon{border-left-color:var(--tinta-2)}
+.conteudo .class-id{
+  display:block; font-family:var(--font-display); font-size:10px; letter-spacing:.08em;
+  color:var(--tinta-2); margin:0 0 6px;
+}
+.conteudo .classificado .dito,
+.conteudo .classificado .fala{margin:0}
+.conteudo .classificado .verbo{color:var(--tinta-preta); font-weight:700; letter-spacing:.02em}
+.conteudo .class-contato{
+  font-family:var(--font-display); font-size:11px; line-height:1.5;
+  color:var(--tinta-2); margin:8px 0 0;
+}
+.conteudo .email{
+  font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.95em; color:var(--tinta-ciano);
+}
+
+/* ── §16 A ENTREVISTA: o Q&A ── */
+.conteudo .materia-lede{
+  font-family:var(--font-corpo); font-size:clamp(15px,2vw,17px); line-height:1.55;
+  color:var(--tinta-2); margin:0 0 clamp(16px,3vw,22px);
+  padding-left:14px; border-left:2px solid var(--tinta-ciano);
+}
+.conteudo .qa .fala{margin-top:clamp(16px,2.6vw,22px)}
+.conteudo .qa .pergunta .dito{font-weight:600; color:var(--tinta-preta)}  /* a pergunta lê forte */
+.conteudo .qa .resposta{margin-top:8px}
+/* parágrafos extras da mesma resposta: alinham sob o dito (sem repetir o prompt) */
+.conteudo .resposta-cont{
+  font-family:var(--font-corpo); font-size:16px; line-height:1.55; color:var(--tinta-2);
+  margin:10px 0 0;
+}
+
+/* ── §17 PROGRAMAÇÃO: listas, tabela de specs, blockquote do 1º prompt ── */
+.conteudo ol.pipeline,
+.conteudo ul.clausulas,
+.conteudo ul.bibliografia{
+  margin:0 0 clamp(14px,2.2vw,18px); padding-left:24px;
+}
+.conteudo ol.pipeline li,
+.conteudo ul.clausulas li,
+.conteudo ul.bibliografia li{
+  font-size:clamp(15px,2vw,16.5px); line-height:1.55; margin:0 0 9px;
+}
+.conteudo ul.bibliografia{list-style:none; padding-left:0}
+.conteudo ul.bibliografia li{padding-left:14px; border-left:2px solid #00000014}
+
+.conteudo .specs{
+  width:100%; border-collapse:collapse; margin:0 0 clamp(14px,2.2vw,18px);
+  font-family:var(--font-display); font-size:13px;
+}
+.conteudo .specs th,.conteudo .specs td{
+  text-align:left; padding:7px 12px; border-bottom:1px solid var(--borda);
+}
+.conteudo .specs thead th{
+  border-bottom:2px solid var(--tinta-preta); color:var(--tinta-preta);
+  letter-spacing:.04em; text-transform:uppercase; font-size:11px;
+}
+.conteudo .specs td:first-child{color:var(--tinta-2)}
+.conteudo .specs td:last-child{color:var(--tinta-preta)}
+
+.conteudo blockquote{
+  margin:0 0 clamp(14px,2.2vw,18px); padding:12px 16px;
+  border-left:3px solid var(--tinta-ciano); background:#0d5e6708;
+  font-family:var(--font-corpo); font-style:italic; font-size:clamp(16px,2.2vw,18px);
+  line-height:1.5; color:var(--tinta-preta);
+}
+
+/* o gancho do efeito CRT/nano (§17) e o gancho da tela do BUS (§18): a peça
+   VISUAL é de outra leva. Marcador de slot reservado (dev), no espírito do
+   .scaffold — nunca um bloco vazio invisível. */
+.conteudo .crt-hook,
+.conteudo .bus-hook{
+  display:flex; align-items:center; justify-content:center;
+  min-height:120px; margin:clamp(12px,2vw,16px) 0;
+  border:1.5px dashed var(--tinta-ciano); border-radius:var(--raio-tela);
+  background:#05090f;
+}
+.conteudo .crt-hook::before,
+.conteudo .bus-hook::before{
+  content:"▮ " attr(data-visual) " · próxima leva";
+  font-family:var(--font-display); font-size:12px; letter-spacing:.06em;
+  color:var(--gw-ciano); opacity:.75;
+}
+
+/* ── §18 GUS NO BUS: a figura + legenda ── */
+.conteudo .bus-figura{margin:0 0 clamp(14px,2.2vw,18px)}
+.conteudo .bus-figura figcaption{
+  font-family:var(--font-display); font-size:11.5px; line-height:1.5; color:var(--tinta-2);
+  margin:8px 0 0; padding-left:9px; border-left:2px solid var(--tinta-ciano);
+}
+
+/* ── §19 EXPEDIENTE: o colofão ── */
+.conteudo .colofao{margin:0 0 clamp(14px,2.2vw,18px)}
+.conteudo .colo-titulo{
+  font-family:var(--font-manchete); font-weight:700; letter-spacing:var(--manchete-ls);
+  font-size:clamp(20px,3vw,26px); line-height:1.05; color:var(--tinta-preta); margin:0 0 2px;
+}
+.conteudo .colo-data{font-family:var(--font-display); font-size:12px; color:var(--tinta-2); margin:0 0 12px}
+.conteudo .colo-creditos{font-family:var(--font-corpo); font-size:16px; line-height:1.7; color:var(--tinta-preta); margin:0 0 10px}
+.conteudo .colo-creditos .prompt{font-size:15px}
+.conteudo .colo-direitos{font-family:var(--font-corpo); font-style:italic; font-size:14px; color:var(--tinta-2); margin:0}
+.conteudo .colo-sep{border:0; border-top:1px solid var(--borda); margin:clamp(16px,2.6vw,22px) 0}
 
 /* ── 404 ── */
 .erro-404{padding:clamp(24px,6vw,48px) 0}

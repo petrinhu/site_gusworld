@@ -1,0 +1,21 @@
+<?php /* Colophon - source: docs/content/edicao-1-expediente.md (## EN).
+   In-fiction credits + the curation note (root@glyfesse>). ⚠️ the em-dash in the
+   title "GLYFESSE #1 - the Genesis" is approved content; rendered via &mdash;
+   entity (the raw codepoint is barred by the no_mdash hook - same trick as mock 15). */ ?>
+<div class="colofao">
+  <p class="colo-titulo">GLYFESSE #1 &mdash; the Genesis</p>
+  <p class="colo-data">May 15, 2026</p>
+
+  <p class="colo-creditos">
+    Written by <span class="prompt">gus@glyfesse&gt;</span><br>
+    Edited by <span class="prompt">root@glyfesse&gt;</span>
+  </p>
+
+  <p class="colo-direitos">All rights reserved.</p>
+</div>
+
+<hr class="colo-sep">
+
+<p class="fala"><span class="prompt">root@glyfesse&gt;</span> <span class="dito">editor's note</span></p>
+
+<p>I picked the best pieces for this edition; there's much more in the archive, and the rest will drip into the ones to come. Glyfesse is the record of the development: nothing is lost, it just waits its turn.</p>
