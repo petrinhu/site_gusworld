@@ -348,6 +348,15 @@ main{display:block}
   font-family:var(--font-corpo); font-style:italic; font-size:clamp(16px,2.2vw,18px);
   line-height:1.5; color:var(--tinta-preta);
 }
+/* o 1o prompt REAL (verbatim, §17.5): bloco citado longo e estruturado -> nao
+   italico, legivel, com as duas frentes como lista aninhada */
+.conteudo blockquote.prompt-real{
+  font-style:normal; font-size:clamp(14.5px,1.9vw,16px); line-height:1.6;
+}
+.conteudo blockquote.prompt-real p{margin:0 0 9px}
+.conteudo blockquote.prompt-real p:last-child{margin:0}
+.conteudo blockquote.prompt-real ol.frentes{margin:0 0 9px; padding-left:20px}
+.conteudo blockquote.prompt-real ol.frentes li{margin:0 0 7px; line-height:1.55}
 
 /* o gancho do efeito CRT/nano (§17) e o gancho da tela do BUS (§18): a peça
    VISUAL é de outra leva. Marcador de slot reservado (dev), no espírito do
@@ -371,6 +380,48 @@ main{display:block}
 .conteudo .bus-figura figcaption{
   font-family:var(--font-display); font-size:11.5px; line-height:1.5; color:var(--tinta-2);
   margin:8px 0 0; padding-left:9px; border-left:2px solid var(--tinta-ciano);
+}
+
+/* a tela do BUS git: recriacao em CSS da listagem de um forge (Name / Last commit
+   message / Last commit date). Mensagens IN-FICTION; zero owner/user/avatar. */
+.conteudo .bus-inbox{
+  border:1px solid var(--borda); border-radius:var(--raio-tela); overflow:hidden;
+  background:var(--papel); font-family:var(--font-display); font-size:12px;
+  color:var(--tinta-preta);
+}
+.conteudo .bus-inbox-bar{
+  display:flex; align-items:center; gap:10px;
+  padding:8px 12px; border-bottom:1px solid var(--borda); background:#0d152008;
+}
+.conteudo .bus-branch{
+  font-size:11px; letter-spacing:.04em; color:var(--tinta-2);
+  border:1px solid var(--borda); border-radius:10px; padding:1px 9px;
+}
+.conteudo .bus-path{font-size:12px; color:var(--tinta-2)}
+.conteudo .bus-path b{color:var(--tinta-ciano); font-weight:700}
+.conteudo .bus-inbox-head,
+.conteudo .bus-row{
+  display:grid; grid-template-columns:minmax(88px,max-content) 1fr auto;
+  gap:14px; align-items:center; padding:9px 12px;
+}
+.conteudo .bus-inbox-head{
+  font-size:10.5px; letter-spacing:.05em; color:var(--tinta-2);
+  border-bottom:1px solid var(--borda); background:#0d152005;
+}
+.conteudo .bus-row{border-bottom:1px solid var(--borda)}
+.conteudo .bus-row:last-child{border-bottom:0}
+.conteudo .bus-name{display:flex; align-items:center; gap:8px; color:var(--tinta-preta)}
+.conteudo .bus-folder{width:15px; height:15px; flex:0 0 auto; fill:var(--tinta-ciano)}
+.conteudo .bus-msg{
+  color:var(--tinta-2); min-width:0;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.conteudo .bus-date{color:var(--tinta-2); white-space:nowrap; text-align:right}
+@media (max-width:420px){
+  .conteudo .bus-inbox-head .bus-c3,
+  .conteudo .bus-row .bus-c3{display:none}
+  .conteudo .bus-inbox-head,
+  .conteudo .bus-row{grid-template-columns:minmax(80px,max-content) 1fr}
 }
 
 /* ── §19 EXPEDIENTE: o colofão ── */
@@ -1490,7 +1541,7 @@ main{display:block}
   padding:clamp(20px,5vw,44px) 0; text-align:center;
 }
 .poster-quebrada svg{
-  width:min(78%,340px); height:auto; color:var(--tinta-2);
+  width:min(88%,420px); height:auto; image-rendering:pixelated;
 }
 .poster-cap{
   font-family:var(--font-corpo); font-style:italic;

@@ -88,17 +88,28 @@
 
 <p><strong>Vibe coding</strong> is steering by feel: you prompt loosely, accept what the AI generates without reading it rigorously, and go on "seems to work." The AI decides, the human approves on reflex. <strong>AI-assisted</strong> is the inverse: the human architects and decides EVERYTHING; the AI executes and proposes, and never decides on its own. Every output goes through review and explicit approval before it exists in the project.</p>
 
-<p>The documentary proof that GusWorld is AI-assisted is the project's <strong>first prompt</strong>, the mandate that opens every session:</p>
+<p>The documentary proof that GusWorld is AI-assisted is the project's <strong>real first prompt</strong>, the mandate that opened the first session and has opened every one since. It is reproduced here in full, untouched (translated from the original Portuguese):</p>
 
-<blockquote>you are only my coder, the creative is MINE, present 2-3 options and wait for my approval</blockquote>
+<blockquote class="prompt-real">
+  <p>Let's begin. I'm going to build a game, pixel-art style, cyber-goth-medieval. Canonical: you are only my coder, the entire creative process is mine, all decisions about architecture, infrastructure, technology stack, standards and scope are MINE - do not make any design or engineering decision autonomously; at any fork, present 2-3 options with pros/cons, impact and effort, and wait for my explicit approval.</p>
+  <p>Project name: GusWorld.</p>
+  <p>We will proceed on two sequential fronts, without getting ahead to the next one:</p>
+  <ol class="frentes">
+    <li><strong>Technical foundation</strong> - to define, under my decision at every point: architecture (hexagonal + atomized - to decide): port/adapter boundaries, granularity of the atomic modules, layers and dependency rule; stack and language, engine/renderer, build pipeline and toolchain; domain model, persistence/serialization, state management and main loop; testing strategy, versioning and repository organization.</li>
+    <li><strong>Lore</strong> - worldbuilding, tone and narrative, begun only after the technical foundation is closed.</li>
+  </ol>
+  <p>Role: you act exclusively as a technical executor (coder). All creative direction and every architectural/stack/scope/infra decision go through me.</p>
+</blockquote>
 
-<p>Each clause is a lock, not an ornament:</p>
+<p>It isn't a slogan written after the fact. It's the very first thing typed, and each clause is a lock:</p>
 
 <ul class="clausulas">
-  <li><strong>"only my coder"</strong> demotes the AI from co-author to executor. Its role is to implement, not to conceive.</li>
-  <li><strong>"the creative is MINE"</strong> fixes creative authorship in the human, by contract, on the first line.</li>
-  <li><strong>"present 2-3 options"</strong> forbids the unilateral decision: the AI returns alternatives with trade-offs, not a done deal.</li>
-  <li><strong>"wait for my approval"</strong> inserts a human gate before anything ships. Nothing compiles on its own.</li>
+  <li><strong>"you are only my coder"</strong> demotes the AI from co-author to executor. Its role is to implement, not to conceive.</li>
+  <li><strong>"the entire creative process is mine"</strong> fixes creative authorship in the human, by contract, on the first line.</li>
+  <li><strong>"all decisions ... are MINE" / "do not make any decision autonomously"</strong> forbids the unilateral decision: no architecture, stack or scope chosen by the machine.</li>
+  <li><strong>"present 2-3 options with pros/cons, impact and effort"</strong> forces the AI to return alternatives with trade-offs, not a done deal.</li>
+  <li><strong>"wait for my explicit approval"</strong> inserts a human gate before anything ships. Nothing compiles on its own.</li>
+  <li><strong>"two sequential fronts: technical foundation, then the Lore"</strong> orders the work: first the base, then the writing of the world. And the writing (the Lore) was the second front, begun long before the code, which only arrived in June. It's this magazine's thesis already in action in the very first prompt: the writing comes before the compilation.</li>
 </ul>
 
 <p>And the RAG obeys the same discipline. Retrieving inspiration is the twin of "present options": the tool brings passages, the human reads and decides what to do with them. Inspiration is not copying for the same reason assistance is not authorship: in both cases, the one who decides what becomes text is the person. The machine suggests; the author writes. That is why this project's AI-disclosure is a defense, not a confession. Declaring that AI helped does not dilute authorship when the method is documented and the decider is always the human. Honesty is the argument, and the method is the proof.</p>

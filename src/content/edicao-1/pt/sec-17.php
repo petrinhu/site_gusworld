@@ -88,17 +88,28 @@
 
 <p><strong>Vibe coding</strong> é dirigir pela sensação: você pede solto, aceita o que a IA gera sem ler com rigor, e segue no "parece que funciona". A IA decide, o humano aprova no reflexo. <strong>AI-assisted</strong> é o inverso: o humano arquiteta e decide TUDO; a IA executa e propõe, e nunca decide sozinha. Cada saída passa por revisão e aprovação explícita antes de existir no projeto.</p>
 
-<p>A prova documental de que o GusWorld é AI-assisted é o <strong>primeiro prompt</strong> do projeto, o mandato que abre toda sessão:</p>
+<p>A prova documental de que o GusWorld é AI-assisted é o <strong>primeiro prompt real</strong> do projeto, o mandato que abriu a primeira sessão e passou a abrir todas as outras. Está reproduzido aqui na íntegra, sem retoque:</p>
 
-<blockquote>você é meu coder apenas, o criativo é MEU, apresente 2-3 opções e aguarde minha aprovação</blockquote>
+<blockquote class="prompt-real">
+  <p>Vamos iniciar. Vou criar um jogo, estilo pixelado, cyber-goth-medieval. Canonico: você é meu coder apenas, todo o processo criativo é meu, todas as decisões sobre arquitetura, infraestrutura, stack tecnológica, padrões e escopo são MINHAS - não tome nenhuma decisão de design ou engenharia de forma autônoma; diante de qualquer bifurcação, apresente 2-3 opções com prós/contras, impacto e esforço, e aguarde minha aprovação explícita.</p>
+  <p>Nome do projeto: GusWorld.</p>
+  <p>Vamos conduzir em duas frentes sequenciais, sem antecipar a seguinte:</p>
+  <ol class="frentes">
+    <li><strong>Fundação técnica</strong> - definir, sob minha decisão a cada ponto: arquitetura (hexagonal + atomizada - decidir): fronteiras de porta/adaptador, granularidade dos módulos atômicos, camadas e regra de dependência; stack e linguagem, engine/renderer, pipeline de build e toolchain; modelo de domínio, persistência/serialização, gestão de estado e loop principal; estratégia de testes, versionamento e organização de repositório.</li>
+    <li><strong>Lore</strong> - worldbuilding, tom e narrativa, iniciada somente após a fundação técnica estar fechada.</li>
+  </ol>
+  <p>Papel: você atua exclusivamente como executor técnico (coder). Toda direção criativa e toda decisão arquitetural/de stack/escopo/infra passam por mim.</p>
+</blockquote>
 
-<p>Cada cláusula é uma trava, não um enfeite:</p>
+<p>Não é um slogan escrito depois. É a primeira coisa que foi digitada, e cada cláusula é uma trava:</p>
 
 <ul class="clausulas">
-  <li><strong>"coder apenas"</strong> rebaixa a IA de co-autora a executora. O papel dela é implementar, não conceber.</li>
-  <li><strong>"o criativo é MEU"</strong> fixa a autoria criativa no humano, por contrato, na primeira linha.</li>
-  <li><strong>"apresente 2-3 opções"</strong> proíbe a decisão unilateral: a IA devolve alternativas com trade-offs, não um fato consumado.</li>
-  <li><strong>"aguarde minha aprovação"</strong> insere um gate humano antes de qualquer coisa entrar. Nada compila por conta própria.</li>
+  <li><strong>"você é meu coder apenas"</strong> rebaixa a IA de co-autora a executora. O papel dela é implementar, não conceber.</li>
+  <li><strong>"todo o processo criativo é meu"</strong> fixa a autoria criativa no humano, por contrato, na primeira linha.</li>
+  <li><strong>"as decisões ... são MINHAS" / "não tome nenhuma decisão de forma autônoma"</strong> proíbe a decisão unilateral: nada de arquitetura, stack ou escopo escolhido pela máquina.</li>
+  <li><strong>"apresente 2-3 opções com prós/contras, impacto e esforço"</strong> obriga a IA a devolver alternativas com trade-offs, não um fato consumado.</li>
+  <li><strong>"aguarde minha aprovação explícita"</strong> insere um gate humano antes de qualquer coisa entrar. Nada compila por conta própria.</li>
+  <li><strong>"duas frentes sequenciais: fundação técnica, depois a Lore"</strong> ordena o trabalho: primeiro a base, depois a escrita do mundo. E a escrita (a Lore) foi a segunda frente, começada muito antes do código, que só chegou em junho. É a tese desta revista já em ação no primeiro prompt: a escrita vem antes da compilação.</li>
 </ul>
 
 <p>E o RAG obedece à mesma disciplina. Recuperar inspiração é o gêmeo de "apresente opções": a ferramenta traz trechos, o humano lê e decide o que fazer com eles. Inspiração não é cópia pela mesma razão que assistência não é autoria: em ambos os casos, quem decide o que vira texto é a pessoa. A máquina sugere; o autor escreve. É por isso que o AI-disclosure deste projeto é uma defesa, não uma confissão. Declarar que a IA ajudou não dilui a autoria quando o método está documentado e o decisor é sempre o humano. A honestidade é o argumento, e o método é a prova.</p>

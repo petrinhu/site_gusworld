@@ -1,25 +1,41 @@
-<?php /* Poster central (encarte §13): o icone de IMAGEM QUEBRADA gigante, recriado
-   em SVG (o glifo classico de imagem-que-nao-carrega): moldura + sol + montanhas
-   + a rachadura + o marcador de canto (homenagem ao broken-image dos anos 90,
-   nas cores do jogo). Decorativo -> aria-hidden no SVG; a legenda carrega o
-   sentido. Estilos: edicao.css (.poster-quebrada). */ ?>
+<?php /* Poster central (encarte §13): recriacao FIEL do glifo classico de IMAGEM
+   QUEBRADA (ref. resources/referencias/icone_quebrado.png): pagina clara com o
+   canto superior direito DOBRADO (dog-ear), uma miniatura de paisagem dentro
+   (ceu azul + solzinho + colina verde) PARTIDA por uma rachadura diagonal.
+   Bitmap/pixelado: shape-rendering=crispEdges + formas de aresta dura, zero
+   gradiente. Decorativo -> aria-hidden no SVG; a legenda carrega o sentido.
+   Estilos: edicao.css (.poster-quebrada). */ ?>
 <div class="poster-quebrada">
-  <svg viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <?php /* a moldura da "foto" */ ?>
-    <rect x="8" y="8" width="204" height="132" rx="6"
-          stroke="currentColor" stroke-width="3.5"/>
-    <?php /* o sol + as montanhas: a imagem que deveria estar la */ ?>
-    <circle cx="168" cy="50" r="14" stroke="currentColor" stroke-width="3"/>
-    <path d="M20 134 L68 84 L102 116 L140 74 L200 134"
-          stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-    <?php /* a rachadura: o zigue-zague que parte a foto ao meio */ ?>
-    <path d="M120 8 L100 44 L124 66 L96 92 L120 116 L104 140"
-          stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
-    <?php /* o marcador de canto (broken-image 90s) nas cores do jogo */ ?>
-    <rect x="20" y="20" width="40" height="30" rx="3" stroke="currentColor" stroke-width="2"/>
-    <circle cx="30" cy="31" r="3.4" fill="#d84a3a"/>
-    <path d="M39 40 L45 30 L51 40 Z" fill="var(--gw-ciano)"/>
-    <rect x="47" y="24" width="7" height="7" rx="1" fill="var(--gw-magenta)"/>
+  <svg class="glifo-quebrado" viewBox="0 0 220 260" shape-rendering="crispEdges"
+       xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <?php /* a folha: camada de contorno (borda) + preenchimento claro, com o
+       canto superior direito cortado para a dobra */ ?>
+    <polygon points="30,20 150,20 190,60 190,240 30,240" fill="#9aa0a8"/>
+    <polygon points="38,28 148,28 182,62 182,232 38,232" fill="#f2f4f7"/>
+    <?php /* o dog-ear: a aba dobrada no canto + o vinco */ ?>
+    <polygon points="150,28 182,60 150,60" fill="#d7dbe1"/>
+    <path d="M150,28 L150,60 L182,60" stroke="#b9bfc7" stroke-width="3" fill="none"/>
+    <?php /* a miniatura de paisagem (ceu, sol, montanhas), recortada na foto */ ?>
+    <clipPath id="pic-quebrado"><rect x="52" y="82" width="116" height="122"/></clipPath>
+    <g clip-path="url(#pic-quebrado)">
+      <rect x="52" y="82" width="116" height="122" fill="#a9d3ef"/>
+      <circle cx="82" cy="116" r="15" fill="#ecd89a"/>
+      <polygon points="70,204 120,120 168,204" fill="#4f8a3a"/>
+      <polygon points="52,204 52,190 94,150 118,182 140,152 168,186 168,204" fill="#6fae52"/>
+      <?php /* a rachadura: banda em cor de papel, escadinha do topo-direito ao
+         canto inferior-esquerdo (a foto rasgada em diagonal) */ ?>
+      <g fill="#f2f4f7">
+        <rect x="150" y="86"  width="22" height="22"/>
+        <rect x="135" y="104" width="22" height="22"/>
+        <rect x="119" y="121" width="22" height="22"/>
+        <rect x="103" y="138" width="22" height="22"/>
+        <rect x="86"  y="155" width="22" height="22"/>
+        <rect x="69"  y="172" width="22" height="22"/>
+        <rect x="52"  y="188" width="22" height="22"/>
+      </g>
+    </g>
+    <?php /* a moldura interna da foto */ ?>
+    <rect x="52" y="82" width="116" height="122" fill="none" stroke="#b8bec6" stroke-width="3"/>
   </svg>
   <p class="poster-cap">A arte ainda não existe.</p>
   <p class="poster-sub">img/key-art.png &middot; 404 &middot; carregando... para sempre</p>
