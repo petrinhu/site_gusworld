@@ -14,6 +14,8 @@ require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/view.php';
 require_once __DIR__ . '/../../data/edicoes-helpers.php';
 require_once __DIR__ . '/contexto-edicao.php';
+require_once __DIR__ . '/conteudo.php'; // caminho_conteudo_secao() (existe a sec-15?)
+require_once __DIR__ . '/cupom.php';    // estado votado (%) do encarte, se presente
 
 /**
  * Descobre o slug pedido: prioriza ?slug= (a .htaccess de produção o passa);
@@ -53,6 +55,33 @@ function render_edicao(string $idioma): void
 
     $idade  = idade_folha($edicoes, $ctx['data']);
     $secoes = require __DIR__ . '/secoes.php';
+
+    // ── O CUPOM na EDIÇÃO (encarte, sec-15): estado votado server-side ──────────
+    // O encarte (src/includes/cupom.php, reusado da banca) mostra o RESULTADO (%)
+    // no lugar do form quando o visitante já votou (cookie booleano) — funciona SEM
+    // JS, igual à home. Só computo / vario por cookie se ESTA edição realmente monta
+    // o cupom (o partial sec-15 existe); assim as edições sem encarte seguem
+    // cacheáveis. Espelha a Decisão do líder + a nota de cache de render-banca.php.
+    // ⚠️ Só PERCENTUAL sai daqui; $cupom_total é INTERNO (decide "urna vazia").
+    $cupom_votou = false;
+    $cupom_pct   = null;
+    $cupom_total = 0;
+    $partial_cupom = caminho_conteudo_secao(__DIR__ . '/../content', (int) $ctx['numero'], $idioma, 'sec-15');
+    if ($partial_cupom !== null && is_file($partial_cupom)) {
+        $cupom_votou = cupom_votou_cookie();
+        if ($cupom_votou) {
+            $tally       = cupom_ler_tally(CUPOM_STORE);
+            $cupom_pct   = cupom_percentuais($tally);
+            $cupom_total = cupom_total($tally);
+        }
+        // A página passa a VARIAR pelo cookie (form × resultado): private/no-cache
+        // mantém a corretude sem servir a versão de um visitante pro próximo (mesmo
+        // trade-off sinalizado na banca). Vary: Cookie documenta a variação.
+        if (!headers_sent()) {
+            header('Cache-Control: private, no-cache, must-revalidate');
+            header('Vary: Cookie');
+        }
+    }
 
     include __DIR__ . '/../templates/edicao.php';
 }

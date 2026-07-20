@@ -130,6 +130,13 @@ $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs
    ainda é gancho. O SOM já é real: os 2 botões do rodapé (efeitos ON / música
    OFF) com o SFX real do jogo. Progressive enhancement: sem JS a página navega,
    lê, troca de idioma e mostra os botões no default, inertes. */ ?>
+<?php /* O CUPOM (encarte, sec-15) é o mesmo mini-app da banca: progressive
+   enhancement por cima do <form> nativo. Sem JS o cupom vota (POST nativo); com
+   JS liga o fetch/rasgar/idempotência suave. cupom.js se auto-protege (sai cedo
+   se a página não tem #cupom), então carregá-lo aqui é inócuo nas edições sem
+   encarte. A lógica pura vive no núcleo testado (cupom-core.js). */ ?>
+<script src="/assets/js/cupom-core.js" defer></script>
+<script src="/assets/js/cupom.js" defer></script>
 <script src="/assets/js/som-core.js" defer></script>
 <script src="/assets/js/som.js" defer></script>
 </body>
