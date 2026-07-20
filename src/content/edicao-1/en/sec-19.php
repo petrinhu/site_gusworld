@@ -1,9 +1,9 @@
 <?php /* Colophon - source: docs/content/edicao-1-expediente.md (## EN).
-   In-fiction credits + the curation note (root@glyfesse>). ⚠️ the em-dash in the
-   title "GLYFESSE #1 - the Genesis" is approved content; rendered via &mdash;
-   entity (the raw codepoint is barred by the no_mdash hook - same trick as mock 15). */ ?>
+   In-fiction credits + the curation note (root@glyfesse>). The title separator
+   uses the middot " · " (the site's title convention, same as the masthead),
+   not an em-dash (global no-em-dash rule). */ ?>
 <div class="colofao">
-  <p class="colo-titulo">GLYFESSE #1 &mdash; the Genesis</p>
+  <p class="colo-titulo">GLYFESSE #1 · the Genesis</p>
   <p class="colo-data">May 15, 2026</p>
 
   <p class="colo-creditos">

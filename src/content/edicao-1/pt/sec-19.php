@@ -1,9 +1,9 @@
 <?php /* Expediente (colofão) - fonte: docs/content/edicao-1-expediente.md (## pt-BR).
-   Créditos in-fiction + a nota de curadoria (root@glyfesse>). ⚠️ o travessão do
-   título "GLYFESSE #1 - a Gênese" é conteúdo aprovado; sai por entidade &mdash;
-   (o codepoint cru é barrado pelo hook no_mdash - mesmo truque do mock 15). */ ?>
+   Créditos in-fiction + a nota de curadoria (root@glyfesse>). O separador do
+   título usa o middot " · " (convenção de título do site, igual ao masthead),
+   não em-dash (regra global sem em-dash). */ ?>
 <div class="colofao">
-  <p class="colo-titulo">GLYFESSE #1 &mdash; a Gênese</p>
+  <p class="colo-titulo">GLYFESSE #1 · a Gênese</p>
   <p class="colo-data">15 de maio de 2026</p>
 
   <p class="colo-creditos">
