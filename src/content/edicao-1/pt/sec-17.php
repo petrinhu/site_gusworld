@@ -17,7 +17,13 @@
 <p class="pensa nota-leitor">Prezado leitor, daqui por diante é a parte técnica de verdade: a documentação histórica de como o desenvolvimento começou. Se você não é de TI, a intro acima já te deu o essencial e você pode pular pro Cupom sem culpa.</p>
 <p class="pensa assinatura">root@glyfesse</p>
 
-<div class="crt-hook" data-visual="crt-nano"><!-- [VISUAL: CRT fósforo verde, efeito de digitação: root@glyfesse>~$ nano <enter>, cursor piscando] - render CRT/nano: proxima leva --></div>
+<?php /* crt-nano: o prompt sendo digitado (CSS steps, zero JS). Decorativo (a prosa
+   acima ja diz tudo) -> aria-hidden. Estilos em edicao.css (.crt-scr/.crt-nano). */ ?>
+<div class="crt-scr crt-nano" aria-hidden="true">
+  <div class="crt-tela">
+    <p><span class="pr">root@glyfesse&gt;~$</span> <span class="crt-typed">nano&nbsp;</span><span class="crt-key dim">&lt;enter&gt;</span> <span class="crt-cur"></span></p>
+  </div>
+</div>
 
 <h3>1. O problema: inspiração sem reler tudo e sem copiar</h3>
 

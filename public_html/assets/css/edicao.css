@@ -1381,3 +1381,157 @@ main{display:block}
   .lt-frame,.lt-feito,.lt-puxador{transition:none}
 }
 
+/* ═══════════════════ TERMINAL CRT DE FOSFORO VERDE ═══════════════════
+   O tijolo comum das pecas artisticas da #1 (crt-nano na §17, os 3 quadros da
+   HQ na §11): moldura de plastico escuro + tela de fosforo verde com scanline
+   embutido. O CORPO usa ui-monospace (nao a pixel --font-display) de proposito:
+   o texto longo do HAL tem N maiusculo e acentos, e a PixelOperatorMono
+   rasteriza N como H abaixo de 15px. ui-monospace ja e o monospace da revista
+   (.email, .img-quebrada) e escapa do guard. Verde = literal (nao ha token de
+   fosforo; segue o padrao do arquivo de hex cru dentro do componente de tela). */
+.crt-scr{
+  position:relative; overflow:hidden;
+  border-radius:var(--raio-tela); padding:5px; background:#05090f;   /* a carcaca */
+  box-shadow:inset 0 0 0 1px #24402f, 0 2px 0 #00000018;
+}
+.crt-tela{
+  position:relative; border-radius:calc(var(--raio-tela) - 3px); overflow:hidden;
+  padding:clamp(12px,3vw,20px) clamp(12px,3.5vw,22px);
+  background:radial-gradient(120% 130% at 50% 42%, #0c2417 0%, #050a06 66%);
+  font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:clamp(12px,1.7vw,14px); line-height:1.75;
+  color:#5dfc9a; text-shadow:0 0 6px #2ad07a66;   /* o brilho do tubo */
+}
+/* scanline + vinheta por cima (a tela "acesa", independente do CRT global) */
+.crt-tela::after{
+  content:""; position:absolute; inset:0; z-index:4; pointer-events:none;
+  background:
+    radial-gradient(120% 130% at 50% 55%, #5dfc9a12 0%, #0000 46%, #00000066 100%),
+    repeating-linear-gradient(0deg, #0000000d 0 1px, #0000 1px 3px);
+}
+.crt-tela p{margin:0}
+.crt-tela .pr{color:#8affc0; text-shadow:0 0 7px #5dfc9a88}   /* o prompt, mais claro */
+.crt-tela .er{color:#ff9a7a; text-shadow:0 0 6px #ff5a3a55}   /* stderr, ambar-vermelho */
+.crt-tela .dim{color:#3f9c6a; text-shadow:none}               /* teor apagado (keycap etc.) */
+
+/* o cursor de bloco piscando (compartilhado) */
+.crt-cur{
+  display:inline-block; width:.62em; height:1.05em; vertical-align:-.16em;
+  background:#8affc0; box-shadow:0 0 8px #5dfc9a99;
+  animation:crt-blink 1.05s steps(1) infinite;
+}
+@keyframes crt-blink{50%{opacity:.12}}
+
+/* ── §17 · crt-nano: o prompt sendo DIGITADO (CSS steps, zero JS) ──
+   prompt impresso na hora + o comando `nano` revelado char a char (width em ch
+   com steps) + a keycap <enter> surgindo + o cursor. */
+.crt-nano{margin:clamp(12px,2vw,16px) 0}
+.crt-nano .crt-typed{
+  display:inline-block; overflow:hidden; white-space:nowrap; vertical-align:bottom;
+  width:0ch; animation:crt-type 1.05s steps(5) .55s forwards;
+}
+@keyframes crt-type{from{width:0ch} to{width:5ch}}   /* "nano " = 5ch */
+.crt-nano .crt-key{opacity:0; animation:crt-keyin .01s linear 1.75s forwards}
+@keyframes crt-keyin{to{opacity:1}}
+
+/* ── §11 · a HQ: tirinha de 3 quadros, contorno preto de jornal ──
+   os gutters pretos = o fundo do strip aparecendo pelo gap. Quadros = telas CRT.
+   Q1/Q2 lado a lado no desktop; Q3 (HAL) ocupa a faixa inteira embaixo. */
+.hq{margin:clamp(14px,2.4vw,20px) 0 clamp(16px,2.6vw,22px)}
+.hq-strip{
+  display:grid; grid-template-columns:1fr; gap:3px;
+  background:var(--tinta-preta); border:3px solid var(--tinta-preta);
+}
+@media (min-width:640px){ .hq-strip{grid-template-columns:1fr 1fr} }
+.hq-q{position:relative; background:#050a06; min-height:120px}
+.hq-q .crt-tela{border-radius:0; height:100%}
+.hq-wide{grid-column:1 / -1}
+/* etiqueta de quadro (canto), como numero de vinheta */
+.hq-n{
+  position:absolute; top:6px; left:8px; z-index:6;
+  font-family:var(--font-display); font-size:11px; letter-spacing:.06em;
+  color:#3f9c6a; opacity:.8;
+}
+/* a barra do HAL: rotulo + o olho vermelho com glow (o que fica na memoria) */
+.hq-hal-bar{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  margin:0 0 10px; padding-bottom:8px; border-bottom:1px solid #24402f;
+}
+.hq-hal-bar .hal-id{
+  font-family:var(--font-display); font-size:15px; letter-spacing:.1em; color:#8affc0;
+  text-shadow:0 0 7px #5dfc9a66;
+}
+.hal-eye{
+  width:20px; height:20px; border-radius:50%; flex:0 0 auto;
+  background:radial-gradient(circle at 50% 42%, #ffd1c4 0%, #ff2a2a 42%, #7a0000 100%);
+  box-shadow:0 0 12px #ff2a2acc, 0 0 26px #ff000080, inset 0 0 4px #ffffff66;
+  animation:hal-pulsa 3.4s ease-in-out infinite;
+}
+@keyframes hal-pulsa{0%,100%{box-shadow:0 0 10px #ff2a2aaa,0 0 20px #ff000066,inset 0 0 4px #ffffff66}
+                     50%{box-shadow:0 0 16px #ff2a2aee,0 0 34px #ff0000aa,inset 0 0 5px #ffffff88}}
+.hq-hal-txt{max-width:none}
+.hq-hal-txt p{margin:0 0 9px}
+.hq-hal-txt p:last-child{margin:0}
+
+/* ── §13 · o poster central: o icone de imagem quebrada GIGANTE (SVG) ── */
+.poster-quebrada{
+  display:grid; place-items:center; gap:clamp(12px,2.4vw,18px);
+  padding:clamp(20px,5vw,44px) 0; text-align:center;
+}
+.poster-quebrada svg{
+  width:min(78%,340px); height:auto; color:var(--tinta-2);
+}
+.poster-cap{
+  font-family:var(--font-corpo); font-style:italic;
+  font-size:clamp(15px,2.4vw,19px); line-height:1.4; color:var(--tinta-2); margin:0;
+}
+.poster-sub{
+  font-family:var(--font-display); font-size:11px; letter-spacing:.06em;
+  color:var(--tinta-2); opacity:.85; margin:0;
+}
+
+/* ── §14 · o brinde: encarte da fonte CC0 + wallpaper de terminal ── */
+.brinde{display:grid; gap:clamp(16px,3vw,22px); margin:0}
+@media (min-width:620px){ .brinde{grid-template-columns:1fr 1fr; align-items:start} }
+.brinde-card{
+  border:1px solid var(--borda); border-left:3px solid var(--tinta-ciano);
+  padding:14px 16px; background:#0d152006;
+}
+.brinde-kick{
+  font-family:var(--font-display); font-size:10px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--tinta-ciano); margin:0 0 8px;
+}
+.brinde-card h3{
+  font-family:var(--font-manchete); font-weight:700; letter-spacing:var(--manchete-ls);
+  font-size:clamp(18px,2.6vw,22px); line-height:1.05; color:var(--tinta-preta); margin:0 0 8px;
+}
+.brinde-card p{font-family:var(--font-corpo); font-size:15px; line-height:1.55; color:var(--tinta-2); margin:0 0 10px}
+/* o mostruario da pixel: SO em corpos >=15px (o guard N->H) e minusculo no piso */
+.brinde-specimen{
+  font-family:var(--font-display); color:var(--tinta-preta);
+  border:1px dashed var(--borda); padding:10px 12px; margin:0 0 10px; background:var(--papel);
+}
+.brinde-specimen .sp-big{display:block; font-size:26px; line-height:1.1; letter-spacing:.02em}
+.brinde-specimen .sp-mid{display:block; font-size:17px; line-height:1.3; margin-top:6px; color:var(--tinta-2)}
+.brinde-dl{
+  display:inline-block; font-family:var(--font-display); font-size:13px; letter-spacing:.03em;
+  color:var(--tinta-ciano); text-decoration:none; border-bottom:1px solid currentColor;
+}
+.brinde-dl:hover,.brinde-dl:focus-visible{color:var(--tinta-preta); outline:none}
+.brinde-dl:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:3px}
+.brinde-dl .kbd{opacity:.7}
+/* preview do wallpaper: mini tela de terminal (mesma familia CRT, escala menor) */
+.brinde-wall .crt-tela{font-size:12px; padding:14px 16px; min-height:150px}
+.brinde-wall figcaption{
+  font-family:var(--font-display); font-size:11px; color:var(--tinta-2);
+  margin:8px 0 0; padding-left:9px; border-left:2px solid var(--tinta-ciano);
+}
+
+@media (prefers-reduced-motion:reduce){
+  /* reduzido = estado final, sem animar: comando ja digitado, cursor e olho parados */
+  .crt-nano .crt-typed{width:5ch; animation:none}
+  .crt-nano .crt-key{opacity:1; animation:none}
+  .crt-cur{animation:none}
+  .hal-eye{animation:none}
+}
+

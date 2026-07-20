@@ -17,7 +17,13 @@
 <p class="pensa nota-leitor">Dear reader, from here on it's the real technical part: the historical record of how development began. If you're not in tech, the intro above already gave you the gist and you can skip to the Coupon guilt-free.</p>
 <p class="pensa assinatura">root@glyfesse</p>
 
-<div class="crt-hook" data-visual="crt-nano"><!-- [VISUAL: green-phosphor CRT, typing effect: root@glyfesse>~$ nano <enter>, blinking cursor] - render CRT/nano: next wave --></div>
+<?php /* crt-nano: the prompt being typed (CSS steps, zero JS). Decorative (the prose
+   above already says it all) -> aria-hidden. Styles in edicao.css (.crt-scr/.crt-nano). */ ?>
+<div class="crt-scr crt-nano" aria-hidden="true">
+  <div class="crt-tela">
+    <p><span class="pr">root@glyfesse&gt;~$</span> <span class="crt-typed">nano&nbsp;</span><span class="crt-key dim">&lt;enter&gt;</span> <span class="crt-cur"></span></p>
+  </div>
+</div>
 
 <h3>1. The problem: inspiration without rereading everything, and without copying</h3>
 
