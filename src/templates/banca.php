@@ -405,19 +405,19 @@ require __DIR__ . '/../includes/head.php';
    a banca lê, navega e troca de idioma, e o hero mostra o quadrado + a legenda.
    O QUADRADINHO, o PRESS START e a LINHA DO TEMPO já são reais (núcleo testado +
    cola DOM); só as CHAMADAS de capa seguem como scaffold (W6). */ ?>
-<script src="/assets/js/quadradinho-core.js" defer></script>
-<script src="/assets/js/quadradinho.js" defer></script>
-<script src="/assets/js/press-start-core.js" defer></script>
-<script src="/assets/js/press-start.js" defer></script>
-<script src="/assets/js/linha-tempo-core.js" defer></script>
-<script src="/assets/js/linha-tempo.js" defer></script>
-<script src="/assets/js/glyfa-core.js" defer></script>
-<script src="/assets/js/glyfa.js" defer></script>
-<script src="/assets/js/album-core.js" defer></script>
-<script src="/assets/js/album.js" defer></script>
-<script src="/assets/js/cupom-core.js" defer></script>
-<script src="/assets/js/cupom.js" defer></script>
-<script src="/assets/js/som-core.js" defer></script>
-<script src="/assets/js/som.js" defer></script>
+<script src="<?= h(asset('/assets/js/quadradinho-core.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/quadradinho.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/press-start-core.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/press-start.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/linha-tempo-core.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/linha-tempo.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/glyfa-core.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/glyfa.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/album-core.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/album.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/cupom-core.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/cupom.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/som-core.js')) ?>" defer></script>
+<script src="<?= h(asset('/assets/js/som.js')) ?>" defer></script>
 </body>
 </html>

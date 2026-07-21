@@ -44,6 +44,6 @@ $assets = '/assets';
 <link rel="preload" as="font" type="font/woff2" crossorigin href="<?= $assets ?>/fonts/vollkorn-latin-400-normal.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="<?= $assets ?>/fonts/PixelOperatorMono.woff2">
 
-<link rel="stylesheet" href="<?= $assets ?>/css/tokens.css">
-<link rel="stylesheet" href="<?= $assets ?>/css/edicao.css">
+<link rel="stylesheet" href="<?= h(asset($assets . '/css/tokens.css')) ?>">
+<link rel="stylesheet" href="<?= h(asset($assets . '/css/edicao.css')) ?>">
 </head>

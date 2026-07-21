@@ -16,6 +16,26 @@ function h(string $s): string
     return htmlspecialchars($s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
+/** A raiz de public_html — resolve o caminho físico de um asset root-absoluto. */
+if (!defined('PUBLIC_HTML')) {
+    define('PUBLIC_HTML', dirname(__DIR__, 2) . '/public_html');
+}
+
+/**
+ * Cache-busting: devolve o caminho root-absoluto do asset com ?v=<mtime>, para
+ * o navegador nunca servir um CSS/JS velho depois que o arquivo muda (e um
+ * cache-bust grátis a cada deploy). $rel começa com "/" (ex.: /assets/css/
+ * edicao.css). Se o arquivo não existe (fail-safe), devolve $rel sem versão —
+ * um link quebrado é preferível a um fatal. Wrapper fino sobre filemtime (I/O);
+ * a lógica é trivial, não há núcleo puro a testar.
+ */
+function asset(string $rel): string
+{
+    $abs = PUBLIC_HTML . $rel;
+    $mtime = is_file($abs) ? filemtime($abs) : false;
+    return $mtime === false ? $rel : $rel . '?v=' . $mtime;
+}
+
 /**
  * Formata a data ISO no idioma (ex.: "22 de junho de 2026" / "June 22, 2026").
  * Fail-fast: data inválida cai para a própria string ISO.

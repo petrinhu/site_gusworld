@@ -1481,10 +1481,6 @@ main{display:block}
 }
 @media (min-width:600px){
   .hq-strip{grid-template-columns:repeat(3,1fr)}
-  /* na coluna ESTREITA (3 col) o cover recorta as laterais e o robo se desloca
-     pra ~4.8% da largura; no mobile empilhado (base, abaixo) o quadro fica
-     landscape (quase sem recorte) e o robo fica no x real ~2.2%. */
-  .hq-hal-foto .hal-eye{left:4.8%}
 }
 .hq-q{
   position:relative; background:#050a06; min-height:120px; display:flex;
@@ -1507,12 +1503,11 @@ main{display:block}
 /* object-position:top LEFT — revela o robozinho laranja do Claude Code (canto
    superior-esquerdo da tela) na coluna estreita; antes (top center) ele era cortado. */
 .hq-hal-foto img{display:block; width:100%; height:100%; object-fit:cover; object-position:top left}
-/* o olho vermelho do HAL na MINIATURA: agora que o robo esta revelado, o olho
-   crava no MEIO do robo (o robo com o olho aceso = HAL). Posicao em % (segue o
-   enquadramento em qualquer escala) + translate pra centralizar no robo; tamanho
-   PEQUENO (o robo e pequeno na coluna estreita). RESPIRA (hal-pulsa). */
+/* o olho vermelho do HAL na MINIATURA: crava no TOPO-DIREITO da tela (mesmo canto
+   do zoom), nao mais sobre o robo. Posicao em % (segue o enquadramento em qualquer
+   escala); tamanho PEQUENO (proporcional a miniatura). RESPIRA (hal-pulsa). */
 .hq-hal-foto .hal-eye{
-  position:absolute; top:11.7%; left:2.2%; transform:translate(-50%,-50%);
+  position:absolute; top:9.5%; right:2.6%;
   z-index:6; pointer-events:none;
   width:clamp(9px,1.1vw,14px);
 }
