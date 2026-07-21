@@ -92,11 +92,17 @@
 
 <?php /* the REAL screen of the first prompt (resources/referencias/tui_claude2.png),
    embedded whole and untouched. Real width/height for zero CLS; scrolls
-   horizontally inside the figure if needed (the body never scrolls). */ ?>
+   horizontally inside the figure if needed (the body never scrolls). The
+   <a class="zoom-link"> wires CLICK-TO-ENLARGE: WITHOUT JS it opens the real-size
+   PNG (progressive enhancement); WITH JS the lightbox (pecas.js) intercepts and
+   enlarges in-page to read. */ ?>
 <figure class="tela-real">
-  <img src="/assets/edicao-1/tui_claude2.png" width="1914" height="952"
-       loading="lazy" decoding="async"
-       alt="GusWorld's first prompt, in the terminal: the mandate defining the AI as coder and the creator as owner of every design, architecture, stack and scope decision.">
+  <a class="zoom-link" href="/assets/edicao-1/tui_claude2.png"
+     aria-label="Enlarge the first prompt to read it comfortably">
+    <img src="/assets/edicao-1/tui_claude2.png" width="1914" height="952"
+         loading="lazy" decoding="async"
+         alt="GusWorld's first prompt, in the terminal: the mandate defining the AI as coder and the creator as owner of every design, architecture, stack and scope decision.">
+  </a>
   <figcaption>GusWorld's real first prompt, captured from the terminal screen itself (original Portuguese).</figcaption>
 </figure>
 

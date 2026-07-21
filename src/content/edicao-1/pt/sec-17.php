@@ -92,11 +92,16 @@
 
 <?php /* a tela REAL do primeiro prompt (resources/referencias/tui_claude2.png),
    embutida inteira e sem retoque. width/height reais p/ zero CLS; rola na
-   horizontal dentro da figura se preciso (o body nunca rola). */ ?>
+   horizontal dentro da figura se preciso (o body nunca rola). O <a class="zoom-link">
+   liga o CLIQUE-PRA-AMPLIAR: SEM JS abre a PNG em tamanho real (progressive
+   enhancement); COM JS o lightbox (pecas.js) intercepta e amplia in-page pra ler. */ ?>
 <figure class="tela-real">
-  <img src="/assets/edicao-1/tui_claude2.png" width="1914" height="952"
-       loading="lazy" decoding="async"
-       alt="O primeiro prompt do GusWorld, no terminal: o mandato que define a IA como coder e o criador como dono de todas as decisões de design, arquitetura, stack e escopo.">
+  <a class="zoom-link" href="/assets/edicao-1/tui_claude2.png"
+     aria-label="Ampliar o primeiro prompt para ler à vontade">
+    <img src="/assets/edicao-1/tui_claude2.png" width="1914" height="952"
+         loading="lazy" decoding="async"
+         alt="O primeiro prompt do GusWorld, no terminal: o mandato que define a IA como coder e o criador como dono de todas as decisões de design, arquitetura, stack e escopo.">
+  </a>
   <figcaption>O primeiro prompt real do GusWorld, capturado da própria tela do terminal.</figcaption>
 </figure>
 

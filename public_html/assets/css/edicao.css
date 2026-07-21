@@ -1007,8 +1007,9 @@ main{display:block}
   line-height:1.55; color:var(--tinta-2); margin:8px 0 0; max-width:60ch;
 }
 
-/* o cupom em si: um cartão de PAPEL com borda TRACEJADA (o pontilhado de recorte).
-   Um leve tom mais claro que a folha + sombra sutil = um encarte destacável. */
+/* o cupom em si: um cartão de PAPEL com borda TRACEJADA nos 4 LADOS (o pontilhado
+   de recorte cerca a caixa inteira — um cupom que se destaca por completo). A
+   tesoura fica no topo do pontilhado. Tom mais claro que a folha + sombra sutil. */
 .cupom{
   position:relative; margin-top:clamp(12px,2vw,16px);
   border:2px dashed var(--tinta-ciano); border-radius:6px;
@@ -1016,7 +1017,8 @@ main{display:block}
   --rasgo:0;   /* progresso do rasgo (0..1), pintado por cupom.js */
 }
 
-/* a serrilha de recorte: a faixa da tesoura no topo, sobre o pontilhado */
+/* a serrilha de recorte: a faixa da tesoura no topo, separada do miolo por um
+   pontilhado (mesma linha de recorte que cerca a caixa). */
 .cupom-serra{
   display:flex; align-items:center; gap:8px;
   padding:6px clamp(12px,3vw,18px); border-bottom:2px dashed var(--tinta-ciano);
@@ -1431,59 +1433,79 @@ main{display:block}
 .crt-tela .er{color:#ff9a7a; text-shadow:0 0 6px #ff5a3a55}   /* stderr, ambar-vermelho */
 .crt-tela .dim{color:#3f9c6a; text-shadow:none}               /* teor apagado (keycap etc.) */
 
-/* o cursor de bloco piscando (compartilhado) */
+/* o cursor de bloco piscando (compartilhado). Pisca DEVAGAR (1.2s), a pedido do
+   lider — o blink rapido incomodava. */
 .crt-cur{
   display:inline-block; width:.62em; height:1.05em; vertical-align:-.16em;
   background:#8affc0; box-shadow:0 0 8px #5dfc9a99;
-  animation:crt-blink 1.05s steps(1) infinite;
+  animation:crt-blink 1.2s steps(1) infinite;
 }
 @keyframes crt-blink{50%{opacity:.12}}
 
-/* ── §17 · crt-nano: o prompt sendo DIGITADO (CSS steps, zero JS) ──
-   prompt impresso na hora + o comando `nano` revelado char a char (width em ch
-   com steps) + a keycap <enter> surgindo + o cursor. */
+/* ── §17 · crt-nano: o prompt sendo DIGITADO, disparado AO ENTRAR NA VIEW ──
+   ANTES a animacao rodava no LOAD (o leitor rolava ate aqui e ja tinha acabado).
+   Agora o IntersectionObserver (pecas.js) so dispara a digitacao quando o quadro
+   entra no viewport: adiciona .is-typing. Progressive enhancement: SEM JS (ou sem
+   observer) o comando JA aparece digitado (estado-base) — nunca um bloco em branco.
+   pecas.js "arma" (.armed) o quadro escondendo o comando, e so o revela char-a-char
+   quando .is-typing chega. A logica pura (quando "entrou") vive em typing-core.js. */
 .crt-nano{margin:clamp(12px,2vw,16px) 0}
 .crt-nano .crt-typed{
   display:inline-block; overflow:hidden; white-space:nowrap; vertical-align:bottom;
-  width:0ch; animation:crt-type 1.05s steps(5) .55s forwards;
+  width:5ch;   /* estado-base: "nano " ja revelado (sem JS) */
 }
+.crt-nano .crt-key{opacity:1}   /* estado-base: keycap <enter> visivel */
+/* armado por JS, antes de entrar na view: volta ao inicio (comando escondido) */
+.crt-scr.armed .crt-typed{width:0ch}
+.crt-scr.armed .crt-key{opacity:0}
+/* entrou na view: digita "nano " (5ch) e revela o <enter>, uma vez so */
+.crt-scr.is-typing .crt-typed{animation:crt-type 1.05s steps(5) .15s forwards}
+.crt-scr.is-typing .crt-key{animation:crt-keyin .01s linear 1.25s forwards}
 @keyframes crt-type{from{width:0ch} to{width:5ch}}   /* "nano " = 5ch */
-.crt-nano .crt-key{opacity:0; animation:crt-keyin .01s linear 1.75s forwards}
 @keyframes crt-keyin{to{opacity:1}}
 
-/* ── §11 · a HQ: tirinha de 3 quadros, contorno preto de jornal ──
+/* ── §11 · a HQ: tirinha de 3 quadros numa LINHA, contorno preto de jornal ──
    os gutters pretos = o fundo do strip aparecendo pelo gap. Quadros = telas CRT.
-   Q1/Q2 lado a lado no desktop; Q3 (HAL) ocupa a faixa inteira embaixo. */
+   Desktop: Q1|Q2|Q3 em 3 colunas IGUAIS, todos a mesma altura (grid stretch).
+   Mobile (<600px): empilha em 1 coluna. */
 .hq{margin:clamp(14px,2.4vw,20px) 0 clamp(16px,2.6vw,22px)}
 .hq-strip{
   display:grid; grid-template-columns:1fr; gap:3px;
   background:var(--tinta-preta); border:3px solid var(--tinta-preta);
 }
-@media (min-width:640px){ .hq-strip{grid-template-columns:1fr 1fr} }
-.hq-q{position:relative; background:#050a06; min-height:120px}
-.hq-q .crt-tela{border-radius:0; height:100%}
-.hq-wide{grid-column:1 / -1}
+@media (min-width:600px){ .hq-strip{grid-template-columns:repeat(3,1fr)} }
+.hq-q{position:relative; background:#050a06; min-height:120px; display:flex}
+.hq-q .crt-tela{border-radius:0; flex:1; width:100%}
 /* etiqueta de quadro (canto), como numero de vinheta */
 .hq-n{
   position:absolute; top:6px; left:8px; z-index:6;
   font-family:var(--font-display); font-size:11px; letter-spacing:.06em;
   color:#3f9c6a; opacity:.8;
 }
-/* Q3 do HQ: a tela REAL do monologo HAL (tui_claude.png) no lugar da recriacao.
-   A figura e o contexto de posicionamento do olho vermelho sobreposto. */
-.hq-hal-foto{position:relative; margin:0; line-height:0}
-.hq-hal-foto img{display:block; width:100%; height:auto}
-/* o olho vermelho do HAL com glow (o que fica na memoria), sobreposto no
-   topo-direito do cabecalho da tela. */
-.hq-hal-foto .hal-eye{position:absolute; top:10px; right:12px; z-index:6}
+/* Q3 do HQ: a tela REAL do monologo HAL (tui_claude.png). A figura preenche a
+   coluna do strip (mesma altura de Q1/Q2) e ancora o olho vermelho. object-fit
+   cover + object-position top: o CABECALHO da tela (a barra de abas) fica sempre
+   visivel no topo, e e nele que o olho crava. Sem retoque no arquivo (cover e so
+   enquadramento de exibicao; o monologo inteiro se le no zoom, item #6). */
+.hq-hal-foto{position:relative; margin:0; line-height:0; flex:1; width:100%; overflow:hidden}
+.hq-hal-foto .zoom-link{display:block; width:100%; height:100%}   /* o <a> preenche o quadro */
+.hq-hal-foto img{display:block; width:100%; height:100%; object-fit:cover; object-position:top center}
+/* o olho vermelho do HAL: cravado no topo-DIREITO do cabecalho da tela (em %, pra
+   seguir o header em qualquer escala de coluna) e RESPIRANDO (glow que pulsa devagar,
+   como o olho do HAL 9000). z-index acima da tela; aria-hidden no HTML. */
+.hq-hal-foto .hal-eye{position:absolute; top:2.4%; right:2.6%; z-index:6; pointer-events:none}
 .hal-eye{
-  width:16px; height:16px; border-radius:50%;
+  width:clamp(13px,1.6vw,17px); aspect-ratio:1; border-radius:50%;
   background:radial-gradient(circle at 50% 42%, #ffd1c4 0%, #ff2a2a 42%, #7a0000 100%);
   box-shadow:0 0 12px #ff2a2acc, 0 0 26px #ff000080, inset 0 0 4px #ffffff66;
-  animation:hal-pulsa 3.4s ease-in-out infinite;
+  animation:hal-pulsa 3.6s ease-in-out infinite;
 }
-@keyframes hal-pulsa{0%,100%{box-shadow:0 0 10px #ff2a2aaa,0 0 20px #ff000066,inset 0 0 4px #ffffff66}
-                     50%{box-shadow:0 0 16px #ff2a2aee,0 0 34px #ff0000aa,inset 0 0 5px #ffffff88}}
+/* respiracao: o glow e o brilho crescem e recuam devagar (inspira/expira). */
+@keyframes hal-pulsa{
+  0%,100%{box-shadow:0 0 8px #ff2a2a99, 0 0 16px #ff000055, inset 0 0 4px #ffffff55;
+          filter:brightness(.82)}
+  50%    {box-shadow:0 0 18px #ff2a2aff, 0 0 40px #ff0000bb, inset 0 0 6px #ffffff99;
+          filter:brightness(1.18)}}
 
 /* ── §13 · o poster central: o icone de imagem quebrada GIGANTE (SVG) ── */
 .poster-quebrada{
@@ -1539,10 +1561,46 @@ main{display:block}
   margin:8px 0 0; padding-left:9px; border-left:2px solid var(--tinta-ciano);
 }
 
+/* ── §11/§17 · ZOOM (lightbox): clique-pra-ampliar as telas reais ──
+   O <a class="zoom-link"> envolve a imagem. SEM JS abre a PNG em tamanho real
+   (href nativo). COM JS o pecas.js intercepta e abre o overlay abaixo. Logica
+   pura em lightbox-core.js. */
+.zoom-link{display:block; cursor:zoom-in}
+.zoom-link:focus-visible{outline:2px solid var(--acento); outline-offset:3px}
+
+/* o overlay: fundo escuro (a tela do Tavus-Drive envolvendo a folha) + a imagem
+   ampliada ao maximo do viewport, legivel. Montado no <body> por pecas.js. */
+.lightbox{
+  position:fixed; inset:0; z-index:100;
+  display:flex; align-items:center; justify-content:center;
+  padding:clamp(12px,3vw,40px);
+  background:#04060af5; cursor:zoom-out;
+  animation:lb-in var(--dur-medio) var(--ease);
+}
+.lightbox[hidden]{display:none}
+.lightbox img{
+  max-width:100%; max-height:100%; width:auto; height:auto;
+  border-radius:var(--raio-tela); box-shadow:0 12px 48px #000000b3;
+  cursor:default;
+}
+@keyframes lb-in{from{opacity:0} to{opacity:1}}
+.lightbox-fechar{
+  position:absolute; top:clamp(8px,2vw,18px); right:clamp(8px,2vw,18px);
+  font-family:var(--font-display); font-size:12px; letter-spacing:.06em;
+  color:#dce8f5; background:#1a2436; border:1px solid #486486; border-radius:5px;
+  padding:8px 13px; cursor:pointer;
+}
+.lightbox-fechar:hover{background:#243350}
+.lightbox-fechar:focus-visible{outline:2px solid var(--gw-ciano); outline-offset:2px}
+/* trava o scroll do fundo enquanto o zoom esta aberto */
+html.lightbox-aberto{overflow:hidden}
+
 @media (prefers-reduced-motion:reduce){
-  /* reduzido = estado final, sem animar: comando ja digitado, cursor e olho parados */
-  .crt-nano .crt-typed{width:5ch; animation:none}
-  .crt-nano .crt-key{opacity:1; animation:none}
+  /* reduzido = estado final, sem animar: comando ja digitado (mesmo se JS armou),
+     cursor e olho parados mas ACESOS. */
+  .crt-nano .crt-typed,.crt-scr.armed .crt-typed{width:5ch; animation:none}
+  .crt-nano .crt-key,.crt-scr.armed .crt-key{opacity:1; animation:none}
+  .crt-scr.is-typing .crt-typed,.crt-scr.is-typing .crt-key{animation:none}
   .crt-cur{animation:none}
   .hal-eye{animation:none}
 }

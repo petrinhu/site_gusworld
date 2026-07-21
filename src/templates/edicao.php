@@ -137,6 +137,15 @@ $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs
    encarte. A lógica pura vive no núcleo testado (cupom-core.js). */ ?>
 <script src="/assets/js/cupom-core.js" defer></script>
 <script src="/assets/js/cupom.js" defer></script>
+<?php /* PECAS ARTISTICAS interativas da #1: a digitacao-ao-entrar-na-view (crt-nano,
+   §17) e o lightbox das telas reais (§17 e §11). Nucleos PUROS testados
+   (typing-core.js / lightbox-core.js); pecas.js e o wrapper fino (observer +
+   overlay). Progressive enhancement: sem JS a §17 mostra o comando ja digitado e
+   os <a class="zoom-link"> abrem a PNG em tamanho real. Auto-protegido: sai cedo
+   se a pagina nao tem os alvos. */ ?>
+<script src="/assets/js/typing-core.js" defer></script>
+<script src="/assets/js/lightbox-core.js" defer></script>
+<script src="/assets/js/pecas.js" defer></script>
 <script src="/assets/js/som-core.js" defer></script>
 <script src="/assets/js/som.js" defer></script>
 </body>

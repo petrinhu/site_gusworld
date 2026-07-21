@@ -26,16 +26,22 @@
       </div>
     </div>
 
-    <?php /* Q3 - o HAL acorda. Agora e a tela REAL do monologo (tui_claude.png),
-       embutida inteira e sem retoque (props ficticios autorizados pelo lider),
-       com o olho vermelho do HAL sobreposto no topo-direito (glow pulsante,
-       aria-hidden; parado sob prefers-reduced-motion). width/height reais -> 0 CLS. */ ?>
-    <div class="hq-q hq-wide">
+    <?php /* Q3 - o HAL acorda. A tela REAL do monologo (tui_claude.png), sem retoque
+       (props ficticios autorizados pelo lider). Quadro IGUAL aos outros (3 colunas),
+       com o olho vermelho do HAL cravado no header-direito (glow que RESPIRA,
+       aria-hidden; aceso e parado sob prefers-reduced-motion). O <a class="zoom-link">
+       envolve a imagem: SEM JS abre a PNG em tamanho real (progressive enhancement);
+       COM JS o lightbox (pecas.js) intercepta e amplia in-page pra ler o monologo.
+       width/height reais -> 0 CLS. */ ?>
+    <div class="hq-q">
       <span class="hq-n" aria-hidden="true">3</span>
       <figure class="hq-hal-foto">
-        <img src="/assets/edicao-1/tui_claude.png" width="1911" height="990"
-             loading="lazy" decoding="async"
-             alt="O monólogo do assistente, tom HAL 9000: &quot;boa noite, Pyotor...&quot;, a tela real do terminal.">
+        <a class="zoom-link" href="/assets/edicao-1/tui_claude.png"
+           aria-label="Ampliar a tela do HAL para ler o monólogo inteiro">
+          <img src="/assets/edicao-1/tui_claude.png" width="1911" height="990"
+               loading="lazy" decoding="async"
+               alt="O monólogo do assistente, tom HAL 9000: &quot;boa noite, Pyotor...&quot;, a tela real do terminal.">
+        </a>
         <span class="hal-eye" aria-hidden="true"></span>
       </figure>
     </div>

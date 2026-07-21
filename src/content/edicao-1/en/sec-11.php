@@ -25,17 +25,22 @@
       </div>
     </div>
 
-    <?php /* Q3 - HAL wakes up. Now it's the REAL screen of the monologue
-       (tui_claude.png), embedded whole and untouched (intentional fictional props,
-       authorized by the lead), with the red HAL eye overlaid at the top-right
-       (pulsing glow, aria-hidden; still under prefers-reduced-motion). Real
-       width/height -> 0 CLS. */ ?>
-    <div class="hq-q hq-wide">
+    <?php /* Q3 - HAL wakes up. The REAL screen of the monologue (tui_claude.png),
+       untouched (intentional fictional props, authorized by the lead). Panel EQUAL
+       to the others (3 columns), with the red HAL eye pinned to the header-right
+       (glow that BREATHES, aria-hidden; lit and still under prefers-reduced-motion).
+       The <a class="zoom-link"> wraps the image: WITHOUT JS it opens the real-size
+       PNG (progressive enhancement); WITH JS the lightbox (pecas.js) intercepts and
+       enlarges in-page to read the monologue. Real width/height -> 0 CLS. */ ?>
+    <div class="hq-q">
       <span class="hq-n" aria-hidden="true">3</span>
       <figure class="hq-hal-foto">
-        <img src="/assets/edicao-1/tui_claude.png" width="1911" height="990"
-             loading="lazy" decoding="async"
-             alt="The assistant's monologue, HAL 9000 tone: &quot;good evening, Pyotor...&quot;, the real terminal screen.">
+        <a class="zoom-link" href="/assets/edicao-1/tui_claude.png"
+           aria-label="Enlarge the HAL screen to read the full monologue">
+          <img src="/assets/edicao-1/tui_claude.png" width="1911" height="990"
+               loading="lazy" decoding="async"
+               alt="The assistant's monologue, HAL 9000 tone: &quot;good evening, Pyotor...&quot;, the real terminal screen.">
+        </a>
         <span class="hal-eye" aria-hidden="true"></span>
       </figure>
     </div>
