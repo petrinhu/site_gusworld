@@ -1469,12 +1469,27 @@ main{display:block}
    Desktop: Q1|Q2|Q3 em 3 colunas IGUAIS, todos a mesma altura (grid stretch).
    Mobile (<600px): empilha em 1 coluna. */
 .hq{margin:clamp(14px,2.4vw,20px) 0 clamp(16px,2.6vw,22px)}
+/* a TIRA de jornal: gutter = o PAPEL respirando entre os quadros (grid-gap), e
+   cada quadro com sua propria moldura preta (border) — os dois conceitos da HQ:
+   gutter e o espaco, border e a linha ao redor do painel. O fundo da tira e o
+   papel pra que o gutter mostre papel, nao tinta. Ref.: Envato Tuts+ "CSS Grid
+   Layout and Comics" (grid-gap = gutter) + Wikipedia glossary of comics. */
 .hq-strip{
-  display:grid; grid-template-columns:1fr; gap:3px;
-  background:var(--tinta-preta); border:3px solid var(--tinta-preta);
+  display:grid; grid-template-columns:1fr;
+  gap:clamp(10px,1.8vw,16px);          /* o gutter: papel entre os quadros */
+  background:var(--papel);
 }
-@media (min-width:600px){ .hq-strip{grid-template-columns:repeat(3,1fr)} }
-.hq-q{position:relative; background:#050a06; min-height:120px; display:flex}
+@media (min-width:600px){
+  .hq-strip{grid-template-columns:repeat(3,1fr)}
+  /* na coluna ESTREITA (3 col) o cover recorta as laterais e o robo se desloca
+     pra ~4.8% da largura; no mobile empilhado (base, abaixo) o quadro fica
+     landscape (quase sem recorte) e o robo fica no x real ~2.2%. */
+  .hq-hal-foto .hal-eye{left:4.8%}
+}
+.hq-q{
+  position:relative; background:#050a06; min-height:120px; display:flex;
+  border:3px solid var(--tinta-preta); /* a moldura de cada quadro (jornal 90s) */
+}
 .hq-q .crt-tela{border-radius:0; flex:1; width:100%}
 /* etiqueta de quadro (canto), como numero de vinheta */
 .hq-n{
@@ -1489,13 +1504,20 @@ main{display:block}
    enquadramento de exibicao; o monologo inteiro se le no zoom, item #6). */
 .hq-hal-foto{position:relative; margin:0; line-height:0; flex:1; width:100%; overflow:hidden}
 .hq-hal-foto .zoom-link{display:block; width:100%; height:100%}   /* o <a> preenche o quadro */
-.hq-hal-foto img{display:block; width:100%; height:100%; object-fit:cover; object-position:top center}
-/* o olho vermelho do HAL: cravado no topo-DIREITO do cabecalho da tela (em %, pra
-   seguir o header em qualquer escala de coluna) e RESPIRANDO (glow que pulsa devagar,
-   como o olho do HAL 9000). z-index acima da tela; aria-hidden no HTML. */
-.hq-hal-foto .hal-eye{position:absolute; top:9.5%; right:2.6%; z-index:6; pointer-events:none}
+/* object-position:top LEFT — revela o robozinho laranja do Claude Code (canto
+   superior-esquerdo da tela) na coluna estreita; antes (top center) ele era cortado. */
+.hq-hal-foto img{display:block; width:100%; height:100%; object-fit:cover; object-position:top left}
+/* o olho vermelho do HAL na MINIATURA: agora que o robo esta revelado, o olho
+   crava no MEIO do robo (o robo com o olho aceso = HAL). Posicao em % (segue o
+   enquadramento em qualquer escala) + translate pra centralizar no robo; tamanho
+   PEQUENO (o robo e pequeno na coluna estreita). RESPIRA (hal-pulsa). */
+.hq-hal-foto .hal-eye{
+  position:absolute; top:11.7%; left:2.2%; transform:translate(-50%,-50%);
+  z-index:6; pointer-events:none;
+  width:clamp(9px,1.1vw,14px);
+}
 .hal-eye{
-  width:clamp(26px,3.2vw,34px); aspect-ratio:1; border-radius:50%;
+  aspect-ratio:1; border-radius:50%;
   background:radial-gradient(circle at 50% 42%, #ffd1c4 0%, #ff2a2a 42%, #7a0000 100%);
   box-shadow:0 0 24px #ff2a2acc, 0 0 52px #ff000080, inset 0 0 8px #ffffff66;
   animation:hal-pulsa 3.6s ease-in-out infinite;
@@ -1606,10 +1628,14 @@ main{display:block}
   border-radius:var(--raio-tela); box-shadow:0 12px 48px #000000b3;
   cursor:default;
 }
-/* o olho vermelho na visao ampliada: mesmas fracoes do header (top 2.4% / right
-   2.6%) da MINIATURA (§11), agora em % da imagem inteira -> crava na barra de abas
-   da tela do HAL. Reusa .hal-eye (glow + hal-pulsa); acima da img no overlay. */
-.lightbox-fig .hal-eye{position:absolute; top:9.5%; right:2.6%; z-index:101; pointer-events:none}
+/* o olho vermelho na visao ampliada: no zoom a imagem inteira aparece, entao o
+   olho fica no topo-DIREITO (o grande orbe do HAL, nivelado com o robo a esquerda),
+   como ja estava. Aqui ele e MAIOR — ao contrario da miniatura, onde e pequeno.
+   Reusa .hal-eye (glow + hal-pulsa). */
+.lightbox-fig .hal-eye{
+  position:absolute; top:9.5%; right:2.6%; z-index:101; pointer-events:none;
+  width:clamp(30px,3.4vw,52px);
+}
 @keyframes lb-in{from{opacity:0} to{opacity:1}}
 .lightbox-fechar{
   position:absolute; top:clamp(8px,2vw,18px); right:clamp(8px,2vw,18px);
