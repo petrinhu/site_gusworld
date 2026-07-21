@@ -370,7 +370,7 @@ require __DIR__ . '/../includes/head.php';
 
         <div class="mini-mast">
           <span class="marca">GLYFESSE</span>
-          <span class="ref"><?= h((string) $t['exp_ano']) ?> 1 · <?= h((string) $t['exp_numero']) ?> <?= (int) $c['numero'] ?> · <?= h(data_por_extenso((string) $c['data'], $idioma, $t)) ?></span>
+          <span class="ref"><?= h((string) $t['exp_vol']) ?> <?= (int) volume_edicao((string) $c['data']) ?> · <?= h((string) $t['exp_num']) ?> <?= (int) $c['numero'] ?> · <?= h(data_por_extenso((string) $c['data'], $idioma, $t)) ?></span>
         </div>
 
         <h3 class="ct"><?= h((string) $c['titulo']) ?></h3>
