@@ -44,7 +44,7 @@ return [
     // `glyfe`. Sem screenshot: a gênese é texto, não imagem jogável.
     [
         'numero'         => 1,
-        'revisao'        => 2, // rev.2: pós-lançamento (header nome em destaque, home com a banca em herói, plural "1 edição")
+        'revisao'        => 3, // rev.3: home reordenada (banca, linha do tempo, album, glyfa, cupom, brinquedos); chamadas W6 ocultas
         'estado'         => 'publicada',
         'data'           => '2026-05-15',
         'atualizada_em'  => '2026-05-15',

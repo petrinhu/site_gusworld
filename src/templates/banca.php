@@ -126,6 +126,215 @@ require __DIR__ . '/../includes/head.php';
     </div>
   </section>
 
+  <?php /* ══ LINHA DO TEMPO · O SCRUBBER (item W6 · LINHA-TEMPO) ══
+     A era VISUAL do jogo: do quadrado azul (22/jun) em diante, um ponto por
+     edição visual publicada, cada uma datada. Nasce com 1 ponto e estica sozinha.
+     Progressive enhancement: o estado-base (sem JS / reduced-motion) é a LISTA
+     estática abaixo (o frame + a data + o título + o dek de cada edição visual)
+     — legível, nunca um bloco vazio. linha-tempo.js lê os data-* da lista, monta
+     o SCRUBBER (uma tela só, crossfade de frames ao arrastar) e esconde a lista.
+     A lógica pura (crossfade por tempo real, pos↔data, passo, clique) vive no
+     núcleo testado (assets/js/linha-tempo-core.js). Mock 07. */ ?>
+  <?php $lt = $banca['linha_tempo']; ?>
+  <section class="lt-hero" id="gancho-linha" aria-labelledby="lt-h2"
+           data-lbl-edicao="<?= h((string) $lt['edicao']) ?>"
+           data-lbl-slider="<?= h((string) $lt['slider']) ?>"
+           data-lbl-dica="<?= h((string) $lt['dica']) ?>">
+    <div class="lt-cab">
+      <h2 class="secao-nome" id="lt-h2"><?= h((string) $lt['titulo']) ?></h2>
+      <span class="conta"><?= h((string) $lt['meta']) ?></span>
+    </div>
+    <p class="lt-lide"><?= h((string) $lt['lide']) ?></p>
+
+    <?php if ($linha_tempo === []): ?>
+    <p class="lt-vazio"><?= h((string) $lt['vazio']) ?></p>
+    <?php else: ?>
+    <?php /* ESTADO-BASE + FONTE DE DADOS do JS. Cada <li> carrega os data-* que
+       linha-tempo.js lê pra montar o scrubber (frame, data ISO, rótulo curto,
+       nº, título); o dek e a data por extenso saem do próprio texto renderizado
+       (o JS fica sem i18n). Só era visual PUBLICADA entra (guard no helper). */ ?>
+    <ol class="lt-lista" id="lt-lista">
+      <?php foreach ($linha_tempo as $p): ?>
+      <?php
+        $frame_fs  = __DIR__ . '/../../public_html' . $p['frame'];
+        $frame_dim = is_file($frame_fs) ? getimagesize($frame_fs) : false;
+      ?>
+      <li class="lt-item"
+          data-num="<?= (int) $p['numero'] ?>"
+          data-data="<?= h((string) $p['data']) ?>"
+          data-rotulo="<?= h((string) $p['rotulo']) ?>"
+          data-frame="<?= h((string) $p['frame']) ?>">
+        <?php if ($frame_dim !== false): ?>
+        <figure class="lt-item-frame aceso">
+          <img src="<?= h((string) $p['frame']) ?>"
+               alt="<?= h((string) $p['frame_alt']) ?>"
+               width="<?= (int) $frame_dim[0] ?>" height="<?= (int) $frame_dim[1] ?>"
+               loading="lazy" decoding="async">
+        </figure>
+        <?php endif; ?>
+        <div class="lt-item-txt">
+          <span class="lt-item-data"><?= h((string) $p['data_ext']) ?></span>
+          <h3 class="lt-item-titulo"><?= h((string) $p['titulo']) ?></h3>
+          <p class="lt-item-dek"><?= h((string) $p['dek']) ?></p>
+        </div>
+      </li>
+      <?php endforeach; ?>
+    </ol>
+    <?php endif; ?>
+  </section>
+
+  <?php /* ══ O ÁLBUM · CROMOS DE GLIFO (item W6 · ALBUM) ══
+     Um álbum de figurinhas em localStorage: cola criança, colecionou adulto — o
+     mesmo objeto pega os dois públicos. Zero conta, zero dado. ⚠️ O TEMA das
+     figurinhas é PLACEHOLDER SEGURO: os 13 glifos do Sylvarin (as raízes da
+     Glyfa), desenhados em TIPOGRAFIA — zero arte nova, zero sprite de personagem.
+     O tema/arte FINAL é decisão do líder (co-decidido, ainda não definido): trocar
+     o tema = trocar o array de catálogo em album.js, sem tocar no núcleo nem aqui.
+     Progressive enhancement: o estado-base (sem JS) já mostra a grade ESTÁTICA
+     (silhuetas + o cromo-exemplo canon + a legenda), nunca um bloco vazio. album.js
+     reconstrói a grade do léxico do núcleo (assets/js/album-core.js, testado),
+     aplica o álbum salvo e liga o botão de colar. Degradação: localStorage off/
+     cheio/anônimo → a loja cai pra in-memory (o núcleo garante) e a UI avisa com
+     graça; perder o álbum NÃO quebra a página. É TELA: os cromos colados brilham
+     (ciano) DENTRO da moldura; o papel em volta segue sem glow. Glifos/glosas são
+     minúsculos → guard N→H do pixel não dispara. */ ?>
+  <?php $al = $banca['album']; ?>
+  <section class="album-hero" id="gancho-album" aria-labelledby="album-h2"
+           data-lang="<?= h($idioma) ?>"
+           data-lbl-contador="<?= h((string) $al['contador']) ?>"
+           data-lbl-completo="<?= h((string) $al['completo']) ?>"
+           data-lbl-off="<?= h((string) $al['off']) ?>"
+           data-lbl-falta="<?= h((string) $al['falta']) ?>"
+           data-lbl-colada="<?= h((string) $al['colada']) ?>">
+    <div class="album-cab">
+      <h2 class="secao-nome" id="album-h2"><?= h((string) $al['titulo']) ?></h2>
+      <span class="conta"><?= h((string) $al['meta']) ?></span>
+    </div>
+    <p class="album-lide"><?= h((string) $al['lide']) ?></p>
+
+    <div class="album-moldura">
+      <div class="album-tela">
+
+        <?php /* o contador: no estado-base explica a mecânica; album.js o troca por
+           "X de N coladas" (aria-live anuncia cada figurinha nova). */ ?>
+        <p class="album-contador" id="album-contador" aria-live="polite"><?= h((string) $al['estatico']) ?></p>
+
+        <?php /* ESTADO-BASE (sem JS): a grade estática. O 1º slot mostra o cromo-
+           exemplo canon (mor- · sombra) pra comunicar o conceito; os outros são
+           silhuetas. album.js reconstrói a grade inteira do léxico e aplica o
+           estado salvo — sem JS, esta grade já lê como um álbum. */ ?>
+        <ul class="album-grade" id="album-grade" aria-label="<?= h((string) $ganchos['album']['label']) ?>">
+          <li class="album-slot colada">
+            <span class="album-q" aria-hidden="true">?</span>
+            <span class="album-glifo"><?= h((string) $al['ex_glifo']) ?></span>
+            <span class="album-glosa"><?= h((string) $al['ex_glosa']) ?></span>
+          </li>
+          <?php for ($n = 0; $n < 12; $n++): ?>
+          <li class="album-slot"><span class="album-q" aria-hidden="true">?</span></li>
+          <?php endfor; ?>
+        </ul>
+
+        <?php /* o botão de colar só aparece com JS (o estado-base não tem como
+           colar); album.js faz btn.hidden=false e liga o clique. */ ?>
+        <div class="album-acao">
+          <button type="button" class="album-btn" id="album-btn" hidden><?= h((string) $al['colar']) ?></button>
+        </div>
+
+        <?php /* aviso de storage off (com graça): album.js revela quando a memória
+           do navegador não vale (anônimo / cheio / bloqueado). */ ?>
+        <p class="album-nota" id="album-nota" hidden></p>
+
+      </div>
+    </div>
+    <p class="album-cap"><?= h((string) $al['cap']) ?></p>
+  </section>
+
+  <?php /* ══ A GLYFA · A FORJA DE NOMES (item W6 · GLYFA) ══
+     Uma forja de nomes em Sylvarin (o idioma do jogo): o leitor combina duas
+     raízes e vê o nome nascer com o significado. O vocabulário é FECHADO — é o
+     que torna o UGC seguro com criança e dev solo (moderação por design; nenhum
+     palavrão sai daqui, garantido pelo núcleo testado + TST-GLYFA-PALAVRAO).
+     Progressive enhancement: o estado-base (sem JS) mostra o exemplo ESTÁTICO
+     que o líder canonizou (mor- + lhin- = Morlhin · voz-sombra) + a explicação,
+     nunca um bloco vazio. glyfa.js esconde o exemplo, popula os 2 seletores a
+     partir do léxico do núcleo (assets/js/glyfa-core.js, testado) e forja ao
+     vivo. É TELA: o nome forjado brilha (ciano) DENTRO da moldura; o papel em
+     volta segue sem glow. O nome é grande (≥15px) → guard N→H do pixel não
+     dispara; as glosas são minúsculas → seguras. */ ?>
+  <?php $gf = $banca['glyfa']; ?>
+  <section class="glyfa-hero" id="gancho-glyfa" aria-labelledby="glyfa-h2"
+           data-lang="<?= h($idioma) ?>"
+           data-lbl-significa="<?= h((string) $gf['significa']) ?>"
+           data-lbl-iguais="<?= h((string) $gf['iguais']) ?>">
+    <div class="glyfa-cab">
+      <h2 class="secao-nome" id="glyfa-h2"><?= h((string) $gf['titulo']) ?></h2>
+      <span class="conta"><?= h((string) $gf['meta']) ?></span>
+    </div>
+    <p class="glyfa-lide"><?= h((string) $gf['lide']) ?></p>
+
+    <div class="glyfa-moldura">
+      <div class="glyfa-tela">
+
+        <?php /* ESTADO-BASE (sem JS): o exemplo estático canon. glyfa.js o esconde. */ ?>
+        <p class="glyfa-base">
+          <span class="glyfa-ex-pre"><?= h((string) $gf['ex_pre']) ?></span>
+          <span class="glyfa-ex-raiz"><?= h((string) $gf['ex_a']) ?></span>
+          <span class="glyfa-ex-g">(<?= h((string) $gf['ex_a_g']) ?>)</span>
+          <span class="glyfa-mais" aria-hidden="true"><?= h((string) $gf['mais']) ?></span>
+          <span class="glyfa-ex-raiz"><?= h((string) $gf['ex_b']) ?></span>
+          <span class="glyfa-ex-g">(<?= h((string) $gf['ex_b_g']) ?>)</span>
+          <span class="glyfa-ex-igual" aria-hidden="true">=</span>
+          <b class="glyfa-ex-nome"><?= h((string) $gf['ex_nome']) ?></b>
+          <span class="glyfa-ex-sig"><?= h((string) $gf['significa']) ?> &ldquo;<?= h((string) $gf['ex_sig']) ?>&rdquo;</span>
+        </p>
+
+        <?php /* A FORJA interativa (só com JS): 2 seletores + o resultado ao vivo.
+           Os <select> nascem VAZIOS e hidden; glyfa.js os popula do léxico do
+           núcleo e revela — sem JS ficam fora do caminho (o exemplo acima basta). */ ?>
+        <div class="glyfa-forja" hidden>
+          <div class="glyfa-sels">
+            <span class="glyfa-campo">
+              <label class="glyfa-lbl" for="glyfa-a"><?= h((string) $gf['raiz_a']) ?></label>
+              <select class="glyfa-sel" id="glyfa-a"></select>
+            </span>
+            <span class="glyfa-op" aria-hidden="true"><?= h((string) $gf['mais']) ?></span>
+            <span class="glyfa-campo">
+              <label class="glyfa-lbl" for="glyfa-b"><?= h((string) $gf['raiz_b']) ?></label>
+              <select class="glyfa-sel" id="glyfa-b"></select>
+            </span>
+            <button type="button" class="glyfa-btn" id="glyfa-btn"><?= h((string) $gf['forjar']) ?></button>
+          </div>
+          <output class="glyfa-out" id="glyfa-out" for="glyfa-a glyfa-b" aria-live="polite">
+            <span class="glyfa-nome"><?= h((string) $gf['ex_nome']) ?></span>
+            <span class="glyfa-sig"><?= h((string) $gf['significa']) ?> &ldquo;<?= h((string) $gf['ex_sig']) ?>&rdquo;</span>
+          </output>
+        </div>
+
+      </div>
+    </div>
+    <p class="glyfa-cap"><?= h((string) $gf['cap']) ?></p>
+  </section>
+
+  <?php /* ══ O CUPOM · a ENQUETE RECORTÁVEL (item W6 · CUPOM) ══
+     O ÚNICO backend VIVO do site: o poll (api/cupom-voto.php). Ao contrário da
+     Glyfa/álbum (que são TELA navy acesa), o cupom é PAPEL — um encarte recortável
+     no pontilhado, com tesoura, na cor da tinta. O resultado sai na PRÓXIMA EDIÇÃO
+     (a lentidão é estética: enquete aberta = "aguardando", não site morto).
+     ★ Progressive enhancement: o estado-base é um <form method="post" action="/api/
+     cupom-voto.php"> NATIVO que VOTA SEM JS — o browser navega pro endpoint, que
+     responde uma página in-world "resultado na próxima edição". cupom.js troca o
+     submit nativo por fetch (fica na página), liga o RASGAR/DESFAZER (a máquina de
+     estado pura testada em cupom-core.js — dá pra rasgar errado e desfazer, nunca
+     trava) e a idempotência SUAVE "já votou" (localStorage; zero conta, zero dado).
+     ⚠️ A PERGUNTA e as OPÇÕES são PLACEHOLDER: o líder define as reais (a whitelist
+     casa 1:1 no cliente cupom-core.js e no servidor api/cupom-voto.php). */ ?>
+  <?php /* o markup do cupom vive em src/includes/cupom.php (DRY: a mesma peça na
+     BANCA e na EDIÇÃO/sec-15). Espera $cp + o estado votado que render-banca.php
+     já computou ($cupom_votou/$cupom_pct/$cupom_total). Só PERCENTUAL sai daqui
+     (Decisão do líder); a contagem crua nunca vai ao HTML. */
+     $cp = $banca['cupom']; ?>
+  <?php require __DIR__ . '/../includes/cupom.php'; ?>
+
   <?php /* ══ HERO · O QUADRADINHO (item W6 · QUADRADINHO) ══
      A capa da banca é o brinquedo. Progressive enhancement: o estado-base
      (sem JS) já mostra o quadrado parado + a legenda escrita; quadradinho.js
@@ -195,162 +404,14 @@ require __DIR__ . '/../includes/head.php';
     <p class="ps-cap"><?= h((string) $ps['cap']) ?></p>
   </section>
 
-  <?php /* ══ A GLYFA · A FORJA DE NOMES (item W6 · GLYFA) ══
-     Uma forja de nomes em Sylvarin (o idioma do jogo): o leitor combina duas
-     raízes e vê o nome nascer com o significado. O vocabulário é FECHADO — é o
-     que torna o UGC seguro com criança e dev solo (moderação por design; nenhum
-     palavrão sai daqui, garantido pelo núcleo testado + TST-GLYFA-PALAVRAO).
-     Progressive enhancement: o estado-base (sem JS) mostra o exemplo ESTÁTICO
-     que o líder canonizou (mor- + lhin- = Morlhin · voz-sombra) + a explicação,
-     nunca um bloco vazio. glyfa.js esconde o exemplo, popula os 2 seletores a
-     partir do léxico do núcleo (assets/js/glyfa-core.js, testado) e forja ao
-     vivo. É TELA: o nome forjado brilha (ciano) DENTRO da moldura; o papel em
-     volta segue sem glow. O nome é grande (≥15px) → guard N→H do pixel não
-     dispara; as glosas são minúsculas → seguras. */ ?>
-  <?php $gf = $banca['glyfa']; ?>
-  <section class="glyfa-hero" id="gancho-glyfa" aria-labelledby="glyfa-h2"
-           data-lang="<?= h($idioma) ?>"
-           data-lbl-significa="<?= h((string) $gf['significa']) ?>"
-           data-lbl-iguais="<?= h((string) $gf['iguais']) ?>">
-    <div class="glyfa-cab">
-      <h2 class="secao-nome" id="glyfa-h2"><?= h((string) $gf['titulo']) ?></h2>
-      <span class="conta"><?= h((string) $gf['meta']) ?></span>
-    </div>
-    <p class="glyfa-lide"><?= h((string) $gf['lide']) ?></p>
-
-    <div class="glyfa-moldura">
-      <div class="glyfa-tela">
-
-        <?php /* ESTADO-BASE (sem JS): o exemplo estático canon. glyfa.js o esconde. */ ?>
-        <p class="glyfa-base">
-          <span class="glyfa-ex-pre"><?= h((string) $gf['ex_pre']) ?></span>
-          <span class="glyfa-ex-raiz"><?= h((string) $gf['ex_a']) ?></span>
-          <span class="glyfa-ex-g">(<?= h((string) $gf['ex_a_g']) ?>)</span>
-          <span class="glyfa-mais" aria-hidden="true"><?= h((string) $gf['mais']) ?></span>
-          <span class="glyfa-ex-raiz"><?= h((string) $gf['ex_b']) ?></span>
-          <span class="glyfa-ex-g">(<?= h((string) $gf['ex_b_g']) ?>)</span>
-          <span class="glyfa-ex-igual" aria-hidden="true">=</span>
-          <b class="glyfa-ex-nome"><?= h((string) $gf['ex_nome']) ?></b>
-          <span class="glyfa-ex-sig"><?= h((string) $gf['significa']) ?> &ldquo;<?= h((string) $gf['ex_sig']) ?>&rdquo;</span>
-        </p>
-
-        <?php /* A FORJA interativa (só com JS): 2 seletores + o resultado ao vivo.
-           Os <select> nascem VAZIOS e hidden; glyfa.js os popula do léxico do
-           núcleo e revela — sem JS ficam fora do caminho (o exemplo acima basta). */ ?>
-        <div class="glyfa-forja" hidden>
-          <div class="glyfa-sels">
-            <span class="glyfa-campo">
-              <label class="glyfa-lbl" for="glyfa-a"><?= h((string) $gf['raiz_a']) ?></label>
-              <select class="glyfa-sel" id="glyfa-a"></select>
-            </span>
-            <span class="glyfa-op" aria-hidden="true"><?= h((string) $gf['mais']) ?></span>
-            <span class="glyfa-campo">
-              <label class="glyfa-lbl" for="glyfa-b"><?= h((string) $gf['raiz_b']) ?></label>
-              <select class="glyfa-sel" id="glyfa-b"></select>
-            </span>
-            <button type="button" class="glyfa-btn" id="glyfa-btn"><?= h((string) $gf['forjar']) ?></button>
-          </div>
-          <output class="glyfa-out" id="glyfa-out" for="glyfa-a glyfa-b" aria-live="polite">
-            <span class="glyfa-nome"><?= h((string) $gf['ex_nome']) ?></span>
-            <span class="glyfa-sig"><?= h((string) $gf['significa']) ?> &ldquo;<?= h((string) $gf['ex_sig']) ?>&rdquo;</span>
-          </output>
-        </div>
-
-      </div>
-    </div>
-    <p class="glyfa-cap"><?= h((string) $gf['cap']) ?></p>
-  </section>
-
-  <?php /* ══ O ÁLBUM · CROMOS DE GLIFO (item W6 · ALBUM) ══
-     Um álbum de figurinhas em localStorage: cola criança, colecionou adulto — o
-     mesmo objeto pega os dois públicos. Zero conta, zero dado. ⚠️ O TEMA das
-     figurinhas é PLACEHOLDER SEGURO: os 13 glifos do Sylvarin (as raízes da
-     Glyfa), desenhados em TIPOGRAFIA — zero arte nova, zero sprite de personagem.
-     O tema/arte FINAL é decisão do líder (co-decidido, ainda não definido): trocar
-     o tema = trocar o array de catálogo em album.js, sem tocar no núcleo nem aqui.
-     Progressive enhancement: o estado-base (sem JS) já mostra a grade ESTÁTICA
-     (silhuetas + o cromo-exemplo canon + a legenda), nunca um bloco vazio. album.js
-     reconstrói a grade do léxico do núcleo (assets/js/album-core.js, testado),
-     aplica o álbum salvo e liga o botão de colar. Degradação: localStorage off/
-     cheio/anônimo → a loja cai pra in-memory (o núcleo garante) e a UI avisa com
-     graça; perder o álbum NÃO quebra a página. É TELA: os cromos colados brilham
-     (ciano) DENTRO da moldura; o papel em volta segue sem glow. Glifos/glosas são
-     minúsculos → guard N→H do pixel não dispara. */ ?>
-  <?php $al = $banca['album']; ?>
-  <section class="album-hero" id="gancho-album" aria-labelledby="album-h2"
-           data-lang="<?= h($idioma) ?>"
-           data-lbl-contador="<?= h((string) $al['contador']) ?>"
-           data-lbl-completo="<?= h((string) $al['completo']) ?>"
-           data-lbl-off="<?= h((string) $al['off']) ?>"
-           data-lbl-falta="<?= h((string) $al['falta']) ?>"
-           data-lbl-colada="<?= h((string) $al['colada']) ?>">
-    <div class="album-cab">
-      <h2 class="secao-nome" id="album-h2"><?= h((string) $al['titulo']) ?></h2>
-      <span class="conta"><?= h((string) $al['meta']) ?></span>
-    </div>
-    <p class="album-lide"><?= h((string) $al['lide']) ?></p>
-
-    <div class="album-moldura">
-      <div class="album-tela">
-
-        <?php /* o contador: no estado-base explica a mecânica; album.js o troca por
-           "X de N coladas" (aria-live anuncia cada figurinha nova). */ ?>
-        <p class="album-contador" id="album-contador" aria-live="polite"><?= h((string) $al['estatico']) ?></p>
-
-        <?php /* ESTADO-BASE (sem JS): a grade estática. O 1º slot mostra o cromo-
-           exemplo canon (mor- · sombra) pra comunicar o conceito; os outros são
-           silhuetas. album.js reconstrói a grade inteira do léxico e aplica o
-           estado salvo — sem JS, esta grade já lê como um álbum. */ ?>
-        <ul class="album-grade" id="album-grade" aria-label="<?= h((string) $ganchos['album']['label']) ?>">
-          <li class="album-slot colada">
-            <span class="album-q" aria-hidden="true">?</span>
-            <span class="album-glifo"><?= h((string) $al['ex_glifo']) ?></span>
-            <span class="album-glosa"><?= h((string) $al['ex_glosa']) ?></span>
-          </li>
-          <?php for ($n = 0; $n < 12; $n++): ?>
-          <li class="album-slot"><span class="album-q" aria-hidden="true">?</span></li>
-          <?php endfor; ?>
-        </ul>
-
-        <?php /* o botão de colar só aparece com JS (o estado-base não tem como
-           colar); album.js faz btn.hidden=false e liga o clique. */ ?>
-        <div class="album-acao">
-          <button type="button" class="album-btn" id="album-btn" hidden><?= h((string) $al['colar']) ?></button>
-        </div>
-
-        <?php /* aviso de storage off (com graça): album.js revela quando a memória
-           do navegador não vale (anônimo / cheio / bloqueado). */ ?>
-        <p class="album-nota" id="album-nota" hidden></p>
-
-      </div>
-    </div>
-    <p class="album-cap"><?= h((string) $al['cap']) ?></p>
-  </section>
-
-  <?php /* ══ O CUPOM · a ENQUETE RECORTÁVEL (item W6 · CUPOM) ══
-     O ÚNICO backend VIVO do site: o poll (api/cupom-voto.php). Ao contrário da
-     Glyfa/álbum (que são TELA navy acesa), o cupom é PAPEL — um encarte recortável
-     no pontilhado, com tesoura, na cor da tinta. O resultado sai na PRÓXIMA EDIÇÃO
-     (a lentidão é estética: enquete aberta = "aguardando", não site morto).
-     ★ Progressive enhancement: o estado-base é um <form method="post" action="/api/
-     cupom-voto.php"> NATIVO que VOTA SEM JS — o browser navega pro endpoint, que
-     responde uma página in-world "resultado na próxima edição". cupom.js troca o
-     submit nativo por fetch (fica na página), liga o RASGAR/DESFAZER (a máquina de
-     estado pura testada em cupom-core.js — dá pra rasgar errado e desfazer, nunca
-     trava) e a idempotência SUAVE "já votou" (localStorage; zero conta, zero dado).
-     ⚠️ A PERGUNTA e as OPÇÕES são PLACEHOLDER: o líder define as reais (a whitelist
-     casa 1:1 no cliente cupom-core.js e no servidor api/cupom-voto.php). */ ?>
-  <?php /* o markup do cupom vive em src/includes/cupom.php (DRY: a mesma peça na
-     BANCA e na EDIÇÃO/sec-15). Espera $cp + o estado votado que render-banca.php
-     já computou ($cupom_votou/$cupom_pct/$cupom_total). Só PERCENTUAL sai daqui
-     (Decisão do líder); a contagem crua nunca vai ao HTML. */
-     $cp = $banca['cupom']; ?>
-  <?php require __DIR__ . '/../includes/cupom.php'; ?>
-
   <?php /* ══ GANCHOS W6 restantes · os interativos ainda em scaffold ══
      Cada um é uma <section> reservada, igual ao scaffold das seções da edição.
      A ordem segue o wireframe §3.1 (o hero e o PRESS START acima já são reais). */ ?>
-  <?php foreach (['chamadas'] as $g): ?>
+  <?php /* ⚠️ CHAMADAS DE CAPA ocultas ao vivo (decisão autônoma 2026-07-21): o W6
+     'chamadas' ainda é scaffold ("interativo pendente · w6"); placeholder vazio no
+     ar fica ruim (igual às edições vazias). Some da home até ser implementado.
+     Restaurar = trocar [] por ['chamadas'] abaixo. */ ?>
+  <?php foreach ([] as $g): ?>
   <section class="gancho-w6" id="gancho-<?= h($g) ?>" aria-label="<?= h((string) $ganchos[$g]['label']) ?>">
     <div class="scaffold">
       <span class="tag"><?= h((string) $banca['w6_tag']) ?></span>
@@ -358,63 +419,6 @@ require __DIR__ . '/../includes/head.php';
     </div>
   </section>
   <?php endforeach; ?>
-
-  <?php /* ══ LINHA DO TEMPO · O SCRUBBER (item W6 · LINHA-TEMPO) ══
-     A era VISUAL do jogo: do quadrado azul (22/jun) em diante, um ponto por
-     edição visual publicada, cada uma datada. Nasce com 1 ponto e estica sozinha.
-     Progressive enhancement: o estado-base (sem JS / reduced-motion) é a LISTA
-     estática abaixo (o frame + a data + o título + o dek de cada edição visual)
-     — legível, nunca um bloco vazio. linha-tempo.js lê os data-* da lista, monta
-     o SCRUBBER (uma tela só, crossfade de frames ao arrastar) e esconde a lista.
-     A lógica pura (crossfade por tempo real, pos↔data, passo, clique) vive no
-     núcleo testado (assets/js/linha-tempo-core.js). Mock 07. */ ?>
-  <?php $lt = $banca['linha_tempo']; ?>
-  <section class="lt-hero" id="gancho-linha" aria-labelledby="lt-h2"
-           data-lbl-edicao="<?= h((string) $lt['edicao']) ?>"
-           data-lbl-slider="<?= h((string) $lt['slider']) ?>"
-           data-lbl-dica="<?= h((string) $lt['dica']) ?>">
-    <div class="lt-cab">
-      <h2 class="secao-nome" id="lt-h2"><?= h((string) $lt['titulo']) ?></h2>
-      <span class="conta"><?= h((string) $lt['meta']) ?></span>
-    </div>
-    <p class="lt-lide"><?= h((string) $lt['lide']) ?></p>
-
-    <?php if ($linha_tempo === []): ?>
-    <p class="lt-vazio"><?= h((string) $lt['vazio']) ?></p>
-    <?php else: ?>
-    <?php /* ESTADO-BASE + FONTE DE DADOS do JS. Cada <li> carrega os data-* que
-       linha-tempo.js lê pra montar o scrubber (frame, data ISO, rótulo curto,
-       nº, título); o dek e a data por extenso saem do próprio texto renderizado
-       (o JS fica sem i18n). Só era visual PUBLICADA entra (guard no helper). */ ?>
-    <ol class="lt-lista" id="lt-lista">
-      <?php foreach ($linha_tempo as $p): ?>
-      <?php
-        $frame_fs  = __DIR__ . '/../../public_html' . $p['frame'];
-        $frame_dim = is_file($frame_fs) ? getimagesize($frame_fs) : false;
-      ?>
-      <li class="lt-item"
-          data-num="<?= (int) $p['numero'] ?>"
-          data-data="<?= h((string) $p['data']) ?>"
-          data-rotulo="<?= h((string) $p['rotulo']) ?>"
-          data-frame="<?= h((string) $p['frame']) ?>">
-        <?php if ($frame_dim !== false): ?>
-        <figure class="lt-item-frame aceso">
-          <img src="<?= h((string) $p['frame']) ?>"
-               alt="<?= h((string) $p['frame_alt']) ?>"
-               width="<?= (int) $frame_dim[0] ?>" height="<?= (int) $frame_dim[1] ?>"
-               loading="lazy" decoding="async">
-        </figure>
-        <?php endif; ?>
-        <div class="lt-item-txt">
-          <span class="lt-item-data"><?= h((string) $p['data_ext']) ?></span>
-          <h3 class="lt-item-titulo"><?= h((string) $p['titulo']) ?></h3>
-          <p class="lt-item-dek"><?= h((string) $p['dek']) ?></p>
-        </div>
-      </li>
-      <?php endforeach; ?>
-    </ol>
-    <?php endif; ?>
-  </section>
 
 </div><!-- /.banca-corpo -->
 </main>
