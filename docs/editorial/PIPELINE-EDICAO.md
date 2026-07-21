@@ -39,6 +39,24 @@ Mapa dos papéis reais de redação de revista para quem os exerce aqui. Fontes 
 
 ---
 
+## 1.5. Pipe de produção (a ordem canônica do release, cravada pelo líder 2026-07-21)
+
+A ordem fixa do release de cada edição:
+
+1. **criar edição** (conteúdo)
+2. **aprovar edição** (líder)
+3. **criar OG** (card de preview 1200x630 + meta tags og:/twitter:)
+4. **aprovar OG** (líder aprova o card visual)
+5. **deploy hostinger** (`scripts/deploy.sh`, o `D-GO-LIVE`)
+6. **criar postagem X** (texto, formato fala+pensamento Gus/root)
+7. **aprovar postagem X** (líder)
+8. **o LÍDER faz a postagem X** (manual, sempre; o agente NUNCA posta)
+
+Invariantes: o **OG entra ANTES do deploy** (o card tem que estar no ar quando o link for compartilhado); a **postagem X vem DEPOIS do deploy** (o link só funciona com o site no ar); **quem posta no X é sempre o líder**.
+
+### OG obrigatório na montagem
+O passo 3 (OG) NÃO é opcional: toda edição, antes do go-live, tem `og:type/url/title/description/image(1200x630)/locale` + `twitter:card=summary_large_image` no `<head>` (via `head.php`), e uma `og:image` na identidade (navy/papel/ciano, sem "SOON"/"em breve"), feita em CSS->PNG, verificada como card no X. Link sem card = post morto.
+
 ## 2. Os DOIS loops
 
 Uma edição tem dois ciclos aninhados:

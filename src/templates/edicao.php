@@ -16,6 +16,9 @@ $head = [
     'lang'      => (string) $t['html_lang'],
     'og_locale' => (string) $t['og_locale'],
     'titulo'    => 'GLYFESSE · ' . $ctx['titulo'] . ' · #' . $ctx['numero'],
+    'og_title'  => 'Glyfesse #' . $ctx['numero'] . ' · ' . $ctx['titulo'],
+    'desc'      => (string) $ctx['dek'],
+    'og_type'   => 'article',
     'canonical' => (string) $ctx['url_self'],
     'hreflang'  => $ctx['hreflang'],
 ];

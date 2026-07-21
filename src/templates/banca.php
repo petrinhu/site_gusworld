@@ -25,6 +25,8 @@ $head = [
     'lang'      => (string) $t['html_lang'],
     'og_locale' => (string) $t['og_locale'],
     'titulo'    => 'GLYFESSE · ' . $banca['secao_titulo'],
+    'og_title'  => 'Glyfesse',
+    'desc'      => (string) $banca['lede'],
     'canonical' => (string) $ctx['url_banca'],
     'hreflang'  => $ctx['hreflang'],
 ];
