@@ -44,6 +44,7 @@ return [
     // `glyfe`. Sem screenshot: a gênese é texto, não imagem jogável.
     [
         'numero'         => 1,
+        'revisao'        => 1, // incrementa quando uma edição publicada é corrigida
         'estado'         => 'publicada',
         'data'           => '2026-05-15',
         'atualizada_em'  => '2026-05-15',
@@ -68,6 +69,7 @@ return [
     // não é spoiler). Ainda pré-era-visual jogável: fora do scrubber.
     [
         'numero'         => 2,
+        'revisao'        => 1,
         'estado'         => 'publicada',
         'data'           => '2026-06-04',
         'atualizada_em'  => '2026-06-04',
@@ -95,6 +97,7 @@ return [
     // da primeira dobra — banca e home batem.
     [
         'numero'         => 3,
+        'revisao'        => 1,
         'estado'         => 'publicada',
         'data'           => '2026-06-22',
         'atualizada_em'  => '2026-06-22',
@@ -121,6 +124,7 @@ return [
     // não spoilar nada. Preencher titulo/dek/frame reais só na hora de publicar.
     [
         'numero'         => 4,
+        'revisao'        => 1,
         'estado'         => 'rascunho',
         'data'           => '2026-06-22',
         'atualizada_em'  => '2026-06-22',

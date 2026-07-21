@@ -26,6 +26,14 @@ return [
     // masthead / imprint
     'exp_ano'          => 'year',
     'exp_numero'       => 'no.',
+    // lay versioning in the masthead (Vol.Ed.Rev): "vol. 1 · no. 3 [· rev. 2]".
+    // ⚠️ lowercase on purpose: .meta is PixelOperatorMono at 11px, below the 15px
+    // N→H guard (reference-pixelfont-n-maiusculo). A capital "No." is fine (no N?
+    // "No" HAS a capital N → renders as "Ho"), and capital "V" reads as "U". So
+    // lowercase mirrors the pt side and the house rule for tiny pixel labels.
+    'exp_vol'          => 'vol.',
+    'exp_num'          => 'no.',
+    'exp_rev'          => 'rev.',
     'meses'            => [
         1 => 'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December',
@@ -213,6 +221,7 @@ return [
     'rodape_som_mus'    => 'Music',
     'rodape_licenca'    => 'Content under a free license. Made with AI as a tool; the creative part is the creator\'s.',
     'rodape_contato'    => 'Contact the newsroom',
+    'build_tag_aria'    => 'version of this edition',   // aria-label of the build stamp (expert)
 
     // 404 (minimal — the in-world microcopy is a ux-writer + lead slot)
     'erro_404_titulo'  => 'Page not found',

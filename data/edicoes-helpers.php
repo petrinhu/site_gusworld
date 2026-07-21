@@ -23,6 +23,32 @@ declare(strict_types=1);
 const EDICAO_ESTADO_PUBLICADA = 'publicada';
 const EDICAO_ESTADO_RASCUNHO  = 'rascunho';
 
+// Ano-base do versionamento: a 1ª safra (2026) é o Volume 1. Vol = ano - 2025.
+const EDICAO_VOLUME_ANO_BASE = 2025;
+
+/**
+ * Volume da edição = ano da `data`-âncora, com base 2026 = Vol.1
+ * (2026→1, 2027→2, …). O volume NÃO é campo novo: deriva da data.
+ *
+ * Puro e determinístico: lê o ano dos 4 primeiros dígitos do ISO 8601, sem
+ * strtotime/timezone. Data em branco/curta → ano 0 → Volume negativo/estranho,
+ * mas o dado é sempre um ISO válido controlado por `data/edicoes.php`.
+ */
+function volume_edicao(string $data): int
+{
+    return (int) substr($data, 0, 4) - EDICAO_VOLUME_ANO_BASE;
+}
+
+/**
+ * A data no formato de carimbo de BUILD `AAAA.MM.DD` (pontos no lugar dos
+ * traços do ISO). Ex.: '2026-05-15' → '2026.05.15'. É a data-âncora real,
+ * só reformatada — neutra de idioma (string de build, expert/rodapé).
+ */
+function build_data(string $data): string
+{
+    return str_replace('-', '.', $data);
+}
+
 /**
  * Só as edições publicadas, ordenadas cronologicamente (mais nova primeiro).
  *

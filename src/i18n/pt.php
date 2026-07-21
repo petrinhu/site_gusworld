@@ -26,6 +26,14 @@ return [
     // masthead / expediente
     'exp_ano'          => 'ano',
     'exp_numero'       => 'nº',
+    // versionamento leigo no masthead (Vol.Ed.Rev): "vol. 1 · nº 3 [· rev. 2]".
+    // ⚠️ MINÚSCULO de propósito: o .meta é PixelOperatorMono a 11px, abaixo dos
+    // 15px do guard N→H (reference-pixelfont-n-maiusculo). Um "Nº" maiúsculo
+    // rasteriza como "Hº" e o "V" de "Vol." lê como "U" ("Uol."). O líder pediu
+    // "Vol./Nº" capitalizados — colisão sinalizada; só cabe capital ≥15px.
+    'exp_vol'          => 'vol.',
+    'exp_num'          => 'nº',
+    'exp_rev'          => 'rev.',
     'meses'            => [
         1 => 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
         'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro',
@@ -220,6 +228,7 @@ return [
     'rodape_som_mus'    => 'Música',
     'rodape_licenca'    => 'Conteúdo sob licença livre. Feito com IA como ferramenta; a parte criativa é do criador.',
     'rodape_contato'    => 'Fale com a redação',
+    'build_tag_aria'    => 'versão desta edição',   // aria-label do carimbo de build (expert)
 
     // 404 (mínimo — a microcopy in-world definitiva é slot do ux-writer + líder)
     'erro_404_titulo'  => 'Página não encontrada',

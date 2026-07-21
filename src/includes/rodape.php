@@ -29,5 +29,15 @@ declare(strict_types=1);
     <p class="contato">
       <a href="mailto:gusworld@gusworld.site"><?= h((string) $t['rodape_contato']) ?></a>
     </p>
+
+    <?php /* build-tag EXPERT: o versionamento completo (Vol.Ed.Rev + build) em
+       carimbo mono/ASCII. Só na BASE de uma EDIÇÃO (tem $ctx['numero']); a banca
+       (home) não é edição e não recebe build-tag — por isso o guard. String de
+       build = neutra de idioma (mesmo texto nos dois). */ ?>
+    <?php if (isset($ctx['numero'])): ?>
+    <p class="build-tag" aria-label="<?= h((string) ($t['build_tag_aria'] ?? 'edition version')) ?>">glyfe <?=
+      h((string) $ctx['volume']) ?>.<?= h((string) $ctx['numero']) ?>.<?= h((string) $ctx['revisao'])
+      ?> · build <?= h((string) $ctx['build_data']) ?></p>
+    <?php endif; ?>
   </div>
 </footer>

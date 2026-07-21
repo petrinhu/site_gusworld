@@ -59,6 +59,13 @@ function montar_contexto(array $e, string $idioma): array
         'numero'        => (int) $e['numero'],
         'idioma'        => $idioma,
         'data'          => (string) $e['data'],
+
+        // Versionamento Vol.Ed.Rev + data (esquema completo do líder):
+        //   volume  → derivado da data (2026 = Vol.1); revisao → campo do array;
+        //   build_data → a data em carimbo AAAA.MM.DD (build-tag do rodapé expert).
+        'volume'        => volume_edicao((string) $e['data']),
+        'revisao'       => (int) ($e['revisao'] ?? 1),
+        'build_data'    => build_data((string) $e['data']),
         'titulo'        => (string) $e['titulo_' . $idioma],
         'dek'           => (string) $e['dek_' . $idioma],
         'frame'         => $e['frame'] !== null ? (string) $e['frame'] : null,

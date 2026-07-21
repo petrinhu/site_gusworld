@@ -415,6 +415,14 @@ main{display:block}
 .contato a{color:var(--tinta-ciano); text-underline-offset:2px}
 .contato a:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
 
+/* build-tag EXPERT (project-i18n-switch / versionamento): carimbo mono discreto
+   na base da EDIÇÃO. ASCII só-minúsculas (guard N→H não dispara). Cor apagada,
+   pequeno — leitura de máquina pra quem procura, invisível pro leigo. */
+.build-tag{
+  font-family:var(--font-display); font-size:11px; letter-spacing:.02em;
+  color:var(--tinta-2); opacity:.65; margin:4px 0 0;
+}
+
 /* a BANCADA do maker (peças espalhadas na mesa): só desktop; ver bloco no
    @media abaixo. No mobile a folha é full-width e a mesa não aparece. */
 .bancada{display:none}
