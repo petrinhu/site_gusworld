@@ -29,12 +29,12 @@ $lcd  = $t['lcd'];
 
     <div class="col-meta">
       <?php if ($modo !== 'banca'): ?>
+      <p class="meta-titulo"><?= h((string) $ctx['titulo']) ?></p>
       <p class="meta">
         <?= h((string) $t['exp_vol']) ?> <?= h((string) $ctx['volume']) ?> · <?= h((string) $t['exp_num']) ?> <b><?= h((string) $ctx['numero']) ?></b><?php
           /* revisão só aparece a partir da 1ª correção (rev. 2): no lançamento
              (revisao=1) fica fora, pra não poluir a leitura do leigo. */
-          if ((int) ($ctx['revisao'] ?? 1) > 1): ?> · <?= h((string) $t['exp_rev']) ?> <?= h((string) $ctx['revisao']) ?><?php endif; ?><br>
-        <?= h(data_por_extenso((string) $ctx['data'], (string) $ctx['idioma'], $t)) ?><br>
+          if ((int) ($ctx['revisao'] ?? 1) > 1): ?> · <?= h((string) $t['exp_rev']) ?> <?= h((string) $ctx['revisao']) ?><?php endif; ?> · <?= h(data_por_extenso((string) $ctx['data'], (string) $ctx['idioma'], $t)) ?><br>
         gusworld.site
       </p>
       <?php endif; ?>

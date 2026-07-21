@@ -76,6 +76,13 @@ body{
 }
 .logo:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:3px}
 .col-meta{display:flex; flex-direction:column; align-items:flex-end; gap:7px}
+/* o nome da edição em destaque acima do expediente (decisão do líder):
+   fonte display grande, tinta cheia — assenta a identidade da edição no topo. */
+.meta-titulo{
+  font-family:var(--font-display); font-weight:600;
+  font-size:clamp(16px,2.4vw,20px); line-height:1.1; text-align:right;
+  color:var(--tinta-preta); margin:0 0 -1px;
+}
 .meta{
   font-family:var(--font-display); font-size:11px; text-align:right;
   line-height:1.55; color:var(--tinta-2); margin:0;
@@ -555,7 +562,7 @@ main{display:block}
 @media (max-width:560px){
   .masthead-inner{flex-direction:column; align-items:flex-start; gap:10px}
   .col-meta{align-items:flex-start; width:100%}
-  .meta{text-align:left}
+  .meta,.meta-titulo{text-align:left}
 }
 
 /* ═══════════════════════════════════════════════════════════════════════

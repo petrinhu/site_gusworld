@@ -70,7 +70,7 @@ return [
     [
         'numero'         => 2,
         'revisao'        => 1,
-        'estado'         => 'publicada',
+        'estado'         => 'rascunho', // sem conteúdo de seção ainda; some da banca até ser produzida
         'data'           => '2026-06-04',
         'atualizada_em'  => '2026-06-04',
         'slug_pt'        => 'edicao-2',
@@ -98,7 +98,7 @@ return [
     [
         'numero'         => 3,
         'revisao'        => 1,
-        'estado'         => 'publicada',
+        'estado'         => 'rascunho', // sem conteúdo de seção ainda; some da banca até ser produzida
         'data'           => '2026-06-22',
         'atualizada_em'  => '2026-06-22',
         'slug_pt'        => 'edicao-3',
