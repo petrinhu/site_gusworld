@@ -1107,20 +1107,52 @@ main{display:block}
   text-transform:none;
 }
 
-/* o rasgar: à medida que --rasgo sobe, a serrilha "abre" (a borda inferior some
-   por etapas via largura do tracejado). Sutil, papel — não é animação de tela.
-   reduced-motion não precisa desligar (não há movimento contínuo, só estado). */
-.cupom.rasgando{border-top-style:solid; border-top-color:#00000026}
-.cupom.rasgando .cupom-serra{
-  border-bottom-color:#0d5e67; opacity:calc(1 - var(--rasgo) * .5);
+/* o rasgar: NUNCA uma linha reta. À medida que --rasgo (0..1) sobe, a beira de
+   CIMA do cupom vira uma serrilha de PAPEL RASGADO e a tira "recorte aqui" PEELA
+   pra cima e some — a sensação física de destacar o cupom pelo pontilhado.
+   Técnica: um pseudo (::before) em var(--papel) — o MESMO papel da .folha por
+   herança do custom-property, então casa com a folha atrás — desce por cima do
+   topo do cupom recortado num clip-path em zigue-zague IRREGULAR (dente de papel
+   picotado, não perfuração de máquina). O drop-shadow fino é a fibra rasgada.
+   Quanto mais rasga, mais fundo a beira jagged desce, comendo a tira. */
+.cupom::before{
+  content:""; position:absolute; z-index:2; pointer-events:none;
+  left:-2px; right:-2px; top:-2px;              /* cobre a borda tracejada do topo */
+  height:calc(var(--rasgo) * 40px);             /* a beira desce conforme rasga */
+  background:var(--papel);                       /* a folha "comendo" o topo do cupom */
+  clip-path:polygon(
+    0 0, 100% 0,
+    100% 62%, 94% 100%, 88% 54%, 81% 96%, 74% 60%, 68% 100%,
+    61% 50%, 54% 92%, 47% 58%, 40% 100%, 34% 52%, 27% 96%,
+    20% 60%, 13% 100%, 7% 55%, 0 94%
+  );
+  filter:drop-shadow(0 1.5px .5px #1a161426);    /* fibra: sombra de tinta na beira */
+  opacity:0;                                     /* repouso (--rasgo:0): sem beira */
+  transition:height .18s ease, opacity .12s ease;
 }
-/* destacado: o cupom "soltou" — inclina de leve e ganha sombra de papel solto */
+.cupom.rasgando::before,.cupom.destacado::before{opacity:1}
+
+/* a tira "✂ recorte aqui": desliza pra cima, inclina de leve e some — o peel. O
+   pontilhado dela cede o lugar pra beira rasgada (some junto). */
+.cupom-serra{
+  transform-origin:left center;
+  transition:transform .18s ease, opacity .18s ease;
+}
+.cupom.rasgando .cupom-serra,.cupom.destacado .cupom-serra{
+  transform:translateY(calc(var(--rasgo) * -9px)) rotate(calc(var(--rasgo) * -1.2deg));
+  opacity:calc(1 - var(--rasgo) * .9);
+  border-bottom-color:transparent;
+}
+/* destacado: o cupom "soltou" — inclina de leve e ganha sombra de papel solto.
+   Os 3 lados restantes seguem pontilhados (papel + tinta, coeso); só o topo é a
+   beira rasgada. NADA de border sólido reto. */
 .cupom.destacado{
   transform:rotate(-.5deg); box-shadow:0 6px 14px #00000018;
-  border-style:solid; border-color:#00000026;
 }
-.cupom.destacado .cupom-serra{opacity:.35}
 @media (prefers-reduced-motion:reduce){
+  /* sem tween: o rasgo salta pro estado final, mas a beira jagged (clip-path
+     estático, guiado por --rasgo) ainda LÊ como recorte — nunca linha reta. */
+  .cupom::before,.cupom-serra{transition:none}
   .cupom.destacado{transform:none}
 }
 
