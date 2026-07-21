@@ -90,16 +90,15 @@
 
 <p>A prova documental de que o GusWorld é AI-assisted é o <strong>primeiro prompt real</strong> do projeto, o mandato que abriu a primeira sessão e passou a abrir todas as outras. Está reproduzido aqui na íntegra, sem retoque:</p>
 
-<blockquote class="prompt-real">
-  <p>Vamos iniciar. Vou criar um jogo, estilo pixelado, cyber-goth-medieval. Canonico: você é meu coder apenas, todo o processo criativo é meu, todas as decisões sobre arquitetura, infraestrutura, stack tecnológica, padrões e escopo são MINHAS - não tome nenhuma decisão de design ou engenharia de forma autônoma; diante de qualquer bifurcação, apresente 2-3 opções com prós/contras, impacto e esforço, e aguarde minha aprovação explícita.</p>
-  <p>Nome do projeto: GusWorld.</p>
-  <p>Vamos conduzir em duas frentes sequenciais, sem antecipar a seguinte:</p>
-  <ol class="frentes">
-    <li><strong>Fundação técnica</strong> - definir, sob minha decisão a cada ponto: arquitetura (hexagonal + atomizada - decidir): fronteiras de porta/adaptador, granularidade dos módulos atômicos, camadas e regra de dependência; stack e linguagem, engine/renderer, pipeline de build e toolchain; modelo de domínio, persistência/serialização, gestão de estado e loop principal; estratégia de testes, versionamento e organização de repositório.</li>
-    <li><strong>Lore</strong> - worldbuilding, tom e narrativa, iniciada somente após a fundação técnica estar fechada.</li>
-  </ol>
-  <p>Papel: você atua exclusivamente como executor técnico (coder). Toda direção criativa e toda decisão arquitetural/de stack/escopo/infra passam por mim.</p>
-</blockquote>
+<?php /* a tela REAL do primeiro prompt (resources/referencias/tui_claude2.png),
+   embutida inteira e sem retoque. width/height reais p/ zero CLS; rola na
+   horizontal dentro da figura se preciso (o body nunca rola). */ ?>
+<figure class="tela-real">
+  <img src="/assets/edicao-1/tui_claude2.png" width="1914" height="952"
+       loading="lazy" decoding="async"
+       alt="O primeiro prompt do GusWorld, no terminal: o mandato que define a IA como coder e o criador como dono de todas as decisões de design, arquitetura, stack e escopo.">
+  <figcaption>O primeiro prompt real do GusWorld, capturado da própria tela do terminal.</figcaption>
+</figure>
 
 <p>Não é um slogan escrito depois. É a primeira coisa que foi digitada, e cada cláusula é uma trava:</p>
 

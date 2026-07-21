@@ -88,20 +88,19 @@
 
 <p><strong>Vibe coding</strong> is steering by feel: you prompt loosely, accept what the AI generates without reading it rigorously, and go on "seems to work." The AI decides, the human approves on reflex. <strong>AI-assisted</strong> is the inverse: the human architects and decides EVERYTHING; the AI executes and proposes, and never decides on its own. Every output goes through review and explicit approval before it exists in the project.</p>
 
-<p>The documentary proof that GusWorld is AI-assisted is the project's <strong>real first prompt</strong>, the mandate that opened the first session and has opened every one since. It is reproduced here in full, untouched (translated from the original Portuguese):</p>
+<p>The documentary proof that GusWorld is AI-assisted is the project's <strong>real first prompt</strong>, the mandate that opened the first session and has opened every one since. Here is the real screenshot, untouched, in the original Portuguese (the clauses are dissected in English below):</p>
 
-<blockquote class="prompt-real">
-  <p>Let's begin. I'm going to build a game, pixel-art style, cyber-goth-medieval. Canonical: you are only my coder, the entire creative process is mine, all decisions about architecture, infrastructure, technology stack, standards and scope are MINE - do not make any design or engineering decision autonomously; at any fork, present 2-3 options with pros/cons, impact and effort, and wait for my explicit approval.</p>
-  <p>Project name: GusWorld.</p>
-  <p>We will proceed on two sequential fronts, without getting ahead to the next one:</p>
-  <ol class="frentes">
-    <li><strong>Technical foundation</strong> - to define, under my decision at every point: architecture (hexagonal + atomized - to decide): port/adapter boundaries, granularity of the atomic modules, layers and dependency rule; stack and language, engine/renderer, build pipeline and toolchain; domain model, persistence/serialization, state management and main loop; testing strategy, versioning and repository organization.</li>
-    <li><strong>Lore</strong> - worldbuilding, tone and narrative, begun only after the technical foundation is closed.</li>
-  </ol>
-  <p>Role: you act exclusively as a technical executor (coder). All creative direction and every architectural/stack/scope/infra decision go through me.</p>
-</blockquote>
+<?php /* the REAL screen of the first prompt (resources/referencias/tui_claude2.png),
+   embedded whole and untouched. Real width/height for zero CLS; scrolls
+   horizontally inside the figure if needed (the body never scrolls). */ ?>
+<figure class="tela-real">
+  <img src="/assets/edicao-1/tui_claude2.png" width="1914" height="952"
+       loading="lazy" decoding="async"
+       alt="GusWorld's first prompt, in the terminal: the mandate defining the AI as coder and the creator as owner of every design, architecture, stack and scope decision.">
+  <figcaption>GusWorld's real first prompt, captured from the terminal screen itself (original Portuguese).</figcaption>
+</figure>
 
-<p>It isn't a slogan written after the fact. It's the very first thing typed, and each clause is a lock:</p>
+<p>It isn't a slogan written after the fact. It's the very first thing typed, and each clause is a lock (quoted here in translation):</p>
 
 <ul class="clausulas">
   <li><strong>"you are only my coder"</strong> demotes the AI from co-author to executor. Its role is to implement, not to conceive.</li>
