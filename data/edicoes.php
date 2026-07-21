@@ -44,7 +44,7 @@ return [
     // `glyfe`. Sem screenshot: a gênese é texto, não imagem jogável.
     [
         'numero'         => 1,
-        'revisao'        => 1, // incrementa quando uma edição publicada é corrigida
+        'revisao'        => 2, // rev.2: pós-lançamento (header nome em destaque, home com a banca em herói, plural "1 edição")
         'estado'         => 'publicada',
         'data'           => '2026-05-15',
         'atualizada_em'  => '2026-05-15',

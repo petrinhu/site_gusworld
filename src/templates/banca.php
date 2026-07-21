@@ -56,8 +56,75 @@ require __DIR__ . '/../includes/head.php';
 <main>
 <div class="banca-corpo">
 
-  <?php /* lede da home (W5 placeholder — copy final co-decidida com o líder) */ ?>
+  <?php /* lede da home (W5 placeholder — copy final co-decidida com o líder).
+     Também é a PROPOSTA DE VALOR curta do hero (padrão de homepage: headline +
+     subheadline enxuta acima da dobra — prismic.io/blog/website-hero-section). */ ?>
   <p class="banca-lede"><?= h((string) $banca['lede']) ?></p>
+
+  <?php /* ══ A BANCA · o CORAÇÃO da home, agora o HERÓI (data-driven de $capas) ══
+     Decisão do líder (2026-07-21): as EDIÇÕES são as estrelas — sobem para ANTES
+     dos brinquedos, ACIMA DA DOBRA, com um "onde clicar" claro. Os brinquedos
+     (quadradinho, PRESS START, Glyfa, álbum, cupom, linha do tempo) descem para
+     depois (isto inverte o "quadradinho primeiro" antigo — ordem expressa agora).
+     Padrões de hero aplicados (prismic.io, onenine.com, blog.logrocket.com):
+     (1) herói acima da dobra; (2) UM CTA primário contrastante com affordance de
+     clique (o card inteiro é <a> + o botão .ed-cta + hover); (3) proposta de
+     valor curta (a .banca-lede acima). A #1 é o card HERÓI proeminente; quando
+     houver mais edições, elas enfileiram no mesmo foreach (a banca cresce).
+     Landmark = <section> (não <nav>): corpo editorial, não menu (§7.3). Só
+     PUBLICADAS entram (o guard mora no helper). */ ?>
+  <section class="banca" id="banca" aria-labelledby="banca-h2">
+    <div class="banca-tit">
+      <h2 class="secao-nome" id="banca-h2"><?= h((string) $banca['secao_titulo']) ?></h2>
+      <span class="conta"><?= count($capas) ?> <?= h((string) (count($capas) === 1 ? $banca['secao_meta_um'] : $banca['secao_meta'])) ?></span>
+    </div>
+
+    <div class="prateleira">
+      <?php foreach ($capas as $i => $c): ?>
+      <?php
+        // dimensões reais do frame (width/height explícitos = zero CLS)
+        $frame_fs  = $c['frame'] !== null ? __DIR__ . '/../../public_html' . $c['frame'] : null;
+        $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs) : false;
+        $eh_hero   = $i === 0; // a mais nova = o card HERÓI proeminente
+      ?>
+      <a class="ed folha<?= $eh_hero ? ' ed--hero' : '' ?>" style="--idade:<?= h((string) $c['idade']) ?>" href="<?= h((string) $c['url']) ?>">
+        <?php if ($eh_hero): ?>
+        <span class="nova"><?= h((string) $banca['nova']) ?></span>
+        <?php endif; ?>
+
+        <div class="mini-mast">
+          <span class="marca">GLYFESSE</span>
+          <span class="ref"><?= h((string) $t['exp_vol']) ?> <?= (int) volume_edicao((string) $c['data']) ?> · <?= h((string) $t['exp_num']) ?> <?= (int) $c['numero'] ?> · <?= h(data_por_extenso((string) $c['data'], $idioma, $t)) ?></span>
+        </div>
+
+        <h3 class="ct"><?= h((string) $c['titulo']) ?></h3>
+        <p class="ch"><?= h((string) $c['dek']) ?></p>
+
+        <?php if ($c['frame'] !== null && $frame_dim !== false): ?>
+        <figure class="ed-frame aceso">
+          <img src="<?= h((string) $c['frame']) ?>"
+               alt="<?= h((string) ($c['frame_alt'] ?? '')) ?>"
+               width="<?= (int) $frame_dim[0] ?>" height="<?= (int) $frame_dim[1] ?>"
+               loading="lazy" decoding="async">
+        </figure>
+        <?php endif; ?>
+
+        <?php if ($c['visual']): ?>
+        <span class="selo-jogo"><?= h((string) $banca['jogavel']) ?></span>
+        <?php endif; ?>
+
+        <?php /* o CTA "onde clicar": um chip-tela (navy + ciano aceso) no papel —
+           coerente com a VIBE (ciano só aparece onde há tela). O card inteiro é o
+           link real (foco/teclado); este .ed-cta é a AFFORDANCE visual, não um
+           <button> aninhado (isso seria HTML inválido dentro do <a>). */ ?>
+        <span class="ed-cta">
+          <span class="ed-cta-txt"><?= h((string) $banca['cta']) ?></span>
+          <span class="ed-cta-seta" aria-hidden="true">▶</span>
+        </span>
+      </a>
+      <?php endforeach; ?>
+    </div>
+  </section>
 
   <?php /* ══ HERO · O QUADRADINHO (item W6 · QUADRADINHO) ══
      A capa da banca é o brinquedo. Progressive enhancement: o estado-base
@@ -347,52 +414,6 @@ require __DIR__ . '/../includes/head.php';
       <?php endforeach; ?>
     </ol>
     <?php endif; ?>
-  </section>
-
-  <?php /* ══ A FILEIRA DE CAPAS · o coração da banca (data-driven de $capas) ══
-     Landmark = <section> (não <nav>): é o corpo editorial da banca, não um menu
-     (IA-WIREFRAME §7.3). Só edições PUBLICADAS entram (o guard mora no helper). */ ?>
-  <section class="banca" id="banca" aria-labelledby="banca-h2">
-    <div class="banca-tit">
-      <h2 class="secao-nome" id="banca-h2"><?= h((string) $banca['secao_titulo']) ?></h2>
-      <span class="conta"><?= count($capas) ?> <?= h((string) $banca['secao_meta']) ?></span>
-    </div>
-
-    <div class="prateleira">
-      <?php foreach ($capas as $i => $c): ?>
-      <?php
-        // dimensões reais do frame (width/height explícitos = zero CLS)
-        $frame_fs  = $c['frame'] !== null ? __DIR__ . '/../../public_html' . $c['frame'] : null;
-        $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs) : false;
-      ?>
-      <a class="ed folha" style="--idade:<?= h((string) $c['idade']) ?>" href="<?= h((string) $c['url']) ?>">
-        <?php if ($i === 0): ?>
-        <span class="nova"><?= h((string) $banca['nova']) ?></span>
-        <?php endif; ?>
-
-        <div class="mini-mast">
-          <span class="marca">GLYFESSE</span>
-          <span class="ref"><?= h((string) $t['exp_vol']) ?> <?= (int) volume_edicao((string) $c['data']) ?> · <?= h((string) $t['exp_num']) ?> <?= (int) $c['numero'] ?> · <?= h(data_por_extenso((string) $c['data'], $idioma, $t)) ?></span>
-        </div>
-
-        <h3 class="ct"><?= h((string) $c['titulo']) ?></h3>
-        <p class="ch"><?= h((string) $c['dek']) ?></p>
-
-        <?php if ($c['frame'] !== null && $frame_dim !== false): ?>
-        <figure class="ed-frame aceso">
-          <img src="<?= h((string) $c['frame']) ?>"
-               alt="<?= h((string) ($c['frame_alt'] ?? '')) ?>"
-               width="<?= (int) $frame_dim[0] ?>" height="<?= (int) $frame_dim[1] ?>"
-               loading="lazy" decoding="async">
-        </figure>
-        <?php endif; ?>
-
-        <?php if ($c['visual']): ?>
-        <span class="selo-jogo"><?= h((string) $banca['jogavel']) ?></span>
-        <?php endif; ?>
-      </a>
-      <?php endforeach; ?>
-    </div>
   </section>
 
 </div><!-- /.banca-corpo -->

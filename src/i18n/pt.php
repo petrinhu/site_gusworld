@@ -58,8 +58,10 @@ return [
         'skip'         => 'Pular para a banca',
         'secao_titulo' => 'A banca',
         'secao_meta'   => 'edições publicadas',
+        'secao_meta_um' => 'edição publicada',
         'nova'         => 'nova',      // badge da mais recente (minúsculo: guard N→H)
         'jogavel'      => 'jogável',   // selo da edição-hero (é o quadradinho da home)
+        'cta'          => 'Ler a edição', // CTA da capa (display font, não pixel: sem guard N→H)
         'w6_tag'       => 'interativo pendente · w6',
         // os ganchos dos interativos (scaffold; implementação é item W6)
         'ganchos' => [

@@ -57,8 +57,10 @@ return [
         'skip'         => 'Skip to the stand',
         'secao_titulo' => 'The stand',
         'secao_meta'   => 'published editions',
+        'secao_meta_um' => 'published edition',
         'nova'         => 'new',
         'jogavel'      => 'playable',
+        'cta'          => 'Read the issue',
         'w6_tag'       => 'interactive pending · w6',
         'ganchos' => [
             'hero'       => ['label' => 'Playable square',    'nome' => 'The square'],
