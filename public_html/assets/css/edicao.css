@@ -1493,18 +1493,18 @@ main{display:block}
 /* o olho vermelho do HAL: cravado no topo-DIREITO do cabecalho da tela (em %, pra
    seguir o header em qualquer escala de coluna) e RESPIRANDO (glow que pulsa devagar,
    como o olho do HAL 9000). z-index acima da tela; aria-hidden no HTML. */
-.hq-hal-foto .hal-eye{position:absolute; top:2.4%; right:2.6%; z-index:6; pointer-events:none}
+.hq-hal-foto .hal-eye{position:absolute; top:9.5%; right:2.6%; z-index:6; pointer-events:none}
 .hal-eye{
-  width:clamp(13px,1.6vw,17px); aspect-ratio:1; border-radius:50%;
+  width:clamp(26px,3.2vw,34px); aspect-ratio:1; border-radius:50%;
   background:radial-gradient(circle at 50% 42%, #ffd1c4 0%, #ff2a2a 42%, #7a0000 100%);
-  box-shadow:0 0 12px #ff2a2acc, 0 0 26px #ff000080, inset 0 0 4px #ffffff66;
+  box-shadow:0 0 24px #ff2a2acc, 0 0 52px #ff000080, inset 0 0 8px #ffffff66;
   animation:hal-pulsa 3.6s ease-in-out infinite;
 }
 /* respiracao: o glow e o brilho crescem e recuam devagar (inspira/expira). */
 @keyframes hal-pulsa{
-  0%,100%{box-shadow:0 0 8px #ff2a2a99, 0 0 16px #ff000055, inset 0 0 4px #ffffff55;
+  0%,100%{box-shadow:0 0 16px #ff2a2a99, 0 0 32px #ff000055, inset 0 0 8px #ffffff55;
           filter:brightness(.82)}
-  50%    {box-shadow:0 0 18px #ff2a2aff, 0 0 40px #ff0000bb, inset 0 0 6px #ffffff99;
+  50%    {box-shadow:0 0 36px #ff2a2aff, 0 0 80px #ff0000bb, inset 0 0 12px #ffffff99;
           filter:brightness(1.18)}}
 
 /* ── §13 · o poster central: o icone de imagem quebrada GIGANTE (SVG) ── */
@@ -1609,7 +1609,7 @@ main{display:block}
 /* o olho vermelho na visao ampliada: mesmas fracoes do header (top 2.4% / right
    2.6%) da MINIATURA (§11), agora em % da imagem inteira -> crava na barra de abas
    da tela do HAL. Reusa .hal-eye (glow + hal-pulsa); acima da img no overlay. */
-.lightbox-fig .hal-eye{position:absolute; top:2.4%; right:2.6%; z-index:101; pointer-events:none}
+.lightbox-fig .hal-eye{position:absolute; top:9.5%; right:2.6%; z-index:101; pointer-events:none}
 @keyframes lb-in{from{opacity:0} to{opacity:1}}
 .lightbox-fechar{
   position:absolute; top:clamp(8px,2vw,18px); right:clamp(8px,2vw,18px);
