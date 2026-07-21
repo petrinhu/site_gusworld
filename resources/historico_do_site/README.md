@@ -29,6 +29,17 @@ O card do Open Graph renderizou certo no X: o CRT com SOON, o Gus e o selo GusWo
 
 **Por que isto é histórico:** é a Edição #0 do canal. O primeiro momento em que o gusworld.site existiu para outra pessoa além do líder.
 
+## Edição #1: a Glyfesse no ar (2026-07-21): o GO-LIVE
+
+O dia em que o `gusworld.site` deixou de ser "em breve" e virou a **revista de verdade.** O primeiro deploy de produção (`scripts/deploy.sh`, o gate `D-GO-LIVE`, acionado pelo líder) substituiu o placeholder pela **Glyfesse #1 (A Gênese)** mais a banca (home) com os brinquedos interativos (o quadradinho jogável, PRESS START, a Glyfa) e as 3 edições enfileiradas.
+
+- **`2026-07-21_pre-lancamento_placeholder.{html,png,headers}`**: o "em breve" que estava no ar minutos ANTES do go-live (o último estado do placeholder, capturado antes de substituir).
+- **`2026-07-21_lancamento_glyfesse.{html,png,headers}`**: a banca real da Glyfesse, o primeiro estado pós-lançamento.
+
+**Verificado no ar:** raiz serve a banca (Glyfesse, HTTP 200); `/pt/edicao-1` e `/en/edition-1` dão 200; path inexistente cai no 404 do Gus. As URLs bonitas (rewrite do `.htaccess`) funcionando em produção.
+
+**Por que isto importa:** é o marco. O quadradinho de maio (um retângulo numa sala) chegou à revista publicada que conta a própria gênese. O antes (placeholder) e o depois (a revista) estão os dois guardados aqui: a prova do build-in-public do próprio site.
+
 ## Como capturar a próxima edição (quando o domínio mudar de estado)
 
 ```bash
