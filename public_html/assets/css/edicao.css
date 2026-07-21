@@ -1565,8 +1565,25 @@ main{display:block}
    O <a class="zoom-link"> envolve a imagem. SEM JS abre a PNG em tamanho real
    (href nativo). COM JS o pecas.js intercepta e abre o overlay abaixo. Logica
    pura em lightbox-core.js. */
-.zoom-link{display:block; cursor:zoom-in}
+.zoom-link{display:block; position:relative; cursor:zoom-in}
 .zoom-link:focus-visible{outline:2px solid var(--acento); outline-offset:3px}
+/* indicador de CLICAVEL (correcao #3): lupa + rotulo curto no canto inferior-direito
+   da tela. SEMPRE visivel (mobile nao tem :hover), aria-hidden no HTML. O rotulo e
+   bilingue e vive no partial (pt/en). pointer-events:none -> o clique passa pro <a>
+   (progressive enhancement intacto: sem JS o href ainda abre a PNG). */
+.zoom-badge{
+  --lupa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Ccircle cx='6.6' cy='6.6' r='4.2'/%3E%3Cline x1='9.7' y1='9.7' x2='14' y2='14'/%3E%3Cline x1='6.6' y1='4.6' x2='6.6' y2='8.6'/%3E%3Cline x1='4.6' y1='6.6' x2='8.6' y2='6.6'/%3E%3C/g%3E%3C/svg%3E");
+  position:absolute; right:8px; bottom:8px; z-index:7;
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:var(--font-display); font-size:11px; letter-spacing:.03em; line-height:1;
+  color:#eaf1fa; background:#0c1524d9; border:1px solid #ffffff2e; border-radius:5px;
+  padding:5px 8px; pointer-events:none; box-shadow:0 2px 8px #00000059;
+}
+.zoom-badge::before{
+  content:""; width:13px; height:13px; flex:none; background:currentColor;
+  -webkit-mask:var(--lupa) center/contain no-repeat;
+          mask:var(--lupa) center/contain no-repeat;
+}
 
 /* o overlay: fundo escuro (a tela do Tavus-Drive envolvendo a folha) + a imagem
    ampliada ao maximo do viewport, legivel. Montado no <body> por pecas.js. */
@@ -1578,11 +1595,21 @@ main{display:block}
   animation:lb-in var(--dur-medio) var(--ease);
 }
 .lightbox[hidden]{display:none}
+/* a figura envolve a imagem justa (shrink-wrap) e ancora o olho do HAL (correcao
+   #6): a img e limitada pelo VIEWPORT (descontada a padding do overlay dos dois
+   lados) pra nao depender da altura da figura -> sem laco circular, Gecko-safe. */
+.lightbox-fig{position:relative; display:block; margin:0; line-height:0; max-width:100%; max-height:100%}
 .lightbox img{
-  max-width:100%; max-height:100%; width:auto; height:auto;
+  display:block; width:auto; height:auto;
+  max-width:calc(100vw - clamp(24px,6vw,80px));
+  max-height:calc(100vh - clamp(24px,6vw,80px));
   border-radius:var(--raio-tela); box-shadow:0 12px 48px #000000b3;
   cursor:default;
 }
+/* o olho vermelho na visao ampliada: mesmas fracoes do header (top 2.4% / right
+   2.6%) da MINIATURA (§11), agora em % da imagem inteira -> crava na barra de abas
+   da tela do HAL. Reusa .hal-eye (glow + hal-pulsa); acima da img no overlay. */
+.lightbox-fig .hal-eye{position:absolute; top:2.4%; right:2.6%; z-index:101; pointer-events:none}
 @keyframes lb-in{from{opacity:0} to{opacity:1}}
 .lightbox-fechar{
   position:absolute; top:clamp(8px,2vw,18px); right:clamp(8px,2vw,18px);

@@ -52,7 +52,8 @@
     if (!links.length) return;
 
     var estado = Core.criar();
-    var overlay = null, imgEl = null, btnFechar = null, ultimoFoco = null;
+    var overlay = null, figEl = null, imgEl = null, olhoEl = null, btnFechar = null, ultimoFoco = null;
+    var comOlho = false; // o zoom aberto pede o olho do HAL? (data-hal-eye="1")
 
     function montar() {
       overlay = doc.createElement("div");
@@ -61,8 +62,19 @@
       overlay.setAttribute("aria-modal", "true");
       overlay.hidden = true;
 
+      // a imagem ampliada vive num <figure> que a envolve justo: o olho do HAL
+      // (correcao #6) crava em % desse box, seguindo o header da tela em qualquer
+      // escala. So a figura fica sempre montada; o olho aparece so quando pedido.
+      figEl = doc.createElement("figure");
+      figEl.className = "lightbox-fig";
+
       imgEl = doc.createElement("img");
       imgEl.decoding = "async";
+
+      olhoEl = doc.createElement("span");
+      olhoEl.className = "hal-eye"; // reuso do glow+respiracao de edicao.css
+      olhoEl.setAttribute("aria-hidden", "true");
+      olhoEl.hidden = true;
 
       btnFechar = doc.createElement("button");
       btnFechar.type = "button";
@@ -70,7 +82,9 @@
       btnFechar.textContent = "fechar ✕";
       btnFechar.setAttribute("aria-label", "Fechar (Esc)");
 
-      overlay.appendChild(imgEl);
+      figEl.appendChild(imgEl);
+      figEl.appendChild(olhoEl);
+      overlay.appendChild(figEl);
       overlay.appendChild(btnFechar);
       doc.body.appendChild(overlay);
 
@@ -85,20 +99,23 @@
         imgEl.setAttribute("src", estado.src);
         imgEl.setAttribute("alt", estado.alt);
         overlay.setAttribute("aria-label", estado.alt || "Imagem ampliada");
+        olhoEl.hidden = !comOlho; // o olho vermelho so na tela do HAL
         overlay.hidden = false;
         doc.documentElement.classList.add("lightbox-aberto");
         btnFechar.focus();
       } else {
         overlay.hidden = true;
         imgEl.removeAttribute("src");
+        olhoEl.hidden = true; // ao fechar, o olho injetado some junto
         doc.documentElement.classList.remove("lightbox-aberto");
         if (ultimoFoco && typeof ultimoFoco.focus === "function") ultimoFoco.focus();
       }
     }
 
-    function abrir(src, alt, origem) {
+    function abrir(src, alt, origem, olho) {
       if (!overlay) montar();
       ultimoFoco = origem || doc.activeElement;
+      comOlho = olho;
       estado = Core.abrir(estado, src, alt);
       if (estado.aberto) pintar();
     }
@@ -112,7 +129,8 @@
         e.preventDefault();
         var img = a.querySelector("img");
         var alt = img ? img.getAttribute("alt") : a.getAttribute("aria-label");
-        abrir(a.getAttribute("href"), alt, a);
+        var olho = Core.deveInjetarOlho(a.getAttribute("data-hal-eye"));
+        abrir(a.getAttribute("href"), alt, a, olho);
       });
     });
 

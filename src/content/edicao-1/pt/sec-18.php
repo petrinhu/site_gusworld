@@ -5,11 +5,18 @@
    inteira e sem retoque: a listagem das caixas de entrada da pasta inbox/. Os
    dados na tela sao props ficticios propositais, autorizados pelo lider (embutir
    como estao, nunca recortar/tarjar). width/height reais p/ zero CLS; rola na
-   horizontal dentro da figura se preciso (o body nunca rola). */ ?>
+   horizontal dentro da figura se preciso (o body nunca rola). O <a class="zoom-link">
+   liga o CLIQUE-PRA-AMPLIAR (mesmo mecanismo da §17/§11): SEM JS abre a PNG em
+   tamanho real (progressive enhancement); COM JS o lightbox (pecas.js) amplia
+   in-page pra ler o inbox git por inteiro. */ ?>
 <figure class="tela-real">
-  <img src="/assets/edicao-1/inbox_git.png" width="1862" height="683"
-       loading="lazy" decoding="async"
-       alt="A tela real do BUS git: a listagem das caixas de entrada (glintfx, gusworld, site) da pasta inbox, o canal por onde as sessoes trocam recados.">
+  <a class="zoom-link" href="/assets/edicao-1/inbox_git.png"
+     aria-label="Ampliar a tela do BUS git para ler o inbox por inteiro">
+    <img src="/assets/edicao-1/inbox_git.png" width="1862" height="683"
+         loading="lazy" decoding="async"
+         alt="A tela real do BUS git: a listagem das caixas de entrada (glintfx, gusworld, site) da pasta inbox, o canal por onde as sessoes trocam recados.">
+    <span class="zoom-badge" aria-hidden="true">clique para ampliar</span>
+  </a>
   <figcaption>A tela do BUS git: três caixas de entrada (glintfx, gusworld, site) passando recados umas pras outras. O Gus lê por cima do ombro.</figcaption>
 </figure>
 

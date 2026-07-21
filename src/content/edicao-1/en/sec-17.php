@@ -102,9 +102,11 @@
     <img src="/assets/edicao-1/tui_claude2.png" width="1914" height="952"
          loading="lazy" decoding="async"
          alt="GusWorld's first prompt, in the terminal: the mandate defining the AI as coder and the creator as owner of every design, architecture, stack and scope decision.">
+    <span class="zoom-badge" aria-hidden="true">click to zoom</span>
   </a>
-  <figcaption>GusWorld's real first prompt, captured from the terminal screen itself (original Portuguese).</figcaption>
+  <figcaption>reproduction of the first prompt; the original was not captured in a screenshot</figcaption>
 </figure>
+<p class="pensa">but it was pretty close</p>
 
 <p>It isn't a slogan written after the fact. It's the very first thing typed, and each clause is a lock (quoted here in translation):</p>
 

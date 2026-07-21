@@ -54,6 +54,20 @@ test("teclaParaAcao: qualquer outra tecla -> null", () => {
   assert.equal(Core.teclaParaAcao("Tab"), null);
 });
 
+// ── deveInjetarOlho: so o flag "1" (ou true) injeta o olho do HAL ───────────
+test("deveInjetarOlho: flag '1' (e true) -> injeta o olho", () => {
+  assert.equal(Core.deveInjetarOlho("1"), true);
+  assert.equal(Core.deveInjetarOlho(true), true);
+});
+
+test("deveInjetarOlho: ausente/outro valor -> nao injeta", () => {
+  assert.equal(Core.deveInjetarOlho(null), false);
+  assert.equal(Core.deveInjetarOlho(undefined), false);
+  assert.equal(Core.deveInjetarOlho(""), false);
+  assert.equal(Core.deveInjetarOlho("0"), false);
+  assert.equal(Core.deveInjetarOlho("true"), false);
+});
+
 // ── fluxo completo: abrir uma tela, fechar por ESC ──────────────────────────
 test("fluxo: abrir tui_claude2 -> ESC fecha", () => {
   let e = Core.criar();

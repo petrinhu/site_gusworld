@@ -46,10 +46,20 @@
     return key === "Escape" || key === "Esc" ? "fechar" : null;
   }
 
+  // ── deveInjetarOlho: o link ampliado carrega o olho do HAL? (correcao #6 da #1) ─
+  // O zoom da §11 marca o <a> com data-hal-eye="1"; so nesse caso o wrapper injeta
+  // o olho vermelho (respirando) no header-direito da imagem ampliada. Qualquer
+  // outro valor/ausencia -> false (os demais zooms abrem sem olho). Logica pura: a
+  // DECISAO fica testada aqui; o DOM/posicionamento vive no wrapper (pecas.js).
+  function deveInjetarOlho(flag) {
+    return flag === "1" || flag === true;
+  }
+
   return {
     criar: criar,
     abrir: abrir,
     fechar: fechar,
     teclaParaAcao: teclaParaAcao,
+    deveInjetarOlho: deveInjetarOlho,
   };
 });

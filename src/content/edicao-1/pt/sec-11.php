@@ -36,11 +36,12 @@
     <div class="hq-q">
       <span class="hq-n" aria-hidden="true">3</span>
       <figure class="hq-hal-foto">
-        <a class="zoom-link" href="/assets/edicao-1/tui_claude.png"
+        <a class="zoom-link" href="/assets/edicao-1/tui_claude.png" data-hal-eye="1"
            aria-label="Ampliar a tela do HAL para ler o monólogo inteiro">
           <img src="/assets/edicao-1/tui_claude.png" width="1911" height="990"
                loading="lazy" decoding="async"
                alt="O monólogo do assistente, tom HAL 9000: &quot;boa noite, Pyotor...&quot;, a tela real do terminal.">
+          <span class="zoom-badge" aria-hidden="true">clique para ampliar</span>
         </a>
         <span class="hal-eye" aria-hidden="true"></span>
       </figure>

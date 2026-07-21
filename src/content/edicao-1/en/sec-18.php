@@ -5,11 +5,18 @@
    whole and untouched: the listing of the inbox/ folder's inboxes. The data on
    screen are intentional fictional props, authorized by the lead (embed as-is,
    never crop/redact). Real width/height for zero CLS; scrolls horizontally
-   inside the figure if needed (the body never scrolls). */ ?>
+   inside the figure if needed (the body never scrolls). The <a class="zoom-link">
+   wires the CLICK-TO-ENLARGE (same mechanism as §17/§11): WITHOUT JS it opens the
+   real-size PNG (progressive enhancement); WITH JS the lightbox (pecas.js) enlarges
+   in-page to read the whole git inbox. */ ?>
 <figure class="tela-real">
-  <img src="/assets/edicao-1/inbox_git.png" width="1862" height="683"
-       loading="lazy" decoding="async"
-       alt="The real git BUS screen: the listing of the inboxes (glintfx, gusworld, site) in the inbox folder, the channel the sessions pass notes through.">
+  <a class="zoom-link" href="/assets/edicao-1/inbox_git.png"
+     aria-label="Enlarge the git BUS screen to read the whole inbox">
+    <img src="/assets/edicao-1/inbox_git.png" width="1862" height="683"
+         loading="lazy" decoding="async"
+         alt="The real git BUS screen: the listing of the inboxes (glintfx, gusworld, site) in the inbox folder, the channel the sessions pass notes through.">
+    <span class="zoom-badge" aria-hidden="true">click to zoom</span>
+  </a>
   <figcaption>The git BUS screen: three inboxes (glintfx, gusworld, site) passing notes to each other. Gus reads over their shoulder.</figcaption>
 </figure>
 

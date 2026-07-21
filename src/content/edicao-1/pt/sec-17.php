@@ -101,9 +101,11 @@
     <img src="/assets/edicao-1/tui_claude2.png" width="1914" height="952"
          loading="lazy" decoding="async"
          alt="O primeiro prompt do GusWorld, no terminal: o mandato que define a IA como coder e o criador como dono de todas as decisões de design, arquitetura, stack e escopo.">
+    <span class="zoom-badge" aria-hidden="true">clique para ampliar</span>
   </a>
-  <figcaption>O primeiro prompt real do GusWorld, capturado da própria tela do terminal.</figcaption>
+  <figcaption>reprodução do primeiro prompt, o original não foi capturado com print</figcaption>
 </figure>
+<p class="pensa">mas foi bem parecido</p>
 
 <p>Não é um slogan escrito depois. É a primeira coisa que foi digitada, e cada cláusula é uma trava:</p>
 

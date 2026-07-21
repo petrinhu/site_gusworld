@@ -35,11 +35,12 @@
     <div class="hq-q">
       <span class="hq-n" aria-hidden="true">3</span>
       <figure class="hq-hal-foto">
-        <a class="zoom-link" href="/assets/edicao-1/tui_claude.png"
+        <a class="zoom-link" href="/assets/edicao-1/tui_claude.png" data-hal-eye="1"
            aria-label="Enlarge the HAL screen to read the full monologue">
           <img src="/assets/edicao-1/tui_claude.png" width="1911" height="990"
                loading="lazy" decoding="async"
                alt="The assistant's monologue, HAL 9000 tone: &quot;good evening, Pyotor...&quot;, the real terminal screen.">
+          <span class="zoom-badge" aria-hidden="true">click to zoom</span>
         </a>
         <span class="hal-eye" aria-hidden="true"></span>
       </figure>
