@@ -37,3 +37,6 @@ docs/inventario-publicavel.md
 # endpoint (api/cupom-voto.php) recria do zero se ausente (parse tolerante).
 data/cupom-votos.json
 data/cupom-votos.lock
+
+# Screenshots-fonte / referências (recriamos os assets; o cru nao vai ao repo publico)
+resources/referencias/
