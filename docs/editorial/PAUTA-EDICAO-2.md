@@ -108,6 +108,15 @@ Mais o **Pôster central** (o Gus 3D), que é arte/layout, não escrita. Todo o 
 - **Estrutura:** `gus@glyfesse>` + 1-2 parágrafos curtos, papel com acento, tokens de código em ASCII. Benchmark: o Editorial da #1.
 - **Fonte:** `edicao-1-editorial.md` (a última linha é o gancho), `a-voz-do-site`, `voz-prompt-shell`.
 
+### A Entrevista (o Gus e o zumbi-ator) ✅ (2026-07-24)
+
+- **Angle statement:** o Gus entrevista um zumbi (arquétipo genérico) que responde como **ator** falando da sua atuação no jogo (bastidores de mentira), pela lente da comédia de contraste, curta (4-6 trocas).
+- **O personagem do zumbi (blend aprovado, 1+2):** **method actor pretensioso E veterano cansado/sindicalizado** ao mesmo tempo. Trata a decomposição como sacrifício artístico sagrado ("perder um pedaço no pântano foi a coisa mais real que já fiz") E reclama de veterano de elenco (horas, sem dublê, o cachê, o figurino que é a própria carne). O contraste interno (arte sublime x queixa sindical) É a piada.
+- **O eixo do humor (blend aprovado, 1+2):** **as condições de gravação** (o pântano, o figurino que apodrece, a maquiagem que é real, sem dublê) **E a carreira de vilão descartável** (sempre o inimigo que morre em 2 golpes, sem falas, o protagonista leva o crédito).
+- **Cortes:** o zumbi é ARQUÉTIPO, nunca um inimigo específico do jogo (spoiler-safe, aprovado no GATE-PAUTA); o eixo meta/build-in-public ficou de fora (menos insider, menos risco de spoiler); é comédia pura, não lore.
+- **Voz:** `gus@glyfesse>` pergunta; o zumbi responde com prefixo próprio (ex.: `zumbi@glyfesse>`), a definir no rascunho. Papel com acento.
+- **Tamanho:** curta (4-6 trocas), S. Ajustável no GATE-COPY.
+
 ## Nota do managing editor (risco a decidir na lente)
 
 **Três seções olham para a mesma era** (reportagem, cemitério, programação). Para não repetir, a lente proposta separa os papéis, e isso se afina no GATE-LENTE de cada uma:
