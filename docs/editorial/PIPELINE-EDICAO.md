@@ -223,6 +223,7 @@ O líder decide em **cada etapa com julgamento editorial**, item por item, em ro
 ## 6. Checklists transversais (valem em toda seção)
 
 - **Datado:** toda matéria carimba a data do commit real. Sem data inventada.
+- **★★ Datas sincronizadas entre as sessões (CANON 2026-07-24):** antes de pôr QUALQUER elemento numa edição, checar que a data real do acontecimento é (1) compatível com o marco/data-âncora da edição e (2) sincronizada entre as 3 sessões (jogo/glintfx/site). **Um artefato não pode aparecer numa edição cuja data-âncora é anterior ao nascimento dele.** O bus nasceu em 16/jul → "Gus lê o bus" só existe em edições de 16/jul em diante; nas anteriores, o AI-disclosure recai no Expediente. Verbatim do líder: *"é canonico!!! olhar as datas dos acontecimentos se estao sincronizados nas sessoes!"* (ver `feedback_datas_sincronizadas_sessoes`).
 - **tela×papel:** ASCII na tela, acento no papel.
 - **Bilíngue:** pt e en, equivalentes; o switch de idioma é a "recompilação" (navega para URL distinta).
 - **Voz:** Gus escreve; líder assina só o técnico, seco e raro; profanidade zero; reticências como assinatura; nomes canônicos intocados.

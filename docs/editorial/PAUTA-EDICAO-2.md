@@ -1,128 +1,131 @@
 # Pauta da Edição #2 da Glyfesse (mapa de edição)
 
-> Artefato de saída do estágio **E1** do `PIPELINE-EDICAO`. **GATE-PAUTA: ✅ APROVADO pelo editor-geral em 2026-07-23.**
-> Managing editor: `product-manager`. Data da montagem: 2026-07-23.
+> Artefato de saída do estágio **E1** do `PIPELINE-EDICAO`. **GATE-PAUTA: ✅ APROVADO** (2026-07-23), **re-tematizado 2026-07-24** após a auditoria de datas.
+> Managing editor: `product-manager`. Montagem: 2026-07-23. Correção cronológica: 2026-07-24.
 
-## Decisões do editor-geral no GATE-PAUTA (2026-07-23)
+## ★★ Correção de 2026-07-24 (a regra de datas sincronizadas)
 
-1. **Tema e as 3 caras: aprovados.** Reportagem (o arco), Cemitério (as lápides) e Programação (o porquê técnico), cada uma com lente distinta da mesma era.
-2. **Pôster central: o Gus 3D.** O wireframe do modelo abandonado (quase 1 milhão de faces para virar pixel de 48px) é o pôster da #2. Vira seção CHEIA.
-3. **A Entrevista: virada in-fiction (não é o líder).** O Gus entrevista **um zumbi da selva/pântano**, e o zumbi responde **como um ator** falando da sua atuação no jogo (formato "bastidores/making-of de mentira"). Exemplo do líder, verbatim: *Gus> "Como foi para você participar atuando nesse jogo? Caiu algum pedaço seu andando pelo pântano?"*. Comédia in-world. Vira seção CHEIA (uma 4ª cara, curta). ⚠️ Passa por `SPOILER-POLICY` (mantém o zumbi como arquétipo genérico; nada de revelar roster de inimigos, mecânica ou lore não lançada).
+A auditoria de datas (canon `feedback_datas_sincronizadas_sessoes`) derrubou o tema original ("a edição do cemitério"). Motivo: **em maio-junho quase nada tinha morrido ainda.** As mortes reais são posteriores à janela da #2:
+
+| Ideia morta | Quando morreu | Edição que enterra |
+|---|---|---|
+| GDScript (a 1ª língua) | **19/mai** (trocada por C#) | **#2** (a única morte de maio) |
+| A tentativa 3D | **22/jun** (pivô 3D->2D, ADR-008) | #3 |
+| Godot (a engine) | **22/jun -> 22/jul** (ADR-008 + M8) | #3 e a de julho |
+| A foundation C# | **22/jul** (M8, apagada) | a de julho |
+
+Decisões do editor-geral (2026-07-24):
+1. **A #2 é a edição da CONSTRUÇÃO + a 1ª lápide.** É sobre construir (arquitetura, engines, o 3D), tudo ainda vivo e esperançoso; o Cemitério enterra só a morte de maio (GDScript, 19/mai); o resto é foreshadow. As mortes grandes vão para a #3 e a de julho.
+2. **Débito da #1: deixar como está.** A #1 (publicada, datada 15/mai) tem anacronismos (o "Gus lê o bus" mostra o bus de 16/jul; a Entrevista cita o glintfx de julho). Fato consumado; a regra vale daqui pra frente, sem re-deploy. Débito documentado.
 
 ## O marco e a data-âncora
 
-- **Marco:** a arquitetura, as primeiras engines e a tentativa 3D (o pivô Fase 1 -> Fase 2).
-- **Data-âncora primária:** **19 de maio de 2026** (ADR-002, o pivô de GDScript para C# .NET 8 AOT: o primeiro grande commit de arquitetura).
-- **Janela coberta:** 19 de maio a 4 de junho de 2026 (fecha em `assets(3d)`, os modelos 3D dos personagens).
-- **Fonte:** `cronologia-real-datada` (Edição #2 = "Arquitetura + as primeiras engines + a tentativa 3D") + `git log` do jogo.
+- **Marco:** a arquitetura, as primeiras engines e a tentativa 3D (o pivô Fase 1 -> Fase 2). Tudo em construção, nada morto ainda (exceto GDScript).
+- **Data-âncora primária:** **19 de maio de 2026** (ADR-002, o pivô de GDScript para C# .NET 8 AOT).
+- **Janela coberta:** 19 de maio a 4 de junho de 2026 (fecha em `assets(3d)`, os modelos 3D ainda sendo feitos).
+- **Fonte:** `cronologia-real-datada` + `git log` do jogo.
 
-## O tema-guarda-chuva proposto
+## O tema-guarda-chuva
 
-**"A era da construção que virou cemitério."** Na #1, o mundo foi *escrito* (a lore antes do código). Na #2, ele começou a ser *construído*, e quase tudo que se construiu nesse mês foi depois jogado fora: a stack trocou (GDScript -> C# -> C++), as primeiras engines (câmera, save, input, combate) foram portadas e o código original **apagado**, e a tentativa de fazer o jogo em 3D foi abandonada. É o `glyfe` do avesso: a #1 é o build começando; a #2 é a prova de que build também é o que a gente demole.
-
-★ **Convergência de sorte:** o **obituário da foundation C#** e o **registro do board M0-M9** chegaram pelo bus esta semana. São o epílogo exato desta era: contam como o código de maio deixou de existir. A #2 conta a era; o bus conta o enterro.
+**"A era da construção."** Na #1, o mundo foi *escrito* (a lore antes do código). Na #2, ele começa a ser *construído*: a stack é escolhida (GDScript -> C# AOT), as primeiras engines nascem (câmera, save, input, combate), o 3D é tentado. Tudo vivo, tudo com esperança. **A ironia dramática é o motor:** o leitor, que veio da #1 (onde o Gus avisou que "os mortos chegam de junho em diante"), sabe que quase nada disso vai sobreviver. A #2 é o retrato feliz antes do velório. O único que já morre aqui é o GDScript, a primeira lápide.
 
 ## Mapa das 19 seções
 
 | # | Seção | Estado na #2 | Assunto / lente | Data-âncora |
 |---|---|---|---|---|
-| 1 | Capa | **cheia** (montagem) | Manchete do marco: a era da construção-cemitério | 19/mai |
+| 1 | Capa | **cheia** (montagem) | Manchete do marco: a era da construção | 19/mai |
 | 2 | Índice | **cheia** (montagem) | Fecha com os 3 links fixos (GusWorld, GlintFX, TODO.md do jogo) | - |
-| 3 | Editorial (Carta do Gus) | **cheia** (curta) | A voz abre o número: "a gente construiu muita coisa pra jogar fora" | 19/mai |
-| 4 | Reportagem de capa | **CHEIA** ★ (cara) | O ARCO da era: construiu-se muito, demoliu-se quase tudo. Por SENSAÇÃO, spoiler-safe | 19/mai -> 04/jun |
+| 3 | Editorial (Carta do Gus) | **CHEIA** ★ (curta) | Ponte da #1 -> a era da construção (foreshadow da queda) | 19/mai |
+| 4 | Reportagem de capa | **CHEIA** ★ (cara) | O ARCO da construção, tudo ainda vivo; a morte é foreshadow. Ironia dramática | 19/mai -> 04/jun |
 | 5 | A NOTA do jogo inacabado | **cheia** (curta) | A nota que sobe a cada edição; em maio ainda não havia o que jogar ("Jogabilidade: N/A") | 19/mai |
 | 6 | Galeria de Bugs | vazio com graça | (sem bug de destaque de maio; entra a piada honesta) | - |
-| 7 | Cemitério das Ideias Mortas | **CHEIA** ★★ (a estrela) | 3 lápides de stack: GDScript, a foundation C#, Godot. Deboche por cima, luto honesto por baixo (lente aprovada abaixo) | 19/mai -> 04/jun |
+| 7 | Cemitério das Ideias Mortas | **quase vazio + 1 lápide** | Uma lápide só: GDScript (†19/mai). O resto foreshadow ("os mortos chegam de junho") | 19/mai |
 | 8 | Detonado (AGUARDE) | vazio com graça | evergreen | - |
 | 9 | Errata + Cartas | vazio com graça | (sem cartas ainda; errata da #1 se houver) | - |
 | 10 | Classificados in-world | vazio com graça | evergreen | - |
 | 11 | HQ | vazio com graça | pool rotativo dos 3 | - |
 | 12 | Próximos Lançamentos (tabela vazia) | vazio com graça | evergreen | - |
-| 13 | Pôster central | **CHEIA** ★ | O wireframe do Gus 3D (quase 1 milhão de faces para virar pixel de 48px) como pôster | 04/jun |
+| 13 | Pôster central | **CHEIA** ★ | O wireframe do Gus 3D (quase 1 milhão de faces para virar pixel de 48px). Datado-correto: o 3D estava sendo feito em maio-junho | 04/jun |
 | 14 | Brinde | vazio com graça | evergreen | - |
 | 15 | Cupom recortável | **cheia** (recorrente) | O cupom segue; a apuração da #1 é citada aqui (a cadência do voto) | - |
-| 16 | A Entrevista | **CHEIA** ★ (cara curta) | In-fiction: o Gus entrevista um zumbi da selva/pântano, que responde como ATOR (bastidores de mentira). Comédia | - (atemporal) |
-| 17 | Seção de Programação | **CHEIA** ★ (cara) | O PORQUÊ técnico: ADR-002, o raciocínio do AOT, por que C# e depois por que C++ | 19/mai |
-| 18 | O Gus lê o bus | **cheia** (recorrente) | LOCK: o obituário completo da foundation C# (com o erro do repo apagado sem cópia) + a reação do Gus | 22/jul (bus) |
-| 19 | Expediente | **cheia** (data-driven) | Créditos, licença. O nome só se explicou na #1 | - |
+| 16 | A Entrevista | **CHEIA** ★ (cara curta) | In-fiction: o Gus entrevista um zumbi (arquétipo), que responde como ATOR (bastidores de mentira). Comédia | - (atemporal) |
+| 17 | Seção de Programação | **CHEIA** ★ (cara) | O PORQUÊ técnico: ADR-002, o raciocínio do AOT. A reversão é só foreshadow (é da #3) | 19/mai |
+| 18 | O Gus lê o bus | **REMOVIDA da #2** ⚠️ | ANACRONISMO: o bus nasceu em 16/jul; uma edição de maio não tem cano. Estreia numa edição de julho | - |
+| 19 | Expediente | **cheia** (data-driven) | Créditos, licença + o disclaimer factual mínimo de IA (o AI-disclosure recai aqui, sem "Gus lê o bus") | - |
 
 ## As "caras" da #2 (onde há escrita nova de verdade)
 
-1. **Reportagem de capa** (o arco da era).
-2. **Cemitério das Ideias Mortas** (a estrela do número).
-3. **Seção de Programação** (o eixo expert).
-4. **A Entrevista** (in-fiction: o Gus e o zumbi-ator) - curta.
-5. **Editorial** e **Gus lê o bus** (curtas).
+1. **Reportagem de capa** (o arco da construção).
+2. **Seção de Programação** (o eixo expert: ADR-002/AOT).
+3. **A Entrevista** (in-fiction: o Gus e o zumbi-ator) - curta.
+4. **Editorial** (curta).
+5. **Cemitério** - agora leve (1 lápide + foreshadow), não é mais "cara".
 
-Mais o **Pôster central** (o Gus 3D), que é arte/layout, não escrita. Todo o resto é vazio-com-graça ou data-driven/recorrente.
+Mais o **Pôster central** (o Gus 3D), que é arte/layout. Todo o resto é vazio-com-graça ou data-driven/recorrente.
+
+## ★★ CANON: datas sincronizadas entre as sessões (2026-07-24)
+
+Verbatim do editor-geral: *"é canonico!!! olhar as datas dos acontecimentos se estao sincronizados nas sessoes!"* (detalhe em `feedback_datas_sincronizadas_sessoes` + `PIPELINE-EDICAO` §6).
+
+Antes de pôr QUALQUER elemento numa edição: a **data real do acontecimento** tem que ser compatível com o marco da edição e sincronizada entre as 3 sessões (jogo/glintfx/site). **Artefato não aparece em edição anterior ao seu nascimento.**
+
+- **Bus nasceu 16/jul** -> "Gus lê o bus" só existe em edições de 16/jul em diante. Nas anteriores (era maio-junho), o AI-disclosure recai no Expediente.
+- **glintfx nasceu em julho** -> nenhuma menção ao glintfx cabe em edição da era maio-junho.
+- **Débito da #1** (deixar como está, decisão 2026-07-24): a #1 tem o bus e o glintfx numa edição de maio. Não se corrige; a regra vale daqui pra frente.
 
 ## Lentes aprovadas (S1 GATE-LENTE)
 
-### Cemitério das Ideias Mortas ✅ (2026-07-23)
+### Cemitério das Ideias Mortas ✅ (2026-07-23, re-escopado 2026-07-24)
 
-- **Angle statement:** sobre os três mortos de stack de maio-junho (GDScript, a foundation C#, Godot), pela lente de **lápides com epitáfios na voz do Gus** (deboche por cima, luto honesto por baixo; o luto real concentrado na lápide do C#).
-- **Tom:** deboche + luto honesto (a assinatura do site: piada primeiro, verdade embaixo).
-- **As 3 lápides:** GDScript (a primeira língua, trocada em 19/mai por C#/ADR-002), a foundation C# (save/i18n/progressão/templates/combate, portada e apagada), Godot (a engine, decomissionada).
-- **Cortes:**
-  - o **Gus 3D** NÃO é lápide aqui: fica inteiro no Pôster central (seção 13).
-  - o **obituário completo** (o erro do repo apagado sem cópia) NÃO é aqui: a lápide do C# é um epitáfio curto; o texto integral vive no "Gus lê o bus" (seção 18).
-  - o **porquê técnico** de cada pivô vai para a Programação (seção 17).
-  - o **arco da era** vai para a Reportagem (seção 4).
-- **Datas (epitáfios):** cada lápide carimba nascimento/morte com data real de commit. GDScript: †19/mai. Foundation C#: n.mai / portada jun-jul / †apagada. Godot: †decomissionado.
-- **Fonte:** `historia-real-dos-pivos`, `cronologia-real-datada`, o obituário e o board M0-M9 (bus).
+- **Angle statement:** uma lápide só na #2 - **GDScript** (a primeira língua, †19/mai, trocada por C#/ADR-002) - pela lente do epitáfio na voz do Gus (deboche por cima, luto honesto por baixo), com o resto do cemitério ainda vazio e um foreshadow ("os mortos de verdade chegam de junho em diante", ecoando a #1).
+- **Tom:** deboche + luto honesto.
+- **A única lápide:** GDScript. As mortes da foundation C# (†22/jul), do 3D (†22/jun) e do Godot (†22/jun->22/jul) NÃO cabem aqui: são #3 e a edição de julho.
+- **O obituário da foundation C#:** NÃO entra na #2 (é de 22/jul). Migra inteiro para a edição de julho (Cemitério + "Gus lê o bus" de lá).
+- **Cortes:** o Gus 3D é o Pôster; o porquê técnico é a Programação; o arco é a Reportagem.
+- **Fonte:** `historia-real-dos-pivos`, `cronologia-real-datada`, ADR-002.
 
-### Reportagem de capa ✅ (2026-07-23)
+### Reportagem de capa ✅ (2026-07-23, re-escopado 2026-07-24)
 
-- **Angle statement:** sobre a era em que o jogo começou a ser construído e quase tudo foi demolido (engines, stack, o 3D), pela lente do **ARCO na voz do Gus**, com a tese **"construir é também demolir"** (cada coisa jogada fora foi uma decisão, não um fracasso).
-- **Arco/tese:** construir é demolir. O leitor sente respeito por quem mata o próprio trabalho para seguir. Carrega a tese do projeto (a IA é ferramenta; o criativo é do criador), por implicação, nunca explicada.
-- **Concretude:** **híbrido**. Abertura pega o leigo pela SENSAÇÃO (como a #1); os nomes reais (GDScript, C#, Godot, o 3D) aparecem no corpo sem exigir TI. Serve leigo + expert.
-- **Cortes:**
-  - as **lápides itemizadas** são do Cemitério (seção 7): a Reportagem faz o movimento inteiro, não as pedras uma a uma.
-  - o **porquê técnico** frio vai para a Programação (seção 17).
-  - o **wireframe** do Gus 3D é o Pôster (seção 13).
-- **Voz:** Gus (o autor in-fiction). A demolição é a dele, do personagem construindo o próprio mundo/jogo; o líder-criador nunca é nomeado (consistente com a #1).
-- **Nota de diferença da #1:** o assunto é tech real (não lore), então pode nomear aberto sem spoiler; a abstração poética da #1 era forçada pela spoiler-safety, que aqui não se aplica.
+- **Angle statement:** sobre a era em que o jogo começou a ser **construído** (a arquitetura, as engines, o 3D), pela lente do **ARCO na voz do Gus**, com **ironia dramática**: tudo está vivo e esperançoso, e o leitor sabe (pela #1) que vai morrer. Não é "construir e demolir" (a demolição é #3+); é "construir sob a sombra do que virá".
+- **Arco/tese:** a construção com esperança. A tese do projeto (a IA é ferramenta; o criativo é do criador) aparece por implicação. A queda é sugerida, não narrada.
+- **Concretude:** **híbrido**. Abertura pela sensação (como a #1); os nomes reais (GDScript, C#, Godot, o 3D) no corpo sem exigir TI.
+- **Cortes:** a lápide do GDScript é do Cemitério; o porquê técnico é da Programação; o wireframe é o Pôster; **a demolição em si (3D/Godot/C# mortos) é de edições futuras** (regra de datas).
+- **Voz:** Gus (o autor in-fiction), o personagem construindo o próprio mundo; o líder-criador nunca nomeado.
 - **Fonte:** `historia-real-dos-pivos`, `cronologia-real-datada`, `a-voz-do-site`.
 
-### Seção de Programação ✅ (2026-07-23)
+### Seção de Programação ✅ (2026-07-23, ajustado 2026-07-24)
 
-- **Angle statement:** sobre a decisão de arquitetura de maio (ADR-002: largar GDScript por C# .NET 8 AOT), pela lente do **artigo de TI real** na voz digitada do `root@glyfesse` (CRT verde), com o **epílogo honesto** de que a "porta sem volta" foi ela mesma revertida um mês depois.
-- **Espinha técnica:** ADR-002 (AOT) + o epílogo da reversão.
-- **Subtópicos propostos (shape do artigo, a afinar no rascunho):**
+- **Angle statement:** sobre a decisão de arquitetura de maio (ADR-002: largar GDScript por C# .NET 8 AOT), pela lente do **artigo de TI real** na voz digitada do `root@glyfesse` (CRT verde).
+- **Espinha técnica:** ADR-002 (AOT). Ancorado 19/mai, datado-correto.
+- **Subtópicos (shape do artigo, a afinar no rascunho):**
   1. o problema real: performance em máquina fraca (Steam Deck, GTX 1050, laptops de 2017+).
   2. as 4 opções na mesa (a tabela real do ADR: GDScript / GDExtension C++ / C# AOT / rewrite Unity).
-  3. por que o AOT ganhou (compilação nativa em 100% do código, não só hot paths; iteração ainda aceitável solo).
-  4. o custo assumido: "one-way door massivo" (reverter = 2-4 semanas), aprovado em 8 batches de AskUserQuestion (30 decisões).
-  5. o epílogo honesto: e mesmo assim foi revertido (ADR-008, C++/SDL3, 22/jun). Até a decisão jurada irreversível cede quando o limite real (execução solo) aparece.
-- **Desculpa furada do root:** SIM, uma nova, no tema-demolição do número (o redator propõe 1-2 no rascunho para o líder escolher no GATE-COPY). Precede a transição `//` e o CRT.
-- **Estrutura canônica da seção** (herdada da #1): intro acessível + desculpa furada do root -> transição `//Prezado leitor, daqui é parte técnica real` -> CRT fósforo verde digitando (`root@glyfesse>~$nano`) -> parte técnica pesada com subtópicos -> `//by: root@glyfesse`.
-- **Cortes:** a emoção da perda é do Cemitério; o arco é da Reportagem. Aqui é o WHY frio.
-- **Fonte:** `docs/tech/adr/ADR-002-csharp-aot-over-gdscript.md` (real, lido) + ADR-008 + `cronologia-real-datada`. Sem spoiler (tech pura).
+  3. por que o AOT ganhou (compilação nativa em 100% do código, iteração ainda aceitável solo).
+  4. o custo assumido: "one-way door massivo" (reverter = 2-4 semanas), aprovado em 8 batches (30 decisões).
+  5. **o gancho final (FORESHADOW, não a história):** o root deixa no ar que essa "porta sem volta" talvez não fosse tão sem volta assim. ⚠️ A reversão completa (ADR-008, 22/jun) é da #3; aqui é só uma sombra, uma linha, não o relato.
+- **Desculpa furada do root:** SIM, uma nova, no clima do número (o redator propõe 1-2 no rascunho; escolha no GATE-COPY). Precede a transição `//` e o CRT.
+- **Estrutura canônica** (herdada da #1): intro acessível + desculpa furada -> `//Prezado leitor, daqui é parte técnica real` -> CRT fósforo verde digitando (`root@glyfesse>~$nano`) -> parte técnica com subtópicos -> `//by: root@glyfesse`.
+- **Cortes:** a emoção é do Cemitério; o arco é da Reportagem; a reversão detalhada é da #3.
+- **Fonte:** `docs/tech/adr/ADR-002-csharp-aot-over-gdscript.md` (real, lido). Sem spoiler (tech pura).
 
-### Editorial (a Carta do Gus) ✅ (2026-07-24)
+### Editorial (a Carta do Gus) ✅ (2026-07-24, ajustado)
 
-- **Angle statement:** a porta de entrada do número, na voz do Gus, que faz a **ponte da #1** (retoma "o resto ainda está compilando...") e revela que **parte do que compilou foi jogada fora**, abrindo a tese "construir é também demolir".
-- **Abertura:** ponte da #1 -> tema, num golpe só (continuidade de série + abre o número).
-- **Tom:** vira do luto pro seco (a assinatura do Gus: começa quase sentindo, desvia pro técnico). Espelha em miniatura o "deboche + luto" do número.
-- **Cortes:** NÃO conta o arco (é da Reportagem); NÃO explica o nome (já foi na #1). É só o parágrafo-porta: o convite e o clima.
+- **Angle statement:** a porta de entrada do número, na voz do Gus, que faz a **ponte da #1** (retoma "o resto ainda está compilando...") e abre a **era da construção**, com um foreshadow leve de que parte disso não vai durar.
+- **Abertura:** ponte da #1 -> tema, num golpe só.
+- **Tom:** vira do luto pro seco (a assinatura do Gus).
+- **Cortes:** NÃO conta o arco (é da Reportagem); NÃO explica o nome (já foi na #1); NÃO enterra ninguém (o Cemitério cuida do GDScript). É só o parágrafo-porta.
 - **Estrutura:** `gus@glyfesse>` + 1-2 parágrafos curtos, papel com acento, tokens de código em ASCII. Benchmark: o Editorial da #1.
 - **Fonte:** `edicao-1-editorial.md` (a última linha é o gancho), `a-voz-do-site`, `voz-prompt-shell`.
 
 ### A Entrevista (o Gus e o zumbi-ator) ✅ (2026-07-24)
 
 - **Angle statement:** o Gus entrevista um zumbi (arquétipo genérico) que responde como **ator** falando da sua atuação no jogo (bastidores de mentira), pela lente da comédia de contraste, curta (4-6 trocas).
-- **O personagem do zumbi (blend aprovado, 1+2):** **method actor pretensioso E veterano cansado/sindicalizado** ao mesmo tempo. Trata a decomposição como sacrifício artístico sagrado ("perder um pedaço no pântano foi a coisa mais real que já fiz") E reclama de veterano de elenco (horas, sem dublê, o cachê, o figurino que é a própria carne). O contraste interno (arte sublime x queixa sindical) É a piada.
-- **O eixo do humor (blend aprovado, 1+2):** **as condições de gravação** (o pântano, o figurino que apodrece, a maquiagem que é real, sem dublê) **E a carreira de vilão descartável** (sempre o inimigo que morre em 2 golpes, sem falas, o protagonista leva o crédito).
-- **Cortes:** o zumbi é ARQUÉTIPO, nunca um inimigo específico do jogo (spoiler-safe, aprovado no GATE-PAUTA); o eixo meta/build-in-public ficou de fora (menos insider, menos risco de spoiler); é comédia pura, não lore.
-- **Voz:** `gus@glyfesse>` pergunta; o zumbi responde com prefixo próprio (ex.: `zumbi@glyfesse>`), a definir no rascunho. Papel com acento.
-- **Tamanho:** curta (4-6 trocas), S. Ajustável no GATE-COPY.
+- **O personagem do zumbi (blend 1+2):** **method actor pretensioso E veterano cansado/sindicalizado** ao mesmo tempo. Trata a decomposição como sacrifício artístico sagrado E reclama de veterano de elenco (cachê, sem dublê, o figurino que é a própria carne). O contraste interno é a piada.
+- **O eixo do humor (blend 1+2):** **as condições de gravação** (o pântano, o figurino que apodrece, sem dublê) **E a carreira de vilão descartável** (morre em 2 golpes, sem falas, o protagonista leva o crédito).
+- **Cortes:** o zumbi é ARQUÉTIPO, nunca um inimigo específico (spoiler-safe); o eixo meta/build-in-public ficou de fora; comédia pura, não lore.
+- **Voz:** `gus@glyfesse>` pergunta; o zumbi responde com prefixo próprio (a definir no rascunho). Papel com acento.
+- **Nota de data:** atemporal (não depende de marco), então cabe em qualquer edição.
 
-## Nota do managing editor (risco a decidir na lente)
+## Estado das lentes
 
-**Três seções olham para a mesma era** (reportagem, cemitério, programação). Para não repetir, a lente proposta separa os papéis, e isso se afina no GATE-LENTE de cada uma:
-
-- **Reportagem** = o ARCO por sensação (construiu-se muito, demoliu-se quase tudo), sem itemizar.
-- **Cemitério** = as LÁPIDES itemizadas, pela emoção da perda (aqui mora o obituário e o Gus 3D).
-- **Programação** = o PORQUÊ técnico e frio (as decisões de arquitetura como um artigo de TI real).
-
-Mesma era, três lentes distintas. Se ao líder isso soar como excesso do mesmo tema, o ajuste natural é enxugar uma das três (a candidata a corte seria a reportagem, deixando o cemitério carregar a emoção e a programação carregar o técnico).
+Todas as caras da #2 têm lente aprovada: **Reportagem, Programação, Editorial, Entrevista** + o **Cemitério** (agora leve) e o **Pôster**. "Gus lê o bus" saiu (anacrônico). Próximo estágio: E2 (briefs) -> os rascunhos (S2) -> GATE-CONTEUDO por seção.
