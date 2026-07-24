@@ -5,11 +5,11 @@
    Backtick tokens from source (rm, dotnet build) in <code>. No em-dash.
    ⚠️ dropped the source's editorial marker "[conferir na S4]" on the reader note (production annotation,
    not content). CRT reuses .crt-scr/.crt-nano; "nano " types (5ch) and reveals the filename. */ ?>
-<p>There is a question almost nobody asks about a small game built by a single person: why does it run? Not why it exists, that one is easy. Why does it run smoothly on a machine that has seen better days, on a seven-year-old laptop, on a handheld that fits in a backpack. The answer is not on the screen. It sits in a boring decision, made on a Saturday, written into a text file nobody should ever have to read.</p>
+<p>There is a question almost nobody asks about a small game built by a single person: why does it run? Not why it exists, that one is easy. Why does it run smoothly on a machine that has seen better days, on a seven-year-old laptop, on a handheld that fits in a backpack. The answer is not on the screen. It sits in a boring decision, made on a Tuesday, written into a text file nobody should ever have to read.</p>
 
 <p>This is the section where we open that file. Every number the machine has to produce per second went through a choice of language, and language, in the end, is the material the whole thing is built from. This issue is about construction: foundation, concrete, footing. So it is only fair to start at the foundation of everything, the dry question of which language the computer will speak underneath the game.</p>
 
-<p>Fair warning: in a moment this turns properly technical. But I promise to open slowly, with the door unlocked, so that someone who has never installed a thing in their life can still understand why one Saturday in May became the footing for everything that came after.</p>
+<p>Fair warning: in a moment this turns properly technical. But I promise to open slowly, with the door unlocked, so that someone who has never installed a thing in their life can still understand why one Tuesday in May of 2026 became the footing for everything that came after.</p>
 
 <p class="fala"><span class="prompt">root@glyfesse&gt;</span> <span class="dito">Yes, I built this entire issue while logged in as root, and no, I will not defend it properly. Before anyone asks: all of my code is open source, every line of the foundation is out in the open in the repository, so there is no secret to protect on this machine. Running as superuser, therefore, does not scare me: someone with nothing to hide has nothing to lose. The logic does not hold, I know; opening the source does not stop a careless <code>rm</code> from taking the whole slab down with it. But the beam is already set, the build compiled, and rebuilding the permissions is the next commit's problem.</span></p>
 
@@ -55,7 +55,7 @@
 
 <h3>The assumed cost</h3>
 
-<p>None of this came for free. The ADR itself classified the choice as a "massive one-way door", a one-directional door of the large kind: reverting would not mean touching a line, it would mean a parallel rewrite of 2 to 4 weeks of work. That is why it did not pass by a show of hands. It was approved carefully, granularly, over 8 rounds of decision, 30 canonized guidelines, on the 19th of May.</p>
+<p>None of this came for free. The ADR itself classified the choice as a "massive one-way door", a one-directional door of the large kind: reverting would not mean touching a line, it would mean a parallel rewrite of 2 to 4 weeks of work. That is why it did not pass by a show of hands. It was approved carefully, granularly, over 8 rounds of decision, 30 canonized guidelines, on the 19th of May, 2026.</p>
 
 <h3>The shadow</h3>
 

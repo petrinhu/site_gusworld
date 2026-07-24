@@ -4,11 +4,11 @@
    Vozes: intro em prosa (narrador) + root@glyfesse> (o criador, nunca nomeado).
    D-ACENTOS: prosa acentuada; tokens backtick da fonte (rm, dotnet build) em <code>. Sem em-dash.
    O quadro CRT reusa .crt-scr/.crt-nano; o comando "nano " digita (5ch) e revela o arquivo. */ ?>
-<p>Tem uma pergunta que quase ninguém faz sobre um jogo pequeno, feito por uma pessoa só: por que ele roda? Não por que ele existe, isso é fácil de responder. Por que ele roda liso numa máquina que já viu dias melhores, num laptop de sete anos, num aparelho portátil que cabe na mochila. A resposta não está no que você vê na tela. Está numa decisão chata, tomada num sábado, escrita num arquivo de texto que ninguém deveria precisar ler.</p>
+<p>Tem uma pergunta que quase ninguém faz sobre um jogo pequeno, feito por uma pessoa só: por que ele roda? Não por que ele existe, isso é fácil de responder. Por que ele roda liso numa máquina que já viu dias melhores, num laptop de sete anos, num aparelho portátil que cabe na mochila. A resposta não está no que você vê na tela. Está numa decisão chata, tomada numa terça-feira, escrita num arquivo de texto que ninguém deveria precisar ler.</p>
 
 <p>Esta é a seção onde a gente abre esse arquivo. Todo número que a máquina precisa cuspir por segundo passou por uma escolha de linguagem, e linguagem, no fim, é o material com que a coisa é erguida. Este número da revista é sobre construção: fundação, concreto, alicerce. Então nada mais justo do que começar pela fundação de tudo, a pergunta seca de qual língua o computador vai falar por baixo do jogo.</p>
 
-<p>Vou avisar de uma vez: daqui a pouco isto vira técnico de verdade. Mas prometo abrir devagar, com a porta destrancada, para quem nunca instalou nada na vida entender por que um sábado de maio virou o alicerce de tudo o que veio depois.</p>
+<p>Vou avisar de uma vez: daqui a pouco isto vira técnico de verdade. Mas prometo abrir devagar, com a porta destrancada, para quem nunca instalou nada na vida entender por que uma terça-feira de maio de 2026 virou o alicerce de tudo o que veio depois.</p>
 
 <p class="fala"><span class="prompt">root@glyfesse&gt;</span> <span class="dito">Sim, eu montei a revista inteira logado como root, e não, não vou me defender direito. Antes que perguntem: todo o meu código é open source, cada linha da fundação está exposta no repositório, então não há segredo nenhum para proteger nesta máquina. Rodar como superusuário, portanto, não me assusta: quem não esconde nada não tem o que perder. A lógica não fecha, eu sei; abrir o código não impede que um <code>rm</code> distraído leve o concreto todo junto. Mas a viga já está no lugar, o build compilou, e reconstruir a permissão é problema do próximo commit.</span></p>
 
@@ -54,10 +54,10 @@
 
 <h3>O custo assumido</h3>
 
-<p>Nada disso saiu de graça. O próprio ADR classificou a escolha como "one-way door massivo", uma porta de sentido único de tamanho grande: reverter não seria mexer numa linha, seria um rewrite paralelo de 2 a 4 semanas de trabalho. Por isso não passou no grito. Foi aprovado com cuidado, granular, em 8 rodadas de decisão, 30 diretrizes canonizadas, em 19 de maio.</p>
+<p>Nada disso saiu de graça. O próprio ADR classificou a escolha como "one-way door massivo", uma porta de sentido único de tamanho grande: reverter não seria mexer numa linha, seria um rewrite paralelo de 2 a 4 semanas de trabalho. Por isso não passou no grito. Foi aprovado com cuidado, granular, em 8 rodadas de decisão, 30 diretrizes canonizadas, em 19 de maio de 2026.</p>
 
 <h3>A sombra</h3>
 
-<p>Fechei o arquivo naquele 19 de maio com a expressão "porta sem volta" anotada, e a tratei como uma parede de concreto. Só não sabia, ainda, o quanto uma parede de concreto pode ser testada, nem quão fina "sem volta" às vezes se prova ser.</p>
+<p>Fechei o arquivo naquele 19 de maio de 2026 com a expressão "porta sem volta" anotada, e a tratei como uma parede de concreto. Só não sabia, ainda, o quanto uma parede de concreto pode ser testada, nem quão fina "sem volta" às vezes se prova ser.</p>
 
 <p class="pensa assinatura">by: root@glyfesse</p>

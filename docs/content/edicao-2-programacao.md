@@ -9,11 +9,11 @@
 
 ## pt-BR
 
-Tem uma pergunta que quase ninguém faz sobre um jogo pequeno, feito por uma pessoa só: por que ele roda? Não por que ele existe, isso é fácil de responder. Por que ele roda liso numa máquina que já viu dias melhores, num laptop de sete anos, num aparelho portátil que cabe na mochila. A resposta não está no que você vê na tela. Está numa decisão chata, tomada num sábado, escrita num arquivo de texto que ninguém deveria precisar ler.
+Tem uma pergunta que quase ninguém faz sobre um jogo pequeno, feito por uma pessoa só: por que ele roda? Não por que ele existe, isso é fácil de responder. Por que ele roda liso numa máquina que já viu dias melhores, num laptop de sete anos, num aparelho portátil que cabe na mochila. A resposta não está no que você vê na tela. Está numa decisão chata, tomada numa terça-feira, escrita num arquivo de texto que ninguém deveria precisar ler.
 
 Esta é a seção onde a gente abre esse arquivo. Todo número que a máquina precisa cuspir por segundo passou por uma escolha de linguagem, e linguagem, no fim, é o material com que a coisa é erguida. Este número da revista é sobre construção: fundação, concreto, alicerce. Então nada mais justo do que começar pela fundação de tudo, a pergunta seca de qual língua o computador vai falar por baixo do jogo.
 
-Vou avisar de uma vez: daqui a pouco isto vira técnico de verdade. Mas prometo abrir devagar, com a porta destrancada, para quem nunca instalou nada na vida entender por que um sábado de maio virou o alicerce de tudo o que veio depois.
+Vou avisar de uma vez: daqui a pouco isto vira técnico de verdade. Mas prometo abrir devagar, com a porta destrancada, para quem nunca instalou nada na vida entender por que uma terça-feira de maio de 2026 virou o alicerce de tudo o que veio depois.
 
 `root@glyfesse>` Sim, eu montei a revista inteira logado como root, e não, não vou me defender direito. Antes que perguntem: todo o meu código é open source, cada linha da fundação está exposta no repositório, então não há segredo nenhum para proteger nesta máquina. Rodar como superusuário, portanto, não me assusta: quem não esconde nada não tem o que perder. A lógica não fecha, eu sei; abrir o código não impede que um `rm` distraído leve o concreto todo junto. Mas a viga já está no lugar, o build compilou, e reconstruir a permissão é problema do próximo commit.
 
@@ -46,11 +46,11 @@ E a iteração continuava tolerável para quem trabalha sozinho: um `dotnet buil
 
 ### O custo assumido
 
-Nada disso saiu de graça. O próprio ADR classificou a escolha como "one-way door massivo", uma porta de sentido único de tamanho grande: reverter não seria mexer numa linha, seria um rewrite paralelo de 2 a 4 semanas de trabalho. Por isso não passou no grito. Foi aprovado com cuidado, granular, em 8 rodadas de decisão, 30 diretrizes canonizadas, em 19 de maio.
+Nada disso saiu de graça. O próprio ADR classificou a escolha como "one-way door massivo", uma porta de sentido único de tamanho grande: reverter não seria mexer numa linha, seria um rewrite paralelo de 2 a 4 semanas de trabalho. Por isso não passou no grito. Foi aprovado com cuidado, granular, em 8 rodadas de decisão, 30 diretrizes canonizadas, em 19 de maio de 2026.
 
 ### A sombra
 
-Fechei o arquivo naquele 19 de maio com a expressão "porta sem volta" anotada, e a tratei como uma parede de concreto. Só não sabia, ainda, o quanto uma parede de concreto pode ser testada, nem quão fina "sem volta" às vezes se prova ser.
+Fechei o arquivo naquele 19 de maio de 2026 com a expressão "porta sem volta" anotada, e a tratei como uma parede de concreto. Só não sabia, ainda, o quanto uma parede de concreto pode ser testada, nem quão fina "sem volta" às vezes se prova ser.
 
 //by: root@glyfesse
 
@@ -58,15 +58,15 @@ Fechei o arquivo naquele 19 de maio com a expressão "porta sem volta" anotada, 
 
 ## EN
 
-There is a question almost nobody asks about a small game built by a single person: why does it run? Not why it exists, that one is easy. Why does it run smoothly on a machine that has seen better days, on a seven-year-old laptop, on a handheld that fits in a backpack. The answer is not on the screen. It sits in a boring decision, made on a Saturday, written into a text file nobody should ever have to read.
+There is a question almost nobody asks about a small game built by a single person: why does it run? Not why it exists, that one is easy. Why does it run smoothly on a machine that has seen better days, on a seven-year-old laptop, on a handheld that fits in a backpack. The answer is not on the screen. It sits in a boring decision, made on a Tuesday, written into a text file nobody should ever have to read.
 
 This is the section where we open that file. Every number the machine has to produce per second went through a choice of language, and language, in the end, is the material the whole thing is built from. This issue is about construction: foundation, concrete, footing. So it is only fair to start at the foundation of everything, the dry question of which language the computer will speak underneath the game.
 
-Fair warning: in a moment this turns properly technical. But I promise to open slowly, with the door unlocked, so that someone who has never installed a thing in their life can still understand why one Saturday in May became the footing for everything that came after.
+Fair warning: in a moment this turns properly technical. But I promise to open slowly, with the door unlocked, so that someone who has never installed a thing in their life can still understand why one Tuesday in May of 2026 became the footing for everything that came after.
 
 `root@glyfesse>` Yes, I built this entire issue while logged in as root, and no, I will not defend it properly. Before anyone asks: all of my code is open source, every line of the foundation is out in the open in the repository, so there is no secret to protect on this machine. Running as superuser, therefore, does not scare me: someone with nothing to hide has nothing to lose. The logic does not hold, I know; opening the source does not stop a careless `rm` from taking the whole slab down with it. But the beam is already set, the build compiled, and rebuilding the permissions is the next commit's problem.
 
-//Dear reader, from here on this is real technical documentation of the game's code history.  [⚠️ conferir na S4]
+//Dear reader, from here on this is real technical documentation of the game's code history.
 //root@glyfesse
 root@glyfesse>~$ nano adr-002.md
 
@@ -95,7 +95,7 @@ And iteration stayed tolerable for someone working alone: a `dotnet build` finis
 
 ### The assumed cost
 
-None of this came for free. The ADR itself classified the choice as a "massive one-way door", a one-directional door of the large kind: reverting would not mean touching a line, it would mean a parallel rewrite of 2 to 4 weeks of work. That is why it did not pass by a show of hands. It was approved carefully, granularly, over 8 rounds of decision, 30 canonized guidelines, on the 19th of May.
+None of this came for free. The ADR itself classified the choice as a "massive one-way door", a one-directional door of the large kind: reverting would not mean touching a line, it would mean a parallel rewrite of 2 to 4 weeks of work. That is why it did not pass by a show of hands. It was approved carefully, granularly, over 8 rounds of decision, 30 canonized guidelines, on the 19th of May, 2026.
 
 ### The shadow
 
