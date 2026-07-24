@@ -99,6 +99,15 @@ Mais o **Pôster central** (o Gus 3D), que é arte/layout, não escrita. Todo o 
 - **Cortes:** a emoção da perda é do Cemitério; o arco é da Reportagem. Aqui é o WHY frio.
 - **Fonte:** `docs/tech/adr/ADR-002-csharp-aot-over-gdscript.md` (real, lido) + ADR-008 + `cronologia-real-datada`. Sem spoiler (tech pura).
 
+### Editorial (a Carta do Gus) ✅ (2026-07-24)
+
+- **Angle statement:** a porta de entrada do número, na voz do Gus, que faz a **ponte da #1** (retoma "o resto ainda está compilando...") e revela que **parte do que compilou foi jogada fora**, abrindo a tese "construir é também demolir".
+- **Abertura:** ponte da #1 -> tema, num golpe só (continuidade de série + abre o número).
+- **Tom:** vira do luto pro seco (a assinatura do Gus: começa quase sentindo, desvia pro técnico). Espelha em miniatura o "deboche + luto" do número.
+- **Cortes:** NÃO conta o arco (é da Reportagem); NÃO explica o nome (já foi na #1). É só o parágrafo-porta: o convite e o clima.
+- **Estrutura:** `gus@glyfesse>` + 1-2 parágrafos curtos, papel com acento, tokens de código em ASCII. Benchmark: o Editorial da #1.
+- **Fonte:** `edicao-1-editorial.md` (a última linha é o gancho), `a-voz-do-site`, `voz-prompt-shell`.
+
 ## Nota do managing editor (risco a decidir na lente)
 
 **Três seções olham para a mesma era** (reportagem, cemitério, programação). Para não repetir, a lente proposta separa os papéis, e isso se afina no GATE-LENTE de cada uma:
