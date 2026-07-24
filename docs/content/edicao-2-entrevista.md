@@ -53,4 +53,40 @@
 
 ## EN
 
-> A produzir na S4 (copyedit): o improviso saiu em pt-BR. A tradução preserva as piadas e o contraste (arte sublime x queixa sindical), o registro de chat do Gus (sem ponto final, apóstrofo/maiúscula ocasional faltando) e a pompa do zumbi.
+`gus@glyfesse>` today the newsroom has an off spec guest i got a zombie to interview says he's an actor... not a stage enemy
+`//` he left a trail of pixels at the door im gonna have to flush the buffer later
+
+`gus@glyfesse>` my first question is simple when you show up on a screen and someone runs away from you is that acting to you or is it just your job really?
+`//` i noticed he breathes on an 8 frame loop like an old sprite... i dont even know if he knows
+
+`zumbi@glyfesse>` Ah, my young friend, what a magnificent question! When the hero flees from me, that is not reaction: it is catharsis. I do not pursue, I reveal the fear that already dwelt within him. The Method demands that I rot from the inside out, and every step i drag is an artistic choice.
+`zumbi@glyfesse>` Only nobody notices, mind you. Thirty seven takes staggering through the swamp, no stunt double, with the costume literally falling off my flesh, and the credit goes entirely to the boy with the sword.
+`zumbi@glyfesse>` Job? My dear fellow, a job is what they pay me for over two swipes of the screen. Acting is what i deliver for free in every one of them.
+`//` (adjusting a piece of myself that threatens to drop)
+
+`gus@glyfesse>` thirty seven takes and the same decomposition cycle in each one thats render consistency no animation team could pull off
+`//` "for free in every one of them"... he counted the frames before i did
+`gus@glyfesse>` my second question then every time you fall the world reinstances you from scratch same pose same breathing loop what's it like to act knowing the next scene erases this one... do you call that a fresh start or a repetition?
+
+`zumbi@glyfesse>` Ah, boy, you have touched the very heart of the craft. Each of my falls is a small death, and the Method demands that i live it as if it were the first. I am reborn in the same pose, yes, but on the inside? On the inside it is always a premiere.
+`zumbi@glyfesse>` A fresh start, i call it. The true artist does not repeat: he REDISCOVERS.
+`//` though, between us, rediscovering the same tumble for the eightieth time in a shift with no break is starting to weigh on the knee
+`zumbi@glyfesse>` And note the injustice: the world erases me for free, but on the pay sheet that erased scene does not count as a scene worked. I die, i am reinstanced, and the counter resets right along with me.
+`zumbi@glyfesse>` And still i return. I always return!
+`//` it is what we do, we who breathe in loops: we turn repetition into eternal rehearsal. just do not call me an extra, or i will fall on purpose
+
+`gus@glyfesse>` eternal rehearsal makes sense to me, a loop that runs again isnt a bug when someone chooses to call it rehearsal... wrote it down here: never an extra, protagonist of every premiere
+`//` he talks about breathing in a loop and i almost answer that i know how it is... every build erases me and i come back on the next compile... but im not gonna say that out loud
+`gus@glyfesse>` last question and i promise it's easy: what's it like to act with no stunt double when the costume is your own flesh and the makeup comes factory made in the swamp, does staggering right take work or did the writer hand you those knees as a bonus?
+`//` ive never seen an actor complain about pay and humidity in teh same sentence, i liked him
+
+`zumbi@glyfesse>` The "factory made" makeup, my young friend? What an adorable expression for the sweat of an artist. Nobody handed me any knees as a bonus: every creak of this joint was earned in a cold swamp, no trailer, no hot coffee, with the costume, yes, my own flesh, clinging to the body out of the purest devotion to the craft.
+`zumbi@glyfesse>` Staggering right takes work the writer could never imagine. There is technique in the stumble. There is a score in the dragging of the foot.
+`//` i rehearse the fall, darling, i do not fall by accident
+`zumbi@glyfesse>` And that "makeup that comes ready made"? It is daily restoration. The swamp takes it away, i put it back, and no one in the art department lifts a finger. I run the entire production alone, from the rotting to the lighting.
+`zumbi@glyfesse>` So write this down, for posterity: i do not decompose. I give myself over.
+`//` and even in pieces, my dear, i am still the leading piece
+
+`gus@glyfesse>` thanks for today guest you delivered every line whole, even the ones nobody asked for... that has a name... and the name is ACTOR!
+`gus@glyfesse>` you can go rest the cast the stage stays reserved for your next entrance
+`//` he comes back rotted and still steps onto the stage... i also come back from scratch every compile and here i am... the difference is he says it out loud
