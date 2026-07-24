@@ -2,7 +2,7 @@
 
 > Uma lápide só na #2: o GDScript (adotado E aposentado em 19/mai, reinou menos de um dia). Voz: Gus. Deboche por cima, luto honesto por baixo; o resto do cemitério vazio + foreshadow ("de junho em diante isso enche"), ecoando a #1.
 > Pontuação (líder 2026-07-24): sem ponto final nas falas do Gus, mas com `?`/`!`; reticências nos beats de emoção. Caixa alta ("UM dia") = ênfase autoral deliberada (como o "ATOR!"), não corrigir.
-> ⚠️ A lápide em ASCII é só o CONTEÚDO da inscrição; o RENDER real é arte/layout (S7): uma lápide em CSS (pedra/papel), não ASCII literal.
+> ★ DIRETRIZ DE ARTE (líder, GATE-CONTEUDO 2026-07-24): a lápide **CENTRALIZADA e com ARTE BONITA** (uma pedra/lápide em CSS, elegante), NUNCA o ASCII literal. O ASCII abaixo é só o CONTEÚDO da inscrição para o S7 renderizar bonito.
 > ⚠️ EN a revisar no copyedit (S4). Datas: só GDScript morre (19/mai); Godot/3D/C# ainda vivos (foreshadow). Sem glintfx/bus/C++.
 > Status: rascunho v1 (`narrative-writer`), aguardando GATE-CONTEUDO.
 

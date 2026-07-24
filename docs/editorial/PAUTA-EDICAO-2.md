@@ -138,6 +138,8 @@ Todas as caras da #2 têm lente aprovada: **Reportagem, Programação, Editorial
 | Seção de Programação | ✅ v1 (`technical-writer`) | ✅ **aprovado 2026-07-24** (desculpa "open source" escolhida; linha EN traduzida) | `docs/content/edicao-2-programacao.md` |
 | Editorial | ✅ v1 (`narrative-writer`) | ✅ **aprovado 2026-07-24** (idioma corrigido: nomeia C#, deixa clara a troca) | `docs/content/edicao-2-editorial.md` |
 | A Entrevista (zumbi) | ✅ v1 (2 personas: Gus + Zumbi, improviso mediado) | ✅ **aprovado 2026-07-24** (pontuação: `?`/`!`/reticências; remate "ATOR!") | `docs/content/edicao-2-entrevista.md` |
-| Cemitério (1 lápide) | ✅ v1 (`narrative-writer`) | pendente | `docs/content/edicao-2-cemiterio.md` |
+| Cemitério (1 lápide) | ✅ v1 (`narrative-writer`) | ✅ **aprovado 2026-07-24** (arte: lápide centralizada e bonita em CSS, S7) | `docs/content/edicao-2-cemiterio.md` |
 
-Falta, depois dos rascunhos: S4 copyedit (revisor-textual), S6 GATE-COPY, S7-S9 arte/render/GATE-RENDER.
+**TODAS as 5 caras fecharam no conteúdo (GATE-CONTEUDO ✅) em 2026-07-24.** Falta: S4 copyedit (revisor-textual: as versões EN, o "rapaz de espada", tela×papel), S6 GATE-COPY (inclui escolher a desculpa do root já feita), S7 arte/render (o Pôster do Gus 3D + a lápide centralizada em CSS + a diagramação), S9 GATE-RENDER por peça. Depois E3 montagem (capa+índice) → E4 prova → E5 GO.
+
+**Diretrizes de arte já dadas pelo líder:** Pôster central = o wireframe do Gus 3D; Cemitério = lápide **centralizada e bonita** (CSS, não ASCII); Programação = CRT fósforo verde (a estrutura canônica).
