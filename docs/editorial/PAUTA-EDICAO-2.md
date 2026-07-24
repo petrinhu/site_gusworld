@@ -84,6 +84,21 @@ Mais o **Pôster central** (o Gus 3D), que é arte/layout, não escrita. Todo o 
 - **Nota de diferença da #1:** o assunto é tech real (não lore), então pode nomear aberto sem spoiler; a abstração poética da #1 era forçada pela spoiler-safety, que aqui não se aplica.
 - **Fonte:** `historia-real-dos-pivos`, `cronologia-real-datada`, `a-voz-do-site`.
 
+### Seção de Programação ✅ (2026-07-23)
+
+- **Angle statement:** sobre a decisão de arquitetura de maio (ADR-002: largar GDScript por C# .NET 8 AOT), pela lente do **artigo de TI real** na voz digitada do `root@glyfesse` (CRT verde), com o **epílogo honesto** de que a "porta sem volta" foi ela mesma revertida um mês depois.
+- **Espinha técnica:** ADR-002 (AOT) + o epílogo da reversão.
+- **Subtópicos propostos (shape do artigo, a afinar no rascunho):**
+  1. o problema real: performance em máquina fraca (Steam Deck, GTX 1050, laptops de 2017+).
+  2. as 4 opções na mesa (a tabela real do ADR: GDScript / GDExtension C++ / C# AOT / rewrite Unity).
+  3. por que o AOT ganhou (compilação nativa em 100% do código, não só hot paths; iteração ainda aceitável solo).
+  4. o custo assumido: "one-way door massivo" (reverter = 2-4 semanas), aprovado em 8 batches de AskUserQuestion (30 decisões).
+  5. o epílogo honesto: e mesmo assim foi revertido (ADR-008, C++/SDL3, 22/jun). Até a decisão jurada irreversível cede quando o limite real (execução solo) aparece.
+- **Desculpa furada do root:** SIM, uma nova, no tema-demolição do número (o redator propõe 1-2 no rascunho para o líder escolher no GATE-COPY). Precede a transição `//` e o CRT.
+- **Estrutura canônica da seção** (herdada da #1): intro acessível + desculpa furada do root -> transição `//Prezado leitor, daqui é parte técnica real` -> CRT fósforo verde digitando (`root@glyfesse>~$nano`) -> parte técnica pesada com subtópicos -> `//by: root@glyfesse`.
+- **Cortes:** a emoção da perda é do Cemitério; o arco é da Reportagem. Aqui é o WHY frio.
+- **Fonte:** `docs/tech/adr/ADR-002-csharp-aot-over-gdscript.md` (real, lido) + ADR-008 + `cronologia-real-datada`. Sem spoiler (tech pura).
+
 ## Nota do managing editor (risco a decidir na lente)
 
 **Três seções olham para a mesma era** (reportagem, cemitério, programação). Para não repetir, a lente proposta separa os papéis, e isso se afina no GATE-LENTE de cada uma:
