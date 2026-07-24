@@ -32,7 +32,7 @@
 | 4 | Reportagem de capa | **CHEIA** ★ (cara) | O ARCO da era: construiu-se muito, demoliu-se quase tudo. Por SENSAÇÃO, spoiler-safe | 19/mai -> 04/jun |
 | 5 | A NOTA do jogo inacabado | **cheia** (curta) | A nota que sobe a cada edição; em maio ainda não havia o que jogar ("Jogabilidade: N/A") | 19/mai |
 | 6 | Galeria de Bugs | vazio com graça | (sem bug de destaque de maio; entra a piada honesta) | - |
-| 7 | Cemitério das Ideias Mortas | **CHEIA** ★★ (a estrela) | As lápides: GDScript, a foundation C# apagada, o Gus 3D. A SENSAÇÃO da perda | 19/mai -> 04/jun |
+| 7 | Cemitério das Ideias Mortas | **CHEIA** ★★ (a estrela) | 3 lápides de stack: GDScript, a foundation C#, Godot. Deboche por cima, luto honesto por baixo (lente aprovada abaixo) | 19/mai -> 04/jun |
 | 8 | Detonado (AGUARDE) | vazio com graça | evergreen | - |
 | 9 | Errata + Cartas | vazio com graça | (sem cartas ainda; errata da #1 se houver) | - |
 | 10 | Classificados in-world | vazio com graça | evergreen | - |
@@ -43,7 +43,7 @@
 | 15 | Cupom recortável | **cheia** (recorrente) | O cupom segue; a apuração da #1 é citada aqui (a cadência do voto) | - |
 | 16 | A Entrevista | **CHEIA** ★ (cara curta) | In-fiction: o Gus entrevista um zumbi da selva/pântano, que responde como ATOR (bastidores de mentira). Comédia | - (atemporal) |
 | 17 | Seção de Programação | **CHEIA** ★ (cara) | O PORQUÊ técnico: ADR-002, o raciocínio do AOT, por que C# e depois por que C++ | 19/mai |
-| 18 | O Gus lê o bus | **cheia** (recorrente) | Um trecho real do bus + a reação do Gus. Candidato: o obituário da foundation C# | 22/jul (bus) |
+| 18 | O Gus lê o bus | **cheia** (recorrente) | LOCK: o obituário completo da foundation C# (com o erro do repo apagado sem cópia) + a reação do Gus | 22/jul (bus) |
 | 19 | Expediente | **cheia** (data-driven) | Créditos, licença. O nome só se explicou na #1 | - |
 
 ## As "caras" da #2 (onde há escrita nova de verdade)
@@ -55,6 +55,21 @@
 5. **Editorial** e **Gus lê o bus** (curtas).
 
 Mais o **Pôster central** (o Gus 3D), que é arte/layout, não escrita. Todo o resto é vazio-com-graça ou data-driven/recorrente.
+
+## Lentes aprovadas (S1 GATE-LENTE)
+
+### Cemitério das Ideias Mortas ✅ (2026-07-23)
+
+- **Angle statement:** sobre os três mortos de stack de maio-junho (GDScript, a foundation C#, Godot), pela lente de **lápides com epitáfios na voz do Gus** (deboche por cima, luto honesto por baixo; o luto real concentrado na lápide do C#).
+- **Tom:** deboche + luto honesto (a assinatura do site: piada primeiro, verdade embaixo).
+- **As 3 lápides:** GDScript (a primeira língua, trocada em 19/mai por C#/ADR-002), a foundation C# (save/i18n/progressão/templates/combate, portada e apagada), Godot (a engine, decomissionada).
+- **Cortes:**
+  - o **Gus 3D** NÃO é lápide aqui: fica inteiro no Pôster central (seção 13).
+  - o **obituário completo** (o erro do repo apagado sem cópia) NÃO é aqui: a lápide do C# é um epitáfio curto; o texto integral vive no "Gus lê o bus" (seção 18).
+  - o **porquê técnico** de cada pivô vai para a Programação (seção 17).
+  - o **arco da era** vai para a Reportagem (seção 4).
+- **Datas (epitáfios):** cada lápide carimba nascimento/morte com data real de commit. GDScript: †19/mai. Foundation C#: n.mai / portada jun-jul / †apagada. Godot: †decomissionado.
+- **Fonte:** `historia-real-dos-pivos`, `cronologia-real-datada`, o obituário e o board M0-M9 (bus).
 
 ## Nota do managing editor (risco a decidir na lente)
 
