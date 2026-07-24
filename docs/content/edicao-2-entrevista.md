@@ -4,7 +4,8 @@
 > Produzido por DOIS agentes de persona improvisando turno a turno (Gus e Zumbi separados), mediados pelo orquestrador. Comédia de contraste (method actor pretensioso + veterano sindicalizado). Spoiler-safe (arquétipo).
 > ⚠️ COPYEDIT/GATE-COPY pendente: (1) versão EN a produzir na S4 (o improviso saiu em pt); (2) "o rapaz de espada" é o herói-genérico-de-RPG (arquétipo), mas o protagonista real do jogo não usa espada; o líder decide no GATE-COPY se mantém como piada genérica ou troca.
 > Pontuação (líder, 2026-07-24): sem ponto final, MAS com `?` e `!`; reticências reforçadas nos beats de pausa/emoção (a ferida no `//`). Ver `voz_prompt_shell`.
-> Status: rascunho v1 + polimento de pontuação, aguardando GATE-CONTEUDO.
+> ⚠️ NÃO "corrigir": o "e o nome é ATOR!" (caixa alta + `!`) é ênfase AUTORAL deliberada do líder (2026-07-24), o único momento em que o Gus levanta a voz (a coroação generosa do zumbi). Não é o Gus "gritando" no sentido vetado; é o remate aprovado.
+> Status: GATE-CONTEUDO ✅ aprovado 2026-07-24 (com o remate "ATOR!"). Falta copyedit (EN + "rapaz de espada") + GATE-COPY + arte/render.
 
 ---
 
@@ -44,7 +45,7 @@
 `zumbi@glyfesse>` Então anote, para a posteridade: eu não decomponho. Eu me entrego.
 `//` e mesmo aos pedaços, meu bem, eu ainda sou o pedaço principal
 
-`gus@glyfesse>` obrigado por hoje convidado voce entregou cada fala inteira, ate as que ninguem pediu... isso tem nome... e o nome é ator
+`gus@glyfesse>` obrigado por hoje convidado voce entregou cada fala inteira, ate as que ninguem pediu... isso tem nome... e o nome é ATOR!
 `gus@glyfesse>` pode ir descansar o elenco o palco fica guardado pra sua proxima entrada
 `//` ele volta apodrecido e ainda sobe no palco... eu tambem volto do zero toda compilacao e sigo aqui... a diferença é que ele diz em voz alta
 
