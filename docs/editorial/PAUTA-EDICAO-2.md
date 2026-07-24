@@ -126,6 +126,18 @@ Antes de pôr QUALQUER elemento numa edição: a **data real do acontecimento** 
 - **Voz:** `gus@glyfesse>` pergunta; o zumbi responde com prefixo próprio (a definir no rascunho). Papel com acento.
 - **Nota de data:** atemporal (não depende de marco), então cabe em qualquer edição.
 
-## Estado das lentes
+## Estado das lentes e rascunhos
 
-Todas as caras da #2 têm lente aprovada: **Reportagem, Programação, Editorial, Entrevista** + o **Cemitério** (agora leve) e o **Pôster**. "Gus lê o bus" saiu (anacrônico). Próximo estágio: E2 (briefs) -> os rascunhos (S2) -> GATE-CONTEUDO por seção.
+Todas as caras da #2 têm lente aprovada: **Reportagem, Programação, Editorial, Entrevista** + o **Cemitério** (agora leve) e o **Pôster**. "Gus lê o bus" saiu (anacrônico).
+
+**Rascunhos (S2) e GATE-CONTEUDO (S3):**
+
+| Seção | Rascunho | GATE-CONTEUDO | Arquivo |
+|---|---|---|---|
+| Reportagem de capa | ✅ v1 (`narrative-writer`) | ✅ **aprovado 2026-07-24** | `docs/content/edicao-2-reportagem.md` |
+| Seção de Programação | pendente | - | - |
+| Editorial | pendente | - | - |
+| A Entrevista (zumbi) | pendente | - | - |
+| Cemitério (1 lápide) | pendente | - | - |
+
+Falta, depois dos rascunhos: S4 copyedit (revisor-textual), S6 GATE-COPY, S7-S9 arte/render/GATE-RENDER.
