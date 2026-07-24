@@ -75,6 +75,18 @@ body{
   text-shadow:-1.5px -1.5px 0 #00b6d4a0, 1.5px 1.5px 0 #c2129ea0;
 }
 .logo:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:3px}
+/* SAÍDA 1/3 · TOPO (só modo edição): o wordmark é link visível + rótulo "↩ banca"
+   discreto embaixo, pra ninguém deixar de perceber que dá pra voltar. */
+.logo-col{display:flex; flex-direction:column; align-items:flex-start; gap:2px}
+.logo-link:hover{text-decoration:underline; text-decoration-color:var(--tinta-ciano);
+  text-decoration-thickness:2px; text-underline-offset:4px}
+.volta-banca{
+  font-family:var(--font-display); font-size:11px; letter-spacing:.06em;
+  color:var(--tinta-ciano); text-decoration:none;
+}
+.volta-banca .seta{margin-right:2px}
+.volta-banca:hover{text-decoration:underline; text-underline-offset:2px}
+.volta-banca:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
 .col-meta{display:flex; flex-direction:column; align-items:flex-end; gap:7px}
 /* o nome da edição em destaque acima do expediente (decisão do líder):
    fonte display grande, tinta cheia — assenta a identidade da edição no topo. */
@@ -155,6 +167,11 @@ main{display:block}
 .indice .pt{flex:1}
 .indice a:hover .pt{text-decoration:underline; text-decoration-color:var(--tinta-ciano); text-underline-offset:2px}
 .indice a:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
+/* SAÍDA 2/3 · ÍNDICE: a 1ª entrada é uma SAÍDA (de volta pra banca), não uma
+   seção: ciano cheio, seta no lugar do número, borda inferior mais firme. */
+.indice-banca{border-bottom:1px solid #00b6d444}
+.indice-banca a{color:var(--tinta-ciano)}
+.indice-banca .pt{font-family:var(--font-display); font-size:13px; letter-spacing:.04em}
 
 .links-fixos{margin-top:14px; padding:12px 14px; background:#0d152008; border-left:2px solid var(--tinta-ciano)}
 .links-fixos a{
@@ -213,6 +230,24 @@ main{display:block}
 .up:hover{background:var(--tinta-ciano); color:var(--papel)}
 .up:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
 .up-fim{margin-top:clamp(20px,4vw,30px)}
+
+/* SAÍDA 3/3 · FIM DA LEITURA: a saída natural pra banca, na VOZ do Gus (prompt +
+   dito). Fora de .conteudo, então reproduz o tratamento da voz aqui, 1:1. */
+.voltar-banca{
+  margin:clamp(20px,4.2vw,32px) 0 0; padding-top:clamp(14px,2.6vw,18px);
+  border-top:1px dotted #00000022;
+}
+.voltar-banca .prompt{
+  font-family:var(--font-display); font-size:16px; color:var(--tinta-ciano);
+  letter-spacing:.01em; white-space:nowrap; margin-right:8px;
+}
+.voltar-banca .dito{
+  font-family:var(--font-corpo); font-weight:400; font-size:16px; line-height:1.55;
+  color:var(--tinta-2); text-decoration:underline;
+  text-decoration-color:var(--tinta-ciano); text-underline-offset:2px;
+}
+.voltar-banca .dito:hover{color:var(--tinta-preta)}
+.voltar-banca .dito:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
 
 /* ═══════════════════════════════════════════════════════════════════════
    O CONTEÚDO DA SEÇÃO (.conteudo) — substitui o .scaffold quando o partial

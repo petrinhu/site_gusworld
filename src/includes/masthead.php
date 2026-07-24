@@ -23,8 +23,12 @@ $lcd  = $t['lcd'];
   <div class="masthead-inner">
     <?php if ($modo === 'banca'): ?>
     <h1 class="logo-h1"><a class="logo" href="<?= h((string) $ctx['url_banca']) ?>" title="<?= h((string) $t['wordmark_titulo']) ?>">GLYFESSE</a></h1>
-    <?php else: ?>
-    <a class="logo" href="<?= h((string) $ctx['url_banca']) ?>" title="<?= h((string) $t['wordmark_titulo']) ?>">GLYFESSE</a>
+    <?php else: /* modo edição: o wordmark é um link visível DE VOLTA pra banca +
+       rótulo discreto que torna a afordância óbvia (não some no modo banca). */ ?>
+    <div class="logo-col">
+      <a class="logo logo-link" href="<?= h((string) $ctx['url_banca']) ?>" title="<?= h((string) $t['wordmark_titulo']) ?>">GLYFESSE</a>
+      <a class="volta-banca" href="<?= h((string) $ctx['url_banca']) ?>"><span class="seta" aria-hidden="true">↩</span> <?= h((string) $t['topo_banca']) ?></a>
+    </div>
     <?php endif; ?>
 
     <div class="col-meta">

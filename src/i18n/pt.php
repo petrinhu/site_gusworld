@@ -22,6 +22,11 @@ return [
     'wordmark_titulo'  => 'GLYFESSE: voltar à banca',
     'up_indice'        => '↑ índice',
     'up_voltar'        => '↑ voltar ao índice',
+    // as 3 saídas de UMA edição de volta pra BANCA (a home): topo (rótulo do
+    // wordmark), fim (na voz do Gus) e a 1ª entrada do índice.
+    'topo_banca'       => 'banca',
+    'voltar_banca'     => 'voltar pra banca',
+    'indice_banca'     => 'a banca',
 
     // masthead / expediente
     'exp_ano'          => 'ano',

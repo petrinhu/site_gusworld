@@ -22,6 +22,11 @@ return [
     'wordmark_titulo'  => 'GLYFESSE: back to the stand',
     'up_indice'        => '↑ contents',
     'up_voltar'        => '↑ back to contents',
+    // the 3 exits from ONE edition back to the STAND (home): top (wordmark
+    // label), end (in Gus's voice) and the 1st index entry.
+    'topo_banca'       => 'newsstand',
+    'voltar_banca'     => 'back to the newsstand',
+    'indice_banca'     => 'the newsstand',
 
     // masthead / imprint
     'exp_ano'          => 'year',

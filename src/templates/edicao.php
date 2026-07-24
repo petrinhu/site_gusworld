@@ -70,6 +70,13 @@ $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs
     <nav class="sumario" id="sumario" aria-label="<?= h((string) $t['indice_titulo']) ?>">
       <h2 class="secao-nome"><?= h((string) $t['indice_titulo']) ?></h2>
       <ol class="indice">
+        <?php /* primeira entrada = a SAÍDA de volta pra banca (não é seção) */ ?>
+        <li class="indice-banca">
+          <a href="<?= h((string) $ctx['url_banca']) ?>">
+            <span class="pg" aria-hidden="true">↩</span>
+            <span class="pt"><?= h((string) $t['indice_banca']) ?></span>
+          </a>
+        </li>
         <?php foreach ($secoes as $s): ?>
         <li>
           <a href="#<?= h($s['id']) ?>">
@@ -121,6 +128,12 @@ $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs
     <?php endforeach; ?>
 
     <p class="up-wrap up-fim"><a class="up" href="#sumario"><?= h((string) $t['up_voltar']) ?></a></p>
+
+    <?php /* fim da leitura: a saída natural de volta pra banca, na voz do Gus */ ?>
+    <p class="fala voltar-banca">
+      <span class="prompt">gus@glyfesse&gt;</span>
+      <a href="<?= h((string) $ctx['url_banca']) ?>" class="dito"><?= h((string) $t['voltar_banca']) ?></a>
+    </p>
 
   </article>
 </main>
