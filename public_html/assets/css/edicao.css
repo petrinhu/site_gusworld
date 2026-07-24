@@ -1690,6 +1690,41 @@ main{display:block}
   50%    {box-shadow:0 0 36px #ff2a2aff, 0 0 80px #ff0000bb, inset 0 0 12px #ffffff99;
           filter:brightness(1.18)}}
 
+/* ── §11 (edição #2) · a HQ da CONSTRUÇÃO: andaime ASCII + a mini-lápide ──
+   A tirinha da #2 (Rota B, tema construção) reusa .hq/.hq-strip/.hq-q/.crt-tela.
+   DUAS peças novas, só desta HQ:
+   1) .hq-art — o andaime desenhado em ASCII dentro do terminal (Q1 sobe parcial,
+      Q3 reconstruído mais alto). Ornamento (aria-hidden), na mesma monospace/cor
+      apagada do CRT; preserva o alinhamento (white-space:pre). Nada a animar. */
+.hq .hq-art{
+  margin:clamp(4px,1.2vw,8px) 0; font:inherit; color:#3f9c6a;
+  line-height:1.12; white-space:pre; text-shadow:none;
+}
+/* 2) .lapide-mini — a lápide "GDScript" do Q2, versão REDUZIDA da .lapide-pedra
+      (§07), mas em FÓSFORO (verde do CRT) para pertencer à tela em vez de brigar
+      com o granito. Topo em arco + base reta (a silhueta clássica), no fluxo do
+      terminal, centralizada abaixo da narração ("ao fundo" do quadro). Decorativa
+      (aria-hidden) → nada a ler para o leitor de tela. Sem animação. */
+.hq .lapide-mini{
+  display:block; width:clamp(64px,34%,104px); box-sizing:border-box;
+  margin:clamp(8px,2vw,14px) auto 2px; padding:14px 8px 9px; text-align:center;
+  border-radius:clamp(28px,11vw,48px) clamp(28px,11vw,48px) 3px 3px;   /* arco + base */
+  background:linear-gradient(176deg,#0e3a24 0%,#0a2c1c 62%,#08251a 100%);   /* granito em fósforo */
+  border:1px solid #1f6b4577;
+  box-shadow:inset 0 1px 0 #5dfc9a2e, inset 0 -4px 9px #00000055, 0 0 12px #0a1f1466;
+}
+/* o lozango gravado no alto do arco (neutro, sem carga religiosa), como na §07 */
+.hq .lapide-mini::before{
+  content:"◆"; display:block; font-size:9px; line-height:1;
+  color:#3f9c6a; margin:0 0 7px; text-shadow:none;
+}
+/* o nome escavado: pixel (--font-display), fósforo claro. "GDScript" não tem N
+   maiúsculo → escapa do guard N→H; decorativo, então o tamanho pequeno é ok. */
+.hq .lapide-mini .lm-nome{
+  font-family:var(--font-display); font-size:clamp(11px,2.6vw,13px);
+  letter-spacing:.02em; color:#8affc0; text-shadow:0 0 6px #2ad07a55;
+}
+
 /* ── §13 · o poster central: o icone de imagem quebrada GIGANTE (SVG) ── */
 .poster-quebrada{
   display:grid; place-items:center; gap:clamp(12px,2.4vw,18px);

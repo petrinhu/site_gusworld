@@ -56,6 +56,18 @@ function render_edicao(string $idioma): void
     $idade  = idade_folha($edicoes, $ctx['data']);
     $secoes = require __DIR__ . '/secoes.php';
 
+    // ── Seções ocultas por edição (anacronismo) ────────────────────────────────
+    // A anatomia é fixa, mas uma seção pode não caber numa edição antiga (ex.: a
+    // #2 [mai/jun] não tem "Gus lê o bus" [sec-18]: o bus git só nasceu em jul).
+    // O filtro age numa fonte só: o $secoes já sai sem a seção, então ela some do
+    // ÍNDICE e do CORPO juntos (o template só itera esta lista). As edições sem
+    // 'oculta_em' na entrada seguem intocadas (a #1 mantém a sec-18).
+    $num_edicao = (int) $ctx['numero'];
+    $secoes = array_values(array_filter(
+        $secoes,
+        static fn (array $s): bool => !in_array($num_edicao, $s['oculta_em'] ?? [], true)
+    ));
+
     // ── O CUPOM na EDIÇÃO (encarte, sec-15): estado votado server-side ──────────
     // O encarte (src/includes/cupom.php, reusado da banca) mostra o RESULTADO (%)
     // no lugar do form quando o visitante já votou (cookie booleano) — funciona SEM

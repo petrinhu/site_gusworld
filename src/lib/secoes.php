@@ -20,8 +20,14 @@ declare(strict_types=1);
  *   'num'   → o rótulo de número da seção (chip)
  *   'nome'  → CHAVE de i18n (o texto sai de src/i18n/<lang>.php: secoes[nome])
  *   'grupo' → CHAVE de i18n do rótulo de grupo (abertura/corpo/fixa/…)
+ *   'oculta_em' → (OPCIONAL) lista de NÚMEROS de edição que NÃO têm esta seção.
+ *                 A anatomia é fixa, mas uma seção pode ser um anacronismo numa
+ *                 edição antiga (ex.: "Gus lê o bus" [sec-18] não existe na #2:
+ *                 o bus git nasceu em jul/2026, a #2 é de mai/jun). O filtro mora
+ *                 no render-edicao.php e some a seção do ÍNDICE e do CORPO ao
+ *                 mesmo tempo (uma fonte só). Ausente = seção presente em todas.
  *
- * @return array<int, array{id:string, num:string, nome:string, grupo:string}>
+ * @return array<int, array{id:string, num:string, nome:string, grupo:string, oculta_em?:list<int>}>
  */
 
 return [
@@ -40,6 +46,6 @@ return [
     ['id' => 'sec-15', 'num' => '15', 'nome' => 'cupom',          'grupo' => 'encarte'],
     ['id' => 'sec-16', 'num' => '16', 'nome' => 'entrevista',     'grupo' => 'expert'],
     ['id' => 'sec-17', 'num' => '17', 'nome' => 'programacao',    'grupo' => 'expert'],
-    ['id' => 'sec-18', 'num' => '18', 'nome' => 'bus',            'grupo' => 'expert'],
+    ['id' => 'sec-18', 'num' => '18', 'nome' => 'bus',            'grupo' => 'expert', 'oculta_em' => [2]],
     ['id' => 'sec-19', 'num' => '19', 'nome' => 'expediente',     'grupo' => 'fechamento'],
 ];
