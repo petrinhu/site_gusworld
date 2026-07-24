@@ -306,6 +306,57 @@ main{display:block}
   font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.95em; color:var(--tinta-ciano);
 }
 
+/* ── §7 CEMITÉRIO · a LÁPIDE (só CSS, sem imagem) ──
+   Uma pedra com o topo em ARCO (a silhueta clássica de lápide) e a base reta,
+   centralizada no eixo horizontal, na família papel/tinta da revista. A inscrição
+   lê como epitáfio GRAVADO: o nome escavado (text-shadow de bisel), datas em pixel,
+   epitáfio em serif itálico. Pedra em tom de granito quente, que assenta no papel.
+   Sem animação -> nada a desligar em prefers-reduced-motion.
+   ⚠️ o nome "GDScript" é pixel (--font-display) mas NÃO tem N maiúsculo, logo escapa
+   do guard N->H; e vem grande (>=26px), bem acima do piso de 15px. */
+.conteudo .lapide{margin:clamp(20px,3.4vw,30px) 0; padding:0; display:flex; justify-content:center}
+.conteudo .lapide-pedra{
+  width:min(100%,380px); box-sizing:border-box; text-align:center;
+  padding:clamp(30px,6vw,46px) clamp(20px,4.5vw,34px) clamp(24px,4.5vw,34px);
+  /* topo em arco (a lápide) + base assentada no chão (cantos de baixo quase retos) */
+  border-radius:clamp(90px,30vw,150px) clamp(90px,30vw,150px) 5px 5px;
+  background:linear-gradient(176deg,#d7cfc4 0%,#c3baac 60%,#b2a899 100%);   /* granito quente */
+  border:1px solid #00000030;
+  box-shadow:
+    0 14px 26px -12px #1a161466,   /* a pedra projeta sombra suave no chão */
+    inset 0 2px 0 #ffffff73,       /* luz no topo do bisel */
+    inset 0 -4px 10px #00000021;   /* sombra na base do bisel */
+  color:var(--tinta-preta);
+}
+/* ornamento gravado no alto do arco (lozango neutro, sem carga religiosa) */
+.conteudo .lapide-pedra::before{
+  content:"◆"; display:block; font-size:clamp(13px,2vw,16px); line-height:1;
+  color:#6f675c; margin:0 0 clamp(12px,2.4vw,18px); text-shadow:0 1px 0 #ffffff5c;
+}
+/* o nome: escavado fundo na pedra (bisel claro embaixo, sombra fina em cima) */
+.conteudo .lapide-nome{
+  font-family:var(--font-display); font-size:clamp(26px,6vw,40px);
+  letter-spacing:.02em; color:#39332d; margin:0 0 clamp(12px,2.4vw,16px);
+  text-shadow:0 1px 0 #ffffff8a, 0 -1px 1px #0000003a;
+}
+/* datas n./m. (b./d.), empilhadas, tom mais claro */
+.conteudo .lapide-datas{
+  font-family:var(--font-display); font-size:clamp(13px,2vw,15px); line-height:1.5;
+  color:#4f483f; margin:0 0 clamp(16px,3vw,22px);
+  display:flex; flex-direction:column; gap:3px;
+}
+/* o epitáfio: serif itálico, o coração da inscrição */
+.conteudo .lapide-epitafio{
+  font-family:var(--font-corpo); font-style:italic;
+  font-size:clamp(15px,2.6vw,18px); line-height:1.5; color:#2c2823;
+  max-width:24ch; margin:0 auto clamp(14px,2.6vw,18px);
+}
+/* o fecho seco ("Descanse. Foi rápido.") */
+.conteudo .lapide-descanse{
+  font-family:var(--font-corpo); font-size:clamp(14px,2.2vw,16px);
+  letter-spacing:.02em; color:#4f483f; margin:0;
+}
+
 /* ── §16 A ENTREVISTA: o Q&A ── */
 .conteudo .materia-lede{
   font-family:var(--font-corpo); font-size:clamp(15px,2vw,17px); line-height:1.55;
