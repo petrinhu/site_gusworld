@@ -138,6 +138,6 @@ Todas as caras da #2 têm lente aprovada: **Reportagem, Programação, Editorial
 | Seção de Programação | ✅ v1 (`technical-writer`) | ✅ **aprovado 2026-07-24** (desculpa "open source" escolhida; linha EN traduzida) | `docs/content/edicao-2-programacao.md` |
 | Editorial | ✅ v1 (`narrative-writer`) | ✅ **aprovado 2026-07-24** (idioma corrigido: nomeia C#, deixa clara a troca) | `docs/content/edicao-2-editorial.md` |
 | A Entrevista (zumbi) | ✅ v1 (2 personas: Gus + Zumbi, improviso mediado) | ✅ **aprovado 2026-07-24** (pontuação: `?`/`!`/reticências; remate "ATOR!") | `docs/content/edicao-2-entrevista.md` |
-| Cemitério (1 lápide) | pendente | - | - |
+| Cemitério (1 lápide) | ✅ v1 (`narrative-writer`) | pendente | `docs/content/edicao-2-cemiterio.md` |
 
 Falta, depois dos rascunhos: S4 copyedit (revisor-textual), S6 GATE-COPY, S7-S9 arte/render/GATE-RENDER.
