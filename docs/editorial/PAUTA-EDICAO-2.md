@@ -135,7 +135,7 @@ Todas as caras da #2 têm lente aprovada: **Reportagem, Programação, Editorial
 | Seção | Rascunho | GATE-CONTEUDO | Arquivo |
 |---|---|---|---|
 | Reportagem de capa | ✅ v1 (`narrative-writer`) | ✅ **aprovado 2026-07-24** | `docs/content/edicao-2-reportagem.md` |
-| Seção de Programação | pendente | - | - |
+| Seção de Programação | ✅ v1 (`technical-writer`) | ✅ **aprovado 2026-07-24** (desculpa "open source" escolhida; linha EN traduzida) | `docs/content/edicao-2-programacao.md` |
 | Editorial | pendente | - | - |
 | A Entrevista (zumbi) | pendente | - | - |
 | Cemitério (1 lápide) | pendente | - | - |

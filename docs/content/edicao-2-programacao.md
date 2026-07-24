@@ -2,9 +2,8 @@
 
 > O eixo expert da Edição #2. Voz: `root@glyfesse` (o criador; nunca nomeado). Estrutura canônica: intro acessível + desculpa furada -> transição // -> CRT nano -> parte técnica com subtópicos -> //by:root.
 > Lente aprovada: ADR-002 (C# AOT, 19/mai) como artigo de TI real; a reversão é só foreshadow (uma linha, "A sombra"). Datas: só maio como fato; sem C++/SDL3/glintfx/bus.
-> Duas desculpas furadas (OPÇÃO A / OPÇÃO B): o líder escolhe UMA no GATE-COPY.
-> ⚠️ COPYEDIT PENDENTE (S4): a linha de transição `//Prezado leitor...` precisa ser TRADUZIDA na versão EN (saiu em pt).
-> Status: rascunho v1 do `technical-writer`, aguardando GATE-CONTEUDO.
+> Desculpa furada: "tudo é open source, não tenho o que esconder" (exemplo do líder, escolhido no GATE-CONTEUDO 2026-07-24; tecida na voz do root).
+> Status: GATE-CONTEUDO ✅ aprovado 2026-07-24. Falta copyedit formal (S4) + GATE-COPY + arte/render.
 
 ---
 
@@ -16,11 +15,7 @@ Esta é a seção onde a gente abre esse arquivo. Todo número que a máquina pr
 
 Vou avisar de uma vez: daqui a pouco isto vira técnico de verdade. Mas prometo abrir devagar, com a porta destrancada, para quem nunca instalou nada na vida entender por que um sábado de maio virou o alicerce de tudo o que veio depois.
 
-[OPÇÃO A]
-Vão me perguntar por que eu faço uma revista logado como root, o superusuário, a conta que pode derrubar a casa inteira com um comando. A explicação é simples: eu estava levantando os alicerces do jogo com essa conta, o cimento ainda não tinha secado, e sair para trocar de usuário só para escrever umas linhas ia me tirar do ritmo da obra. Quem para a betoneira no meio da laje? Fica para a próxima demão. O sudo pode esperar a fundação curar.
-
-[OPÇÃO B]
-Vão querer saber por que a revista sai da conta de root. Olha, eu tentei rebaixar o privilégio, juro. Mas a fundação estava aberta, a vala escancarada, e mexer no permissionamento com a estrutura ainda escorada me pareceu convite para desabar tudo. Numa obra, ninguém troca a planta baixa depois que a primeira coluna subiu. Então fica root mesmo, até o concreto pegar. Depois eu ergo a parede do sudo.
+`root@glyfesse>` Sim, eu montei a revista inteira logado como root, e não, não vou me defender direito. Antes que perguntem: todo o meu código é open source, cada linha da fundação está exposta no repositório, então não há segredo nenhum para proteger nesta máquina. Rodar como superusuário, portanto, não me assusta: quem não esconde nada não tem o que perder. A lógica não fecha, eu sei; abrir o código não impede que um `rm` distraído leve o concreto todo junto. Mas a viga já está no lugar, o build compilou, e reconstruir a permissão é problema do próximo commit.
 
 //Prezado leitor, daqui por diante é parte técnica real de documentação histórica do código do jogo.
 //root@glyfesse
@@ -69,13 +64,9 @@ This is the section where we open that file. Every number the machine has to pro
 
 Fair warning: in a moment this turns properly technical. But I promise to open slowly, with the door unlocked, so that someone who has never installed a thing in their life can still understand why one Saturday in May became the footing for everything that came after.
 
-[OPTION A]
-People will ask why I write a magazine logged in as root, the superuser, the account that can bring the whole house down with one command. The explanation is simple: I was pouring the game's foundations under that account, the cement had not set yet, and stepping out to switch users just to type a few lines would have broken the rhythm of the work. Who stops the mixer halfway through the slab? It waits for the next coat. sudo can wait until the foundation cures.
+`root@glyfesse>` Yes, I built this entire issue while logged in as root, and no, I will not defend it properly. Before anyone asks: all of my code is open source, every line of the foundation is out in the open in the repository, so there is no secret to protect on this machine. Running as superuser, therefore, does not scare me: someone with nothing to hide has nothing to lose. The logic does not hold, I know; opening the source does not stop a careless `rm` from taking the whole slab down with it. But the beam is already set, the build compiled, and rebuilding the permissions is the next commit's problem.
 
-[OPTION B]
-They will want to know why the magazine comes out of the root account. Look, I tried to drop the privilege, honestly. But the foundation was open, the trench wide, and touching the permissions with the structure still shored up felt like an invitation for the whole thing to collapse. On a build site, nobody swaps the blueprint after the first column goes up. So it stays root, until the concrete sets. I will raise the sudo wall later.
-
-//Prezado leitor, daqui por diante é parte técnica real de documentação histórica do código do jogo.  [⚠️ traduzir na S4]
+//Dear reader, from here on this is real technical documentation of the game's code history.  [⚠️ conferir na S4]
 //root@glyfesse
 root@glyfesse>~$ nano adr-002.md
 
