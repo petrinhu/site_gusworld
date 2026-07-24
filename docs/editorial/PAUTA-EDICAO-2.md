@@ -71,6 +71,19 @@ Mais o **Pôster central** (o Gus 3D), que é arte/layout, não escrita. Todo o 
 - **Datas (epitáfios):** cada lápide carimba nascimento/morte com data real de commit. GDScript: †19/mai. Foundation C#: n.mai / portada jun-jul / †apagada. Godot: †decomissionado.
 - **Fonte:** `historia-real-dos-pivos`, `cronologia-real-datada`, o obituário e o board M0-M9 (bus).
 
+### Reportagem de capa ✅ (2026-07-23)
+
+- **Angle statement:** sobre a era em que o jogo começou a ser construído e quase tudo foi demolido (engines, stack, o 3D), pela lente do **ARCO na voz do Gus**, com a tese **"construir é também demolir"** (cada coisa jogada fora foi uma decisão, não um fracasso).
+- **Arco/tese:** construir é demolir. O leitor sente respeito por quem mata o próprio trabalho para seguir. Carrega a tese do projeto (a IA é ferramenta; o criativo é do criador), por implicação, nunca explicada.
+- **Concretude:** **híbrido**. Abertura pega o leigo pela SENSAÇÃO (como a #1); os nomes reais (GDScript, C#, Godot, o 3D) aparecem no corpo sem exigir TI. Serve leigo + expert.
+- **Cortes:**
+  - as **lápides itemizadas** são do Cemitério (seção 7): a Reportagem faz o movimento inteiro, não as pedras uma a uma.
+  - o **porquê técnico** frio vai para a Programação (seção 17).
+  - o **wireframe** do Gus 3D é o Pôster (seção 13).
+- **Voz:** Gus (o autor in-fiction). A demolição é a dele, do personagem construindo o próprio mundo/jogo; o líder-criador nunca é nomeado (consistente com a #1).
+- **Nota de diferença da #1:** o assunto é tech real (não lore), então pode nomear aberto sem spoiler; a abstração poética da #1 era forçada pela spoiler-safety, que aqui não se aplica.
+- **Fonte:** `historia-real-dos-pivos`, `cronologia-real-datada`, `a-voz-do-site`.
+
 ## Nota do managing editor (risco a decidir na lente)
 
 **Três seções olham para a mesma era** (reportagem, cemitério, programação). Para não repetir, a lente proposta separa os papéis, e isso se afina no GATE-LENTE de cada uma:
