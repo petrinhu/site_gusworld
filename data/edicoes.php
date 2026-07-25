@@ -64,13 +64,13 @@ return [
     ],
 
     // ── #2 · ARQUITETURA ─────────────────────────────────────────────────────
-    // 18/mai–4/jun/2026: as primeiras engines, as fundações — e um Gus 3D que
-    // foi abandonado (cemitério das ideias mortas; dead-end é público e honesto,
-    // não é spoiler). Ainda pré-era-visual jogável: fora do scrubber.
+    // 19/mai a 4/jun/2026: as primeiras engines, as fundações, e um Gus 3D que
+    // ainda estava sendo tentado (a morte dele é de junho: vai para a #3, não
+    // para cá). Ainda pré-era-visual jogável: fora do scrubber.
     [
         'numero'         => 2,
         'revisao'        => 1,
-        'estado'         => 'rascunho', // sem conteúdo de seção ainda; some da banca até ser produzida
+        'estado'         => 'publicada', // publicada em 2026-07-24 (rev.1): conteúdo completo, prova final E4 passada, card OG próprio
         'data'           => '2026-06-04',
         'atualizada_em'  => '2026-06-04',
         'slug_pt'        => 'edicao-2',
@@ -78,9 +78,9 @@ return [
         'titulo_pt'      => 'Arquitetura',
         'titulo_en'      => 'Architecture',
         'dek_pt'         => 'As primeiras engines, as escolhas de fundação. E um Gus '
-                          . 'em 3D que não vingou e virou lembrança.',
-        'dek_en'         => 'The first engines, the foundation choices. And a 3D Gus '
-                          . 'that did not survive and became a memory.',
+                          . 'em 3D, do jeito que ele foi.',
+        'dek_en'         => 'The first engines, the foundation choices. And a 3D Gus, '
+                          . 'exactly as he was.',
         // ⚠️ #2 SEM FRAME (2026-07-18): o frame original (gus_3d_visualizacao) era uma
         // FOTO DE TELA com conteúdo pessoal do líder (abas de navegador) — REMOVIDO do
         // repo. A #2 fica sem capa, como a #1 (gênese textual), até haver um frame LIMPO
@@ -88,6 +88,10 @@ return [
         'frame'          => null,
         'frame_alt_pt'   => null,
         'frame_alt_en'   => null,
+        // Card social próprio (1200x630) desta edição: o Gus 3D de pé sobre o
+        // chão em perspectiva. Gerador em docs/design/og-card-2.html. Campo
+        // OPCIONAL: quem não o traz cai no default /assets/og-launch.jpg.
+        'og_image'       => '/assets/og-edicao-2.jpg',
         'na_linha_tempo' => false, // 3D abandonado: não é a era visual 2D do scrubber
     ],
 
