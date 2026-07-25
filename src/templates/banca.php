@@ -96,9 +96,14 @@ require __DIR__ . '/../includes/head.php';
       ?>
       <?php /* o card inteiro é o link. O aria-label dá ao leitor de tela um nome
          curto e acionável ("Ler a edição: TÍTULO") no lugar do bloco inteiro de
-         texto; o foco fica visível pelo .ed:focus-visible (outline ciano). */ ?>
+         texto; o foco fica visível pelo .ed:focus-visible (outline ciano).
+         ★ target=_blank (líder, 2026-07-25): a revista abre em ABA NOVA, então a
+         banca continua aberta atrás (é uma estante: pegar uma revista não tira
+         você da banca). O rel=noopener é obrigatório com _blank (segurança: sem
+         ele a aba nova ganha acesso ao window.opener). */ ?>
       <a class="ed folha" style="--idade:<?= h((string) $c['idade']) ?>"
          href="<?= h((string) $c['url']) ?>"
+         target="_blank" rel="noopener"
          aria-label="<?= h((string) $banca['cta'] . ': ' . (string) $c['titulo']) ?>">
         <?php if ($i === 0): ?>
         <span class="nova"><?= h((string) $banca['nova']) ?></span>
