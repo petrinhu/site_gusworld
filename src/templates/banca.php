@@ -21,14 +21,23 @@ declare(strict_types=1);
 $banca   = $t['banca'];
 $ganchos = $banca['ganchos'];
 
-/* ★ O CARD SOCIAL DA BANCA ACOMPANHA A EDIÇÃO MAIS NOVA (líder, 2026-07-25).
+/* ★ O CARD SOCIAL DA BANCA (líder, 2026-07-25).
    O post de lançamento linka a BANCA (a porta de entrada, onde se vê a estante),
-   não a página da edição. Logo o card que aparece no X tem que ser o da edição
-   que acabou de sair, senão o leitor vê o card da anterior. `$capas` já vem
-   ordenada da mais nova para a mais velha (render-banca.php), então a [0] é a
-   mais recente; se ela não tiver card próprio, cai no default do head.php. */
-$og_banca = (string) ($capas[0]['og_image'] ?? '');
+   não a página da edição. Só que o X guarda UM card por ENDEREÇO e atualiza os
+   posts JÁ PUBLICADOS: com um endereço só, todo post antigo passaria a exibir o
+   card da edição mais nova e o histórico do canal se reescreveria a cada edição.
+   Por isso a banca aceita `?ed=N`: cada post ganha um endereço próprio e o card
+   dele congela na edição DELE. O parâmetro NÃO muda nada da página: nem uma
+   linha do conteúdo, nem uma edição a mais ou a menos na estante; ele só escolhe
+   as meta tags. A regra de resolução (e o saneamento do valor cru, que nunca é
+   ecoado no HTML) vive em og_card_banca(), pura e testada. */
+$og_banca = og_card_banca($capas, $_GET['ed'] ?? null);
 
+/* ⚠️ CANONICAL SEM O `?ed=`: `url_banca()` devolve a URL limpa da home, e é ela
+   que vai no <link rel=canonical> (e no og:url). As variantes `?ed=2`, `?ed=3` …
+   são o MESMO documento visto pelo buscador, e apontá-las todas para a home
+   evita fragmentar o SEO em N endereços quase-duplicados. O card por post é
+   assunto do scraper social, não do índice de busca. */
 $head = [
     'lang'      => (string) $t['html_lang'],
     'og_locale' => (string) $t['og_locale'],
@@ -38,7 +47,7 @@ $head = [
     'canonical' => (string) $ctx['url_banca'],
     'hreflang'  => $ctx['hreflang'],
 ];
-if ($og_banca !== '') {
+if ($og_banca !== null) {
     $head['og_image'] = $og_banca;
 }
 require __DIR__ . '/../includes/head.php';

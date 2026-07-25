@@ -19,6 +19,73 @@ require_once __DIR__ . '/contexto-edicao.php'; // idade_folha()
 require_once __DIR__ . '/cupom.php';           // cupom_votou_cookie() + resultado (%)
 
 /**
+ * O card social (og:image) que a BANCA serve, dado o parâmetro `?ed=N` da URL.
+ *
+ * POR QUE o parâmetro existe: o X (e todo scraper de link) guarda UM card POR
+ * ENDEREÇO, e reescreve o preview dos posts JÁ PUBLICADOS quando o card daquele
+ * endereço muda. Como todo post de lançamento linka a banca, sem `?ed=` os posts
+ * antigos passariam a exibir o card da edição mais nova, e o histórico inteiro do
+ * canal se reescreveria a cada edição nova. Dando a cada post um endereço próprio
+ * (`/pt/?ed=2`, `/pt/?ed=3`, …), o card daquele post congela na edição DELE, e o
+ * leitor continua caindo na banca: a página renderizada é a mesma, o parâmetro só
+ * decide as meta tags.
+ *
+ * A regra é a ESTABILIDADE do permalink:
+ *   - `ed` presente e resolvível  -> o card daquela edição (congelado pra sempre);
+ *   - `ed` presente e NÃO resolvível (número inexistente, rascunho, edição sem
+ *     card próprio, lixo de bot) -> null, ou seja, o default FIXO do head.php.
+ *     Nunca o card da mais nova: cair na mais nova reintroduziria exatamente o
+ *     preview-que-muda-sozinho no post já publicado, que é o bug que o `?ed=`
+ *     existe para matar;
+ *   - sem `ed` (o link nu gusworld.site) -> o card da mais nova, o comportamento
+ *     atual da vitrine viva: quem chega pela porta da frente vê o que acabou de
+ *     sair (e se a mais nova não tiver card próprio, cai no default do head.php).
+ *
+ * SEGURANÇA: o valor cru da URL só serve para CASAR com o `numero` de uma capa;
+ * o caminho do card sai SEMPRE de `$edicoes`, nunca da query string, e o valor
+ * recebido não é ecoado em lugar nenhum do HTML (sem reflexão, sem traversal).
+ * Aceita só dígitos; qualquer outra coisa (inclusive o array de um `?ed[]=`)
+ * não casa com nada e cai no default.
+ *
+ * Pura (CONTRACT §5): recebe as capas já filtradas (só PUBLICADAS, mais nova
+ * primeiro) e o valor cru; devolve o caminho root-absoluto do card ou null.
+ *
+ * @param array<int, array<string, mixed>> $capas
+ * @param mixed $ed_bruto  o valor cru de $_GET['ed'] (nunca confiável)
+ */
+function og_card_banca(array $capas, mixed $ed_bruto = null): ?string
+{
+    // A PRESENÇA do parâmetro já muda o regime: com `ed`, a URL é um permalink
+    // de post e o card tem que ser estável no tempo, resolva ou não.
+    if ($ed_bruto !== null) {
+        $pedida = (is_string($ed_bruto) && $ed_bruto !== '' && ctype_digit($ed_bruto))
+            ? (int) $ed_bruto
+            : null;
+
+        if ($pedida === null) {
+            return null;
+        }
+
+        foreach ($capas as $c) {
+            if ((int) ($c['numero'] ?? 0) === $pedida) {
+                $card = (string) ($c['og_image'] ?? '');
+
+                return $card !== '' ? $card : null;
+            }
+        }
+
+        // número que não casa com nenhuma capa PUBLICADA (inexistente ou
+        // rascunho): o rascunho nem chega aqui, o filtro anti-spoiler já o
+        // tirou de $capas, logo o `?ed=` também não vaza o drip.
+        return null;
+    }
+
+    $card = (string) ($capas[0]['og_image'] ?? '');
+
+    return $card !== '' ? $card : null;
+}
+
+/**
  * Ponto de entrada dos front controllers da home. Recebe o idioma da pasta.
  */
 function render_banca(string $idioma): void
@@ -45,9 +112,10 @@ function render_banca(string $idioma): void
             'frame_alt' => $e['frame_alt_' . $idioma] !== null ? (string) $e['frame_alt_' . $idioma] : null,
             'idade'     => idade_folha($edicoes, (string) $e['data']),
             'visual'    => ($e['na_linha_tempo'] ?? false) === true,
-            // card social próprio da edição (opcional). A banca usa o da mais
-            // nova como SEU card, porque é a banca que o post de lançamento
-            // linka (ver o comentário em templates/banca.php).
+            // card social próprio da edição (opcional). É daqui, e só daqui, que
+            // og_card_banca() tira o card servido pela home: o da mais nova no
+            // link nu, ou o da edição pedida no `?ed=N` do post. O `numero` ao
+            // lado é a chave desse casamento.
             'og_image'  => isset($e['og_image']) ? (string) $e['og_image'] : null,
         ];
     }
