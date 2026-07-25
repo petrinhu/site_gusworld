@@ -1765,6 +1765,14 @@ main{display:block}
   border:1px solid var(--borda); border-radius:var(--raio-tela);
   box-shadow:var(--sombra-folha), inset 0 0 0 1px #ffffff12;
 }
+/* a LEGENDA do pôster (fala + //) acompanha o encarte: ganha a mesma largura da
+   folha e centraliza o texto, pra ficar alinhada sob o pôster centralizado (e não
+   presa à esquerda na coluna de texto). Escopo: só a fala/pensa que seguem o .poster */
+.conteudo .poster ~ .fala,
+.conteudo .poster ~ .pensa{
+  width:calc(min(1080px, 100vw) - 2 * clamp(20px,3.5vw,56px));
+  text-align:center;
+}
 /* o rótulo de encarte no alto do mat (pixel apagada, como carimbo de miolo) */
 .conteudo .poster-mat::before{
   content:"ENCARTE"; position:absolute; top:clamp(6px,1.6vw,11px); left:0; right:0;
