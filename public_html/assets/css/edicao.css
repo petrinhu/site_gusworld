@@ -1748,12 +1748,14 @@ main{display:block}
    do jogo) rente à imagem; a foto grande e centralizada. Reusa o zoom-link /
    zoom-badge (§17) pro lightbox: SEM JS abre a PNG full; COM JS amplia in-page.
    O rótulo de canto "ENCARTE" evoca o pôster arrancável do miolo da revista. */
-/* o pôster (encarte) centraliza na SEÇÃO inteira, não na coluna de texto (que é
-   74ch presa à esquerda): ganha a largura da seção (viewport menos os 2 paddings
-   simétricos do .edicao) e centraliza o mat nela via flex. */
+/* o pôster (encarte) centraliza na SEÇÃO/FOLHA inteira, não na coluna de texto
+   (que é 74ch presa à esquerda). A folha é max-width:1080px centrada (linha ~529),
+   então a largura da seção = min(1080px,100vw) menos os 2 paddings do .edicao.
+   NÃO usar 100vw puro: num monitor largo a folha é 1080 e o resto é mesa, e o
+   100vw estouraria pra fora da página à direita. */
 .conteudo .poster{
   display:flex; justify-content:center;
-  width:calc(100vw - 2 * clamp(20px,3.5vw,56px));
+  width:calc(min(1080px, 100vw) - 2 * clamp(20px,3.5vw,56px));
   margin:0 0 clamp(16px,3vw,26px); box-sizing:border-box;
 }
 .conteudo .poster-mat{
