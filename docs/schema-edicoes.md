@@ -48,6 +48,8 @@ $scrubber   = edicoes_na_linha_tempo($edicoes);    // linha do tempo
 | `frame_alt_pt` | `string` \| `null` | sim | Texto alternativo do frame em pt-br. **Spoiler-safe** (alt-text é texto público — AUD-SPOILER). `null` quando `frame` é `null`. | banca, linha do tempo |
 | `frame_alt_en` | `string` \| `null` | sim | Texto alternativo do frame em inglês. **Spoiler-safe.** | banca, linha do tempo |
 | `og_image` | `string` | **não** | Caminho web root-absoluto do card social 1200x630 próprio da edição (`/assets/og-edicao-N.jpg`). Ausente ou `null` → o `head.php` aplica o default `/assets/og-launch.jpg`. | página da edição (Open Graph / Twitter Card) |
+| `capa_en` | `string` | **não** | Caminho da arte de capa da estante em **inglês**. Sem ele, o `/en/` mostra a arte em português (`capa_estante()` faz o fallback). O card **social** não muda. | banca (estante `/en/`) |
+| `uptime` | `array<string,int>` | **não** | Uptime das **sessões de trabalho**, `projeto => horas` (ex.: `['jogo' => 1456, 'glintfx' => 326]`). **Só da #3 em diante** (decisão do líder: #1 e #2 não têm o campo). Ausente → o masthead **não** imprime linha nenhuma. | masthead da edição (expediente) |
 | `na_linha_tempo` | `bool` | sim | Se a edição entra no scrubber (era **visual**, #3+). A gênese textual (#1) e o 3D abandonado (#2) são `false`. | linha do tempo |
 
 ¹ Obrigatório **quando publicada**. Numa entrada `rascunho` esses campos podem
@@ -62,6 +64,23 @@ ficar vazios/placeholder — nunca são renderizados enquanto rascunho.
 - **`data` vs `atualizada_em`.** `data` é o fato histórico ("ponha a data das
   coisas" — o líder) e não muda. `atualizada_em` é frescor técnico do sitemap;
   bump quando o conteúdo da edição for corrigido.
+- **`uptime`: o número é uma FOTOGRAFIA, não um contador.** "Uptime" aqui é há
+  quanto tempo a sessão de trabalho (Claude Code) de cada projeto está aberta na
+  máquina do líder. **A produção (Hostinger) não enxerga essa máquina**, então o
+  valor **não pode** ser calculado em runtime: ele é **capturado no momento de
+  publicar** (`scripts/uptime-sessoes.sh`, que imprime a linha pronta pra colar) e
+  fica congelado como estava naquele dia. Isso é coerente com o canon: cada edição
+  é registro histórico datado. Re-capturar sempre que a edição for publicada de
+  fato (o valor do rascunho envelhece).
+  - **Só as HORAS são dado**; os dias saem derivados (`floor(h/24)`) em
+    `uptime_expediente()` (`src/lib/view.php`): assim os dois números nunca se
+    contradizem no papel. Saída: `jogo 1456h (60d) · glintfx 326h (13d)`.
+  - **Os rótulos vêm do i18n** (`exp_uptime` em `src/i18n/{pt,en}.php`: `jogo` →
+    `game`; `glintfx` é nome próprio e não traduz). Projeto sem rótulo cai na
+    própria chave. **Minúsculos** pelo guard N→H da PixelOperatorMono a 11px.
+  - **Fail-safe:** valor não-inteiro, negativo ou chave vazia é **pulado** (não
+    imprime lixo no papel); tudo torto → linha nenhuma, masthead idêntico ao de
+    quem não tem o campo.
 - **`og_image` é opcional e o único campo com fallback.** O caminho atravessa
   `montar_contexto()` → `$ctx['og_image']` → `$head['og_image']` → `head.php`, que
   prefixa a `SITE_BASE_URL` (o crawler não resolve caminho relativo). Sem o campo,

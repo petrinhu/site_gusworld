@@ -33,10 +33,17 @@ function slug_pedido(): string
 
 /**
  * Ponto de entrada dos front controllers. Recebe o idioma da pasta física.
+ *
+ * $edicoes é o SEAM de teste (mesmo desenho de render_banca): produção sempre
+ * chama sem ele e o dado real é carregado do arquivo; o teste injeta um array
+ * em memória para exercitar uma edição que ainda não está publicada no disco,
+ * sem tocar no `estado` do dado real (o drip não pode vazar por causa de teste).
+ *
+ * @param array<int, array<string, mixed>>|null $edicoes
  */
-function render_edicao(string $idioma): void
+function render_edicao(string $idioma, ?array $edicoes = null): void
 {
-    $edicoes = require __DIR__ . '/../../data/edicoes.php';
+    $edicoes ??= require __DIR__ . '/../../data/edicoes.php';
     $t = require __DIR__ . '/../i18n/' . $idioma . '.php';
 
     $slug = slug_pedido();

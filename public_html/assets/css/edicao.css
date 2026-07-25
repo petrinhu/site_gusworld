@@ -100,6 +100,11 @@ body{
   line-height:1.55; color:var(--tinta-2); margin:0;
 }
 .meta b{color:var(--tinta-preta); font-size:15px}
+/* uptime das sessões de trabalho (3ª linha do expediente, só nas edições que
+   capturaram o dado). O "discreto" vem da POSIÇÃO e do tamanho já herdados do
+   .meta, NUNCA de baixar contraste: --tinta-2 está calibrada no fio da navalha
+   do AA (4.51:1 no papel mais encardido), então qualquer opacity quebraria. */
+.meta-uptime{color:var(--tinta-2)}
 
 /* ── a LCD do switch de idioma (mock 13, tratamento A) ──
    Um buraco de tela acesa no papel: a menor tela do site. Herda .aceso do

@@ -39,7 +39,17 @@ $lcd  = $t['lcd'];
           /* revisão só aparece a partir da 1ª correção (rev. 2): no lançamento
              (revisao=1) fica fora, pra não poluir a leitura do leigo. */
           if ((int) ($ctx['revisao'] ?? 1) > 1): ?> · <?= h((string) $t['exp_rev']) ?> <?= h((string) $ctx['revisao']) ?><?php endif; ?> · <?= h(data_por_extenso((string) $ctx['data'], (string) $ctx['idioma'], $t)) ?><br>
-        gusworld.site
+        gusworld.site<?php
+        /* uptime das sessões de trabalho: 3ª linha do expediente, SÓ quando a
+           edição trouxe o campo (capturado no publish: a produção não enxerga a
+           máquina do líder). Edição sem o campo → string vazia → nada é impresso,
+           e o masthead sai byte a byte como antes (#1 e #2). */
+        $uptime_txt = uptime_expediente($ctx['uptime'] ?? null, $t);
+        if ($uptime_txt !== ''): ?><br><span class="meta-uptime"><span class="sr"><?= h((string) ($t['exp_uptime_sr'] ?? '')) ?> </span><?= h($uptime_txt) ?></span><?php endif;
+        /* o `?>` engole a quebra de linha do fonte que vem logo depois dele:
+           devolvemos essa quebra à saída para o expediente de quem NÃO tem o
+           campo sair byte a byte igual ao de antes desta feature. */
+        echo "\n"; ?>
       </p>
       <?php endif; ?>
 

@@ -79,6 +79,15 @@ function montar_contexto(array $e, string $idioma): array
                             ? (string) $e['og_image']
                             : null,
 
+        // Uptime das sessões de trabalho (opcional, #3 em diante): mapa
+        // projeto => horas, CAPTURADO no publish (a produção não vê a máquina do
+        // líder; ver uptime_expediente() em src/lib/view.php). Sem o campo fica
+        // `null` e o masthead não imprime a linha: as edições antigas seguem
+        // idênticas. Mesmo padrão data-driven do og_image (zero `if` de número).
+        'uptime'        => isset($e['uptime']) && is_array($e['uptime']) && $e['uptime'] !== []
+                            ? $e['uptime']
+                            : null,
+
         // navegação e i18n de URL (IA-WIREFRAME §2.3)
         'url_self'      => url_edicao($idioma, $slug_ele),
         'url_par'       => url_edicao($outro, $slug_par),   // destino da LCD (par gêmeo)

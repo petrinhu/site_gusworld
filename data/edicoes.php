@@ -132,6 +132,13 @@ return [
         'frame'          => '/assets/frames/edicao-3.png',
         'frame_alt_pt'   => 'Um quadrado azul num cenário de teste, o primeiro protótipo jogável.',
         'frame_alt_en'   => 'A blue square in a test scene, the first playable prototype.',
+        // UPTIME das sessões de trabalho no expediente do masthead. Da #3 EM
+        // DIANTE (decisão do líder: a #1 e a #2 ficam sem o campo, e por isso
+        // sem a linha). Mapa projeto => HORAS; os dias saem derivados no PHP.
+        // ⚠️ O número é CAPTURADO no publish (`scripts/uptime-sessoes.sh`) e
+        // fica CONGELADO: a Hostinger não enxerga a máquina do líder, e cada
+        // edição é registro histórico datado. Re-capturar ao publicar de fato.
+        'uptime'         => ['jogo' => 1456, 'glintfx' => 326], // capturado em 25/07/2026 07:40
         'na_linha_tempo' => true, // 1º (e único, no lançamento) ponto visual do scrubber
     ],
 

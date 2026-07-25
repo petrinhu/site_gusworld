@@ -39,6 +39,14 @@ return [
     'exp_vol'          => 'vol.',
     'exp_num'          => 'nº',
     'exp_rev'          => 'rev.',
+    // uptime das sessões de trabalho no expediente (só a partir da #3, e só nas
+    // edições que trazem o campo 'uptime'). Rótulo POR PROJETO; os números vêm do
+    // $edicoes (capturados no publish por scripts/uptime-sessoes.sh: a produção
+    // não enxerga a máquina do líder). ⚠️ MINÚSCULO pelo mesmo guard N→H acima.
+    'exp_uptime'       => ['jogo' => 'jogo', 'glintfx' => 'glintfx'],
+    // rótulo só-leitor-de-tela: sem ele, o leitor lê "jogo 1456h (60d)" sem
+    // dizer o que o número é. O visual segue enxuto (o rótulo não ocupa pixel).
+    'exp_uptime_sr'    => 'tempo de sessão de trabalho aberta:',
     'meses'            => [
         1 => 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
         'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro',

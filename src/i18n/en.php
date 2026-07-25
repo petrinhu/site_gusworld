@@ -39,6 +39,14 @@ return [
     'exp_vol'          => 'vol.',
     'exp_num'          => 'no.',
     'exp_rev'          => 'rev.',
+    // work-session uptime in the imprint (#3 onwards, and only for editions that
+    // carry the 'uptime' field). Label PER PROJECT; the numbers come from $edicoes
+    // (captured at publish time by scripts/uptime-sessoes.sh: production cannot
+    // see the machine). ⚠️ lowercase for the same N→H guard as above.
+    'exp_uptime'       => ['jogo' => 'game', 'glintfx' => 'glintfx'],
+    // screen-reader label: without it the reader announces "game 1456h (60d)"
+    // with no clue what the number is. The visible line stays lean.
+    'exp_uptime_sr'    => 'open work session time:',
     'meses'            => [
         1 => 'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December',

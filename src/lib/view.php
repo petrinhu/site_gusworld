@@ -56,3 +56,51 @@ function data_por_extenso(string $iso, string $idioma, array $t): string
         ? "{$dia} de {$mes} de {$ano}"
         : "{$mes} {$dia}, {$ano}";
 }
+
+/**
+ * A linha de UPTIME do expediente: "jogo 1456h (60d) · glintfx 326h (13d)".
+ *
+ * ★ POR QUE O DADO É CONGELADO. "Uptime" aqui é há quanto tempo a sessão de
+ * trabalho daquele projeto está aberta na máquina do líder. A produção
+ * (Hostinger) NÃO enxerga essa máquina, então o número não pode ser calculado
+ * em runtime: ele é CAPTURADO no momento de publicar (scripts/uptime-sessoes.sh)
+ * e gravado no $edicoes. Isso é coerente com o canon: cada edição é registro
+ * histórico datado, e o número fica como estava naquele dia.
+ *
+ * Só as HORAS são dado; os dias são derivados (floor h/24) para os dois números
+ * nunca se contradizerem. Campo opcional: sem ele, devolve '' e o masthead não
+ * imprime linha nenhuma (as #1 e #2 seguem exatamente como hoje).
+ *
+ * Fail-safe: entrada torta (valor não-numérico, negativo, chave não-string) é
+ * PULADA em vez de virar linha torta no papel.
+ *
+ * @param array<string, mixed>|null $uptime  ['jogo' => 1464, 'glintfx' => 326]
+ * @param array<string, mixed>      $t       i18n do idioma (rótulos por projeto)
+ */
+function uptime_expediente(?array $uptime, array $t): string
+{
+    if ($uptime === null || $uptime === []) {
+        return '';
+    }
+
+    $rotulos = isset($t['exp_uptime']) && is_array($t['exp_uptime']) ? $t['exp_uptime'] : [];
+    $partes  = [];
+
+    foreach ($uptime as $projeto => $horas) {
+        if (!is_string($projeto) || $projeto === '') {
+            continue;
+        }
+        if (is_string($horas) && ctype_digit($horas)) {
+            $horas = (int) $horas; // tolera o número vindo como string do dado
+        }
+        if (!is_int($horas) || $horas < 0) {
+            continue;
+        }
+
+        $rotulo   = (string) ($rotulos[$projeto] ?? $projeto);
+        $dias     = intdiv($horas, 24);
+        $partes[] = "{$rotulo} {$horas}h ({$dias}d)";
+    }
+
+    return implode(' · ', $partes);
+}
