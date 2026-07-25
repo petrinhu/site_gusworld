@@ -27,7 +27,7 @@ Fonte canônica: `Projects/gusworld/docs/narrative/characters/party.md` (rev. 2,
 | 4 | (a definir) | **Bento "Requiem" Chevalier** | 14 | Tanque (gravitacional) · Ordem Recursiva | Asmódico | proposta |
 | 5 | (a definir) | **Iara "Lumen" Koslov** | 12 | Infiltradora (ofuscamento) · Cult Mirage (desertora) | Óxido | proposta |
 | 6 | (a definir) | **Linda "Siren" Neumann** | 12 | Crowd control (sônico) · Underground do Silêncio | Óxido | proposta |
-| 7 | (a definir) | **Dante "Grid" Alencar** ⚠️ | 13 | Suporte logístico · Periferia Industrial | Asmódico → C-Arcane | proposta · **por último, ver ⚠️** |
+| 7 | (a definir) | **Dante "Grid" Alencar** ⚠️ | 13 | Suporte logístico · Periferia Industrial | Asmódico → C-Arcane | 🔒 **ENTRA, e é o ÚLTIMO** (decidido 2026-07-25) · ver ⚠️ |
 
 ### ★ A #3: o Cauã "Volt" entrevista o Gus (decisão do líder, 2026-07-25)
 
@@ -42,7 +42,9 @@ Quem faz as perguntas ao Gus na #3 é o **Cauã "Volt" Berenger**, não o criado
 - **Cauã** em 2º porque é o **Companion #1 fixo** do jogo (recrutado na missão solo de abertura) — é o primeiro que o jogador conhece, então é o primeiro que o leitor conhece.
 - **Jaci** em 3º pelo contraste imediato: mesma idade do Gus (11), aliança emocional mais profunda, e o par Pythia × C-Arcane rende o banter mais leve logo depois da entrevista mais pesada (a do próprio Gus).
 - **Bento / Iara / Linda** no miolo, alternando Asmódico e Óxido para não repetir a mesma piada de linguagem em edições seguidas.
-- **Dante por último** ⚠️ **e é decisão de spoiler do líder**: ele é o **traidor** do arco. Uma entrevista com ele é ironia dramática pura (tudo que ele diz ganha duplo sentido em releitura) — mas só funciona se: (a) o Gus **não** souber (in-fiction), (b) a copy não plantar dica forte demais, (c) o jogo já estiver perto o bastante para o leitor poder conferir. Se o líder preferir, Dante **sai da fila** e a série fecha em 6.
+- **Dante por último** — 🔒 **decidido pelo líder em 2026-07-25: ENTRA, e fecha a série.** Ele é o **traidor** do arco, e a entrevista dele é ironia dramática pura: tudo que ele diz ganha segundo sentido quando o jogo sair. Ser o último é o que compra isso — sai só daqui a várias edições, quando o leitor já puder conferir.
+
+  ⚠️ **As três condições que a produção dessa peça tem que honrar (senão ela vira spoiler):** (a) o Gus **não desconfia de nada** in-fiction — ele entrevista um amigo, ponto; (b) a copy **não planta dica forte**: nada de "há quem duvide", olhar de esguelha, silêncio suspeito, `//` do Gus estranhando; o duplo sentido tem que nascer de frases que são **inocentes na primeira leitura** (o eixo dele é *preservar × descartar*, e é sobre isso que ele fala); (c) **GATE-SPOILER com o líder, obrigatório e sem exceção**, antes de qualquer render.
 
 ## Regras de produção desta série
 
