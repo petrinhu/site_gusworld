@@ -21,13 +21,22 @@ Fonte canônica: `Projects/gusworld/docs/narrative/characters/party.md` (rev. 2,
 
 | Ordem | Ed | Convidado | Idade | Papel / facção | Linguagem-âncora | Estado |
 |:-----:|:--:|:----------|:-----:|:---------------|:-----------------|:-------|
-| 1 | **#3** | **Gus Vector Tavus Vance** — o entrevistador vira entrevistado | 11 | Utility/Control · independente | **C-Arcane** | 🔒 **Fixado pelo líder** · quem pergunta = a definir |
-| 2 | (a definir) | **Cauã "Volt" Berenger** | 13 | Striker (EMP cinético) · Dutos Infernais | Pythia | proposta |
+| 1 | **#3** | **Gus Vector Tavus Vance** — o entrevistador vira entrevistado | 11 | Utility/Control · independente | **C-Arcane** | 🔒 **Fixado pelo líder** · **quem pergunta = Cauã "Volt"** (decidido 2026-07-25) |
+| 2 | (a definir) | **Cauã "Volt" Berenger** | 13 | Striker (EMP cinético) · Dutos Infernais | Pythia | proposta · ⚠️ já estreia como **entrevistador** na #3 (ver nota) |
 | 3 | (a definir) | **Jaci "Proxy" Vanderbist** | 11 | Healer biológica · Selve Sombria | Pythia | proposta |
 | 4 | (a definir) | **Bento "Requiem" Chevalier** | 14 | Tanque (gravitacional) · Ordem Recursiva | Asmódico | proposta |
 | 5 | (a definir) | **Iara "Lumen" Koslov** | 12 | Infiltradora (ofuscamento) · Cult Mirage (desertora) | Óxido | proposta |
 | 6 | (a definir) | **Linda "Siren" Neumann** | 12 | Crowd control (sônico) · Underground do Silêncio | Óxido | proposta |
 | 7 | (a definir) | **Dante "Grid" Alencar** ⚠️ | 13 | Suporte logístico · Periferia Industrial | Asmódico → C-Arcane | proposta · **por último, ver ⚠️** |
+
+### ★ A #3: o Cauã "Volt" entrevista o Gus (decisão do líder, 2026-07-25)
+
+Quem faz as perguntas ao Gus na #3 é o **Cauã "Volt" Berenger**, não o criador e não o próprio Gus. Consequências que a produção da #3 tem que honrar:
+
+- **Prefixo da voz:** `volt@glyfesse>` pergunta e `//` pensa; o Gus responde em `gus@glyfesse>`. É a **primeira vez que o Gus responde em vez de perguntar** — o `//` dele (o pensamento) é onde mora a ferida, e é o que essa entrevista tem de único.
+- **O motor:** velocidade × cálculo, **Pythia × C-Arcane**. O Cauã é o companion #1 (13 anos, recrutado na missão solo de abertura), então ele pergunta como quem age, não como quem analisa — perguntas curtas, impacientes, e o Gus responde comprido demais. A comédia sai daí sozinha.
+- **Método:** dois agentes de persona improvisando turno a turno, mediados pelo orquestrador (o mesmo que funcionou na #2).
+- ⚠️ **Aberto para o GATE-PAUTA da #4:** o Cauã já estreia aqui como entrevistador. Ele continua sendo o **2º entrevistado** da fila (o leitor já o conhece, o que ajuda) ou passa para o fim da série? Decisão do editor-geral quando a #4 for pautada — não trava a #3.
 
 **Por que esta ordem (proposta, pendente do editor-geral):**
 - **Cauã** em 2º porque é o **Companion #1 fixo** do jogo (recrutado na missão solo de abertura) — é o primeiro que o jogador conhece, então é o primeiro que o leitor conhece.
