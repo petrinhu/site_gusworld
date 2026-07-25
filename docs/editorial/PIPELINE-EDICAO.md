@@ -75,6 +75,17 @@ da mais nova (a vitrine viva, pra quem chega pela porta da frente).
 Não há como limpar o cache do X à mão; ele expira em ~7 dias. Por isso o `?ed=N` também resolve o cache:
 é um endereço novo, logo uma leitura nova.
 
+### ★ Capturar o UPTIME das sessões na publicação (canon 2026-07-25)
+
+Da **#3 em diante**, o cabeçalho da edição carrega quanto tempo as sessões de trabalho estavam abertas:
+`jogo 1456h (60d) · glintfx 326h (13d)`. Como a produção **não enxerga a máquina do líder**, o valor é
+**capturado no momento de publicar** e vira dado da edição (campo `uptime` no `$edicoes`): fica congelado
+como estava naquele dia, coerente com "cada edição é registro histórico datado". Um contador ao vivo
+reescreveria o número embaixo de um texto antigo.
+
+**No passo 5 do pipe (deploy), ANTES de publicar:** rodar `scripts/uptime-sessoes.sh`, colar o bloco na
+entrada da edição, e só então deployar. Se esquecer, a edição sai com o uptime de outro dia.
+
 ### OG obrigatório na montagem
 O passo 3 (OG) NÃO é opcional: toda edição, antes do go-live, tem `og:type/url/title/description/image(1200x630)/locale` + `twitter:card=summary_large_image` no `<head>` (via `head.php`), e uma `og:image` na identidade (navy/papel/ciano, sem "SOON"/"em breve"), feita em CSS->PNG, verificada como card no X. Link sem card = post morto.
 
