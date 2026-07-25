@@ -65,6 +65,12 @@ return [
         // que `?ed=1` resolva no card DELA em vez de cair no default por acaso,
         // e para que a capa da estante seja este card.
         'og_image'       => '/assets/og-launch.jpg',
+        // A CAPA da estante em INGLÊS (ordem do líder, 2026-07-25). Só a ARTE da
+        // prateleira do /en/ troca; o card SOCIAL acima segue em português nos
+        // dois idiomas (o preview de post publicado é irreversível). Gerador:
+        // docs/design/og-card-en.html. Campo OPCIONAL: sem ele, o /en/ mostra a
+        // arte em português (capa_estante() faz o fallback).
+        'capa_en'        => '/assets/og-edicao-1-en.jpg',
         'na_linha_tempo' => false, // era textual: fora do scrubber (só era visual)
     ],
 
@@ -97,6 +103,9 @@ return [
         // chão em perspectiva. Gerador em docs/design/og-card-2.html. Campo
         // OPCIONAL: quem não o traz cai no default /assets/og-launch.jpg.
         'og_image'       => '/assets/og-edicao-2.jpg',
+        // A CAPA da estante em INGLÊS (ver a nota da #1). Gerador:
+        // docs/design/og-card-2-en.html (o mesmo desenho, só o texto muda).
+        'capa_en'        => '/assets/og-edicao-2-en.jpg',
         'na_linha_tempo' => false, // 3D abandonado: não é a era visual 2D do scrubber
     ],
 

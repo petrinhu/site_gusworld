@@ -1454,9 +1454,36 @@ main{display:block}
   font-family:var(--font-corpo); font-size:clamp(13.5px,1.9vw,15px); line-height:1.5;
   color:var(--tinta-2); margin:8px 0 0; max-width:62ch;
 }
-.lt-vazio{
-  font-family:var(--font-corpo); font-style:italic; font-size:14px; line-height:1.5;
-  color:var(--tinta-2); margin:14px 0 0;
+/* ── VAZIO COM GRACA: a linha desenhada, ainda APAGADA ────────────────────────
+   Sem edicao visual publicada a secao mostrava so uma nota seca e lia como
+   pagina quebrada. Agora a linha aparece igual: o MESMO .lt-scrub / .lt-trilho /
+   .lt-marca do scrubber real (nada de peca paralela), com o ponto no estado
+   apagado (o aceso e o data-on="1", que aqui nunca vem) e a fala do Gus por
+   baixo. E PAPEL: tinta, sem glow: o brilho ciano so acende quando a linha
+   acender de verdade. */
+.lt-vazio{margin:16px 0 0}
+.lt-vazio .lt-scrub{height:42px; margin:0; cursor:default; pointer-events:none}
+/* o trilho vira TRACEJADO: o percurso existe, mas ainda nao foi percorrido (a
+   convencao de "por vir"). O continuo volta sozinho quando a linha acende, que
+   e' quando o .lt-vazio deixa de existir. */
+.lt-vazio .lt-trilho{
+  background:repeating-linear-gradient(to right, #00000026 0 7px, #0000 7px 15px);
+}
+/* o ponto do proximo marco encosta no INICIO do trilho (left:11px), no lugar
+   exato onde o 1o ponto real vai nascer. Fica so' vazado e mais claro: apagado,
+   nao quebrado (tracejar um circulo de 15px vira sujeira, nao desenho). */
+.lt-vazio .lt-marca{left:11px; cursor:default; border-color:var(--tinta-2); opacity:.55}
+/* com um ponto so', o rotulo alinha pela ESQUERDA (centrado, "em breve" saltaria
+   pra fora da margem da folha) */
+.lt-vazio .lt-rot{left:-8px; translate:0 0}
+.lt-vazio-fala{
+  font-family:var(--font-display); font-size:clamp(11px,1.7vw,13px); line-height:1.6;
+  color:var(--tinta-preta); margin:8px 0 0;
+}
+.lt-vazio-fala .hh{color:var(--tinta-ciano); margin-right:5px}
+.lt-vazio-pensa{
+  font-family:var(--font-display); font-size:clamp(10px,1.5vw,12px); line-height:1.55;
+  color:var(--tinta-2); margin:5px 0 0; max-width:64ch;
 }
 
 /* ── ESTADO-BASE: a lista estatica (o caminho sem-JS / reduced-motion) ── */

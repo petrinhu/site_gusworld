@@ -115,8 +115,9 @@ return [
         ],
         // A LINHA DO TEMPO (scrubber · item W6 · LINHA-TEMPO): a era VISUAL do
         // jogo, do quadrado azul (22 jun) em diante. Rótulos pixel <15px são
-        // minúsculos (guard N→H). 'lide'/'vazio'/'slider' não são pixel:
-        // acento e maiúscula livres. 'edicao' compõe a legenda "edição #N".
+        // minúsculos (guard N→H). 'lide'/'slider' não são pixel: acento e
+        // maiúscula livres. 'edicao' compõe a legenda "edição #N". As chaves
+        // 'vazio_*' são o vazio-com-graça (pixel, minúsculas).
         'linha_tempo' => [
             'titulo' => 'linha do tempo',
             'meta'   => 'era visual',
@@ -124,7 +125,15 @@ return [
             'dica'   => 'arraste · ou ← → no teclado · ou clique num ponto',
             'slider' => 'Linha do tempo do jogo',
             'edicao' => 'edição',
-            'vazio'  => 'A linha do tempo acende quando a primeira edição visual for publicada.',
+            // ── VAZIO COM GRAÇA (líder, 2026-07-25) ──────────────────────────
+            // Sem nenhuma edição visual publicada, a seção NÃO mostra uma nota
+            // seca de sistema (lia como página quebrada): a linha é desenhada
+            // apagada e quem explica é o GUS, na voz dele (fala sem ponto final,
+            // reticências como assinatura, os "erros" de digitação são de
+            // propósito). Minúsculo de ponta a ponta = guard N→H não dispara.
+            'vazio_fala'   => 'a linha ainda nao acendeu',
+            'vazio_pensa'  => 'falta o quadrado azul aparecer... ele é o primeiro ponto',
+            'vazio_rotulo' => 'em breve',
         ],
         // A GLYFA (forja de nomes · item W6 · GLYFA): combine duas raízes do
         // Sylvarin e veja o nome nascer com o significado. Vocabulário FECHADO =

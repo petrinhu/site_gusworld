@@ -112,8 +112,9 @@ return [
         ],
         // THE TIMELINE (scrubber · W6 item · LINHA-TEMPO): the game's VISUAL era,
         // from the blue square (Jun 22) onward. Pixel labels under 15px stay
-        // lowercase (N→H guard). 'lide'/'vazio'/'slider' are not pixel: accents
-        // and caps are free. 'edicao' composes the "edition #N" caption.
+        // lowercase (N→H guard). 'lide'/'slider' are not pixel: accents and caps
+        // are free. 'edicao' composes the "edition #N" caption. The 'vazio_*'
+        // keys are the empty-with-grace state (pixel, lowercase).
         'linha_tempo' => [
             'titulo' => 'timeline',
             'meta'   => 'visual era',
@@ -121,7 +122,15 @@ return [
             'dica'   => 'drag · or ← → on the keyboard · or click a dot',
             'slider' => 'Game timeline',
             'edicao' => 'edition',
-            'vazio'  => 'The timeline lights up once the first visual edition is published.',
+            // ── EMPTY WITH GRACE (leader, 2026-07-25) ────────────────────────
+            // With no visual edition published, the section does NOT show a dry
+            // system note (it read like a broken page): the line is drawn unlit
+            // and GUS is the one who explains it, in his own voice (no final
+            // period, ellipsis as his signature, the missing apostrophes are on
+            // purpose). All lowercase = the N→H pixel guard never fires.
+            'vazio_fala'   => 'the timeline hasnt lit up yet',
+            'vazio_pensa'  => "waiting on the blue square... it's the first dot",
+            'vazio_rotulo' => 'soon',
         ],
         // THE GLYFA (name forge · W6 item · GLYFA): combine two Sylvarin roots
         // and watch the name appear with its meaning. The vocabulary is CLOSED =

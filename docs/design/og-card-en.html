@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Glyfesse, OG card 1200x630 (EN)</title>
+<!-- ★ O GEMEO EN de og-card.html (Edicao #1). Existe porque a CAPA da estante do
+     /en/ tem que estar em ingles (ordem do lider, 2026-07-25): o card SOCIAL
+     (og:image) segue sendo o de PORTUGUES nos dois idiomas, entao este arquivo
+     gera SO' a arte de capa, nunca a meta tag.
+     Desenho: og-card.css (chassi) + og-card-1.css (a arena do quadradinho). O
+     que muda aqui e' so' o TEXTO; o acento ciano cai na MESMA parte da frase.
+     Render: ver o cabecalho de og-card.css. Saida: public_html/assets/og-edicao-1-en.jpg. -->
+<link rel="stylesheet" href="og-card.css">
+<link rel="stylesheet" href="og-card-1.css">
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <span class="prompt">root@glyfesse&gt; <b>glyfe</b> --edition 1</span>
+      <span class="vol">vol.1 · #1 · the genesis</span>
+    </div>
+
+    <div class="mid">
+      <div class="wordmark">GLYFESSE</div>
+      <!-- quebra CONTROLADA: em ingles a frase nao cabe em uma linha (a pt cabe),
+           e a quebra automatica partia o trecho ciano ao meio. Com a quebra
+           explicita antes do acento, a linha acesa fica INTEIRA, como na #2. -->
+      <p class="tagline">the magazine of a game<br><span class="acc">that hasn&rsquo;t shipped yet</span>.<br>written by someone who lives inside it.</p>
+    </div>
+
+    <div class="foot">
+      <span class="voz">// by <b>Gus</b>, who still doesn&rsquo;t know he&rsquo;s the hero</span>
+      <span class="url">gusworld.site</span>
+    </div>
+  </div>
+
+  <div class="arena" aria-hidden="true">
+    <span class="wall w1"></span>
+    <span class="wall w2"></span>
+    <span class="wall w3"></span>
+    <span class="ghost g1"></span>
+    <span class="ghost g2"></span>
+    <span class="ghost g3"></span>
+    <span class="hero"></span>
+  </div>
+</body>
+</html>

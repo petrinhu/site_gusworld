@@ -87,15 +87,23 @@ function og_card_banca(array $capas, mixed $ed_bruto = null): ?string
 
 /**
  * Ponto de entrada dos front controllers da home. Recebe o idioma da pasta.
+ *
+ * O 2º parâmetro é um SEAM DE TESTE e só isso: em produção ninguém passa nada,
+ * e o dado sai de `data/edicoes.php` como sempre. Ele existe porque estados que
+ * dependem do dado (a linha do tempo com pontos × o vazio-com-graça) não têm
+ * como ser exercitados sem publicar uma edição de verdade, e publicar de
+ * verdade num teste seria o pior jeito possível de descobrir uma regressão.
+ *
+ * @param array<int, array<string, mixed>>|null $edicoes  null = o dado real
  */
-function render_banca(string $idioma): void
+function render_banca(string $idioma, ?array $edicoes = null): void
 {
     if (!in_array($idioma, SITE_IDIOMAS, true)) {
         $idioma = SITE_IDIOMA_PADRAO;
     }
     $outro = $idioma === 'pt' ? 'en' : 'pt';
 
-    $edicoes = require __DIR__ . '/../../data/edicoes.php';
+    $edicoes ??= require __DIR__ . '/../../data/edicoes.php';
     $t = require __DIR__ . '/../i18n/' . $idioma . '.php';
 
     // As capas: só as publicadas (mais nova primeiro), já com idade e URL.
@@ -115,8 +123,15 @@ function render_banca(string $idioma): void
             // card social próprio da edição (opcional). É daqui, e só daqui, que
             // og_card_banca() tira o card servido pela home: o da mais nova no
             // link nu, ou o da edição pedida no `?ed=N` do post. O `numero` ao
-            // lado é a chave desse casamento.
+            // lado é a chave desse casamento. ⚠️ SEMPRE o de PORTUGUÊS, inclusive
+            // no /en/: card social já publicado é irreversível (o X reescreve o
+            // preview dos posts antigos). Quem varia por idioma é a `capa`.
             'og_image'  => isset($e['og_image']) ? (string) $e['og_image'] : null,
+            // a ARTE DE CAPA da estante, esta sim NO IDIOMA da página (ordem do
+            // líder, 2026-07-25). Cai no card português quando a edição não tem
+            // variante no idioma; null = a capa não ganha arte. Regra pura e
+            // testada em capa_estante().
+            'capa'      => capa_estante($e, $idioma),
         ];
     }
 

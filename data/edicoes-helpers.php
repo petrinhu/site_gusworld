@@ -84,6 +84,42 @@ function prateleira_colunas(int $publicadas): int
 }
 
 /**
+ * A ARTE DE CAPA que a estante da banca mostra para esta edição NESTE idioma.
+ *
+ * ★ Ordem do líder (2026-07-25): "quero as capas em ingles na versao ingles. os
+ * og podem ficar em portugues mesmo". São dois usos do mesmo desenho, e eles
+ * NÃO andam juntos:
+ *
+ *   - a CAPA (o <img> que o leitor vê na prateleira) segue o IDIOMA da página;
+ *   - o CARD SOCIAL (og:image) sai de `og_image` e é sempre o de PORTUGUÊS,
+ *     nos dois idiomas. Trocar o card social por idioma reescreveria o preview
+ *     dos posts JÁ publicados (o X guarda um card por endereço e o atualiza),
+ *     e isso é irreversível. Por isso esta função NÃO é usada em meta tag
+ *     nenhuma: quem serve o social é og_card_banca(), que só lê `og_image`.
+ *
+ * O campo é genérico por idioma (`capa_pt`, `capa_en`, …): quem não declara a
+ * variante cai no `og_image`, e quem não tem card nenhum devolve null (a capa
+ * simplesmente não ganha arte, sem erro). Assim o template não carrega `if` de
+ * idioma e uma capa própria de qualquer idioma novo é só +1 chave no dado.
+ *
+ * Pura (CONTRACT §5): recebe a entrada de $edicoes e o idioma, devolve o
+ * caminho root-absoluto ou null.
+ *
+ * @param array<string, mixed> $edicao
+ */
+function capa_estante(array $edicao, string $idioma): ?string
+{
+    foreach (['capa_' . $idioma, 'og_image'] as $campo) {
+        $caminho = (string) ($edicao[$campo] ?? '');
+        if ($caminho !== '') {
+            return $caminho;
+        }
+    }
+
+    return null;
+}
+
+/**
  * Só as edições publicadas, ordenadas cronologicamente (mais nova primeiro).
  *
  * É o filtro que TODO consumidor de conteúdo público deve aplicar: banca,

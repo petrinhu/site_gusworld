@@ -1,0 +1,59 @@
+/* docs/design/og-card-1.css: o que e' PROPRIO da Edicao #1 "A Genese":
+   a ARENA da direita, o quadradinho ciano (o heroi do jogo) dentro da tela, com
+   a trilha de fantasmas e as paredes da sala (ecoam o mock 05). O chassi (navy,
+   scanlines, wordmark, tagline, rodape) vive em og-card.css.
+
+   Compartilhado pelo par pt/en: og-card.html e og-card-en.html. So o TEXTO
+   difere entre os dois; o desenho e' este, um so'. */
+
+/* O QUADRADINHO ciano: o heroi do jogo dentro da tela, com trilha e sala. */
+  .arena {
+    position: absolute;
+    z-index: 2;
+    right: 84px; top: 196px;
+    width: 288px; height: 206px;
+    border: 2px solid var(--borda);
+    background:
+      linear-gradient(180deg, rgba(26,36,54,.55), rgba(13,21,32,.2));
+    box-shadow:
+      inset 0 0 40px rgba(0,0,0,.5),
+      0 0 0 6px rgba(13,21,32,.6);
+  }
+  /* paredes da sala (ecoam o mock 05) */
+  .arena .wall {
+    position: absolute;
+    background: var(--navy-alto);
+    border: 1px solid #2b3c56;
+  }
+  .arena .w1 { left: 20%; top: 16%; width: 34%; height: 12%; }
+  .arena .w2 { left: 62%; top: 30%; width: 12%; height: 34%; }
+  .arena .w3 { left: 24%; top: 66%; width: 28%; height: 11%; }
+
+  /* a trilha do quadradinho (fantasmas esmaecendo) */
+  .arena .ghost {
+    position: absolute;
+    width: 30px; height: 30px;
+    background: var(--ciano);
+    border-radius: 2px;
+  }
+  .arena .g1 { left: 18%; top: 44%; opacity: .12; }
+  .arena .g2 { left: 30%; top: 46%; opacity: .22; }
+  .arena .g3 { left: 42%; top: 48%; opacity: .40; }
+
+  .arena .hero {
+    position: absolute;
+    left: 54%; top: 50%;
+    width: 34px; height: 34px;
+    background: linear-gradient(160deg, var(--ciano-alto), var(--ciano));
+    border-radius: 3px;
+    box-shadow:
+      0 0 18px 4px rgba(77,217,232,.75),
+      0 0 40px 10px rgba(77,217,232,.35);
+  }
+  .arena .hero::after { /* os "óculos" do Gus: um risco escuro */
+    content: "";
+    position: absolute;
+    left: 5px; right: 5px; top: 12px; height: 5px;
+    background: rgba(13,21,32,.85);
+    border-radius: 1px;
+  }

@@ -1,0 +1,84 @@
+/* docs/design/og-card-2.css: o que e' PROPRIO da Edicao #2 "Arquitetura":
+   o painel da direita, onde o POSTER 3D do Gus (og-2-gus-recorte.png, recortado
+   do fundo branco) fica de pe' num chao em perspectiva, PISANDO FORA da moldura.
+   A edicao e' sobre fundacao, entao o card mostra o chao e a figura em pe' sobre
+   ele. O chassi (navy, scanlines, wordmark, tagline, rodape) vive em og-card.css.
+
+   Compartilhado pelo par pt/en: og-card-2.html e og-card-2-en.html. So o TEXTO
+   difere entre os dois; o desenho e' este, um so'. */
+
+  /* ── O PAINEL: a tela onde o Gus 3D esta' de pe' ─────────────────────────── */
+  .tela {
+    position: absolute;
+    z-index: 2;
+    right: 84px; top: 168px;
+    width: 300px; height: 324px;
+    border: 2px solid var(--borda);
+    background: linear-gradient(180deg, rgba(26,36,54,.62), rgba(13,21,32,.28));
+    box-shadow:
+      inset 0 0 40px rgba(0,0,0,.5),
+      0 0 0 6px rgba(13,21,32,.6);
+  }
+
+  /* o INTERIOR recorta tudo que e' "conteudo de tela" (chao, halo, varredura).
+     A figura fica FORA dele, e por isso pode transbordar a moldura. */
+  .tela .interior {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+
+  /* o chao em perspectiva: o grid de fundacao (o tema da edicao) */
+  .tela .chao {
+    position: absolute;
+    left: -40%; right: -40%; bottom: 0; height: 62%;
+    transform: perspective(260px) rotateX(66deg);
+    transform-origin: bottom center;
+    background-image:
+      repeating-linear-gradient(to right, rgba(77,217,232,.42) 0 1px, transparent 1px 46px),
+      repeating-linear-gradient(to bottom, rgba(77,217,232,.32) 0 1px, transparent 1px 46px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 42%, #000 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 42%, #000 100%);
+  }
+
+  /* halo: a luz da tela batendo atras da figura */
+  .tela .halo {
+    position: absolute;
+    left: 50%; bottom: 8%;
+    width: 300px; height: 300px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(77,217,232,.46), rgba(77,217,232,.16) 44%, transparent 72%);
+  }
+
+  /* scanlines locais: dentro da moldura a varredura e' mais forte */
+  .tela .varredura {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,.22) 3px,
+      rgba(0,0,0,0) 4px
+    );
+  }
+
+  /* a figura: recortada do poster (fundo branco removido no pre-processo) e
+     PISANDO FORA da moldura, para nao virar adesivo colado. */
+  .gus {
+    position: absolute;
+    left: 50%; bottom: -34px;
+    width: 213px; height: 400px;
+    transform: translateX(-50%);
+    filter:
+      drop-shadow(0 0 22px rgba(77,217,232,.34))
+      drop-shadow(0 12px 18px rgba(0,0,0,.55));
+  }
+
+  /* sombra de contato: ancora as botas no chao do card, fora da moldura, para a
+     figura nao parecer flutuando abaixo da tela. Mesmo eixo horizontal do Gus. */
+  .tela .sombra {
+    position: absolute;
+    left: 50%; bottom: -46px;
+    width: 196px; height: 30px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, rgba(0,0,0,.72), rgba(0,0,0,.3) 45%, transparent 72%);
+  }

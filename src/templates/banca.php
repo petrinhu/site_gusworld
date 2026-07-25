@@ -113,13 +113,16 @@ require __DIR__ . '/../includes/head.php';
         // dimensões reais do frame (width/height explícitos = zero CLS)
         $frame_fs  = $c['frame'] !== null ? __DIR__ . '/../../public_html' . $c['frame'] : null;
         $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs) : false;
-        // ★ A CAPA da edição na estante (líder, 2026-07-25): o CARD SOCIAL dela
-        // (o mesmo 1200x630 que o X mostra) vira a arte de capa aqui na banca.
-        // O mesmo arquivo serve os dois usos: nada é gerado a mais, e o que o
-        // leitor viu no post é exatamente o que ele encontra na prateleira.
-        // Edição sem card próprio simplesmente não ganha arte (o card só-texto
-        // continua válido); arquivo ausente no disco também cai fora, sem erro.
-        $capa_fs  = $c['og_image'] !== null ? __DIR__ . '/../../public_html' . $c['og_image'] : null;
+        // ★ A CAPA da edição na estante (líder, 2026-07-25): o card 1200x630 dela
+        // vira a arte de capa aqui na banca. O que o leitor viu no post é o que
+        // ele encontra na prateleira. Edição sem card próprio simplesmente não
+        // ganha arte (o card só-texto continua válido); arquivo ausente no disco
+        // também cai fora, sem erro.
+        // ★★ NO IDIOMA DA PÁGINA (líder, 2026-07-25: "quero as capas em ingles na
+        // versao ingles. os og podem ficar em portugues mesmo"): quem escolhe é
+        // capa_estante(), e ela NÃO toca o og:image lá de cima, que segue sendo
+        // o card português nos dois idiomas.
+        $capa_fs  = $c['capa'] !== null ? __DIR__ . '/../../public_html' . $c['capa'] : null;
         $capa_dim = ($capa_fs !== null && is_file($capa_fs)) ? getimagesize($capa_fs) : false;
       ?>
       <?php /* o card inteiro é o link. O aria-label dá ao leitor de tela um nome
@@ -153,7 +156,7 @@ require __DIR__ . '/../includes/head.php';
            diz "nunca loading=lazy no hero"); as de baixo, sim. */ ?>
         <?php if ($capa_dim !== false): ?>
         <figure class="ed-capa aceso">
-          <img src="<?= h(asset((string) $c['og_image'])) ?>"
+          <img src="<?= h(asset((string) $c['capa'])) ?>"
                alt="<?= h(sprintf((string) $banca['capa_alt'], (int) $c['numero'], (string) $c['titulo'])) ?>"
                width="<?= (int) $capa_dim[0] ?>" height="<?= (int) $capa_dim[1] ?>"
                <?= $i === 0 ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"' ?>>
@@ -201,7 +204,24 @@ require __DIR__ . '/../includes/head.php';
     <p class="lt-lide"><?= h((string) $lt['lide']) ?></p>
 
     <?php if ($linha_tempo === []): ?>
-    <p class="lt-vazio"><?= h((string) $lt['vazio']) ?></p>
+    <?php /* ══ VAZIO COM GRAÇA (líder, 2026-07-25) ══════════════════════════
+       Sem nenhuma edição visual publicada, a seção mostrava um cabeçalho e uma
+       nota seca de sistema: lia como página QUEBRADA, não como escolha. A regra
+       da revista para seção vazia vale aqui: o vazio tem que parecer INTENCIONAL.
+       Então a linha é DESENHADA mesmo sem pontos (o mesmo trilho e o mesmo ponto
+       do scrubber real, só que APAGADOS: sem o data-on="1" que acende o ciano) e
+       quem explica é o GUS, na voz dele, no lugar da nota seca.
+       O desenho é decorativo (aria-hidden): quem carrega a informação é a fala,
+       que é texto de verdade. Zero JS: o linha-tempo.js já sai fora sozinho
+       quando não acha a #lt-lista, e ela só existe quando há ponto. */ ?>
+    <div class="lt-vazio">
+      <div class="lt-scrub" aria-hidden="true">
+        <div class="lt-trilho"></div>
+        <span class="lt-marca"><span class="lt-rot"><?= h((string) $lt['vazio_rotulo']) ?></span></span>
+      </div>
+      <p class="lt-vazio-fala"><span class="hh">gus@glyfesse&gt;</span> <?= h((string) $lt['vazio_fala']) ?></p>
+      <p class="lt-vazio-pensa">// <?= h((string) $lt['vazio_pensa']) ?></p>
+    </div>
     <?php else: ?>
     <?php /* ESTADO-BASE + FONTE DE DADOS do JS. Cada <li> carrega os data-* que
        linha-tempo.js lê pra montar o scrubber (frame, data ISO, rótulo curto,
