@@ -46,6 +46,70 @@ Quem faz as perguntas ao Gus na #3 é o **Cauã "Volt" Berenger**, não o criado
 
   ⚠️ **As três condições que a produção dessa peça tem que honrar (senão ela vira spoiler):** (a) o Gus **não desconfia de nada** in-fiction — ele entrevista um amigo, ponto; (b) a copy **não planta dica forte**: nada de "há quem duvide", olhar de esguelha, silêncio suspeito, `//` do Gus estranhando; o duplo sentido tem que nascer de frases que são **inocentes na primeira leitura** (o eixo dele é *preservar × descartar*, e é sobre isso que ele fala); (c) **GATE-SPOILER com o líder, obrigatório e sem exceção**, antes de qualquer render.
 
+---
+
+# Trilha B — fora da party (ordem do líder, 2026-07-25)
+
+> *"acrescente entrevista com brunus vetorial e com os personagens históricos"*
+
+A série não acaba na party. Depois dela (ou intercalada — ver decisão aberta), entram os convidados **de fora da casa**, e é o que transforma a seção 16 num poço sem fundo: dá **29 convidados** ao todo, o suficiente para anos de revista.
+
+## B1. Brunus "Vetorial" Solveckt
+
+Fonte: `Projects/gusworld/docs/narrative/characters/brunus-vetorial.md` (canônico, revisado pelo criador 2026-07-03) + o conto `brunus-vetorial-conto.md`.
+
+| | |
+|---|---|
+| **Quem é** | NPC adulto, **não-party**. Boticário-médico-construtor itinerante, sem facção (homem livre) |
+| **Idade** | **~40 de aparência, ~700+ de verdade** — não envelhece desde um experimento de juventude feito em si mesmo. Não é invulnerável: sangra, cansa, pode morrer de trauma |
+| **Função** | Mentor. Guardião da memória do ancestral, voz da paciência para o prodígio impaciente, e a ponte com o pai ausente |
+| **Voz** | Preciso e econômico. Léxico de boticário e de médico misturados. Frases médias, cadência lenta, silêncio depois de afirmar. **Pergunta mais do que responde** |
+| **Tic** | Mede tudo em tempo: *"isso leva três dias"*, *"isso leva um inverno"*, *"isso não tem pressa"*. Conta nos dedos devagar antes de entregar uma dose |
+| **Wound** | Atravessar as eras sozinho. Viu o único amigo verdadeiro morrer há séculos e nunca mais teve par à altura |
+
+**Por que ele é a melhor entrevista do lote inteiro:** o tic dele é **medir tudo em tempo**, e a revista existe para contar uma espera. Um entrevistado que atravessou 700 anos falando com um menino de 11 que quer tudo agora é o contraste que a Glyfesse persegue desde a #1 — e o `//` do Gus, impaciente, se escreve sozinho.
+
+⚠️ **Três travas na produção dele:**
+1. **O nome do amigo real que inspirou o personagem NUNCA aparece** — nem em texto, nem em `alt`, nem em nome de arquivo, nem em mensagem de commit (mensagem pushada é imutável). Regra da casa: nome de amigo só com consentimento, e aqui nem com consentimento vale a pena.
+2. Ele **ancora o Gus ao ancestral sem entregar o arco** — a entrevista **não** toca a linhagem Dragon/Pyotor I. GATE-SPOILER.
+3. Ele é o **único adulto mentor** num jogo cujo pilar 4 diz que adultos são antagonistas ou ausentes. A entrevista tem que honrar isso: ele não resolve nada pelo Gus.
+
+## B2. Os mestres do Codex (o roster de análogos)
+
+Fonte: `Projects/gusworld/docs/design/roster-analogos/` (21 fichas) + `OBRA-DE-FICCAO-E-METODOLOGIA.md`.
+
+**★ A regra de nomes já é canônica no jogo:** figura **falecida** mantém o nome real; figura **viva** usa **near-name**, nunca o nome real, em nada voltado ao jogador. Há **uma só figura viva** no roster.
+
+| Cluster | Mestres | Nome |
+|---|---|---|
+| Eletromagnetismo | Faraday, Maxwell, Tesla, Volta | real (falecidos) |
+| Física / espaço-tempo | Einstein, Newton, Planck | real (falecidos) |
+| Matemática | Mandelbrot, Euler, Gödel | real (falecidos) |
+| Computação | Ada Lovelace, Turing, von Neumann | real (falecidos) |
+| Ocultistas / herméticos | Giordano Bruno, John Dee, Pythagoras | real (falecidos) |
+| Economia austríaca | Hayek, Mises, Menger, Bastiat | real (falecidos) |
+| **Capstone** | **Helion Tusk** ⚠️ | **near-name — figura VIVA** · 🔒 entrevista de **1 linha só** (ver ⚠️ 2 abaixo) |
+
+**O gancho:** cada ficha já traz um **ângulo de ENSINO** explícito (o Faraday, por exemplo: um garoto pobre sem escola vira o maior experimentalista do século por curiosidade e método, não por dom — rima direta com o Gus). Entrevista com mestre = a seção onde a revista **ensina de verdade**, na voz de quem inventou a coisa, sem virar aula. Casa com o eixo leigo **e** com o expert.
+
+⚠️ **Duas travas, e as duas são decisão do líder:**
+1. **`SPOILER-CARTA-FARADAY` (INBOX, aberto desde 2026-07-16):** nomear mestre específico em copy pública **toca o easter egg do baralho**. Uma entrevista inteira é a forma mais forte dessa exposição. O líder é a autoridade única.
+2. **Helion Tusk (figura VIVA): 🔒 RESOLVIDO pelo líder em 2026-07-25 — e a solução é a piada.** A entrevista **existe** e é de **uma linha só**: o root corta a seção antes de ela começar. Fala **verbatim do líder, não reescrever**:
+
+   > `root@glyfesse>` **Evitemos processos, até a próxima, pessoal**
+
+   **Por que é a solução certa:** vira o risco jurídico em piada, dá ao criador a sua única aparição do número (uma linha, e ele some — do jeito que a voz do site funciona), e é a aplicação mais afiada do **vazio com graça** já feita na revista: a seção não fica vazia por falta de material, fica vazia **de propósito**, e o leitor entende na hora.
+
+   ⚠️ **Travas da peça:** (a) no publicado é **"Helion Tusk"**, o near-name — **o nome real nunca aparece**, nem no texto, nem no `alt`, nem no arquivo, nem no commit; é o near-name **somado** à fala do root que faz a piada existir (dizer o nome real destruiria a piada *e* o motivo dela); (b) **zero conteúdo além da linha** — nenhuma pergunta, nenhuma resposta, nada na boca dele; (c) a fala é do **root**, não do Gus (o Gus não sabe o que é um processo); (d) sem ponto final, conforme a pontuação canônica da voz.
+
+   **Consequência boa:** com a peça reduzida a uma linha, o **sign-off do `dr-advogado` deixa de ser bloqueante** para esta seção — não há palavra posta na boca de pessoa viva. O sign-off segue valendo para a **carta** do Tusk no jogo, que é outro assunto e não é do site.
+
+## Decisão aberta: como intercalar
+
+A party (7) é a espinha. Brunus e os mestres (22) podem: **(a)** vir depois da party inteira; **(b)** intercalar (party nas edições ímpares, convidado de fora nas pares); ou **(c)** o mestre entrar **atrelado à matéria da edição** (quando a edição fala de eletromagnetismo, o convidado é o Faraday). Fica para o líder no próximo GATE-PAUTA — não trava a #3.
+
+---
+
 ## Regras de produção desta série
 
 1. **Ordem do convidado é do editor-geral.** A fila acima é proposta; nenhuma edição fecha o convidado fora do GATE-PAUTA.
