@@ -1742,6 +1742,34 @@ main{display:block}
   color:var(--tinta-2); opacity:.85; margin:0;
 }
 
+/* ── §13 (edição #2) · o PÔSTER CENTRAL emoldurado: o Gus 3D ABANDONADO ──
+   O render 3D que o jogo quase foi, tratado como pôster destacável de revista.
+   .poster-mat = passe-partout navy (a tinta impressa) com keyline ciano (a luz
+   do jogo) rente à imagem; a foto grande e centralizada. Reusa o zoom-link /
+   zoom-badge (§17) pro lightbox: SEM JS abre a PNG full; COM JS amplia in-page.
+   O rótulo de canto "ENCARTE" evoca o pôster arrancável do miolo da revista. */
+.conteudo .poster{margin:0 0 clamp(16px,3vw,26px)}
+.conteudo .poster-mat{
+  position:relative; display:block; margin:0 auto; max-width:min(100%,560px);
+  padding:clamp(16px,4vw,34px);
+  background:linear-gradient(158deg,#151d2e 0%,#0d1420 62%,#0a0f19 100%);
+  border:1px solid var(--borda); border-radius:var(--raio-tela);
+  box-shadow:var(--sombra-folha), inset 0 0 0 1px #ffffff12;
+}
+/* o rótulo de encarte no alto do mat (pixel apagada, como carimbo de miolo) */
+.conteudo .poster-mat::before{
+  content:"ENCARTE"; position:absolute; top:clamp(6px,1.6vw,11px); left:0; right:0;
+  text-align:center; font-family:var(--font-display); font-size:9.5px;
+  letter-spacing:.34em; color:#7fd6e0; opacity:.72; pointer-events:none;
+}
+/* a imagem justa no mat, com o keyline ciano fino separando tinta de foto */
+.conteudo .poster-mat .zoom-link{
+  border:1px solid #1f6b7a; background:#05080e;
+  box-shadow:0 6px 22px #00000059;
+}
+.conteudo .poster-mat img{display:block; width:100%; height:auto}
+.conteudo .poster-mat .zoom-badge{background:#0c1524e6}
+
 /* ── §14 · o brinde: encarte da fonte CC0 + wallpaper de terminal ── */
 .brinde{display:grid; gap:clamp(16px,3vw,22px); margin:0}
 @media (min-width:620px){ .brinde{grid-template-columns:1fr 1fr; align-items:start} }
