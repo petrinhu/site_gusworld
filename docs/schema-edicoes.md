@@ -47,6 +47,7 @@ $scrubber   = edicoes_na_linha_tempo($edicoes);    // linha do tempo
 | `frame` | `string` \| `null` | sim | Caminho web do asset visual da capa/scrubber (`/assets/frames/edicao-N.png`), ou `null` se não houver (a #1 é gênese sem screenshot). | banca, linha do tempo |
 | `frame_alt_pt` | `string` \| `null` | sim | Texto alternativo do frame em pt-br. **Spoiler-safe** (alt-text é texto público — AUD-SPOILER). `null` quando `frame` é `null`. | banca, linha do tempo |
 | `frame_alt_en` | `string` \| `null` | sim | Texto alternativo do frame em inglês. **Spoiler-safe.** | banca, linha do tempo |
+| `og_image` | `string` | **não** | Caminho web root-absoluto do card social 1200x630 próprio da edição (`/assets/og-edicao-N.jpg`). Ausente ou `null` → o `head.php` aplica o default `/assets/og-launch.jpg`. | página da edição (Open Graph / Twitter Card) |
 | `na_linha_tempo` | `bool` | sim | Se a edição entra no scrubber (era **visual**, #3+). A gênese textual (#1) e o 3D abandonado (#2) são `false`. | linha do tempo |
 
 ¹ Obrigatório **quando publicada**. Numa entrada `rascunho` esses campos podem
@@ -61,6 +62,12 @@ ficar vazios/placeholder — nunca são renderizados enquanto rascunho.
 - **`data` vs `atualizada_em`.** `data` é o fato histórico ("ponha a data das
   coisas" — o líder) e não muda. `atualizada_em` é frescor técnico do sitemap;
   bump quando o conteúdo da edição for corrigido.
+- **`og_image` é opcional e o único campo com fallback.** O caminho atravessa
+  `montar_contexto()` → `$ctx['og_image']` → `$head['og_image']` → `head.php`, que
+  prefixa a `SITE_BASE_URL` (o crawler não resolve caminho relativo). Sem o campo,
+  a chave nem entra no `$head` e vale o default. Card novo = 1 linha de dado, sem
+  `if` de número de edição no template. Geradores em `docs/design/og-card*.html`
+  (#1 = `og-card.html`; #2 = `og-card-2.html`).
 
 ## As invariantes (não negociáveis)
 

@@ -71,6 +71,14 @@ function montar_contexto(array $e, string $idioma): array
         'frame'         => $e['frame'] !== null ? (string) $e['frame'] : null,
         'frame_alt'     => $e['frame_alt_' . $idioma] !== null ? (string) $e['frame_alt_' . $idioma] : null,
 
+        // Card social por edição (opcional, data-driven): quando a edição tem o
+        // seu próprio card 1200x630, o caminho vem do $edicoes e o head o usa; sem
+        // campo, fica `null` e o head cai no default (/assets/og-launch.jpg). Nada
+        // de `if numero == N` no template: mais uma edição = mais uma linha de dado.
+        'og_image'      => isset($e['og_image']) && $e['og_image'] !== null
+                            ? (string) $e['og_image']
+                            : null,
+
         // navegação e i18n de URL (IA-WIREFRAME §2.3)
         'url_self'      => url_edicao($idioma, $slug_ele),
         'url_par'       => url_edicao($outro, $slug_par),   // destino da LCD (par gêmeo)

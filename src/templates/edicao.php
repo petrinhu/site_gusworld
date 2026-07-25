@@ -22,6 +22,11 @@ $head = [
     'canonical' => (string) $ctx['url_self'],
     'hreflang'  => $ctx['hreflang'],
 ];
+// card social próprio da edição, quando o $edicoes traz um; senão o head aplica
+// o default (/assets/og-launch.jpg). A chave só entra se houver valor.
+if ($ctx['og_image'] !== null) {
+    $head['og_image'] = (string) $ctx['og_image'];
+}
 require __DIR__ . '/../includes/head.php';
 
 // dimensões reais do frame (width/height explícitos = zero CLS)
