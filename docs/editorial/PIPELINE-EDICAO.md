@@ -54,14 +54,17 @@ A ordem fixa do release de cada edição:
 
 Invariantes: o **OG entra ANTES do deploy** (o card tem que estar no ar quando o link for compartilhado); a **postagem X vem DEPOIS do deploy** (o link só funciona com o site no ar); **quem posta no X é sempre o líder**.
 
-### ★ O post do X linka a EDIÇÃO, nunca a home (canon 2026-07-25)
+### ★ O post do X linka a BANCA, e a banca adota o card da edição mais nova (canon 2026-07-25)
 
-O card de preview vem da página que o link aponta. A **home** serve o card **padrão** (`og-launch.jpg`);
-só a **página da edição** serve o card próprio dela (`og-edicao-N.jpg`). Logo o post do X tem que linkar
-**`https://gusworld.site/pt/edicao-N`**, não `https://gusworld.site`, senão aparece o card da edição
-anterior. Erro pego pelo líder no post da #2 ("o og que aparece é o antigo"). ⚠️ Se o X já tiver cacheado
-o link, o card velho pode persistir: usar o Card Validator do X ou postar a URL da edição (que é outra URL,
-logo outro cache).
+**O post linka `https://gusworld.site` (a banca)**, decisão do líder: a porta de entrada é a estante, não
+uma edição isolada. Como o card de preview vem da página linkada, a **banca serve como card social o card
+da edição mais recente** (`$capas[0]['og_image']`, com fallback pro default). Assim o post de lançamento
+mostra o card da edição que acabou de sair, sem ninguém trocar nada à mão.
+
+⚠️ **O erro que gerou a regra** (líder, no post da #2: *"o og que aparece é o antigo"*): a banca servia um
+card fixo (o do lançamento da #1), então toda edição nova era anunciada com o card da anterior. ⚠️ **Cache
+do X:** como a URL da banca é sempre a mesma, o X pode servir o card cacheado; se acontecer, usar o Card
+Validator do X pra forçar a releitura.
 
 ### OG obrigatório na montagem
 O passo 3 (OG) NÃO é opcional: toda edição, antes do go-live, tem `og:type/url/title/description/image(1200x630)/locale` + `twitter:card=summary_large_image` no `<head>` (via `head.php`), e uma `og:image` na identidade (navy/papel/ciano, sem "SOON"/"em breve"), feita em CSS->PNG, verificada como card no X. Link sem card = post morto.

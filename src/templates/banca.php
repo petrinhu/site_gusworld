@@ -21,6 +21,14 @@ declare(strict_types=1);
 $banca   = $t['banca'];
 $ganchos = $banca['ganchos'];
 
+/* ★ O CARD SOCIAL DA BANCA ACOMPANHA A EDIÇÃO MAIS NOVA (líder, 2026-07-25).
+   O post de lançamento linka a BANCA (a porta de entrada, onde se vê a estante),
+   não a página da edição. Logo o card que aparece no X tem que ser o da edição
+   que acabou de sair, senão o leitor vê o card da anterior. `$capas` já vem
+   ordenada da mais nova para a mais velha (render-banca.php), então a [0] é a
+   mais recente; se ela não tiver card próprio, cai no default do head.php. */
+$og_banca = (string) ($capas[0]['og_image'] ?? '');
+
 $head = [
     'lang'      => (string) $t['html_lang'],
     'og_locale' => (string) $t['og_locale'],
@@ -30,6 +38,9 @@ $head = [
     'canonical' => (string) $ctx['url_banca'],
     'hreflang'  => $ctx['hreflang'],
 ];
+if ($og_banca !== '') {
+    $head['og_image'] = $og_banca;
+}
 require __DIR__ . '/../includes/head.php';
 ?>
 <body data-material="papel">

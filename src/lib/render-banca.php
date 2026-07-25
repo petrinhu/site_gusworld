@@ -45,6 +45,10 @@ function render_banca(string $idioma): void
             'frame_alt' => $e['frame_alt_' . $idioma] !== null ? (string) $e['frame_alt_' . $idioma] : null,
             'idade'     => idade_folha($edicoes, (string) $e['data']),
             'visual'    => ($e['na_linha_tempo'] ?? false) === true,
+            // card social próprio da edição (opcional). A banca usa o da mais
+            // nova como SEU card, porque é a banca que o post de lançamento
+            // linka (ver o comentário em templates/banca.php).
+            'og_image'  => isset($e['og_image']) ? (string) $e['og_image'] : null,
         ];
     }
 
