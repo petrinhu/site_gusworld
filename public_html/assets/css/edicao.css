@@ -1748,9 +1748,16 @@ main{display:block}
    do jogo) rente à imagem; a foto grande e centralizada. Reusa o zoom-link /
    zoom-badge (§17) pro lightbox: SEM JS abre a PNG full; COM JS amplia in-page.
    O rótulo de canto "ENCARTE" evoca o pôster arrancável do miolo da revista. */
-.conteudo .poster{margin:0 0 clamp(16px,3vw,26px)}
+/* o pôster (encarte) centraliza na SEÇÃO inteira, não na coluna de texto (que é
+   74ch presa à esquerda): ganha a largura da seção (viewport menos os 2 paddings
+   simétricos do .edicao) e centraliza o mat nela via flex. */
+.conteudo .poster{
+  display:flex; justify-content:center;
+  width:calc(100vw - 2 * clamp(20px,3.5vw,56px));
+  margin:0 0 clamp(16px,3vw,26px); box-sizing:border-box;
+}
 .conteudo .poster-mat{
-  position:relative; display:block; margin:0 auto; max-width:min(100%,560px);
+  position:relative; display:block; margin:0; max-width:min(100%,560px);
   padding:clamp(16px,4vw,34px);
   background:linear-gradient(158deg,#151d2e 0%,#0d1420 62%,#0a0f19 100%);
   border:1px solid var(--borda); border-radius:var(--raio-tela);
