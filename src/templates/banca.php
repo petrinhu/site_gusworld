@@ -61,7 +61,7 @@ require __DIR__ . '/../includes/head.php';
      subheadline enxuta acima da dobra — prismic.io/blog/website-hero-section). */ ?>
   <p class="banca-lede"><?= h((string) $banca['lede']) ?></p>
 
-  <?php /* ══ A BANCA · o CORAÇÃO da home, agora o HERÓI (data-driven de $capas) ══
+  <?php /* ══ A BANCA · o CORAÇÃO da home, e ela é o HERÓI (data-driven de $capas) ══
      Decisão do líder (2026-07-21): as EDIÇÕES são as estrelas — sobem para ANTES
      dos brinquedos, ACIMA DA DOBRA, com um "onde clicar" claro. Os brinquedos
      (quadradinho, PRESS START, Glyfa, álbum, cupom, linha do tempo) descem para
@@ -69,8 +69,18 @@ require __DIR__ . '/../includes/head.php';
      Padrões de hero aplicados (prismic.io, onenine.com, blog.logrocket.com):
      (1) herói acima da dobra; (2) UM CTA primário contrastante com affordance de
      clique (o card inteiro é <a> + o botão .ed-cta + hover); (3) proposta de
-     valor curta (a .banca-lede acima). A #1 é o card HERÓI proeminente; quando
-     houver mais edições, elas enfileiram no mesmo foreach (a banca cresce).
+     valor curta (a .banca-lede acima).
+
+     ★ DOIS DESENHOS, uma fonte só (BANCA-PRATELEIRA-MULTI, líder 2026-07-21):
+       1 edição publicada  → o card-HERÓI único (o desenho do lançamento, intacto).
+       2+ edições          → a PRATELEIRA: as capas enfileiradas lado a lado numa
+                             estante, a mais nova em destaque (.ed--destaque) e as
+                             anteriores em sequência, cada uma amarelando pela sua
+                             própria idade. O herói gigante só existe com 1 capa;
+                             a partir de 2 o arquivo enfileirado é o desenho.
+     As fileiras são fatiadas por prateleira_colunas() (helper puro, testado) para
+     a fileira fechar CHEIA — nada de uma capa solta num buraco de grid. Escala
+     sozinha: publicar a próxima edição é +1 no $edicoes, sem tocar em layout.
      Landmark = <section> (não <nav>): corpo editorial, não menu (§7.3). Só
      PUBLICADAS entram (o guard mora no helper). */ ?>
   <section class="banca" id="banca" aria-labelledby="banca-h2">
@@ -79,49 +89,70 @@ require __DIR__ . '/../includes/head.php';
       <span class="conta"><?= count($capas) ?> <?= h((string) (count($capas) === 1 ? $banca['secao_meta_um'] : $banca['secao_meta'])) ?></span>
     </div>
 
-    <div class="prateleira">
-      <?php foreach ($capas as $i => $c): ?>
-      <?php
-        // dimensões reais do frame (width/height explícitos = zero CLS)
-        $frame_fs  = $c['frame'] !== null ? __DIR__ . '/../../public_html' . $c['frame'] : null;
-        $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs) : false;
-        $eh_hero   = $i === 0; // a mais nova = o card HERÓI proeminente
-      ?>
-      <a class="ed folha<?= $eh_hero ? ' ed--hero' : '' ?>" style="--idade:<?= h((string) $c['idade']) ?>" href="<?= h((string) $c['url']) ?>">
-        <?php if ($eh_hero): ?>
-        <span class="nova"><?= h((string) $banca['nova']) ?></span>
-        <?php endif; ?>
+    <?php
+      $n_capas = count($capas);
+      $solo    = $n_capas <= 1;                       // lançamento: o herói único
+      $colunas = prateleira_colunas($n_capas);        // helper puro (testado)
+      // as FILEIRAS da estante: cada uma fecha com $colunas capas (a última pode
+      // vir menor). Com 1 capa é uma fileira só, e ela é o herói.
+      $fileiras = array_chunk($capas, max(1, $colunas));
+      $pos = 0;                                       // posição global (0 = a mais nova)
+    ?>
+    <div class="prateleira <?= $solo ? 'prateleira--solo' : 'prateleira--fila' ?>" style="--cols:<?= (int) $colunas ?>">
+      <?php foreach ($fileiras as $fileira): ?>
+      <div class="prat-fila">
+        <?php foreach ($fileira as $c): ?>
+        <?php
+          // dimensões reais do frame (width/height explícitos = zero CLS)
+          $frame_fs  = $c['frame'] !== null ? __DIR__ . '/../../public_html' . $c['frame'] : null;
+          $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs) : false;
+          $eh_nova   = $pos === 0;  // a mais nova: badge + o lugar da frente na estante
+          $pos++;
+          // com 1 capa ela é o HERÓI gigante; com 2+ ela é a capa em DESTAQUE da
+          // fileira (mesma largura das irmãs: a fileira fecha cheia, sem buraco).
+          $classe = $eh_nova ? ($solo ? ' ed--hero' : ' ed--destaque') : '';
+        ?>
+        <a class="ed folha<?= $classe ?>" style="--idade:<?= h((string) $c['idade']) ?>" href="<?= h((string) $c['url']) ?>">
+          <?php if ($eh_nova): ?>
+          <span class="nova"><?= h((string) $banca['nova']) ?></span>
+          <?php endif; ?>
 
-        <div class="mini-mast">
-          <span class="marca">GLYFESSE</span>
-          <span class="ref"><?= h((string) $t['exp_vol']) ?> <?= (int) volume_edicao((string) $c['data']) ?> · <?= h((string) $t['exp_num']) ?> <?= (int) $c['numero'] ?> · <?= h(data_por_extenso((string) $c['data'], $idioma, $t)) ?></span>
-        </div>
+          <div class="mini-mast">
+            <span class="marca">GLYFESSE</span>
+            <span class="ref"><?= h((string) $t['exp_vol']) ?> <?= (int) volume_edicao((string) $c['data']) ?> · <?= h((string) $t['exp_num']) ?> <?= (int) $c['numero'] ?> · <?= h(data_por_extenso((string) $c['data'], $idioma, $t)) ?></span>
+          </div>
 
-        <h3 class="ct"><?= h((string) $c['titulo']) ?></h3>
-        <p class="ch"><?= h((string) $c['dek']) ?></p>
+          <h3 class="ct"><?= h((string) $c['titulo']) ?></h3>
+          <p class="ch"><?= h((string) $c['dek']) ?></p>
 
-        <?php if ($c['frame'] !== null && $frame_dim !== false): ?>
-        <figure class="ed-frame aceso">
-          <img src="<?= h((string) $c['frame']) ?>"
-               alt="<?= h((string) ($c['frame_alt'] ?? '')) ?>"
-               width="<?= (int) $frame_dim[0] ?>" height="<?= (int) $frame_dim[1] ?>"
-               loading="lazy" decoding="async">
-        </figure>
-        <?php endif; ?>
+          <?php if ($c['frame'] !== null && $frame_dim !== false): ?>
+          <figure class="ed-frame aceso">
+            <img src="<?= h((string) $c['frame']) ?>"
+                 alt="<?= h((string) ($c['frame_alt'] ?? '')) ?>"
+                 width="<?= (int) $frame_dim[0] ?>" height="<?= (int) $frame_dim[1] ?>"
+                 loading="lazy" decoding="async">
+          </figure>
+          <?php endif; ?>
 
-        <?php if ($c['visual']): ?>
-        <span class="selo-jogo"><?= h((string) $banca['jogavel']) ?></span>
-        <?php endif; ?>
+          <?php if ($c['visual']): ?>
+          <span class="selo-jogo"><?= h((string) $banca['jogavel']) ?></span>
+          <?php endif; ?>
 
-        <?php /* o CTA "onde clicar": um chip-tela (navy + ciano aceso) no papel —
-           coerente com a VIBE (ciano só aparece onde há tela). O card inteiro é o
-           link real (foco/teclado); este .ed-cta é a AFFORDANCE visual, não um
-           <button> aninhado (isso seria HTML inválido dentro do <a>). */ ?>
-        <span class="ed-cta">
-          <span class="ed-cta-txt"><?= h((string) $banca['cta']) ?></span>
-          <span class="ed-cta-seta" aria-hidden="true">▶</span>
-        </span>
-      </a>
+          <?php /* o CTA "onde clicar": um chip-tela (navy + ciano aceso) no papel —
+             coerente com a VIBE (ciano só aparece onde há tela). O card inteiro é o
+             link real (foco/teclado); este .ed-cta é a AFFORDANCE visual, não um
+             <button> aninhado (isso seria HTML inválido dentro do <a>). O .ed-pe é
+             o PÉ do card: na prateleira ele desce ao rodapé da capa (margin-top
+             auto), alinhando todos os CTAs na mesma linha da fileira. */ ?>
+          <span class="ed-pe">
+            <span class="ed-cta">
+              <span class="ed-cta-txt"><?= h((string) $banca['cta']) ?></span>
+              <span class="ed-cta-seta" aria-hidden="true">▶</span>
+            </span>
+          </span>
+        </a>
+        <?php endforeach; ?>
+      </div>
       <?php endforeach; ?>
     </div>
   </section>

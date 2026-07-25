@@ -1339,16 +1339,27 @@ main{display:block}
   color:var(--tinta-2);
 }
 
+/* A ESTANTE. Mobile-first: tudo empilhado numa coluna (as fileiras somem, cada
+   capa ocupa a largura toda). O desenho de estante — as capas lado a lado sobre
+   a tábua — entra no desktop, lá embaixo. .prateleira empilha as FILEIRAS;
+   .prat-fila é a fileira em si (o que vira grid de N colunas no desktop). */
 .prateleira{display:grid; grid-template-columns:1fr; gap:16px; margin-top:16px}
+.prat-fila{display:grid; grid-template-columns:1fr; gap:16px}
 
 /* cada capa = uma FOLHA com IDADE própria (o .folha do tokens.css amarela
-   sozinho pelo --idade inline). É um <a> de bloco inteiro → alvo grande. */
+   sozinho pelo --idade inline). É um <a> de bloco inteiro → alvo grande.
+   flex-column: o .ed-pe (o CTA) desce pro rodapé quando a capa é esticada pela
+   fileira, então os "LER A EDIÇÃO" da estante ficam na mesma linha. */
 .ed{
-  position:relative; display:block; text-decoration:none; color:var(--tinta-preta);
+  position:relative; display:flex; flex-direction:column; align-items:flex-start;
+  text-decoration:none; color:var(--tinta-preta);
   padding:14px 15px 16px; box-shadow:var(--sombra-folha);
   border-top:3px solid var(--tinta-preta);
   transition:transform var(--dur-medio) var(--ease), box-shadow var(--dur-medio) var(--ease);
 }
+/* os filhos de bloco da capa ocupam a largura toda (o align-items:flex-start
+   acima é pro chip do CTA não esticar; sem isto o texto encolheria) */
+.ed > .mini-mast,.ed > .ct,.ed > .ch,.ed > .ed-frame{width:100%}
 /* fibra do papel do card (dimensão explícita: some no Gecko sem ela) */
 .ed::before{
   content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
@@ -1405,8 +1416,11 @@ main{display:block}
    navy aceso + ciano, coerente com a VIBE (o ciano só aparece onde há tela). O
    card inteiro é o <a> real; este .ed-cta é a affordance visual (cara de botão),
    não um <button> aninhado. Display font (não pixel) → sem guard N→H. */
+/* o PÉ da capa: carrega o espaço acima do CTA. Na estante ele vira margin-top
+   auto (desce ao rodapé) — por isso o espaço mora aqui, não no chip. */
+.ed-pe{display:block; margin-top:14px}
 .ed-cta{
-  display:inline-flex; align-items:center; gap:9px; margin-top:14px;
+  display:inline-flex; align-items:center; gap:9px;
   font-family:var(--font-display); font-weight:700; text-transform:uppercase;
   font-size:13px; letter-spacing:.06em; line-height:1;
   color:var(--gw-ciano); background:var(--gw-navy);
@@ -1423,20 +1437,55 @@ main{display:block}
   .ed-cta-seta{transition:none}
 }
 
-/* ── o card HERÓI: a edição mais nova, proeminente acima da dobra ── */
+/* ── o card HERÓI: SÓ quando existe 1 edição publicada (o desenho do
+   lançamento). A partir da 2ª a banca vira ESTANTE e este bloco não se aplica
+   (BANCA-PRATELEIRA-MULTI, decisão do líder). ── */
 .ed--hero{
   padding:clamp(18px,3.4vw,28px) clamp(16px,3vw,30px) clamp(20px,3vw,28px);
   border-top-width:4px;
 }
 .ed--hero .ct{font-size:clamp(30px,7vw,52px); margin-top:13px}
 .ed--hero .ch{font-size:clamp(14.5px,2.1vw,18px); line-height:1.45; max-width:58ch}
-.ed--hero .ed-cta{font-size:15px; padding:13px 24px; margin-top:18px}
+.ed--hero .ed-pe{margin-top:18px}
+.ed--hero .ed-cta{font-size:15px; padding:13px 24px}
 
-/* ── desktop: a prateleira vira 3 colunas (as capas lado a lado na banca) ── */
+/* ── a capa em DESTAQUE da estante: a mais NOVA, o exemplar da frente da banca.
+   Mesma largura das irmãs (a fileira fecha cheia) — o destaque vem da tinta:
+   friso de topo mais grosso, manchete maior e a sombra de quem está na frente.
+   A badge "nova" (acima) completa. ── */
+.ed--destaque{
+  /* friso 3px mais grosso, e o padding-top desconta os mesmos 3px: assim as
+     mini-mastheads da fileira ficam na MESMA linha (a estante alinha) */
+  border-top-width:6px; padding-top:11px;
+  box-shadow:0 2px 0 #00000014, 0 14px 30px #00000026;
+}
+.ed--destaque .ct{font-size:clamp(26px,3.9vw,36px); margin-top:12px}
+.ed--destaque .ch{font-size:14.5px; line-height:1.45}
+.ed--destaque .ed-cta{font-size:14px; padding:12px 20px}
+
+/* ── desktop: A ESTANTE. As capas ficam lado a lado na fileira, todas da mesma
+   altura (align stretch) e apoiadas na TÁBUA — o vinco de tinta impresso sob a
+   fileira, que é o que faz a banca ler como banca. O número de colunas vem do
+   PHP (--cols, de prateleira_colunas()) e é escolhido pra fileira fechar cheia:
+   2 edições = 2 colunas, sem buraco. Com 1 edição só, o desenho é o outro (o
+   herói ocupando a largura toda). ── */
 @media (min-width:768px){
-  .prateleira{grid-template-columns:repeat(3,1fr); gap:18px; align-items:start}
-  /* o herói ocupa a fileira inteira no topo; as próximas edições fluem abaixo */
-  .ed--hero{grid-column:1 / -1}
+  .prateleira{gap:clamp(24px,3.2vw,34px)}
+  .prateleira--solo .prat-fila{grid-template-columns:1fr}
+
+  .prateleira--fila .prat-fila{
+    position:relative; grid-template-columns:repeat(var(--cols,3),1fr);
+    gap:18px; align-items:stretch; padding-bottom:13px;
+  }
+  /* a TÁBUA da estante: filete de tinta + o fio claro embaixo (o bisel da
+     madeira impressa). Decorativo puro — nenhuma informação mora aqui. */
+  .prateleira--fila .prat-fila::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:3px;
+    background:linear-gradient(#00000030 0 1.5px, #00000010 1.5px 3px);
+  }
+  /* a capa esticada pela fileira: o CTA desce pro rodapé (alinhamento entre
+     capas de dek curto e dek longo) */
+  .prateleira--fila .ed-pe{margin-top:auto; padding-top:16px}
 }
 
 /* ═══ A LINHA DO TEMPO · O SCRUBBER (item W6 · LINHA-TEMPO) ══════════════════

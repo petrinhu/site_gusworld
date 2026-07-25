@@ -50,6 +50,40 @@ function build_data(string $data): string
 }
 
 /**
+ * Quantas COLUNAS a prateleira da banca abre para N capas publicadas (desktop).
+ *
+ * A banca tem dois desenhos (BANCA-PRATELEIRA-MULTI, decisão do líder):
+ *   1 edição   → 1 coluna: o card-HERÓI único (a #1 sozinha, como no lançamento).
+ *   2+ edições → a PRATELEIRA: as capas enfileiradas lado a lado, a mais nova
+ *                em destaque, cada uma amarelando pela própria idade.
+ *
+ * A escolha do número de colunas evita o BURACO no fim da fileira: prefere um
+ * número que feche as fileiras cheias (2 capas → 2 colunas; 4 → 2 colunas em 2
+ * fileiras; 3, 6, 9 → 3 colunas). De 7 capas em diante o arquivo já é grande e
+ * a leitura pede sempre 3 colunas: a última fileira pode vir incompleta, e o
+ * espaço vazio na ponta da estante lê como estante, não como erro.
+ *
+ * Pura e determinística: só depende da contagem (testável em isolamento).
+ */
+function prateleira_colunas(int $publicadas): int
+{
+    if ($publicadas <= 1) {
+        return 1;
+    }
+    if ($publicadas <= 3) {
+        return $publicadas;
+    }
+    if ($publicadas >= 7) {
+        return 3;
+    }
+    if ($publicadas % 3 === 0) {
+        return 3;
+    }
+
+    return $publicadas % 2 === 0 ? 2 : 3;
+}
+
+/**
  * Só as edições publicadas, ordenadas cronologicamente (mais nova primeiro).
  *
  * É o filtro que TODO consumidor de conteúdo público deve aplicar: banca,
