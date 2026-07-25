@@ -126,6 +126,26 @@ Antes de pôr QUALQUER elemento numa edição: a **data real do acontecimento** 
 - **Voz:** `gus@glyfesse>` pergunta; o zumbi responde com prefixo próprio (a definir no rascunho). Papel com acento.
 - **Nota de data:** atemporal (não depende de marco), então cabe em qualquer edição.
 
+## Prova final (E4) — 2026-07-24
+
+Rodada pelo `revisor-textual` (independente). Veredito inicial: PUBLICAR APÓS CORRIGIR OS CRÍTICOS.
+
+**Corrigido (texto puro):**
+- **C2** o dek da capa matava o 3D ("não vingou e virou lembrança") enquanto a §07 diz que ele está VIVO. Dek novo: "E um Gus em 3D, do jeito que ele foi." / "And a 3D Gus, exactly as he was."
+- **C3** o alt-text do pôster também consumava a morte ("o que o jogo quase foi") -> descrição neutra (alt é texto público, AUD-SPOILER).
+- **M1** Editorial "no mês passado" não fechava com a data da edição (jun) -> "há um mês" / "a month ago".
+- **M2** o zumbi escrevia "i" minúsculo em EN; o typo é do **Gus** (o contraste garoto-desleixado × ator-pomposo É a piada) -> capitalizado só nas falas do zumbi.
+- **M3** EN do placar contradizia a si mesmo ("still all there is" vs "Architecture: exists now") -> "still the most of it".
+- **L2** "Thirty seven" -> "Thirty-seven" (voz formal do zumbi). **L6** comentário do `$edicoes` com travessão e data 18/mai -> 19/mai, sem travessão.
+
+**Decisões do editor-geral (2026-07-24):**
+- **C1 · link do GlintFX no índice:** os 3 links fixos são **chrome atemporal** (navegação do site, não conteúdo datado da edição). Ficam em todas as edições, inclusive as anteriores a julho. A #1 no ar segue coerente. Regra registrada.
+- **M4 · "o rapaz de espada"** (Entrevista): **MANTER**. É arquétipo de RPG genérico na boca do ator, não referência ao protagonista.
+
+**Pendente para o GO:** **C4** o `data/edicoes.php` está com o flip local de preview (`'publicada'` + comentário "NÃO COMMITAR"); ao publicar, trocar o comentário pela nota real e commitar junto.
+
+**Limpo na prova:** em-dash zero, typos deliberados preservados, pontuação canônica, acentuação (tela×papel), bilíngue completo, coerência entre seções, datas (19/mai = terça confirmada), sec-18 corretamente ausente, assets do pôster sem vazamento de tela.
+
 ## Estado das lentes e rascunhos
 
 Todas as caras da #2 têm lente aprovada: **Reportagem, Programação, Editorial, Entrevista** + o **Cemitério** (agora leve) e o **Pôster**. "Gus lê o bus" saiu (anacrônico).
