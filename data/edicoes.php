@@ -60,6 +60,11 @@ return [
         'frame'          => null, // gênese textual — sem captura
         'frame_alt_pt'   => null,
         'frame_alt_en'   => null,
+        // Card social desta edição: o card feito PARA o lançamento dela (é o
+        // mesmo arquivo que serve de default do head.php). Declarado aqui para
+        // que `?ed=1` resolva no card DELA em vez de cair no default por acaso,
+        // e para que a capa da estante seja este card.
+        'og_image'       => '/assets/og-launch.jpg',
         'na_linha_tempo' => false, // era textual: fora do scrubber (só era visual)
     ],
 

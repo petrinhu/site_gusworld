@@ -1370,6 +1370,26 @@ main{display:block}
 /* .ref é pixel <15px → minúsculo no HTML (guard N→H); aqui só o tamanho */
 .ed .mini-mast .ref{font-size:11px; color:var(--tinta-2); text-align:right; line-height:1.3}
 
+/* ── A ARTE DE CAPA da estante: o CARD SOCIAL (1200x630) da edição ──
+   Mesma gramática do .ed-frame (uma tela acesa embutida no papel), mas para a
+   arte de capa: fica logo abaixo do friso de identidade e acima da manchete. A
+   proporção é fixa em 1.91:1 (a do card social), então a caixa reserva a altura
+   ANTES da imagem chegar; junto do width/height reais no <img>, o CLS é zero
+   mesmo no pior 3G. object-fit:cover só entra como rede de segurança: se um dia
+   um card vier com outra proporção, ele recorta pelo centro em vez de deformar.
+   ⚠️ image-rendering AUTO (não pixelated como o frame): o card é tipografia
+   suavizada + render 3D, e pixelar destruiria a nitidez ao reduzir. */
+.ed-capa{
+  margin:12px 0 0; position:relative; border-radius:var(--raio-tela); overflow:hidden;
+  box-shadow:inset 0 0 0 1px var(--tela-borda-ui), var(--brilho-tela); background:var(--tela-bg);
+  aspect-ratio:1200 / 630;
+}
+.ed-capa img{
+  display:block; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  image-rendering:auto;
+}
+
 .ed .ct{
   font-family:var(--font-manchete); font-weight:700; text-transform:uppercase;
   font-size:clamp(22px,3.2vw,27px); line-height:.94; letter-spacing:-.015em;

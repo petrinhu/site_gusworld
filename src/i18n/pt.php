@@ -67,6 +67,9 @@ return [
         'nova'         => 'nova',      // badge da mais recente (minúsculo: guard N→H)
         'jogavel'      => 'jogável',   // selo da edição-hero (é o quadradinho da home)
         'cta'          => 'Ler a edição', // CTA da capa (display font, não pixel: sem guard N→H)
+        // alt da arte de capa da estante (o card social da edição). %d = número,
+        // %s = título. Aparece na tela quando a imagem não carrega.
+        'capa_alt'     => 'Capa da edição %d: %s',
         'w6_tag'       => 'interativo pendente · w6',
         // os ganchos dos interativos (scaffold; implementação é item W6)
         'ganchos' => [

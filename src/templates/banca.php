@@ -113,6 +113,14 @@ require __DIR__ . '/../includes/head.php';
         // dimensões reais do frame (width/height explícitos = zero CLS)
         $frame_fs  = $c['frame'] !== null ? __DIR__ . '/../../public_html' . $c['frame'] : null;
         $frame_dim = ($frame_fs !== null && is_file($frame_fs)) ? getimagesize($frame_fs) : false;
+        // ★ A CAPA da edição na estante (líder, 2026-07-25): o CARD SOCIAL dela
+        // (o mesmo 1200x630 que o X mostra) vira a arte de capa aqui na banca.
+        // O mesmo arquivo serve os dois usos: nada é gerado a mais, e o que o
+        // leitor viu no post é exatamente o que ele encontra na prateleira.
+        // Edição sem card próprio simplesmente não ganha arte (o card só-texto
+        // continua válido); arquivo ausente no disco também cai fora, sem erro.
+        $capa_fs  = $c['og_image'] !== null ? __DIR__ . '/../../public_html' . $c['og_image'] : null;
+        $capa_dim = ($capa_fs !== null && is_file($capa_fs)) ? getimagesize($capa_fs) : false;
       ?>
       <?php /* o card inteiro é o link. O aria-label dá ao leitor de tela um nome
          curto e acionável ("Ler a edição: TÍTULO") no lugar do bloco inteiro de
@@ -133,6 +141,24 @@ require __DIR__ . '/../includes/head.php';
           <span class="marca">GLYFESSE</span>
           <span class="ref"><?= h((string) $t['exp_vol']) ?> <?= (int) volume_edicao((string) $c['data']) ?> · <?= h((string) $t['exp_num']) ?> <?= (int) $c['numero'] ?> · <?= h(data_por_extenso((string) $c['data'], $idioma, $t)) ?></span>
         </div>
+
+        <?php /* A ARTE DE CAPA: entra LOGO ABAIXO do friso de identidade e ACIMA
+           da manchete, na ordem clássica de capa de revista (cabeçalho, foto,
+           manchete, linha de apoio). Mantê-la abaixo do friso preserva o
+           alinhamento da estante (todas as capas penduram pelo mesmo friso no
+           topo, align-items:start). É TELA dentro do PAPEL: mesma moldura acesa
+           do frame (.ed-frame), então a luz fica contida na tela, como manda a
+           regra papel×tela. width/height reais do arquivo = zero CLS.
+           ★ A PRIMEIRA capa NÃO é lazy: ela é a candidata a LCP da home (TST-CWV
+           diz "nunca loading=lazy no hero"); as de baixo, sim. */ ?>
+        <?php if ($capa_dim !== false): ?>
+        <figure class="ed-capa aceso">
+          <img src="<?= h(asset((string) $c['og_image'])) ?>"
+               alt="<?= h(sprintf((string) $banca['capa_alt'], (int) $c['numero'], (string) $c['titulo'])) ?>"
+               width="<?= (int) $capa_dim[0] ?>" height="<?= (int) $capa_dim[1] ?>"
+               <?= $i === 0 ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"' ?>>
+        </figure>
+        <?php endif; ?>
 
         <h3 class="ct"><?= h((string) $c['titulo']) ?></h3>
         <p class="ch"><?= h((string) $c['dek']) ?></p>

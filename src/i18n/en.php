@@ -66,6 +66,9 @@ return [
         'nova'         => 'new',
         'jogavel'      => 'playable',
         'cta'          => 'Read the issue',
+        // alt text of the shelf cover art (the issue's social card). %d = number,
+        // %s = title. Shows on screen when the image fails to load.
+        'capa_alt'     => 'Issue %d cover: %s',
         'w6_tag'       => 'interactive pending · w6',
         'ganchos' => [
             'hero'       => ['label' => 'Playable square',    'nome' => 'The square'],

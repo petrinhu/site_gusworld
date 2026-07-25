@@ -85,10 +85,14 @@ eq(
     montar_contexto($por_numero[2], 'pt')['og_image'],
     'a #2 aponta para o card próprio (Arquitetura)'
 );
+// ★ a #1 declara EXPLICITAMENTE o card do lançamento dela (2026-07-25). É o
+// mesmo arquivo que o head.php usa de default, mas declarar importa por dois
+// motivos: `?ed=1` passa a resolver no card DELA (em vez de acertar o alvo por
+// acaso, via default) e a estante da banca tem de onde tirar a arte de capa.
 eq(
-    null,
+    '/assets/og-launch.jpg',
     montar_contexto($por_numero[1], 'pt')['og_image'],
-    'a #1 não define card próprio (fica com /assets/og-launch.jpg pelo default)'
+    'a #1 aponta para o próprio card de lançamento'
 );
 eq(
     null,
@@ -96,11 +100,15 @@ eq(
     'a #3 não define card próprio'
 );
 
-// ── o arquivo do card existe no disco e é publicável ────────────────────────
-$card = __DIR__ . '/../public_html/assets/og-edicao-2.jpg';
-eq(true, is_file($card), 'o card da #2 existe em public_html/assets/');
-$dim = is_file($card) ? getimagesize($card) : false;
-eq([1200, 630], $dim === false ? [] : [$dim[0], $dim[1]], 'o card da #2 é 1200x630 exatos');
+// ── os arquivos dos cards existem no disco e são publicáveis ────────────────
+// (a estante da banca também os serve como ARTE DE CAPA: um card faltando no
+// disco tira a arte da capa em silêncio, então a existência é asserção.)
+foreach (['/assets/og-edicao-2.jpg' => 2, '/assets/og-launch.jpg' => 1] as $rel => $num) {
+    $card = __DIR__ . '/../public_html' . $rel;
+    eq(true, is_file($card), "o card da #{$num} existe em public_html{$rel}");
+    $dim = is_file($card) ? getimagesize($card) : false;
+    eq([1200, 630], $dim === false ? [] : [$dim[0], $dim[1]], "o card da #{$num} é 1200x630 exatos");
+}
 
 if ($falhas > 0) {
     fwrite(STDERR, "\n{$falhas} de {$n} asserções FALHARAM\n");
