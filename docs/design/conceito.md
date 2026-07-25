@@ -375,7 +375,7 @@ Aprender uma **engine complexa e genérica** só para importar a exportação do
 3. **Estender a issue policy do jogo** ("apenas issues técnicos; políticos/econômicos/filosóficos/sociais são fechados sem resposta, porque o jogo é obra de ficção").
 4. **O site não tem onde escrever**: poll é clique, Glyfa é vocabulário fechado, álbum é `localStorage`.
 
-**⚠️ O furo, nomeado pelo líder:** *"o repo github e codeberg terão link no site e as pessoas vão clicar e abrir rage-issues"*. **A defesa estrutural vaza: o site não tem caixa de texto, mas linka dois repos que têm.** Não resolvido.
+**⚠️ O furo, nomeado pelo líder:** *"os repos no github terão link no site e as pessoas vão clicar e abrir rage-issues"*. **A defesa estrutural vaza: o site não tem caixa de texto, mas linka dois repos que têm.** Não resolvido.
 
 ---
 

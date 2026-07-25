@@ -8,10 +8,10 @@ declare(strict_types=1);
  * A base de URL e os 3 links externos fixos do índice moram aqui, num lugar só.
  * Nada aqui é spoiler nem segredo (são URLs públicas de repositório).
  *
- * ⚠️ GANCHO: os hrefs dos repositórios abaixo são o melhor palpite pela infra
- * conhecida (conta Codeberg `petrinhu`); CONFIRMAR com o líder antes do go-live.
- * O do site já é certo (infra-codeberg-herdada). Os do jogo/motor e o TODO.md
- * bruto precisam do slug real do repositório do jogo.
+ * Os 3 links fixos do índice de toda edição, apontando para o GitHub (host
+ * único desde 2026-07-25). Verificados: os dois repositórios existem e estão
+ * sincronizados. O `todo_jogo` usa o formato de arquivo bruto do GitHub
+ * (`/blob/main/`), não o do host anterior.
  */
 
 const SITE_BASE_URL = 'https://gusworld.site';
@@ -27,9 +27,9 @@ const SITE_IDIOMA_PADRAO = 'pt';
  * Abrem com rel="external noopener". Um lugar só — todas as edições herdam.
  */
 const SITE_LINKS_FIXOS = [
-    'repo_jogo'   => 'https://codeberg.org/petrinhu/gusworld',
-    'repo_motor'  => 'https://codeberg.org/petrinhu/glintfx',
-    'todo_jogo'   => 'https://codeberg.org/petrinhu/gusworld/src/branch/main/TODO.md',
+    'repo_jogo'   => 'https://github.com/petrinhu/gusworld',
+    'repo_motor'  => 'https://github.com/petrinhu/glintfx',
+    'todo_jogo'   => 'https://github.com/petrinhu/gusworld/blob/main/TODO.md',
 ];
 
 /**

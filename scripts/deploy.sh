@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # scripts/deploy.sh - publica o gusworld.site (site PHP real) na Hostinger.
 #
-# MANUAL por decisao do lider: `git push` salva no Codeberg, ESTE script publica
+# MANUAL por decisao do lider: `git push` salva no GitHub, ESTE script publica
 # na producao. Separa "salvar" de "publicar". Nao ha deploy automatico no push.
 # ⚠️ Rodar SEM --dry-run = GO-LIVE (transforma a "em-breve" no site real). Isso
 # e o gate D-GO-LIVE, decisao do lider por ocasiao.

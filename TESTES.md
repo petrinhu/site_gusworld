@@ -54,7 +54,7 @@ Este site **é** movimento, e é aí que a estética retrô costuma matar acessi
 ### `TST-LINKS` — Links quebrados
 
 - Varredura de todos os links, internos e externos.
-- **Atenção aos links para fora que o site vai ter por design:** os dois repos (Codeberg canônico + espelho GitHub), a wiki do jogo, o `AI-DISCLOSURE.md` canônico. Link para repo alheio apodrece.
+- **Atenção aos links para fora que o site vai ter por design:** os dois repos (GitHub, host único), a wiki do jogo, o `AI-DISCLOSURE.md` canônico. Link para repo alheio apodrece.
 - Ferramenta: lychee, htmltest ou equivalente.
 
 ### `TST-HTML-VALID` — HTML válido
@@ -88,6 +88,6 @@ Estes nascem quando a peça nascer, mas ficam registrados desde já:
 
 ## O que entra quando a stack fechar (`D-STACK`)
 
-Framework de teste, runner, CI (o runner `claudio`/`docker` já existe via systemd — **não registrar novo**; **o log de CI do Forgejo não existe na API**, ler erro exige `forgejo-runner exec` local), SAST/lint, teste de integração, e — **se e somente se** houver backend — SQLi, flood/rate-limit, e teste de carga.
+Framework de teste, runner, CI (host único GitHub desde 2026-07-25; **este projeto ainda não tem workflow** em `.github/workflows/`, o gate hoje é local via `scripts/preci.sh`), SAST/lint, teste de integração, e — **se e somente se** houver backend — SQLi, flood/rate-limit, e teste de carga.
 
 **Hoje o site não tem backend nem coleta dado** (`ZERO-DADO`), então essa faixa inteira está vazia por decisão, não por esquecimento.
