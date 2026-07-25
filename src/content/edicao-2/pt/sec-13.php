@@ -13,7 +13,7 @@
        aria-label="Ampliar o pôster do Gus em 3D">
       <img src="/assets/edicao-2/gus-3d-poster.png" width="1200" height="1200"
            loading="lazy" decoding="async"
-           alt="O Gus em 3D: modelo chibi de cabelo laranja, óculos ciano acesos e sobretudo preto, o que o jogo quase foi antes de virar pixel.">
+           alt="O Gus em 3D: modelo chibi de cabelo laranja, óculos ciano acesos e sobretudo preto.">
       <span class="zoom-badge" aria-hidden="true">clique para ampliar</span>
     </a>
   </span>

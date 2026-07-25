@@ -13,7 +13,7 @@
        aria-label="Enlarge the 3D Gus poster">
       <img src="/assets/edicao-2/gus-3d-poster.png" width="1200" height="1200"
            loading="lazy" decoding="async"
-           alt="Gus in 3D: a chibi model with orange hair, glowing cyan goggles and a black overcoat, what the game almost was before it became pixel.">
+           alt="Gus in 3D: a chibi model with orange hair, glowing cyan goggles and a black overcoat.">
       <span class="zoom-badge" aria-hidden="true">click to zoom</span>
     </a>
   </span>

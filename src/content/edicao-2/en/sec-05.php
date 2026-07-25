@@ -10,7 +10,7 @@
   <li>Architecture: exists now</li>
   <li>Graphics: <span class="img-quebrada">[broken image icon]</span></li>
   <li>Gameplay: still <code>&lt;NULL&gt;</code></li>
-  <li>Writing: 10, again (still all there is)</li>
+  <li>Writing: 10, again (still the most of it)</li>
 </ul>
 
 <p class="pensa">the score climbed one line since #1... one floor at a time</p>
