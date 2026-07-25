@@ -52,10 +52,10 @@ function build_data(string $data): string
 /**
  * Quantas COLUNAS a prateleira da banca abre para N capas publicadas (desktop).
  *
- * A banca tem dois desenhos (BANCA-PRATELEIRA-MULTI, decisão do líder):
- *   1 edição   → 1 coluna: o card-HERÓI único (a #1 sozinha, como no lançamento).
- *   2+ edições → a PRATELEIRA: as capas enfileiradas lado a lado, a mais nova
- *                em destaque, cada uma amarelando pela própria idade.
+ * O desenho da estante é UM só: as capas enfileiradas lado a lado, todas com o
+ * mesmo tratamento, cada uma amarelando pela própria idade (a mais nova ganha
+ * só o selo "nova"). Com 1 edição publicada é 1 coluna, e a capa ocupa a
+ * fileira inteira.
  *
  * A escolha do número de colunas evita o BURACO no fim da fileira: prefere um
  * número que feche as fileiras cheias (2 capas → 2 colunas; 4 → 2 colunas em 2

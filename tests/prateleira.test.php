@@ -10,9 +10,9 @@ declare(strict_types=1);
  *
  * ★ Por que testar? A banca cresce sozinha por foreach: a contagem de capas
  * muda a cada edicao publicada e ninguem re-edita layout. O numero de colunas e
- * a regra que decide entre "card-heroi unico" (1 edicao) e "prateleira" (2+), e
- * a que evita o BURACO no fim da fileira. E uma conversao contagem → layout: a
- * classe de bug que so aparece na 5a edicao, quando ninguem esta olhando.
+ * a regra que evita o BURACO no fim da fileira (2 capas em 3 colunas deixariam
+ * um vazio na ponta). E uma conversao contagem → layout: a classe de bug que so
+ * aparece na 5a edicao, quando ninguem esta olhando.
  *
  * Cobre tambem o caso VIVO de hoje (2 publicadas) sem tocar em data/edicoes.php:
  * o array de exemplo aqui e local ao teste.
@@ -36,8 +36,8 @@ function eq($esperado, $obtido, string $msg): void
     fwrite(STDERR, "        obtido:   " . json_encode($obtido) . "\n");
 }
 
-// ── o contrato dos dois desenhos da banca ────────────────────────────────────
-eq(1, prateleira_colunas(1), '1 edicao → 1 coluna (o card-HEROI unico, o do lancamento)');
+// ── o contrato do numero de colunas da estante ───────────────────────────────
+eq(1, prateleira_colunas(1), '1 edicao → 1 coluna (a capa unica ocupa a fileira inteira)');
 eq(2, prateleira_colunas(2), '2 edicoes → 2 colunas (fileira cheia, sem buraco)');
 eq(3, prateleira_colunas(3), '3 edicoes → 3 colunas (fileira cheia)');
 
@@ -67,12 +67,12 @@ $exemplo = [
 eq(2, count(edicoes_publicadas($exemplo)), 'so as publicadas contam (o rascunho fica fora)');
 eq(2, prateleira_colunas(count(edicoes_publicadas($exemplo))), 'banca de hoje: 2 publicadas → 2 colunas');
 
-// e o caso do lancamento (so a #1 no ar) segue caindo no card-heroi unico
+// e o caso do lancamento (so a #1 no ar) segue com a capa sozinha na fileira
 $so_uma = [
     ['numero' => 1, 'estado' => 'publicada', 'data' => '2026-05-15'],
     ['numero' => 2, 'estado' => 'rascunho',  'data' => '2026-06-04'],
 ];
-eq(1, prateleira_colunas(count(edicoes_publicadas($so_uma))), 'lancamento: 1 publicada → o HEROI unico, sem regressao');
+eq(1, prateleira_colunas(count(edicoes_publicadas($so_uma))), 'lancamento: 1 publicada → 1 coluna, a capa sozinha na fileira');
 
 if ($falhas > 0) {
     fwrite(STDERR, "\n{$falhas} de {$n} assercoes FALHARAM.\n");
