@@ -190,21 +190,100 @@ porque pela primeira vez existe uma coisa que funciona — por mais ridícula qu
 grudava na parede e a diagonal que travava numa direção só), pela lente da piada primeiro e do conserto
 depois, cortando os bugs grandes que ainda não aconteceram.*
 
-**★ A fonte primária dos dois bugs (achada por mim em 2026-08-01, é melhor do que o que a pauta tinha):**
-o commit **`c12cb30`** — *"corner-correction estilo Stardew + ponto único de tuning de movimento"*, com a
-linha de abertura **"Feedback do líder após rodar o M1 na tela"**.
+> ⚠️ **CORRIGIDO EM 2026-08-01, DEPOIS DE IR À FONTE.** A pauta falava em "dois bugs". **Só um é bug.**
+> Ver abaixo — a apuração mudou o conteúdo E o ângulo da seção, para melhor.
 
-1. **O boneco grudava na quina.** O conserto empurra o jogador o mínimo lateral para contornar quando bate
-   numa quina com abertura adjacente (até 0,35 do tile), **sem nunca atravessar parede sólida**. É a mesma
-   solução que o Stardew Valley usa — o defeito é clássico o bastante para ter nome de jogo.
-2. **A diagonal ficou crua de propósito.** O commit registra `normalize_diagonal (gancho OFF)` — o líder
-   pediu o gancho e mandou **deixar desligado**. Diagonal crua significa que andar na diagonal é mais rápido
-   que andar reto. ⚠️ **Confirmar com o líder** se ele quer isso contado como bug ou como decisão em aberto:
-   o commit diz que foi escolha, não descuido.
+## ★★ O bug real, e quem o encontrou
+
+Fonte: commit **`c12cb30`** (22/jun) — *"corner-correction estilo Stardew + ponto único de tuning de
+movimento"*, abrindo com *"Feedback do líder após rodar o M1 na tela"*.
+
+**O boneco grudava na quina.** O conserto empurra o jogador o mínimo lateral para contornar quando ele bate
+numa quina com abertura adjacente (até 0,35 do tile), **sem nunca atravessar parede sólida**. É a mesma
+solução que o **Stardew Valley** usa — o defeito é clássico o bastante para ter nome de jogo.
+
+### ★★★ O ÂNGULO DA SEÇÃO (líder, 2026-08-01): ele **AVISOU ANTES**, não pegou depois
+
+> ⚠️⚠️ **DUAS correções do líder, na mesma rodada, e a segunda é a que vale:**
+>
+> 1. O commit atribui o achado ao líder. **Está impreciso** — foi o **Gus Dragon**, o playtester de 11 anos.
+> 2. **E ele não "pegou" nada depois. Ele AVISOU ANTES.** Verbatim do líder: *"todos os bugs de movimentação
+>    ele na verdade relatou **antes que acontecessem**, de experiência e estudos que ele tem previamente,
+>    sobre fazer jogos"*.
+>
+> **Confie no líder, não no commit.** O registro do jogo é a fonte da data; a fonte do FATO é ele.
+
+**Isto não é um detalhe: é a matéria inteira, e ela deixou de ser sobre bug.**
+
+O enquadramento "criança testa e acha defeito" está **errado** e não pode ser escrito. O certo:
+
+- **Um menino de 11 anos que estuda como se fazem jogos NOMEOU os defeitos antes de eles existirem.** Não
+  foi um palpite: foi uma **lista**. Verbatim do líder sobre o que ele enumerou —
+  **clipping, arrastar, olhar na direção errada, trava de diagonal**, entre outros.
+- **★ A lista dele bate, item por item, com o que o código do jogo carrega até hoje** (conferido por mim na
+  origem em 2026-08-01 — esta tabela é a espinha da matéria):
+
+  | O que ele nomeou | O que apareceu no código | O que o projeto fez |
+  |---|---|---|
+  | **arrastar / grudar** | o boneco preso na quina | **Consertado** (`c12cb30`, correção de quina estilo Stardew) |
+  | **olhar na direção errada** | `LastAxisWins` — na diagonal o boneco encara o cardeal dominante | **Aceito de propósito**: a arte é 4-direcional; as 8 direções dobrariam a arte de todos (`ARTE-DIAGONAL-8DIR`, decisão do líder de 23/jun, **aberta até hoje**) |
+  | **trava de diagonal** | diagonal mais rápida que o movimento reto | **Alavanca deixada pronta e desligada** (`normalize_diagonal`, no ponto único de ajuste) |
+  | **clipping** | atravessar parede sólida | Coberto no conserto da quina (*"nunca atravessa parede sólida"*) — e **voltou em julho** como o *tunneling*, que virou item próprio (`MATERIA-M7-PLAYTEST`) |
+
+  ★★ **O clipping é o beat mais forte da tabela:** ele o nomeou em **junho**, e o problema só mordeu de
+  verdade em **julho**. O aviso chegou **um mês antes** do sintoma.
+
+- ★ **A tabela também explica por que a Galeria tem UM bug e não quatro:** dos quatro que ele nomeou, **um
+  virou defeito consertado** (entra na Galeria), **dois viraram decisão consciente** (não são bug, e chamá-los
+  assim seria errado com o leitor) e **um voltou depois** (é matéria de julho). A seção fica pequena porque a
+  maior parte da lista **não virou defeito** — e isso é o elogio, não a limitação.
+- **A ironia honesta, que é o coração da peça:** ele avisou, e **aconteceu assim mesmo**. Ser avisado não é
+  o mesmo que evitar. Essa é uma história de engenharia de verdade, e é o que salva a seção de virar
+  elogio a criança.
+- **Explica o gancho desligado:** o ajuste da diagonal (`normalize_diagonal`) existe, pronto e desligado,
+  desde o primeiro dia da tela. Uma alavanca não nasce pronta para um problema que ninguém previu.
+- É a **primeira** contribuição documentada dele — **~1 mês antes** das duas de 21/jul (o *tunneling* e a
+  pergunta da velocidade negativa, itens `MATERIA-M7-PLAYTEST` e `MATERIA-GUS-VELOCIDADE-NEGATIVA`). A
+  série do "playtester de 11 anos" ganha aqui o seu marco zero — e ele não é o de testar, é o de **prever**.
+- **A camada que a revista ganha de graça:** quem escreve a Glyfesse é o **Gus personagem**, de 11 anos. O
+  texto **não pode apontar** essa simetria. Apontar mata. Deixe o leitor juntar sozinho.
+
+⚠️ **Como NÃO escrever:** "olha que fofo, a criança achou um bug". Ele não achou por sorte nem por brincar:
+ele **sabia**, por estudo. Tratar como fofura é diminuir, e é falso. O tom é o de **crédito técnico**, seco,
+do jeito que se credita quem avisou e não foi ouvido a tempo.
+
+⚠️ **Higiene, sem exceção:** só **"Gus Dragon"** ou **"o playtester de 11 anos"**. **Nunca** nome de batismo
+— nem no texto, nem em `alt`, nem em nome de arquivo, nem em mensagem de commit (que é imutável).
+
+## O que SAIU da seção (e por quê) — apurado na fonte
+
+**A "diagonal" não é bug. São duas coisas distintas, e as duas são DECISÃO:**
+
+1. **A velocidade da diagonal** (`normalize_diagonal`): o ajuste existe, está pronto e **desligado de
+   propósito**. O comentário no próprio código diz: *"ganchos já prontos, alguns ligados, outros só
+   esperando o líder virar"*. É alavanca deixada ao alcance dele, não esquecimento.
+2. **"A diagonal travando no último eixo"** — a pauta descrevia errado. Não é travamento: é o boneco
+   **olhar para o cardeal dominante** ao andar na diagonal, porque a arte é **4-direcional**. Registrado no
+   `TODO.md` do jogo, item `ARTE-DIAGONAL-8DIR`: *"resolver DEPOIS, **decisão do líder 2026-06-23**"*. Fazer
+   as 8 direções **dobraria a arte de todos** (Gus + 6 companions + NPCs). Mesmo caminho de Stardew, Zelda
+   ALttP e Pokémon, e **segue aberto como decisão de design** até hoje.
+
+**Nenhuma das duas entra na Galeria.** Chamar de defeito uma escolha registrada seria errado com o leitor e
+com o próprio registro. Se o líder quiser aproveitar a diagonal, ela é matéria de **decisão em aberto**,
+noutro lugar — nunca de bug.
+
+## O segundo bug, se o líder quiser a seção com dois
+
+Há **outro defeito real na mesma janela**, no commit do quadrado azul (`ce17f78`, 22/jun 16:32), registrado
+em uma linha: *"Bug de varying de shader (pareamento por nome no GLSL) corrigido"*. As peças do desenho eram
+ligadas **pelo nome**, e os nomes não batiam. É da data certa e tem história. **Decisão do líder** —
+não incluir sem a palavra dele.
+
+## O tom
 
 **A modéstia é a piada, não um defeito dela.** O Gus está cumprindo uma promessa a contragosto: foi ele quem
-escreveu **"Volte na #3"** na edição passada, e o que ele tem para entregar são dois problemas de geometria
-de boneco. E casa de graça com a capa: **o mesmo quadrado que anda é o que grudava na parede.**
+escreveu **"Volte na #3"** na edição passada, e o que ele tem para entregar é um boneco que gruda na quina.
+E casa de graça com a capa: **o mesmo quadrado que anda é o que grudava na parede.**
 
 **Data:** ancorar em **"M1, 22-23/jun"**, não num dia exato (decisão D6 — não fingir precisão que a fonte
 não dá).
