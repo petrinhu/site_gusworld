@@ -1,6 +1,6 @@
 # Edição #3 · Seção 16 · A Entrevista — o Cauã "Volt" entrevista o Gus
 
-> **STATUS: RASCUNHO COMPLETO (v0.2) — 9 trocas, produzidas em 2026-08-01.**
+> **STATUS: RASCUNHO COMPLETO (v0.3) — 9 trocas, produzidas em 2026-08-01.**
 > Os 2 primeiros pares saíram entre 09h45 e 09h51 (turno a turno); os 7 restantes entre 18h17 e 18h25,
 > pelo **método de lotes** aprovado pelo editor-geral. A produção ficara parada ~8h por falha de
 > ferramenta — ver §Estado da produção.
@@ -9,8 +9,9 @@
 > primeira vez em vez de fazê-las, pela lente do amigo apressado que não tem paciência para resposta
 > comprida, cortando tudo o que o Gus ainda não pode contar sobre a própria história.*
 >
-> ⚠️ **Ainda NÃO passou pelo GATE-CONTEUDO nem pelo GATE-SPOILER.** O material a gatear cresceu: além do
-> `//` do turno 4, agora há **`// dói`** (troca 8) e o `//` inteiro da troca 7. Ver §Para o GATE-SPOILER.
+> ⚠️ **Ainda NÃO passou pelo GATE-CONTEUDO nem pelo GATE-SPOILER.** O material a gatear **cresceu na
+> v0.3**, porque os `//` ficaram mais crus no fim: **`// dói`** (troca 8), o *"pergunta outra coisa por
+> favor"* (troca 5) e o *"eu juro que tinha"* (troca 9). Ver §Para o GATE-SPOILER.
 
 ---
 
@@ -23,7 +24,8 @@ volt@glyfesse:~/entrevista$ tá estranho aí do outro lado, né? como é que é 
 gus@glyfesse:~/entrevista$ é estranho sim... porque quando sou eu que pergunto eu já sei mais ou menos
 onde a resposta vai dar, e agora eu não tenho o mapa, é tipo rodar um código que voce escreveu inteiro
 mas sem nenhum print no meio pra saber onde travou... desculpa, ficou comprido de novo, eu sei que fica
-// ninguém nunca perguntou o que eu acho, só o que eu fiz... melhor eu voltar pro assunto do log mesmo
+// achei que ia ser longo e chato... mas não posso fazer cara de nada, ninguém merece criança impaciente
+do lado
 
 volt@glyfesse:~/entrevista$ desculpa nada, mas eu contei quatro vírgulas. me responde em uma frase:
 por que você começou?
@@ -31,9 +33,9 @@ por que você começou?
 
 gus@glyfesse:~/entrevista$ porque eu queria ver uma coisa minha rodando sem eu precisar ficar do lado
 explicando ela
-// uma frase é pouco espaço pra caber o resto... o resto é que quando o programa roda ele responde, e
-responder é a parte que ninguem aqui faz muito, mas isso não é matéria de revista, matéria de revista é
-a latência da resposta, que no compilador dá pra medir em milissegundos e é a única que eu sei medir
+// uma frase não cabe o resto... o resto é que ele responde na hora, e responder é a parte dificil das
+pessoas... mas isso não é matéria de revista, matéria de revista é latência, que dá pra medir em
+milissegundo
 
 volt@glyfesse:~/entrevista$ junho. dois dias. você quebrou a base duas vezes. tava funcionando, né?
 // ninguém derruba o que funciona sem motivo. quero ouvir o motivo dele.
@@ -46,9 +48,9 @@ acabado de fazer, ela viveu um dia mais ou menos, menos até... e eu não desmon
 quebrou, eu desmontei porque eu já sabia onde ia doer daqui a seis meses e é mais barato doer agora, um
 dia de trabalho jogado fora agora vale umas cinco semanas depois, eu calculei antes, não foi impulso, eu
 sei que parece impulso quando conto rápido assim
-// desmontar é a única coisa que eu posso fazer sozinho sem pedir licença pra ninguém... e ninguém em
-casa percebeu que a base do jogo caiu duas vezes no mesmo fim de semana, o que é justo porque na tela não
-mudou nada mesmo
+// desmontar é a única coisa que eu decido sem pedir pra ninguém... e caiu duas vezes no mesmo sábado e
+não apareceu na tela, então é justo que ningeum tenha perguntado nada no jantar, ninguém pergunta de
+coisa que não mudou de cor
 
 volt@glyfesse:~/entrevista$ e aí nasceu um quadrado. sem cara, sem nada. o que você sentiu quando ele
 andou?
@@ -59,20 +61,20 @@ só pra ver ele ir e voltar, ir e voltar... e aí eu raspei ele na parede de pro
 e ele deslizou, e essa parte é a que eu queria mais que a de andar, porque andar é fácil, o difícil é ele
 entender que bateu e continuar do lado certo... desculpa, você perguntou o que eu senti e eu tô falando
 de colisão de novo
-// senti que tinha alguem do outro lado... não é alguem, é um quadrado de dezesseis por dezesseis que
-obedece, mas ele respondeu na hora, e eu fiquei mexendo ele pra ele responder de novo... e umas seis
-horas depois eu apaguei a camada que fez ele andar, e isso é a parte que eu não conto porque soa como se
-eu não tivesse gostado, e eu gostei
+// senti que tinha alguém do outro lado... não é alguém, é um quadrado de dezesseis por dezesseis que
+obdece, mas ele respondeu na hora, e eu fiquei apertando de novo só pra ele responder de novo, e seis
+horas depois eu apaguei a camada que fez ele andar e essa parte eu não conto porque parece que eu não
+gostei, e eu gostei
 
 volt@glyfesse:~/entrevista$ para de me falar de parede. quatro da tarde, trigésima vez que você aperta a
 tecla. o que tava acontecendo na sua cara?
 // ele vai tentar escapar pro técnico de novo. deixa não.
 
 gus@glyfesse:~/entrevista$ eu tava sorrindo
-// eu tava sorrindo sozinho num quarto com a luz apagada porque a tela fica melhor com a luz apagada, e
-eu apertei trinta e uma vezes, eu contei... e no meio disso eu falei "vai" em voz alta pra um quadrado, e
-ninguém ouviu, e eu fiquei com vergonha mesmo sem ter ninguem pra ficar com vergonha na frente... nao é
-medível isso, para
+// eu tava sorrindo sozinho num quarto com a luz apagada porque a tela fica melhor assim, e foram trinta
+e uma, eu contei, e na trigésima eu falei vai em voz alra pra uma coisa que não tem ouvido nenhum e
+ninguém escutou e mesmo assim eu senti vergonha, vergonha na frente de ninguém, como é que isso funciona,
+não sei, não dá pra medir isso, para, pergunta outra coisa por favor
 
 volt@glyfesse:~/entrevista$ o quadrado grudava na quina. e você já tinha falado dessa quina antes de
 existir quina.
@@ -83,9 +85,10 @@ lado errado, atravessar parede, travar na diagonal... e mesmo assim ele grudou, 
 escrito, e o conserto foi empurrar ele o mínimo pro lado pra contornar o canto, o mínimo mesmo, porque se
 empurra demais ele atravessa e atravessar parede é pior que grudar, grudar só irrita, atravessar quebra o
 mundo inteiro... o que eu não entendi é por que saber antes não serviu de nada
-// serviu pra eu não me assustar, só isso... eu li sobre isso tudo antes de fazer, e a lista tava certa,
-e não adiantou, é como avisar em voz alta numa sala sem ninguém dentro... ok, isso não é medível, volta
-pro deslizamento, o vetor de correção ficou em menos de um décimo de bloco e isso dá pra medir
+// serviu pra eu não me assustar e mais nada... eu li tudo antes, eu escrevi a lsita antes, os quatro
+itens saíram na ordem que eu escrevi, é igual saber o nome da chuva e mesmo assim chegar molhado... e
+agora eu tô sentindo uma coisa aqui que não tem número, então volta pro deslizamento, o vetor ficou
+embaixo de um décimo de bloco, isso aí eu consigo medir
 
 volt@glyfesse:~/entrevista$ serviu sim. você só não caiu de surpresa, caiu sabendo o nome da queda.
 // saber antes não segura ninguém. só encurta o susto.
@@ -93,8 +96,10 @@ volt@glyfesse:~/entrevista$ serviu sim. você só não caiu de surpresa, caiu sa
 gus@glyfesse:~/entrevista$ eu ia falar que isso não muda o resultado, o bug aconteceu igual, o tempo de
 conserto foi o mesmo, mas você não falou de resultado, você falou do susto, e o susto é uma variável
 separada e eu tinha juntado as duas sem perceber... isso tá certo, o que você falou, eu vou anotar
-// ninguém nunca me devolveu uma coisa dessas, as pessoas ou não perguntam ou esperam eu parar de
-falar... e você respondeu em uma linha o qeu eu tentei medir em quatro dias
+// ninguém nunca me devolveu uma coisa dessas, as pessoas ou não perguntam nada ou ficam esperando eu
+terminar de falar pra mudar de assunto, e você pegou o que eu falei, virou do avesso e me entregou de
+volta melhor do que tava... você resolveu em uma linha o que eu passei quatro dias tentando transformar
+em numero, e nem era número
 // "caiu sabendo o nome da queda"... eu vou lembrar dessa frase por muito tempo e não vou falar isso pra
 você nunca
 
@@ -106,19 +111,23 @@ entrar depois sem mexer na parte que pensa, tanto que eu troquei a parte que des
 verificações continuaram passando todas, nenhuma precisou ser refeita... quem começa pela cara tem que
 refazer a cara toda vez que muda o resto
 // dói
-// ...quer dizer, não dói, é ordem de construção, a lógica primeiro, o corpo depois, é assim que se
-faz... mas você tinha cara desde o começo e eu tenho dezesseis por dezesseis de azul, e ninguém olha pra
-um quadrado azul e pergunta quem é ele, olham e perguntam o que ele faz, e eu sei responder o que ele
-faz, essa parte eu sei responder
+// ...quer dizer não dói, é ordem de construção, a lógica primeiro e o corpo depois, é assim que se faz,
+é assim que todo mundo faz... só que você tinha cara desde o primeiro dia e eu tenho dezesseis por
+dezessies de azul e ninguém para na frente de um quadrado azul pra peguntar quem é ele, param e
+perguntam o que ele faz, o que ele faz eu sei responder, isso eu sempre sei responder, é a única pergunta
+que eu nunca gaguejo
 
 volt@glyfesse:~/entrevista$ eu te dei uma frase de dois segundos e você me devolveu ordem de construção.
 você já sabia essa resposta antes de eu perguntar?
 // ele tinha isso guardado. tava esperando alguém cutucar.
 
 gus@glyfesse:~/entrevista$ já
-// tava pronta desde março, eu montei ela inteira na cabeça na volta da escola pro caso de alguem
-perguntar, e ninguem perguntou, e ela ficou lá guardada tipo aquelas peças que vêm sobrando na caixa
-depois de montar o móvel e você não joga fora porque um dia... e aí veio você
+// tava pronta desde março, eu montei ela inteira na cabeca voltando da escola, no ônibus, olhando pela
+janela, eu ensaiei a ordem das frases umas quatro vezes pra não ficar comprido pro caso de alguém
+perguntar um dia, e não perguntaram, nem uma vez, nem de brincadeira, e ela ficou lá dentro ligada sem
+fazer nada, tipo aquela luzinha de aparelho que fica acesa a noite toda esperando alguém apertar o botão
+e ninguém aperta e a gente já nem enxerga mais ela de tão acostumado, e eu já tinha até parado de
+esperar, eu juro que tinha, e aí veio você
 ```
 
 ---
@@ -131,10 +140,28 @@ depois de montar o móvel e você não joga fora porque um dia... e aí veio voc
    rodar o código sem `print` no meio.
 2. **O Cauã não é cruel, é confiante.** O `// ele consegue. ele só não acredita que consegue.` reposiciona
    toda a impaciência dele — inclusive retroativamente o `// ele odiou. bom.` da abertura.
-3. **A curva da peça é o encurtamento.** As respostas do Gus começam enormes e vão diminuindo até
-   **"eu tava sorrindo"** (2 palavras) e **"já"** (1). O Gus curto é o Gus sem defesa — e as duas vezes em
-   que ele fica curto são exatamente as duas em que o Cauã fecha a saída técnica. **Ninguém planejou essa
-   curva:** ela saiu do improviso, porque cada persona era um agente separado.
+3. **★ Dois COLAPSOS, não uma curva** (medido palavra a palavra em 2026-08-01, depois do canon de
+   personalidade fechado pelo criador). A fala do Gus **não decresce**:
+
+   | resposta | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+   |---|--:|--:|--:|--:|--:|--:|--:|--:|--:|
+   | **fala** | 55 | 16 | 146 | 85 | **3** | 85 | 55 | 57 | **1** |
+   | **`//`** | 20 | 40 | 43 | 63 | 72 | 69 | 85 | 86 | 102 |
+
+   Ela faz um pico de 146 e **volta a 85 logo depois do colapso de 3 palavras**. São **dois colapsos
+   pontuais** num platô alto, cada um com causa própria — e ambas confirmadas pelo canon:
+   - **o de 3 palavras** cai na **única repergunta da entrevista** (*"para de me falar de parede"* repete
+     a pergunta anterior). Canon: *"se ele já falou sobre algo, ali basta"* — reperguntar rende resposta
+     **menor**;
+   - **o de 1 palavra** cai quando o Cauã nomeia a fuga técnica (*"você me devolveu ordem de construção"*).
+   - **o rebote para 85** é sobre a lista de bugs que ele escreveu antes: **domínio máximo do assunto**, e
+     o canon prevê que o ponto de inflexão varia com o domínio. **Rebote não é falha.**
+
+   ⚠️ **O motivo NÃO é impaciência.** No canon, resposta curta significa *"quero sair daqui"*; aqui
+   significa *"você me pegou"*. Na página parecem iguais, por dentro são opostas. **A exceção se
+   justifica:** o entrevistador não é jornalista, é o Cauã — perguntas de **16 palavras em média**, sem
+   enrolação, e ele só repetiu **uma vez**. O gatilho da impaciência legitimamente quase não acende.
+   Decisão do editor-geral (2026-08-01): manter, com **um fiapo** de impaciência na abertura.
 4. **A assimetria de informação é o motor visual.** O leitor lê os dois pensamentos; os personagens não se
    ouvem. O carinho do Cauã está a uma linha de distância do menino que se acha sozinho, e não o alcança.
 5. **O fecho.** A última fala tem uma letra a mais que um monossílabo e o último `//` termina em
@@ -159,17 +186,32 @@ depois de montar o móvel e você não joga fora porque um dia... e aí veio voc
   *"por que você me fez?"*. Aqui, dois números depois e do outro lado da mesa, o Cauã pergunta
   *"por que você começou?"*. Mesma pergunta, papéis trocados.
 
-### ⚠️ Três pontos que o integrador achou e NÃO consertou sozinho (decisão do editor-geral)
+### ★ v0.3 — a passada nos pensamentos (2026-08-01, ordem do editor-geral: "1+2+3")
 
-1. **Imagem de móvel duas vezes.** Troca 3: *"quando você aperta uma peça que não encaixa e ela fica presa
-   mas você sabe que ela ta torta"*. Troca 9: *"aquelas peças que vêm sobrando na caixa depois de montar o
-   móvel"*. Sentidos diferentes (peça forçada × peça que sobra), mesmo domínio. **Opções:** deixar (lê como
-   tique de um menino que monta coisas) ou trocar a primeira.
-2. **O erro de digitação `qeu` aparece duas vezes** (trocas 3 e 7). Erro repetido idêntico começa a parecer
-   sistema em vez de escorregão. **Sugestão:** trocar o segundo por outro tipo (letra vizinha ou acento
-   faltando).
-3. **"desculpa" duas vezes** (trocas 1 e 4). É tique de personagem e está dentro do briefing; registro só
-   para que o copyedit não acrescente um terceiro.
+Depois de o criador fechar o canon de personalidade (fala curta ↔ mente longa; máscara por empatia;
+entrevista é ato induzido), **as falas ficaram intactas e só os `//` foram reescritos**, por um agente do
+Gus com o canon inteiro no briefing. Três consertos:
+
+1. **Os `//` agora CRESCEM.** Antes estavam parados (`20·60·44·67·64·60·54·67·52`, sem tendência); agora
+   sobem de 20 a 102. O pensamento acelera enquanto a fala murcha — que é o que o canon prevê e o texto
+   não fazia.
+2. **Os `//` PERDEM O FILTRO** ao longo da peça: começam organizados e quase técnicos, passam a se
+   emendar e se corrigir no meio, e terminam crus (a troca 5 fecha em *"para, pergunta outra coisa por
+   favor"*). ⚠️ Perder o filtro **não** é errar gramática — a gramática dele é sempre perfeita; o que cai
+   é a compostura.
+3. **Um fiapo de impaciência**, só na abertura e não repetido, porque o Cauã não dá combustível:
+   *"achei que ia ser longo e chato... mas não posso fazer cara de nada, ninguém merece criança impaciente
+   do lado"* — a empatia entra na mesma linha e desarma. Dose calibrada pelo editor-geral:
+   *"pouca impaciência, afinal não houve insistência"*.
+
+Resolvidos de quebra: a **imagem de móvel repetida** (a segunda virou a luzinha de aparelho acesa a noite
+toda) e o **`qeu` duas vezes** (os errinhos agora são todos diferentes). **"desculpa" segue duas vezes**
+(trocas 1 e 4) — é tique de personagem e está no briefing; registro para o copyedit não pôr um terceiro.
+
+⚠️ **Uma troca que o integrador NÃO decide:** o `//` da abertura **perdeu** a linha *"ninguém nunca
+perguntou o que eu acho, só o que eu fiz"* para caber a impaciência em 20 palavras. Era material de
+ferida e estava na tabela do `GATE-SPOILER` desde a v0.1. **Decisão do editor-geral:** aceitar a troca, ou
+restaurar a linha (e a impaciência muda de lugar).
 
 ### Para o GATE-SPOILER (só o líder decide)
 
@@ -178,11 +220,14 @@ Quanto da ferida do Gus fica impresso. O material, do mais fundo para o menos:
 | Onde | O quê |
 |---|---|
 | Troca 8 | **`// dói`** sozinho, e o desmentido logo abaixo |
-| Troca 5 | *"eu falei 'vai' em voz alta pra um quadrado, e ninguém ouviu, e eu fiquei com vergonha mesmo sem ter ninguem pra ficar com vergonha na frente"* |
-| Troca 7 | *"ninguém nunca me devolveu uma coisa dessas, as pessoas ou não perguntam ou esperam eu parar de falar"* |
-| Troca 3 | *"ninguém em casa percebeu que a base do jogo caiu duas vezes no mesmo fim de semana"* |
-| Troca 9 | *"eu montei ela inteira na cabeça na volta da escola pro caso de alguem perguntar, e ninguem perguntou"* |
-| Troca 2 | *"ninguém nunca perguntou o que eu acho, só o que eu fiz"* (já estava no v0.1) |
+| Troca 5 | *"eu senti vergonha, vergonha na frente de ninguém, como é que isso funciona, não sei, não dá pra medir isso, para, pergunta outra coisa por favor"* — ★ na v0.3 ficou mais fundo: agora ele **pede pra mudar de assunto** |
+| Troca 9 | *"e não perguntaram, nem uma vez, nem de brincadeira... e eu já tinha até parado de esperar, eu juro que tinha, e aí veio você"* — ★ o *"eu juro que tinha"* é novo e é o mais exposto da peça |
+| Troca 7 | *"as pessoas ou não perguntam nada ou ficam esperando eu terminar de falar pra mudar de assunto"* |
+| Troca 3 | *"é justo que ningeum tenha perguntado nada no jantar, ninguém pergunta de coisa que não mudou de cor"* |
+| Troca 8 | *"é a única pergunta que eu nunca gaguejo"* (fecho do `//` do "dói") |
+
+⚠️ **Saiu da tabela na v0.3:** *"ninguém nunca perguntou o que eu acho, só o que eu fiz"* (troca 2), que
+foi substituída pela linha de impaciência. Ver o ponto em aberto na seção da v0.3.
 
 ### Invariantes de voz honradas (conferidas linha a linha pelo integrador)
 
