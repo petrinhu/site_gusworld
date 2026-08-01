@@ -108,7 +108,7 @@ Provocada pelo **Gus real**: um terminal de hoje mostra `usuário@máquina:pasta
 - O "caminho" é **a seção da revista** onde a fala acontece.
 - ★ **Refinamento do líder (2026-08-01, ~09:32), verbatim:** *"se a fala não for em sessão específica, fica um
   `~` no lugar da [sessão atual]"*. Logo: `gus@glyfesse:~$ boot ok` para **fala solta** (capa, chamada,
-  brincadeira) e `gus@glyfesse:/detonado$ ...` quando ela acontece **dentro de uma seção**. Encaixa exato na
+  brincadeira) e `gus@glyfesse:~/detonado$ ...` quando ela acontece **dentro de uma seção**. Encaixa exato na
   convenção unix (`~` = home) e **resolve o caso das falas fora de seção sem obrigar ninguém a inventar nome
   de seção falso**.
 - ⚠️ **Normalização que decorre do exemplo dele:** o líder escreveu o caminho de seção **com barra inicial**
@@ -514,13 +514,13 @@ aqui em uma linha, como pedido, para que a inversão seja confirmada e não desc
 
 | Seção | Prompt na voz nova |
 |---|---|
-| Editorial | `gus@glyfesse:/editorial$` |
-| Reportagem de capa | `gus@glyfesse:/reportagem$` |
-| Galeria de Bugs | `gus@glyfesse:/bugs$` |
-| Cemitério | `gus@glyfesse:/cemiterio$` |
-| Detonado da Simulação | `gus@glyfesse:/detonado$` · a linha final é do **root** |
-| A Entrevista | `volt@glyfesse:/entrevista$` pergunta · `gus@glyfesse:/entrevista$` responde |
-| Seção de Programação | `root@glyfesse:/programacao$` · inclusive na linha do CRT (ver lente 3) |
+| Editorial | `gus@glyfesse:~/editorial$` |
+| Reportagem de capa | `gus@glyfesse:~/reportagem$` |
+| Galeria de Bugs | `gus@glyfesse:~/bugs$` |
+| Cemitério | `gus@glyfesse:~/cemiterio$` |
+| Detonado da Simulação | `gus@glyfesse:~/detonado$` · a linha final é do **root** |
+| A Entrevista | `volt@glyfesse:~/entrevista$` pergunta · `gus@glyfesse:~/entrevista$` responde |
+| Seção de Programação | `root@glyfesse:~/programacao$` · inclusive na linha do CRT (ver lente 3) |
 | Seção 18 (Gus lê o bus) | a copy do líder é **pensamento** (`[gus pensa]:`), então **não leva prompt**; vai verbatim |
 | **Fala fora de seção** (capa, chamada, brincadeira) | **`gus@glyfesse:~$`** — o `~` do refinamento de ~09:32 |
 
