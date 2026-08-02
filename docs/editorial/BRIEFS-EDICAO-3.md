@@ -58,8 +58,10 @@ da família — **"superdotado", "altas habilidades", "AHSD", "prodígio", "neur
 similares estão **fora**. Nem profissão, formação ou condição de ninguém da família. O criador autorizou
 esse material **só em documentação interna** e **vetou expressamente** qualquer aparição em material que
 o leitor final veja. **A única explicação permitida para o que o menino sabe é: ele ESTUDA como se fazem
-jogos.** Critério de aceitação no `GATE-CONTEUDO` e na prova final: procurar cada termo no texto, no
-`alt`, no `aria-label` e no nome de arquivo — **achou, reprova**.
+jogos** — e ⚠️ **esse estudo é CURIOSIDADE SATISFEITA, não obrigação nem dedicação** (*"como quase tudo
+que ele gosta de estudar"*). Nada de "aplicado", "esforçado", "dedicado", "disciplinado": ele **quis
+saber, então foi saber**. É apetite, não esforço. Critério de aceitação no `GATE-CONTEUDO` e na prova
+final: procurar cada termo no texto, no `alt`, no `aria-label` e no nome de arquivo — **achou, reprova**.
 
 ★ **A régua de voz do Gus mudou em 2026-08-01** (fala curta ↔ `//` longo; disfarce por empatia; e, no
 texto escrito, ele se estende no técnico e enxuga no pessoal). Detalhe nos BRIEFS 4 e 5 e nas mensagens
@@ -326,7 +328,29 @@ Dragon. Também **não** mencionar profissão, formação ou condição de ningu
 **Por quê:** o criador autorizou esse material **só em documentação interna**, e **vetou expressamente**
 qualquer aparição em material que o leitor final veja. Esta seção é a mais tentada a escorregar, porque
 "o menino que previu os bugs" **pede** uma explicação — e a explicação proibida está a uma frase de
-distância. ⚠️ **A explicação permitida é uma só: ele ESTUDA como se fazem jogos.** Ponto.
+distância. ⚠️ **A explicação permitida é uma só: ele ESTUDA como se fazem jogos.**
+
+### ★★ E o estudo é CURIOSIDADE SATISFEITA, não obrigação (criador, 2026-08-01)
+
+> *"o estudo dele sobre jogos é satisfação de curiosidade, não obrigação, como quase tudo que ele gosta
+> de estudar"*
+
+⚠️ **Isto fecha a segunda porta de erro desta seção, e ela é mais sutil que a primeira.** Dizer "ele
+estudou" abre caminho para o clichê do **menino aplicado**: esforçado, dedicado, disciplinado, o
+prodígio que se sacrifica. **Está errado, e é quase tão ruim quanto o "que fofo".** Ele não se dedicou:
+ele **quis saber, então foi saber**. É **apetite**, não esforço.
+
+**Como escrever, e como não:**
+
+| ⛔ errado | ✅ certo |
+| :--- | :--- |
+| "estudou muito", "se dedicou", "aplicado", "esforçado", "disciplinado" | "ele já sabia", "ele tinha lido sobre isso", "ele foi atrás" |
+| estudo como **preparo** para uma tarefa | estudo como **prazer** — ele leu porque quis, e a lista sobrou de brinde |
+| o menino que **trabalhou** para acertar | o menino que **conhecia o terreno** porque gosta de andar nele |
+
+★ **Ganho para a matéria:** a previsão fica **mais impressionante**, não menos. Ele não montou a lista
+para o projeto — ela **já estava na cabeça dele** porque o assunto o diverte. O aviso não foi entrega de
+dever de casa; foi alguém comentando o óbvio de quem já esteve ali.
 
 **Critério de aceitação (vale no `GATE-CONTEUDO` e na prova final):** procurar cada um desses termos no
 texto, no `alt`, no `aria-label` e no nome de arquivo, e **não achar nenhum**. Achou, reprova.
