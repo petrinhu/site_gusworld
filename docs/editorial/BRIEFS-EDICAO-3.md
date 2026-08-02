@@ -352,6 +352,12 @@ ele **quis saber, então foi saber**. É **apetite**, não esforço.
 para o projeto — ela **já estava na cabeça dele** porque o assunto o diverte. O aviso não foi entrega de
 dever de casa; foi alguém comentando o óbvio de quem já esteve ali.
 
+⚠️ **E a terceira porta de erro, que decorre da segunda:** **nunca escrever "ele estuda muito"**. Ele
+estuda **pouco** o que é obrigatório e **muito** o que quer — são coisas opostas, e o texto não pode
+somar as duas numa palavra só. Pela mesma razão, **escola não é fardo nem antagonista** nesta revista: é
+**irrelevante e chata**, que é diferente de hostil. Nada de sofrimento escolar, nada de "ele odeia a
+escola". Detalhe no bus, thread `canon-gus-ahsd`.
+
 **Critério de aceitação (vale no `GATE-CONTEUDO` e na prova final):** procurar cada um desses termos no
 texto, no `alt`, no `aria-label` e no nome de arquivo, e **não achar nenhum**. Achou, reprova.
 
