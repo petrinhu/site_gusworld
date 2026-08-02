@@ -52,6 +52,20 @@ só "Gus Dragon"; nenhum nome real de amigo; zero segredo/token; zero profanidad
 por nome (carta, mestre, sistema). Nada disso em texto, `alt`, nome de arquivo ou mensagem de commit — que
 é **imutável** depois de pushada.
 
+⛔ **ACRESCENTADO EM 2026-08-01 — vale para TODAS as seções, não só para as que falam do menino:**
+**nenhum rótulo e nenhuma descrição clínica ou diagnóstica** sobre o Gus Dragon ou sobre qualquer pessoa
+da família — **"superdotado", "altas habilidades", "AHSD", "prodígio", "neurodivergente", "TDAH"** e
+similares estão **fora**. Nem profissão, formação ou condição de ninguém da família. O criador autorizou
+esse material **só em documentação interna** e **vetou expressamente** qualquer aparição em material que
+o leitor final veja. **A única explicação permitida para o que o menino sabe é: ele ESTUDA como se fazem
+jogos.** Critério de aceitação no `GATE-CONTEUDO` e na prova final: procurar cada termo no texto, no
+`alt`, no `aria-label` e no nome de arquivo — **achou, reprova**.
+
+★ **A régua de voz do Gus mudou em 2026-08-01** (fala curta ↔ `//` longo; disfarce por empatia; e, no
+texto escrito, ele se estende no técnico e enxuga no pessoal). Detalhe nos BRIEFS 4 e 5 e nas mensagens
+do bus, thread `canon-gus-ahsd`. **Qualquer decisão que toque a personalidade dele vai ao editor-geral —
+não se resolve no agente.**
+
 **Entrega:** **pt-br e en**, equivalentes. O agente **não commita e não pusha**; devolve o texto.
 
 ---
@@ -180,6 +194,52 @@ porque pela primeira vez existe uma coisa que funciona — por mais ridícula qu
 
 **Corte:** tudo o que as outras seções vão contar. O Editorial **abre**, não resume.
 
+## ★★ ATUALIZAÇÃO 2026-08-01 — o canon de personalidade, aplicado ao Gus ESCREVENDO
+
+> Fechado pelo criador em 2026-08-01, depois deste briefing já estar escrito. Detalhe completo nas
+> mensagens do bus, thread `canon-gus-ahsd`.
+
+### ★ A régua do texto escrito (decisão do editor-geral, 2026-08-01)
+
+Perguntei se a régua nova — **fala curta, mente longa** — vale para texto **escrito** por ele, que não é
+fala nem pensamento. **A resposta: depende do que ele escreve.**
+
+| O que ele está escrevendo | Como fica |
+| :--- | :--- |
+| **assunto técnico, que ele domina** | ele **se estende à vontade** — é onde ele é livre |
+| **sobre ele mesmo, ou sobre sentimento** | ele **enxuga** |
+
+★ **Esta Carta é do segundo tipo**: é ele admitindo uma promessa que fez e cobrando a si mesmo. **Logo,
+curta** — o que confirma e endurece o "S, no máximo dois blocos" que já estava no briefing. **Se sair
+comprida, errou.**
+
+### O que o canon acrescenta ao tom
+
+- ★★ **A lente aprovada ganhou fundamento:** *"a cobrança que ele faz a si mesmo"* é literalmente como ele
+  funciona — **ele aplica a si o julgamento que teme dos outros**. A Carta não precisa encenar humildade;
+  a autocobrança é o mecanismo real do menino.
+- ⚠️ **O "quase-alegre" tem de ser MASCARADO.** Ele não comemora alto. O motor do disfarce é **empatia**:
+  ele não quer tomar o tempo nem o espaço de ninguém com o que sente. A alegria aparece **por baixo** de
+  uma frase seca — nunca declarada.
+- **A ferida (isolamento) nunca é dita.** Se a Carta chegar perto do sentimento, ele **desvia para o
+  técnico** — um número, uma medição. Isso não é fuga do escritor: **é o personagem.**
+- **Nada de amargura e nada de cobrança a terceiros.** Ele cobra **a si**, não aos outros.
+- **Zero erro de gramática**, sempre. Erro de digitação raro e mecânico. **Sem ponto final**; reticências
+  nos beats de pausa.
+
+### ⛔ A mesma proibição do BRIEF 5 vale aqui
+
+**Nada de "superdotado", "altas habilidades", "AHSD", "prodígio", "neurodivergente", "TDAH"** nem
+descrição clínica — nem sobre ele, nem sobre ninguém da família, em nenhum lugar que o leitor veja. Aqui
+o risco é menor (ele jamais se rotularia), mas a proibição é a mesma e vale no gate.
+
+### ⚠️ Um ponto que o escritor NÃO decide sozinho
+
+Se a Carta usar o formato de prompt (`gus@glyfesse:~/editorial$ … ` + `//`), a assimetria funciona
+sozinha: **prosa curta em cima, `//` carregando o resto**. Se for prosa corrida sem `//`, o desvio para o
+técnico não tem para onde ir e a peça fica mais fria. **Levar as duas formas ao editor-geral antes de
+escolher.**
+
 ---
 
 # BRIEF 5 · Galeria de Bugs (estreia)
@@ -251,6 +311,53 @@ O enquadramento "criança testa e acha defeito" está **errado** e não pode ser
 ⚠️ **Como NÃO escrever:** "olha que fofo, a criança achou um bug". Ele não achou por sorte nem por brincar:
 ele **sabia**, por estudo. Tratar como fofura é diminuir, e é falso. O tom é o de **crédito técnico**, seco,
 do jeito que se credita quem avisou e não foi ouvido a tempo.
+
+## ★★ ATUALIZAÇÃO 2026-08-01 — o canon de personalidade mudou o que esta seção pode e não pode dizer
+
+> Fechado pelo criador em 2026-08-01, depois de os briefings acima já estarem escritos. **Leia antes de
+> escrever.** Detalhe completo nas mensagens do bus, thread `canon-gus-ahsd`.
+
+### ⛔ PROIBIÇÃO NOVA E DURA: nada de rótulo, nada de clínica, nada sobre a família
+
+**NÃO escrever, em lugar nenhum da revista:** "superdotado", "altas habilidades", "AHSD", "prodígio",
+"neurodivergente", "TDAH", nem qualquer descrição que soe **clínica** ou **diagnóstica** sobre o Gus
+Dragon. Também **não** mencionar profissão, formação ou condição de ninguém da família.
+
+**Por quê:** o criador autorizou esse material **só em documentação interna**, e **vetou expressamente**
+qualquer aparição em material que o leitor final veja. Esta seção é a mais tentada a escorregar, porque
+"o menino que previu os bugs" **pede** uma explicação — e a explicação proibida está a uma frase de
+distância. ⚠️ **A explicação permitida é uma só: ele ESTUDA como se fazem jogos.** Ponto.
+
+**Critério de aceitação (vale no `GATE-CONTEUDO` e na prova final):** procurar cada um desses termos no
+texto, no `alt`, no `aria-label` e no nome de arquivo, e **não achar nenhum**. Achou, reprova.
+
+### ★ O que o canon ACRESCENTA de material (e melhora a seção)
+
+A satisfação dele tem **duas formas**, e os quatro itens da tabela se dividem exatamente entre elas:
+
+| Forma | Como ele vive | Quais itens |
+|---|---|---|
+| ✅ **A boa:** a ideia é **adotada a tempo** e ele recebe o **mérito** | o processo segue mais suave, sem trauma | o **grudar na quina** (consertado no dia, `c12cb30`) |
+| ⚠️ **A outra:** ninguém previne, aquilo **explode**, e ele pode dizer *"eu avisei"* | é satisfação de verdade, e é amarga | o **clipping**, avisado em junho, que voltou em julho como *tunneling* |
+
+★ **É este o eixo da matéria, e ele é melhor que o anterior:** a mesma lista produziu **os dois desfechos
+no mesmo projeto**. Um aviso foi ouvido no mesmo dia; outro esperou um mês pra virar problema. A peça não
+precisa escolher entre elogio e ironia — ela tem as duas, documentadas.
+
+### ⚠️ Duas armadilhas de tom que o canon revela
+
+1. **NÃO transformar o projeto em vilão.** Injustiça é o gatilho mais forte do Gus, e uma seção sobre
+   "avisou e não foi ouvido" escorrega fácil para acusação. **Não houve negligência:** dois dos quatro
+   itens viraram **decisão consciente e registrada** do líder, e um foi consertado no mesmo dia. A tensão
+   é honesta **sem** culpado.
+2. **NÃO escrever amargura.** O *"eu avisei"* é real, mas ele é **seco**, não ressentido. E ele **disfarça
+   por empatia** — não sai reclamando. Se o texto der a ele voz de quem cobra, errou o menino.
+
+### Como fica a fala do Gus personagem nesta seção (se houver)
+
+Vale a régua nova: **fala curta, `//` longo**. E, se ele comentar o próprio acerto, o comentário é
+**mínimo** — a expansão vai toda para o `//`. ⚠️ Ele **não se gaba**; o mais próximo disso que ele chega
+é registrar o fato e mudar de assunto para o técnico.
 
 ⚠️ **Higiene, sem exceção:** só **"Gus Dragon"** ou **"o playtester de 11 anos"**. **Nunca** nome de batismo
 — nem no texto, nem em `alt`, nem em nome de arquivo, nem em mensagem de commit (que é imutável).
