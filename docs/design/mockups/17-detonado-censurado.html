@@ -84,7 +84,12 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
 
 /* faixa de contexto do mock (fora da "revista") */
 .ctx{max-width:820px; margin:0 auto; padding:22px 22px 4px; color:#cdbfa6}
-.ctx h1{font-family:var(--font-display); font-weight:700; font-size:14px; letter-spacing:.12em;
+/* ⚠️ 15px E PISO nesta linha, e o motivo e a fonte: a PixelOperatorMono degrada
+   abaixo de ~15px e o N maiusculo rasteriza como H. A 14px este titulo lia
+   "DETOHADO DA SIMULACAO · O DOCUMEHTO DESCLASSIFICADO" (o text-transform
+   uppercase dispara o defeito mesmo com o texto digitado em minuscula).
+   Mesma regra da .linhas .total la embaixo. Nao baixar de 15px. */
+.ctx h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.12em;
   text-transform:uppercase; color:#e6d9bf; margin:0 0 6px}
 .ctx p{font-size:14.5px; line-height:1.55; margin:0 0 6px; color:#bcaf95}
 .ctx b{color:#e6d9bf}
@@ -273,25 +278,57 @@ body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-co
    MESMO resultado, o que descartou as duas hipoteses.
 
    O rotulo tem requisito explicito ("bem pequeno mas ainda visivel"), entao
-   ele nao pode depender do que calha de estar embaixo. Sai do multiply e
-   ganha um halo da COR DO PAPEL: o halo vira o fundo LOCAL dele, e a leitura
-   passa a ser sempre contra o papel - 5.42:1 nesta folha, 3.91:1 na #1
-   encardida. O halo herda var(--papel), entao envelhece junto com a edicao.
+   ele nao pode depender do que calha de estar embaixo. Sai do multiply.
    A moldura e a palavra continuam em multiply: elas SAO grandes o bastante
    para conviver com o texto por baixo, o rotulo miudo nao e.
+
+   ⚠️⚠️ E NAO TEM HALO - a segunda correcao foi tirar o halo, nao ajusta-lo.
+   A tentativa anterior deu ao rotulo um halo da COR DO PAPEL para ele ler
+   sempre contra papel. Funcionou para o rotulo e custou o texto: halo de papel
+   APAGA o que estiver embaixo. Varrido em 16 larguras, entre 360 e 759 a quina
+   cai dentro da coluna de texto e o halo comia letra - a PALAVRA INTEIRA "se"
+   em 430px ("confere se cada") e "eu" em 680px ("que eu mexo"). De 760 para
+   cima o desvio da media query joga a quina na margem limpa e o estrago sumia;
+   abaixo nao havia tratamento nenhum.
+
+   ⚠️ REPOSICIONAR NAO RESOLVE NO ESTREITO, e isso foi medido, nao suposto:
+   a faixa de papel limpo a direita da coluna (max-width 62ch) so passa a caber
+   os ~78px do rotulo perto de 750px de viewport - sobra 3px em 680, 31px em
+   720, 70px em 759. E o rotulo cruza SEMPRE uma linha de texto no estreito:
+   girado a -17deg ele espalha ~29px na vertical e o passo entre linhas do
+   corpo e 26px, entao nao existe altura onde ele caiba no branco entre linhas.
+
+   Logo a legibilidade passou a vir da COR, nao de tapar o fundo. O rotulo tem
+   DOIS fundos reais - o papel e a tinta preta do corpo - e a tinta dele foi
+   escolhida ENUMERANDO os dois contra o render, nao a olho:
+     tinta cheia #b81f26   5.17:1 no papel · 2.79:1 sobre o texto  <- some
+     este rotulo #c54c4e   3.74:1 no papel · 3.87:1 sobre o texto  ✅
+   (medido no render de 680px: papel #ece6d8, tinta do corpo #1a1614.) Para uma
+   cor unica servindo dois fundos opostos o teto teorico e ~4:1 em cada, entao
+   3.74/3.87 esta praticamente no limite. Segue DECORATIVO, e por isso abaixo
+   de 4.5:1 e aceito - mesma razao ja registrada para o carimbo. O mix e com
+   var(--papel), entao o rotulo envelhece junto com a edicao.
+
+   Dano medido depois da troca: ZERO pixel de texto apagado nas 11 larguras
+   verificadas (era 56 px de texto lavados em 430px, com clareamento de ate
+   192/255 - letra some). ⚠️ Halo TRANSLUCIDO tambem foi testado (papel a 45%)
+   e REPROVOU: 24 px de texto lavados, clareamento de ate 60/255. Halo de
+   papel, em qualquer dose, custa texto. Nao voltar. Engrossar o rotulo por
+   dupla-batida (text-shadow .4px na propria tinta, que so escurece e portanto
+   nao lava nada) tambem foi testado e nao compensou: o ganho no trecho que
+   cruza palavra e minimo e a 12.8px comeca a fechar o olho do "e" e do "g".
+
+   ⚠️ 12.8px e piso (aqui e Archivo Narrow, nada a ver com o defeito da fonte
+   pixel): abaixo disso a cauda do rotulo, quando cruza uma palavra, vira
+   mancha. O teto 13.5px mantem o rotulo bem menor que o corpo (17px).
 
    Recuado do canto tambem de proposito: o raio de 19px da quina inferior
    direita passa por cima se ele encostar. */
 .carimbo .corp{
   position:absolute; right:clamp(22px,4vw,38px); bottom:clamp(9px,1.8vw,16px);
   font-family:var(--font-manchete); font-weight:700;
-  font-size:clamp(11.5px,1.9vw,13px); letter-spacing:.03em;
-  color:var(--carimbo-tinta); rotate:.4deg;
-  /* halo CURTO de proposito: 2px chega para separar o rotulo do que estiver
-     embaixo sem apagar a palavra do corpo. Com 4px o halo comia a letra "a"
-     de "olhando" na linha de tras - o remedio nao pode custar a leitura do
-     texto que ele atravessa. */
-  text-shadow:0 0 2px var(--papel), 0 0 2px var(--papel), 0 0 2px var(--papel);
+  font-size:clamp(12.8px,2vw,13.5px); letter-spacing:.045em;
+  color:color-mix(in srgb, var(--carimbo-tinta) 78%, var(--papel)); rotate:.4deg;
 }
 
 .rodape{margin:30px 0 0; padding-top:12px; border-top:1px solid var(--borda);
