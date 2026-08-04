@@ -95,10 +95,17 @@ body{
   font-size:clamp(16px,2.4vw,20px); line-height:1.1; text-align:right;
   color:var(--tinta-preta); margin:0 0 -1px;
 }
+/* PISO DE 15px: o expediente carrega INFORMAÇÃO (volume, número, data, domínio)
+   e a fonte pixel troca glifo abaixo de 15px — a 11px "2026" saía "Z0Z6" e os
+   `s` de gusworld.site viravam bolha. SEM tracking de compensação: a linha cabe
+   inteira a 320px, e apertar fonte pixel joga o glifo em posição fracionária,
+   que é justamente o que borra a diagonal do N. */
 .meta{
-  font-family:var(--font-display); font-size:11px; text-align:right;
-  line-height:1.55; color:var(--tinta-2); margin:0;
+  font-family:var(--font-display); font-size:15px; text-align:right;
+  line-height:1.4; color:var(--tinta-2); margin:0;
 }
+/* o número da edição segue em destaque: agora por PESO e tinta cheia, já que o
+   tamanho virou o piso comum da linha */
 .meta b{color:var(--tinta-preta); font-size:15px}
 /* uptime das sessões de trabalho (3ª linha do expediente, só nas edições que
    capturaram o dado). O "discreto" vem da POSIÇÃO e do tamanho já herdados do
@@ -331,15 +338,19 @@ main{display:block}
   background:#0d152006;
 }
 .conteudo .classificado.anon{border-left-color:var(--tinta-2)}
+/* PISO DE 15px: o número do anúncio é DADO (o leitor cita "10.2" pra achar o
+   classificado). A 10px o `2` saía `Z` — "10.Z". */
 .conteudo .class-id{
-  display:block; font-family:var(--font-display); font-size:10px; letter-spacing:.08em;
+  display:block; font-family:var(--font-display); font-size:15px; letter-spacing:.04em;
   color:var(--tinta-2); margin:0 0 6px;
 }
 .conteudo .classificado .dito,
 .conteudo .classificado .fala{margin:0}
 .conteudo .classificado .verbo{color:var(--tinta-preta); font-weight:700; letter-spacing:.02em}
+/* PISO DE 15px: é a linha de CONTATO (e-mail + ID do anúncio). A 11px lia
+   `5ubject`, `ZZ7de71d` e `Intereooadoo`. */
 .conteudo .class-contato{
-  font-family:var(--font-display); font-size:11px; line-height:1.5;
+  font-family:var(--font-display); font-size:15px; line-height:1.5;
   color:var(--tinta-2); margin:8px 0 0;
 }
 .conteudo .email{
@@ -426,16 +437,22 @@ main{display:block}
 .conteudo ul.bibliografia{list-style:none; padding-left:0}
 .conteudo ul.bibliografia li{padding-left:14px; border-left:2px solid #00000014}
 
+/* PISO DE 15px na tabela inteira: é onde mora o nome da tecnologia. A 13px o
+   corpo lia `.HET`/`Hative`; a 11px o kicker lia `COMPOHENTE`, `CU5TO`, `5PEC`,
+   `OPTIOH`, `GAHHO HOS HOT PATH5`. Cabeçalho e corpo ficam no mesmo corpo de
+   letra — a hierarquia passa a vir do PESO (th é bold), da caixa alta e do fio
+   grosso embaixo. A goteira lateral encolhe no estreito pra pagar a largura que
+   os px a mais custaram, sem deixar a tabela empurrar a página. */
 .conteudo .specs{
   width:100%; border-collapse:collapse; margin:0 0 clamp(14px,2.2vw,18px);
-  font-family:var(--font-display); font-size:13px;
+  font-family:var(--font-display); font-size:15px;
 }
 .conteudo .specs th,.conteudo .specs td{
-  text-align:left; padding:7px 12px; border-bottom:1px solid var(--borda);
+  text-align:left; padding:7px clamp(5px,1.2vw,12px); border-bottom:1px solid var(--borda);
 }
 .conteudo .specs thead th{
   border-bottom:2px solid var(--tinta-preta); color:var(--tinta-preta);
-  letter-spacing:.04em; text-transform:uppercase; font-size:11px;
+  letter-spacing:0; text-transform:uppercase; font-size:15px;
 }
 .conteudo .specs td:first-child{color:var(--tinta-2)}
 .conteudo .specs td:last-child{color:var(--tinta-preta)}
@@ -472,8 +489,10 @@ main{display:block}
   display:block; max-width:100%; height:auto;
   border:1px solid var(--borda); border-radius:var(--raio-tela);
 }
+/* PISO DE 15px: a legenda é texto de leitura (explica a tela). A 11,5px o
+   `BUS git` lia `BU5 git` e os `s` de "caixas/site/passando" viravam bolha. */
 .conteudo .tela-real figcaption{
-  font-family:var(--font-display); font-size:11.5px; line-height:1.5; color:var(--tinta-2);
+  font-family:var(--font-display); font-size:15px; line-height:1.5; color:var(--tinta-2);
   margin:8px 0 0; padding-left:9px; border-left:2px solid var(--tinta-ciano);
 }
 
@@ -483,7 +502,8 @@ main{display:block}
   font-family:var(--font-manchete); font-weight:700; letter-spacing:var(--manchete-ls);
   font-size:clamp(20px,3vw,26px); line-height:1.05; color:var(--tinta-preta); margin:0 0 2px;
 }
-.conteudo .colo-data{font-family:var(--font-display); font-size:12px; color:var(--tinta-2); margin:0 0 12px}
+/* PISO DE 15px: é a DATA do colofão. A 12px "de 2026" lia "de Z0Z6". */
+.conteudo .colo-data{font-family:var(--font-display); font-size:15px; color:var(--tinta-2); margin:0 0 12px}
 .conteudo .colo-creditos{font-family:var(--font-corpo); font-size:16px; line-height:1.7; color:var(--tinta-preta); margin:0 0 10px}
 .conteudo .colo-creditos .prompt{font-size:15px}
 .conteudo .colo-direitos{font-family:var(--font-corpo); font-style:italic; font-size:14px; color:var(--tinta-2); margin:0}
@@ -514,10 +534,12 @@ main{display:block}
 .contato a:focus-visible{outline:2px solid var(--tinta-ciano); outline-offset:2px}
 
 /* build-tag EXPERT (project-i18n-switch / versionamento): carimbo mono discreto
-   na base da EDIÇÃO. ASCII só-minúsculas (guard N→H não dispara). Cor apagada,
-   pequeno — leitura de máquina pra quem procura, invisível pro leigo. */
+   na base da EDIÇÃO. ASCII só-minúsculas (guard N→H não dispara). Cor apagada
+   — a discrição vem da TINTA e da posição, não mais do corpo de letra.
+   PISO DE 15px: o carimbo é DADO de versão; a 11px lia `build Z0Z6.05.15`, e
+   um número de build que se lê errado não serve pra nada. */
 .build-tag{
-  font-family:var(--font-display); font-size:11px; letter-spacing:.02em;
+  font-family:var(--font-display); font-size:15px; letter-spacing:.02em;
   color:var(--tinta-2); opacity:.65; margin:4px 0 0;
 }
 
@@ -819,9 +841,13 @@ main{display:block}
   animation:ps-pisca 1.15s steps(1) infinite;
 }
 @keyframes ps-pisca{50%{opacity:.18}}
+/* PISO DE 15px: a linha de fichas é texto que o leitor lê. A 12px lia `FICHA5`
+   / `TOKEHS`, e a 9px do mobile a linha inteira sumia — e as scanlines do CRT
+   comem justo a linha de antialiasing que separava `S` de `5`. O espacejamento
+   encolhe pra a linha caber na tela estreita do gabinete. */
 .ps-insert{
-  font-family:var(--font-display); font-size:clamp(9px,1.5vw,12px);
-  letter-spacing:.14em; color:var(--gw-ciano); margin:8px 0 0; opacity:.82;
+  font-family:var(--font-display); font-size:15px;
+  letter-spacing:.08em; color:var(--gw-ciano); margin:8px 0 0; opacity:.82;
 }
 
 /* boot: o BIOS imprime linha a linha, alinhado à esquerda como um terminal */
@@ -871,7 +897,7 @@ main{display:block}
   display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
 }
 .glyfa-cab .conta{
-  font-family:var(--font-display); font-size:11px; letter-spacing:.04em;
+  font-family:var(--font-display); font-size:15px; letter-spacing:.02em;
   color:var(--tinta-2);
 }
 .glyfa-lide{
@@ -988,7 +1014,7 @@ main{display:block}
 .album-hero{scroll-margin-top:12px; margin-top:clamp(18px,3vw,24px)}
 .album-cab{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
 .album-cab .conta{
-  font-family:var(--font-display); font-size:11px; letter-spacing:.04em;
+  font-family:var(--font-display); font-size:15px; letter-spacing:.02em;
   color:var(--tinta-2);
 }
 .album-lide{
@@ -1105,7 +1131,7 @@ main{display:block}
 .cupom-hero{scroll-margin-top:12px; margin-top:clamp(18px,3vw,24px)}
 .cupom-cab{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
 .cupom-cab .conta{
-  font-family:var(--font-display); font-size:11px; letter-spacing:.04em;
+  font-family:var(--font-display); font-size:15px; letter-spacing:.02em;
   color:var(--tinta-2);
 }
 .cupom-lide{
@@ -1339,8 +1365,13 @@ main{display:block}
   border-top:1px solid #00000018; padding-top:18px;
 }
 /* .secao-nome (h2) já vem do bloco da edição: display, 15px, guard N→H ok */
+/* PISO DE 15px em TODA .conta (aqui e nas 4 irmãs: linha do tempo, álbum,
+   glyfa, cupom). A que obrigava era esta — a contagem da banca, que a 11px lia
+   `Z edições publicadas`. As outras 4 sobem junto porque .conta é UM componente
+   só, repetido lado a lado na home: deixar uma a 15px e quatro a 11px seria
+   trocar um defeito de leitura por um defeito de desenho. */
 .banca-tit .conta{
-  font-family:var(--font-display); font-size:11px; letter-spacing:.04em;
+  font-family:var(--font-display); font-size:15px; letter-spacing:.02em;
   color:var(--tinta-2);
 }
 
@@ -1372,8 +1403,15 @@ main{display:block}
   padding-bottom:5px;
 }
 .ed .mini-mast .marca{font-weight:700; font-size:15px; color:var(--tinta-preta)}
-/* .ref é pixel <15px → minúsculo no HTML (guard N→H); aqui só o tamanho */
-.ed .mini-mast .ref{font-size:11px; color:var(--tinta-2); text-align:right; line-height:1.3}
+/* PISO DE 15px: a referência do card É o expediente da edição na estante (vol.,
+   nº e data). A 11px lia `de Z0Z6`.
+   No estreito (≤~400px) ela passa a ocupar DUAS linhas, e isso é aceito de
+   propósito: o `text-align:right` + `line-height:1.3` já foram escritos para
+   duas linhas. Apertar o tracking não salvaria — faltam 1px a 390px, mas o
+   nome do mês varia ("junho" × "setembro") e a linha quebraria do mesmo jeito
+   em metade das edições. Melhor uma quebra previsível que um aperto que borra
+   o glifo. */
+.ed .mini-mast .ref{font-size:15px; color:var(--tinta-2); text-align:right; line-height:1.3}
 
 /* ── A ARTE DE CAPA da estante: o CARD SOCIAL (1200x630) da edição ──
    Mesma gramática do .ed-frame (uma tela acesa embutida no papel), mas para a
@@ -1453,7 +1491,7 @@ main{display:block}
 }
 /* .secao-nome (h2) ja vem do bloco da edição (display, 15px, guard N→H ok) */
 .lt-cab .conta{
-  font-family:var(--font-display); font-size:11px; letter-spacing:.04em; color:var(--tinta-2);
+  font-family:var(--font-display); font-size:15px; letter-spacing:.02em; color:var(--tinta-2);
 }
 .lt-lide{
   font-family:var(--font-corpo); font-size:clamp(13.5px,1.9vw,15px); line-height:1.5;
@@ -1681,10 +1719,12 @@ main{display:block}
   border:3px solid var(--tinta-preta); /* a moldura de cada quadro (jornal 90s) */
 }
 .hq-q .crt-tela{border-radius:0; flex:1; width:100%}
-/* etiqueta de quadro (canto), como numero de vinheta */
+/* etiqueta de quadro (canto), como numero de vinheta.
+   PISO DE 15px: e o numero que da a ORDEM DE LEITURA da tirinha. A 11px o `2`
+   lia `Z`. Custo de layout zero — position:absolute, nao empurra nada. */
 .hq-n{
   position:absolute; top:6px; left:8px; z-index:6;
-  font-family:var(--font-display); font-size:11px; letter-spacing:.06em;
+  font-family:var(--font-display); font-size:15px; letter-spacing:.06em;
   color:#3f9c6a; opacity:.8;
 }
 /* Q3 do HQ: a tela REAL do monologo HAL (tui_claude.png). A figura preenche a
@@ -1733,9 +1773,14 @@ main{display:block}
       com o granito. Topo em arco + base reta (a silhueta clássica), no fluxo do
       terminal, centralizada abaixo da narração ("ao fundo" do quadro). Decorativa
       (aria-hidden) → nada a ler para o leitor de tela. Sem animação. */
+/* o piso de 84px é DERIVADO do nome escavado: "GDScript" a 15px mede 60px, e
+   com 6px de goteira dos dois lados a pedra precisa de 72+12. O piso antigo
+   (64px) foi calculado pro nome a 13px e deixava o `t` final atravessar a borda
+   direita da lápide assim que o corpo subiu. No estreito quem manda é o 34%,
+   que já dava ~104px — lá nada muda. */
 .hq .lapide-mini{
-  display:block; width:clamp(64px,34%,104px); box-sizing:border-box;
-  margin:clamp(8px,2vw,14px) auto 2px; padding:14px 8px 9px; text-align:center;
+  display:block; width:clamp(84px,34%,104px); box-sizing:border-box;
+  margin:clamp(8px,2vw,14px) auto 2px; padding:14px 6px 9px; text-align:center;
   border-radius:clamp(28px,11vw,48px) clamp(28px,11vw,48px) 3px 3px;   /* arco + base */
   background:linear-gradient(176deg,#0e3a24 0%,#0a2c1c 62%,#08251a 100%);   /* granito em fósforo */
   border:1px solid #1f6b4577;
@@ -1746,11 +1791,14 @@ main{display:block}
   content:"◆"; display:block; font-size:9px; line-height:1;
   color:#3f9c6a; margin:0 0 7px; text-shadow:none;
 }
-/* o nome escavado: pixel (--font-display), fósforo claro. "GDScript" não tem N
-   maiúsculo → escapa do guard N→H; decorativo, então o tamanho pequeno é ok. */
+/* o nome escavado: pixel (--font-display), fósforo claro. O comentário antigo
+   dizia que "GDScript" escapava do guard por não ter N maiúsculo — mas o guard
+   não é só o N: o S MAIÚSCULO vira 5 entre 10 e 12px, e no mobile o clamp
+   pousava em 11px e a lápide lia `GD5cript`. PISO DE 15px: é o NOME da
+   tecnologia enterrada, a piada inteira do quadro depende de lê-lo. */
 .hq .lapide-mini .lm-nome{
-  font-family:var(--font-display); font-size:clamp(11px,2.6vw,13px);
-  letter-spacing:.02em; color:#8affc0; text-shadow:0 0 6px #2ad07a55;
+  font-family:var(--font-display); font-size:15px;
+  letter-spacing:0; color:#8affc0; text-shadow:0 0 6px #2ad07a55;
 }
 
 /* ── §13 · o poster central: o icone de imagem quebrada GIGANTE (SVG) ── */
@@ -1801,10 +1849,17 @@ main{display:block}
   width:calc(min(1080px, 100vw) - 2 * clamp(20px,3.5vw,56px));
   text-align:center;
 }
-/* o rótulo de encarte no alto do mat (pixel apagada, como carimbo de miolo) */
+/* o rótulo de encarte no alto do mat (pixel apagada, como carimbo de miolo).
+   PISO DE 15px: a 9,5px o carimbo lia `EHCARTE` — palavra que não existe. O
+   relatório de QA não conseguiu ler o N aqui (o emblema de zoom cobria o rótulo
+   no render em que a foto ainda não tinha carregado); com a foto no lugar o
+   emblema desce pro canto inferior, o carimbo fica inteiro à vista e a troca se
+   confirma. A discrição continua na TINTA (ciano apagado, opacity .72) e no
+   espacejamento largo, não no corpo de letra. Custo de layout zero: é
+   position:absolute sobre um mat de até 560px, e a palavra mede ~88px. */
 .conteudo .poster-mat::before{
   content:"ENCARTE"; position:absolute; top:clamp(6px,1.6vw,11px); left:0; right:0;
-  text-align:center; font-family:var(--font-display); font-size:9.5px;
+  text-align:center; font-family:var(--font-display); font-size:15px;
   letter-spacing:.34em; color:#7fd6e0; opacity:.72; pointer-events:none;
 }
 /* a imagem justa no mat, com o keyline ciano fino separando tinta de foto */
