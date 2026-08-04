@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse · 18 · A HQ · o quadrado</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* MOCK 18: a HQ da #3 - tirinha de TRES QUADROS.
+   Roteiro aprovado (PAUTA-EDICAO-3, secao 11):
+     1. a sala vazia
+     2. o quadrado da um passo - e esbarra
+     3. ele insiste
+
+   ⛔ NAO EXISTE DESENHO, e nao vai existir. O lider nao e ilustrador: regra
+   dura da casa. A tirinha inteira e GEOMETRIA CSS: retangulo, borda, hachura,
+   posicao. Zero SVG figurativo, zero imagem, zero emoji fazendo de personagem.
+   O unico SVG do arquivo e a fibra do papel (turbulencia), que ja e o padrao
+   da .folha e nao desenha nada.
+
+   ⚠️ O ELENCO E UM QUADRADO E UMA SALA. Ele NAO ganha olho, boca, braco nem
+   deformacao de impacto: a graca e ele ser um quadrado. Quem for mexer aqui
+   depois: resistir a humanizar e a metade do trabalho desta peca.
+
+   ★ A PIADA E A ECONOMIA. O quadro 3 e quase pixel-por-pixel o quadro 2:
+   muda so a densidade dos tracos, o eco tracejado do passo anterior e as
+   marcas no chao. A repeticao E o texto. Se alguem "melhorar" o quadro 3
+   dando a ele um desfecho, a tirinha morre.
+
+   ZERO ANIMACAO, e e decisao, nao esquecimento: a tira vai IMPRESSA no papel
+   da revista, entao ela tem que funcionar parada. Nao ha o que desligar em
+   prefers-reduced-motion (a regra global de ../tokens.css §9 cobre o herdado).
+
+   ZERO JS. Tudo herda de ../tokens.css; papel e o material da secao.
+
+   ⚠️ FONTE PIXEL SO A >=15px. O defeito medido desta casa (N->H, S->5, s->o/e,
+   v->u, 2->Z) mata rotulo miudo. Por isso, DIFERENTE dos mocks anteriores, os
+   rotulos pequenos (expediente, kicker, chamada, rodape) aqui sao ARCHIVO
+   NARROW em caixa alta, nao PixelOperatorMono a 11px. A pixel sobrou onde ela
+   e grande: o logo (32px) e o numero do quadro (16px), e o numero "2" foi
+   conferido no render de 1200 e de 390, justamente porque 2->Z e o defeito
+   conhecido. */
+
+*{box-sizing:border-box}
+html{background:#2b2620}
+body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-corpo)}
+
+/* ═══════════ CORES: o que foi MEDIDO, nao chutado ═══════════
+   Metodo: ENUMERAR a paleta inteira contra o FUNDO REAL DE CADA ELEMENTO,
+   nunca contra "o fundo do documento". Os tres fundos que existem nesta peca:
+     P0  papel novo                #f4efe4
+     P1  esta folha (--idade:.10)  ~#f2ecdf   (amostrado no render)
+     P9  o pior papel da banca, a #1 encardida  #d9c8a3
+
+   TEXTO (funcional, precisa de AA 4.5:1)         P0      P1      P9
+     --tinta-preta  #1a1614  titulo, numero     15.67   15.13   10.90  AAA
+     --tinta-2      #5b544f  legenda, rodape     6.48    6.26     4.51  AA
+     --tinta-ciano  #0d5e67  kicker              6.51    6.28     4.53  AA
+     papel sobre --tinta-preta (numero do quadro, chamada-topo)  ~15:1  AAA
+
+   ⚠️ NENHUM TEXTO CAI DENTRO DO QUADRO. As legendas ficam FORA do painel,
+   sobre papel limpo, e nao sobre a hachura do chao nem sobre o azul. O unico
+   texto dentro do painel e o numero, e ele senta num bloco PRETO SOLIDO
+   (nao na hachura), por isso o fundo real dele e #1a1614 e nao o papel.
+
+   AREA / TINTA CHAPADA (nao e texto, nao se aplica 4.5:1, mas tem que
+   separar do papel a olho e no preto-e-branco da impressora)
+     --tinta-ciano  #0d5e67  o quadrado    6.28:1 sobre P1   ✅ le como
+       "azul escuro impresso" e, em escala de cinza, continua bem mais escuro
+       que o papel: a tira sobrevive a fotocopia.
+     hachura do chao / da parede: tinta-preta a 15% e 22%. DECORATIVA, sem
+       texto por cima em lugar nenhum, entao razao baixa e aceita por desenho.
+   ═══════════════════════════════════════════════════════════ */
+
+/* faixa de contexto do mock (fora da "revista") */
+.ctx{max-width:820px; margin:0 auto; padding:22px 22px 4px; color:#cdbfa6}
+/* ⚠️ 15px E PISO nesta linha pelo defeito da fonte pixel (o N maiusculo
+   rasteriza como H abaixo disso, mesmo com o uppercase vindo do CSS). */
+.ctx h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.12em;
+  text-transform:uppercase; color:#e6d9bf; margin:0 0 6px}
+.ctx p{font-size:14.5px; line-height:1.55; margin:0 0 6px; color:#bcaf95}
+.ctx b{color:#e6d9bf}
+.ctx .tag{color:#7bd06a}
+
+/* ═══════════ A REVISTA (a folha de papel) ═══════════ */
+.folha{
+  max-width:820px; margin:20px auto 0; position:relative;
+  box-shadow:var(--sombra-folha); overflow:hidden;   /* guard: nada escapa da folha */
+  padding:26px 30px 34px;
+}
+@media (max-width:430px){ .folha{ padding:20px 16px 28px } }
+/* fibra do papel: SVG com dimensao explicita (senao o Gecko descarta o filtro) */
+.folha::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.12;
+}
+.folha > *{position:relative; z-index:1}
+
+/* ── expediente ── */
+.masthead{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:3px solid var(--tinta-preta); padding-bottom:8px; margin-bottom:12px}
+.masthead .logo{font-family:var(--font-display); font-weight:700; font-size:32px; line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4a0, 1.5px 1.5px 0 #c2129ea0}
+.masthead .ed{font-family:var(--font-manchete); font-weight:700; font-size:12.5px;
+  letter-spacing:.08em; text-transform:uppercase; text-align:right; line-height:1.6; color:var(--tinta-2)}
+.masthead .ed b{color:var(--tinta-preta); font-size:17px; letter-spacing:0}
+.chamada-topo{font-family:var(--font-manchete); font-weight:700; font-size:12.5px; letter-spacing:.1em;
+  text-transform:uppercase;
+  background:var(--tinta-preta); color:var(--papel); display:inline-block; padding:5px 9px; margin-bottom:18px}
+
+/* ── cabecalho da secao ── */
+.kicker{font-family:var(--font-manchete); font-weight:700; font-size:13px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--tinta-ciano); margin:0 0 3px}
+.titulo{font-family:var(--font-manchete); font-weight:700; font-size:clamp(30px,8vw,40px); line-height:1.0;
+  letter-spacing:var(--manchete-ls); color:var(--tinta-preta); margin:0 0 16px}
+
+/* ═══════════════════════════════════════════════════════════════════
+   A TIRA
+   ═══════════════════════════════════════════════════════════════════
+   ⚠️ 1 COLUNA OU 3 COLUNAS, NUNCA 2+1. Por isso a media query e explicita
+   em vez de auto-fit: auto-fit daria 2 em cima e 1 embaixo por volta de
+   600px, e uma tirinha quebrada em 2+1 perde a leitura da esquerda para a
+   direita, que e a piada (o terceiro quadro so funciona como REPETICAO do
+   segundo, e para isso os dois precisam estar na mesma linha de leitura ou
+   em sequencia vertical limpa). */
+.tira{list-style:none; margin:0; padding:0; display:grid; gap:16px; grid-template-columns:1fr}
+@media (min-width:640px){ .tira{grid-template-columns:repeat(3,1fr); gap:14px} }
+.tira > li{margin:0}
+.tira figure{margin:0}
+
+/* ── o painel ──
+   As proporcoes da cena vivem em custom properties: mudar --piso ou --parede
+   move chao e parede nos TRES quadros de uma vez, e o alinhamento entre eles
+   e o que faz o quadro 3 ler como repeticao do 2. Nao hardcodar por quadro. */
+.cena{
+  --piso:   29%;    /* altura da faixa de chao */
+  --parede: 15%;    /* largura da parede da direita */
+  --q:      25%;    /* lado do quadrado, em % da largura do painel */
+  --traco:  var(--tinta-preta);
+
+  position:relative; aspect-ratio:4/3; overflow:hidden;
+  background:transparent;              /* o interior E o papel da folha */
+}
+/* ⚠️ A MOLDURA E UM PSEUDO-ELEMENTO POR CIMA, nao a border do .cena, e o
+   motivo apareceu no render: com border no proprio .cena, os filhos absolutos
+   sao pintados DEPOIS da borda, entao a lasca do quadro 1 tapava a moldura no
+   ponto em que ela sai do quadro. Em quadrinho e o contrario: o quadro CORTA
+   o personagem. Com a moldura em z-index 5 ela fecha por cima de tudo, e o
+   leque do impacto tambem sai cortado quando encosta na beirada, que e o que
+   se espera de um quadro. */
+.cena::after{
+  content:""; position:absolute; inset:0; z-index:5; pointer-events:none;
+  border:3px solid var(--tinta-preta);
+}
+
+/* o chao: faixa com hachura diagonal, linha de contorno grossa por cima */
+.cena .chao{
+  position:absolute; left:0; right:0; bottom:0; height:var(--piso);
+  border-top:3px solid var(--tinta-preta);
+  background:repeating-linear-gradient(45deg,
+    #1a161426 0 1.5px, #0000 1.5px 8px);
+}
+/* a parede da direita: hachura diagonal DENSA e no sentido CONTRARIO ao do
+   chao. A troca de sentido e o que separa os dois planos: com as duas em
+   listra vertical, a parede lia como uma coluna solta no meio do quadro em
+   vez de fundo do comodo (visto no render, nao suposto). */
+.cena .parede{
+  position:absolute; right:0; top:0; bottom:var(--piso); width:var(--parede);
+  border-left:3px solid var(--tinta-preta);
+  background:repeating-linear-gradient(135deg,
+    #1a161440 0 2px, #0000 2px 5px);
+}
+
+/* ── o protagonista ──
+   Quadrado. Chapado. Contorno preto de quadrinho. Sem rosto, sem nome,
+   quatro lados. NAO DAR OLHINHO. */
+.q{
+  position:absolute; bottom:var(--piso); width:var(--q); aspect-ratio:1;
+  background:var(--tinta-ciano);
+  border:3px solid var(--tinta-preta);
+  right:var(--parede);                 /* default: encostado na parede */
+}
+/* o eco do passo anterior: contorno tracejado.
+   E o unico jeito de dizer "de novo" sem legenda e sem seta.
+   ⚠️ O MIOLO E PAPEL, nao transparente: com miolo vazado o rastro passava por
+   dentro do eco e os dois viravam uma mancha listrada ilegivel (render de
+   1200 e de 390). Papel opaco por dentro faz o eco ler como "ele ESTAVA
+   aqui", que e exatamente o que ele diz. z-index acima do rastro. */
+.q.eco{
+  background:var(--papel); border:2px dashed var(--tinta-2); z-index:2;
+  right:calc(var(--parede) + var(--q) + 20%);
+}
+
+/* ── linhas de velocidade ──
+   Faixa listrada atras do quadrado, esmaecendo para tras. E o vocabulario de
+   quadrinho para "ele veio andando", e e um gradiente, nao um desenho. */
+.rastro{
+  position:absolute; bottom:var(--piso); height:var(--q);
+  right:calc(var(--parede) + var(--q));
+  left:8%;
+  background:repeating-linear-gradient(180deg,
+    var(--tinta-preta) 0 2px, #0000 2px 8px);
+  -webkit-mask-image:linear-gradient(90deg, #0000 0%, #000 62%, #000 100%);
+          mask-image:linear-gradient(90deg, #0000 0%, #000 62%, #000 100%);
+}
+/* no quadro 3 o rastro e CURTO e mais denso: ele nao veio do outro lado da
+   sala, veio do eco ali do lado, com mais vontade e menos espaco. Curto
+   tambem porque o rastro longo atravessava o eco. */
+.q3 .rastro{
+  left:auto; width:18%;
+  background:repeating-linear-gradient(180deg,
+    var(--tinta-preta) 0 2px, #0000 2px 6px);
+}
+
+/* ── o impacto ──
+   ⚠️ Tracos em ELEMENTO, nao em conic-gradient mascarado: o leque tem que
+   sair EXATAMENTE do meio da face direita do quadrado e nao pode cair por
+   cima do azul (traco preto sobre #0d5e67 tem 2.4:1 e some). Com elementos
+   rotacionados o angulo de cada traco e escolhido, e nenhum aponta para
+   dentro do quadrado. Com gradiente seria sorte.
+   O .fx e filho do .q, entao ele acompanha o quadrado de graca. */
+/* ⚠️ O .fx TEM O TAMANHO DO QUADRADO (100%/100%) e nao tamanho zero, e isso
+   nao e detalhe: e o que deixa o comprimento dos tracos ser % DO LADO DO
+   QUADRADO. Com o .fx em width:0 as porcentagens nao resolviam e o leque
+   ficava em px fixo - no render de 1200 ele saiu com 12px, minusculo, e o
+   quadro 2 nao comunicava contato nenhum. Agora o leque escala junto com o
+   painel: mesmo desenho em 390 e em 1200. */
+.fx{
+  position:absolute; left:100%; top:0; width:100%; height:100%; z-index:3;
+  transform-origin:0 50%;   /* gira em torno do PONTO DE CONTATO, ver .bis */
+  pointer-events:none;
+}
+.fx i{
+  position:absolute; left:0; top:50%; display:block; height:3px;
+  width:var(--len,45%); background:var(--traco);
+  transform-origin:0 50%; rotate:var(--a,0deg); translate:3px -50%;
+}
+.fx i:nth-child(1){--a:-74deg; --len:40%}
+.fx i:nth-child(2){--a:-36deg; --len:52%}
+.fx i:nth-child(3){--a:0deg;   --len:34%}
+.fx i:nth-child(4){--a:36deg;  --len:52%}
+.fx i:nth-child(5){--a:74deg;  --len:40%}
+/* segundo leque, so no quadro 3: mesma batida, mais uma vez.
+   Nao e "mais forte", e "de novo": por isso e igual e so gira um pouco. */
+.fx.bis{rotate:15deg}
+.fx.bis i{--len:30%}
+.fx.bis i:nth-child(2), .fx.bis i:nth-child(4){--len:38%}
+
+/* as marcas que ficaram no chao, quadro 3: dois risquinhos na base da parede.
+   Sem seta, sem asterisco, sem estrelinha: dois riscos. */
+.marca{
+  position:absolute; bottom:calc(var(--piso) - 9px); height:2px; width:9px;
+  background:var(--tinta-2); rotate:-14deg;
+}
+.marca.a{right:calc(var(--parede) + 3%)}
+.marca.b{right:calc(var(--parede) + 9%); bottom:calc(var(--piso) - 14px); rotate:-24deg}
+
+/* ── o numero do quadro ──
+   Bloco preto solido no canto. O fundo real deste texto e #1a1614, nao o
+   papel: por isso ele e --papel sobre preto (~15:1) e nao tinta sobre papel.
+   PixelOperatorMono a 16px, acima do piso de 15px do defeito de glifo. */
+.num{
+  position:absolute; left:0; top:0; z-index:6;   /* acima da moldura (z 5) */
+  background:var(--tinta-preta); color:var(--papel);
+  font-family:var(--font-display); font-weight:700; font-size:16px; line-height:1;
+  padding:5px 8px 6px; letter-spacing:.02em;
+}
+
+/* ── a legenda ──
+   FORA do painel, sobre papel limpo. Uma palavra por quadro.
+   ★ "sala." / "parede." / "parede.": a terceira e IGUAL a segunda de
+   proposito. Nao e copy-paste esquecido: e a tirinha inteira. */
+.tira figcaption{
+  font-family:var(--font-corpo); font-style:italic; font-size:15px; line-height:1.4;
+  color:var(--tinta-2); margin-top:7px;
+}
+
+.rodape{margin:28px 0 0; padding-top:12px; border-top:1px solid var(--borda);
+  font-family:var(--font-manchete); font-weight:700; font-size:12.5px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--tinta-2); display:flex; gap:18px; flex-wrap:wrap}
+.rodape b{color:var(--tinta-preta)}
+
+/* ═══════════ IMPRESSAO ═══════════
+   A peca e papel: imprimir e o caso normal, nao a excecao.
+   Os tres quadros ficam na MESMA linha e nenhum e cortado ao meio.
+   O azul do quadrado e a tinta das hachuras precisam de print-color-adjust:
+   sem isso o navegador "economiza tinta", o quadrado sai branco e a tirinha
+   passa a ser sobre uma sala vazia tres vezes. */
+@media print{
+  html{background:#fff}
+  body{padding:0}
+  .ctx{display:none}
+  .folha{box-shadow:none; margin:0; max-width:none; padding:0}
+  .tira{grid-template-columns:repeat(3,1fr); gap:10px}
+  .tira > li{break-inside:avoid; page-break-inside:avoid}
+  .cena, .q, .chao, .parede, .rastro, .num{
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+}
+
+/* ═══════════ MOTION ═══════════
+   Nao ha animacao nenhuma nesta peca, e e decisao, nao esquecimento.
+   A tira e impressa; ela tem que contar a mesma coisa parada. Logo nao ha o
+   que desligar em prefers-reduced-motion. Se um dia alguem quiser animar o
+   esbarrao, a regra da casa e steps() (a casa e pixel, nao suaviza) e a
+   animacao tem que SUMIR INTEIRA em reduced-motion, com o quadrado parado
+   NO DESTINO, nunca sumido. */
+</style>
+</head>
+<body>
+
+<div class="ctx">
+  <h1>Glyfesse · mock 18 · a HQ · o quadrado</h1>
+  <p>A tirinha da <b>#3</b> em <b>três quadros</b>: a sala vazia, o passo que esbarra, e a insistência. <b>Nenhum desenho</b>: o elenco é um retângulo azul e duas hachuras. Tudo é CSS, sem imagem, sem SVG figurativo, sem emoji.</p>
+  <p><b>A piada é a economia.</b> O quadro 3 é quase idêntico ao 2 (muda a densidade do rastro, o eco tracejado do passo anterior e dois riscos no chão). As legendas são <b>uma palavra</b> cada, e a terceira repete a segunda <b>de propósito</b>.</p>
+  <p>⚠️ <b>O que é preenchimento meu, não decisão do editor-geral:</b> as três legendas (<span class="tag">sala. / parede. / parede.</span>), o eco tracejado e os riscos no chão do quadro 3, e o título <b>“O Quadrado”</b>. O roteiro dos três quadros é o aprovado na pauta; o resto acima está aberto a veto.</p>
+  <p>Zero JS · zero animação (a tira vai impressa: tem de funcionar parada) · 1 coluna abaixo de 640px, 3 colunas acima, nunca 2+1.</p>
+</div>
+
+<article class="folha" style="--idade:.10">
+
+  <div class="masthead">
+    <div class="logo">GLYFESSE</div>
+    <div class="ed">ano 1 · nº <b>3</b><br>gusworld.site</div>
+  </div>
+  <span class="chamada-topo">a hq · três quadros</span>
+
+  <p class="kicker">história em quadrinhos · seção fixa</p>
+  <h2 class="titulo">O Quadrado</h2>
+
+  <ol class="tira">
+
+    <!-- ════════ QUADRO 1 · a sala vazia ════════
+         Ele esta la, mas so uma lasca dele: entra pela borda esquerda e o
+         resto ficou fora do quadro. E o silencio antes. -->
+    <li>
+      <figure>
+        <div class="cena q1" role="img"
+             aria-label="Quadro um: uma sala vazia, vista de lado. O chão hachurado e uma parede à direita. No canto esquerdo, uma lasca de azul entrando pela borda, quase fora do quadro.">
+          <span class="num" aria-hidden="true">1</span>
+          <span class="chao"></span>
+          <span class="parede"></span>
+          <!-- a lasca: -76% deixa cerca de um quarto do quadrado dentro do
+               quadro. Menos que isso ele vira um risco e some; mais que isso
+               ele deixa de ser "quase nao se ve" e o silencio do quadro 1
+               acaba antes da hora. -->
+          <span class="q" style="right:auto; left:0; translate:-76% 0"></span>
+        </div>
+        <figcaption>sala.</figcaption>
+      </figure>
+    </li>
+
+    <!-- ════════ QUADRO 2 · o passo, e o contato ════════
+         Rastro de linhas atras (ele veio andando) e o leque de tracos saindo
+         exatamente do meio da face direita: contato, interrupcao. -->
+    <li>
+      <figure>
+        <div class="cena q2" role="img"
+             aria-label="Quadro dois: o quadrado azul atravessou a sala e parou colado na parede da direita. Linhas de velocidade atrás dele e traços de impacto no ponto de contato.">
+          <span class="num" aria-hidden="true">2</span>
+          <span class="chao"></span>
+          <span class="parede"></span>
+          <span class="rastro"></span>
+          <span class="q">
+            <span class="fx" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+          </span>
+        </div>
+        <figcaption>parede.</figcaption>
+      </figure>
+    </li>
+
+    <!-- ════════ QUADRO 3 · de novo ════════
+         O MESMO quadro. So o eco do passo anterior, o rastro mais fechado, um
+         segundo leque girado e dois riscos no chao. Nem vitoria nem
+         desistencia: teimosia. -->
+    <li>
+      <figure>
+        <div class="cena q3" role="img"
+             aria-label="Quadro três: o quadrado tenta outra vez, do mesmo jeito e no mesmo lugar. Um contorno tracejado marca onde ele estava, e há dois riscos no chão junto da parede.">
+          <span class="num" aria-hidden="true">3</span>
+          <span class="chao"></span>
+          <span class="parede"></span>
+          <span class="marca a"></span>
+          <span class="marca b"></span>
+          <span class="rastro"></span>
+          <span class="q eco"></span>
+          <span class="q">
+            <span class="fx" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="fx bis" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+          </span>
+        </div>
+        <figcaption>parede.</figcaption>
+      </figure>
+    </li>
+
+  </ol>
+
+  <div class="rodape">
+    <span><b>GLYFESSE</b> · a revista do GusWorld</span>
+    <span>a hq · seção fixa</span>
+    <span>três quadros, um quadrado</span>
+  </div>
+</article>
+
+</body>
+</html>
+</content>
