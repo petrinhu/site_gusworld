@@ -136,12 +136,17 @@ This issue's cover is that same square. It walks better now. It's still the one 
 - ★★ **A simetria Gus personagem × Gus Dragon NÃO é apontada** — o texto diz *"playtester, 11 anos"* e
   segue adiante. O leitor junta sozinho, que é a regra.
 
-### ⚠️ Um ponto de LAYOUT (não de texto) para o render
+### ✅ LAYOUT DECIDIDO pelo editor-geral (2026-08-03): as duas formas do `//` convivem
 
-Esta seção usa o `//` como **aparte curto embutido na prosa** (em `código inline`), enquanto o Editorial
-usa o `//` como **bloco separado** ao fim da peça. As duas são gramaticalmente a mesma coisa — pensamento
-do Gus — mas o tratamento visual difere. **A montagem final precisa decidir se as duas formas convivem**
-(aparte × bloco) ou se uma delas se ajusta. **Não é decisão de texto.**
+O `//` do Gus passa a ter **duas formas, com funções distintas** — e a montagem mantém as duas:
+
+| Forma | Quando | Onde estreia |
+| :--- | :--- | :--- |
+| **Aparte curto**, embutido na prosa | quando é **alfinetada** ou remate de piada, e o timing depende de vir logo depois da frase | esta seção (Galeria) |
+| **Bloco separado**, ao fim da peça | quando é **confissão longa** — o que ele cortou e não mandou para a página | o Editorial |
+
+O leitor aprende as duas sem que ninguém explique. ⚠️ **A escolha é de função, não de gosto:** aparte que
+vira parágrafo perde a piada; confissão espremida em aparte perde o peso.
 
 ### Pendências desta seção
 

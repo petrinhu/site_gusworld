@@ -52,6 +52,8 @@ Para dar tamanho a isso, um comparativo. Em 22 de junho de 2026, no dia em que o
 
 Vale dizer o que esse número **não** é. Ele não diz que o jogo é bom, nem que é divertido, nem que está pronto. Diz uma coisa só, e é uma coisa pequena: o que já foi construído continua funcionando depois de eu ter mexido em outra parte. É pouco. Mas é o pouco que sustenta o resto.
 
+Quem testa a mão de verdade é o Gus Dragon, que senta e joga. O Cauã "Volt" também dá palpite, do jeito dele. A bateria só garante que, quando eles sentam, a tela abre.
+
 Fico contente quando dá verde. Fim.
 
 O `root` mandou isto depois de uma rodada de teste:
@@ -100,6 +102,8 @@ To give that some size, a comparison. On 22 June 2026, the day the blue square l
 
 Worth saying what that number is **not**. It doesn't say the game is good, or fun, or finished. It says one thing, and it's a small thing: what has already been built still works after I've gone and touched some other part. That's little. But it's the little that holds the rest up.
 
+The one who really tests the feel is Gus Dragon, who sits down and plays. Cauã "Volt" has opinions too, in his own way. The battery only guarantees that, when they sit down, the screen opens.
+
 I'm glad when it comes back green. Done.
 
 `root` sent this after a test run:
@@ -139,26 +143,25 @@ root@glyfesse:~/detonado$ some ele da tela, some a moldura dele e a caixa de sel
   conceito: *"A mesma ação, na vez errada, vira outra ação. Não porque ela mudou, mas porque o mundo em
   volta dela mudou primeiro."*
 
-### ⚠️ Um ponto que o integrador NÃO decide (vai ao editor-geral) — colisão de planos
+### ✅★★ DECIDIDO pelo editor-geral (2026-08-03) — e virou CANON de todas as edições
 
-O rascunho do escritor trazia, antes do fecho, este trecho — que **eu removi** por precaução e trago aqui
-para decisão:
+Eu havia **removido por precaução** este trecho, e o levei à decisão:
 
 > *"Quem testa a mão de verdade é o Gus Dragon, que senta e joga. O Cauã 'Volt' também dá palpite, do
 > jeito dele. A bateria só garante que, quando eles sentam, a tela abre."*
 
-**O problema são dois planos misturados numa frase só:**
+O meu receio eram **dois planos misturados**: quem narra é o **Gus personagem** e ele cita o **Gus
+Dragon** (o playtester real, espelho dele) em terceira pessoa; e o **Cauã "Volt"** é personagem do jogo,
+posto ao lado de uma pessoa real opinando sobre suíte de teste.
 
-1. **Quem narra a revista é o Gus personagem, 11 anos.** Ele referir-se ao **Gus Dragon** — o playtester
-   real, que é o espelho dele fora da ficção — em **terceira pessoa** cria um efeito estranho: ou é uma
-   piscadela meta deliberada e muito boa, ou é um escorregão que confunde o leitor.
-2. **O Cauã "Volt" é personagem do jogo**, e a frase o põe **no mesmo plano** de uma pessoa real dando
-   palpite sobre suíte de teste.
+**Decisão: volta a frase inteira.** ★★ E isso **não é ajuste desta seção, é canon**:
 
-**Opções:** (a) deixar fora, como está agora; (b) devolver só a parte do Gus Dragon, assumindo a
-piscadela meta; (c) devolver a frase inteira, aceitando que dentro da revista personagem e pessoa
-convivem no mesmo plano — o que seria uma **decisão de canon** com efeito em todas as edições, não só
-nesta.
+> **Dentro da Glyfesse, personagem e pessoa real convivem no MESMO plano.** O Cauã pode opinar sobre o
+> jogo como se fosse gente daqui; o Gus Dragon pode aparecer citado pelo Gus personagem. A revista **não
+> explica** essa convivência e **não a comenta** — ela simplesmente é assim.
+
+⚠️ **Vale para todas as edições, não só esta.** E continua valendo, sem exceção, que o menino real é
+**"Gus Dragon"** e nunca o nome de batismo.
 
 ### Pendências desta seção
 
