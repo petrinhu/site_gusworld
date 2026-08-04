@@ -91,7 +91,7 @@ body{
 /* o nome da edição em destaque acima do expediente (decisão do líder):
    fonte display grande, tinta cheia — assenta a identidade da edição no topo. */
 .meta-titulo{
-  font-family:var(--font-display); font-weight:600;
+  font-family:var(--font-display); font-weight:400; text-shadow:0 1px 0 currentColor; /* N em negrito vira H em qualquer corpo: mesmo conserto do .secao-nome, batida VERTICAL */
   font-size:clamp(16px,2.4vw,20px); line-height:1.1; text-align:right;
   color:var(--tinta-preta); margin:0 0 -1px;
 }
@@ -2558,4 +2558,125 @@ html.lightbox-aberto{overflow:hidden}
   .conteudo .enc .chapa::before,.conteudo .enc .chapa::after{
     -webkit-print-color-adjust:exact; print-color-adjust:exact;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   §18 · A CAIXA DO BUS VAZIA (o CRT desta edição)
+   ═══════════════════════════════════════════════════════════════════════
+   O molde declarado da seção é uma TELA DE TUBO mostrando o bus. Nesta edição
+   ela está VAZIA, e o vazio É o assunto: em junho de 2026 o canal ainda não
+   existia. O trabalho todo da peça é fazer o vazio parecer DELIBERADO em vez
+   de quebrado — e a diferença entre as duas coisas é FORMA:
+
+     tela quebrada = área em branco, sem explicação
+     tela vazia    = a tabela EXISTE (cabeçalho de coluna + as duas réguas),
+                     o programa rodou, o contador diz ZERO, e o cursor volta
+                     ao prompt esperando o próximo comando.
+
+   Ou seja: o esqueleto da listagem é o que prova que não houve erro. Uma
+   caixa de entrada vazia num terminal tem esse desenho exato.
+
+   ★ E o comando aparece DUAS VEZES, com a mesma saída. É o "conferi duas
+   vezes" do texto virando imagem, sem uma palavra a mais. Não mexer: repetir
+   é a peça.
+
+   ⛔ A ARTE NÃO EXPLICA A PIADA, e não pode: nada de fantasma, nada de
+   ônibus. O leitor liga sozinho com o Cemitério (§07) desta mesma edição.
+
+   Reusa o tijolo da casa (.crt-scr carcaça + .crt-tela tubo), como a §17 e a
+   HQ da #1 — não é uma segunda família de CRT. Tudo escopado em .bus-crt.
+   ZERO JS · ZERO <img> · ZERO SVG figurativo: é caixa, régua e texto.
+   A FONTE é a ui-monospace herdada do .crt-tela, não a pixel: escapa por
+   inteiro do guard N->H (o cabeçalho é "DE/ASSUNTO/QUANDO", em maiúsculas).
+   ═══════════════════════════════════════════════════════════════════════ */
+.conteudo .bus-crt{margin:clamp(14px,2.4vw,20px) 0 clamp(16px,2.6vw,22px)}
+
+/* respiro entre as linhas do terminal (o .crt-tela zera a margem dos <p>) */
+.conteudo .bus-crt .cmd{margin:0 0 10px}
+.conteudo .bus-crt .cmd + .cmd{margin-top:14px}
+
+/* a LISTAGEM. As duas réguas (uma sob o cabeçalho, outra sobre o contador)
+   são o que dá contorno ao vão: sem elas o vazio vira buraco. Verde apagado
+   porque são FILETE, não texto — a informação está no cabeçalho e no zero. */
+.conteudo .bus-crt .cx{margin:0 0 4px}
+/* ⚠️ AS COLUNAS SÃO FIXAS E SOBRA BRANCO À DIREITA, e isto é o desenho, não
+   descuido: no primeiro render a última coluna era 1fr e o "QUANDO" ia parar
+   na borda oposta da tela, com um vão de meia tela entre ele e o "ASSUNTO" —
+   lia como cabeçalho esticado/quebrado, exatamente o que a peça não pode
+   parecer. Listagem de terminal de verdade (ls -l, docker ps) tem largura de
+   coluna fixa e deixa o resto da linha em branco. As RÉGUAS, essas sim,
+   atravessam a largura inteira: são elas que dão contorno ao vão. */
+.conteudo .bus-crt .cab{
+  display:grid; grid-template-columns:7ch 22ch 10ch;
+  line-height:1.4;   /* o 1.75 do .crt-tela descolava a régua do rótulo */
+  padding:0 0 6px; border-bottom:1px solid #35895f;
+  color:#6cc79b; text-shadow:none; letter-spacing:.04em;
+}
+/* o VÃO: as mensagens caberiam aqui. O espaço é generoso de propósito —
+   apertá-lo faria a tabela parecer cortada em vez de desocupada. */
+.conteudo .bus-crt .nada{
+  display:flex; align-items:center; justify-content:center;
+  min-height:clamp(58px,11vw,84px); padding:10px 8px;
+  border-bottom:1px solid #35895f;
+  color:#6cc79b; text-shadow:none;
+}
+/* o CONTADOR EM ZERO: é ele que transforma "não veio nada" em fato apurado.
+   Fica no fósforo cheio (não no apagado) porque é a resposta da tela. */
+/* ⚠️ A SAÍDA DA MÁQUINA NÃO TEM GLOW, e a divisão é semântica, não estética:
+   o que o Gus DIGITOU (as linhas de comando) fica no fósforo com brilho, como
+   em toda a revista; o que a MÁQUINA RESPONDEU (cabeçalho, vão e contador)
+   vem com text-shadow:none. Isso agrupa a listagem numa coisa só e separa-a
+   dos comandos — e é o que faz o vazio ler como resposta em vez de sobra.
+   Medido no Gecko: o blur de 6-7px sobre monospace denso funde os halos numa
+   FAIXA retangular clara por cima da linha inteira (no Blink o mesmo CSS já
+   sai suave — por isso a regra da casa é verificar no Gecko). Nas linhas de
+   comando a faixa é a assinatura herdada do .crt-tela e fica; aqui, onde o
+   leitor precisa contar o zero, ela sai. */
+.conteudo .bus-crt .conta{margin:6px 0 0; color:#5dfc9a; text-shadow:none}
+.conteudo .bus-crt .conta .z{color:#8affc0}
+
+/* a segunda rodada: respiro ANTES (é outro comando, outra vez) e a saída
+   colada DEPOIS (o resultado é idêntico, e é a repetição que carrega o
+   sentido). Sem o respiro, as duas rodadas viravam um bloco só. */
+.conteudo .bus-crt .cmd.de-novo{margin:16px 0 4px}
+
+/* o prompt final com o cursor: a tela está viva, esperando. É o oposto de
+   uma tela travada, e é aqui que "deliberado" se fecha. */
+.conteudo .bus-crt .fim{margin:14px 0 0}
+
+/* a legenda, FORA do tubo, sobre papel: mesma família da .hq3 */
+.conteudo .bus-crt figcaption{
+  font-family:var(--font-corpo); font-style:italic; font-size:15px; line-height:1.4;
+  color:var(--tinta-2); margin-top:7px;
+}
+
+/* ESTREITO: a coluna do meio some. A 390px o "ASSUNTO" espremido entre as
+   outras duas ficava com 2 caracteres úteis e a régua parecia rachada; com
+   duas colunas o cabeçalho respira e continua dizendo que é uma tabela. */
+@media (max-width:560px){
+  .conteudo .bus-crt .cab{grid-template-columns:7ch 10ch}
+  .conteudo .bus-crt .cab .assunto{display:none}
+}
+
+/* IMPRESSO: a peça tem que dizer a mesma coisa parada e em papel.
+   O cursor perde o pisca e fica SÓLIDO (continua sendo o cursor no prompt),
+   e as cores do tubo são preservadas — como as outras peças da #3 fazem. */
+@media print{
+  .conteudo .bus-crt{break-inside:avoid; page-break-inside:avoid}
+  .conteudo .bus-crt .crt-scr,
+  .conteudo .bus-crt .crt-tela,
+  .conteudo .bus-crt .crt-tela::after,
+  .conteudo .bus-crt .cab,
+  .conteudo .bus-crt .nada,
+  .conteudo .bus-crt .crt-cur{
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .conteudo .bus-crt .crt-cur{animation:none; opacity:1}
+}
+/* MOTION REDUZIDO: o pisca some, o cursor FICA (a informação é que a tela
+   está no prompt, não o piscar). O bloco global da linha ~1996 já zera a
+   animação; isto é o guard explícito da peça, para o dia em que alguém mexer
+   naquele bloco sem lembrar desta. */
+@media (prefers-reduced-motion: reduce){
+  .conteudo .bus-crt .crt-cur{animation:none; opacity:1}
 }

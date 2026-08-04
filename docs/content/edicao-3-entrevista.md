@@ -132,6 +132,149 @@ esperar, eu juro que tinha, e aí veio você
 
 ---
 
+## EN
+
+> **Não é tradução — é a mesma peça escrita em inglês.** O que foi recriado, não transposto:
+>
+> - **Os errinhos.** São **12**, na mesma quantidade, na mesma densidade e **nas mesmas trocas** do pt-br
+>   (T1 fala 1 · T2 `//` 1 · T3 fala 2 + `//` 1 · T4 `//` 1 · T5 `//` 1 · T6 `//` 1 · T7 `//` 1 ·
+>   T8 `//` 2 · T9 `//` 1). Como **acento não existe em inglês**, a classe "acento caído" (`voce`,
+>   `dificil`, `numero`, `cabeca`) **não tem equivalente** e foi compensada por **transposição**
+>   (`taht`, `nboody`, `obyes`, `lodu`, `lsit`, `nubmer`, `haed`, `latnecy`), **tecla vizinha**
+>   (`wromg`, `sixteem`, `fromt`) e **letra omitida** (`progam`). Nenhum se repete; todos são
+>   **mecânicos**, nenhum é de gramática. ⛔ Não "corrigir" no copyedit.
+> - **Registro:** inglês **britânico** (`colour`, `maths`, `round the corner`), para casar com as demais
+>   seções em EN da #3. Minúsculas em tudo, inclusive o `i` — igual à #1 e à #2.
+> - ⚠️ **Apóstrofo de contração NÃO é errinho aqui.** A #2 em EN largava apóstrofo de forma sistemática
+>   (`isnt`, `im`, `dont`); no pt-br da #3 o Gus **acerta** os acentos quase sempre e só escorrega umas
+>   poucas vezes, então em EN as contrações vêm **certas** e o deslize fica por conta dos 12 acima.
+> - **`// dói` → `// hurts`.** Uma palavra, sozinha na linha, sem ponto. ★ Decisão que o editor-geral
+>   pode querer rever: `it hurts` é o inglês natural, mas tem **duas** palavras e amacia o corte.
+> - As duas respostas-colapso continuam colapsadas: **`i was smiling`** (3 palavras, igual ao pt) e
+>   **`i did`** (2 palavras — o pt tem 1, e não existe monossílabo em inglês que responda *"você já
+>   sabia?"* sem soar seco de outro jeito).
+
+```
+volt@glyfesse:~/entrevista$ it's weird over there on that side, isn't it? what's it like being the one
+who gets asked?
+// he hated it. good.
+
+gus@glyfesse:~/entrevista$ it is weird, yeah... because when i'm the one asking i already sort of know
+where the answer is going to land, and now i don't have the map, it's like running a progam you wrote
+end to end but with no print anywhere in the middle to tell you where it hung... sorry, it came out
+long again, i know it does
+// i thought this was going to be long and boring... but i can't let anything show on my face, nobody
+deserves an impatient kid sitting next to them
+
+volt@glyfesse:~/entrevista$ don't be sorry, but i counted four commas. answer me in one sentence: why
+did you start?
+// he can do it. he just doesn't believe he can.
+
+gus@glyfesse:~/entrevista$ because i wanted to see something of mine running without me standing next
+to it explaining it
+// one sentence doesn't fit the rest... the rest is that it answers straight away, and answering
+straight away is the hard part about people... but that isn't magazine material, magazine material is
+latnecy, which you can measure in milliseconds
+
+volt@glyfesse:~/entrevista$ june. two days. you broke the foundation twice. it was working, wasn't it?
+// nobody tears down what works for no reason. i want to hear his reason.
+
+gus@glyfesse:~/entrevista$ it was, but working isn't the same as being any use... the off-the-shelf
+engine did everything more or less and nothing the way i was going to need it later, and for a while i
+kept pretending taht it was fine, like when you press a part that doesn't fit and it stays put but you
+know it went in wromg... so i pulled the whole foundation out and started writing mine, and on monday
+night i pulled out again the layer i had just finished, it lived a day more or less, less even... and i
+didn't take it apart twice because it broke, i took it apart because i already knew where it was going
+to hurt six months from now and it's cheaper to hurt now, one day of work thrown away now is worth a
+quarter later, i did the maths first, it wasn't impulse, i know it sounds like impulse when i tell it
+fast like this
+// taking things apart is the only thing i decide without asking anybody... and it came down twice in
+two days and none of it showed up on the screen, so it's fair that nboody asked anything at dinner,
+people don't ask about a thing that didn't change colour
+
+volt@glyfesse:~/entrevista$ and then a square was born. no face, nothing. what did you feel when it
+moved?
+// i saw it. it walked crooked and he stood there watching like someone seeing their kid born.
+
+gus@glyfesse:~/entrevista$ it moved around four in the afternoon and i hit the key about thirty times
+in a row just to watch it go and come back, go and come back... and then i scraped it along the wall on
+purpose to see if it would slide and it slid, and that part is the one i wanted more than the walking,
+because walking is easy, the hard bit is it understanding that it hit something and carrying on along
+the right side... sorry, you asked what i felt and here i am talking about collision again
+// i felt like there was somebody on the other side... it isn't somebody, it's a sixteen by sixteen
+square that obyes, but it answered straight away, and i kept pressing again just so it would answer
+again, and seven hours later i deleted the layer that made it walk and that part i don't tell because
+it sounds like i didn't like it, and i did like it
+
+volt@glyfesse:~/entrevista$ stop telling me about walls. four in the afternoon, thirtieth time you hit
+the key. what was happening on your face?
+// he's going to bolt for the technical stuff again. not this time.
+
+gus@glyfesse:~/entrevista$ i was smiling
+// i was smiling on my own in a room with the light off because the screen looks better that way, and
+it was thirty one, i counted, and on the thirtieth i said go out lodu to a thing that has no ear at all
+and nobody heard it and even so i felt ashamed, ashamed in front of nobody, how does that even work, i
+don't know, there's no way to measure that, stop, ask me something else please
+
+volt@glyfesse:~/entrevista$ the square used to stick on the corner. and you'd talked about that corner
+before there was a corner.
+// how do you know about the hole before you fall in it, mate.
+
+gus@glyfesse:~/entrevista$ i had, i had written the list before in a note: sticking on the corner,
+looking the wrong way, going through walls, jamming on the diagonal... and it stuck anyway, exactly the
+way it was written down, and the fix was to push it the smallest amount sideways to get round the
+corner, the smallest amount really, because if you push too much it goes through and going through a
+wall is worse than sticking, sticking only annoys you, going through breaks the whole world... what i
+didn't understand is why knowing beforehand was no use at all
+// all it did was keep me from being startled and nothing else... i read everything first, i wrote the
+lsit first, the four items came out in the order i wrote them, it's like knowing the name of the rain
+and still turning up soaked... and now i'm feeling a thing in here that has no number, so go back to
+the sliding, the vector came out under a tenth of a block, that one i can measure
+
+volt@glyfesse:~/entrevista$ it was of use. you didn't fall by surprise, you fell knowing the name of
+the fall.
+// knowing beforehand doesn't catch anyone. it just makes the scare shorter.
+
+gus@glyfesse:~/entrevista$ i was going to say that doesn't change the result, the bug happened all the
+same, the fix took the same time, but you didn't talk about the result, you talked about the scare, and
+the scare is a separate variable and i had merged the two without noticing... that's right, what you
+said, i'm going to write it down
+// nobody has ever handed me back a thing like that, people either don't ask anything or they wait for
+me to finish talking so they can change the subject, and you took what i said, turned it inside out and
+handed it back to me better than it was... you solved in one line what i spent four days trying to turn
+into a nubmer, and it wasn't even a number
+// "you fell knowing the name of the fall"... i'm going to remember that sentence for a long time and
+i'm never going to tell you that
+
+volt@glyfesse:~/entrevista$ just curious: i already had a face, and you were a square. does it hurt?
+// if he laughs, it's all fine. if he explains, it hurt.
+
+gus@glyfesse:~/entrevista$ it's a square because i decided, art is the part that draws and it can come
+in later without touching the part that thinks, so much so that i swapped the whole part that draws and
+the checks all carried on passing, not one had to be redone... whoever starts with the face has to redo
+the face every time the rest changes
+// hurts
+// ...i mean it doesn't hurt, it's build order, logic first and body after, that's how it's done,
+that's how everybody does it... only you already had a face and i have sixteen by sixteem of blue and
+nobody stops in fromt of a blue square to ask who he is, they stop and ask what he does, what he does i
+know how to answer, that i always know how to answer, it's the only question i never stammer on
+
+volt@glyfesse:~/entrevista$ i gave you a two second sentence and you handed me back build order. did
+you already have that answer before i asked?
+// he had that put away. he was waiting for someone to poke it.
+
+gus@glyfesse:~/entrevista$ i did
+// it had been ready since march, i built the whole of it in my haed on the way back from school, on
+the bus, looking out of the window, i rehearsed the order of the sentences about four times so it
+wouldn't come out long in case somebody asked one day, and they didn't ask, not once, not even as a
+joke, and it stayed in there switched on doing nothing, like that little light on an appliance that
+stays on all night waiting for somebody to press the button and nobody presses it and you've stopped
+even seeing it, you're so used to it, and i had already stopped waiting, i swear i had, and then you
+came along
+```
+
+---
+
 ## Notas de produção
 
 ### O que a peça faz (leitura do integrador)

@@ -4,8 +4,7 @@
 
    ⚠️ SÓ EXISTE EM pt-BR. A versão em inglês ainda não foi escrita (a própria fonte
    registra isso em "O que ainda falta"), e traduzir aqui seria inventar texto que não
-   passou por gate. O partial en/sec-16.php NÃO existe de propósito: o template cai no
-   .scaffold ("conteúdo pendente"), que é o mecanismo da casa para seção sem conteúdo.
+   O partial en/sec-16.php EXISTE desde 2026-08-04 (a versao EN foi escrita).
 
    Duas vozes, o mesmo caminho de prompt (~/entrevista): a página mostra sozinha que
    são duas pessoas na mesma sala, e só muda o nome antes do @.
