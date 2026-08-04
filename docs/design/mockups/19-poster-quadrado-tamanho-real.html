@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse · 19 · o pôster central · o quadrado azul, tamanho real</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* MOCK 19: o POSTER CENTRAL da #3.
+   Pauta (PAUTA-EDICAO-3, secao 13): "O quadrado azul, tamanho real" -
+   CHEIA, so arte, ZERO ESCRITA.
+
+   ★ A PECA NAO E O QUADRADO, E A MOLDURA EM VOLTA DELE.
+   Um quadrado azul chapado nao e desenho nenhum: qualquer um faz. O que faz a
+   peca existir e o GESTO de tratar essa coisa boba com a solenidade inteira de
+   um encarte central de revista de games: moldura dupla, marcas de corte,
+   cruzes de registro, barra de controle de cor da grafica, vinco de dobra,
+   ficha tecnica. A piada mora na distancia entre a pompa e o conteudo.
+   Quem for mexer aqui depois: o trabalho esta na moldura e no AR em volta.
+   Aumentar o quadrado nao melhora a peca; apertar a margem piora.
+
+   ⚠️ A PIADA E DE ESCALA, E ELA NAO SE EXPLICA. No jogo o personagem tem 16x16
+   pixels; um poster "em tamanho real" dele seria um selo. Este e gigante. O
+   texto NAO comenta isso em lugar nenhum: as dimensoes aparecem so como DADO,
+   na ficha tecnica, do jeito que uma ficha tecnica diz qualquer coisa. Se
+   alguem escrever uma linha de humor explicando, a peca morre na hora.
+
+   ⛔ ZERO DESENHO. O lider nao e ilustrador: regra dura da casa. Nao ha <img>,
+   nao ha SVG figurativo, nao ha emoji fazendo de arte. Tudo aqui e retangulo,
+   borda, gradiente e posicao. O unico SVG do arquivo e a fibra do papel
+   (turbulencia), que ja e o padrao da .folha e nao desenha nada, e ele reentra
+   POR CIMA da chapa azul, porque tinta chapada em papel tem a fibra do papel.
+
+   ZERO ANIMACAO, e e decisao: o poster vai IMPRESSO e destacado da revista.
+   Ele tem que funcionar pregado numa parede, parado. Nao ha o que desligar em
+   prefers-reduced-motion (a regra global de ../tokens.css §9 cobre o herdado).
+
+   ZERO JS. Tudo herda de ../tokens.css; papel e o material da secao. */
+
+*{box-sizing:border-box}
+html{background:#2b2620}
+body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-corpo);
+  overflow-x:hidden}   /* guard: nada de rolagem horizontal em 390 */
+
+/* ═══════════ CORES: o que foi MEDIDO, nao chutado ═══════════
+   Metodo (o que a casa exige): ENUMERAR a paleta inteira contra o FUNDO REAL DE
+   CADA ELEMENTO, nunca contra "o fundo do documento", e amostrar DENTRO da
+   folha. Os fundos que existem nesta peca:
+
+     P1  esta folha (--idade:.10)   ~#f2ecdf  (amostrado no render, nao suposto)
+     AZ  a chapa do quadrado        #0d5e67   (--tinta-ciano, o ciano IMPRESSO)
+     PR  as tarjas                  #1a1614   (--tinta-preta)
+     CTX o fundo fora da revista    #2b2620   (nao e a peca, e a mesa do mock)
+
+   TEXTO (funcional, precisa de AA 4.5:1)                    sobre P1
+     --tinta-preta  #1a1614  logo, titulo, ficha            15.13  AAA
+     --tinta-2      #5b544f  expediente, legenda, credito    6.26  AA
+     --tinta-ciano  #0d5e67  kicker                          6.28  AA
+     --papel        sobre PR  chamada-topo, tarja TAMANHO   ~15     AAA
+
+   ⚠️ NENHUM TEXTO CAI SOBRE A CHAPA AZUL, e isso e desenho, nao sorte: o
+   quadrado fica LISO, sem uma letra dentro. Tinta preta sobre #0d5e67 da 2.4:1
+   e sumiria; papel sobre ele daria 6.28 e passaria, mas escrever em cima quebra
+   o "solido, sem rosto, sem nome, quatro lados" que e a peca inteira.
+
+   AREA / TINTA CHAPADA (nao e texto; nao se aplica 4.5:1, mas tem que separar
+   do papel a olho E na fotocopia preto-e-branco)
+     --tinta-ciano  o quadrado          6.28:1 sobre P1  ✅ le como azul escuro
+       impresso, e em escala de cinza continua bem mais escuro que o papel.
+     --tinta-magenta / --tinta-2 / --papel  a barra de controle de cor: quadrados
+       decorativos de 11px, sem texto por cima em lugar nenhum.
+
+   ⚠️ O VINCO DA DOBRA E O UNICO VEU DESTA PECA, e veu e sempre risco de
+   contraste (mesma logica do CRT e do cafe em ../tokens.css §8). A PRIMEIRA
+   VERSAO REPROVOU: um vinco escuro de alpha .19 atravessando a folha inteira
+   derrubava --tinta-2 e --tinta-ciano de 5.97 para 4.11:1 sobre o papel
+   amostrado dentro desta folha. So o render mostrou; a estimativa que eu tinha
+   escrito no comentario dizia 5.3 e estava errada.
+
+   A varredura de alpha (papel medido 236,230,216, veu rgb 26,22,20):
+     .10 -> 4.89   .13 -> 4.60   .14 -> 4.51 (margem zero)   .15 -> 4.41 REPROVA
+   E numa folha velha nao ha alpha que sirva: --tinta-2 sobre --papel-fim ja e
+   4.51 SEM veu. Identico ao que ../tokens.css §8 diz do cafe.
+
+   Conserto estrutural, nao cosmetico, e ele esta em DOIS lugares:
+     .vinco       (sobre o papel)  so a CRISTA DE LUZ. Clareia, nao escurece:
+                  o secundario sobe de 5.97 para 6.43. Sem teto, por construcao.
+     .chapa::after (sobre o azul)  o lado escuro inteiro, forte, confinado a
+                  unica regiao da peca que nao tem texto por construcao.
+   ═══════════════════════════════════════════════════════════ */
+
+/* faixa de contexto do mock (fora da "revista") */
+.ctx{max-width:820px; margin:0 auto; padding:22px 22px 4px; color:#cdbfa6}
+/* ⚠️ 15px E PISO nesta linha pelo defeito da fonte pixel (o N maiusculo
+   rasteriza como H abaixo disso, mesmo com o uppercase vindo do CSS). */
+.ctx h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.12em;
+  text-transform:uppercase; color:#e6d9bf; margin:0 0 6px}
+.ctx p{font-size:14.5px; line-height:1.55; margin:0 0 6px; color:#bcaf95}
+.ctx b{color:#e6d9bf}
+.ctx .tag{color:#7bd06a}
+
+/* ═══════════ A REVISTA (a folha de papel) ═══════════ */
+.folha{
+  max-width:820px; margin:20px auto 0; position:relative;
+  box-shadow:var(--sombra-folha); overflow:hidden;   /* guard: nada escapa da folha */
+  padding:26px 30px 30px;
+}
+@media (max-width:430px){ .folha{ padding:20px 16px 24px } }
+/* fibra do papel: SVG com dimensao explicita (senao o Gecko descarta o filtro) */
+.folha::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.12;
+}
+.folha > *{position:relative; z-index:1}
+
+/* ── expediente ── */
+.masthead{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:3px solid var(--tinta-preta); padding-bottom:8px; margin-bottom:12px}
+.masthead .logo{font-family:var(--font-display); font-weight:700; font-size:32px; line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4a0, 1.5px 1.5px 0 #c2129ea0}
+.masthead .ed{font-family:var(--font-manchete); font-weight:700; font-size:12.5px;
+  letter-spacing:.08em; text-transform:uppercase; text-align:right; line-height:1.6; color:var(--tinta-2)}
+.masthead .ed b{color:var(--tinta-preta); font-size:17px; letter-spacing:0}
+.chamada-topo{font-family:var(--font-manchete); font-weight:700; font-size:12.5px; letter-spacing:.1em;
+  text-transform:uppercase;
+  background:var(--tinta-preta); color:var(--papel); display:inline-block; padding:5px 9px}
+
+/* ═══════════════════════════════════════════════════════════════════
+   O ENCARTE
+   ═══════════════════════════════════════════════════════════════════
+   A margem do .poster nao e respiro estetico: e o ESPACO ONDE AS MARCAS DE
+   CORTE E AS CRUZES DE REGISTRO CABEM. A folha tem overflow:hidden, entao o
+   que nao couber e DECEPADO em silencio, sem erro nenhum no console. As contas,
+   que sao o motivo dos numeros e nao devem ser mexidas sem refazer:
+
+     lateral, desktop: 30 (padding da folha) + 26 (esta margem) = 56 de sobra,
+                       contra 36 que a marca de corte avanca.  folga 20
+     lateral, mobile:  16 (padding da folha) + 20 (esta margem) = 36 de sobra,
+                       contra 26 (a marca encolhe em mobile).   folga 10
+     vertical:         44 desta margem, contra 34 que a cruz de registro
+                       avanca acima do quadro.                  folga 10 */
+.poster{position:relative; margin:44px 26px 0}
+@media (max-width:430px){ .poster{margin:44px 20px 0} }
+
+/* ── a moldura ──
+   Borda grossa de tinta + um filete fino AFASTADO por fora. Sao duas linhas com
+   ar entre elas, que e como moldura de encarte e impressa. Feito com
+   border + outline/outline-offset de proposito: zero elemento extra, e o
+   outline nao entra no box (nao empurra layout nem cria rolagem lateral). */
+.quadro{
+  position:relative;
+  border:4px solid var(--tinta-preta);
+  outline:1px solid var(--tinta-2); outline-offset:6px;
+  padding:clamp(20px,4.2vw,38px) clamp(16px,3.6vw,32px) clamp(18px,3.8vw,34px);
+}
+
+/* ── marcas de corte ──
+   O L ABERTO e o detalhe que faz parecer material grafico de verdade: numa
+   prova de grafica as duas linhas NAO se tocam no canto, porque o corte cai
+   entre elas. Se fecharem em L continuo, vira "borda decorativa" e o efeito
+   evapora. Os spans tem tamanho zero: sao so ancoras de canto.
+
+   ⚠️ AS MARCAS TEM QUE FICAR FORA DO FILETE FINO (o outline a 6px), e isso so
+   apareceu no render: com a ancora a 4px, os tracos cruzavam o filete e os
+   tres viravam uma sujeira de canto ilegivel. Com a ancora a --o:14px a marca
+   nasce depois do filete e volta a ler como marca de corte.
+     --o  distancia da ancora ate a borda do quadro
+     --a  onde o traco COMECA, medido da ancora para fora
+     --l  comprimento do traco;  o gap do L e --a menos --l */
+.corte{--o:14px; --a:22px; --l:16px;
+  position:absolute; width:0; height:0; z-index:2}
+.corte::before,.corte::after{content:""; position:absolute; background:var(--tinta-2)}
+.corte::before{height:1px; width:var(--l)}     /* o traco horizontal */
+.corte::after {width:1px;  height:var(--l)}    /* o traco vertical   */
+.corte.tl{left:calc(-1*var(--o));  top:calc(-1*var(--o))}
+.corte.tr{right:calc(-1*var(--o)); top:calc(-1*var(--o))}
+.corte.bl{left:calc(-1*var(--o));  bottom:calc(-1*var(--o))}
+.corte.br{right:calc(-1*var(--o)); bottom:calc(-1*var(--o))}
+.corte.tl::before{left:calc(-1*var(--a));  top:0}
+.corte.tl::after {left:0;  top:calc(-1*var(--a))}
+.corte.tr::before{right:calc(-1*var(--a)); top:0}
+.corte.tr::after {right:0; top:calc(-1*var(--a))}
+.corte.bl::before{left:calc(-1*var(--a));  bottom:0}
+.corte.bl::after {left:0;  bottom:calc(-1*var(--a))}
+.corte.br::before{right:calc(-1*var(--a)); bottom:0}
+.corte.br::after {right:0; bottom:calc(-1*var(--a))}
+/* em 390 nao ha 36px de margem sobrando: a marca encolhe para 26 e continua
+   inteira, em vez de ser decepada pelo overflow:hidden da folha */
+@media (max-width:430px){ .corte{--o:10px; --a:16px; --l:12px} }
+
+/* ── cruz de registro ──
+   O alvo que a grafica usa para alinhar as chapas de cor. Circulo + cruz que
+   ATRAVESSA o circulo (a cruz maior que o alvo e o que o torna reconhecivel).
+   Fica no eixo do vinco, em cima e embaixo, porque e ali que a dobra passa.
+
+   ⚠️ ELA E FILHA DO .quadro, NAO DO .poster, e isso nao e detalhe: ancorada no
+   .poster, o "bottom" media a partir do fim do CREDITO, e no render a cruz de
+   baixo caiu em cima da linha de credito e do rodape. Ancorada no quadro, ela
+   fica no ar entre a moldura e o credito, que e onde uma marca de registro
+   fica numa prova de verdade. O -30px e o que a margem do .poster comporta. */
+.registro{
+  position:absolute; left:50%; width:12px; height:12px; translate:-50% 0; z-index:2;
+  border:1px solid var(--tinta-2); border-radius:50%;
+}
+.registro::before,.registro::after{content:""; position:absolute; background:var(--tinta-2)}
+.registro::before{left:50%; top:-4px; width:1px; height:20px; translate:-50% 0}
+.registro::after {top:50%; left:-4px; height:1px; width:20px; translate:0 -50%}
+.registro.topo{top:-30px}
+.registro.base{bottom:-28px}
+
+/* ── cabecalho do poster ──
+   ★ A ASSIMETRIA E INTENCIONAL: o titulo empurra para a esquerda e a tarja
+   TAMANHO REAL vai para o canto direito, na linha de base da ultima linha do
+   titulo. Centralizar os dois deixaria a peca com cara de certificado. */
+.kicker{font-family:var(--font-manchete); font-weight:700; font-size:13px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--tinta-ciano); margin:0 0 6px}
+.cabeca{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap}
+.titulo{
+  font-family:var(--font-manchete); font-weight:700;
+  font-size:clamp(42px,12.4vw,96px); line-height:.86;
+  letter-spacing:-.03em; text-transform:uppercase;
+  color:var(--tinta-preta); margin:0;
+}
+/* a tarja invertida e o gesto mais noventista que existe em banca: a chamada
+   que grita em negativo. Aqui ela carrega o unico texto que o leitor precisa
+   ler para a peca funcionar. */
+.tarja{
+  font-family:var(--font-manchete); font-weight:700;
+  font-size:clamp(15px,4.4vw,25px); letter-spacing:.2em; text-transform:uppercase;
+  background:var(--tinta-preta); color:var(--papel);
+  padding:5px 12px 6px; white-space:nowrap; margin-bottom:4px;
+  /* ⚠️ o margin-left:auto E a assimetria, e ele so importa QUANDO QUEBRA: com
+     o titulo grande o flex-wrap joga a tarja para a linha de baixo, e sem isto
+     ela cai colada na margem esquerda, embaixo do titulo, virando um bloco
+     centrado de certificado. Com o auto ela vai para a direita e a diagonal
+     titulo/tarja aparece. Foi o render que mostrou; nao e preferencia. */
+  margin-left:auto;
+}
+/* filete duplo entre o titulo e a arte: grosso em cima, fino embaixo, com ar
+   no meio. E a pontuacao grafica de revista antes de uma prancha. */
+.filete{
+  margin:clamp(14px,2.6vw,22px) 0 clamp(14px,2.6vw,22px);
+  height:0; border-top:4px solid var(--tinta-preta);
+  box-shadow:0 4px 0 var(--papel), 0 5px 0 var(--tinta-preta);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   O QUADRADO
+   ═══════════════════════════════════════════════════════════════════
+   Uma chapa. Sem borda, sem sombra, sem gradiente, sem brilho, sem contorno,
+   sem nada dentro. Chapa de tinta em papel nao tem contorno: quem desenha
+   contorno esta desenhando um icone, e isto nao e um icone.
+
+   ⚠️ NAO DAR OLHINHO. Nao dar nome. Nao dar rosto. Sao quatro lados.
+
+   width:100% + aspect-ratio:1 e o que garante que ele DOMINA em qualquer
+   largura: em 390 ele fica com ~318px de lado, em 820 com ~700. Ele nunca
+   vira um quadradinho timido no celular, que era o risco. */
+.chapa{
+  position:relative; width:100%; aspect-ratio:1;
+  background:var(--tinta-ciano);
+}
+/* a fibra do papel REENTRA por cima da chapa: tinta impressa nao apaga a
+   textura do papel embaixo dela, e sem isto o azul lia como retangulo de tela,
+   nao como area impressa. multiply, opacidade baixa, dimensao explicita no SVG
+   (o Gecko descarta filtro sem dimensao). */
+.chapa::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.14;
+}
+/* ── o lado ESCURO da dobra, e ele so existe AQUI ──
+   ⚠️ ESTE E O GUARD DE CONTRASTE DA PECA, e ele nasceu de uma medicao que
+   reprovou. A versao anterior tinha um vinco escuro atravessando a folha
+   inteira com alpha .19. Medido no render, sobre o papel amostrado dentro da
+   folha (236,230,216), ele derrubava o texto secundario e o kicker de 5.97
+   para 4.11:1: REPROVA AA. A varredura de alpha mostrou que o teto e .14, e
+   que .14 chega em 4.51, ou seja, margem ZERO.
+
+   E o teto some de vez numa folha velha: --tinta-2 sobre --papel-fim (a #1
+   encardida) ja e 4.51 SEM veu nenhum. E a mesma aritmetica do cafe em
+   ../tokens.css §8: nao existe veu visivel que possa cair sobre texto na
+   edicao velha sem quebrar a leitura. Logo a saida NAO e achar um alpha
+   simpatico, e sim o veu nao encostar em texto.
+
+   Por isso o lado escuro mora DENTRO da chapa, que e a unica regiao da peca
+   onde nao ha texto por construcao (ver a nota da .chapa e o comentario do
+   HTML). E o mais fiel dos dois: num poster de verdade a dobra se ve na area
+   impressa, porque a tinta racha no vinco; no papel branco ela quase some.
+   O centro da chapa coincide com o centro da folha (margens simetricas,
+   conferido no render: chapa 282..917 -> centro 599.5; folha 190..1010 ->
+   centro 600), entao os dois segmentos do vinco ficam no mesmo eixo. */
+.chapa::after{
+  content:""; position:absolute; top:0; bottom:0; left:50%; width:26px;
+  translate:-50% 0; pointer-events:none;
+  background:linear-gradient(90deg,
+    #0000 0%,
+    rgb(10 30 34 / .10) 30%,
+    rgb(10 30 34 / .30) 47%,
+    rgb(10 30 34 / .34) 50%,
+    rgb(255 255 255 / .06) 53%,
+    rgb(255 255 255 / .22) 57%,
+    rgb(255 255 255 / .07) 74%,
+    #0000 100%);
+}
+
+/* ── a ficha tecnica ──
+   ★ ONDE A PIADA MORA SEM SER DITA. "16 x 16 px" e um dado, escrito como
+   qualquer ficha escreve dado, e e o unico lugar do encarte que contradiz o
+   tamanho do que esta impresso acima. Nao ha uma linha comentando isso, e nao
+   pode haver. Se alguem acrescentar a piada explicita, apagar. */
+.ficha{
+  display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  margin-top:10px;
+  font-family:var(--font-manchete); font-weight:700; font-size:12.5px;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--tinta-2);
+}
+.ficha b{color:var(--tinta-preta)}
+
+/* ── barra de controle de cor ──
+   A tirinha de quadradinhos que a grafica imprime na margem para conferir a
+   densidade das chapas. Detalhe de material grafico de verdade, e, de graca,
+   uma piada silenciosa: os quadradinhos de 11px ao lado do quadrado gigante.
+   Nao comentar. Decorativa: aria-hidden. */
+.barra{display:flex; gap:3px; margin-left:auto}   /* fica na direita mesmo quando a ficha quebra em 390 */
+.barra i{display:block; width:11px; height:11px; border:1px solid #00000026}
+.barra .k{background:var(--tinta-preta)}
+.barra .c{background:var(--tinta-ciano)}
+.barra .m{background:var(--tinta-magenta)}
+.barra .g{background:var(--tinta-2)}
+.barra .w{background:var(--papel)}
+
+/* ── credito do encarte, fora do quadro ──
+   O margin-top NAO e respiro: e o que impede a colisao com a cruz de registro
+   da base, que avanca 34px abaixo da moldura. Encurtar isto encavala os dois. */
+.credito{
+  margin-top:48px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  font-family:var(--font-manchete); font-weight:700; font-size:11.5px;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--tinta-2);
+}
+.credito span:last-child{margin-left:auto}   /* idem: encosta na direita ao quebrar */
+
+/* ═══════════════════════════════════════════════════════════════════
+   O VINCO DA DOBRA
+   ═══════════════════════════════════════════════════════════════════
+   A assinatura do formato: poster central vem DOBRADO dentro da revista, e a
+   dobra fica marcada para sempre. Ela atravessa a folha inteira de topo a base,
+   inclusive por cima do texto e da chapa azul, porque e uma deformacao fisica
+   do papel, nao uma camada de arte.
+
+   ⚠️ SOBRE O PAPEL, SO A CRISTA DE LUZ. Este elemento passa por cima do
+   masthead, do kicker, do credito e do rodape, ou seja, por cima de TEXTO, e a
+   medicao (ver a nota da .chapa::after) provou que qualquer sombreamento ali
+   reprova AA. Entao aqui ficou so o lado CLARO da dobra: ele CLAREIA o papel,
+   e clarear papel AUMENTA o contraste da tinta, em vez de derrubar.
+
+     texto secundario sobre papel limpo         5.97:1
+     texto secundario sobre papel sob a crista  6.43:1   melhora, nao piora
+
+   Ou seja, este veu e o unico da casa que nao tem teto: ele nao pode quebrar
+   leitura nenhuma, por construcao. O lado escuro da dobra vive na .chapa.
+
+   ⚠️ E ELE FICA POR BAIXO DO CONTEUDO (z-index 0, sobrescrevendo o z-index 1
+   que .folha > * da a todo filho direto). Nao e detalhe de empilhamento: com
+   z-index 3 esta crista de .46 de branco caia POR CIMA da chapa azul e lavava
+   a dobra impressa, que passava a ser uma faixa clara em vez da dobra. Medido:
+   o centro da chapa dava (130,168,172) em vez dos (12,72,80) que o gradiente
+   da .chapa::after produz. Por baixo, ele clareia o papel (que e o fundo da
+   folha) e o texto e a chapa, que sao opacos, continuam intactos por cima.
+   A dobra so se interrompe onde cruza tinta chapada preta (a regua de 3px do
+   masthead e o filete de 4px), o que some a olho. */
+.vinco{
+  position:absolute; left:50%; top:0; bottom:0; width:26px; translate:-50% 0;
+  z-index:0; pointer-events:none;
+  background:linear-gradient(90deg,
+    #0000 0%,
+    rgb(255 255 255 / .10) 40%,
+    rgb(255 255 255 / .46) 51%,
+    rgb(255 255 255 / .34) 60%,
+    rgb(255 255 255 / .10) 76%,
+    #0000 100%);
+}
+
+.rodape{margin:26px 0 0; padding-top:12px; border-top:1px solid var(--borda);
+  font-family:var(--font-manchete); font-weight:700; font-size:12.5px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--tinta-2); display:flex; gap:18px; flex-wrap:wrap}
+.rodape b{color:var(--tinta-preta)}
+
+/* ═══════════ IMPRESSAO ═══════════
+   Esta peca e a MAIS papel de todas: ela existe para ser destacada e pregada
+   na parede. print-color-adjust:exact e obrigatorio; sem ele o navegador
+   "economiza tinta", a chapa sai branca, e o poster central passa a ser uma
+   folha em branco com uma moldura. O quadro inteiro nao pode quebrar de
+   pagina no meio. */
+@media print{
+  @page{size:A4 portrait; margin:10mm}
+  html{background:#fff}
+  body{padding:0}
+  .ctx{display:none}
+  .folha{box-shadow:none; margin:0; max-width:none; padding:0;
+         break-inside:avoid; page-break-inside:avoid}
+  /* ⚠️ NA IMPRESSAO A MARCA DE CORTE ENCOSTAVA NA TARJA "POSTER CENTRAL", e a
+     causa e aritmetica, nao gosto: o traco vertical do L nasce em --a (22px) e
+     mede --l (16px) a partir de uma ancora que ja esta --o (14px) fora do
+     quadro, ou seja ele avanca 36px ACIMA da moldura. Na tela a margem de 44px
+     do .poster comporta isso com 8px de folga; aqui a margem cai para 6mm
+     (~23px) e a marca invadia a tarja em ~13px. Visto no PDF, nao suposto.
+     Conserto nos dois lados: 9mm de margem (~34px) e a marca encolhida para
+     avancar so 24px. Folga 10px, e sem custo de altura relevante (a prova em
+     A4 fechava com ~22mm sobrando).
+
+     ⚠️ E O --o NAO PODE DESCER ATE 6px, que foi a primeira tentativa: 6px e
+     exatamente o outline-offset do filete fino, entao a ancora nasce EM CIMA
+     dele e os tres tracos viram sujeira de canto, o mesmo defeito que a nota
+     da .corte descreve para a tela. O piso do --o e "maior que o offset do
+     filete". 10px deixa 4px de ar entre o filete e a marca. */
+  .poster{margin:9mm 8mm 0}
+  .corte{--o:10px; --a:14px; --l:8px}
+  .registro.topo{top:-20px}
+  .registro.base{bottom:-18px}
+  .quadro{padding:6mm}
+  /* ⚠️ O ENCARTE TEM QUE CABER EM UMA FOLHA, e a primeira prova saiu em TRES
+     paginas com a primeira quase em branco: break-inside:avoid nao resolve
+     nada quando a peca e MAIOR que a pagina, ele so a empurra para a proxima.
+     A conta da A4 com 10mm de margem (util 190 x 277mm): fora a chapa, a peca
+     ocupa ~125mm de altura, e a largura util da chapa fica em ~150mm. Travar
+     a chapa em 132mm deixa folga nos dois eixos e o encarte fecha em UMA
+     pagina. O titulo tambem sai do clamp em vw: na impressao o vw resolve pela
+     largura do papel e o titulo comeria a altura toda. */
+  .chapa{max-width:132mm; margin-inline:auto}
+  .titulo{font-size:40pt}
+  .tarja{font-size:12pt}
+  .kicker{font-size:9pt}
+  .credito{margin-top:14mm}
+  .rodape{margin-top:8mm}
+  .folha,.chapa,.barra i,.tarja,.chamada-topo,.filete,.vinco,
+  .folha::before,.chapa::before,.chapa::after{
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+}
+
+/* ═══════════ MOTION ═══════════
+   Nao ha animacao nenhuma nesta peca, e e decisao, nao esquecimento: o poster
+   e destacado e pregado na parede, entao ele tem que dizer a mesma coisa
+   parado. Logo nao ha o que desligar em prefers-reduced-motion. Se um dia
+   alguem quiser mexer (ex.: o quadrado "encolhendo ate 16px"), a regra da casa
+   e steps() e a animacao tem que SUMIR INTEIRA em reduced-motion, com o
+   quadrado parado NO ESTADO GRANDE: nunca sumido, nunca minusculo. */
+</style>
+</head>
+<body>
+
+<div class="ctx">
+  <h1>Glyfesse · mock 19 · o pôster central</h1>
+  <p><b>“O quadrado azul, tamanho real”</b>: o encarte destacável da <b>#3</b>. Pauta: <b>só arte, zero escrita</b>. Uma chapa de tinta azul ocupando a página, e mais nada dentro dela.</p>
+  <p><b>A peça não é o quadrado, é a moldura.</b> Moldura dupla, marcas de corte em L aberto, cruzes de registro no eixo da dobra, barra de controle de cor da gráfica, vinco de dobra atravessando a folha inteira, ficha técnica. Toda a solenidade de um encarte central servindo a um retângulo liso. <b>Tudo é CSS</b>: sem imagem, sem SVG figurativo, sem emoji.</p>
+  <p>⚠️ <b>A piada é de escala e não se explica em lugar nenhum.</b> As dimensões reais aparecem só como <span class="tag">dado</span> na ficha técnica. Nenhuma linha do encarte comenta o tamanho.</p>
+  <p>⚠️ <b>O que é preenchimento meu, não decisão do editor-geral:</b> o texto da tarja (<span class="tag">tamanho real</span>), o kicker (<span class="tag">encarte destacável</span>), a redação da ficha (<span class="tag">16 × 16 px · uma cor · 22.06.2026</span>) e do crédito, a <b>barra de controle de cor</b>, as <b>cruzes de registro</b>, e a decisão de manter a chapa <b>totalmente limpa</b> (título fora dela, não por cima). O conceito, o título da peça e o “só arte, zero escrita” vêm da pauta.</p>
+  <p>Zero JS · zero animação (vai impresso e pregado na parede) · o quadrado domina de 390px ao desktop · nenhum texto cai sobre o azul.</p>
+</div>
+
+<article class="folha" style="--idade:.10">
+
+  <div class="masthead">
+    <div class="logo">GLYFESSE</div>
+    <div class="ed">ano 1 · nº <b>3</b><br>gusworld.site</div>
+  </div>
+  <span class="chamada-topo">pôster central</span>
+
+  <div class="poster">
+    <div class="quadro">
+      <!-- ⚠️ as cruzes de registro sao filhas DO QUADRO, nao do .poster: no
+           .poster o "bottom" media a partir do fim do credito e a cruz de baixo
+           caia em cima da linha de credito e do rodape (visto no render). -->
+      <span class="registro topo" aria-hidden="true"></span>
+      <span class="registro base" aria-hidden="true"></span>
+      <span class="corte tl" aria-hidden="true"></span>
+      <span class="corte tr" aria-hidden="true"></span>
+      <span class="corte bl" aria-hidden="true"></span>
+      <span class="corte br" aria-hidden="true"></span>
+
+      <p class="kicker">encarte destacável</p>
+
+      <div class="cabeca">
+        <h2 class="titulo">O quadrado<br>azul</h2>
+        <span class="tarja">tamanho real</span>
+      </div>
+
+      <div class="filete" aria-hidden="true"></div>
+
+      <!-- ⚠️ A CHAPA E VAZIA E CONTINUA VAZIA. Nada entra aqui dentro: nem
+           legenda, nem selo, nem numero, nem rosto. Sao quatro lados. -->
+      <div class="chapa" role="img"
+           aria-label="Um quadrado azul sólido, chapado, ocupando a página inteira. Não há mais nada dentro dele."></div>
+
+      <p class="ficha">
+        <span><b>16 × 16 px</b> · uma cor · 22.06.2026</span>
+        <span class="barra" aria-hidden="true">
+          <i class="k"></i><i class="c"></i><i class="m"></i><i class="g"></i><i class="w"></i>
+        </span>
+      </p>
+    </div>
+
+    <p class="credito">
+      <span>Glyfesse nº 3 · pôster central</span>
+      <span>destaque pela dobra</span>
+    </p>
+  </div>
+
+  <div class="rodape">
+    <span><b>GLYFESSE</b> · a revista do GusWorld</span>
+    <span>pôster · seção fixa</span>
+    <span>uma chapa, quatro lados</span>
+  </div>
+
+  <span class="vinco" aria-hidden="true"></span>
+</article>
+
+</body>
+</html>
