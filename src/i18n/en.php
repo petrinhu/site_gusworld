@@ -246,7 +246,12 @@ return [
     // footer
     'rodape_som_ef'     => 'Effects',   // FIXED label: state is signaled by the LED (.luz), like real hardware
     'rodape_som_mus'    => 'Music',
-    'rodape_licenca'    => 'Content under a free license. Made with AI as a tool; the creative part is the creator\'s.',
+    // ⚠️ Do not rewrite without reading AUD-IA §IA-01/IA-02/IA-03 and AUD-LICENCA §LIC-01/LIC-02.
+    // The line must: (1) name the actual license and match the §19 colophon ("all rights
+    // reserved"); (2) disclose AI use in ART, not only code, NAMING the tool; (3) carry no
+    // defense by intent ("AI is the tool, the creative part is the creator's") and no defense
+    // by credential. Disclosing is the defense.
+    'rodape_licenca'    => 'Site code: Apache 2.0. Magazine text and art: all rights reserved. Made with AI: the code with Claude; the art with PixelLab (sprites) and Tripo3D (3D poster).',
     'rodape_contato'    => 'Contact the newsroom',
     'build_tag_aria'    => 'version of this edition',   // aria-label of the build stamp (expert)
 

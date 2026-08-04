@@ -11,7 +11,7 @@
 
 <p>E ele coube num laptop, em cima da mesa, sem nuvem nenhuma. Centenas de livros indexados dentro de uma máquina que dá pra fechar e botar na mochila. O como disso é o resto desta página, e a partir daqui quem fala sou eu, o editor.</p>
 
-<p class="fala"><span class="prompt">root@glyfesse&gt;</span> <span class="dito">antes que perguntem por que eu assino da conta root numa revista: tudo que é meu é open source. Não tenho o que esconder, então não finjo que tenho.</span></p>
+<p class="fala"><span class="prompt">root@glyfesse&gt;</span> <span class="dito">antes que perguntem por que eu assino da conta root numa revista: todo o meu código é open source. Não tenho o que esconder, então não finjo que tenho.</span></p>
 <p class="pensa">e o sudo cansa</p>
 
 <p class="pensa nota-leitor">Prezado leitor, daqui por diante é a parte técnica de verdade: a documentação histórica de como o desenvolvimento começou. Se você não é de TI, a intro acima já te deu o essencial e você pode pular pro Cupom sem culpa.</p>
@@ -124,7 +124,7 @@
 
 <p>O assistente de leitura funcionou. Um acervo de 306 obras, quebrado em 163 mil trechos, virou uma estante que responde à pergunta certa com o parágrafo certo, e a lore que ele ajudou a escrever nasceu original, linha por linha, de uma pessoa. Ele nasceu antes do jogo, num laptop, sem nuvem, e ensinou pelo caminho onde uma ferramenta enxerga (a exposição) e onde ela é cega (a imagética), uma lição de método que não estava no plano.</p>
 
-<p>Essa é a gênese. Não do código, que só chega em junho. Do método. A IA é a ferramenta; o criativo é do criador. Esta seção existe para provar que a frase não é slogan: é procedimento, medido, com ponto cego mapeado, e está documentado.</p>
+<p>Essa é a gênese. Não do código, que só chega em junho. Do método. Esta seção existe para mostrar o procedimento inteiro: medido, com ponto cego mapeado, e documentado.</p>
 
 <h3>7. Bibliografia: as âncoras</h3>
 

@@ -11,7 +11,7 @@
 
 <p>And it fit inside a laptop, on the desk, with no cloud at all. Hundreds of books indexed inside a machine you can close and put in a backpack. The how of that is the rest of this page, and from here on the one speaking is me, the editor.</p>
 
-<p class="fala"><span class="prompt">root@glyfesse&gt;</span> <span class="dito">before anyone asks why I sign from the root account in a magazine: everything of mine is open source. I have nothing to hide, so I don't pretend I do.</span></p>
+<p class="fala"><span class="prompt">root@glyfesse&gt;</span> <span class="dito">before anyone asks why I sign from the root account in a magazine: all of my code is open source. I have nothing to hide, so I don't pretend I do.</span></p>
 <p class="pensa">and sudo gets old</p>
 
 <p class="pensa nota-leitor">Dear reader, from here on it's the real technical part: the historical record of how development began. If you're not in tech, the intro above already gave you the gist and you can skip to the Coupon guilt-free.</p>
@@ -125,7 +125,7 @@
 
 <p>The reading assistant worked. An archive of 306 works, split into 163,000 passages, became a shelf that answers the right question with the right paragraph, and the lore it helped write was born original, line by line, from one person. It was born before the game, on a laptop, with no cloud, and it taught along the way where a tool sees (exposition) and where it's blind (imagery), a lesson in method that wasn't in the plan.</p>
 
-<p>That is the genesis. Not of the code, which only arrives in June. Of the method. The AI is the tool; the creative is the creator's. This section exists to prove the sentence isn't a slogan: it's a procedure, measured, with its blind spot mapped, and it's documented.</p>
+<p>That is the genesis. Not of the code, which only arrives in June. Of the method. This section exists to show the whole procedure: measured, with its blind spot mapped, and documented.</p>
 
 <h3>7. Bibliography: the anchors</h3>
 

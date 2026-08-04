@@ -253,7 +253,12 @@ return [
     // rodapé
     'rodape_som_ef'     => 'Efeitos',   // rótulo FIXO: o estado é sinalizado pelo LED (.luz), como no hardware real
     'rodape_som_mus'    => 'Música',
-    'rodape_licenca'    => 'Conteúdo sob licença livre. Feito com IA como ferramenta; a parte criativa é do criador.',
+    // ⚠️ NÃO reescrever sem ler AUD-IA §IA-01/IA-02/IA-03 e AUD-LICENCA §LIC-01/LIC-02.
+    // Regras que a linha tem de cumprir: (1) nomear a licença de verdade e bater com o
+    // colofão da §19 ("todos os direitos reservados"); (2) declarar o uso de IA em ARTE,
+    // não só em código, NOMEANDO a ferramenta; (3) zero defesa por intenção ("a IA é
+    // ferramenta, o criativo é do criador") e zero defesa por credencial. Declarar é a defesa.
+    'rodape_licenca'    => 'Código do site: Apache 2.0. Texto e arte da revista: todos os direitos reservados. Feito com IA: o código com Claude; a arte com PixelLab (sprites) e Tripo3D (pôster 3D).',
     'rodape_contato'    => 'Fale com a redação',
     'build_tag_aria'    => 'versão desta edição',   // aria-label do carimbo de build (expert)
 
