@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse · 17 · Detonado da Simulação · o documento desclassificado</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* MOCK 17: a secao "Detonado da Simulacao" (#3) como DOCUMENTO DE GOVERNO
+   DESCLASSIFICADO: papel, texto corrido, TARJAS PRETAS e um CARIMBO VERMELHO
+   torto atravessando a pagina na diagonal.
+
+   ⛔⛔ A TRAVA QUE DOMINA A PECA, e ela e de ARQUIVO, nao de CSS:
+   NAO EXISTE PALAVRA NENHUMA POR BAIXO DA TARJA. Nem com color:transparent,
+   nem com opacity:0, nem em atributo, nem em comentario. A <b class="tarja">
+   e um elemento VAZIO. O criterio do GATE-RENDER e "procurar cada termo
+   embargado no que foi servido e nao achar nada" - aqui nao ha o que achar,
+   porque nada foi escrito. Essa e a unica garantia que vale: CSS se inspeciona,
+   arquivo vazio nao.
+
+   ⚠️ LARGURA QUANTIZADA. A barra nao pode ser proporcional ao que cobriria,
+   senao ela entrega a CONTAGEM DE LETRAS - o vazamento que sobra depois de
+   remover o texto. Sao 4 larguras fixas (4ch / 11ch / 7ch / 9ch) atribuidas
+   pela POSICAO DA LINHA no bloco (.linha:nth-of-type(4n+k)), nunca pelo
+   conteudo. O tamanho da barra nao significa nada, e continua nao significando
+   nada se alguem trocar o texto das linhas.
+
+   ⚠️ ALINHAMENTO SEM VAZAMENTO. No .txt original os pontinhos sao digitados
+   ate o "ok" alinhar - o que amarraria a largura da tarja a contagem de
+   caracteres outra vez. Aqui a linha e um FLEX de 3 pecas (nome · pontos ·
+   ok) e quem estica e a peca dos pontos. O "ok" alinha por layout, nao por
+   contagem: a tarja pode ter qualquer largura sem quebrar a coluna.
+
+   ⚠️ A tarja tem user-select:none: arrastar o mouse por cima nao copia nada.
+   O aria-label diz "trecho censurado" e mais nada (nem "nome", nem "mestre").
+
+   O CARIMBO e DECORATIVO: aria-hidden + pointer-events:none, e nao entra na
+   ordem de leitura. mix-blend-mode:multiply e a razao de ele nao apagar o
+   texto: multiplicar vermelho por tinta preta continua preto (a medicao esta
+   na secao CORES abaixo).
+
+   Zero JS. Zero terceiro. Zero animacao (nada a desligar em reduced-motion).
+   Tudo herda de ../tokens.css; papel e o material desta secao.
+
+   Texto: docs/content/edicao-3-detonado.md (pt-BR), verbatim. */
+
+*{box-sizing:border-box}
+html{background:#2b2620}
+body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-corpo)}
+
+/* ═══════════ CORES: o que foi MEDIDO, nao chutado ═══════════
+   Fundos considerados: papel novo #f4efe4, esta folha (--idade:.10) e o
+   PIOR papel da banca, a #1 encardida (#d9c8a3). A regra da casa e calibrar
+   no pior papel, porque o mesmo token serve em qualquer edicao.
+
+   TEXTO DO DOCUMENTO (funcional, precisa de AA 4.5:1)
+     --tinta-preta  #1a1614   15.67 · 15.13 · 10.90   AAA sempre
+     --tinta-2      #5b544f    6.48 ·  6.26 ·  4.51   AA ate na #1
+     --tinta-ciano  #0d5e67    6.51 ·  6.28 ·  4.53   o prompt do gus
+     --voz-root     #9a1815    7.28 ·  7.03 ·  5.06   AA ate na #1 ✅
+     tarja          #000000   18.31 · 17.68 · 12.74
+
+   ★ --voz-root e a cor que distingue o root do gus (canon: "root se
+   distingue por COR, vermelho sugerido, medir antes"). Foi escolhida
+   ENUMERANDO candidatos contra os tres fundos, nao a olho: os vermelhos
+   mais vivos que ela (#a81f1b = 4.43, #b3221d = 4.03, #c0272d = 3.57)
+   REPROVAM no papel da #1. Este e o vermelho mais vivo que ainda passa
+   AA no pior papel com folga.
+
+   CARIMBO (DECORATIVO, e por isso pode ficar abaixo de 4.5:1)
+     tinta #b81f26, opacity .70, mix-blend-mode:multiply
+     renderizado sobre esta folha  -> ~#c25b5a  =  3.6:1   ⚠️ ABAIXO DE AA
+     renderizado sobre a #1        -> ~#af4d42  =  3.2:1   ⚠️ ABAIXO DE AA
+   Isso e ACEITO porque o carimbo NAO CARREGA INFORMACAO: e aria-hidden,
+   pointer-events:none, e nada do que ele diz e necessario para entender a
+   pagina. Se um dia alguem quiser por informacao dentro do carimbo, a cor
+   tem que subir para --voz-root ou o carimbo perde a opacidade de tinta gasta.
+
+   ⚠️ O TETO DA OPACIDADE E .70, e o numero tem conta: o texto preto por
+   baixo do carimbo (multiply) fica em 5.30:1 com .62, 4.60:1 com .68/.70 e
+   cai para 3.98:1 com .78. Acima de .70 o carimbo comeca a atrapalhar a
+   leitura de verdade. Nao subir.
+   ═══════════════════════════════════════════════════════════ */
+
+/* faixa de contexto do mock (fora da "revista") */
+.ctx{max-width:820px; margin:0 auto; padding:22px 22px 4px; color:#cdbfa6}
+.ctx h1{font-family:var(--font-display); font-weight:700; font-size:14px; letter-spacing:.12em;
+  text-transform:uppercase; color:#e6d9bf; margin:0 0 6px}
+.ctx p{font-size:14.5px; line-height:1.55; margin:0 0 6px; color:#bcaf95}
+.ctx b{color:#e6d9bf}
+.ctx .tag{color:#7bd06a}
+
+/* ═══════════ A REVISTA (a folha de papel) ═══════════ */
+.folha{
+  --voz-root:#9a1815;
+  --carimbo-tinta:#b81f26;
+  max-width:820px; margin:20px auto 0; position:relative;
+  box-shadow:var(--sombra-folha); overflow:hidden;   /* guard: nada escapa da folha */
+  padding:26px 30px 34px;
+}
+@media (max-width:430px){ .folha{ padding:20px 16px 28px } }
+/* fibra do papel: SVG com dimensao explicita (senao o Gecko descarta o filtro) */
+.folha::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.12;
+}
+.folha > *{position:relative; z-index:1}
+
+/* ── expediente ── */
+.masthead{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:3px solid var(--tinta-preta); padding-bottom:8px; margin-bottom:12px}
+.masthead .logo{font-family:var(--font-display); font-weight:700; font-size:32px; line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4a0, 1.5px 1.5px 0 #c2129ea0}
+.masthead .ed{font-family:var(--font-display); font-size:11px; text-align:right; line-height:1.5; color:var(--tinta-2)}
+.masthead .ed b{color:var(--tinta-preta); font-size:16px}
+.chamada-topo{font-family:var(--font-display); font-size:11px; letter-spacing:.06em;
+  background:var(--tinta-preta); color:var(--papel); display:inline-block; padding:4px 8px; margin-bottom:18px}
+
+/* ── cabecalho da secao ──
+   labels pixel em MINUSCULA (decisao de sistema 2026-07-17): o N maiusculo
+   rasteriza como H abaixo de 15px na PixelOperatorMono. */
+.kicker{font-family:var(--font-display); font-size:12px; letter-spacing:.1em;
+  color:var(--tinta-ciano); margin:0 0 4px}
+.titulo{font-family:var(--font-manchete); font-weight:700; font-size:clamp(30px,8vw,40px); line-height:1.0;
+  letter-spacing:var(--manchete-ls); color:var(--tinta-preta); margin:0 0 14px}
+
+/* ── a voz em prompt de shell (formato da #3 em diante) ── */
+.fala{margin:0 0 18px; max-width:66ch}
+.prompt{font-family:var(--font-display); font-size:15px; color:var(--tinta-ciano);
+  letter-spacing:.01em; overflow-wrap:break-word}
+.dito{font-family:var(--font-corpo); font-weight:400; font-size:16px; line-height:1.55; color:var(--tinta-2)}
+/* o root NAO e o gus: a diferenca e a COR, medida acima (5.06:1 no pior papel) */
+.fala.root .prompt{color:var(--voz-root)}
+.fala.root .dito{color:var(--tinta-preta)}
+
+/* ── corpo do documento ── */
+.corpo p{font-family:var(--font-corpo); font-size:17px; line-height:var(--lh-corpo);
+  color:var(--tinta-preta); max-width:62ch; margin:0 0 15px}
+.corpo p b, .corpo p strong{font-weight:var(--linha-fina-peso)}
+.corpo .legenda{font-family:var(--font-corpo); font-style:italic; font-size:15px;
+  color:var(--tinta-2); max-width:56ch; margin:12px 0 22px}
+.corpo .fecho{font-family:var(--font-corpo); font-size:17px; color:var(--tinta-preta); margin:0 0 22px}
+
+/* ═══════════ A TRANSCRICAO (o bloco de saida de teste) ═══════════
+   Papel dentro do papel: a folha datilografada colada no documento.
+   Sem uppercase N em lugar nenhum do bloco - a fonte pixel aguenta o
+   tamanho pequeno aqui. */
+.transcricao{
+  margin:6px 0 4px; padding:16px 16px 14px;
+  background:#00000008;
+  border-top:2px solid var(--tinta-preta);
+  border-bottom:2px solid var(--tinta-preta);
+  box-shadow:inset 0 0 0 1px #0000000d;
+}
+.transcricao .cab{
+  font-family:var(--font-display); font-size:11px; letter-spacing:.06em;
+  color:var(--tinta-2); margin:0 0 10px; display:block;
+}
+.linhas{margin:0; font-family:var(--font-display); font-size:clamp(11.5px,2.9vw,15px);
+  line-height:1.85; color:var(--tinta-preta)}
+.linha{display:flex; align-items:baseline; gap:6px; white-space:nowrap}
+.linha .nome{flex:0 0 auto}
+/* os pontinhos ESTICAM: o "ok" alinha por layout, nao por contagem de
+   caractere. E o que permite a tarja ter largura arbitraria sem quebrar
+   a coluna - e sem que a largura signifique nada. */
+.linha .pontos{flex:1 1 auto; min-width:12px; overflow:hidden; color:var(--tinta-2)}
+.linha .ok{flex:0 0 auto; color:var(--tinta-preta)}
+.linhas .total{display:block; margin-top:14px; padding-top:10px;
+  border-top:1px dashed #00000030; color:var(--tinta-preta); white-space:normal;
+  /* ⚠️ 15px E PISO, NAO GOSTO, e o achado e desta peca: a PixelOperatorMono
+     degrada abaixo de 15px, e a regra da casa so tinha registrado o caso do N
+     maiusculo (que vira H). Aqui apareceu OUTRO: no render de 390px, com o
+     bloco em 11,5px, o "2632/2632" leu "Z63Z/Z63Z" - o DIGITO 2 vira Z. E o
+     numero que a secao inteira existe para dizer, entao ele nao pode ficar na
+     faixa degradada. As linhas de teste podem (sao minusculas, e o unico
+     algarismo delas e o "3", que aguenta); esta linha nao pode.
+     Nao baixar de 15px. */
+  font-size:clamp(15px,3.9vw,16px)}
+
+/* ═══════════ A TARJA ═══════════
+   Elemento VAZIO. Nao ha texto por baixo, nao ha atributo com o termo,
+   nao ha comentario. O aria-label diz "trecho censurado" e nada mais.
+   user-select:none para que arrastar o mouse nao copie coisa nenhuma. */
+.tarja{
+  display:inline-block; vertical-align:-.12em;
+  height:1.05em; background:#000;
+  width:7ch;                   /* fallback; a largura real vem do ciclo abaixo */
+  -webkit-user-select:none; user-select:none; pointer-events:none;
+  box-shadow:0 0 0 .5px #00000040;   /* a tinta empasta um fio alem da barra */
+}
+/* ⚠️ LARGURAS QUANTIZADAS, sorteadas pela POSICAO DA LINHA.
+   Quatro tamanhos fixos num ciclo de 4. Nenhum deles olha o conteudo:
+   trocar o texto das linhas nao muda largura nenhuma, e por isso a
+   largura nao pode entregar contagem de letras. Parece natural (documento
+   censurado tem barra de tamanho variado) sem significar nada. */
+.linha:nth-of-type(4n+1) .tarja{width:4ch}
+.linha:nth-of-type(4n+2) .tarja{width:11ch}
+.linha:nth-of-type(4n+3) .tarja{width:7ch}
+.linha:nth-of-type(4n)   .tarja{width:9ch}
+
+/* ═══════════ O CARIMBO ═══════════
+   Retangulo de cantos arredondados, borda vermelha, CENSURADO!!! dentro,
+   "sterling corp." miudo no canto inferior direito. Torto e descuidado:
+   -17deg (nao 15, que e o angulo que a gente escolhe quando esta prestando
+   atencao), fora do centro, espessura de borda irregular nos quatro lados,
+   raio diferente em cada canto, e a palavra girada mais um fio em relacao
+   a moldura - como se o burocrata tivesse batido o carimbo torto.
+
+   DECORATIVO: aria-hidden + pointer-events:none. E multiply, nao opacidade
+   solta, porque multiply preserva a tinta preta do texto por baixo
+   (medicao no cabecalho CORES). */
+.folha > .carimbo{
+  position:absolute; z-index:6; pointer-events:none;
+  -webkit-user-select:none; user-select:none;
+  left:50%; top:43%;
+  width:min(78%, 520px);
+  translate:-52% -46%;            /* -52/-46: fora do centro de proposito */
+  rotate:-17deg;
+  /* ⚠️ SO NO LARGO o carimbo escorrega para a direita, e nao e capricho de
+     composicao: a coluna de texto tem max-width 62ch, entao sobra uma faixa
+     de papel LIMPO a direita dela. E la que a quina inferior direita - onde
+     mora o "sterling corp." - precisa cair, para o rotulo miudo nao disputar
+     espaco com uma palavra do corpo. No estreito nao existe essa faixa, e
+     empurrar o carimbo para la so faria a folha corta-lo: por isso o desvio
+     e condicional, nao global. */
+  /* ⚠️ NADA de opacity nem de mix-blend-mode AQUI. O .carimbo e so a caixa
+     que posiciona e gira; quem mistura com o papel e a .moldura. A razao
+     e a armadilha do paragrafo abaixo - e opacity no pai criaria isolamento
+     de grupo, e o multiply do filho passaria a misturar com o vazio do grupo
+     em vez de misturar com a pagina (o carimbo perderia o efeito inteiro). */
+}
+/* ⚠️ A MASCARA DE TINTA GASTA MORA NA .moldura, NAO NO .carimbo, e a razao
+   e concreta: a mascara e um mosaico de manchas em posicao FIXA na caixa, e
+   quando ela caiu sobre o carimbo inteiro uma das manchas comeu metade do
+   "sterling corp." (visto no render, nao suposto). O rotulo tem requisito
+   explicito - "bem pequeno mas ainda visivel" -, entao ele fica FORA da
+   camada mascarada. Desgasta a moldura e a palavra; o rotulo sai limpo.
+   O SVG leva dimensao EXPLICITA (width/height + regiao do filtro), senao o
+   Gecko descarta o filtro e a mascara vira um retangulo opaco. */
+@media (min-width:760px){
+  .folha > .carimbo{ translate:-38% -46% }
+}
+.carimbo .moldura{
+  display:block;
+  opacity:.70;                    /* ⚠️ teto .70, ver CORES */
+  mix-blend-mode:multiply;
+  padding:clamp(10px,2.4vw,20px) clamp(14px,4vw,30px) clamp(16px,3.4vw,26px);
+  border-style:solid; border-color:var(--carimbo-tinta);
+  border-width:3.5px 5px 4.5px 3px;                       /* espessura irregular */
+  border-radius:17px 12px 19px 13px / 13px 18px 12px 17px;
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='w' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='4.2' intercept='-0.28'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23w)'/%3E%3C/svg%3E");
+          mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='w' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='4.2' intercept='-0.28'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23w)'/%3E%3C/svg%3E");
+  -webkit-mask-size:320px 320px; mask-size:320px 320px;
+  -webkit-mask-repeat:repeat;    mask-repeat:repeat;
+  -webkit-mask-position:18px 42px; mask-position:18px 42px;
+}
+.carimbo .txt{
+  display:block; text-align:center;
+  font-family:var(--font-manchete); font-weight:700; text-transform:uppercase;
+  font-size:clamp(27px,7.4vw,56px); line-height:1; letter-spacing:.05em;
+  color:var(--carimbo-tinta);
+  margin-left:.14em;             /* nem o texto esta centrado direito */
+  rotate:.7deg;                  /* batido torto DENTRO da moldura torta */
+}
+/* ⚠️⚠️ O ROTULO FICA FORA DO MULTIPLY, e este e o achado que so o render deu.
+   Com o "sterling corp." dentro da camada multiplicada, a cauda dele CAIU EM
+   CIMA de uma palavra do corpo do texto e SUMIU: vermelho multiplicado por
+   tinta preta da preto, entao a letra vermelha virou parte da letra preta.
+   No render lia-se "sterling cor" e o resto era indistinguivel do "olhando,"
+   por baixo. Diagnostiquei errado duas vezes (culpei a mascara, culpei o raio
+   da quina) ate montar as variantes de controle - a mascara removida deu o
+   MESMO resultado, o que descartou as duas hipoteses.
+
+   O rotulo tem requisito explicito ("bem pequeno mas ainda visivel"), entao
+   ele nao pode depender do que calha de estar embaixo. Sai do multiply e
+   ganha um halo da COR DO PAPEL: o halo vira o fundo LOCAL dele, e a leitura
+   passa a ser sempre contra o papel - 5.42:1 nesta folha, 3.91:1 na #1
+   encardida. O halo herda var(--papel), entao envelhece junto com a edicao.
+   A moldura e a palavra continuam em multiply: elas SAO grandes o bastante
+   para conviver com o texto por baixo, o rotulo miudo nao e.
+
+   Recuado do canto tambem de proposito: o raio de 19px da quina inferior
+   direita passa por cima se ele encostar. */
+.carimbo .corp{
+  position:absolute; right:clamp(22px,4vw,38px); bottom:clamp(9px,1.8vw,16px);
+  font-family:var(--font-manchete); font-weight:700;
+  font-size:clamp(11.5px,1.9vw,13px); letter-spacing:.03em;
+  color:var(--carimbo-tinta); rotate:.4deg;
+  /* halo CURTO de proposito: 2px chega para separar o rotulo do que estiver
+     embaixo sem apagar a palavra do corpo. Com 4px o halo comia a letra "a"
+     de "olhando" na linha de tras - o remedio nao pode custar a leitura do
+     texto que ele atravessa. */
+  text-shadow:0 0 2px var(--papel), 0 0 2px var(--papel), 0 0 2px var(--papel);
+}
+
+.rodape{margin:30px 0 0; padding-top:12px; border-top:1px solid var(--borda);
+  font-family:var(--font-display); font-size:12px; color:var(--tinta-2); display:flex; gap:18px; flex-wrap:wrap}
+.rodape b{color:var(--tinta-preta)}
+
+/* ═══════════ IMPRESSAO ═══════════
+   A peca e papel: imprimir e o caso normal, nao a excecao. A tarja PRECISA
+   sair preta (print-color-adjust:exact), senao o navegador economiza tinta e
+   imprime a barra vazia. Nao ha risco de revelar nada - nao ha nada embaixo -
+   mas um documento censurado com a barra branca deixa de ser o que e. */
+@media print{
+  html{background:#fff}
+  body{padding:0}
+  .ctx{display:none}
+  .folha{box-shadow:none; margin:0; max-width:none}
+  .tarja{
+    background:#000 !important;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .carimbo{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+
+/* ═══════════ MOTION ═══════════
+   Nao ha animacao nenhuma nesta peca - carimbo batido nao se mexe. Logo
+   nao ha o que desligar em prefers-reduced-motion, e a regra global de
+   ../tokens.css §9 ja cobre qualquer coisa herdada. Registrado de proposito:
+   "nao tem animacao" e uma decisao, nao um esquecimento. */
+</style>
+</head>
+<body>
+
+<div class="ctx">
+  <h1>Glyfesse · mock 17 · Detonado da Simulação · o documento desclassificado</h1>
+  <p>A seção nova da <b>#3</b> tratada como <b>documento de governo desclassificado</b>: papel, texto corrido, <b>tarjas pretas</b> e o <b>carimbo vermelho</b> torto atravessando a página.</p>
+  <p>⛔ <b>Não existe palavra nenhuma por baixo das tarjas.</b> A <span class="tag">&lt;b class="tarja"&gt;</span> é um elemento <b>vazio</b>: sem texto escondido, sem atributo, sem comentário. As larguras são <b>quantizadas em 4 tamanhos fixos</b> (4ch/11ch/7ch/9ch) sorteados pela <b>posição da linha</b>, nunca pelo conteúdo, para que o tamanho da barra não entregue a contagem de letras. O <span class="tag">aria-label</span> diz apenas <b>"trecho censurado"</b>.</p>
+  <p>Texto: <span class="tag">docs/content/edicao-3-detonado.md</span> (pt-BR), verbatim. Zero JS, zero animação.</p>
+</div>
+
+<article class="folha" style="--idade:.10">
+
+  <!-- ════════ O CARIMBO (decorativo, fora da ordem de leitura) ════════ -->
+  <div class="carimbo" aria-hidden="true">
+    <span class="moldura"><span class="txt">CENSURADO!!!</span></span>
+    <span class="corp">sterling corp.</span>
+  </div>
+
+  <div class="masthead">
+    <div class="logo">GLYFESSE</div>
+    <div class="ed">ano 1 · nº <b>3</b><br>gusworld.site</div>
+  </div>
+  <span class="chamada-topo">seção de serviço · como a briga funciona</span>
+
+  <p class="kicker">seção nova · só nesta edição</p>
+  <h2 class="titulo">Detonado da Simulação</h2>
+
+  <p class="fala"><span class="prompt">gus@glyfesse:~/detonado$</span> <span class="dito">detonado da simulação</span></p>
+
+  <div class="corpo">
+    <p>Antes de qualquer coisa: aqui não se briga em tempo real. Você não fica apertando botão o mais rápido que consegue e torcendo. Aqui a briga anda em <b>rodadas</b>.</p>
+
+    <p>Uma rodada é assim: cada lado tem a sua vez, e só age quando ela chega. O que ataca, ataca; termina; espera. Depois é a vez do outro. Ninguém age em cima de ninguém, e nada acontece enquanto você está pensando. Isso muda o tipo de esforço que o jogo pede: não é reflexo, é decisão. O tempo que você leva para escolher não custa nada. A escolha custa tudo.</p>
+
+    <p>E é por isso que a <b>ordem importa</b>. Se o que ataca age antes, ele mexe no estado do campo &#8212; e o que vem depois já encontra um campo diferente daquele que existia quando você planejou. A mesma ação, na vez errada, vira outra ação. Não porque ela mudou, mas porque o mundo em volta dela mudou primeiro.</p>
+
+    <p>Quem já entendeu essa parte, entendeu o suficiente. O resto é detalhe de regra e fica para outro dia.</p>
+
+    <p>Agora a parte que eu acho que interessa mais: como eu sei que isso tudo roda.</p>
+
+    <p>Existe uma bateria de testes que abre a tela de arena sozinha, sem ninguém olhando, e confere se cada peça faz o que promete. Ela roda toda vez que eu mexo em qualquer coisa. Trecho da saída de hoje, transcrito:</p>
+
+    <!-- ════════ A TRANSCRICAO ════════
+         As tarjas sao elementos VAZIOS. Nao ha termo embargado neste
+         arquivo, em lugar nenhum: nem no HTML, nem no CSS, nem aqui. -->
+    <div class="transcricao">
+      <span class="cab">saída da bateria de testes · trecho</span>
+      <div class="linhas">
+        <div class="linha">
+          <span class="nome">[arena] montando <b class="tarja" role="img" aria-label="trecho censurado"></b></span>
+          <span class="pontos" aria-hidden="true">......................................................................................................................................................</span>
+          <span class="ok">ok</span>
+        </div>
+        <div class="linha">
+          <span class="nome">[arena] ordem da vez respeitada em 3 lados</span>
+          <span class="pontos" aria-hidden="true">......................................................................................................................................................</span>
+          <span class="ok">ok</span>
+        </div>
+        <div class="linha">
+          <span class="nome">[arena] <b class="tarja" role="img" aria-label="trecho censurado"></b> não age fora da própria vez</span>
+          <span class="pontos" aria-hidden="true">......................................................................................................................................................</span>
+          <span class="ok">ok</span>
+        </div>
+        <div class="linha">
+          <span class="nome">[arena] alvo inválido é recusado</span>
+          <span class="pontos" aria-hidden="true">......................................................................................................................................................</span>
+          <span class="ok">ok</span>
+        </div>
+        <div class="linha">
+          <span class="nome">[arena] estado do campo depois da ação</span>
+          <span class="pontos" aria-hidden="true">......................................................................................................................................................</span>
+          <span class="ok">ok</span>
+        </div>
+        <div class="linha">
+          <span class="nome">[arena] <b class="tarja" role="img" aria-label="trecho censurado"></b></span>
+          <span class="pontos" aria-hidden="true">......................................................................................................................................................</span>
+          <span class="ok">ok</span>
+        </div>
+        <div class="linha">
+          <span class="nome">[arena] tela fecha sem deixar sujeira</span>
+          <span class="pontos" aria-hidden="true">......................................................................................................................................................</span>
+          <span class="ok">ok</span>
+        </div>
+        <span class="total">todos os testes: 2632/2632</span>
+      </div>
+    </div>
+
+    <p class="legenda">As tarjas são minhas. Tem coisa ali que ainda não dá para mostrar.</p>
+
+    <p>O número final é o que vale: <b>2632/2632</b>. Nenhum vermelho.</p>
+
+    <p>Para dar tamanho a isso, um comparativo. Em 22 de junho de 2026, no dia em que o quadrado azul aprendeu a andar, a suíte inteira tinha <b>684</b> testes. Hoje tem <b>2632</b>. É quase quatro vezes mais. Deixo os dois números aí e cada um faz a conta que quiser.</p>
+
+    <p>Vale dizer o que esse número <b>não</b> é. Ele não diz que o jogo é bom, nem que é divertido, nem que está pronto. Diz uma coisa só, e é uma coisa pequena: o que já foi construído continua funcionando depois de eu ter mexido em outra parte. É pouco. Mas é o pouco que sustenta o resto.</p>
+
+    <p>Quem testa a mão de verdade é o Gus Dragon, que senta e joga. O Cauã "Volt" também dá palpite, do jeito dele. A bateria só garante que, quando eles sentam, a tela abre.</p>
+
+    <p class="fecho">Fico contente quando dá verde. Fim.</p>
+
+    <p>O <code>root</code> mandou isto depois de uma rodada de teste:</p>
+  </div>
+
+  <p class="fala root"><span class="prompt">root@glyfesse:~/detonado$</span> <span class="dito">some ele da tela, some a moldura dele e a caixa de seleção. Sensação que correu tudo certo</span></p>
+
+  <div class="rodape">
+    <span><b>GLYFESSE</b> · a revista do GusWorld</span>
+    <span>Detonado da Simulação · seção de serviço</span>
+    <span>as tarjas são dele</span>
+  </div>
+</article>
+
+</body>
+</html>
