@@ -146,7 +146,7 @@ return [
         // ⚠️ O número é CAPTURADO no publish (`scripts/uptime-sessoes.sh`) e
         // fica CONGELADO: a Hostinger não enxerga a máquina do líder, e cada
         // edição é registro histórico datado. Re-capturar ao publicar de fato.
-        'uptime'         => ['jogo' => 1456, 'glintfx' => 326], // capturado em 25/07/2026 07:40
+        'uptime'         => ['jogo' => 234, 'glintfx' => 234], // capturado em 04/08/2026 16:52
         'na_linha_tempo' => true, // 1º (e único, no lançamento) ponto visual do scrubber
     ],
 

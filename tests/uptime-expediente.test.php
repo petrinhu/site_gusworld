@@ -131,7 +131,7 @@ eq('publicada', (string) $por_numero[3]['estado'], 'a #3 esta PUBLICADA no dado 
 // o contexto de render carrega (ou nao) o campo
 require_once __DIR__ . '/../src/lib/contexto-edicao.php';
 eq(null, montar_contexto($por_numero[1], 'pt')['uptime'], 'contexto da #1: uptime null (sem campo)');
-eq(['jogo' => 1456, 'glintfx' => 326], montar_contexto($por_numero[3], 'pt')['uptime'], 'contexto da #3: o mapa do dado');
+eq(['jogo' => 234, 'glintfx' => 234], montar_contexto($por_numero[3], 'pt')['uptime'], 'contexto da #3: o mapa do dado');
 
 // ═══ 3. A FIACAO REAL (a edicao renderizada de ponta a ponta) ════════════════
 
@@ -188,9 +188,9 @@ eq(true, str_contains(masthead_do_html($ed1_pt), 'class="imprint aceso"'), '#1 p
 $m3_pt = masthead_do_html(render_ed('edicao-3', 'pt'));
 $m3_en = masthead_do_html(render_ed('edition-3', 'en'));
 eq(true, str_contains($m3_pt, 'meta-uptime'), '#3 pt: a edicao publicada COM o campo imprime a linha');
-eq(true, str_contains($m3_pt, 'jogo 1456h (60d) · glintfx 326h (13d)'), '#3 pt: os numeros congelados do dado real saem formatados');
-eq(true, str_contains($m3_en, 'game 1456h (60d) · glintfx 326h (13d)'), '#3 en: a linha sai traduzida na pagina inglesa');
-eq(false, str_contains($m3_en, 'jogo 1456h'), '#3 en: o rotulo pt NAO vaza para a pagina inglesa');
+eq(true, str_contains($m3_pt, 'jogo 234h (9d) · glintfx 234h (9d)'), '#3 pt: os numeros congelados do dado real saem formatados');
+eq(true, str_contains($m3_en, 'game 234h (9d) · glintfx 234h (9d)'), '#3 en: a linha sai traduzida na pagina inglesa');
+eq(false, str_contains($m3_en, 'jogo 234h'), '#3 en: o rotulo pt NAO vaza para a pagina inglesa');
 
 // ── A MESMA edicao COM o campo: a unica diferenca e a linha nova ────────────
 // Injeta o campo na #1 em memoria (nao toca no dado real): o baseline e o
