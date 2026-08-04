@@ -198,19 +198,19 @@ A versão **EN** voltou do escritor com as **duas linhas de transição `//` ain
 para a forma que a #2 já usava: *"//Dear reader, from here on this is real technical documentation of the
 game's code history."* O `//root@glyfesse` não se traduz (é assinatura).
 
-### ⚠️ Um ponto que o integrador NÃO decide (vai ao editor-geral)
+### ✅ DECIDIDO pelo editor-geral (2026-08-03): a desculpa furada vira BLOCO DE TERMINAL
 
-**O formato da "desculpa furada" mudou sem autorização.** Na #2 ela é **prosa corrida**, começando com a
-linha de prompt embutida no parágrafo:
+Na #1 e na #2 a desculpa era **prosa corrida**, começando com a linha de prompt embutida no parágrafo
+(*"`root@glyfesse>` Sim, eu montei a revista inteira logado como root, e não, não vou me defender
+direito…"*). O escritor entregou aqui um **bloco de terminal** com `whoami` e comentários `#`, e o
+editor-geral **mandou manter**.
 
-> `root@glyfesse>` Sim, eu montei a revista inteira logado como root, e não, não vou me defender direito.
-> Antes que perguntem: todo o meu código é open source […] A lógica não fecha, eu sei […]
+★ **Logo isto vira canon de formato, da #3 em diante:** a desculpa furada é um **bloco de terminal**, e o
+furo do argumento aparece como **comentário do próprio root**, não como frase de prosa. Casa com a estreia
+do formato novo de prompt (`nome@glyfesse:~/seção$`) nesta mesma edição.
 
-Nesta edição o escritor entregou um **bloco de terminal** com `whoami` e comentários `#`, que é um device
-diferente — mais visual e mais seco, e casa com a estreia do formato novo de prompt, mas **quebra a
-continuidade** com a #1 e a #2. **Opções:** (a) manter o bloco de terminal, assumindo que a #3 estreia
-também esse tratamento; (b) reescrever como prosa, no molde da #2; (c) manter o bloco **e** aplicar
-retroativamente no layout das anteriores (mais caro).
+⚠️ **A #1 e a #2 NÃO se reajustam** — mesma regra que valeu para a mudança do prompt. A divergência entre
+edições **não é defeito** na prova final.
 
 ### Pendências desta seção
 
