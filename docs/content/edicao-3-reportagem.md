@@ -8,7 +8,7 @@
 > **A tese é VELOCIDADE, não perda.** Nada morreu por ter dado errado.
 > **Datas:** janela 21 a 23/jun/2026. A peça **para no domingo** — ela CONTA, e contar fora de ordem
 > quebra a cronologia ascendente. Nada de 24/jun em diante.
-> **Status:** rascunho v1 do `narrative-writer` (2026-08-03), aguardando `GATE-CONTEUDO` do editor-geral.
+> **Status:** ✅ **GATE-CONTEUDO APROVADO pelo editor-geral em 2026-08-03.**
 > Copyedit formal (`revisor-textual`) + prova vêm depois.
 
 ---
@@ -105,6 +105,6 @@ sente**. E marca a diferença da #1 e da #2, que terminavam se abrindo por pará
 
 ### Pendências desta seção
 
-- `GATE-CONTEUDO` do editor-geral.
+- ✅ `GATE-CONTEUDO` **aprovado** (2026-08-03).
 - Copyedit formal (`revisor-textual`) e prova final.
 - O título — *"Setenta e duas horas, um passo"* — não passou por gate de copy ainda.
