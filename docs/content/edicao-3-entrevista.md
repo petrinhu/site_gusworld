@@ -43,12 +43,12 @@ volt@glyfesse:~/entrevista$ junho. dois dias. você quebrou a base duas vezes. t
 gus@glyfesse:~/entrevista$ tava, mas funcionar não é o mesmo que servir... o motor pronto fazia tudo mais
 ou menos e nada do jeito que eu ia precisar depois, e eu fiquei um tempo fingindo qeu dava, tipo quando
 você aperta uma peça que não encaixa e ela fica presa mas você sabe que ela ta torta... aí eu tirei o
-alicerce inteiro e comecei a escrever o meu, e no sábado à noite eu tirei de novo a camada que eu tinha
+alicerce inteiro e comecei a escrever o meu, e na segunda à noite eu tirei de novo a camada que eu tinha
 acabado de fazer, ela viveu um dia mais ou menos, menos até... e eu não desmontei duas vezes porque
 quebrou, eu desmontei porque eu já sabia onde ia doer daqui a seis meses e é mais barato doer agora, um
 dia de trabalho jogado fora agora vale umas cinco semanas depois, eu calculei antes, não foi impulso, eu
 sei que parece impulso quando conto rápido assim
-// desmontar é a única coisa que eu decido sem pedir pra ninguém... e caiu duas vezes no mesmo sábado e
+// desmontar é a única coisa que eu decido sem pedir pra ninguém... e caiu duas vezes em dois dias e
 não apareceu na tela, então é justo que ningeum tenha perguntado nada no jantar, ninguém pergunta de
 coisa que não mudou de cor
 
@@ -62,7 +62,7 @@ e ele deslizou, e essa parte é a que eu queria mais que a de andar, porque anda
 entender que bateu e continuar do lado certo... desculpa, você perguntou o que eu senti e eu tô falando
 de colisão de novo
 // senti que tinha alguém do outro lado... não é alguém, é um quadrado de dezesseis por dezesseis que
-obdece, mas ele respondeu na hora, e eu fiquei apertando de novo só pra ele responder de novo, e seis
+obdece, mas ele respondeu na hora, e eu fiquei apertando de novo só pra ele responder de novo, e sete
 horas depois eu apaguei a camada que fez ele andar e essa parte eu não conto porque parece que eu não
 gostei, e eu gostei
 

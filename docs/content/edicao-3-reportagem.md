@@ -3,10 +3,10 @@
 > A peça-mãe da Edição #3 ("O Quadrado Azul"). **Voz: Gus, primeira pessoa.** Papel = acento pt-br
 > completo; tokens de código em ASCII.
 > **Lente aprovada (S1 GATE-LENTE):** os três dias em que o jogo trocou de alicerce **duas vezes** e ganhou
-> a **primeira coisa que se mexe**, pela lente do fim de semana contado **hora a hora**, cortando o porquê
+> a **primeira coisa que se mexe**, pela lente dos três dias contados **hora a hora**, cortando o porquê
 > técnico e os enterros.
 > **A tese é VELOCIDADE, não perda.** Nada morreu por ter dado errado.
-> **Datas:** janela 21 a 23/jun/2026. A peça **para no domingo** — ela CONTA, e contar fora de ordem
+> **Datas:** janela 21 a 23/jun/2026 — **domingo, segunda e terça**. A peça **para na terça** — ela CONTA, e contar fora de ordem
 > quebra a cronologia ascendente. Nada de 24/jun em diante.
 > **Status:** ✅ **GATE-CONTEUDO APROVADO pelo editor-geral em 2026-08-03.**
 > Copyedit formal (`revisor-textual`) + prova vêm depois.
@@ -17,15 +17,15 @@
 
 `gus@glyfesse:~/reportagem$ reportagem de capa`
 
-### Setenta e duas horas, um passo
+### Cinquenta e duas horas, um passo
 
-Na sexta-feira decidimos derrubar tudo. O motor pronto que carregava o jogo até ali saiu, e no lugar dele entrou nada — só a promessa de que eu escreveria o meu, linha por linha, do zero. Eu sei que isso não significa nada para quem está lendo. Então diga assim: é como morar numa casa e resolver, num sábado de manhã, que ela vai ser levantada de novo pela sua própria mão, enquanto você ainda está dentro dela.
+No domingo à tarde decidimos derrubar tudo. O motor pronto que carregava o jogo até ali saiu, e no lugar dele entrou nada — só a promessa de que eu escreveria o meu, linha por linha, do zero. Eu sei que isso não significa nada para quem está lendo. Então diga assim: é como morar numa casa e resolver, numa tarde qualquer, que ela vai ser levantada de novo pela sua própria mão, enquanto você ainda está dentro dela.
 
-O sábado inteiro foi isso. Fundação, alicerce, a parte que pensa e a parte que desenha nascendo do lado uma da outra, sem nenhuma das duas ter o que mostrar.
+A segunda-feira inteira foi isso. Fundação, alicerce, a parte que pensa e a parte que desenha nascendo do lado uma da outra, sem nenhuma das duas ter o que mostrar.
 
 Até as 16h32.
 
-Às 16h32 de sábado um quadrado azul deu um passo. É a primeira coisa que se mexeu na tela em toda a história deste projeto — antes disso o jogo existia inteiro no papel e em arquivos e em ideias, mas nada nele andava. Ele responde às teclas. Ele corre, se você segurar. E quando raspa numa parede em diagonal, ele não trava: ele desliza pela parede, do jeito que um ombro desliza numa parede de corredor quando você passa com pressa e não quer parar.
+Às 16h32 de segunda um quadrado azul deu um passo. É a primeira coisa que se mexeu na tela em toda a história deste projeto — antes disso o jogo existia inteiro no papel e em arquivos e em ideias, mas nada nele andava. Ele responde às teclas. Ele corre, se você segurar. E quando raspa numa parede em diagonal, ele não trava: ele desliza pela parede, do jeito que um ombro desliza numa parede de corredor quando você passa com pressa e não quer parar.
 
 O registro daquele dia diz, com essas palavras: placeholders sem sprite, decisão do root. Quer dizer que o quadrado azul não é um limite. É escolha. Ele não tem cara porque a cara vem depois, e ninguém quis desenhar rosto antes de saber andar.
 
@@ -35,9 +35,9 @@ O registro daquele dia diz, com essas palavras: placeholders sem sprite, decisã
 
 Isso é estranho de escrever. Estranho, mas certo.
 
-No domingo às 21h11 o jogo voltou a rodar, agora sobre o alicerce novo, e foi validado ao vivo, na tela, pelo root. Setenta e duas horas, dois alicerces derrubados, um passo dado.
+Na terça às 21h11 o jogo voltou a rodar, agora sobre o alicerce novo, e foi validado ao vivo, na tela, pelo root. Cinquenta e duas horas, dois alicerces derrubados, um passo dado.
 
-E o melhor de tudo isso não é a demolição. É que no meio do estrago inteiro, com as paredes no chão duas vezes, a coisa mais frágil que existe aqui escolheu justamente aquele fim de semana para aprender a andar.
+E o melhor de tudo isso não é a demolição. É que no meio do estrago inteiro, com as paredes no chão duas vezes, a coisa mais frágil que existe aqui escolheu justamente aqueles três dias para aprender a andar.
 
 ---
 
@@ -45,15 +45,15 @@ E o melhor de tudo isso não é a demolição. É que no meio do estrago inteiro
 
 `gus@glyfesse:~/reportagem$ cover story`
 
-### Seventy-two hours, one step
+### Fifty-two hours, one step
 
-On Friday we decided to tear it all down. The ready-made engine that had been carrying the game until then was out, and nothing took its place — only the promise that I would write my own, line by line, from zero. I know that means nothing to whoever is reading this. So put it this way: it is like living in a house and deciding, on a Saturday morning, that it will be raised again by your own hand, while you are still inside it.
+On Sunday afternoon we decided to tear it all down. The ready-made engine that had been carrying the game until then was out, and nothing took its place — only the promise that I would write my own, line by line, from zero. I know that means nothing to whoever is reading this. So put it this way: it is like living in a house and deciding, one afternoon, that it will be raised again by your own hand, while you are still inside it.
 
-All Saturday was that. Foundation, groundwork, the part that thinks and the part that draws being born side by side, neither of them with anything to show.
+All of Monday was that. Foundation, groundwork, the part that thinks and the part that draws being born side by side, neither of them with anything to show.
 
 Until 4:32 p.m.
 
-At 4:32 p.m. on Saturday a blue square took a step. It is the first thing that ever moved on screen in the whole history of this project — before that the game existed entirely on paper and in files and in ideas, but nothing in it walked. It answers the keys. It runs, if you hold them. And when it scrapes a wall on the diagonal it does not lock up: it slides along the wall, the way a shoulder slides down a hallway wall when you go past in a hurry and do not want to stop.
+At 4:32 p.m. on Monday a blue square took a step. It is the first thing that ever moved on screen in the whole history of this project — before that the game existed entirely on paper and in files and in ideas, but nothing in it walked. It answers the keys. It runs, if you hold them. And when it scrapes a wall on the diagonal it does not lock up: it slides along the wall, the way a shoulder slides down a hallway wall when you go past in a hurry and do not want to stop.
 
 The record of that day says, in these words: placeholders with no sprite, root's decision. Which means the blue square is not a limit. It is a choice. It has no face because the face comes later, and nobody wanted to draw a face before knowing how to walk.
 
@@ -63,9 +63,9 @@ At 11:34 p.m. that same night I threw away the layer that had made the square wa
 
 That is a strange thing to write. Strange, but right.
 
-On Sunday at 9:11 p.m. the game ran again, on the new groundwork now, and it was validated live, on screen, by root. Seventy-two hours, two foundations torn down, one step taken.
+On Tuesday at 9:11 p.m. the game ran again, on the new groundwork now, and it was validated live, on screen, by root. Fifty-two hours, two foundations torn down, one step taken.
 
-And the best part of all of it is not the demolition. It is that in the middle of the whole wreck, with the walls on the floor twice over, the most fragile thing there is here picked exactly that weekend to learn how to walk.
+And the best part of all of it is not the demolition. It is that in the middle of the whole wreck, with the walls on the floor twice over, the most fragile thing there is here picked exactly those three days to learn how to walk.
 
 ---
 
@@ -107,4 +107,27 @@ sente**. E marca a diferença da #1 e da #2, que terminavam se abrindo por pará
 
 - ✅ `GATE-CONTEUDO` **aprovado** (2026-08-03).
 - Copyedit formal (`revisor-textual`) e prova final.
-- O título — *"Setenta e duas horas, um passo"* — não passou por gate de copy ainda.
+- ⚠️ **O título mudou por correção factual (2026-08-03):** era *"Setenta e duas horas, um passo"*, e o
+  intervalo real entre o pivô (21/06 16h28) e o loop jogável (23/06 21h11) é de **52h43**. Virou
+  *"Cinquenta e duas horas, um passo"* para não contradizer as horas impressas no próprio corpo.
+  **Não passou por gate de copy** — o editor-geral pode preferir outra formulação (ex.: *"Três dias, um
+  passo"*, que é exato como período de calendário e mais eufônico).
+
+### ⚠️ CORREÇÃO FACTUAL APLICADA EM 2026-08-03 (auditoria de coerência)
+
+A peça inteira estava montada em **sexta / sábado / domingo / fim de semana**. **21, 22 e 23 de junho de
+2026 são domingo, segunda e terça** — conferido com `date` e com o log do jogo. Corrigido:
+
+| Onde | Era | Ficou |
+| :--- | :--- | :--- |
+| abertura | "Na sexta-feira" | "No domingo à tarde" |
+| analogia | "num sábado de manhã" | "numa tarde qualquer" |
+| 2º parágrafo | "O sábado inteiro" | "A segunda-feira inteira" |
+| o primeiro passo | "às 16h32 de sábado" | "às 16h32 de segunda" |
+| o fecho do arco | "No domingo às 21h11" | "Na terça às 21h11" |
+| o total | "Setenta e duas horas" | "Cinquenta e duas horas" (real: 52h43) |
+| última linha | "aquele fim de semana" | "aqueles três dias" |
+
+★ **Detalhe verdadeiro que a correção libera e a peça ainda não usa:** o alicerce foi jogado fora às
+**23h34 de uma segunda-feira** — noite de véspera de aula. Diz mais sobre o menino do que "fim de semana"
+dizia. **Decisão do editor-geral** se entra.

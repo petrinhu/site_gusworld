@@ -48,7 +48,7 @@ As tarjas são minhas. Tem coisa ali que ainda não dá para mostrar.
 
 O número final é o que vale: **2632/2632**. Nenhum vermelho.
 
-Para dar tamanho a isso, um comparativo. Em 22 de junho de 2026, no dia em que o quadrado azul aprendeu a andar, essa mesma bateria tinha **684** testes. Hoje tem **2632**. É quase quatro vezes mais. Deixo os dois números aí e cada um faz a conta que quiser.
+Para dar tamanho a isso, um comparativo. Em 22 de junho de 2026, no dia em que o quadrado azul aprendeu a andar, a suíte inteira tinha **684** testes. Hoje tem **2632**. É quase quatro vezes mais. Deixo os dois números aí e cada um faz a conta que quiser.
 
 Vale dizer o que esse número **não** é. Ele não diz que o jogo é bom, nem que é divertido, nem que está pronto. Diz uma coisa só, e é uma coisa pequena: o que já foi construído continua funcionando depois de eu ter mexido em outra parte. É pouco. Mas é o pouco que sustenta o resto.
 
@@ -98,7 +98,7 @@ The blackouts are mine. There's material in there I can't show yet.
 
 The final number is the one that counts: **2632/2632**. No red.
 
-To give that some size, a comparison. On 22 June 2026, the day the blue square learned to walk, this same battery had **684** tests. Today it has **2632**. That's almost four times as many. I'll leave both numbers there and let everyone do their own arithmetic.
+To give that some size, a comparison. On 22 June 2026, the day the blue square learned to walk, the whole suite had **684** tests. Today it has **2632**. That's almost four times as many. I'll leave both numbers there and let everyone do their own arithmetic.
 
 Worth saying what that number is **not**. It doesn't say the game is good, or fun, or finished. It says one thing, and it's a small thing: what has already been built still works after I've gone and touched some other part. That's little. But it's the little that holds the rest up.
 

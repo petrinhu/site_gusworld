@@ -38,7 +38,7 @@ Quem leu o editorial de junho viu a revista dizendo, com todas as letras, que o 
 > Viveu um dia.
 > Nesse dia, fez o quadrado azul andar.
 
-É a melhor lápide do acervo e eu defendo isso. O Qt6 abriu a janela, desenhou na tela e mostrou o primeiro movimento que este projeto teve — o quadrado andando de um lado para o outro, que é a coisa mais boba do mundo e foi a mais importante. Vinte e quatro horas depois já tinha sido substituído. Morreu tendo funcionado, que é bem mais do que a maioria consegue.
+É a melhor lápide do acervo e eu defendo isso. O Qt6 abriu a janela, desenhou na tela e mostrou o primeiro movimento que este projeto teve — o quadrado andando de um lado para o outro, que é a coisa mais boba do mundo e foi a mais importante. Trinta horas depois já tinha sido substituído. Morreu tendo funcionado, que é bem mais do que a maioria consegue.
 
 Três alicerces em dois dias: não é obra que desabou, é obra que anda rápido.
 
@@ -70,7 +70,7 @@ Anyone who read June's editorial saw this magazine state, in plain words, that t
 > Lived one day.
 > In that day, it made the blue square move.
 
-Best headstone in the yard, and I'll defend that. Qt6 opened the window, drew to the screen and showed the first movement this project ever had — a square going back and forth, the silliest thing in the world and the most important one. Twenty-four hours later it had already been replaced. It died having worked, which is more than most manage.
+Best headstone in the yard, and I'll defend that. Qt6 opened the window, drew to the screen and showed the first movement this project ever had — a square going back and forth, the silliest thing in the world and the most important one. Thirty hours later it had already been replaced. It died having worked, which is more than most manage.
 
 Three foundations in two days: that isn't a build collapsing, it's a build moving fast.
 

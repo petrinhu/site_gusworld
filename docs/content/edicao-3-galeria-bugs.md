@@ -23,7 +23,7 @@ Na edição passada eu escrevi "Volte na #3". Voltaram. O que eu tenho para most
 
 **O boneco que decidiu morar na quina**
 
-Fim de semana de 22 e 23 de junho. O quadrado azul tinha acabado de aprender a andar, e a primeira coisa que fez com a liberdade foi raspar num canto e ficar por ali. Havia passagem do lado. Ele não quis.
+Segunda e terça, 22 e 23 de junho. O quadrado azul tinha acabado de aprender a andar, e a primeira coisa que fez com a liberdade foi raspar num canto e ficar por ali. Havia passagem do lado. Ele não quis.
 
 O conserto: quando o jogador raspa numa quina, o programa o empurra o mínimo para o lado — o suficiente para contornar o canto, nunca o bastante para atravessar parede sólida. Um tanto a mais e o remédio vira o problema. O Stardew Valley resolve do mesmo jeito; o defeito é clássico o bastante para ter nome de jogo.
 
@@ -48,7 +48,7 @@ E tem a parte que não é elogio: ele avisou, e aconteceu assim mesmo. Ser avisa
 
 **O segundo defeito, que não estava na lista**
 
-No mesmo fim de semana, escondido no commit em que o quadrado aprendeu a andar, havia outro defeito, esse sem profecia nenhuma: as peças do programa de desenho se procuravam pelo nome, e os nomes não batiam. Um lado guardava a informação com um nome; o outro pedia por outro. Duas pessoas combinam de se encontrar na esquina, uma anota o nome antigo da rua e a outra o nome novo — as duas chegam na hora certa, e nenhuma vê a outra.
+Nos mesmos dois dias, escondido no commit em que o quadrado aprendeu a andar, havia outro defeito, esse sem profecia nenhuma: as peças do programa de desenho se procuravam pelo nome, e os nomes não batiam. Um lado guardava a informação com um nome; o outro pedia por outro. Duas pessoas combinam de se encontrar na esquina, uma anota o nome antigo da rua e a outra o nome novo — as duas chegam na hora certa, e nenhuma vê a outra.
 
 Nada estava quebrado. Estava mal apresentado.
 
@@ -68,7 +68,7 @@ Last issue I wrote "Come back for #3". You came back. What I have to show you is
 
 **The character who moved into the corner**
 
-The weekend of June 22nd and 23rd. The blue square had just learned to walk, and the first thing it did with its freedom was scrape against a corner and settle there. There was a way around it. It wasn't interested.
+Monday and Tuesday, June 22nd and 23rd. The blue square had just learned to walk, and the first thing it did with its freedom was scrape against a corner and settle there. There was a way around it. It wasn't interested.
 
 The fix: when the player scrapes a corner, the program nudges them sideways by the smallest amount — enough to round the corner, never enough to pass through solid wall. A little more and the cure becomes the disease. Stardew Valley solves it the same way; the bug is classic enough to be named after a game.
 
@@ -93,7 +93,7 @@ And there's the part that isn't a compliment: he warned us, and it happened anyw
 
 **The second bug, which wasn't on the list**
 
-That same weekend, tucked into the commit where the square learned to walk, there was another bug, this one with no prophecy at all: the pieces of the drawing program looked each other up by name, and the names didn't match. One side filed the information under one name; the other asked for a different one. Two people agree to meet on the corner, one writes down the street's old name and the other the new one — both arrive on time, and neither sees the other.
+Over those same two days, tucked into the commit where the square learned to walk, there was another bug, this one with no prophecy at all: the pieces of the drawing program looked each other up by name, and the names didn't match. One side filed the information under one name; the other asked for a different one. Two people agree to meet on the corner, one writes down the street's old name and the other the new one — both arrive on time, and neither sees the other.
 
 Nothing was broken. It was badly introduced.
 
