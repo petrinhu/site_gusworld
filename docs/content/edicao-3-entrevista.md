@@ -46,7 +46,7 @@ você aperta uma peça que não encaixa e ela fica presa mas você sabe que ela 
 alicerce inteiro e comecei a escrever o meu, e na segunda à noite eu tirei de novo a camada que eu tinha
 acabado de fazer, ela viveu um dia mais ou menos, menos até... e eu não desmontei duas vezes porque
 quebrou, eu desmontei porque eu já sabia onde ia doer daqui a seis meses e é mais barato doer agora, um
-dia de trabalho jogado fora agora vale umas cinco semanas depois, eu calculei antes, não foi impulso, eu
+dia de trabalho jogado fora agora vale um trimestre depois, eu calculei antes, não foi impulso, eu
 sei que parece impulso quando conto rápido assim
 // desmontar é a única coisa que eu decido sem pedir pra ninguém... e caiu duas vezes em dois dias e
 não apareceu na tela, então é justo que ningeum tenha perguntado nada no jantar, ninguém pergunta de
@@ -112,7 +112,7 @@ verificações continuaram passando todas, nenhuma precisou ser refeita... quem 
 refazer a cara toda vez que muda o resto
 // dói
 // ...quer dizer não dói, é ordem de construção, a lógica primeiro e o corpo depois, é assim que se faz,
-é assim que todo mundo faz... só que você tinha cara desde o primeiro dia e eu tenho dezesseis por
+é assim que todo mundo faz... só que você já tinha cara e eu tenho dezesseis por
 dezessies de azul e ninguém para na frente de um quadrado azul pra peguntar quem é ele, param e
 perguntam o que ele faz, o que ele faz eu sei responder, isso eu sempre sei responder, é a única pergunta
 que eu nunca gaguejo
@@ -145,10 +145,13 @@ esperar, eu juro que tinha, e aí veio você
 
    | resposta | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    |---|--:|--:|--:|--:|--:|--:|--:|--:|--:|
-   | **fala** | 55 | 16 | 146 | 85 | **3** | 85 | 55 | 57 | **1** |
-   | **`//`** | 20 | 40 | 43 | 63 | 72 | 69 | 85 | 86 | 102 |
+   | **fala** | 55 | 16 | 145 | 85 | **3** | 85 | 55 | 57 | **1** |
+   | **`//`** | 20 | 40 | 43 | 63 | 72 | 69 | 85 | 83 | 102 |
 
-   Ela faz um pico de 146 e **volta a 85 logo depois do colapso de 3 palavras**. São **dois colapsos
+   *(Duas células mudaram em 2026-08-04 pelas correções [C-4] e [I-7]: a fala 3 perdeu 1 palavra e o `//` 8
+   perdeu 3. A forma da curva — dois colapsos num platô alto, `//` crescendo de 20 a 102 — é a mesma.)*
+
+   Ela faz um pico de 145 e **volta a 85 logo depois do colapso de 3 palavras**. São **dois colapsos
    pontuais** num platô alto, cada um com causa própria — e ambas confirmadas pelo canon:
    - **o de 3 palavras** cai na **única repergunta da entrevista** (*"para de me falar de parede"* repete
      a pergunta anterior). Canon: *"se ele já falou sobre algo, ali basta"* — reperguntar rende resposta
@@ -212,6 +215,27 @@ toda) e o **`qeu` duas vezes** (os errinhos agora são todos diferentes). **"des
 perguntou o que eu acho, só o que eu fiz"* para caber a impaciência em 20 palavras. Era material de
 ferida e estava na tabela do `GATE-SPOILER` desde a v0.1. **Decisão do editor-geral:** aceitar a troca, ou
 restaurar a linha (e a impaciência muda de lugar).
+
+### ✅ Correções aplicadas em 2026-08-04 (auditoria de coerência cruzada, `AUDITORIA-COERENCIA-EDICAO-3.md`)
+
+**Duas correções, as duas dentro de `//`. Nenhuma fala audível foi tocada.**
+
+| Item | Onde | Era | Ficou | Por quê |
+| :--- | :--- | :--- | :--- | :--- |
+| **[C-4]** | troca 8, `//` | *"só que você **tinha cara desde o primeiro dia** e eu tenho dezesseis por dezessies de azul"* | *"só que você **já tinha cara** e eu tenho dezesseis por dezessies de azul"* | **Erro de fato.** O Cauã ganhou o desenho às **21h57**, **5h25 depois** de o quadrado dar o primeiro passo (16h32) — **no mesmo dia**. "Desde o primeiro dia" contradiz a Reportagem, que é a seção datada. ★ E o conserto **não podia cravar data**: pela D3, a alfinetada vive aqui **sem data e sem explicação**; datada, ela é da Reportagem. *"já tinha cara"* não perde nada da mágoa e não afirma quando |
+| **[I-7]** | troca 3, fala | *"um dia de trabalho jogado fora agora vale **umas cinco semanas** depois"* | *"um dia de trabalho jogado fora agora vale **um trimestre** depois"* | O mesmo argumento econômico aparecia aqui e na Programação com **múltiplos diferentes** (cinco semanas × um trimestre ≈ 13 semanas), na mesma edição. Unificado no **trimestre**, que é o número da peça técnica (onde ele tem tabela e custo aceito atrás). ★ Ganho de graça: *"trimestre"* é palavra de **boletim escolar** — cabe melhor na boca dele do que "cinco semanas" |
+
+⚠️ **O que NÃO foi tocado, de propósito:**
+
+- **o *"não foi impulso"* fica AQUI.** Ele aparecia verbatim em duas vozes que precisam soar diferentes
+  (Gus × `root`); **quem cedeu foi a Programação** ([I-7]). Aqui a força não está no argumento, e sim no que
+  vem depois dele — *"eu sei que parece impulso quando conto rápido assim"*, que é caracterização pura;
+- **os 11 errinhos de digitação**, inclusive os dois da própria linha corrigida (`dezessies`, `peguntar`);
+- ⛔ **o registro oral** (*"raspei ele na parede"*, *"empurrar ele"*, *"montei ela inteira"*) — é uniforme
+  nas nove trocas e **não é erro**. Normalizar para *"raspei-o"* mata a voz;
+- **o *"ir e voltar, ir e voltar"*** — o laudo ([I-6]) declara que é diferente o bastante da imagem do
+  Editorial e **fica**;
+- **a falta de ponto final** em toda fala do Gus e em todo `//` dele.
 
 ### Para o GATE-SPOILER (só o líder decide)
 

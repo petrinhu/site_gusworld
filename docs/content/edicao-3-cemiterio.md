@@ -14,6 +14,8 @@
 
 ## pt-BR
 
+`gus@glyfesse:~/cemiterio$ cemitério das ideias mortas`
+
 Toda edição eu venho aqui enterrar o que não vingou. Desta vez foram três, e duas delas morreram no mesmo dia.
 
 ### Godot 4
@@ -30,7 +32,7 @@ Ele fazia tudo o que prometia. O projeto é que resolveu escrever o próprio mot
 > Anunciado em voz alta na edição passada.
 > Enterrado nesta.
 
-Quem leu o editorial de junho viu a revista dizendo, com todas as letras, que o mundo agora era escrito em C#. Duas edições depois, a mesma revista está aqui, de pá na mão. Não peço desculpa: escrever que mudou é mais barato do que continuar num caminho por vergonha de ter anunciado o anterior. Ele compilava rápido. Cumpriu.
+Quem leu o editorial de junho viu a revista dizendo, com todas as letras, que o mundo agora era escrito em C#. Uma edição depois, a mesma revista está aqui, de pá na mão. Não peço desculpa: escrever que mudou é mais barato do que continuar num caminho por vergonha de ter anunciado o anterior. Ele compilava rápido. Cumpriu.
 
 ### Qt6
 **21/jun/2026 — †22/jun/2026**
@@ -38,13 +40,15 @@ Quem leu o editorial de junho viu a revista dizendo, com todas as letras, que o 
 > Viveu um dia.
 > Nesse dia, fez o quadrado azul andar.
 
-É a melhor lápide do acervo e eu defendo isso. O Qt6 abriu a janela, desenhou na tela e mostrou o primeiro movimento que este projeto teve — o quadrado andando de um lado para o outro, que é a coisa mais boba do mundo e foi a mais importante. Trinta horas depois já tinha sido substituído. Morreu tendo funcionado, que é bem mais do que a maioria consegue.
+É a melhor lápide do acervo e eu defendo isso. O Qt6 abriu a janela, desenhou na tela e mostrou o primeiro movimento que este projeto teve — a coisa mais boba do mundo, e a mais importante. Trinta horas depois já tinha sido substituído. Morreu tendo funcionado, que é bem mais do que a maioria consegue.
 
-Três alicerces em dois dias: não é obra que desabou, é obra que anda rápido.
+Três lápides, duas trocas de fundação, dois dias: não é obra que desabou, é obra que anda rápido.
 
 ---
 
 ## EN
+
+`gus@glyfesse:~/cemiterio$ graveyard of dead ideas`
 
 Every issue I come down here to bury whatever didn't take. This time there were three, and two of them died on the same day.
 
@@ -62,7 +66,7 @@ It did everything it promised. The project simply decided to write its own engin
 > Announced at the top of our voice last issue.
 > Buried in this one.
 
-Anyone who read June's editorial saw this magazine state, in plain words, that the world was now written in C#. Two issues later, the same magazine is standing here holding a shovel. I won't apologise: printing that we changed is cheaper than staying on a road out of embarrassment about the last announcement. It compiled fast. It did the job.
+Anyone who read June's editorial saw this magazine state, in plain words, that the world was now written in C#. One issue later, the same magazine is standing here holding a shovel. I won't apologise: printing that we changed is cheaper than staying on a road out of embarrassment about the last announcement. It compiled fast. It did the job.
 
 ### Qt6
 **21 Jun 2026 — †22 Jun 2026**
@@ -70,9 +74,9 @@ Anyone who read June's editorial saw this magazine state, in plain words, that t
 > Lived one day.
 > In that day, it made the blue square move.
 
-Best headstone in the yard, and I'll defend that. Qt6 opened the window, drew to the screen and showed the first movement this project ever had — a square going back and forth, the silliest thing in the world and the most important one. Thirty hours later it had already been replaced. It died having worked, which is more than most manage.
+Best headstone in the yard, and I'll defend that. Qt6 opened the window, drew to the screen and showed the first movement this project ever had — the silliest thing in the world, and the most important one. Thirty hours later it had already been replaced. It died having worked, which is more than most manage.
 
-Three foundations in two days: that isn't a build collapsing, it's a build moving fast.
+Three headstones, two foundation swaps, two days: that isn't a build collapsing, it's a build moving fast.
 
 ---
 
@@ -82,7 +86,8 @@ Three foundations in two days: that isn't a build collapsing, it's a build movin
 
 | Checagem | Resultado |
 | :--- | :--- |
-| Tamanho pt-BR | **279 palavras** (alvo 250-400) |
+| Tamanho pt-BR | **270 palavras** (alvo 250-400; não conta a linha de prompt). Eram 279 antes de [I-6] e [C-7] |
+| Linha de prompt | ✅ **existe agora** — `gus@glyfesse:~/cemiterio$`, caminho **sem acento**, título com acento ([I-8]) |
 | ⚠️ Condição de aprovação do gate | ✅ **cumprida** — a lápide do Godot registra que o corpo só sai em **22 de julho**, sem virar nota burocrática |
 | ⛔ Corte da tentativa 3D | ✅ **silêncio completo** — varredura por "3D", "três dimensões", "tridimensional": **zero** ocorrências, e nenhuma promessa de que vem depois |
 | Cronologia | nada além de 22/jun, exceto o enterro de julho exigido; nenhuma menção a agosto em diante |
@@ -97,8 +102,22 @@ de fato:
 
 - *"A gente demora a desinstalar o que ainda funciona..."* — as reticências fazem o trabalho que um
   parágrafo de despedida faria pior.
-- *"Três alicerces em dois dias: não é obra que desabou, é obra que anda rápido."* — o fecho é **uma linha
-  só**, e é onde a tese aparece sem ser anunciada.
+- *"Três lápides, duas trocas de fundação, dois dias: não é obra que desabou, é obra que anda rápido."* — o
+  fecho é **uma linha só**, e é onde a tese aparece sem ser anunciada.
+
+### ✅ Correções aplicadas em 2026-08-04 (auditoria de coerência cruzada, `AUDITORIA-COERENCIA-EDICAO-3.md`)
+
+O Cemitério é a seção com **mais** correções da edição: dois críticos e dois importantes.
+
+| Item | Era | Ficou | Por quê |
+| :--- | :--- | :--- | :--- |
+| **[C-7]** | fecho: *"**Três alicerces em dois dias**: não é obra que desabou, é obra que anda rápido."* | *"**Três lápides, duas trocas de fundação, dois dias**: não é obra que desabou, é obra que anda rápido."* | **Os dois números estavam certos e o texto não reconciliava.** Aqui se enterram **três lápides** (Godot 4, C# .NET 8 AOT, Qt6); a Reportagem (*"dois alicerces derrubados"*), a Programação (*"quebrei a fundação duas vezes"*) e a Entrevista (*"você quebrou a base duas vezes"*) contam **duas trocas de fundação** — porque motor e linguagem saíram **juntos**. O leitor lia "três" numa página e "dois" na seguinte sem nada que explicasse. A cláusula separa os dois planos **na própria linha da tese**, e resolve **sem tocar em nenhuma das outras três seções**. ⚠️ Não foi posta na abertura de propósito: lá já existe um *"duas"* com outro sentido (*"duas delas morreram no mesmo dia"*), e os dois "duas" na mesma frase confundiriam |
+| **[C-8]** | lápide do C#, prosa: *"Quem leu o editorial de junho... **Duas edições depois**, a mesma revista está aqui, de pá na mão."* | *"...**Uma edição depois**, a mesma revista está aqui, de pá na mão."* | **A seção se contradizia sozinha, a quatro linhas de distância:** o epitáfio dizia *"Anunciado em voz alta **na edição passada**"* (→ #2) e a prosa dizia *"duas edições depois"* (→ #1). **Resolvido na fonte:** o anúncio está no **editorial da #2** (`docs/content/edicao-2-editorial.md`: *"agora o mundo é escrito em C#"*); o editorial da **#1 não menciona C#**. Logo o **epitáfio estava certo** e a **prosa errada** — corrigida a prosa. ✅ *"o editorial de junho"* fica: #1 é a gênese (maio), #2 é junho, e a conta fecha. ★ O achado bom não foi tocado: *"a mesma revista está aqui, de pá na mão"* é o que faz a ironia funcionar |
+| **[I-6]** | *"mostrou o primeiro movimento que este projeto teve — **o quadrado andando de um lado para o outro**, que é a coisa mais boba do mundo e foi a mais importante"* | *"mostrou o primeiro movimento que este projeto teve — **a coisa mais boba do mundo, e a mais importante**"* | A mesma imagem estava no `//` do Editorial (*"eu fiquei um tempo andando com ele de um lado pro outro"*). **O Editorial fica com ela** — lá é confissão e prepara o fecho do `//`. O Cemitério cede **a imagem**, não o juízo: o *"mais boba / mais importante"* continua, agora colado direto no *"primeiro movimento"*, e o epitáfio acima já diz *"fez o quadrado azul andar"*. ⚠️ O *"ir e voltar, ir e voltar"* da Entrevista é **diferente o bastante** (a repetição **é** o efeito) e o laudo manda mantê-lo |
+| **[I-8]** | **nenhuma linha de prompt** — era a única das sete seções sem | `gus@glyfesse:~/cemiterio$ cemitério das ideias mortas` (EN: `graveyard of dead ideas`) | A #3 é justamente a edição que **estreia o formato novo do prompt**; a seção sem prompt virava buraco de sistema na página. Caminho **sem acento** (`~/cemiterio`), título **com** acento, exatamente como o Detonado já fazia. ⚠️ **Decisão de forma que o render pode reverter:** usei **crase simples numa linha** (como Reportagem e Galeria), não bloco cercado (como Editorial e Detonado). As duas formas convivem na edição; se a montagem preferir bloco, é troca de uma linha |
+
+⚠️ **O que NÃO foi tocado, de propósito:** os **epitáfios** (inclusive *"Viveu um dia."*, que é epitáfio e
+não medição), as **seis datas**, o *"Trinta horas depois"* e o silêncio completo sobre a tentativa 3D.
 
 ### ★ O que o improviso rendeu de melhor
 

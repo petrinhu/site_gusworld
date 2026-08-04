@@ -48,7 +48,7 @@ As tarjas são minhas. Tem coisa ali que ainda não dá para mostrar.
 
 O número final é o que vale: **2632/2632**. Nenhum vermelho.
 
-Para dar tamanho a isso, um comparativo. Em 22 de junho de 2026, no dia em que o quadrado azul aprendeu a andar, a suíte inteira tinha **684** testes. Hoje tem **2632**. É quase quatro vezes mais. Deixo os dois números aí e cada um faz a conta que quiser.
+Para dar tamanho a isso, um comparativo. Em 22 de junho de 2026, no dia do primeiro passo do quadrado azul, a suíte inteira tinha **684** testes. Hoje tem **2632**. É quase quatro vezes mais. Deixo os dois números aí e cada um faz a conta que quiser.
 
 Vale dizer o que esse número **não** é. Ele não diz que o jogo é bom, nem que é divertido, nem que está pronto. Diz uma coisa só, e é uma coisa pequena: o que já foi construído continua funcionando depois de eu ter mexido em outra parte. É pouco. Mas é o pouco que sustenta o resto.
 
@@ -98,7 +98,7 @@ The blackouts are mine. There's material in there I can't show yet.
 
 The final number is the one that counts: **2632/2632**. No red.
 
-To give that some size, a comparison. On 22 June 2026, the day the blue square learned to walk, the whole suite had **684** tests. Today it has **2632**. That's almost four times as many. I'll leave both numbers there and let everyone do their own arithmetic.
+To give that some size, a comparison. On 22 June 2026, the day of the blue square's first step, the whole suite had **684** tests. Today it has **2632**. That's almost four times as many. I'll leave both numbers there and let everyone do their own arithmetic.
 
 Worth saying what that number is **not**. It doesn't say the game is good, or fun, or finished. It says one thing, and it's a small thing: what has already been built still works after I've gone and touched some other part. That's little. But it's the little that holds the rest up.
 
@@ -131,6 +131,17 @@ root@glyfesse:~/detonado$ some ele da tela, some a moldura dele e a caixa de sel
 | Tempo verbal | presente, de manual — a seção não narra, presta serviço |
 | Rótulo clínico / "estuda muito" | nenhum |
 | Profanidade | zero |
+
+### ✅ Correção aplicada em 2026-08-04 (auditoria de coerência cruzada, `AUDITORIA-COERENCIA-EDICAO-3.md`)
+
+| Item | Era | Ficou | Por quê |
+| :--- | :--- | :--- | :--- |
+| **[I-5]** | *"Em 22 de junho de 2026, **no dia em que o quadrado azul aprendeu a andar**, a suíte inteira tinha 684 testes."* (EN: *"the day the blue square learned to walk"*) | *"Em 22 de junho de 2026, **no dia do primeiro passo do quadrado azul**, a suíte inteira tinha 684 testes."* (EN: *"the day of the blue square's first step"*) | *"Aprender a andar"* aparecia **4× em 3 seções**, e o **fecho da Reportagem** — a melhor frase da edição — depende de a expressão chegar **nova** ao leitor. Aqui ela era só **âncora temporal**, e a troca não custa nada. A Reportagem fica com ela; **o Detonado e a Galeria cedem** |
+
+⚠️ **Nada mais mudou nesta seção.** O `684`, o `2632`, o *"quase quatro vezes"*, as 6 tarjas `▮▮▮`
+idênticas, a fala do `root` byte a byte e a glosa em português da EN estão **intocados**. ⚠️ **A frase
+*"a suíte inteira"* também não foi tocada** — ela já tinha sido corrigida antes desta rodada (era *"essa
+mesma bateria"*, que retroprojetava para junho a bateria da arena, que não existia naquela data).
 
 ### ★ O que a peça faz bem
 
@@ -180,3 +191,18 @@ posto ao lado de uma pessoa real opinando sobre suíte de teste.
 - Copyedit formal (`revisor-textual`) e prova final.
 - **Critério de aceitação no `GATE-RENDER`:** procurar cada termo embargado no HTML/CSS/JS servido e
   **não achar nada**. Achou, reprova.
+
+### ✅ [C-2] RESOLVIDO por evidência — 684 e 685 NÃO se contradizem
+
+O laudo de coerência marcou como crítico o fato de o Detonado dizer **684** e a Programação dizer
+**685 → 752** para a mesma suíte no mesmo 22/jun. **Não é contradição — são dois momentos do mesmo dia**,
+conferidos no log do jogo:
+
+| Hora | Commit | Contagem |
+| :--- | :--- | ---: |
+| 16h32 | `ce17f78` (o quadrado anda) | 658 → 674 |
+| **18h11** | **`c12cb30`** (correção de quina) | **684/684** ← a base do Detonado |
+| 23h34 | `300329a` (ADR-008) | **685 → 752** ← o número da Programação |
+
+**Os dois números estão certos.** A base de 684 sustenta o *"quase quatro vezes"* (2632 ÷ 684 = 3,85).
+⚠️ **Não "unificar" isto num número só** — unificar introduziria erro onde não há.

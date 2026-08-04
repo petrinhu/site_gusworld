@@ -19,7 +19,7 @@
 
 ### Cinquenta e duas horas, um passo
 
-No domingo à tarde decidimos derrubar tudo. O motor pronto que carregava o jogo até ali saiu, e no lugar dele entrou nada — só a promessa de que eu escreveria o meu, linha por linha, do zero. Eu sei que isso não significa nada para quem está lendo. Então diga assim: é como morar numa casa e resolver, numa tarde qualquer, que ela vai ser levantada de novo pela sua própria mão, enquanto você ainda está dentro dela.
+No domingo à tarde decidimos derrubar tudo. O motor pronto que carregava o jogo até ali saiu, e no lugar dele entrou nada — só a promessa de que eu escreveria o meu, linha por linha, do zero. Eu sei que isso não significa nada para quem está lendo. Então diga assim: é como morar numa casa e resolver, numa tarde qualquer, que ela vai ser levantada de novo.
 
 A segunda-feira inteira foi isso. Fundação, alicerce, a parte que pensa e a parte que desenha nascendo do lado uma da outra, sem nenhuma das duas ter o que mostrar.
 
@@ -29,7 +29,7 @@ Até as 16h32.
 
 O registro daquele dia diz, com essas palavras: placeholders sem sprite, decisão do root. Quer dizer que o quadrado azul não é um limite. É escolha. Ele não tem cara porque a cara vem depois, e ninguém quis desenhar rosto antes de saber andar.
 
-Às 21h57 um retângulo ganhou o primeiro desenho de verdade do jogo. Não sou eu — eu continuo um quadrado sem cara. É o Cauã "Volt", treze anos, o primeiro de nós a existir com corpo e cor.
+Às 21h57 um retângulo ganhou o primeiro desenho de verdade do jogo. Não sou eu. É o Cauã "Volt", treze anos.
 
 Às 23h34 daquela mesma noite eu joguei fora a camada que tinha feito o quadrado andar. Ela tinha cerca de um dia de vida. A segunda escolha era melhor a longo prazo, e o longo prazo ganha sempre.
 
@@ -47,7 +47,7 @@ E o melhor de tudo isso não é a demolição. É que no meio do estrago inteiro
 
 ### Fifty-two hours, one step
 
-On Sunday afternoon we decided to tear it all down. The ready-made engine that had been carrying the game until then was out, and nothing took its place — only the promise that I would write my own, line by line, from zero. I know that means nothing to whoever is reading this. So put it this way: it is like living in a house and deciding, one afternoon, that it will be raised again by your own hand, while you are still inside it.
+On Sunday afternoon we decided to tear it all down. The ready-made engine that had been carrying the game until then was out, and nothing took its place — only the promise that I would write my own, line by line, from zero. I know that means nothing to whoever is reading this. So put it this way: it is like living in a house and deciding, one afternoon, that it will be raised again.
 
 All of Monday was that. Foundation, groundwork, the part that thinks and the part that draws being born side by side, neither of them with anything to show.
 
@@ -57,7 +57,7 @@ At 4:32 p.m. on Monday a blue square took a step. It is the first thing that eve
 
 The record of that day says, in these words: placeholders with no sprite, root's decision. Which means the blue square is not a limit. It is a choice. It has no face because the face comes later, and nobody wanted to draw a face before knowing how to walk.
 
-At 9:57 p.m. a rectangle got the first real artwork in the game. It is not me — I am still a square with no face. It is Cauã "Volt", thirteen years old, the first of us to exist with a body and a colour.
+At 9:57 p.m. a rectangle got the first real artwork in the game. It is not me. It is Cauã "Volt", thirteen years old.
 
 At 11:34 p.m. that same night I threw away the layer that had made the square walk. It was about one day old. The second choice was better in the long run, and the long run always wins.
 
@@ -75,16 +75,17 @@ And the best part of all of it is not the demolition. It is that in the middle o
 
 | Checagem | Resultado |
 | :--- | :--- |
-| Tamanho pt-BR | **401 palavras** (#1 = 383, #2 = 472 — dentro da faixa da casa) |
+| Tamanho pt-BR | **372 palavras** (#1 = 383, #2 = 472 — dentro da faixa da casa). Eram 401 antes dos cortes de [I-1] e [I-4] |
 | Nome de tecnologia real | **nenhum** (varredura por Godot, C#, Qt, SDL, GDScript, AOT, glintfx, Unity, Unreal) |
 | Rótulo clínico / "estuda muito" | **nenhum** (varredura pelos 8 termos proibidos) |
-| Cronologia | **para no domingo**; nenhuma citação a 24/jun em diante |
+| Cronologia | **para na terça** (21-23/jun = domingo, segunda, terça); nenhuma citação a 24/jun em diante |
 | Nome de batismo de criança | **nenhum** — só "Gus" e "Cauã 'Volt'" |
 | Profanidade | zero |
 
 ### ★ A régua "depende do trecho" funcionou, e dá para ver na contagem
 
-Distribuição por parágrafo, em palavras: **78 · 30 · 3 · 86 · 44 · 38 · 38 · 8 · 35 · 41**
+Distribuição por parágrafo, em palavras (medida em 2026-08-04, **depois** dos cortes de [I-1] e [I-4]):
+**69 · 30 · 3 · 86 · 44 · 21 · 38 · 8 · 33 · 40**. Era **78 · 30 · 3 · 86 · 44 · 38 · 38 · 8 · 35 · 41**.
 
 Os dois vales são exatamente os dois beats emocionais, e os dois picos são o arco factual:
 
@@ -94,6 +95,26 @@ Os dois vales são exatamente os dois beats emocionais, e os dois picos são o a
 
 É a régua do criador aplicada dentro de uma peça só: **generoso no que ele domina, curto no que ele
 sente**. E marca a diferença da #1 e da #2, que terminavam se abrindo por parágrafos inteiros.
+
+### ✅ Correções aplicadas em 2026-08-04 (auditoria de coerência cruzada, `AUDITORIA-COERENCIA-EDICAO-3.md`)
+
+A Reportagem **cede duas vezes**. Ela é a seção que fica com o fato datado — e por isso é ela que abre mão
+do tom e da imagem que pertencem a outras peças. **Nenhum horário, nenhum número e nenhum fato mudaram.**
+
+| Item | Era | Ficou | Por quê |
+| :--- | :--- | :--- | :--- |
+| **[I-1]** | *"Às 21h57 um retângulo ganhou o primeiro desenho de verdade do jogo. Não sou eu — **eu continuo um quadrado sem cara**. É o Cauã "Volt", treze anos, **o primeiro de nós a existir com corpo e cor**."* | *"Às 21h57 um retângulo ganhou o primeiro desenho de verdade do jogo. **Não sou eu.** É o Cauã "Volt", treze anos."* | O fato aparece em exatamente duas seções, como manda a **D3** — mas o **tom** tinha encostado: *"um quadrado sem cara"* estava **verbatim** aqui e na Entrevista, e *"o primeiro de nós a existir com corpo e cor"* carregava a mágoa que é material **exclusivo** da Entrevista (onde ela é o clímax e vem de outra pessoa, não do próprio Gus). Quem lesse a Reportagem antes chegava no `// dói` já anestesiado. Aqui o fato fica; a mágoa sai. O *"Não sou eu."* de duas palavras ainda cumpre a régua **curto no que ele sente** |
+| **[I-4]** | *"é como morar numa casa e resolver, numa tarde qualquer, que ela vai ser levantada de novo **pela sua própria mão, enquanto você ainda está dentro dela**"* | *"é como morar numa casa e resolver, numa tarde qualquer, que ela vai ser levantada de novo."* | A metáfora da casa aparece em cinco seções, mas só **duas** constroem a casa inteira: esta e a Programação. Lá a casa **é a estrutura do argumento** (a peça inteira responde à pergunta que a casa formula); aqui era ilustração. A Reportagem cede **o desdobramento**, não a imagem — a frase curta de casa fica |
+
+⚠️ **O que NÃO foi tocado, de propósito:**
+
+- ★ **o ombro que desliza na parede do corredor** — imagem do mesmo campo semântico que é **só desta seção**
+  e que a Programação não usa. O laudo manda **manter**;
+- **o fecho** (*"escolheu justamente aqueles três dias para **aprender a andar**"*) — a expressão fica aqui,
+  com folga, e é a Galeria e o Detonado que cederam ([I-5]);
+- *"É a primeira coisa que se mexeu na tela em toda a história deste projeto"* — fica aqui, ancorada em
+  16h32; quem cedeu foi o Editorial ([I-2]);
+- **as paredes no chão duas vezes**, no fecho — é vocabulário curto de casa, não analogia estendida.
 
 ### ✅ Dois pontos resolvidos pelo editor-geral (2026-08-03)
 

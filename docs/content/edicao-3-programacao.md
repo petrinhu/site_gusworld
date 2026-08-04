@@ -88,7 +88,7 @@ Nada disto sai de graça. O preço aqui foi **uma segunda porta sem volta no mes
 
 Trocar de fundação é barato quando a casa é nova. Cada semana que passa, cada tela nova, cada sistema novo apoiado na camada de desenho encarece a próxima troca — de forma silenciosa, sem aviso, até o dia em que "trocar" deixa de ser uma opção de fim de semana e vira um projeto próprio.
 
-A decisão de 22/jun foi tomada **sabendo disso**. Não foi impulso: foi a leitura de que aquele era o momento mais barato que existiria, e que empurrar a conta para frente só aumentaria o valor. É o cálculo mais chato da engenharia, e o único que envelhece bem.
+A decisão de 22/jun foi tomada **sabendo disso**. Não foi reação: foi a leitura de que aquele era o momento mais barato que existiria, e que empurrar a conta para frente só aumentaria o valor. É o cálculo mais chato da engenharia, e o único que envelhece bem.
 
 //by: root@glyfesse
 
@@ -170,7 +170,7 @@ None of this comes free. The price here was **a second one-way door in the same 
 
 Swapping a foundation is cheap while the house is new. Every week that passes, every new screen, every new system leaning on the drawing layer makes the next swap more expensive — quietly, without warning, until the day "swap it" stops being a weekend option and becomes a project of its own.
 
-The 22 Jun decision was made **knowing that**. It wasn't impulse: it was the reading that this was the cheapest moment there would ever be, and that pushing the bill forward would only raise the number. It's the dullest calculation in engineering, and the only one that ages well.
+The 22 Jun decision was made **knowing that**. It wasn't a reaction: it was the reading that this was the cheapest moment there would ever be, and that pushing the bill forward would only raise the number. It's the dullest calculation in engineering, and the only one that ages well.
 
 //by: root@glyfesse
 
@@ -191,6 +191,23 @@ The 22 Jun decision was made **knowing that**. It wasn't impulse: it was the rea
 | Spoiler do antagonista | **ausente** ✅ — a variante proibida não foi usada |
 | Rótulo clínico / "estuda muito" | nenhum |
 | Profanidade | zero |
+
+### ✅ Correção aplicada em 2026-08-04 (auditoria de coerência cruzada, `AUDITORIA-COERENCIA-EDICAO-3.md`)
+
+| Item | Era | Ficou | Por quê |
+| :--- | :--- | :--- | :--- |
+| **[I-7]** | *"**Não foi impulso**: foi a leitura de que aquele era o momento mais barato que existiria"* (EN: *"It wasn't impulse"*) | *"**Não foi reação**: foi a leitura de que aquele era o momento mais barato que existiria"* (EN: *"It wasn't a reaction"*) | A negação estava **verbatim** aqui e na Entrevista — em duas vozes que precisam soar diferentes (`root` × Gus). **A Programação cede**, porque na Entrevista o *"não foi impulso"* é o setup do *"eu sei que parece impulso quando conto rápido assim"*, que é caracterização e não pode sair. ★ Ganho: *"reação"* opõe-se a *"leitura"* melhor do que *"impulso"* opunha — a antítese ficou mais nítida em pt e em EN |
+
+⚠️ **O múltiplo do custo, unificado na EDIÇÃO (não aqui):** o mesmo argumento econômico aparecia com dois
+preços — *"cinco semanas"* (Entrevista) × *"um trimestre"* (aqui). O laudo mandou escolher **um**. Ficou o
+**trimestre**, e **quem mudou foi a Entrevista**: este é o lugar onde o argumento tem tabela, custo aceito e
+conclusão, e *"a diferença entre um dia e um trimestre"* é a formulação da peça técnica. **Nada mudou nesta
+seção por causa disso** — registro aqui para que ninguém "conserte" o trimestre de volta.
+
+⚠️ **O que NÃO foi tocado, de propósito:** a **casa** fica inteira aqui ([I-4]) — *"as paredes, o telhado e a
+fiação"*, a pergunta de abertura e o fecho. Ela não é ilustração nesta peça, é a **estrutura do argumento**:
+a matéria inteira responde à pergunta que a casa formula. **Quem cedeu a analogia estendida foi a
+Reportagem.**
 
 ### ✅ Um defeito encontrado e corrigido pelo integrador
 
