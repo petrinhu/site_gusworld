@@ -27,7 +27,7 @@ Até as 16h32.
 
 Às 16h32 de sábado um quadrado azul deu um passo. É a primeira coisa que se mexeu na tela em toda a história deste projeto — antes disso o jogo existia inteiro no papel e em arquivos e em ideias, mas nada nele andava. Ele responde às teclas. Ele corre, se você segurar. E quando raspa numa parede em diagonal, ele não trava: ele desliza pela parede, do jeito que um ombro desliza numa parede de corredor quando você passa com pressa e não quer parar.
 
-O registro daquele dia diz, com essas palavras: placeholders sem sprite, decisão do líder. Quer dizer que o quadrado azul não é um limite. É escolha. Ele não tem cara porque a cara vem depois, e ninguém quis desenhar rosto antes de saber andar.
+O registro daquele dia diz, com essas palavras: placeholders sem sprite, decisão do root. Quer dizer que o quadrado azul não é um limite. É escolha. Ele não tem cara porque a cara vem depois, e ninguém quis desenhar rosto antes de saber andar.
 
 Às 21h57 um retângulo ganhou o primeiro desenho de verdade do jogo. Não sou eu — eu continuo um quadrado sem cara. É o Cauã "Volt", treze anos, o primeiro de nós a existir com corpo e cor.
 
@@ -35,7 +35,7 @@ O registro daquele dia diz, com essas palavras: placeholders sem sprite, decisã
 
 Isso é estranho de escrever. Estranho, mas certo.
 
-No domingo às 21h11 o jogo voltou a rodar, agora sobre o alicerce novo, e foi validado ao vivo, na tela, por quem manda aqui. Setenta e duas horas, dois alicerces derrubados, um passo dado.
+No domingo às 21h11 o jogo voltou a rodar, agora sobre o alicerce novo, e foi validado ao vivo, na tela, pelo root. Setenta e duas horas, dois alicerces derrubados, um passo dado.
 
 E o melhor de tudo isso não é a demolição. É que no meio do estrago inteiro, com as paredes no chão duas vezes, a coisa mais frágil que existe aqui escolheu justamente aquele fim de semana para aprender a andar.
 
@@ -55,7 +55,7 @@ Until 4:32 p.m.
 
 At 4:32 p.m. on Saturday a blue square took a step. It is the first thing that ever moved on screen in the whole history of this project — before that the game existed entirely on paper and in files and in ideas, but nothing in it walked. It answers the keys. It runs, if you hold them. And when it scrapes a wall on the diagonal it does not lock up: it slides along the wall, the way a shoulder slides down a hallway wall when you go past in a hurry and do not want to stop.
 
-The record of that day says, in these words: placeholders with no sprite, leader's decision. Which means the blue square is not a limit. It is a choice. It has no face because the face comes later, and nobody wanted to draw a face before knowing how to walk.
+The record of that day says, in these words: placeholders with no sprite, root's decision. Which means the blue square is not a limit. It is a choice. It has no face because the face comes later, and nobody wanted to draw a face before knowing how to walk.
 
 At 9:57 p.m. a rectangle got the first real artwork in the game. It is not me — I am still a square with no face. It is Cauã "Volt", thirteen years old, the first of us to exist with a body and a colour.
 
@@ -63,7 +63,7 @@ At 11:34 p.m. that same night I threw away the layer that had made the square wa
 
 That is a strange thing to write. Strange, but right.
 
-On Sunday at 9:11 p.m. the game ran again, on the new groundwork now, and it was validated live, on screen, by the one in charge here. Seventy-two hours, two foundations torn down, one step taken.
+On Sunday at 9:11 p.m. the game ran again, on the new groundwork now, and it was validated live, on screen, by root. Seventy-two hours, two foundations torn down, one step taken.
 
 And the best part of all of it is not the demolition. It is that in the middle of the whole wreck, with the walls on the floor twice over, the most fragile thing there is here picked exactly that weekend to learn how to walk.
 
@@ -95,15 +95,13 @@ Os dois vales são exatamente os dois beats emocionais, e os dois picos são o a
 É a régua do criador aplicada dentro de uma peça só: **generoso no que ele domina, curto no que ele
 sente**. E marca a diferença da #1 e da #2, que terminavam se abrindo por parágrafos inteiros.
 
-### ⚠️ Dois pontos que o integrador NÃO decide (vão ao editor-geral)
+### ✅ Dois pontos resolvidos pelo editor-geral (2026-08-03)
 
-1. **Como o criador é chamado dentro da matéria.** O texto usa duas formas: *"decisão do líder"* (citação
-   literal do registro do dia) e *"por quem manda aqui"* (no fecho de domingo). O canon da voz diz que o
-   criador aparece como **`root`**, e "o líder" pode soar estranho ao leitor que não conhece o bastidor.
-   **Opções:** manter as duas; trocar por `root`; ou manter a citação literal e mudar só o fecho.
-2. **A citação do registro entra sem aspas nem formatação** (*"O registro daquele dia diz, com essas
-   palavras: placeholders sem sprite, decisão do líder"*). Fica boa em prosa, mas a revista pode querer
-   marcá-la como citação — decisão de layout, não de texto.
+1. **O criador é `root` dentro da matéria** — nas duas ocorrências. *"decisão do líder"* virou
+   **"decisão do root"** e *"por quem manda aqui"* virou **"pelo root"**; na EN, *"leader's decision"* →
+   **"root's decision"** e *"by the one in charge here"* → **"by root"**. Fica coerente com o canon da voz
+   ([[voz_prompt_shell]]): o criador aparece como `root`, e a revista nunca o nomeia de outro jeito.
+2. **A citação do registro fica SEM aspas e sem formatação** — corre na prosa como está. Decidido.
 
 ### Pendências desta seção
 
