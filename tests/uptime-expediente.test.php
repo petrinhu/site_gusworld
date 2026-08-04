@@ -122,7 +122,11 @@ eq(false, isset($por_numero[2]['uptime']), 'a #2 (publicada, no ar) NAO tem o ca
 eq(true, isset($por_numero[3]['uptime']), 'a #3 (a primeira a exibir) tem o campo');
 eq(true, is_array($por_numero[3]['uptime'] ?? null), 'o campo da #3 e um mapa projeto => horas');
 eq(['jogo', 'glintfx'], array_keys($por_numero[3]['uptime']), 'as chaves da #3 sao os dois projetos, nessa ordem');
-eq('rascunho', (string) $por_numero[3]['estado'], 'a #3 continua RASCUNHO no dado real (o teste nao publica nada)');
+// A #3 foi PUBLICADA (decisao editorial do lider). O que esta assercao trava
+// hoje e a pre-condicao da camada 3 logo abaixo: como a #3 esta no ar, o
+// uptime dela deixou de ser hipotese e passou a ser pagina publicada - e a
+// linha do masthead dela e cobrada de verdade (nao mais so por injecao na #1).
+eq('publicada', (string) $por_numero[3]['estado'], 'a #3 esta PUBLICADA no dado real (e a 1a edicao no ar com o campo uptime)');
 
 // o contexto de render carrega (ou nao) o campo
 require_once __DIR__ . '/../src/lib/contexto-edicao.php';
@@ -176,6 +180,17 @@ eq(true, str_contains(masthead_do_html($ed2_en), 'June 4, 2026'), '#2 en: a data
 eq(true, str_contains(masthead_do_html($ed1_pt), 'rev.'), '#1 pt: o rev. condicional (rev.3) continua aparecendo');
 eq(false, str_contains(masthead_do_html($ed2_pt), 'rev.'), '#2 pt: rev.1 continua FORA (o condicional nao foi quebrado)');
 eq(true, str_contains(masthead_do_html($ed1_pt), 'class="imprint aceso"'), '#1 pt: a LCD do switch de idioma continua la');
+
+// ── a #3 PUBLICADA: a linha sai no DADO REAL, sem injecao nenhuma ───────────
+// Enquanto a #3 era rascunho, a unica prova da fiacao era injetar o campo na #1
+// (o bloco logo abaixo, que continua valendo como diff byte a byte). Com a #3
+// no ar, o caminho de producao passou a ser exercitado com o dado de verdade.
+$m3_pt = masthead_do_html(render_ed('edicao-3', 'pt'));
+$m3_en = masthead_do_html(render_ed('edition-3', 'en'));
+eq(true, str_contains($m3_pt, 'meta-uptime'), '#3 pt: a edicao publicada COM o campo imprime a linha');
+eq(true, str_contains($m3_pt, 'jogo 1456h (60d) · glintfx 326h (13d)'), '#3 pt: os numeros congelados do dado real saem formatados');
+eq(true, str_contains($m3_en, 'game 1456h (60d) · glintfx 326h (13d)'), '#3 en: a linha sai traduzida na pagina inglesa');
+eq(false, str_contains($m3_en, 'jogo 1456h'), '#3 en: o rotulo pt NAO vaza para a pagina inglesa');
 
 // ── A MESMA edicao COM o campo: a unica diferenca e a linha nova ────────────
 // Injeta o campo na #1 em memoria (nao toca no dado real): o baseline e o

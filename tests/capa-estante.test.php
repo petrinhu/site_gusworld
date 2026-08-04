@@ -100,22 +100,30 @@ $base = SITE_BASE_URL;
 $pt   = render_banca_html('pt');
 $en   = render_banca_html('en');
 
-// o dado real de hoje: #2 (mais nova) e #1 publicadas, as duas com card próprio
-// em pt e variante em en.
+// O dado real de hoje: #3 (a mais nova), #2 e #1 publicadas. A #3 entrou no ar
+// SEM arte de capa nenhuma (nem `og_image`, nem `capa_en`), e a regra é que
+// edição sem card não ganha <img> — a folha dela sai sem figure. Por isso a
+// lista de artes continua sendo a do #2 e a do #1: são as duas que TÊM arte.
 eq(
     ['/assets/og-edicao-2.jpg', '/assets/og-launch.jpg'],
     capas_do_html($pt),
-    'PT: a estante mostra as capas em português (#2 e depois #1)'
+    'PT: as artes em português são as das edições que têm card (#2 e depois #1; a #3 não tem)'
 );
 eq(
     ['/assets/og-edicao-2-en.jpg', '/assets/og-edicao-1-en.jpg'],
     capas_do_html($en),
-    'EN: a estante mostra as capas em INGLÊS (#2 e depois #1)'
+    'EN: as mesmas edições, com a arte em INGLÊS (#2 e depois #1; a #3 não tem)'
 );
 
 // ── A FRONTEIRA: o card SOCIAL não segue o idioma ───────────────────────────
-eq($base . '/assets/og-edicao-2.jpg', og_do_html($pt), 'og:image em /pt/ = o card português da mais nova');
-eq($base . '/assets/og-edicao-2.jpg', og_do_html($en), 'og:image em /en/ = o MESMO card português (não a variante)');
+// ⚠️ Como a mais nova publicada (a #3) não tem card próprio, o og:image da home
+// cai no default FIXO do head.php — que é o comportamento documentado em
+// og_card_banca() ("se a mais nova não tiver card próprio, cai no default").
+// A fronteira sob teste não é QUAL card sai, e sim que ele é o MESMO nos dois
+// idiomas: a igualdade abaixo trava isso sem depender de quem é a mais nova.
+eq(og_do_html($pt), og_do_html($en), 'a meta tag social é a MESMA nos dois idiomas (o card não segue o idioma)');
+eq($base . '/assets/og-launch.jpg', og_do_html($pt), 'og:image em /pt/ = default (a #3, mais nova, não tem card próprio)');
+eq($base . '/assets/og-launch.jpg', og_do_html($en), 'og:image em /en/ = o MESMO default (nunca uma variante -en)');
 eq($base . '/assets/og-edicao-2.jpg', og_do_html(render_banca_html('en', '2')), 'en ?ed=2 → card português da #2');
 eq($base . '/assets/og-launch.jpg', og_do_html(render_banca_html('en', '1')), 'en ?ed=1 → card português da #1 (o default)');
 eq($base . '/assets/og-launch.jpg', og_do_html(render_banca_html('pt', '1')), 'pt ?ed=1 → card português da #1');
@@ -127,9 +135,13 @@ eq(
 );
 
 // ── as duas estantes seguem com a MESMA quantidade de capas ─────────────────
+// 3 publicadas hoje (#3, #2, #1). O que este par trava não é o número em si, e
+// sim que a variante de idioma NÃO some nem duplica folha: as duas estantes
+// listam exatamente as mesmas edições, mudando só a arte.
 $conta = static fn (string $html): int => substr_count($html, 'class="ed folha"');
-eq(2, $conta($pt), 'pt: 2 capas publicadas');
-eq(2, $conta($en), 'en: as mesmas 2 capas (a variante não some nem duplica capa)');
+eq(3, $conta($pt), 'pt: 3 capas publicadas (#3, #2, #1)');
+eq(3, $conta($en), 'en: as mesmas 3 capas (a variante não some nem duplica capa)');
+eq($conta($pt), $conta($en), 'as duas estantes listam a MESMA quantidade de folhas');
 
 // ── zero CLS: a arte EN entra com width/height reais do arquivo ─────────────
 eq(1, preg_match('~og-edicao-2-en\.jpg[^>]*width="1200" height="630"~', $en), 'en: a capa da #2 sai com as dimensões reais');

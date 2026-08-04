@@ -71,8 +71,12 @@ eq(null, og_card_banca([], null), 'banca vazia sem parâmetro → default (nunca
 eq(null, og_card_banca([['numero' => 8, 'og_image' => null]], null), 'mais nova sem card próprio → default do head.php');
 
 // ═══ 2. A FIAÇÃO REAL (a banca renderizada de ponta a ponta) ═════════════════
-/** Renderiza a home num idioma com o `?ed=` dado (null = sem parâmetro). */
-function render_com_ed(?string $ed, string $idioma = 'pt'): string
+/**
+ * Renderiza a home num idioma com o `?ed=` dado (null = sem parâmetro).
+ * O 3º parâmetro é o seam de teste do render_banca() (null = o dado real): só
+ * o usa o guard anti-rascunho lá embaixo, que precisa de um rascunho COM card.
+ */
+function render_com_ed(?string $ed, string $idioma = 'pt', ?array $edicoes = null): string
 {
     if ($ed === null) {
         unset($_GET['ed']);
@@ -80,7 +84,7 @@ function render_com_ed(?string $ed, string $idioma = 'pt'): string
         $_GET['ed'] = $ed;
     }
     ob_start();
-    render_banca($idioma);
+    render_banca($idioma, $edicoes);
     $html = (string) ob_get_clean();
     unset($_GET['ed']);
 
@@ -117,12 +121,14 @@ $com_abc = render_com_ed('abc');
 $com_tra = render_com_ed('../etc/passwd');
 $com_tag = render_com_ed('<script>alert(1)</script>');
 
-// o dado real de hoje: a #2 é a mais nova publicada e tem card próprio; a #1
-// é publicada sem card; a #3 é RASCUNHO (não está na banca).
-eq($base . '/assets/og-edicao-2.jpg', og_do_html($sem), 'sem parâmetro → o card da mais nova publicada (#2)');
+// O dado real de hoje: a #3 é a mais nova publicada e NÃO tem card próprio; a
+// #2 é publicada com card; a #1 é publicada sem card. O rascunho da vez é a #4
+// (o exemplo de drip que o data/edicoes.php mantém de propósito) — é ela que
+// exercita o guard anti-rascunho, no bloco lá embaixo.
+eq($base . '/assets/og-launch.jpg', og_do_html($sem), 'sem parâmetro → a mais nova (#3) não tem card próprio, então cai no default');
 eq($base . '/assets/og-edicao-2.jpg', og_do_html($com_2), '?ed=2 → o card da #2');
 eq($base . '/assets/og-launch.jpg', og_do_html($com_1), '?ed=1 (sem card próprio) → o default /assets/og-launch.jpg');
-eq($base . '/assets/og-launch.jpg', og_do_html($com_3), '?ed=3 (RASCUNHO, fora da banca) → default (o drip não vaza)');
+eq($base . '/assets/og-launch.jpg', og_do_html($com_3), '?ed=3 (publicada, sem card próprio) → default, NÃO o card de outra edição');
 eq($base . '/assets/og-launch.jpg', og_do_html($com_99), '?ed=99 (não existe) → default');
 eq($base . '/assets/og-launch.jpg', og_do_html($com_abc), '?ed=abc → default');
 eq($base . '/assets/og-launch.jpg', og_do_html($com_tra), '?ed=../etc/passwd → default');
@@ -167,17 +173,52 @@ eq(corpo_do_html($sem), corpo_do_html($com_2), '?ed=2 renderiza o corpo IDÊNTIC
 eq(corpo_do_html($sem), corpo_do_html($com_99), '?ed=99 renderiza o corpo IDÊNTICO');
 eq(corpo_do_html($sem), corpo_do_html($com_tag), '?ed=<script> renderiza o corpo IDÊNTICO');
 
-// e a estante lista as MESMAS edições (o guard anti-rascunho não muda com o ?ed)
+// e a estante lista as MESMAS edições (o `?ed=` só toca meta tag)
 $conta = static fn (string $html): int => substr_count($html, 'class="ed folha"');
-eq(2, $conta($sem), 'a banca de hoje mostra 2 capas publicadas');
+eq(3, $conta($sem), 'a banca de hoje mostra 3 capas publicadas (#3, #2, #1)');
 eq($conta($sem), $conta($com_2), '?ed=2 não muda a quantidade de capas');
-eq($conta($sem), $conta($com_3), '?ed=3 (rascunho) não faz a #3 aparecer na estante');
+eq($conta($sem), $conta($com_3), '?ed=3 não muda a quantidade de capas');
+
+// ── O GUARD ANTI-RASCUNHO: um rascunho não vaza card nem folha ──────────────
+// A #3 era o fixture deste guard enquanto era rascunho; ela foi PUBLICADA
+// (decisão editorial), então o guard mudou de fixture, não de valor: rascunho
+// continua tendo que ficar fora da banca e fora do `?ed=`.
+// ⚠️ A #4 (o rascunho deliberado do dado) nasce SEM card, e sem card o `?ed=4`
+// cairia no default DE QUALQUER JEITO — inclusive com o filtro anti-rascunho
+// quebrado, o que faria este teste passar sem testar nada. Por isso o card é
+// injetado AQUI, em memória, com um nome que não existe em lugar nenhum: assim
+// a ÚNICA coisa que segura esse card fora do HTML é o estado 'rascunho'.
+$edicoes_reais = require __DIR__ . '/../data/edicoes.php';
+$por_numero    = [];
+foreach ($edicoes_reais as $e) {
+    $por_numero[(int) $e['numero']] = $e;
+}
+eq('rascunho', (string) ($por_numero[4]['estado'] ?? ''), 'pré-condição: a #4 é o rascunho que serve de fixture deste guard');
+
+const CARD_VAZAMENTO = '/assets/og-rascunho-NAO-DEVE-VAZAR.jpg';
+$com_rascunho_com_card = [];
+foreach ($edicoes_reais as $e) {
+    if ((int) $e['numero'] === 4) {
+        $e['og_image'] = CARD_VAZAMENTO;
+    }
+    $com_rascunho_com_card[] = $e;
+}
+
+$rasc_4   = render_com_ed('4', 'pt', $com_rascunho_com_card);
+$rasc_sem = render_com_ed(null, 'pt', $com_rascunho_com_card);
+
+eq($base . '/assets/og-launch.jpg', og_do_html($rasc_4), '?ed=4 (RASCUNHO com card) → default: o drip não vaza pelo permalink');
+eq(false, str_contains($rasc_4, 'NAO-DEVE-VAZAR'), 'o card do rascunho não aparece em NENHUM lugar do HTML (?ed=4)');
+eq(false, str_contains($rasc_sem, 'NAO-DEVE-VAZAR'), 'nem no link nu: o rascunho nunca é a "mais nova" da vitrine');
+eq(3, $conta($rasc_4), '?ed=4 (rascunho) não faz a #4 aparecer na estante (segue em 3 folhas)');
+eq(3, $conta($rasc_sem), 'o rascunho não entra na estante nem sem parâmetro');
 
 // ── o gêmeo EN: o card é único, o parâmetro funciona igual ──────────────────
 $en_sem = render_com_ed(null, 'en');
 $en_2   = render_com_ed('2', 'en');
 $en_1   = render_com_ed('1', 'en');
-eq($base . '/assets/og-edicao-2.jpg', og_do_html($en_sem), 'en: sem parâmetro → o card da mais nova');
+eq($base . '/assets/og-launch.jpg', og_do_html($en_sem), 'en: sem parâmetro → o mesmo default do pt (a mais nova, #3, não tem card)');
+eq(og_do_html($sem), og_do_html($en_sem), 'en: o card do link nu é o MESMO do pt (o card não tem idioma)');
 eq($base . '/assets/og-edicao-2.jpg', og_do_html($en_2), 'en: ?ed=2 → o mesmo card (o card é único, não tem idioma)');
 eq($base . '/assets/og-launch.jpg', og_do_html($en_1), 'en: ?ed=1 → default');
 eq($base . '/en/', canonical_do_html($en_2), 'en: canonical limpo da home inglesa');

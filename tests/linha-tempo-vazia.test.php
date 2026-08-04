@@ -76,9 +76,27 @@ foreach (['vazio_fala', 'vazio_pensa', 'vazio_rotulo'] as $chave) {
     );
 }
 
-// ═══ 1. O VAZIO (o dado real de hoje: nenhuma edição visual publicada) ══════
-$pt = secao_linha(html_banca('pt'));
-$en = secao_linha(html_banca('en'));
+// ═══ 1. O VAZIO ══════════════════════════════════════════════════════════════
+// ⚠️ MUDOU DE FIXTURE (a #3 foi PUBLICADA, decisão editorial): o vazio já foi o
+// dado real, quando nenhuma edição visual estava no ar. Hoje a linha do site
+// tem ponto — mas o estado vazio continua sendo comportamento REAL: é o que o
+// leitor vê enquanto a primeira edição visual de um volume não sai, e é para
+// onde a seção volta se a última visual for despublicada. Como o dado real não
+// o produz mais, ele passa a ser exercitado por um fixture EM MEMÓRIA: o dado
+// real com as edições visuais de volta a 'rascunho' (o espelho exato do que a
+// camada 2 fazia ao contrário). Nada em data/edicoes.php é tocado.
+$edicoes = require __DIR__ . '/../data/edicoes.php';
+
+$sem_visual = [];
+foreach ($edicoes as $e) {
+    if (($e['na_linha_tempo'] ?? false) === true) {
+        $e['estado'] = 'rascunho';
+    }
+    $sem_visual[] = $e;
+}
+
+$pt = secao_linha(html_banca('pt', $sem_visual));
+$en = secao_linha(html_banca('en', $sem_visual));
 
 eq('', '' === $pt ? 'FALTOU A SEÇÃO' : '', 'a seção da linha do tempo existe na home pt');
 
@@ -112,23 +130,45 @@ eq(true, str_contains($en, h((string) $t_en['banca']['linha_tempo']['vazio_pensa
 eq(false, str_contains($en, (string) $t_pt['banca']['linha_tempo']['vazio_fala']), 'en: nada da fala em português vazou');
 eq(false, str_contains($en, (string) $t_pt['banca']['linha_tempo']['vazio_rotulo']), 'en: nem o rótulo em português');
 
-// ═══ 2. COM PONTO: o caminho de sempre volta inteiro ════════════════════════
-$edicoes = require __DIR__ . '/../data/edicoes.php';
-// publica a #3 (a visual, hoje rascunho) só na memória deste teste
-foreach ($edicoes as $i => $e) {
-    if ((int) $e['numero'] === 3) {
-        $edicoes[$i]['estado'] = 'publicada';
-    }
-}
-$com_ponto = secao_linha(html_banca('pt', $edicoes));
+// ═══ 2. COM PONTO: o caminho de sempre, agora no DADO REAL ══════════════════
+// Enquanto a #3 era rascunho, este bloco tinha que publicá-la em memória. Com
+// ela no ar, quem prova o caminho com ponto é o dado de verdade — e o teste
+// ficou mais forte: qualquer regressão no scrubber quebra contra a produção.
+$com_ponto = secao_linha(html_banca('pt'));
 
 eq(true, str_contains($com_ponto, 'id="lt-lista"'), 'com 1 ponto: a lista estática (fonte do scrubber) volta');
-eq(true, str_contains($com_ponto, 'data-num="3"'), 'com 1 ponto: a #3 é o ponto da linha');
+eq(true, str_contains($com_ponto, 'data-num="3"'), 'com 1 ponto: a #3 (publicada, visual, com frame) é o ponto da linha');
 eq(true, str_contains($com_ponto, 'data-rotulo='), 'com 1 ponto: o rótulo curto da marca vai no data-*');
 eq(false, str_contains($com_ponto, 'class="lt-vazio"'), 'com 1 ponto: o vazio-com-graça some');
 
-// o guard anti-rascunho segue de pé no dado REAL (a #3 continua fora da banca)
-eq(false, str_contains(secao_linha(html_banca('pt')), 'data-num="3"'), 'no dado real a #3 (rascunho) continua fora da linha');
+// ═══ 3. O GUARD ANTI-RASCUNHO (mudou de fixture, não de valor) ══════════════
+// A #3 era o rascunho que provava "rascunho não entra na linha". Publicada ela,
+// o fixture passa a ser a #4 — o exemplo de drip que o data/edicoes.php mantém
+// de propósito, e que já nasce com na_linha_tempo => true.
+// ⚠️ A #4 nasce SEM frame (para não spoilar), e edição sem frame não vira ponto
+// de jeito nenhum: o teste passaria mesmo com o filtro anti-rascunho quebrado.
+// Por isso o frame é injetado AQUI, em memória — assim a ÚNICA coisa que segura
+// a #4 fora do scrubber é o estado 'rascunho'.
+$por_numero = [];
+foreach ($edicoes as $e) {
+    $por_numero[(int) $e['numero']] = $e;
+}
+eq('rascunho', (string) ($por_numero[4]['estado'] ?? ''), 'pré-condição: a #4 é o rascunho que serve de fixture deste guard');
+eq(true, ($por_numero[4]['na_linha_tempo'] ?? false) === true, 'pré-condição: a #4 é da era visual (só o estado a segura fora)');
+
+$rascunho_visual = [];
+foreach ($edicoes as $e) {
+    if ((int) $e['numero'] === 4) {
+        $e['frame']        = '/assets/frames/edicao-3.png'; // um frame qualquer que exista em disco
+        $e['frame_alt_pt'] = 'frame de teste';
+        $e['frame_alt_en'] = 'test frame';
+    }
+    $rascunho_visual[] = $e;
+}
+$com_rascunho = secao_linha(html_banca('pt', $rascunho_visual));
+
+eq(true, str_contains($com_rascunho, 'data-num="3"'), 'controle: a #3 (publicada) continua sendo ponto da linha');
+eq(false, str_contains($com_rascunho, 'data-num="4"'), 'guard: a #4 (RASCUNHO, visual E com frame) fica fora da linha');
 
 if ($falhas > 0) {
     fwrite(STDERR, "\n{$falhas} de {$n} asserções FALHARAM\n");

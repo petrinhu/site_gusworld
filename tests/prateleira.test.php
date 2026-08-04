@@ -14,7 +14,7 @@ declare(strict_types=1);
  * um vazio na ponta). E uma conversao contagem → layout: a classe de bug que so
  * aparece na 5a edicao, quando ninguem esta olhando.
  *
- * Cobre tambem o caso VIVO de hoje (2 publicadas) sem tocar em data/edicoes.php:
+ * Cobre tambem o caso VIVO de hoje (3 publicadas) sem tocar em data/edicoes.php:
  * o array de exemplo aqui e local ao teste.
  */
 
@@ -65,7 +65,7 @@ $exemplo = [
     ['numero' => 3, 'estado' => 'rascunho',  'data' => '2026-06-22'],
 ];
 eq(2, count(edicoes_publicadas($exemplo)), 'so as publicadas contam (o rascunho fica fora)');
-eq(2, prateleira_colunas(count(edicoes_publicadas($exemplo))), 'banca de hoje: 2 publicadas → 2 colunas');
+eq(2, prateleira_colunas(count(edicoes_publicadas($exemplo))), 'banca de hoje: 3 publicadas');
 
 // e o caso do lancamento (so a #1 no ar) segue com a capa sozinha na fileira
 $so_uma = [
