@@ -1,0 +1,68 @@
+/* docs/design/og-card-3.css: o que e' PROPRIO da Edicao #3 "O Quadrado Azul":
+   o painel da direita e' a TELA DO JOGO, com a captura REAL do primeiro
+   prototipo jogavel (public_html/assets/frames/edicao-3.png, o mesmo frame que
+   a edicao publica). A edicao e' sobre a primeira coisa que se move, entao o
+   card mostra a coisa se movendo — nao um desenho dela.
+
+   ⚠️ O frame e' FOTO DE TELA: o arquivo inteiro traz a mesa de trabalho (o
+   cursor do mouse no canto inferior). O recorte abaixo pega SO' o interior da
+   janela do jogo (x 280..740, y 176..434 do PNG de 1024x576), fora a moldura
+   branca, fora o cursor, fora o desktop. Nao troque os numeros sem reconferir
+   o recorte: e' higiene, nao enquadramento.
+
+   O recorte, em conta: escala = 340/460 = 0,7391  →  a imagem de 1024x576 vai
+   a 757x426, deslocada -207px / -130px dentro do interior de 340x191.
+
+   O chassi (navy, scanlines, wordmark, tagline, rodape) vive em og-card.css.
+   Compartilhado pelo par pt/en: og-card-3.html e og-card-3-en.html. So o TEXTO
+   difere entre os dois; o desenho e' este, um so'. */
+
+  /* o miolo cede largura ao painel: a tagline da #3 tem 3 linhas e nao pode
+     encostar na tela. (Local ao par pt/en da #3 — o chassi serve 6 cards.) */
+  .mid, .tagline { max-width: 660px; }
+  .tagline { font-size: 36px; }
+
+  /* ── O PAINEL: a tela onde o quadrado azul esta' andando ─────────────────── */
+  .tela {
+    position: absolute;
+    z-index: 2;
+    right: 84px; top: 204px;
+    width: 340px; height: 191px;
+    border: 2px solid var(--borda);
+    background: var(--navy);
+    box-shadow:
+      inset 0 0 40px rgba(0,0,0,.5),
+      0 0 0 6px rgba(13,21,32,.6),
+      0 0 34px rgba(77,217,232,.20);
+  }
+
+  /* o INTERIOR recorta a captura e segura a varredura por cima dela */
+  .tela .interior {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+
+  /* a captura real, posicionada pelo recorte descrito no cabecalho */
+  .tela .frame {
+    position: absolute;
+    left: -207px; top: -130px;
+    width: 757px; height: 426px;
+  }
+
+  /* scanlines locais: dentro da moldura a varredura e' mais forte (igual #2) */
+  .tela .varredura {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,.22) 3px,
+      rgba(0,0,0,0) 4px
+    );
+  }
+
+  /* vinheta interna: afunda os cantos e devolve o miolo pro quadrado */
+  .tela .vinheta {
+    position: absolute; inset: 0;
+    box-shadow: inset 0 0 46px 10px rgba(13,21,32,.62);
+  }

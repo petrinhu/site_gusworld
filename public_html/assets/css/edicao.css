@@ -210,10 +210,18 @@ main{display:block}
   color:var(--papel); background:var(--tinta-preta);
   padding:3px 7px; letter-spacing:.06em; flex:0 0 auto;
 }
-/* nome de seção: title-case → piso seguro de 15px pra o N não virar H */
+/* nome de seção: title-case. O N do PixelOperatorMono degrada em H no peso
+   BOLD (600/700 caem no mesmo arquivo -Bold) em qualquer tamanho — media: "A
+   Nota" lia "A Hota" em toda edição publicada. Peso 400 devolve o glifo; a
+   DUPLA-BATIDA (o mesmo glifo repetido 1px adiante, como impressora batendo
+   duas vezes) devolve o corpo visual do bold sem deformar o desenho.
+   ⚠️ A batida tem de ser VERTICAL. Medido nas 12 fases de subpixel, nos dois
+   papéis: com 1px HORIZONTAL a cópia preenche a contra-forma ao lado da
+   diagonal e o N volta a ler H — o mesmo defeito por outra via. */
 .secao-nome{
-  font-family:var(--font-display); font-weight:700; font-size:15px;
+  font-family:var(--font-display); font-weight:400; font-size:15px;
   letter-spacing:.02em; color:var(--tinta-preta); margin:0;
+  text-shadow:0 1px 0 currentColor;
 }
 /* rótulo de grupo pixel <15px → minúsculo (guard N→H) */
 .secao .grupo{

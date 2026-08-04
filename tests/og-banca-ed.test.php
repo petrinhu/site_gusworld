@@ -121,14 +121,44 @@ $com_abc = render_com_ed('abc');
 $com_tra = render_com_ed('../etc/passwd');
 $com_tag = render_com_ed('<script>alert(1)</script>');
 
-// O dado real de hoje: a #3 é a mais nova publicada e NÃO tem card próprio; a
-// #2 é publicada com card; a #1 é publicada sem card. O rascunho da vez é a #4
-// (o exemplo de drip que o data/edicoes.php mantém de propósito) — é ela que
-// exercita o guard anti-rascunho, no bloco lá embaixo.
-eq($base . '/assets/og-launch.jpg', og_do_html($sem), 'sem parâmetro → a mais nova (#3) não tem card próprio, então cai no default');
+// O dado real de hoje (2026-08-04): as TRÊS publicadas têm card próprio — a #3
+// (a mais nova) ganhou o dela; a #2 tem o da Arquitetura; a #1 declara o card de
+// lançamento, que por coincidência é o MESMO arquivo que o head.php usa de
+// default. O rascunho da vez é a #4 (o exemplo de drip que o data/edicoes.php
+// mantém de propósito) — é ela que exercita o guard anti-rascunho, mais abaixo.
+// ⚠️ Como ninguém mais está sem card, os dois caminhos de FALLBACK deixaram de
+// ter fixture no dado real: eles são cobertos por fixture no bloco "GUARD DO
+// DEFAULT" lá embaixo. Sem isso, o default só seria exercitado por lixo de URL.
+eq($base . '/assets/og-edicao-3.jpg', og_do_html($sem), 'sem parâmetro → o card da mais nova (#3): a porta da frente mostra o que acabou de sair');
 eq($base . '/assets/og-edicao-2.jpg', og_do_html($com_2), '?ed=2 → o card da #2');
-eq($base . '/assets/og-launch.jpg', og_do_html($com_1), '?ed=1 (sem card próprio) → o default /assets/og-launch.jpg');
-eq($base . '/assets/og-launch.jpg', og_do_html($com_3), '?ed=3 (publicada, sem card próprio) → default, NÃO o card de outra edição');
+// ⚠️ MENSAGEM CORRIGIDA (era "?ed=1 (sem card próprio) → o default"): a #1
+// DECLARA `og_image` desde 2026-07-25. O arquivo bate com o default, então o
+// valor sozinho NÃO distingue "resolveu no card dela" de "caiu no default" — a
+// asserção estava verde afirmando uma coisa e medindo outra. Quem separa os dois
+// é og_card_banca() no núcleo puro (resolver devolve string, default devolve
+// null): a asserção logo abaixo desta faz essa prova.
+eq($base . '/assets/og-launch.jpg', og_do_html($com_1), '?ed=1 → o card próprio da #1 (mesmo arquivo do default, resolução diferente)');
+eq($base . '/assets/og-edicao-3.jpg', og_do_html($com_3), '?ed=3 → o card próprio da #3 (permalink congelado no card DELA)');
+// ── RESOLVEU × CAIU NO DEFAULT: a prova que o valor sozinho não dá ──────────
+// O `?ed=1` acima devolve o mesmo arquivo nos dois cenários, então ele NÃO é
+// capaz de acusar uma regressão que fizesse a #1 parar de resolver. O núcleo
+// puro é: `null` = caiu no default do head.php, string = resolveu no dado. Aqui
+// a diferença fica visível — e a pré-condição trava a premissa (se um dia a #1
+// deixar de declarar card, é este par que avisa, não uma meta tag ambígua).
+$edicoes_reais = require __DIR__ . '/../data/edicoes.php';
+$por_numero    = [];
+foreach ($edicoes_reais as $e) {
+    $por_numero[(int) $e['numero']] = $e;
+}
+$capas_reais = [];
+foreach (edicoes_publicadas($edicoes_reais) as $e) {
+    $capas_reais[] = ['numero' => (int) $e['numero'], 'og_image' => $e['og_image'] ?? null];
+}
+
+eq('/assets/og-launch.jpg', (string) ($por_numero[1]['og_image'] ?? ''), 'pré-condição: a #1 DECLARA card próprio, e ele é o mesmo arquivo do default');
+eq('/assets/og-launch.jpg', og_card_banca($capas_reais, '1'), '?ed=1 RESOLVE no card da #1 (não-null): não é o default agindo por coincidência');
+eq('/assets/og-edicao-3.jpg', og_card_banca($capas_reais, null), 'link nu → resolve no card da mais nova (#3), sem passar pelo default');
+
 eq($base . '/assets/og-launch.jpg', og_do_html($com_99), '?ed=99 (não existe) → default');
 eq($base . '/assets/og-launch.jpg', og_do_html($com_abc), '?ed=abc → default');
 eq($base . '/assets/og-launch.jpg', og_do_html($com_tra), '?ed=../etc/passwd → default');
@@ -188,11 +218,7 @@ eq($conta($sem), $conta($com_3), '?ed=3 não muda a quantidade de capas');
 // quebrado, o que faria este teste passar sem testar nada. Por isso o card é
 // injetado AQUI, em memória, com um nome que não existe em lugar nenhum: assim
 // a ÚNICA coisa que segura esse card fora do HTML é o estado 'rascunho'.
-$edicoes_reais = require __DIR__ . '/../data/edicoes.php';
-$por_numero    = [];
-foreach ($edicoes_reais as $e) {
-    $por_numero[(int) $e['numero']] = $e;
-}
+// ($edicoes_reais e $por_numero já vêm do bloco "RESOLVEU × CAIU NO DEFAULT".)
 eq('rascunho', (string) ($por_numero[4]['estado'] ?? ''), 'pré-condição: a #4 é o rascunho que serve de fixture deste guard');
 
 const CARD_VAZAMENTO = '/assets/og-rascunho-NAO-DEVE-VAZAR.jpg';
@@ -213,14 +239,54 @@ eq(false, str_contains($rasc_sem, 'NAO-DEVE-VAZAR'), 'nem no link nu: o rascunho
 eq(3, $conta($rasc_4), '?ed=4 (rascunho) não faz a #4 aparecer na estante (segue em 3 folhas)');
 eq(3, $conta($rasc_sem), 'o rascunho não entra na estante nem sem parâmetro');
 
+// ── O GUARD DO DEFAULT: os dois fallbacks, que perderam o fixture real ──────
+// Até 2026-08-04 o dado real exercitava sozinho os dois caminhos de fallback,
+// porque havia edição publicada SEM card (a #3 era uma). Com todas as publicadas
+// declarando card, o default passou a ser alcançado só por lixo de URL (?ed=abc
+// e companhia) — e lixo de URL exercita o ramo "não casou com ninguém", que é
+// OUTRO ramo. Os dois abaixo ficariam sem cobertura no HTML renderizado, e a
+// regressão típica deles é justamente a que o `?ed=` existe para impedir: cair
+// no card da MAIS NOVA e reescrever o preview de um post já publicado.
+// Fixture pelo mesmo seam do guard anti-rascunho: cópia do dado real, sem card.
+$sem_o_card_da = static function (array $edicoes, int $numero): array {
+    $saida = [];
+    foreach ($edicoes as $e) {
+        if ((int) $e['numero'] === $numero) {
+            unset($e['og_image'], $e['capa_en']);
+        }
+        $saida[] = $e;
+    }
+
+    return $saida;
+};
+
+// (a) a MAIS NOVA sem card próprio → o link nu cai no default do head.php.
+//     Se caísse na "próxima que tenha card", sairia o og-edicao-2.jpg.
+$fix_mais_nova = $sem_o_card_da($edicoes_reais, 3);
+eq($base . '/assets/og-launch.jpg', og_do_html(render_com_ed(null, 'pt', $fix_mais_nova)), 'mais nova SEM card → link nu cai no default (não busca a próxima que tenha)');
+eq($base . '/assets/og-launch.jpg', og_do_html(render_com_ed(null, 'en', $fix_mais_nova)), 'en: idem — o default é o mesmo arquivo nos dois idiomas');
+
+// (b) `?ed=N` de uma PUBLICADA sem card próprio → default fixo, NUNCA o card da
+//     mais nova. A #2 é o fixture certo aqui: o card dela (og-edicao-2.jpg) não
+//     coincide com o default, então o valor esperado só é alcançável pelo
+//     fallback — e o valor da regressão (og-edicao-3.jpg) é distinto dos dois.
+$fix_2  = $sem_o_card_da($edicoes_reais, 2);
+$ed2_og = og_do_html(render_com_ed('2', 'pt', $fix_2));
+eq($base . '/assets/og-launch.jpg', $ed2_og, '?ed=2 (publicada, SEM card) → default fixo');
+eq(false, str_contains($ed2_og, 'og-edicao-3'), 'e o permalink NÃO herda o card da mais nova (o preview do post antigo não se reescreve)');
+eq(3, $conta(render_com_ed('2', 'pt', $fix_2)), 'a edição sem card continua na estante (o card ausente não some com a folha)');
+
 // ── o gêmeo EN: o card é único, o parâmetro funciona igual ──────────────────
 $en_sem = render_com_ed(null, 'en');
 $en_2   = render_com_ed('2', 'en');
 $en_1   = render_com_ed('1', 'en');
-eq($base . '/assets/og-launch.jpg', og_do_html($en_sem), 'en: sem parâmetro → o mesmo default do pt (a mais nova, #3, não tem card)');
+eq($base . '/assets/og-edicao-3.jpg', og_do_html($en_sem), 'en: sem parâmetro → o card da mais nova, em PORTUGUÊS (o social não tem idioma)');
 eq(og_do_html($sem), og_do_html($en_sem), 'en: o card do link nu é o MESMO do pt (o card não tem idioma)');
+eq(false, str_contains(og_do_html($en_sem), '-en.jpg'), 'en: a variante inglesa da capa (og-edicao-3-en) NÃO vaza para a meta tag');
 eq($base . '/assets/og-edicao-2.jpg', og_do_html($en_2), 'en: ?ed=2 → o mesmo card (o card é único, não tem idioma)');
-eq($base . '/assets/og-launch.jpg', og_do_html($en_1), 'en: ?ed=1 → default');
+// ⚠️ MENSAGEM CORRIGIDA (era "en: ?ed=1 → default"): mesma coincidência de
+// arquivo do caso pt lá em cima — a #1 resolve, não cai no default.
+eq($base . '/assets/og-launch.jpg', og_do_html($en_1), 'en: ?ed=1 → o card próprio da #1 (mesmo arquivo do default, resolução diferente)');
 eq($base . '/en/', canonical_do_html($en_2), 'en: canonical limpo da home inglesa');
 
 // ── o card existe mesmo no disco (link quebrado no X é preview em branco) ────

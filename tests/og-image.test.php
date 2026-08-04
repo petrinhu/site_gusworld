@@ -14,6 +14,13 @@ declare(strict_types=1);
  * dá erro, ela só passa a mostrar o card ERRADO no X/Bluesky (e o preview de
  * link é imutável no post já publicado). Cobre os dois lados: a edição que tem
  * card próprio e a que não tem (default preservado).
+ *
+ * ⚠️ ONDE MORA CADA LADO (mudou quando a #3 ganhou card, 2026-08-04): desde que
+ * a #3 passou a declarar `og_image`, TODA edição publicada tem card próprio —
+ * logo o lado "não tem card" NÃO é mais exercitado pelo dado real aqui, e passa
+ * a viver inteiro nas entradas SINTÉTICAS de entrada() (as três asserções de
+ * null lá em cima). O lado equivalente no HTML renderizado (a mais nova sem
+ * card → default do head.php) é coberto por fixture em og-banca-ed.test.php.
  */
 
 require_once __DIR__ . '/../src/lib/config.php';
@@ -73,7 +80,7 @@ eq('/assets/og-edicao-7.jpg', $com_en['og_image'], 'en: o mesmo card serve o par
 $nulo = montar_contexto(entrada(['og_image' => null]), 'pt');
 eq(null, $nulo['og_image'], 'og_image null explícito → null (não vira string vazia)');
 
-// ── o DADO REAL: a #2 tem card próprio; as demais seguem no default ──────────
+// ── o DADO REAL: as 3 publicadas declaram card próprio ──────────────────────
 $edicoes = require __DIR__ . '/../data/edicoes.php';
 $por_numero = [];
 foreach ($edicoes as $e) {
@@ -94,16 +101,37 @@ eq(
     montar_contexto($por_numero[1], 'pt')['og_image'],
     'a #1 aponta para o próprio card de lançamento'
 );
+// ★ a #3 ganhou card próprio em 2026-08-04 (decisão editorial). Ela é a MAIS
+// NOVA publicada, e é por isso que este campo pesa mais que os outros: é o card
+// dela que a home serve no link nu (og_card_banca(), sem `?ed=`), ou seja, é a
+// porta da frente do site. Antes disso a home saía com o card de LANÇAMENTO.
 eq(
-    null,
+    '/assets/og-edicao-3.jpg',
     montar_contexto($por_numero[3], 'pt')['og_image'],
-    'a #3 não define card próprio'
+    'a #3 aponta para o card próprio (O Quadrado Azul)'
+);
+eq(
+    '/assets/og-edicao-3.jpg',
+    montar_contexto($por_numero[3], 'en')['og_image'],
+    'en: a #3 serve o MESMO card (o social não tem idioma; quem varia é a capa)'
 );
 
 // ── os arquivos dos cards existem no disco e são publicáveis ────────────────
 // (a estante da banca também os serve como ARTE DE CAPA: um card faltando no
 // disco tira a arte da capa em silêncio, então a existência é asserção.)
-foreach (['/assets/og-edicao-2.jpg' => 2, '/assets/og-launch.jpg' => 1] as $rel => $num) {
+// ★ ENUMERADO a partir do dado, não à mão: a lista escrita à mão envelhece em
+// silêncio (foi o que aconteceu quando a #3 entrou). O piso logo abaixo existe
+// para o laço não poder rodar VAZIO e "passar" sem verificar nada.
+$cards_publicados = [];
+foreach (edicoes_publicadas($edicoes) as $e) {
+    $rel = (string) ($e['og_image'] ?? '');
+    if ($rel !== '') {
+        $cards_publicados[(int) $e['numero']] = $rel;
+    }
+}
+eq(3, count($cards_publicados), 'piso: as 3 edições publicadas declaram card próprio (o laço abaixo não roda vazio)');
+
+foreach ($cards_publicados as $num => $rel) {
     $card = __DIR__ . '/../public_html' . $rel;
     eq(true, is_file($card), "o card da #{$num} existe em public_html{$rel}");
     $dim = is_file($card) ? getimagesize($card) : false;

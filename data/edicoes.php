@@ -132,6 +132,14 @@ return [
         'frame'          => '/assets/frames/edicao-3.png',
         'frame_alt_pt'   => 'Um quadrado azul num cenário de teste, o primeiro protótipo jogável.',
         'frame_alt_en'   => 'A blue square in a test scene, the first playable prototype.',
+        // Card social próprio (1200x630) desta edição: a captura real do
+        // primeiro protótipo, dentro da tela. Gerador em docs/design/og-card-3.html.
+        // Sem ele, a MAIS NOVA (esta) derrubava o og:image da home no default
+        // /assets/og-launch.jpg — a porta da frente saía com o card de lançamento.
+        'og_image'       => '/assets/og-edicao-3.jpg',
+        // A CAPA da estante em INGLÊS (ver a nota da #1). Gerador:
+        // docs/design/og-card-3-en.html (o mesmo desenho, só o texto muda).
+        'capa_en'        => '/assets/og-edicao-3-en.jpg',
         // UPTIME das sessões de trabalho no expediente do masthead. Da #3 EM
         // DIANTE (decisão do líder: a #1 e a #2 ficam sem o campo, e por isso
         // sem a linha). Mapa projeto => HORAS; os dias saem derivados no PHP.
