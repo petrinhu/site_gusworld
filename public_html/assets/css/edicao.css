@@ -450,9 +450,23 @@ main{display:block}
 .conteudo .specs th,.conteudo .specs td{
   text-align:left; padding:7px clamp(5px,1.2vw,12px); border-bottom:1px solid var(--borda);
 }
+/* ⚠️⚠️ PESO 400 OBRIGATÓRIO, e o motivo é um defeito de glifo MEDIDO em
+   2026-08-04, mais amplo do que o guard que já estava registrado.
+   O guard conhecido dizia "o N maiúsculo da PixelOperatorMono vira H ABAIXO de
+   15px". Medido num espécime de 14 a 20px, peso a peso:
+     peso 400  -> N correto de 15px para cima  (o guard conhecido)
+     peso 700  -> N lê H em TODOS os corpos testados, 14px a 20px
+     peso 600  -> idem
+   Ou seja: no ARQUIVO BOLD da fonte a diagonal do N some, e NENHUM tamanho
+   resolve. O <th> é negrito por regra do próprio navegador, então a tabela
+   herdava o defeito sem ninguém pedir - e a #2, já publicada, imprime
+   "GAHHO HOS HOT PATHS" no lugar de "GANHO NOS HOT PATHS".
+   O peso não era o que dava hierarquia ao cabeçalho: quem dá é o filete de 2px
+   embaixo e a tinta cheia contra o --tinta-2 das células. Tirar o negrito não
+   custa nada e devolve a palavra. NÃO reintroduzir bold aqui. */
 .conteudo .specs thead th{
   border-bottom:2px solid var(--tinta-preta); color:var(--tinta-preta);
-  letter-spacing:0; text-transform:uppercase; font-size:15px;
+  letter-spacing:0; text-transform:uppercase; font-size:15px; font-weight:400;
 }
 .conteudo .specs td:first-child{color:var(--tinta-2)}
 .conteudo .specs td:last-child{color:var(--tinta-preta)}
@@ -1982,3 +1996,558 @@ html.lightbox-aberto{overflow:hidden}
   .hal-eye{animation:none}
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════════
+   EDIÇÃO #3 · as peças novas
+   Portadas dos mocks 17 (Detonado censurado), 18 (a HQ do quadrado) e 19 (o
+   pôster central), mais as duas formas do // e a moldura da Entrevista.
+   ⚠️ TUDO ESCOPADO. Os mocks usavam nomes genéricos (.tarja, .quadro, .num,
+   .cena, .corpo) que colidiriam com o resto da revista; aqui cada peça vive
+   dentro do seu wrapper (.det-doc / .hq3 / .enc) e nada vaza.
+   Zero JS · zero animação nas 3 peças (as três vão IMPRESSAS: têm que dizer a
+   mesma coisa paradas) -> nada a desligar em prefers-reduced-motion.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── as DUAS FORMAS DO // (decisão do editor-geral, 2026-08-03) ──
+   1) APARTE CURTO embutido na prosa: já é o .pensa de sempre (a Galeria usa).
+   2) BLOCO SEPARADO ao fim da peça, para a confissão longa (o Editorial usa).
+   O bloco ganha um fio à esquerda e linhas coladas, para ler como uma coisa só
+   em vez de nove pensamentos soltos. Mesma cor/corpo do .pensa (15px é piso do
+   guard N->H: o // é a camada honesta e tem que ler limpo). */
+.conteudo .pensa-bloco{
+  margin:clamp(16px,2.6vw,22px) 0 0; padding:10px 0 10px 14px;
+  border-left:2px solid #35562f4d;
+}
+.conteudo .pensa-bloco .pensa{margin:0 0 2px}
+.conteudo .pensa-bloco .pensa:last-child{margin-bottom:0}
+
+/* ── §16 · a ENTREVISTA: as trocas ──
+   Cada troca é um par pergunta/resposta com os dois pensamentos. O respiro
+   ENTRE trocas é o que faz o leitor ver nove blocos e não uma parede.
+   O // do Cauã é o MESMO verde do Gus de propósito: os dois pensam na mesma
+   página, e quem diferencia é o prompt logo acima, não a cor. */
+.conteudo .entrev .troca{margin:0 0 clamp(20px,3.4vw,30px)}
+.conteudo .entrev .troca:last-child{margin-bottom:0}
+.conteudo .entrev .pensa{margin-bottom:clamp(12px,2vw,16px)}
+.conteudo .entrev .pensa + .pensa{margin-top:-6px}
+
+/* ── §17 · a DESCULPA FURADA em bloco de terminal (canon novo da #3) ──
+   Reusa .crt-scr/.crt-tela. NÃO é decorativa (é a voz do root e o leitor lê),
+   por isso não leva aria-hidden e não pode encolher. */
+.conteudo .crt-scr.desculpa{margin:clamp(14px,2.4vw,20px) 0}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   §08 · o DOCUMENTO DESCLASSIFICADO (porte do mock 17)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* o documento é o palco do carimbo: position:relative para ancorá-lo e
+   overflow:hidden para que o retângulo girado a -17deg não escape da coluna
+   (guard: nada de rolagem horizontal por causa da arte). */
+.conteudo .det-doc{position:relative; overflow:hidden; padding-top:4px}
+.conteudo .det-doc > *{position:relative; z-index:1}
+
+/* a voz do root: a diferença é a COR, medida no mock contra os três papéis
+   (--voz-root #9a1815 = 7.28 no papel novo · 7.03 nesta folha · 5.06 no pior
+   papel da banca, a #1 encardida). Foi escolhida ENUMERANDO candidatos: os
+   vermelhos mais vivos (#a81f1b=4.43, #b3221d=4.03, #c0272d=3.57) REPROVAM AA
+   no papel da #1. ⚠️ Escopo restrito ao Detonado de propósito: aplicar vermelho
+   a toda voz root da revista é decisão do editor-geral, não deste porte. */
+.conteudo .det-doc{--voz-root:#9a1815}
+.conteudo .det-doc .fala.root .prompt{color:var(--voz-root)}
+.conteudo .det-doc .fala.root .dito{color:var(--tinta-preta)}
+
+.conteudo .det-legenda{
+  font-family:var(--font-corpo); font-style:italic;
+  font-size:clamp(14.5px,2vw,15.5px); line-height:1.5; color:var(--tinta-2);
+  max-width:56ch; margin:12px 0 clamp(14px,2.4vw,20px);
+}
+.conteudo .det-fecho{margin-bottom:clamp(14px,2.4vw,20px)}
+.conteudo .det-glosa{
+  font-family:var(--font-corpo); font-size:14.5px; line-height:1.5;
+  color:var(--tinta-2); margin:6px 0 0;
+}
+
+/* ── a transcrição: papel dentro do papel, a folha datilografada colada ──
+   ⚠️ ROLA NA HORIZONTAL, não encolhe a fonte. O mock descia a 11,5px no
+   estreito; aqui o piso é 15px porque isto é texto que o leitor LÊ e a
+   PixelOperatorMono degrada abaixo disso (o N vira H, o 2 vira Z - e "2632" é
+   justamente o número que a seção existe para dizer). O overflow-x:auto é o
+   mesmo recurso que a .tela-real já usa: a caixa rola, a página nunca. */
+.conteudo .det-transcricao{
+  margin:6px 0 4px; padding:16px 14px 14px;
+  background:#00000008;
+  border-top:2px solid var(--tinta-preta);
+  border-bottom:2px solid var(--tinta-preta);
+  box-shadow:inset 0 0 0 1px #0000000d;
+  overflow-x:auto; overflow-y:hidden;
+}
+.conteudo .det-transcricao .cab{
+  display:block; margin:0 0 10px;
+  font-family:var(--font-display); font-size:15px; letter-spacing:.04em; color:var(--tinta-2);
+}
+.conteudo .det-linhas{
+  margin:0; font-family:var(--font-display); font-size:15px;
+  line-height:1.85; color:var(--tinta-preta);
+}
+/* ⚠️ ALINHAMENTO SEM VAZAMENTO: a linha é um FLEX de 3 peças e quem estica é a
+   dos pontinhos. O "ok" alinha por LAYOUT, não por contagem de caractere - é
+   isso que permite a tarja ter largura arbitrária sem quebrar a coluna, e sem
+   que a largura signifique nada. */
+.conteudo .det-linha{display:flex; align-items:baseline; gap:6px; white-space:nowrap}
+.conteudo .det-linha .nome{flex:0 0 auto}
+.conteudo .det-linha .pontos{flex:1 1 auto; min-width:12px; overflow:hidden; color:var(--tinta-2)}
+.conteudo .det-linha .ok{flex:0 0 auto; color:var(--tinta-preta)}
+.conteudo .det-linhas .total{
+  display:block; margin-top:14px; padding-top:10px;
+  border-top:1px dashed #00000030; color:var(--tinta-preta); white-space:nowrap;
+  font-size:16px;
+}
+/* ⚠️ NO ESTREITO A LINHA QUEBRA, e a alternativa era pior. Medido no render de
+   390px: a coluna útil da transcrição dá 322px e a linha mais longa (em EN,
+   "[arena] ▮▮▮ does not act outside its own turn") mede ~360px a 15px. Com a
+   linha em nowrap o "ok" saía do quadro e só voltava rolando a caixa - ou seja,
+   a informação que a seção inteira existe para dizer ("passou") ficava fora da
+   vista, sem nenhum aviso de que havia mais à direita.
+   As três saídas possíveis e por que esta:
+     (a) encolher a fonte  -> é o que o mock fazia (11,5px), e é justamente o que
+         a regra da casa proíbe em texto que o leitor LÊ: a PixelOperatorMono
+         degrada abaixo de 15px (N vira H, 2 vira Z, s vira o);
+     (b) rolar a caixa     -> o "ok" fica escondido atrás de um gesto que ninguém
+         adivinha num bloco que parece estático;
+     (c) QUEBRAR A LINHA   -> perde-se o alinhamento em coluna do "ok" (que é
+         enfeite de terminal) e ganha-se a leitura inteira em corpo seguro.
+   Os pontinhos somem porque só existem PARA alinhar; sem coluna, seriam ruído. */
+@media (max-width:620px){
+  .conteudo .det-transcricao{overflow-x:visible}
+  .conteudo .det-linha{display:block; white-space:normal; line-height:1.55; margin-bottom:6px}
+  .conteudo .det-linha .pontos{display:none}
+  .conteudo .det-linha .ok{margin-left:8px}
+  .conteudo .det-linhas .total{white-space:normal}
+}
+
+/* ── A TARJA ──
+   ⛔ Elemento VAZIO. Não há texto por baixo, não há atributo com o termo, não
+   há comentário. O aria-label diz "trecho censurado" e nada mais.
+   user-select:none para que arrastar o mouse não copie coisa nenhuma. */
+.conteudo .det-tarja{
+  display:inline-block; vertical-align:-.12em;
+  height:1.05em; background:#000; width:7ch;   /* fallback; o ciclo abaixo manda */
+  -webkit-user-select:none; user-select:none; pointer-events:none;
+  box-shadow:0 0 0 .5px #00000040;   /* a tinta empasta um fio além da barra */
+}
+/* ⚠️ LARGURAS QUANTIZADAS, sorteadas pela POSIÇÃO DA LINHA. Quatro tamanhos
+   fixos num ciclo de 4. Nenhum olha o conteúdo: trocar o texto das linhas não
+   muda largura nenhuma, e por isso a largura não pode entregar contagem de
+   letras. Parece natural sem significar nada. */
+.conteudo .det-linha:nth-of-type(4n+1) .det-tarja{width:4ch}
+.conteudo .det-linha:nth-of-type(4n+2) .det-tarja{width:11ch}
+.conteudo .det-linha:nth-of-type(4n+3) .det-tarja{width:7ch}
+.conteudo .det-linha:nth-of-type(4n)   .det-tarja{width:9ch}
+
+/* ── O CARIMBO ──
+   Retângulo de cantos arredondados, borda vermelha, CENSURADO!!! dentro,
+   "sterling corp." miúdo no canto inferior direito. Torto e descuidado: -17deg
+   (não 15, que é o ângulo de quem está prestando atenção), fora do centro,
+   espessura de borda irregular nos quatro lados, raio diferente em cada canto,
+   e a palavra girada mais um fio em relação à moldura.
+   DECORATIVO: aria-hidden + pointer-events:none, fora da ordem de leitura.
+   ⚠️ NADA de opacity nem mix-blend-mode AQUI: o .det-carimbo é só a caixa que
+   posiciona e gira. Opacity no pai criaria isolamento de grupo e o multiply do
+   filho passaria a misturar com o vazio do grupo em vez de com a página. */
+.conteudo .det-carimbo{
+  position:absolute; z-index:6; pointer-events:none;
+  -webkit-user-select:none; user-select:none;
+  /* ⚠️ top:30% e não 43% (o número do mock): lá a peça era uma página inteira e
+     43% caía sobre prosa; aqui a seção é mais curta e o mesmo 43% jogava o
+     carimbo em cima do cabeçalho da transcrição, tapando "trecho" e a primeira
+     linha de teste. Em 30% ele cruza prosa nos dois tamanhos (medido em 1200 e
+     em 390) e continua atravessando o documento, que é o gesto da peça. */
+  left:50%; top:30%; width:min(80%,470px);
+  translate:-52% -46%;   /* fora do centro de propósito */
+  rotate:-17deg;
+  --carimbo-tinta:#b81f26;
+}
+/* ⚠️ A MÁSCARA DE TINTA GASTA MORA NA .moldura, NÃO no .det-carimbo: a máscara
+   é um mosaico de manchas em posição FIXA na caixa, e sobre o carimbo inteiro
+   uma delas comia metade do "sterling corp." (visto no render do mock, não
+   suposto). O rótulo tem requisito explícito - "bem pequeno mas ainda visível"
+   - então fica FORA da camada mascarada.
+   ⚠️ Teto de opacidade .70, e o número tem conta: o texto preto por baixo do
+   carimbo (multiply) fica em 5.30:1 com .62, 4.60:1 com .70 e cai para 3.98:1
+   com .78. Acima de .70 o carimbo atrapalha a leitura de verdade. Não subir.
+   O SVG da máscara leva dimensão EXPLÍCITA, senão o Gecko descarta o filtro e
+   a máscara vira um retângulo opaco. */
+.conteudo .det-carimbo .moldura{
+  display:block; opacity:.70; mix-blend-mode:multiply;
+  padding:clamp(10px,2.4vw,20px) clamp(14px,4vw,30px) clamp(16px,3.4vw,26px);
+  border-style:solid; border-color:var(--carimbo-tinta);
+  border-width:3.5px 5px 4.5px 3px;                       /* espessura irregular */
+  border-radius:17px 12px 19px 13px / 13px 18px 12px 17px;
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='w' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='4.2' intercept='-0.28'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23w)'/%3E%3C/svg%3E");
+          mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='w' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='4.2' intercept='-0.28'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23w)'/%3E%3C/svg%3E");
+  -webkit-mask-size:320px 320px; mask-size:320px 320px;
+  -webkit-mask-repeat:repeat;    mask-repeat:repeat;
+  -webkit-mask-position:18px 42px; mask-position:18px 42px;
+}
+.conteudo .det-carimbo .txt{
+  display:block; text-align:center;
+  font-family:var(--font-manchete); font-weight:700; text-transform:uppercase;
+  font-size:clamp(25px,6.6vw,50px); line-height:1; letter-spacing:.05em;
+  color:var(--carimbo-tinta);
+  margin-left:.14em;   /* nem o texto está centrado direito */
+  rotate:.7deg;        /* batido torto DENTRO da moldura torta */
+}
+/* ⚠️⚠️ O RÓTULO FICA FORA DO MULTIPLY, e este é o achado que só o render deu.
+   Com o "sterling corp." dentro da camada multiplicada, a cauda dele caía em
+   cima de uma palavra do corpo e SUMIA: vermelho multiplicado por tinta preta
+   dá preto. ⚠️⚠️ E NÃO TEM HALO - halo da cor do papel APAGA o que estiver
+   embaixo (medido: a palavra inteira "se" lavada em 430px). A legibilidade vem
+   da COR: o rótulo tem DOIS fundos reais (papel e tinta do corpo) e a tinta foi
+   escolhida enumerando os dois - #c54c4e dá 3.74:1 no papel e 3.87:1 sobre o
+   texto, praticamente o teto teórico (~4:1) para uma cor única servindo fundos
+   opostos. Segue DECORATIVO, e por isso abaixo de 4.5:1 é aceito.
+   ⚠️ 12.8px é piso (aqui é Archivo Narrow, nada a ver com o defeito da pixel):
+   abaixo disso a cauda do rótulo, ao cruzar palavra, vira mancha. */
+.conteudo .det-carimbo .corp{
+  position:absolute; right:clamp(20px,4vw,34px); bottom:clamp(9px,1.8vw,16px);
+  font-family:var(--font-manchete); font-weight:700;
+  font-size:clamp(12.8px,2vw,13.5px); letter-spacing:.045em;
+  color:color-mix(in srgb, var(--carimbo-tinta) 78%, var(--papel)); rotate:.4deg;
+}
+
+/* IMPRESSÃO: a peça é papel, imprimir é o caso normal. A tarja PRECISA sair
+   preta, senão o navegador economiza tinta e imprime a barra vazia - e um
+   documento censurado com a barra branca deixa de ser o que é. Não há risco de
+   revelar nada: não há nada embaixo. */
+@media print{
+  .conteudo .det-tarja{background:#000 !important;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .conteudo .det-carimbo{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .conteudo .det-transcricao{overflow:visible}
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   §11 · a TIRINHA DO QUADRADO (porte do mock 18)
+   ⛔ NÃO EXISTE DESENHO: retângulo, borda, hachura e posição. O elenco é um
+   quadrado e uma sala, e ele NÃO ganha olho, boca nem braço - a graça é ele
+   ser um quadrado. ★ A piada é a economia: o quadro 3 é quase pixel-por-pixel
+   o quadro 2. Dar um desfecho ao quadro 3 mata a tirinha.
+   ═══════════════════════════════════════════════════════════════════════ */
+.conteudo .hq3{margin:clamp(10px,2vw,16px) 0}
+/* ⚠️ 1 COLUNA OU 3 COLUNAS, NUNCA 2+1: auto-fit daria 2 em cima e 1 embaixo por
+   volta de 600px, e a tirinha quebrada em 2+1 perde a leitura da esquerda para
+   a direita, que É a piada (o quadro 3 só funciona como repetição do 2). */
+.conteudo .hq3 .tira{list-style:none; margin:0; padding:0; display:grid; gap:16px; grid-template-columns:1fr}
+@media (min-width:640px){ .conteudo .hq3 .tira{grid-template-columns:repeat(3,1fr); gap:14px} }
+.conteudo .hq3 .tira > li{margin:0}
+.conteudo .hq3 figure{margin:0}
+
+/* o painel. As proporções da cena vivem em custom properties: mudar --piso ou
+   --parede move chão e parede nos TRÊS quadros de uma vez, e o alinhamento
+   entre eles é o que faz o quadro 3 ler como repetição do 2. */
+.conteudo .hq3 .cena{
+  --piso:29%;      /* altura da faixa de chão */
+  --parede:15%;    /* largura da parede da direita */
+  --q:25%;         /* lado do quadrado, em % da largura do painel */
+  position:relative; aspect-ratio:4/3; overflow:hidden; background:transparent;
+}
+/* ⚠️ A MOLDURA É UM PSEUDO-ELEMENTO POR CIMA, não a border do .cena: com border
+   no próprio .cena os filhos absolutos são pintados DEPOIS dela e a lasca do
+   quadro 1 tapava a moldura. Em quadrinho é o contrário - o quadro CORTA o
+   personagem. */
+.conteudo .hq3 .cena::after{
+  content:""; position:absolute; inset:0; z-index:5; pointer-events:none;
+  border:3px solid var(--tinta-preta);
+}
+.conteudo .hq3 .chao{
+  position:absolute; left:0; right:0; bottom:0; height:var(--piso);
+  border-top:3px solid var(--tinta-preta);
+  background:repeating-linear-gradient(45deg, #1a161426 0 1.5px, #0000 1.5px 8px);
+}
+/* a parede: hachura DENSA e no sentido CONTRÁRIO ao do chão. A troca de sentido
+   é o que separa os dois planos; com as duas iguais a parede lia como uma
+   coluna solta no meio do quadro (visto no render do mock). */
+.conteudo .hq3 .parede{
+  position:absolute; right:0; top:0; bottom:var(--piso); width:var(--parede);
+  border-left:3px solid var(--tinta-preta);
+  background:repeating-linear-gradient(135deg, #1a161440 0 2px, #0000 2px 5px);
+}
+/* o protagonista: chapado, contorno preto de quadrinho. NÃO DAR OLHINHO. */
+.conteudo .hq3 .q{
+  position:absolute; bottom:var(--piso); width:var(--q); aspect-ratio:1;
+  background:var(--tinta-ciano); border:3px solid var(--tinta-preta);
+  right:var(--parede);   /* default: encostado na parede */
+}
+/* a lasca do quadro 1: -76% deixa cerca de um quarto dentro do quadro. Menos e
+   ele vira um risco; mais e o silêncio do quadro 1 acaba antes da hora. */
+.conteudo .hq3 .q.lasca{right:auto; left:0; translate:-76% 0}
+/* o eco do passo anterior: o único jeito de dizer "de novo" sem legenda e sem
+   seta. ⚠️ O MIOLO É PAPEL, não transparente: vazado, o rastro passava por
+   dentro do eco e os dois viravam uma mancha listrada ilegível. */
+.conteudo .hq3 .q.eco{
+  background:var(--papel); border:2px dashed var(--tinta-2); z-index:2;
+  right:calc(var(--parede) + var(--q) + 20%);
+}
+/* linhas de velocidade: vocabulário de quadrinho para "ele veio andando" */
+.conteudo .hq3 .rastro{
+  position:absolute; bottom:var(--piso); height:var(--q);
+  right:calc(var(--parede) + var(--q)); left:8%;
+  background:repeating-linear-gradient(180deg, var(--tinta-preta) 0 2px, #0000 2px 8px);
+  -webkit-mask-image:linear-gradient(90deg, #0000 0%, #000 62%, #000 100%);
+          mask-image:linear-gradient(90deg, #0000 0%, #000 62%, #000 100%);
+}
+/* no quadro 3 o rastro é CURTO e mais denso: ele não veio do outro lado da
+   sala, veio do eco ali do lado, com mais vontade e menos espaço. */
+.conteudo .hq3 .q3 .rastro{
+  left:auto; width:18%;
+  background:repeating-linear-gradient(180deg, var(--tinta-preta) 0 2px, #0000 2px 6px);
+}
+/* o impacto. ⚠️ Traços em ELEMENTO, não em gradiente mascarado: o leque tem que
+   sair EXATAMENTE do meio da face direita e nenhum traço pode cair sobre o azul
+   (preto sobre #0d5e67 dá 2.4:1 e some). Com elementos rotacionados o ângulo de
+   cada traço é escolhido; com gradiente seria sorte.
+   ⚠️ O .fx tem o TAMANHO DO QUADRADO (100%/100%) e não zero: é o que deixa o
+   comprimento dos traços ser % do lado do quadrado e escalar de 390 a 1200. */
+.conteudo .hq3 .fx{
+  position:absolute; left:100%; top:0; width:100%; height:100%; z-index:3;
+  transform-origin:0 50%; pointer-events:none;
+}
+.conteudo .hq3 .fx i{
+  position:absolute; left:0; top:50%; display:block; height:3px;
+  width:var(--len,45%); background:var(--tinta-preta);
+  transform-origin:0 50%; rotate:var(--a,0deg); translate:3px -50%;
+}
+.conteudo .hq3 .fx i:nth-child(1){--a:-74deg; --len:40%}
+.conteudo .hq3 .fx i:nth-child(2){--a:-36deg; --len:52%}
+.conteudo .hq3 .fx i:nth-child(3){--a:0deg;   --len:34%}
+.conteudo .hq3 .fx i:nth-child(4){--a:36deg;  --len:52%}
+.conteudo .hq3 .fx i:nth-child(5){--a:74deg;  --len:40%}
+/* segundo leque, só no quadro 3: mesma batida, mais uma vez. Não é "mais
+   forte", é "de novo" - por isso é igual e só gira um pouco. */
+.conteudo .hq3 .fx.bis{rotate:15deg}
+.conteudo .hq3 .fx.bis i{--len:30%}
+.conteudo .hq3 .fx.bis i:nth-child(2),
+.conteudo .hq3 .fx.bis i:nth-child(4){--len:38%}
+/* as marcas no chão do quadro 3: dois riscos. Sem seta, sem estrelinha. */
+.conteudo .hq3 .marca{
+  position:absolute; bottom:calc(var(--piso) - 9px); height:2px; width:9px;
+  background:var(--tinta-2); rotate:-14deg;
+}
+.conteudo .hq3 .marca.a{right:calc(var(--parede) + 3%)}
+.conteudo .hq3 .marca.b{right:calc(var(--parede) + 9%); bottom:calc(var(--piso) - 14px); rotate:-24deg}
+/* o número do quadro: bloco preto sólido no canto. O fundo real deste texto é
+   #1a1614, não o papel - por isso é --papel sobre preto (~15:1). PixelOperator
+   a 16px, acima do piso de 15px do defeito de glifo (o "2" vira "Z" abaixo). */
+.conteudo .hq3 .num{
+  position:absolute; left:0; top:0; z-index:6;   /* acima da moldura (z 5) */
+  background:var(--tinta-preta); color:var(--papel);
+  font-family:var(--font-display); font-weight:700; font-size:16px; line-height:1;
+  padding:5px 8px 6px; letter-spacing:.02em;
+}
+/* a legenda: FORA do painel, sobre papel limpo. Uma palavra por quadro.
+   ★ "sala." / "parede." / "parede.": a terceira é IGUAL à segunda de propósito.
+   Não é copy-paste esquecido - é a tirinha inteira. */
+.conteudo .hq3 figcaption{
+  font-family:var(--font-corpo); font-style:italic; font-size:15px; line-height:1.4;
+  color:var(--tinta-2); margin-top:7px;
+}
+@media print{
+  .conteudo .hq3 .tira{grid-template-columns:repeat(3,1fr); gap:10px}
+  .conteudo .hq3 .tira > li{break-inside:avoid; page-break-inside:avoid}
+  .conteudo .hq3 .cena,.conteudo .hq3 .q,.conteudo .hq3 .chao,
+  .conteudo .hq3 .parede,.conteudo .hq3 .rastro,.conteudo .hq3 .num{
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   §13 · o ENCARTE CENTRAL (porte do mock 19)
+   ★ A peça não é o quadrado, é a MOLDURA em volta dele: moldura dupla, marcas
+   de corte, cruzes de registro, barra de controle de cor, vinco de dobra e
+   ficha técnica. A piada mora na distância entre a pompa e o conteúdo.
+   Aumentar o quadrado não melhora a peça; apertar a margem piora.
+   ═══════════════════════════════════════════════════════════════════════ */
+/* A margem não é respiro estético: é o ESPAÇO ONDE AS MARCAS DE CORTE E AS
+   CRUZES DE REGISTRO CABEM (a marca avança 36px além do quadro no desktop e
+   26px no estreito; a cruz avança 34px acima). */
+/* ⚠️ O ENCARTE OCUPA A SEÇÃO INTEIRA, não a coluna de texto (74ch, presa à
+   esquerda). É o mesmo tratamento que o pôster da #2 já recebe: encarte central
+   que sentasse na coluna de leitura leria como erro de diagramação, não como
+   miolo destacável. A largura é a da folha menos os dois paddings do .edicao.
+   ⚠️ NÃO usar 100vw puro: num monitor largo a folha é 1080 e o resto é mesa, e
+   o 100vw estouraria para fora da página à direita. */
+/* A folga lateral é PADDING (não margin) de propósito: com box-sizing:border-box
+   ela cabe DENTRO da largura calculada, então o bloco não estoura a seção. E
+   essa folga não é respiro estético - é o espaço onde as marcas de corte e as
+   cruzes de registro cabem (a marca avança 36px além do quadro no desktop e
+   26px no estreito; a cruz avança 34px acima). */
+.conteudo .enc{
+  position:relative; box-sizing:border-box;
+  width:calc(min(1080px, 100vw) - 2 * clamp(20px,3.5vw,56px));
+  margin:clamp(30px,5vw,44px) 0 0;
+  padding:0 clamp(20px,3vw,26px);
+}
+.conteudo .enc .quadro,
+.conteudo .enc .credito{position:relative; z-index:1}
+/* a moldura: borda grossa de tinta + um filete fino AFASTADO por fora. Duas
+   linhas com ar entre elas, como moldura de encarte impressa. border + outline
+   de propósito: zero elemento extra, e o outline não entra no box (não empurra
+   layout nem cria rolagem lateral). */
+.conteudo .enc .quadro{
+  border:4px solid var(--tinta-preta);
+  outline:1px solid var(--tinta-2); outline-offset:6px;
+  padding:clamp(18px,4vw,34px) clamp(14px,3.4vw,28px) clamp(16px,3.6vw,30px);
+}
+/* marcas de corte. O L ABERTO é o que faz parecer material gráfico de verdade:
+   numa prova de gráfica as duas linhas NÃO se tocam no canto, porque o corte
+   cai entre elas. Se fecharem em L contínuo, vira "borda decorativa".
+   ⚠️ As marcas têm que nascer FORA do filete fino (o outline a 6px): com a
+   âncora a 4px os traços cruzavam o filete e os três viravam sujeira de canto.
+     --o distância da âncora até a borda · --a onde o traço começa · --l comprimento */
+.conteudo .enc .corte{--o:14px; --a:22px; --l:16px; position:absolute; width:0; height:0; z-index:2}
+.conteudo .enc .corte::before,
+.conteudo .enc .corte::after{content:""; position:absolute; background:var(--tinta-2)}
+.conteudo .enc .corte::before{height:1px; width:var(--l)}
+.conteudo .enc .corte::after {width:1px;  height:var(--l)}
+.conteudo .enc .corte.tl{left:calc(-1*var(--o));  top:calc(-1*var(--o))}
+.conteudo .enc .corte.tr{right:calc(-1*var(--o)); top:calc(-1*var(--o))}
+.conteudo .enc .corte.bl{left:calc(-1*var(--o));  bottom:calc(-1*var(--o))}
+.conteudo .enc .corte.br{right:calc(-1*var(--o)); bottom:calc(-1*var(--o))}
+.conteudo .enc .corte.tl::before{left:calc(-1*var(--a));  top:0}
+.conteudo .enc .corte.tl::after {left:0;  top:calc(-1*var(--a))}
+.conteudo .enc .corte.tr::before{right:calc(-1*var(--a)); top:0}
+.conteudo .enc .corte.tr::after {right:0; top:calc(-1*var(--a))}
+.conteudo .enc .corte.bl::before{left:calc(-1*var(--a));  bottom:0}
+.conteudo .enc .corte.bl::after {left:0;  bottom:calc(-1*var(--a))}
+.conteudo .enc .corte.br::before{right:calc(-1*var(--a)); bottom:0}
+.conteudo .enc .corte.br::after {right:0; bottom:calc(-1*var(--a))}
+@media (max-width:560px){ .conteudo .enc .corte{--o:10px; --a:16px; --l:12px} }
+/* cruz de registro: o alvo que a gráfica usa para alinhar as chapas de cor.
+   ⚠️ É filha do .quadro, NÃO do .enc: ancorada no .enc, o "bottom" mediria a
+   partir do fim do crédito e a cruz de baixo caía em cima dele. */
+.conteudo .enc .registro{
+  position:absolute; left:50%; width:12px; height:12px; translate:-50% 0; z-index:2;
+  border:1px solid var(--tinta-2); border-radius:50%;
+}
+.conteudo .enc .registro::before,
+.conteudo .enc .registro::after{content:""; position:absolute; background:var(--tinta-2)}
+.conteudo .enc .registro::before{left:50%; top:-4px; width:1px; height:20px; translate:-50% 0}
+.conteudo .enc .registro::after {top:50%; left:-4px; height:1px; width:20px; translate:0 -50%}
+.conteudo .enc .registro.topo{top:-30px}
+.conteudo .enc .registro.base{bottom:-28px}
+/* ★ A ASSIMETRIA É INTENCIONAL: o título empurra para a esquerda e a tarja vai
+   para o canto direito, na linha de base da última linha do título.
+   Centralizar os dois deixaria a peça com cara de certificado. */
+.conteudo .enc .kicker{
+  font-family:var(--font-manchete); font-weight:700; font-size:13px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--tinta-ciano); margin:0 0 6px;
+}
+.conteudo .enc .cabeca{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap}
+.conteudo .enc .titulo{
+  font-family:var(--font-manchete); font-weight:700;
+  font-size:clamp(38px,9.4vw,74px); line-height:.86;
+  letter-spacing:-.03em; text-transform:uppercase;
+  color:var(--tinta-preta); margin:0;
+}
+/* a tarja invertida é o gesto mais noventista que existe em banca: a chamada
+   que grita em negativo. ⚠️ O margin-left:auto É a assimetria, e só importa
+   QUANDO QUEBRA: sem ele, ao passar para a linha de baixo a tarja cola na
+   margem esquerda e vira um bloco centrado de certificado. */
+.conteudo .enc .tarja{
+  font-family:var(--font-manchete); font-weight:700;
+  font-size:clamp(15px,4vw,24px); letter-spacing:.2em; text-transform:uppercase;
+  background:var(--tinta-preta); color:var(--papel);
+  padding:5px 12px 6px; white-space:nowrap; margin:0 0 4px auto;
+}
+/* filete duplo entre o título e a arte: grosso em cima, fino embaixo, com ar no
+   meio. É a pontuação gráfica de revista antes de uma prancha. */
+.conteudo .enc .filete{
+  margin:clamp(14px,2.6vw,22px) 0; height:0;
+  border-top:4px solid var(--tinta-preta);
+  box-shadow:0 4px 0 var(--papel), 0 5px 0 var(--tinta-preta);
+}
+/* A CHAPA. Uma chapa. Sem borda, sem sombra, sem gradiente, sem brilho, sem
+   contorno, sem nada dentro: chapa de tinta em papel não tem contorno, e quem
+   desenha contorno está desenhando um ícone. ⚠️ NÃO DAR OLHINHO.
+   width:100% + aspect-ratio:1 garante que ele DOMINA em qualquer largura. */
+.conteudo .enc .chapa{position:relative; width:100%; aspect-ratio:1; background:var(--tinta-ciano)}
+/* a fibra do papel REENTRA por cima da chapa: tinta impressa não apaga a
+   textura do papel embaixo, e sem isto o azul lia como retângulo de tela, não
+   como área impressa. Dimensão explícita no SVG (o Gecko descarta filtro sem). */
+.conteudo .enc .chapa::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.14;
+}
+/* ⚠️ O LADO ESCURO DA DOBRA SÓ EXISTE AQUI, e é o guard de contraste da peça.
+   A versão anterior do mock tinha um vinco escuro atravessando a folha inteira
+   com alpha .19: medido, ele derrubava o texto secundário de 5.97 para 4.11:1
+   (REPROVA AA). A varredura mostrou que o teto é .14 e que .14 chega a 4.51,
+   margem ZERO - e numa folha velha não há alpha que sirva (--tinta-2 sobre
+   --papel-fim já é 4.51 SEM véu). Logo a saída não é achar um alpha simpático:
+   é o véu não encostar em texto. Por isso o lado escuro mora DENTRO da chapa,
+   a única região sem texto por construção. */
+.conteudo .enc .chapa::after{
+  content:""; position:absolute; top:0; bottom:0; left:50%; width:26px;
+  translate:-50% 0; pointer-events:none;
+  background:linear-gradient(90deg, #0000 0%,
+    rgb(10 30 34 / .10) 30%, rgb(10 30 34 / .30) 47%, rgb(10 30 34 / .34) 50%,
+    rgb(255 255 255 / .06) 53%, rgb(255 255 255 / .22) 57%,
+    rgb(255 255 255 / .07) 74%, #0000 100%);
+}
+/* ★ A FICHA TÉCNICA é onde a piada mora sem ser dita: "16 x 16 px" é um dado,
+   escrito como qualquer ficha escreve dado, e é o único lugar do encarte que
+   contradiz o tamanho do que está impresso acima. Nenhuma linha comenta isso,
+   e não pode haver. Se alguém acrescentar a piada explícita, apagar. */
+.conteudo .enc .ficha{
+  display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  margin:10px 0 0;
+  font-family:var(--font-manchete); font-weight:700; font-size:12.5px;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--tinta-2);
+}
+.conteudo .enc .ficha b{color:var(--tinta-preta)}
+/* a barra de controle de cor da gráfica: detalhe de material gráfico de verdade
+   e, de graça, uma piada silenciosa (quadradinhos de 11px ao lado do quadrado
+   gigante). Não comentar. Decorativa: aria-hidden no HTML. */
+.conteudo .enc .barra{display:flex; gap:3px; margin-left:auto}
+.conteudo .enc .barra i{display:block; width:11px; height:11px; border:1px solid #00000026}
+.conteudo .enc .barra .k{background:var(--tinta-preta)}
+.conteudo .enc .barra .c{background:var(--tinta-ciano)}
+.conteudo .enc .barra .m{background:var(--tinta-magenta)}
+.conteudo .enc .barra .g{background:var(--tinta-2)}
+.conteudo .enc .barra .w{background:var(--papel)}
+/* o margin-top NÃO é respiro: é o que impede a colisão com a cruz de registro
+   da base, que avança 34px abaixo da moldura. Encurtar encavala os dois. */
+.conteudo .enc .credito{
+  margin:clamp(38px,5vw,48px) 0 0; display:flex; justify-content:space-between;
+  gap:12px; flex-wrap:wrap;
+  font-family:var(--font-manchete); font-weight:700; font-size:11.5px;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--tinta-2);
+}
+.conteudo .enc .credito span:last-child{margin-left:auto}
+/* O VINCO DA DOBRA: a assinatura do formato (pôster central vem dobrado dentro
+   da revista, e a dobra fica marcada para sempre).
+   ⚠️ SOBRE O PAPEL, SÓ A CRISTA DE LUZ. Ele passa por cima de texto, e a
+   medição provou que qualquer sombreamento ali reprova AA. Ficou só o lado
+   CLARO: ele CLAREIA o papel, e clarear papel AUMENTA o contraste da tinta
+   (secundário sobre papel limpo 5.97:1 · sob a crista 6.43:1 - melhora).
+   ⚠️ E FICA POR BAIXO DO CONTEÚDO (z-index 0): com z-index alto, esta crista de
+   .46 de branco caía POR CIMA da chapa azul e lavava a dobra impressa.
+   ⚠️ PORTE: no mock ele atravessava a folha inteira; aqui é confinado ao bloco
+   do encarte - a página da edição tem 17 seções e uma dobra cruzando todas
+   seria outra peça. */
+.conteudo .enc .vinco{
+  position:absolute; left:50%; top:0; bottom:0; width:26px; translate:-50% 0;
+  z-index:0; pointer-events:none;
+  background:linear-gradient(90deg, #0000 0%,
+    rgb(255 255 255 / .10) 40%, rgb(255 255 255 / .46) 51%,
+    rgb(255 255 255 / .34) 60%, rgb(255 255 255 / .10) 76%, #0000 100%);
+}
+@media print{
+  .conteudo .enc{break-inside:avoid; page-break-inside:avoid}
+  .conteudo .enc .chapa,.conteudo .enc .barra i,.conteudo .enc .tarja,
+  .conteudo .enc .filete,.conteudo .enc .vinco,
+  .conteudo .enc .chapa::before,.conteudo .enc .chapa::after{
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+}

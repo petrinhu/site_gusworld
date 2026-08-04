@@ -116,7 +116,7 @@ return [
     [
         'numero'         => 3,
         'revisao'        => 1,
-        'estado'         => 'rascunho', // sem conteúdo de seção ainda; some da banca até ser produzida
+        'estado'         => 'publicada', // conteúdo das 17 seções montado em src/content/edicao-3/
         'data'           => '2026-06-22',
         'atualizada_em'  => '2026-06-22',
         'slug_pt'        => 'edicao-3',
