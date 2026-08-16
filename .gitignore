@@ -40,3 +40,8 @@ data/cupom-votos.lock
 
 # Screenshots-fonte / referências (recriamos os assets; o cru nao vai ao repo publico)
 resources/referencias/
+
+# Relatorio do ecossistema (copia de arquivo, 2026-08-16). O ORIGINAL vive no
+# repositorio do glintfx (Projects/loucura_c_asm/docs/); esta copia e registro
+# LOCAL, por decisao do lider. Fica no disco, fora do git.
+docs/arquivo/RELATORIO-2026-08-16-ecosistema-gus-e-glintfx.md
