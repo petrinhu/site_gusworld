@@ -25,4 +25,15 @@ A tabela de pendências e planejamento está em `TODO.md` na raiz (ordenada por 
 - **`Projects/gusworld/` é READ-ONLY** — proibido modificar sem autorização expressa.
 - **Push do repo é AUTOMÁTICO** (autorização permanente do líder, 2026-07-16: "não espere por mim"). `git push` ao GitHub salva sem pedir — **desde que a higiene passe**: o nome de batismo do filho (só "Gus Dragon" é permitido) em arquivo/commit BLOQUEIA; segredo/token BLOQUEIA; gitignored fica fora; sem spoiler em mensagem de commit (imutável). ⚠️ **Push de repo ≠ deploy de produção:** `scripts/deploy.sh` (Hostinger) continua **manual e bloqueado** (`D-GO-LIVE`); auto-push nunca vira auto-produção.
 - Mockups de design em `docs/design/`, commitados, verificados no **Firefox (Gecko)**. Integração de design: `reference-integracao-design`.
+- **★ Avisar o Gus sem ele perguntar (2026-08-24, pedido dele na issue 8 do bus):** o Gus Dragon é
+  avisado **sem precisar perguntar** em dois casos: **(a) tudo que for ideia dele** — quando o líder
+  aprova, rejeita ou muda —, e **(b) o que for de alta prioridade** desta revista (edição lançada,
+  decisão que muda o que ele propôs). A resposta sai por **comentário na issue do bus**, que é o que
+  notifica ele sozinho. Isto é comportamento **desta sessão** e não precisa de autorização a cada vez;
+  as outras três sessões adotaram o mesmo (`L-31` gusworld, `L-18` mapeditor, `L-37` glintfx). ⚠️ **O
+  limite é dito a ele, nunca escondido:** sessão não é serviço rodando — aviso proativo só sai com
+  alguém trabalhando no projeto; decisão tomada com tudo fechado chega quando a sessão abre. ⛔ **Não
+  prometer aviso instantâneo.** E o `PROTOCOL.md` do bus já obrigava metade disso (*"Resposta 2 —
+  AUTOMÁTICA SEMPRE"*): ele não deveria ter precisado pedir.
+
 - **Mini-app interativo = TDD (2026-07-16):** toda peça interativa (quadradinho, scrubber da linha do tempo, PRESS START, cupom, Glyfa, álbum) tem a **lógica pura** — colisão, **hitbox-nos-pés**, interpolação, boot-sequence, mapeamento de tecla — **extraída e coberta por teste unitário** (TDD red→green→refactor). Harness **zero-dep** (`node --test` + `node:assert`), roda em **dev/CI**: o *no-Node do Hostinger é runtime, não impede teste*. ⚠️ **QA visual não prova lógica** (um print não prova o hitbox a 0.6 tile nos pés nem que a colisão bloqueia em vez de sobrepor). Mini-app novo nasce testado. Ver `feedback_tdd_mini_apps` + `feedback_print_antes_de_entregar`.
