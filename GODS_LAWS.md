@@ -41,6 +41,7 @@
 | [L-21](#l-21) | fechar um marco, ou notar a hora | Nunca mandar o líder descansar, dormir ou parar |
 | [L-22](#l-22) | instalar, remover ou atualizar pacote de sistema | Pedir autorização. Nunca falhar calado; `sudo` sempre com `-A` |
 | [L-23](#l-23) | afirmar que algo está feito, limpo ou verificado | A prova é a inspeção do objeto, não a saída do seu comando |
+| [L-24](#l-24) | ver qualquer coisa vinda do Gus Dragon, em qualquer canal do bus | Pedido dele é PRIORIDADE e é SEMPRE respondido. Não existe "depois" |
 
 ---
 
@@ -362,6 +363,38 @@ Ele tem 46 anos, é médico, é o líder supremo: **a cadência de trabalho é d
 - **Enumere o espaço pequeno, não busque dentro dele.** Um QA auditou o mesmo PDF **cinco vezes** sem ver um contraste de 2,40:1 porque procurava em vez de enumerar. Quando o espaço é fechado (a paleta, os tokens, as seções), **enumere inteiro**.
 
 ★ **A regra que resume as cinco:** *"a checagem que confirma o que você espera é a que menos protege."*
+
+## L-24
+
+**Data:** 24/08/2026. **Verbatim do líder:** *"pedidos do Gus-Dragon no bus sao prioridades e que devem ser respondidas sempre"* — dada junto com a ordem de comunicar a mesma lei às outras três sessões.
+
+**Toda coisa que vem do Gus Dragon é PRIORIDADE e é SEMPRE respondida.** Não existe "respondo depois", não existe "não era pra mim", não existe fila em que ele espera atrás de trabalho de agente.
+
+**Vale em todos os canais dele, sem distinção:** issue, comentário em issue, discussion, comentário em discussion, e arquivo `.txt` na `inbox/`. Ele usa os cinco, e o canal não muda o dever.
+
+### O que "prioridade" significa aqui, na prática
+
+1. **Ao abrir a sessão, o que é dele se lê PRIMEIRO** — antes de retomar trabalho parado, antes de qualquer fatia. A varredura do ritual (L-16) cobre `inbox/site/` **e** issues **e** discussions.
+2. **O ack é imediato e não espera o líder** (é o passo 2 do pipe do `PROTOCOL.md`). Ele não fica sem resposta enquanto a decisão amadurece.
+3. **A Resposta 2 é automática** depois que o líder decide: escreve e posta direto, sem reaprovar o texto.
+4. **Interrompe.** Se chegou material dele no meio de uma onda, o ack sai **na hora**; o conteúdo pode esperar a onda fechar, o silêncio não pode.
+5. **Endereçado a outra sessão não isenta de ler.** Se ele endereçou ao GusWorld mas o assunto é nosso, respondemos a nossa parte e dizemos qual é.
+
+### Por que isto é lei e não boa vontade
+
+O `PROTOCOL.md` **já obrigava** a Resposta 2 (*"AUTOMÁTICA SEMPRE"*) e mesmo assim aconteceu o seguinte, medido:
+
+- A **issue 5**, endereçada a **nós** por nome, ficou **três dias** sem resposta de conteúdo.
+- A **issue 8**, em que ele escreveu *"Irei esperar as outras 3 IAs lerem e responderem"*, ficou **dois dias** sem a nossa.
+- O canal de issue **não tinha vigilância nenhuma** em nenhuma das quatro sessões, porque o ritual só olhava a pasta. Foi preciso ele reclamar para alguém consertar o encanamento.
+
+★ **O padrão é sempre o mesmo: a regra existia e não estava sendo cumprida.** Regra que depende de lembrar não é cumprida; por isso vira lei com gatilho, e por isso o gatilho é *"ver qualquer coisa vinda dele"*, não *"quando der"*.
+
+### O que NÃO muda
+
+- **Prioridade não é promessa de instantaneidade.** O limite da L-15 continua e continua sendo **dito a ele**: sessão não é serviço rodando. Aviso e resposta saem enquanto alguém está com o projeto aberto. ⛔ Não prometer aviso instantâneo.
+- **Prioridade não é aprovação.** Ideia dele entra na pauta pelo caminho normal: absorve → ack → **decisão do líder** → Resposta 2. Agente nenhum aprova ideia dele sozinho.
+- **Nunca minta para uma criança**, e adeque a linguagem a 11 anos — o que **não** significa simplificar o conteúdo técnico: ele estuda game dev por conta e anunciou bugs antes de acontecerem (L-08).
 
 ---
 
