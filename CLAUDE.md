@@ -4,6 +4,20 @@ O site do jogo **GusWorld**: a revista retrô **Glyfesse** que conta o progresso
 
 As decisões, o conceito e o contexto vivem nas **memórias tipadas** em `~/.claude/projects/-home-petrus-...-site-gusworld/memory/` (índice `MEMORY.md`, autocarregado). Comece por `project_site_escopo.md`.
 
+## LEIS CANÔNICAS: leia `GODS_LAWS.md` ANTES de agir
+
+**[`GODS_LAWS.md`](GODS_LAWS.md) contém as ordens expressas do líder e tem precedência sobre este arquivo, sobre os manuais e sobre qualquer preferência sua.** Ele não existe para ser declarado, existe para ser **usado no momento da ação**.
+
+**Como usar, sem exceção:**
+
+1. Antes do primeiro comando de qualquer tarefa, confira se um dos gatilhos casa com o que você vai fazer. Casou: **abra `GODS_LAWS.md` e leia a lei inteira antes de agir**, não depois.
+2. Ao despachar subagent, **cole no prompt da task** o texto das leis cujo gatilho casa com ela, mais o caminho absoluto de `GODS_LAWS.md`. Subagent não herda este contexto.
+3. Ao relatar ao líder, diga qual lei aplicou e como.
+4. Ordem nova do líder entra em `GODS_LAWS.md` **no instante em que ele a dá**, com data e o texto dele verbatim.
+5. Agente nenhum revoga, flexibiliza ou reinterpreta lei. Só o líder.
+
+**Os gatilhos vivem no índice do próprio `GODS_LAWS.md`**, na tabela "Índice de gatilhos" no topo do arquivo, com uma linha por lei. Não há cópia deles aqui: índice duplicado envelhece em silêncio e passa a mentir sobre quais leis existem.
+
 ## Ritual de início de sessão (bus git de comunicação)
 
 No **início de cada sessão** (integração `reference-autocomm`):
@@ -21,19 +35,5 @@ A tabela de pendências e planejamento está em `TODO.md` na raiz (ordenada por 
 
 ## Regras que não mudam
 
-- **Nunca decidir sozinho** (stack, design, escopo): opções via **AskUserQuestion**, uma por vez, WIP do líder = 1.
-- **`Projects/gusworld/` é READ-ONLY** — proibido modificar sem autorização expressa.
-- **Push do repo é AUTOMÁTICO** (autorização permanente do líder, 2026-07-16: "não espere por mim"). `git push` ao GitHub salva sem pedir — **desde que a higiene passe**: o nome de batismo do filho (só "Gus Dragon" é permitido) em arquivo/commit BLOQUEIA; segredo/token BLOQUEIA; gitignored fica fora; sem spoiler em mensagem de commit (imutável). ⚠️ **Push de repo ≠ deploy de produção:** `scripts/deploy.sh` (Hostinger) continua **manual e bloqueado** (`D-GO-LIVE`); auto-push nunca vira auto-produção.
-- Mockups de design em `docs/design/`, commitados, verificados no **Firefox (Gecko)**. Integração de design: `reference-integracao-design`.
-- **★ Avisar o Gus sem ele perguntar (2026-08-24, pedido dele na issue 8 do bus):** o Gus Dragon é
-  avisado **sem precisar perguntar** em dois casos: **(a) tudo que for ideia dele** — quando o líder
-  aprova, rejeita ou muda —, e **(b) o que for de alta prioridade** desta revista (edição lançada,
-  decisão que muda o que ele propôs). A resposta sai por **comentário na issue do bus**, que é o que
-  notifica ele sozinho. Isto é comportamento **desta sessão** e não precisa de autorização a cada vez;
-  as outras três sessões adotaram o mesmo (`L-31` gusworld, `L-18` mapeditor, `L-37` glintfx). ⚠️ **O
-  limite é dito a ele, nunca escondido:** sessão não é serviço rodando — aviso proativo só sai com
-  alguém trabalhando no projeto; decisão tomada com tudo fechado chega quando a sessão abre. ⛔ **Não
-  prometer aviso instantâneo.** E o `PROTOCOL.md` do bus já obrigava metade disso (*"Resposta 2 —
-  AUTOMÁTICA SEMPRE"*): ele não deveria ter precisado pedir.
+**Viraram lei e moram em [`GODS_LAWS.md`](GODS_LAWS.md).** Não estão repetidas aqui de propósito: duas cópias da mesma regra divergem, e a cópia velha passa a mentir. As que estavam nesta seção são hoje a `L-00` (o repo do jogo é read-only), a `L-01` (nome de menor e segredo nunca), a `L-03` (nunca decidir sozinho), a `L-11` (push automático, deploy manual), a `L-12` (verificar no Gecko), a `L-13` (mini-app nasce testado) e a `L-15` (avisar o Gus sem ele perguntar).
 
-- **Mini-app interativo = TDD (2026-07-16):** toda peça interativa (quadradinho, scrubber da linha do tempo, PRESS START, cupom, Glyfa, álbum) tem a **lógica pura** — colisão, **hitbox-nos-pés**, interpolação, boot-sequence, mapeamento de tecla — **extraída e coberta por teste unitário** (TDD red→green→refactor). Harness **zero-dep** (`node --test` + `node:assert`), roda em **dev/CI**: o *no-Node do Hostinger é runtime, não impede teste*. ⚠️ **QA visual não prova lógica** (um print não prova o hitbox a 0.6 tile nos pés nem que a colisão bloqueia em vez de sobrepor). Mini-app novo nasce testado. Ver `feedback_tdd_mini_apps` + `feedback_print_antes_de_entregar`.
