@@ -216,3 +216,46 @@ briefing minha, não dele), a #4 saiu maior do que qualquer edição anterior �
 da #3, com a peça principal também maior. Se a produção sentir o peso durante o S2/S3, os três cortes que
 recomendo no §7 (risco 1) são reais e não comprometem nenhuma promessa feita: encolhem escopo, não cortam
 conteúdo prometido.
+
+---
+
+## 10. ✅ REPORTAGEM EXTRA sobre o glintfx — ordem do líder, 2026-09-03
+
+> *"a adoção do glintfx é fundamental!"* … *"crie reportagem extra sobre glintfx"*
+
+**Peça nova, aditiva à pauta já fechada.** Não é a Seção 17: são registros diferentes e a divisão está na tabela abaixo.
+
+### A lente (aprovada)
+
+> **A adoção do glintfx, pela lente de "pedir e receber em dois dias"** — o instante em que o cockpit do jogo precisou de um recurso e a ferramenta ainda sem versão 1.0 respondeu antes de a semana acabar —, **cortando** o raciocínio técnico de por que trocar de arquitetura (é da Seção 17) e **cortando** qualquer explicação de como o glintfx funciona por dentro (também da 17).
+
+★ O ângulo *"veio da sala ao lado"*, sugerido pelo orquestrador, foi **testado e recusado** pelo agente, com razão: é genérico, não amarra a fato datado, e colidiria com a Seção 17. A lente aprovada responde uma pergunta **diferente** — não *"por que trocamos de arquitetura"* (técnica, da 17), mas *"como é depender de uma ferramenta que está sendo construída ao seu lado, em tempo real"* (processo, legível por quem não programa).
+
+### Tamanho e custo
+
+**S**, em formato de encarte/caixa (reaproveitando o molde CRT verde), não spread novo. Em troca, a produção puxa o corte **(b)** já listado no §7: usar o fallback já sourced da Galeria de Bugs (a trava de diagonal, `normalize_diagonal`) em vez de esperar a resposta do Gus Dragon na issue 5. Isso paga a peça nova **sem** reabrir decisão fechada nem cortar promessa feita a ele.
+
+### A linha divisória com a Seção 17 (obrigatória — publicar a mesma história duas vezes é falha grave)
+
+| Reportagem extra — eixo leigo | Seção 17 (Programação) — eixo expert |
+|---|---|
+| **Responde:** como é depender, em tempo real, de uma ferramenta que o mesmo criador constrói ao lado | **Responde:** por que o cockpit trocou de mãos, tecnicamente (ADR-009 → ADR-010) |
+| **Beat central:** pedir e receber em menos de 48h | **Beat central:** o nome "Repo GlintFX", linkado sem explicação desde a #1, finalmente explicado |
+| ⛔ **Proibido:** explicar API, RCSS, embed mode, renderer — qualquer "como funciona por dentro" | ✅ **É o núcleo dela** |
+| ⛔ **Proibido:** pagar o foreshadowing do link do índice | ✅ **É o pagamento obrigatório** desse foreshadowing |
+| ✅ **Pode:** citar que os "5 becos sem saída" existem, como prova de que o uso real endureceu a lib | ⛔ **Reserva** o conteúdo dos becos para si ou para o eixo expert futuro |
+
+⚠️ Se na produção alguma linha desta tabela parecer forçada, **é sinal de fundir as duas peças** numa só — não de manter divisão artificial.
+
+### ⚠️ O ESTADO DAS FONTES (verificado em 2026-09-03, não presumido)
+
+| Lado | Fonte primária | Situação |
+|---|---|---|
+| **O jogo** | `petrinhu/gusworld_legacy` | ✅ **VIVA e conferida.** `37bda48 · 01/07 · "fechamento do ADR-010/glintfx e polish do cockpit"` · `65ec91a · 06/07 · "remove RmlUi_Renderer_SDL.* órfão + README pós-ADR-010"` |
+| **O glintfx** | — | ⛔ **NÃO EXISTE.** O repo foi refundado em 21/08 (zero commits de junho, **zero tags**), **não há legacy dele**, e não há clone, backup nem reflog na máquina. O bus não cobre: nasceu em 16/jul. |
+
+As releases de **29/jun (`v0.1.0`)** e **30/jun (`v0.2.0-0.2.4`, "pedidos do GusWorld")** — o coração da lente — existem hoje **só no nosso ledger** (`HISTORICO_GUS_ECOSSISTEMA`). É registro feito na época pela sessão que viveu o fato, com o líder presente: **testemunho, não invenção** — mas sem como reconferir.
+
+**★ Decisão do líder, verbatim:** *"Publique normalmente, usando o que conseguir de informação. Deixe para falar da refundação quando for a hora da reportagem dela."*
+
+⛔ **Logo: a #4 NÃO menciona a refundação dos repositórios.** Nem de passagem, nem como ressalva de fonte. Ela é material reservado — ver `MATERIA-REFUNDACAO-DOS-REPOS` na INBOX.
