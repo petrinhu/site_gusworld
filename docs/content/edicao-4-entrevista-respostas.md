@@ -1,6 +1,6 @@
-# Edição #4 · Seção 16 · A Entrevista — respostas do Cauã "Volt" Berenger
+# Edição #4 · Seção 16 · A Entrevista: respostas do Cauã "Volt" Berenger
 
-> Produzido em 2026-09-03. O Gus pergunta pela primeira vez — a inversão da #3, onde era o Cauã quem
+> Produzido em 2026-09-03. O Gus pergunta pela primeira vez: a inversão da #3, onde era o Cauã quem
 > perguntava. Estas são **só as 18 respostas**, numeradas para casar com as 18 perguntas do Gus
 > (`perguntas-SEM-pensamento.md`). O agente do Cauã recebeu **só as falas**, sem os `//` do Gus.
 

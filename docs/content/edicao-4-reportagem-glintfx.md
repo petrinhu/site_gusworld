@@ -1,22 +1,22 @@
-# Glyfesse #4 — Reportagem Extra: o glintfx em dois dias (rascunho v1)
+# Glyfesse #4: Reportagem Extra: o glintfx em dois dias (rascunho v1)
 
 > Peça aditiva à pauta já fechada (`PAUTA-EDICAO-4.md`, §10, ordem do líder 2026-09-03: *"a adoção do
-> glintfx é fundamental! crie reportagem extra sobre glintfx"*). Tamanho **S**, formato de **encarte/caixa**
-> — reaproveita o molde CRT verde das seções técnicas, não é spread novo.
-> **Voz: `gus@glyfesse`** — a voz editorial da revista. Não há personagem de jogo falando aqui, então L-25
+> glintfx é fundamental! crie reportagem extra sobre glintfx"*). Tamanho **S**, formato de **encarte/caixa**,
+> reaproveita o molde CRT verde das seções técnicas, não é spread novo.
+> **Voz: `gus@glyfesse`**: a voz editorial da revista. Não há personagem de jogo falando aqui, então L-25
 > não restringe vocabulário técnico por si só; o corte de vocabulário desta peça vem da **lente**, não da lei.
-> **Lente aprovada:** a adoção do glintfx pela lente de "pedir e receber em dois dias" — cortando o
+> **Lente aprovada:** a adoção do glintfx pela lente de "pedir e receber em dois dias": cortando o
 > raciocínio técnico de por que trocar de arquitetura (é da Seção de Programação) e cortando qualquer
 > explicação de como o glintfx funciona por dentro (também dela).
 > **Responde:** como é depender, em tempo real, de uma ferramenta que o mesmo criador constrói ao lado.
 > **Datas:** 29/jun a 1º/jul/2026. Nada posterior; nenhuma menção à refundação dos repositórios de agosto
 > (matéria reservada, `MATERIA-REFUNDACAO-DOS-REPOS`).
-> ⛔ **Trava do "não piscar" (ordem do líder, 03/09):** escrita de dentro de junho/julho — sem ironia
+> ⛔ **Trava do "não piscar" (ordem do líder, 03/09):** escrita de dentro de junho/julho, sem ironia
 > dramática, sem adjetivo que só faz sentido pra quem conhece o desfecho, sem ressalva "por precaução", e
 > sem elogiar a adoção como vitória. Só o que ela resolveu naquele instante.
 > **Fontes:** `HISTORICO_GUS_ECOSSISTEMA.md` (o repositório do glintfx daquela época foi refundado em 21/08 e
-> não existe mais — o que está aqui é testemunho da sessão que viveu o fato, não invenção, e não há como
-> reconferir). **Nenhum hash do glintfx é citado** — só nomes de versão, que vêm do ledger.
+> não existe mais: o que está aqui é testemunho da sessão que viveu o fato, não invenção, e não há como
+> reconferir). **Nenhum hash do glintfx é citado**: só nomes de versão, que vêm do ledger.
 > **Status:** rascunho v1 do `narrative-writer` (2026-09-03), aguardando `GATE-CONTEUDO` do editor-geral.
 
 ---
@@ -37,11 +37,11 @@ gus@glyfesse:~/glintfx$ # 30 de junho. um dia depois. o changelog trouxe um nome
 gus@glyfesse:~/glintfx$ # 1 de julho. mais um dia. o cockpit do jogo ja tava rodando em cima da versão nova.
 ```
 
-Três dias, do lançamento de uma ferramenta sem número redondo até o cockpit do jogo passar a depender dela pra funcionar. A maior parte dos pedidos que um projeto pequeno faz a outro fica na fila, ou nunca sai da fila — não porque ninguém queira ajudar, mas porque manter uma biblioteca é trabalho, e trabalho tem ordem de chegada. Este pedido não ficou na fila porque quem constrói a ferramenta e quem constrói o jogo estavam olhando pro mesmo problema no mesmo dia, em conversas separadas da mesma rotina, não numa relação de cliente esperando fornecedor.
+Três dias, do lançamento de uma ferramenta sem número redondo até o cockpit do jogo passar a depender dela pra funcionar. A maior parte dos pedidos que um projeto pequeno faz a outro fica na fila, ou nunca sai da fila: não porque ninguém queira ajudar, mas porque manter uma biblioteca é trabalho, e trabalho tem ordem de chegada. Este pedido não ficou na fila porque quem constrói a ferramenta e quem constrói o jogo estavam olhando pro mesmo problema no mesmo dia, em conversas separadas da mesma rotina, não numa relação de cliente esperando fornecedor.
 
 `/* pedimos uma coisa pequena. voltou funcionando. nao sei se sempre e assim, mas queria que fosse */`
 
-Nos meses seguintes, aquele uso de verdade — o cockpit do jogo rodando em cima da ferramenta, todo dia, sob peso real — encontrou pelo menos cinco decisões que pareciam certas no papel e não sobreviveram ao contato com o jogo rodando. Cada uma virou correção documentada, não segredo guardado. É outra matéria, pra outra hora.
+Nos meses seguintes, aquele uso de verdade (o cockpit do jogo rodando em cima da ferramenta, todo dia, sob peso real) encontrou pelo menos cinco decisões que pareciam certas no papel e não sobreviveram ao contato com o jogo rodando. Cada uma virou correção documentada, não segredo guardado. É outra matéria, pra outra hora.
 
 O que ficou de junho pra julho foi isto: pedir um recurso a uma ferramenta que ainda está sendo construída, e receber a tempo de usar.
 
@@ -65,11 +65,11 @@ gus@glyfesse:~/glintfx$ # june 30th. one day later. the changelog carried a name
 gus@glyfesse:~/glintfx$ # july 1st. one more day. the game's cockpit was already running on top of the new version.
 ```
 
-Three days, from a tool with no round version number shipping, to the game's cockpit depending on it to work. Most requests a small project makes of another sit in a queue, or never leave it — not because nobody wants to help, but because keeping up a library is work, and work has an order of arrival. This request didn't sit in the queue because whoever builds the tool and whoever builds the game were looking at the same problem on the same day, in separate conversations inside the same routine, not in a customer waiting on a vendor.
+Three days, from a tool with no round version number shipping, to the game's cockpit depending on it to work. Most requests a small project makes of another sit in a queue, or never leave it: not because nobody wants to help, but because keeping up a library is work, and work has an order of arrival. This request didn't sit in the queue because whoever builds the tool and whoever builds the game were looking at the same problem on the same day, in separate conversations inside the same routine, not in a customer waiting on a vendor.
 
 `/* we asked for something small. it came back working. i dont know if it always works like that, but i wish it did */`
 
-In the months that followed, that real use — the game's cockpit running on top of the tool, every day, under real weight — ran into at least five decisions that had looked right on paper and didn't survive contact with the game actually running. Each one turned into a documented fix, not a kept secret. That's another story, for another time.
+In the months that followed, that real use (the game's cockpit running on top of the tool, every day, under real weight) ran into at least five decisions that had looked right on paper and didn't survive contact with the game actually running. Each one turned into a documented fix, not a kept secret. That's another story, for another time.
 
 What was left, between June and July, was this: asking a tool that's still being built for something, and getting it back in time to use it.
 

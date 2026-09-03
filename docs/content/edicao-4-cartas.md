@@ -1,11 +1,11 @@
-# Glyfesse #4 — Cartas (Seção 9, rascunho v1)
+# Glyfesse #4: Cartas (Seção 9, rascunho v1)
 
 > ★ **Ideia do Gus Dragon** (autoria dele, issue 5 do bus, 21/08/2026, aprovada pelo líder em
-> 24/08/2026 — *"as duas entram na Edição #4"*). Verbatim dele, do `TODO.md`: *"contar a história do
+> 24/08/2026: *"as duas entram na Edição #4"*). Verbatim dele, do `TODO.md`: *"contar a história do
 > jogo pelas primeiras ideias de cartas e os sprites originais delas."*
 > **Lente aprovada, verbatim da pauta:** *"a primeira ideia de carta e o sprite do qual ela nasceu,
-> pela lente de um único exemplar, do desenho ao efeito fechado (14/jul) — não o baralho, um
-> recorte —, cortando o motor de efeitos por inteiro e qualquer outro mestre do roster."*
+> pela lente de um único exemplar, do desenho ao efeito fechado (14/jul), não o baralho, mas um
+> recorte, cortando o motor de efeitos por inteiro e qualquer outro mestre do roster."*
 > **Escopo mínimo, travado pela própria pauta:** uma carta, uma origem visual. Não um levantamento
 > do baralho inteiro.
 > **Status:** rascunho v1 do `narrative-writer` (2026-09-03), aguardando `GATE-CONTEUDO` +
@@ -22,17 +22,17 @@ gus@glyfesse:~/cartas$ a carta antes do nome
 
 Antes de qualquer carta ter nome, teve uma pergunta mais chata: como é que uma carta PARECE?
 
-Não "essa carta faz o quê". Isso vem de outro lugar — quem resolve dano, status, o motor inteiro por trás de um efeito, é assunto de outro dia, e não é este. A pergunta de nove de julho foi mais burra que essa, e por isso mesmo mais difícil: qual é o formato? Onde fica o nome, onde fica o custo, onde fica o desenho de dentro? E se um dia existirem dezenas de cartas diferentes, o que muda de uma pra outra sem precisar redesenhar tudo de novo, carta por carta?
+Não "essa carta faz o quê". Isso vem de outro lugar: quem resolve dano, status, o motor inteiro por trás de um efeito, é assunto de outro dia, e não é este. A pergunta de nove de julho foi mais burra que essa, e por isso mesmo mais difícil: qual é o formato? Onde fica o nome, onde fica o custo, onde fica o desenho de dentro? E se um dia existirem dezenas de cartas diferentes, o que muda de uma pra outra sem precisar redesenhar tudo de novo, carta por carta?
 
-A resposta começou como uma imagem só, gerada pra teste: uma moldura em pedra e ouro, arco no topo, sem nada escrito dentro dela — nem nome, nem efeito, nem figura nenhuma. Só a moldura. A primeira tentativa já saiu colorida numa cor só, pra ver se aquilo tinha cara de alguma coisa. Tinha. Só que colorir direto na origem prendia a moldura àquela cor pra sempre — e a ideia, desde o início, era que o mesmo desenho servisse pra qualquer área do conhecimento, cada uma com o próprio acento de cor. Então a segunda tentativa saiu sem cor nenhuma: pedra cinza, ouro neutro, um arco com a proporção corrigida, porque o primeiro ficava baixo demais. Essa é a moldura de verdade. A mãe de todas as outras.
+A resposta começou como uma imagem só, gerada pra teste: uma moldura em pedra e ouro, arco no topo, sem nada escrito dentro dela: nem nome, nem efeito, nem figura nenhuma. Só a moldura. A primeira tentativa já saiu colorida numa cor só, pra ver se aquilo tinha cara de alguma coisa. Tinha. Só que colorir direto na origem prendia a moldura àquela cor pra sempre, e a ideia, desde o início, era que o mesmo desenho servisse pra qualquer área do conhecimento, cada uma com o próprio acento de cor. Então a segunda tentativa saiu sem cor nenhuma: pedra cinza, ouro neutro, um arco com a proporção corrigida, porque o primeiro ficava baixo demais. Essa é a moldura de verdade. A mãe de todas as outras.
 
-Colorir por cima quase deu errado. A primeira ideia foi tingir a imagem inteira numa cor só de uma vez — funcionou, só que o ouro ia junto pro banho, e virava um ouro estranho dependendo da cor da vez. Ouro que muda de cor não parece mais ouro, parece só mais uma parte pintada. // o ouro não é decoração, é a parte que avisa "isso aqui é raro" antes de você ler uma palavra da carta
+Colorir por cima quase deu errado. A primeira ideia foi tingir a imagem inteira numa cor só de uma vez; funcionou, só que o ouro ia junto pro banho, e virava um ouro estranho dependendo da cor da vez. Ouro que muda de cor não parece mais ouro, parece só mais uma parte pintada. /* o ouro não é decoração, é a parte que avisa "isso aqui é raro" antes de você ler uma palavra da carta */
 
-A correção não foi pintar com mais cuidado. Foi tingir só o que precisava mudar — os canais de energia que correm pela pedra — e deixar o ouro fora do alcance da tinta. Isso pediu um jeito diferente de colorir, não uma cor diferente.
+A correção não foi pintar com mais cuidado. Foi tingir só o que precisava mudar (os canais de energia que correm pela pedra) e deixar o ouro fora do alcance da tinta. Isso pediu um jeito diferente de colorir, não uma cor diferente.
 
-Com a moldura resolvida, alguém montou uma carta inteira, ponta a ponta, só pra provar que o caminho inteiro funcionava: nome, custo, o desenho de dentro, o texto do efeito, tudo encaixado sobre a mesma moldura neutra, tingida numa cor só pra esse teste. Deu certo. Qual foi essa primeira amostra, e o que ela faz — isso fica pra quando o baralho inteiro virar matéria própria. Aqui a história é da moldura, não do nome que ela carregou primeiro.
+Com a moldura resolvida, alguém montou uma carta inteira, ponta a ponta, só pra provar que o caminho inteiro funcionava: nome, custo, o desenho de dentro, o texto do efeito, tudo encaixado sobre a mesma moldura neutra, tingida numa cor só pra esse teste. Deu certo. Qual foi essa primeira amostra, e o que ela faz: isso fica pra quando o baralho inteiro virar matéria própria. Aqui a história é da moldura, não do nome que ela carregou primeiro.
 
-Cinco dias depois, em quatorze de julho, fechou o mecanismo que decide o que cada carta FAZ. Isso é outra matéria, de outro dia — aqui não entra. Mas a pergunta "qual é a cara disso" já estava resolvida bem antes, e resolvida uma vez resolve pra sempre: a moldura de nove de julho é a mesma que veste toda carta do jogo até hoje.
+Cinco dias depois, em quatorze de julho, fechou o mecanismo que decide o que cada carta FAZ. Isso é outra matéria, de outro dia; aqui não entra. Mas a pergunta "qual é a cara disso" já estava resolvida bem antes, e resolvida uma vez resolve pra sempre: a moldura de nove de julho é a mesma que veste toda carta do jogo até hoje.
 
 Todo mundo vai perguntar de quem foi a primeira carta. A resposta boa, por enquanto, é: de ninguém ainda. Era só uma moldura vazia, esperando um nome. Fim.
 
@@ -46,17 +46,17 @@ gus@glyfesse:~/cards$ the card before the name
 
 Before any card had a name, there was a duller question: what does a card even LOOK like?
 
-Not "what does this card do." That comes from somewhere else — whoever resolves damage, status, the whole engine behind an effect, that's a different day's business, and not this one. The question from the ninth of July was dumber than that, and harder for exactly that reason: what's the shape? Where does the name go, where does the cost go, where does the inner artwork go? And if someday there are dozens of different cards, what changes from one to the next without redesigning everything from scratch, card by card?
+Not "what does this card do." That comes from somewhere else: whoever resolves damage, status, the whole engine behind an effect, that's a different day's business, and not this one. The question from the ninth of July was dumber than that, and harder for exactly that reason: what's the shape? Where does the name go, where does the cost go, where does the inner artwork go? And if someday there are dozens of different cards, what changes from one to the next without redesigning everything from scratch, card by card?
 
-The answer started as a single image, generated as a test: a frame in stone and gold, an arch at the top, nothing written inside it — no name, no effect, no figure. Just the frame. The first attempt came out already tinted a single color, to see if it looked like anything at all. It did. But coloring it at the source locked the frame into that color forever — and the idea, from the start, was for the same design to serve any field of knowledge, each with its own accent color. So the second attempt came out with no color at all: gray stone, neutral gold, an arch with the proportion fixed, because the first one sat too low. That's the real frame. The mother of all the others.
+The answer started as a single image, generated as a test: a frame in stone and gold, an arch at the top, nothing written inside it: no name, no effect, no figure. Just the frame. The first attempt came out already tinted a single color, to see if it looked like anything at all. It did. But coloring it at the source locked the frame into that color forever, and the idea, from the start, was for the same design to serve any field of knowledge, each with its own accent color. So the second attempt came out with no color at all: gray stone, neutral gold, an arch with the proportion fixed, because the first one sat too low. That's the real frame. The mother of all the others.
 
-Coloring it afterward almost went wrong. The first idea was to tint the whole image one color at once — it worked, except the gold went along for the dip, and turned some odd shade of gold depending on the color of the day. Gold that changes color doesn't look like gold anymore, it looks like just another painted part. // the gold isn't decoration, it's the part that says "this one's rare" before you've read a single word on the card
+Coloring it afterward almost went wrong. The first idea was to tint the whole image one color at once; it worked, except the gold went along for the dip, and turned some odd shade of gold depending on the color of the day. Gold that changes color doesn't look like gold anymore, it looks like just another painted part. /* the gold isn't decoration, it's the part that says "this one's rare" before you've read a single word on the card */
 
-The fix wasn't painting more carefully. It was tinting only what needed to change — the energy channels running through the stone — and keeping the gold out of the paint's reach entirely. That called for a different way of coloring, not a different color.
+The fix wasn't painting more carefully. It was tinting only what needed to change (the energy channels running through the stone) and keeping the gold out of the paint's reach entirely. That called for a different way of coloring, not a different color.
 
-With the frame settled, someone put together one whole card, start to finish, just to prove the entire path worked: name, cost, the inner artwork, the effect text, all fitted onto that same neutral frame, tinted a single color for that one test. It worked. Which card that first sample was, and what it does — that stays for whenever the whole deck becomes its own story. Here the story is the frame's, not the name it wore first.
+With the frame settled, someone put together one whole card, start to finish, just to prove the entire path worked: name, cost, the inner artwork, the effect text, all fitted onto that same neutral frame, tinted a single color for that one test. It worked. Which card that first sample was, and what it does: that stays for whenever the whole deck becomes its own story. Here the story is the frame's, not the name it wore first.
 
-Five days later, on the fourteenth of July, the mechanism that decides what each card DOES closed for good. That's a different story, for a different day — it doesn't belong here. But the question "what does this even look like" had already been answered well before that, and answered once, it stays answered: the frame from the ninth of July is the same one every card in the game still wears today.
+Five days later, on the fourteenth of July, the mechanism that decides what each card DOES closed for good. That's a different story, for a different day; it doesn't belong here. But the question "what does this even look like" had already been answered well before that, and answered once, it stays answered: the frame from the ninth of July is the same one every card in the game still wears today.
 
 Everyone's going to ask whose card was first. The good answer, for now, is: nobody's yet. It was just an empty frame, waiting on a name. Done.
 

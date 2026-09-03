@@ -1,7 +1,7 @@
-# "O Gus lê o bus" — banco de comentários pré-leitura
+# "O Gus lê o bus": banco de comentários pré-leitura
 
 > **Status: banco de aberturas, reutilizável edição após edição.** Produzido em 2026-09-03, por ordem do
-> líder. Escreve **só o comentário de antes de ler** — a reação ao conteúdo da mensagem (o que vem
+> líder. Escreve **só o comentário de antes de ler**: a reação ao conteúdo da mensagem (o que vem
 > depois) não é escopo deste documento.
 >
 > **A regra estrutural, verbatim do líder:** *"Ele começa com: hmmm, algo aqui, finalmente... [lê e
@@ -9,15 +9,15 @@
 > ler aqui...' se tiver muitas, mais de 2, ele começa a ser irônico: [3] mensagens? Esse povvo não vive
 > sem mim mesmo..."*
 >
-> **O que isso fixa:** o comentário reage a **ter chegado** mensagem, não ao que ela diz — essa é sempre
+> **O que isso fixa:** o comentário reage a **ter chegado** mensagem, não ao que ela diz: essa é sempre
 > a primeira reação, antes de qualquer leitura. É uma escada de 3 graus pelo VOLUME (1 / 2 / 3+), não pelo
 > conteúdo.
 
 ---
 
-## Grau 1 — a primeira mensagem (sempre)
+## Grau 1: a primeira mensagem (sempre)
 
-**O tom:** alívio. O `finalmente` é a chave — ele estava esperando. A caixa costumava ficar vazia (a #3
+**O tom:** alívio. O `finalmente` é a chave: ele estava esperando. A caixa costumava ficar vazia (a #3
 mostrou ela vazia de propósito, o bus só nasceu em 16/jul); isto é o pagamento dessa espera, não uma
 interjeição qualquer.
 
@@ -40,10 +40,10 @@ gus@glyfesse:bus$ ih, tem gente aí... nem lembro a ultima vez que teve algo aqu
 
 ---
 
-## Grau 2 — a segunda mensagem
+## Grau 2: a segunda mensagem
 
 **O tom:** surpresa contida, não mais alívio puro. Ele já processou a primeira; a segunda o pega
-ligeiramente de guarda baixa — bom sinal, mas ele trata como imprevisto, não como rotina ainda.
+ligeiramente de guarda baixa: bom sinal, mas ele trata como imprevisto, não como rotina ainda.
 
 ```
 gus@glyfesse:bus$ eita, mais uma... vou ler aqui...
@@ -61,10 +61,10 @@ gus@glyfesse:bus$ opa, segunda da leva... vamo la
 
 ---
 
-## Grau 3+ — três mensagens ou mais
+## Grau 3+: três mensagens ou mais
 
 **O tom: ironia que ri de si mesmo, nunca deboche do remetente.** O `[N]` marca onde a produção substitui
-pelo número real. ⛔ Ele não está reclamando de verdade — está fazendo pouco caso da própria vaidade antes
+pelo número real. ⛔ Ele não está reclamando de verdade: está fazendo pouco caso da própria vaidade antes
 que alguém precise fazer isso por ele. Se a fala soar arrogante ou irritada com quem escreveu, o mecanismo
 quebrou; a piada é sobre ELE gostar disso, não sobre os outros incomodarem.
 
@@ -92,11 +92,11 @@ gus@glyfesse:bus$ [N] mensagens. eu deveria cobrar assinatura
 ## Recomendação para a Edição #4
 
 **A #4 tem 1 mensagem só** (`anatomia_da_edicao`, seção 18: *"a caixa que a #3 mostrou vazia agora tem
-uma mensagem real de dentro da própria janela"*) — logo só o **Grau 1** se aplica; Grau 2 e 3+ ficam de
+uma mensagem real de dentro da própria janela"*), logo só o **Grau 1** se aplica; Grau 2 e 3+ ficam de
 reserva para edições futuras.
 
 **Recomendo a variação canônica, a primeira da lista (`hmmm, algo aqui, finalmente...`), verbatim do
-líder.** Justificativa: é a primeira vez que a seção tem conteúdo de verdade — o debut merece a frase que
+líder.** Justificativa: é a primeira vez que a seção tem conteúdo de verdade: o debut merece a frase que
 o próprio líder cunhou pra esse momento exato, não uma alternativa. As outras 4 variações do Grau 1 ficam
 guardadas para a próxima vez que a caixa amanhecer vazia de novo e voltar a encher (evita repetir a mesma
 frase edição após edição, que era o pedido original).

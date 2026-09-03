@@ -1,16 +1,16 @@
-# Glyfesse #4 — Editorial: a Carta do Gus (rascunho v1)
+# Glyfesse #4: Editorial: a Carta do Gus (rascunho v1)
 
-> Abre a edição. **Voz: Gus.** Tamanho **S por desenho** — no máximo dois blocos de carta.
+> Abre a edição. **Voz: Gus.** Tamanho **S por desenho**: no máximo dois blocos de carta.
 > **Lente aprovada (`PAUTA-EDICAO-4.md`, mapa da seção 3):** a resposta que a #3 prometeu sem saber, pela
-> lente de **"a coisa que aprendeu a andar agora tem rosto, e o mundo respondeu direto para ela"** —
+> lente de **"a coisa que aprendeu a andar agora tem rosto, e o mundo respondeu direto para ela"**:
 > cortando explicação técnica de qualquer tipo (é de outras seções) e cortando qualquer detalhe do NPC que
 > responde além do fato de que ele responde.
-> **Ponte obrigatória com a #3 (conferida na fonte, não na paráfrase da pauta — ver Notas de produção):**
+> **Ponte obrigatória com a #3 (conferida na fonte, não na paráfrase da pauta; ver Notas de produção):**
 > a carta pública da #3 registrou *"o que continuou de pé foi um quadrado azul. Sem rosto, sem nome, quatro
 > lados. Ele anda quando eu mando andar, e para onde eu mando. É pouco."* Este Editorial responde a essa
 > imagem.
 > **Formato (herdado da #3, `voz_prompt_shell`):** linha de prompt + carta pública (máx. 2 blocos) + bloco
-> de `//`. O `//` é **o que ele CORTOU da carta**, não resumo — o Gus não sabe que o leitor vê essa camada.
+> de `//`. O `//` é **o que ele CORTOU da carta**, não resumo: o Gus não sabe que o leitor vê essa camada.
 > **Status:** rascunho v1 do `narrative-writer` (2026-09-03), aguardando `GATE-CONTEUDO` do editor-geral.
 
 ---

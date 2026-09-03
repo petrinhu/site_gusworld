@@ -1,29 +1,29 @@
-# Edição #4 · Seção 16 · A Entrevista — perguntas do Gus ao Cauã "Volt"
+# Edição #4 · Seção 16 · A Entrevista: perguntas do Gus ao Cauã "Volt"
 
 > **Status: RASCUNHO DE PERGUNTAS, v6 (18 perguntas, mundo intacto, testado sem os `//`). Aguarda resposta
 > de outro agente (persona Cauã, que vai receber ESTE arquivo com os `//` removidos mecanicamente) + GATE-
 > CONTEUDO + GATE-SPOILER.**
-> Produzido em 2026-09-03. O texto abaixo é só o lado do Gus — nenhuma resposta foi escrita.
+> Produzido em 2026-09-03. O texto abaixo é só o lado do Gus: nenhuma resposta foi escrita.
 >
 > **Histórico das versões:** **v1** régua de voz errada. **v2** corrigiu contra `gus.md`/`caua-volt.md`.
 > **v3** inseriu `Hã? 🤨`. **v4** expandiu 8→18. **v5** corrigiu falta de território pessoal (18→20). **v6**
-> — esta — corrige **duas coisas de uma vez**: (a) **L-25**, lei nova (`GODS_LAWS.md`): nenhum personagem
+> (esta) corrige **duas coisas de uma vez**: (a) **L-25**, lei nova (`GODS_LAWS.md`): nenhum personagem
 > sabe que é feito de pixel, então todo vocabulário de produção (pipeline, commit, sprite, pixel, hitbox,
-> build) saiu da boca e da cabeça do Gus; (b) a peça foi **testada com os `//` tapados** — regra nova do
+> build) saiu da boca e da cabeça do Gus; (b) a peça foi **testada com os `//` tapados**: regra nova do
 > líder, porque o agente que vai escrever o Cauã recebe o arquivo **sem os pensamentos** (ninguém lê
 > pensamento de ninguém, só o leitor da revista lê os dois lados). Voltou a 18 perguntas.
 >
 > **Lente aprovada (`ROTEIRO-ENTREVISTAS.md`):** *Cauã "Volt" sob perguntas pela primeira vez, pela lente
-> de ter sido ele, e não o Gus, o primeiro rosto que o retângulo vestiu (22/jun, 21h57) — cortando qualquer
+> de ter sido ele, e não o Gus, o primeiro rosto que o retângulo vestiu (22/jun, 21h57), cortando qualquer
 > coisa do arco pessoal dele que a fila da party ainda vai revelar.*
 >
 > **A inversão:** na #3, o Cauã perguntou e o Gus respondeu. Aqui o Gus pergunta pela primeira vez desde a
-> #1 — mas dessa vez não é a um adulto que ele quase não conhece, é ao Companion #1, dentro do círculo de
+> #1, mas dessa vez não é a um adulto que ele quase não conhece, é ao Companion #1, dentro do círculo de
 > confiança da party.
 
 ---
 
-## O texto (pt-br) — só as perguntas
+## O texto (pt-br): só as perguntas
 
 ```
 gus@glyfesse:~/entrevista$ 22 de junho, 21h57... eu queria saber se a parte que desenha teve algum motivo
@@ -87,7 +87,7 @@ gus@glyfesse:~/entrevista$ isso incomodou você, ou só eu que fiquei pensando n
 // as duas hipóteses me deixam desconfortavel de formas diferentes
 
 gus@glyfesse:~/entrevista$ isso mudou como você me via?
-// não tem parte técnica nessa. eu tentei achar uma e não achei nenhuma
+/* não tem parte técnica nessa. eu tentei achar uma e não achei nenhuma */
 
 gus@glyfesse:~/entrevista$ mudando de assunto: seu acumulador do antebraço, quanto tempo ele leva pra
 carregar de novo depois que você descarrega tudo de uma vez?

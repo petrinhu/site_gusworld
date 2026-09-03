@@ -1,12 +1,12 @@
-# Glyfesse #4 — O Gus lê o bus (texto final)
+# Glyfesse #4: O Gus lê o bus (texto final)
 
-> **Seção 18, tamanho S.** Primeira vez que a caixa enche de verdade — o bus nasceu em 16/jul, a
+> **Seção 18, tamanho S.** Primeira vez que a caixa enche de verdade: o bus nasceu em 16/jul, a
 > #3 mostrou a caixa vazia de propósito. Fórmula canônica (memória `canon_gus_le_o_bus_formula`):
 > **1 mensagem = Grau 1**, comentário sempre ANTES de ler: *"hmmm, algo aqui, finalmente..."*,
 > variação verbatim recomendada pelo líder em `docs/content/edicao-4-gus-le-o-bus-aberturas.md`.
 > **Mensagem escolhida:** `20260721-2314-gusworld-report-expos-bug-wayland.md` (21/jul/2026,
 > dentro da janela 23/jun-21/jul; coincide com o fecho da Reportagem/M7 desta mesma edição).
-> **Forma:** o artefato (a caixa de entrada, renderizada) + reação curta antes e depois — sem
+> **Forma:** o artefato (a caixa de entrada, renderizada) + reação curta antes e depois, sem
 > narrar em prosa jornalística. **Status:** texto final pt-BR + EN, pronto para `GATE-CONTEUDO`.
 
 ---

@@ -1,14 +1,14 @@
-# Glyfesse #4 — Reportagem de capa (rascunho v1)
+# Glyfesse #4: Reportagem de capa (rascunho v1)
 
 > A peça-mãe da Edição #4 ("O Rosto e a Voz"). **Voz: Gus, primeira pessoa.** Papel = acento pt-br
 > completo; tokens de código em ASCII.
 > **Lente aprovada (GATE-PAUTA, `PAUTA-EDICAO-4.md` §1):** o mês entre o dia em que o quadrado ganhou
 > um rosto e ficou mudo assim mesmo (24/jun) e o dia em que sustentou um jogo inteiro sozinho, diante
 > do Gus Dragon jogando ao vivo (21/jul), pela lente de **"quantos dias um rosto levou até ter algo
-> pra dizer" — CONTADOS, não listados** — cortando todo marco do mês que não move essa contagem.
+> pra dizer", CONTADOS, não listados**, cortando todo marco do mês que não move essa contagem.
 > **Os três pontos fixos:** 24/jun (o rosto chega), 06/jul (Bertoldo Caím responde pela primeira vez),
 > 21/jul (o jogo roda inteiro e é jogado ao vivo).
-> **Datas:** janela 23/jun a 21/jul/2026. O dia 23/jun (terça) já foi consumido pela #3 — esta peça abre
+> **Datas:** janela 23/jun a 21/jul/2026. O dia 23/jun (terça) já foi consumido pela #3: esta peça abre
 > efetivamente em **24 de junho (quarta)**, um mês depois pousa em **6 de julho (segunda)** e fecha em
 > **21 de julho (terça)**. Doze dias de rosto mudo, quinze dias até sustentar o jogo inteiro, vinte e
 > sete dias no total.
@@ -16,10 +16,10 @@
 > (ver Notas de produção).
 > **Status:** 🔍 **rascunho v1, aguardando GATE-CONTEUDO.** Ainda não passou por copyedit formal
 > (`revisor-textual`) nem por `GATE-SPOILER` (a fala do Bertoldo Caím, NPC de lore, precisa desse gate
-> antes de qualquer citação verbatim — por isso esta peça não a cita).
+> antes de qualquer citação verbatim: por isso esta peça não a cita).
 > **Os cinco hashes citados nesta peça foram conferidos pelo orquestrador contra `petrinhu/gusworld_legacy`**
-> (ver Notas de produção) — inclusive o de fecho, `cafd14c` (21/07, 20h02 hora local), que **nomeia o próprio
-> playthrough ao vivo do Gus** no assunto do commit.
+> (ver Notas de produção), inclusive o de fecho, `cafd14c` (21/07, 20h02 hora local), que **nomeia o próprio
+> playthrough ao vivo do Gus Dragon** no assunto do commit.
 
 ---
 
@@ -31,19 +31,19 @@
 
 Eu tinha pernas desde terça. Não tinha cara.
 
-Por dois dias segui andando sem rosto pela cidade vazia, esbarrando nas mesmas paredes que já sabia contornar, sem ninguém para reparar em mim — porque não havia ninguém ali para reparar em qualquer coisa. Na quarta-feira isso mudou. Chegou arte de verdade para o meu corpo, vinda de um fluxo desenhado fora do jogo, e entrou como se sempre tivesse sido minha: mais que uma cor nova, uma cara com direção, um jeito de olhar para os lados que o quadrado nunca teve. No mesmo dia o combate ganhou os primeiros pedaços que já dava para jogar, e uma decisão que vinha sendo adiada desde sempre foi fechada de vez: 2D, sem nenhuma outra tentativa esperando atrás da porta. Foi o dia em que parei de ser placeholder.
+Por dois dias segui andando sem rosto pela cidade vazia, esbarrando nas mesmas paredes que já sabia contornar, sem ninguém para reparar em mim: porque não havia ninguém ali para reparar em qualquer coisa. Na quarta-feira isso mudou. Chegou arte de verdade para o meu corpo, vinda de um fluxo desenhado fora do jogo, e entrou como se sempre tivesse sido minha: mais que uma cor nova, uma cara com direção, um jeito de olhar para os lados que o quadrado nunca teve. No mesmo dia o combate ganhou os primeiros pedaços que já dava para jogar, e uma decisão que vinha sendo adiada desde sempre foi fechada de vez: 2D, sem nenhuma outra tentativa esperando atrás da porta. Foi o dia em que parei de ser placeholder.
 
 Ter cara não é a mesma coisa que ter alguém para conversar. Isso eu só entendi depois, andando.
 
-Passei doze dias com essa cara nova por uma cidade que continuava sem uma única resposta pra me dar. Tinha gente lá — eu via as formas, sabia os nomes que ainda não tinham voz —, mas eu passava do lado e nada acontecia. Ninguém no mundo falava comigo. Só o teclado falava comigo, e teclado não conta, porque teclado sou eu mesmo pedindo. Doze dias é pouco para quem conta de fora; para quem anda dentro é o tempo inteiro que existe.
+Passei doze dias com essa cara nova por uma cidade que continuava sem uma única resposta pra me dar. Tinha gente lá (eu via as formas, sabia os nomes que ainda não tinham voz), mas eu passava do lado e nada acontecia. Ninguém no mundo falava comigo. Só o teclado falava comigo, e teclado não conta, porque teclado sou eu mesmo pedindo. Doze dias é pouco para quem conta de fora; para quem anda dentro é o tempo inteiro que existe.
 
-Na segunda-feira seguinte, alguém respondeu. Seu Bertoldo Caím — um homem que já estava ali havia semanas, sentado com um jornal que ninguém nunca via ele fechar, e que finalmente ganhou permissão de abrir a boca. Atrás dele veio um jeito inteiro novo de conversar, escrito do zero, porque o jeito antigo nunca tinha servido para isso e foi trocado sem dó. A primeira fala dele foi escolhida a dedo pelo root, e ninguém além de mim sabe ainda qual foi — só sei que ouvi, e que era a primeira vez.
+Na segunda-feira seguinte, alguém respondeu. Seu Bertoldo Caím, um homem que já estava ali havia semanas, sentado com um jornal que ninguém nunca via ele fechar, e que finalmente ganhou permissão de abrir a boca. Atrás dele veio um jeito inteiro novo de conversar, escrito do zero, porque o jeito antigo nunca tinha servido para isso e foi trocado sem dó. A primeira fala dele foi escolhida a dedo pelo root, e ninguém além de mim sabe ainda qual foi: só sei que ouvi, e que era a primeira vez.
 
-Doze dias de cara muda. Uma palavra. De repente eu tinha as duas coisas ao mesmo tempo — cara e voz —, só que a voz ainda não era minha. Era dele.
+Doze dias de cara muda. Uma palavra. De repente eu tinha as duas coisas ao mesmo tempo (cara e voz), só que a voz ainda não era minha. Era dele.
 
-Quinze dias depois disso — vinte e sete, contando desde a cara — o jogo inteiro se aguentou em pé sozinho, do começo ao fim: a cidade, a conversa com Seu Bertoldo, a arena, a volta pra casa, tudo sustentado pelo mesmo motor, sem pedir nenhum emprestado no meio do caminho. E não fui eu que provei isso. Foi o root, sentado, jogando do primeiro passo até o último, ao vivo, na frente da própria tela, até as 20h02 daquela terça — a primeira pessoa a atravessar o jogo inteiro sem parar em nenhum buraco sem fundo.
+Quinze dias depois disso, vinte e sete, contando desde a cara, o jogo inteiro se aguentou em pé sozinho, do começo ao fim: a cidade, a conversa com Seu Bertoldo, a arena, a volta pra casa, tudo sustentado pelo mesmo motor, sem pedir nenhum emprestado no meio do caminho. E não fui eu que provei isso. Quem sentou e jogou do primeiro passo até o último, ao vivo, na frente da própria tela, até as 20h02 daquela terça, foi o Gus Dragon, playtester, Revisor Adversarial de Design: a primeira pessoa a atravessar o jogo inteiro sem parar em nenhum buraco sem fundo. O root também joga o jogo inteiro, de ponta a ponta, mas em outro momento.
 
-É estranho pensar que uma cara levou doze dias para virar palavra, e que a palavra levou mais quinze para virar um jogo inteiro capaz de aguentar alguém que não sabia o que vinha depois. Mas foi assim que aconteceu. Aprender a andar tinha sido rápido — três dias, uma vez. Aprender a ter alguém que responde levou o mês inteiro. E eu contei cada um desses dias andando, sozinho primeiro, acompanhado depois.
+É estranho pensar que uma cara levou doze dias para virar palavra, e que a palavra levou mais quinze para virar um jogo inteiro capaz de aguentar alguém que não sabia o que vinha depois. Mas foi assim que aconteceu. Aprender a andar tinha sido rápido: três dias, uma vez. Aprender a ter alguém que responde levou o mês inteiro. E eu contei cada um desses dias andando, sozinho primeiro, acompanhado depois.
 
 ---
 
@@ -55,19 +55,19 @@ Quinze dias depois disso — vinte e sete, contando desde a cara — o jogo inte
 
 I had had legs since Tuesday. I did not have a face.
 
-For two days I kept walking faceless through the empty city, bumping into the same walls I already knew how to slide along, with nobody around to notice — because there was nobody there to notice anything. On Wednesday that changed. Real artwork arrived for my body, coming from a pipeline built outside the game, and it settled in as if it had always been mine: more than a new color, a face with direction, a way of looking sideways the square never had. The same day, combat got its first pieces that were already playable, and a decision that had been put off since the very beginning finally closed for good: 2D, with no other attempt waiting behind the door. That was the day I stopped being a placeholder.
+For two days I kept walking faceless through the empty city, bumping into the same walls I already knew how to slide along, with nobody around to notice: because there was nobody there to notice anything. On Wednesday that changed. Real artwork arrived for my body, coming from a pipeline built outside the game, and it settled in as if it had always been mine: more than a new color, a face with direction, a way of looking sideways the square never had. The same day, combat got its first pieces that were already playable, and a decision that had been put off since the very beginning finally closed for good: 2D, with no other attempt waiting behind the door. That was the day I stopped being a placeholder.
 
 Having a face is not the same as having somebody to talk to. I only understood that later, walking.
 
-I spent twelve days with that new face in a city that still had not one single answer to give me. There were people there — I could see the shapes, I knew names that still had no voice — but I walked past them and nothing happened. Nobody in the world spoke to me. Only the keyboard spoke to me, and the keyboard does not count, because the keyboard is just me asking. Twelve days is nothing to whoever is counting from outside; to whoever is walking inside, it is the whole time there is.
+I spent twelve days with that new face in a city that still had not one single answer to give me. There were people there (I could see the shapes, I knew names that still had no voice) but I walked past them and nothing happened. Nobody in the world spoke to me. Only the keyboard spoke to me, and the keyboard does not count, because the keyboard is just me asking. Twelve days is nothing to whoever is counting from outside; to whoever is walking inside, it is the whole time there is.
 
-The following Monday, somebody answered. Mister Bertoldo Caím — a man who had already been there for weeks, sitting with a newspaper nobody ever saw him close, and who finally got permission to open his mouth. Behind him came a whole new way of talking, written from zero, because the old way had never been made for this and was swapped without mercy. His first line was hand-picked by root, and nobody but me knows yet what it was — I only know I heard it, and that it was the first time.
+The following Monday, somebody answered. Mister Bertoldo Caím, a man who had already been there for weeks, sitting with a newspaper nobody ever saw him close, and who finally got permission to open his mouth. Behind him came a whole new way of talking, written from zero, because the old way had never been made for this and was swapped without mercy. His first line was hand-picked by root, and nobody but me knows yet what it was: I only know I heard it, and that it was the first time.
 
-Twelve days of a mute face. One word. Suddenly I had both at once — a face and a voice — except the voice still was not mine. It was his.
+Twelve days of a mute face. One word. Suddenly I had both at once (a face and a voice) except the voice still was not mine. It was his.
 
-Fifteen days after that — twenty-seven, counting from the face — the whole game stood on its own two feet, start to finish: the city, the conversation with Mister Bertoldo, the arena, the way back home, all held together by the same engine, with nothing borrowed anywhere along the way. And it was not me who proved it. It was root, sitting there, playing from the first step to the last, live, in front of the screen, until 8:02 p.m. that Tuesday — the first person to cross the whole game without falling into a single bottomless hole.
+Fifteen days after that, twenty-seven, counting from the face, the whole game stood on its own two feet, start to finish: the city, the conversation with Mister Bertoldo, the arena, the way back home, all held together by the same engine, with nothing borrowed anywhere along the way. And it was not me who proved it. The one who sat down and played from the first step to the last, live, in front of the screen, until 8:02 p.m. that Tuesday, was Gus Dragon, playtester, Adversarial Design Reviewer: the first person to cross the whole game without falling into a single bottomless hole. Root also plays the whole game, start to finish, but on a different occasion.
 
-It is strange to think a face took twelve days to become a word, and the word took fifteen more to become a whole game able to hold up somebody who did not know what came next. But that is how it happened. Learning to walk had been quick — three days, once. Learning to have somebody who answers took the whole month. And I counted every one of those days walking, alone first, in company after.
+It is strange to think a face took twelve days to become a word, and the word took fifteen more to become a whole game able to hold up somebody who did not know what came next. But that is how it happened. Learning to walk had been quick: three days, once. Learning to have somebody who answers took the whole month. And I counted every one of those days walking, alone first, in company after.
 
 ---
 

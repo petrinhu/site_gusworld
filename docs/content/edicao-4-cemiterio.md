@@ -1,15 +1,15 @@
-# Glyfesse #4 — Cemitério das Ideias Mortas (rascunho v1)
+# Glyfesse #4: Cemitério das Ideias Mortas (rascunho v1)
 
-> Seção fixa da revista. **Voz: Gus.** Layout de lápide reaproveitado das #2/#3 — não re-gate de arte.
+> Seção fixa da revista. **Voz: Gus.** Layout de lápide reaproveitado das #2/#3, sem re-gate de arte.
 > **Lente aprovada (`PAUTA-EDICAO-4.md`, mapa da seção 3, item 7):** a tentativa 3D, pela lente de **"morreu
-> no dia em que o 2D venceu"** — o gate 2D-vs-3D fecha em 24/jun/2026, o mesmo dia em que o rosto chegou —,
+> no dia em que o 2D venceu"** (o gate 2D-vs-3D fecha em 24/jun/2026, o mesmo dia em que o rosto chegou),
 > cortando o funcionamento interno da produção e cortando reabrir por que Blender e Tripo3D foram
 > abandonados (essa história completa é matéria de outra peça, `historia_real_dos_pivos`, e não cabe aqui).
 > **Uma lápide só: Blender + Tripo3D.**
 > **Ponte obrigatória com a #3:** o Cemitério da #3 registrou, no próprio cabeçalho de produção, que a morte
-> da tentativa 3D **"não aparece, nem insinuada, nem prometida — foi para a #4."** Esta é a dívida sendo
+> da tentativa 3D **"não aparece, nem insinuada, nem prometida; foi para a #4."** Esta é a dívida sendo
 > paga.
-> **Datas:** nascimento **18/mai/2026** — morte **24/jun/2026**. Ver Notas de produção para a fonte de cada
+> **Datas:** nascimento **18/mai/2026**, morte **24/jun/2026**. Ver Notas de produção para a fonte de cada
 > uma; a data de morte é diretamente a data-âncora 1 da pauta, a de nascimento é inferida (sinalizado).
 > **Status:** rascunho v1 do `narrative-writer` (2026-09-03), aguardando `GATE-CONTEUDO` do editor-geral.
 
@@ -24,7 +24,7 @@ gus@glyfesse:~/cemiterio$ cemitério das ideias mortas
 Desta vez é só uma lápide. Prometi ela na edição passada, e não é o tipo de promessa que se atrasa. Essa aqui eu adiei sem querer, porque falar dela dói um pouquinho mais que falar das outras.
 
 ### Blender + Tripo3D
-**18/mai/2026 — †24/jun/2026**
+**18/mai/2026 a †24/jun/2026**
 
 > Aqui jaz a ideia de dar volume ao mundo.
 > Perdeu no dia exato em que ele ganhou uma cara.
@@ -48,7 +48,7 @@ gus@glyfesse:~/cemiterio$ graveyard of dead ideas
 This time it's just one headstone. I promised it last issue, and that's not the kind of promise that gets to run late. This one I put off without meaning to, because talking about it hurts a little more than talking about the others.
 
 ### Blender + Tripo3D
-**18 May 2026 — †24 Jun 2026**
+**18 May 2026 to †24 Jun 2026**
 
 > Here lies the idea of giving the world volume.
 > Died the exact day it got a face instead.

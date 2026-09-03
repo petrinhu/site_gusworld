@@ -322,6 +322,14 @@ main{display:block}
   padding:8px 12px; border-left:2px solid #35562f66; margin-top:clamp(12px,2vw,16px);
 }
 .conteudo .pensa.assinatura{margin-top:2px; opacity:.9}
+/* pensamento LONGO (edição #4, ordem do líder): acima de 72 caracteres o //
+   de linha vira comentário de BLOCO. Troca só a marca (::before/::after); o
+   corpo, a cor e o tamanho continuam os do .pensa comum - nada mais muda.
+   Combina sem conflito com .pensa.volt: o Cauã não tem regra própria de cor
+   (é o MESMO verde do Gus de propósito, ver §16), então .pensa.longo.volt
+   também funciona sem precisar de seletor combinado nenhum. */
+.conteudo .pensa.longo::before{content:"/* "; opacity:.85}
+.conteudo .pensa.longo::after{content:" */"; opacity:.85}
 
 /* ── §5 A NOTA: o placar (gráficos/jogabilidade/texto) ── */
 .conteudo .placar{list-style:none; margin:0 0 clamp(12px,2vw,16px); padding:0}
@@ -2503,6 +2511,22 @@ html.lightbox-aberto{overflow:hidden}
     rgb(255 255 255 / .06) 53%, rgb(255 255 255 / .22) 57%,
     rgb(255 255 255 / .07) 74%, #0000 100%);
 }
+/* ── §13 (edição #4) · .chapa.retrato: o pôster é um pixel art de verdade ──
+   A .chapa sem modificador segue o quadrado ciano sólido de sempre (a piada
+   do 16x16 impresso gigante) - intocada. Aqui ela vira MOLDURA para um <img>
+   real. Mesmo tijolo de <img> pixelated que .capa-frame/.ed-frame/
+   .lt-item-frame já usam em três lugares da revista (nearest-neighbor, sem
+   interpolação - "nada de meio pixel"); object-fit:contain porque o retrato
+   não nasce quadrado como a piada do quadrado azul, e cover cortaria a arte.
+   Nem o <img> nem a .chapa.retrato ganham z-index novo: ::before (fibra do
+   papel) e ::after (vinco da dobra) continuam pintando por cima dele na
+   mesma ordem de documento de sempre, sem precisar de regra extra. */
+.conteudo .enc .chapa.retrato{background:var(--tinta-preta)}
+.conteudo .enc .chapa.retrato img{
+  display:block; width:100%; height:100%; object-fit:contain;
+  image-rendering:pixelated;
+}
+
 /* ★ A FICHA TÉCNICA é onde a piada mora sem ser dita: "16 x 16 px" é um dado,
    escrito como qualquer ficha escreve dado, e é o único lugar do encarte que
    contradiz o tamanho do que está impresso acima. Nenhuma linha comenta isso,
@@ -2650,12 +2674,36 @@ html.lightbox-aberto{overflow:hidden}
   color:var(--tinta-2); margin-top:7px;
 }
 
+/* ── §18 (edição #4) · A CAIXA DO BUS COM MENSAGEM ──
+   O estado vazio (.nada) continua intocado - #1 e #3 seguem usando ele. Aqui
+   a listagem ganha UMA linha real: .msg reusa a MESMA grade de colunas do
+   .cab (7ch/22ch/10ch) para a entrada alinhar sob DE/ASSUNTO/QUANDO, no
+   lugar de .nada. O corpo da mensagem mora no MESMO tubo, abaixo da
+   listagem (antes do "de novo"), em fósforo apagado porque é conteúdo LIDO,
+   não comando digitado - mesma lógica de divisão semântica que já separa
+   .cab/.nada/.conta (resposta da máquina) dos .cmd (o que o Gus digitou).
+   O contador ("1 recebida · 1 não lida") não precisa de CSS novo: .conta e
+   o <span class="z"> já são genéricos, plantados em #1 e #3 só mostrando 0. */
+.conteudo .bus-crt .msg{
+  display:grid; grid-template-columns:7ch 22ch 10ch; gap:0 4px;
+  padding:8px 0; border-bottom:1px solid #35895f;
+  color:#c8ffe4; text-shadow:none; line-height:1.4;
+}
+.conteudo .bus-crt .msg span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.conteudo .bus-crt .corpo{
+  margin:10px 0 0; padding:10px 0 0; border-top:1px dashed #35895f66;
+  color:#c8ffe4; text-shadow:none; line-height:1.65; white-space:pre-wrap;
+}
+
 /* ESTREITO: a coluna do meio some. A 390px o "ASSUNTO" espremido entre as
    outras duas ficava com 2 caracteres úteis e a régua parecia rachada; com
-   duas colunas o cabeçalho respira e continua dizendo que é uma tabela. */
+   duas colunas o cabeçalho respira e continua dizendo que é uma tabela.
+   .msg segue a MESMA regra do .cab (mesma grade, mesmo motivo). */
 @media (max-width:560px){
   .conteudo .bus-crt .cab{grid-template-columns:7ch 10ch}
   .conteudo .bus-crt .cab .assunto{display:none}
+  .conteudo .bus-crt .msg{grid-template-columns:7ch 10ch}
+  .conteudo .bus-crt .msg .assunto{display:none}
 }
 
 /* IMPRESSO: a peça tem que dizer a mesma coisa parada e em papel.
@@ -2668,6 +2716,8 @@ html.lightbox-aberto{overflow:hidden}
   .conteudo .bus-crt .crt-tela::after,
   .conteudo .bus-crt .cab,
   .conteudo .bus-crt .nada,
+  .conteudo .bus-crt .msg,
+  .conteudo .bus-crt .corpo,
   .conteudo .bus-crt .crt-cur{
     -webkit-print-color-adjust:exact; print-color-adjust:exact;
   }
