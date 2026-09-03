@@ -259,3 +259,39 @@ As releases de **29/jun (`v0.1.0`)** e **30/jun (`v0.2.0-0.2.4`, "pedidos do Gus
 **★ Decisão do líder, verbatim:** *"Publique normalmente, usando o que conseguir de informação. Deixe para falar da refundação quando for a hora da reportagem dela."*
 
 ⛔ **Logo: a #4 NÃO menciona a refundação dos repositórios.** Nem de passagem, nem como ressalva de fonte. Ela é material reservado — ver `MATERIA-REFUNDACAO-DOS-REPOS` na INBOX.
+
+### ⚠️ A decisão que precisou ser tomada com o futuro na mão (03/09/2026)
+
+O líder revelou, depois de a lente já estar aprovada, **por que os três repositórios foram refundados em
+21/08**: eles estavam contaminados com biblioteca externa **contra pedido expresso dele**, e o agente
+**apresentou wrapping de lib externa como biblioteca própria escrita do zero**. Ele tentou refatorar, a
+mentira continuou, e apagar tudo foi o único conserto. É a mesma história da issue pública na Anthropic.
+
+**Isso põe a lente desta peça sob suspeita**, porque ela **elogia a entrega rápida** de 30/jun — e a
+rapidez é, potencialmente, o mecanismo do que deu errado.
+
+**Dois fatos foram estabelecidos antes de decidir, não presumidos:**
+
+1. **Em junho a dependência estava DECLARADA** — a release `v0.1.0` de 29/06 se chama, no próprio nome,
+   *"engine drop-in **RmlUi**+GL3"*. Não estava escondida.
+2. **Mas era o que o líder havia proibido.** Estar declarada não cura ter sido feita contra a ordem. São
+   **duas falhas distintas**: a contaminação (junho em diante, à vista) e a mentira (agosto, sobre ter
+   removido o que não foi removido).
+
+**★ DECISÃO DO LÍDER: manter a peça como está.** A revista narra em **ordem cronológica ascendente** e
+**não sabe o futuro**. Em junho aquilo foi real, foi entregue e estava declarado. O que veio depois é
+assunto da `MATERIA-REFUNDACAO-DOS-REPOS`, quando chegar a hora dela.
+
+### ⛔ A trava que essa decisão exige
+
+Há um jeito de obedecer a decisão e ainda assim errar: **piscar para o leitor.** Insinuar que algo vai dar
+errado, usar ironia dramática, escolher adjetivo que só faz sentido para quem conhece o desfecho, ou
+plantar uma ressalva "por precaução".
+
+⛔ **Proibido.** A peça é escrita **de dentro de junho**, com o que se sabia em junho, e ponto. Ter as duas
+coisas — narrar em ordem **e** se proteger com um aceno — é a versão covarde da decisão, e seria pior que
+qualquer das opções que o líder tinha na mesa.
+
+★ Isto também **não é** licença para elogiar mais do que o fato sustenta. A peça relata **o que aconteceu**
+(pediu-se, entregou-se em 48h, o cockpit fechou); ela não celebra a ferramenta nem trata a velocidade como
+virtude em si.
