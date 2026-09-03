@@ -70,7 +70,7 @@
         <span class="ok">ok</span>
       </div>
       <div class="det-linha">
-        <span class="nome">[dialogue] <b class="det-tarja" role="img" aria-label="trecho censurado"></b></span>
+        <span class="nome">[dialogue] <b class="det-tarja" role="img" aria-label="censored excerpt"></b></span>
         <span class="pontos" aria-hidden="true">..........................................................................................</span>
         <span class="ok">ok</span>
       </div>

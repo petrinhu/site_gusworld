@@ -312,14 +312,27 @@ main{display:block}
 /* o // = comentário de código: verde AA (5.05:1 sobre o pior papel), de-emphasis
    por COR. ⚠️ 15px é o piso do guard N→H (a pixel rasteriza N como H abaixo
    disso); o // é a camada honesta, tem que ler limpo. NUNCA baixar de 15px. */
+/* RECUO PENDENTE (ordem do líder, ED4-MONTAGEM conserto 1): a marca "// "/"/* "
+   tem 3 caracteres; numa fonte monoespaçada isso é exatamente 3ch. padding-left
+   empurra o bloco inteiro pra a direita da marca, text-indent puxa só a
+   PRIMEIRA linha (onde mora o ::before) de volta pra a margem - as linhas de
+   continuação do wrap ficam alinhadas SOB o texto, nunca voltam pra margem
+   crua. Em tela larga o resultado não muda nada (3ch de padding − 3ch de
+   indent = 0 de deslocamento visível); só entra em jogo quando o texto quebra.
+   Vale pra .longo também: "/* " tem os mesmos 3 caracteres que "// ". */
 .conteudo .pensa{
   display:block; font-family:var(--font-display); font-size:15px; line-height:1.5;
   color:#35562f; letter-spacing:.005em; margin:5px 0 clamp(10px,1.6vw,14px);
+  padding-left:3ch; text-indent:-3ch;
 }
 .conteudo .pensa::before{content:"// "; opacity:.85}
-/* a nota "prezado leitor" (bloco //): mesma cor, um respiro à esquerda */
+/* a nota "prezado leitor" (bloco //): mesma cor, um respiro à esquerda.
+   O recuo próprio (12px de padding-left + fio) já existia; a marca some do
+   valor total (12px + 3ch) e o text-indent:-3ch herdado do .pensa puxa só a
+   primeira linha de volta pros 12px originais - o respiro de tela larga não
+   muda, e o recuo pendente passa a valer aqui também. */
 .conteudo .pensa.nota-leitor{
-  padding:8px 12px; border-left:2px solid #35562f66; margin-top:clamp(12px,2vw,16px);
+  padding:8px 12px 8px calc(12px + 3ch); border-left:2px solid #35562f66; margin-top:clamp(12px,2vw,16px);
 }
 .conteudo .pensa.assinatura{margin-top:2px; opacity:.9}
 /* pensamento LONGO (edição #4, ordem do líder): acima de 72 caracteres o //
@@ -1873,11 +1886,16 @@ main{display:block}
 }
 /* a LEGENDA do pôster (fala + //) acompanha o encarte: ganha a mesma largura da
    folha e centraliza o texto, pra ficar alinhada sob o pôster centralizado (e não
-   presa à esquerda na coluna de texto). Escopo: só a fala/pensa que seguem o .poster */
+   presa à esquerda na coluna de texto). Escopo: só a fala/pensa que seguem o .poster.
+   ⚠️ Recuo pendente (conserto 1) DESLIGADO aqui: hanging indent supõe texto
+   alinhado à esquerda; com text-align:center cada linha já centraliza sozinha,
+   então "linha de continuação sem marca" não existe - reset evita a primeira
+   linha desalinhar do centro por causa do text-indent negativo. Edição #2 (no
+   ar) usa este seletor; sem o reset a legenda do pôster regredia. */
 .conteudo .poster ~ .fala,
 .conteudo .poster ~ .pensa{
   width:calc(min(1080px, 100vw) - 2 * clamp(20px,3.5vw,56px));
-  text-align:center;
+  text-align:center; padding-left:0; text-indent:0;
 }
 /* o rótulo de encarte no alto do mat (pixel apagada, como carimbo de miolo).
    PISO DE 15px: a 9,5px o carimbo lia `EHCARTE` — palavra que não existe. O
@@ -2517,7 +2535,7 @@ html.lightbox-aberto{overflow:hidden}
 .conteudo .enc .cabeca{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap}
 .conteudo .enc .titulo{
   font-family:var(--font-manchete); font-weight:700;
-  font-size:clamp(38px,9.4vw,74px); line-height:.86;
+  font-size:clamp(38px,9.4vw,74px); line-height:.98;
   letter-spacing:-.03em; text-transform:uppercase;
   color:var(--tinta-preta); margin:0;
 }
