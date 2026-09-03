@@ -333,3 +333,31 @@ dita em voz alta para a peça que ainda não a tinha ouvido.
 
 ⛔ E a consequência prática que a lente dela já registra: **nenhum elogio à adoção como vitória.** Descrever
 o que ela resolveu tecnicamente naquele instante, sem prever o que viria em agosto.
+
+### ✅ O `Hã? 🤨` — DECIDIDO pelo líder em 03/09/2026, vendo renderizado
+
+O mockup `docs/design/mockups/20-ha-tres-versoes.html` (commit `18c247e`) apresentou três versões
+renderizadas de verdade. **O líder escolheu a A: o emoji do sistema, como está.**
+
+⛔ **Não trocar por `¬_¬` nem por sobrancelha em CSS.** Foi escolha informada — ele viu a ampliação, viu
+o emoji fora da grade, e decidiu assim mesmo. **Destoar é o ponto.**
+
+★ **Faz sentido no canon:** é uma criança de 11 anos usando emoji de mensagem dentro de um prompt de
+terminal. Os dois registros não combinam, e é isso que faz funcionar — do mesmo modo que o `//` é
+comentário de código carregando o que ele não diz em voz alta.
+
+### ⚠️ O que essa escolha OBRIGA a verificar (é a 1ª vez que o site serve emoji a um leitor)
+
+Medido em 03/09: a Edição #3 no ar serve **zero** emoji, e a `PixelOperatorMono` **não tem** o glifo
+(238 glifos, `U+1F928` fora do `cmap`). Logo, esta é uma estreia, e estreia se confere:
+
+1. **No celular** — a fonte de emoji do sistema muda de plataforma para plataforma; o que foi visto aqui é
+   a do desktop. ⚠️ Mobile é o maior risco declarado do site.
+2. **No modo escuro** — o emoji é colorido e fixo, não herda a cor do texto. Contra o navy do papel e
+   contra o fundo da tela, o contraste é outro.
+3. ★ **No leitor de tela** — e este é o menos óbvio: o `🤨` **tem nome**, e o leitor vai **anunciá-lo em voz
+   alta** ("cara com sobrancelha levantada") logo depois do "Hã?". Pode ser exatamente o efeito desejado —
+   a entonação dita em palavras — ou pode ficar intrusivo. **Decidir com o `aria-label` antes de publicar**,
+   não descobrir na auditoria.
+
+Vai para o `TST-A11Y` e para o gate de RENDER. ⛔ Não resolver no texto.
