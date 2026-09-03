@@ -135,3 +135,32 @@ Da matriz de conflitos do `party.md` — cada um já tem fricção pronta com o 
 ---
 
 **Cross-ref:** [`PIPELINE-EDICAO.md`](PIPELINE-EDICAO.md) (E1/GATE-PAUTA), `docs/content/edicao-1-entrevista.md`, `docs/content/edicao-2-entrevista.md`, memórias `anatomia_da_edicao`, `reference_pipeline_editorial`, `project_spoiler_policy`.
+
+---
+
+## ★★ REGRA DE MÉTODO — o entrevistado NUNCA vê o `//` (líder, 2026-09-03)
+
+**Verbatim:** *"Na hora de criar o agente de resposta, ele não pode responder os comentários `//`, pois representam pensamentos e pessoas não leem pensamentos."*
+
+★ **O `//` é pensamento. O entrevistado não o ouve — ninguém ouve.** Se o agente do entrevistado responder a um `//`, ele está reagindo a algo que **nunca foi dito em voz alta**, e a peça inteira desmorona: o leitor percebe na hora que o outro respondeu ao que não podia saber.
+
+### Como se garante isto na produção — e não é pedindo
+
+⛔ **NÃO basta instruir o agente a "ignorar os `//`".** Isso é confiar em disciplina onde dá para eliminar a tentação.
+
+★ **O agente do entrevistado recebe uma versão do arquivo COM OS `//` REMOVIDOS**, só as linhas de fala. Se ele não pode ler, não pode responder. A remoção é mecânica e se confere antes de despachar:
+
+```bash
+grep -v '^//' perguntas.md > perguntas-sem-pensamento.md
+grep -c '^//' perguntas-sem-pensamento.md   # tem de dar 0
+```
+
+### O que isso implica para o desenho das perguntas
+
+★ **Cada fala tem de se sustentar sozinha, sem o `//` que a acompanha.** Se uma pergunta só faz sentido quando se lê o pensamento embaixo dela, ela está mal escrita — o entrevistado vai receber só a fala, e vai travar.
+
+**O teste:** tape os `//` e leia só as falas em sequência. Se a conversa continua de pé, está certo. Se ficam buracos, a informação que faltou estava no pensamento, e tem de subir para a fala ou a pergunta tem de ser reescrita.
+
+### E o inverso também vale
+
+O `//` do **entrevistado** (quando houver) também é invisível para o entrevistador. Numa produção turno a turno, **nenhum dos dois lados vê o pensamento do outro** — só o leitor vê os dois. **Essa assimetria É a seção**: o leitor sabe mais do que qualquer um dos dois que estão conversando.
