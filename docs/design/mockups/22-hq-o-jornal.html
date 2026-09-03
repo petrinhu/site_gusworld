@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyfesse · 22 · A HQ · o jornal</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* MOCK 22: a HQ da #4 - tirinha de TRES QUADROS, item de board ED4-MONTAGEM.
+   Reusa a MESMA SALA da HQ da #3 (mock 18: chao hachurado, parede a direita,
+   o quadrado azul entrando por uma lasca). Roteiro da pauta da #4 (secao 11):
+     1. banco.   - o banco junto a parede, o leitor de jornal sentado, o
+                   quadrado entra pela borda com uma faixa mais escura na
+                   face direita (a primeira vez que ele "olha" pra alguem)
+     2. banco.   - o quadrado atravessou a sala e parou DIANTE DO BANCO
+                   (nao mais encostado na parede: desta vez tem alguem no
+                   caminho). O jornal continua erguido.
+     3. jornal.  - o MESMO quadro. Muda uma coisa so: o jornal desce pro
+                   colo. SEM BALAO, SEM PALAVRA - a resposta e o jornal
+                   baixar.
+
+   ⛔ NAO EXISTE DESENHO, regra dura da casa (a mesma da HQ #3): retangulo,
+   borda, hachura, posicao. O leitor sentado e o jornal sao RETANGULOS, nao
+   um boneco. Ele nao ganha cabeca, braco nem mao segurando nada - a "mao"
+   e so a posicao do retangulo do jornal no ar.
+
+   ⚠️ O QUADRADO CONTINUA SEM ROSTO. A faixa .dir nao e um olho: e uma faixa
+   mais escura numa das faces, presente nos 3 quadros desde o comeco (nao
+   aparece nem desaparece). E o minimo de "direcao" que a geometria permite
+   sem virar cara.
+
+   ★ A PIADA E O SILENCIO. O quadro 3 e IGUAL ao 2, pixel por pixel, exceto o
+   jornal descer. Nada de balao, nada de texto novo, nada de expressao. Quem
+   "melhorar" isso com uma fala mata a piada.
+
+   ZERO ANIMACAO (vai IMPRESSA, tem que funcionar parada) · ZERO JS.
+   As classes daqui SAO as que vao pro partial: .banco-assento / .banco-encosto
+   / .leitor / .jornal / .jornal.baixo / .q.diante / .q .dir, encostadas no
+   vocabulario que ja existe (.hq3/.tira/.cena/.chao/.parede/.q/.rastro/.num). */
+
+*{box-sizing:border-box}
+html{background:#2b2620}
+body{margin:0; padding:0 0 70px; color:var(--texto-1); font-family:var(--font-corpo)}
+
+/* faixa de contexto do mock (fora da "revista") */
+.ctx{max-width:820px; margin:0 auto; padding:22px 22px 4px; color:#cdbfa6}
+.ctx h1{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.12em;
+  text-transform:uppercase; color:#e6d9bf; margin:0 0 6px}
+.ctx p{font-size:14.5px; line-height:1.55; margin:0 0 6px; color:#bcaf95}
+.ctx b{color:#e6d9bf}
+.ctx .tag{color:#7bd06a}
+
+/* ═══════════ A REVISTA (a folha de papel) ═══════════ */
+.folha{
+  max-width:820px; margin:20px auto 0; position:relative;
+  box-shadow:var(--sombra-folha); overflow:hidden;
+  padding:26px 30px 34px;
+}
+@media (max-width:430px){ .folha{ padding:20px 16px 28px } }
+.folha::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.12;
+}
+.folha > *{position:relative; z-index:1}
+
+.masthead{display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:3px solid var(--tinta-preta); padding-bottom:8px; margin-bottom:12px}
+.masthead .logo{font-family:var(--font-display); font-weight:700; font-size:32px; line-height:1;
+  color:var(--tinta-preta); text-shadow:-1.5px -1.5px 0 #00b6d4a0, 1.5px 1.5px 0 #c2129ea0}
+.masthead .ed{font-family:var(--font-manchete); font-weight:700; font-size:12.5px;
+  letter-spacing:.08em; text-transform:uppercase; text-align:right; line-height:1.6; color:var(--tinta-2)}
+.masthead .ed b{color:var(--tinta-preta); font-size:17px; letter-spacing:0}
+.chamada-topo{font-family:var(--font-manchete); font-weight:700; font-size:12.5px; letter-spacing:.1em;
+  text-transform:uppercase;
+  background:var(--tinta-preta); color:var(--papel); display:inline-block; padding:5px 9px; margin-bottom:18px}
+
+.kicker{font-family:var(--font-manchete); font-weight:700; font-size:13px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--tinta-ciano); margin:0 0 3px}
+.titulo{font-family:var(--font-manchete); font-weight:700; font-size:clamp(30px,8vw,40px); line-height:1.0;
+  letter-spacing:var(--manchete-ls); color:var(--tinta-preta); margin:0 0 16px}
+
+/* ═══════════ A TIRA (vocabulário herdado do mock 18) ═══════════ */
+.tira{list-style:none; margin:0; padding:0; display:grid; gap:16px; grid-template-columns:1fr}
+@media (min-width:640px){ .tira{grid-template-columns:repeat(3,1fr); gap:14px} }
+.tira > li{margin:0}
+.tira figure{margin:0}
+
+.cena{
+  --piso:   29%;
+  --parede: 15%;
+  --q:      25%;
+  --banco:  24%;   /* NOVO nesta HQ: a largura do banco, junto à parede */
+  position:relative; aspect-ratio:4/3; overflow:hidden; background:transparent;
+}
+.cena::after{
+  content:""; position:absolute; inset:0; z-index:5; pointer-events:none;
+  border:3px solid var(--tinta-preta);
+}
+.cena .chao{
+  position:absolute; left:0; right:0; bottom:0; height:var(--piso);
+  border-top:3px solid var(--tinta-preta);
+  background:repeating-linear-gradient(45deg, #1a161426 0 1.5px, #0000 1.5px 8px);
+}
+.cena .parede{
+  position:absolute; right:0; top:0; bottom:var(--piso); width:var(--parede);
+  border-left:3px solid var(--tinta-preta);
+  background:repeating-linear-gradient(135deg, #1a161440 0 2px, #0000 2px 5px);
+}
+
+/* ── NOVO nesta HQ: o banco, o leitor, o jornal ──
+   Três retângulos a mais no elenco. Nenhum ganha cabeça, braço ou mão: o
+   "leitor" é uma silhueta sólida (a mesma tinta do contorno, sem borda
+   própria - é sombra, não personagem desenhado), e o jornal é um retângulo
+   mais claro, na posição onde o rosto do leitor estaria. */
+.cena .banco-assento{
+  position:absolute; right:var(--parede); bottom:var(--piso);
+  width:var(--banco); height:7%;
+  background:var(--tinta-2); border:3px solid var(--tinta-preta); z-index:1;
+}
+.cena .banco-encosto{
+  position:absolute; right:var(--parede); bottom:calc(var(--piso) + 7%);
+  width:6%; height:24%;
+  background:var(--tinta-2); border:3px solid var(--tinta-preta); z-index:1;
+}
+.cena .leitor{
+  position:absolute; right:calc(var(--parede) + 6%); bottom:calc(var(--piso) + 7%);
+  width:13%; height:16%; background:var(--tinta-preta); z-index:2;
+}
+.cena .jornal{
+  position:absolute; right:calc(var(--parede) + 5%); bottom:calc(var(--piso) + 23%);
+  width:15%; height:9%;
+  background:var(--papel); border:2px solid var(--tinta-preta); z-index:3;
+}
+/* .baixo (quadro 3): a ÚNICA diferença da tira inteira. Desce pro colo -
+   mesma base do leitor, mais largo e mais raso (deitado, não em pé). */
+.cena .jornal.baixo{
+  bottom:calc(var(--piso) + 7%); height:6%; width:17%;
+  right:calc(var(--parede) + 3%);
+}
+
+/* o protagonista: chapado, contorno preto de quadrinho. NAO DAR OLHINHO. */
+.q{
+  position:absolute; bottom:var(--piso); width:var(--q); aspect-ratio:1;
+  background:var(--tinta-ciano); border:3px solid var(--tinta-preta);
+  right:var(--parede);
+}
+.q.lasca{right:auto; left:0; translate:-76% 0}
+/* nos quadros 2 e 3 ele não encosta mais na parede: tem o banco no caminho,
+   e para EXATAMENTE onde o banco começa. */
+.q.diante{right:calc(var(--parede) + var(--banco))}
+
+/* a faixa .dir: a ÚNICA marca nova no quadrado, presente nos 3 quadros desde
+   o início. Fica na face DIREITA (o lado virado pro banco) - o mínimo de
+   "direção" que a geometria permite sem virar rosto. */
+.q .dir{
+  position:absolute; top:0; bottom:0; right:0; width:22%;
+  background:#0a3439; pointer-events:none;
+}
+
+.rastro{
+  position:absolute; bottom:var(--piso); height:var(--q);
+  right:calc(var(--parede) + var(--banco) + var(--q));
+  left:8%;
+  background:repeating-linear-gradient(180deg, var(--tinta-preta) 0 2px, #0000 2px 8px);
+  -webkit-mask-image:linear-gradient(90deg, #0000 0%, #000 62%, #000 100%);
+          mask-image:linear-gradient(90deg, #0000 0%, #000 62%, #000 100%);
+}
+
+.num{
+  position:absolute; left:0; top:0; z-index:6;
+  background:var(--tinta-preta); color:var(--papel);
+  font-family:var(--font-display); font-weight:700; font-size:16px; line-height:1;
+  padding:5px 8px 6px; letter-spacing:.02em;
+}
+
+.tira figcaption{
+  font-family:var(--font-corpo); font-style:italic; font-size:15px; line-height:1.4;
+  color:var(--tinta-2); margin-top:7px;
+}
+
+.rodape{margin:28px 0 0; padding-top:12px; border-top:1px solid var(--borda);
+  font-family:var(--font-manchete); font-weight:700; font-size:12.5px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--tinta-2); display:flex; gap:18px; flex-wrap:wrap}
+.rodape b{color:var(--tinta-preta)}
+
+@media print{
+  html{background:#fff}
+  body{padding:0}
+  .ctx{display:none}
+  .folha{box-shadow:none; margin:0; max-width:none; padding:0}
+  .tira{grid-template-columns:repeat(3,1fr); gap:10px}
+  .tira > li{break-inside:avoid; page-break-inside:avoid}
+  .cena, .q, .chao, .parede, .rastro, .num, .banco-assento, .banco-encosto,
+  .leitor, .jornal{
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="ctx">
+  <h1>Glyfesse · mock 22 · a HQ · o jornal (ED4-MONTAGEM)</h1>
+  <p>A tirinha da <b>#4</b>, mesma sala da HQ da #3: o banco junto à parede, o leitor sentado, e o quadrado azul que agora <b>já tem uma direção</b> (a faixa mais escura na face direita, desde o quadro 1). <b>Nenhum desenho</b>: banco, leitor e jornal são retângulos.</p>
+  <p><b>A piada é o silêncio.</b> O quadro 3 é idêntico ao 2, exceto por uma coisa: o jornal desce para o colo. Sem balão, sem palavra - a resposta é o jornal baixar.</p>
+  <p>⚠️ <b>O que é preenchimento meu, aberto a veto:</b> as três legendas (<span class="tag">banco. / banco. / jornal.</span>), as proporções do banco/leitor/jornal, e o título <b>“O Jornal”</b>. O roteiro dos três quadros é o do briefing; o resto acima está aberto.</p>
+  <p>Zero JS · zero animação (a tira vai impressa) · 1 coluna abaixo de 640px, 3 colunas acima, nunca 2+1.</p>
+</div>
+
+<article class="folha" style="--idade:.10">
+
+  <div class="masthead">
+    <div class="logo">GLYFESSE</div>
+    <div class="ed">ano 1 · nº <b>4</b><br>gusworld.site</div>
+  </div>
+  <span class="chamada-topo">a hq · três quadros</span>
+
+  <p class="kicker">história em quadrinhos · seção fixa</p>
+  <h2 class="titulo">O Jornal</h2>
+
+  <ol class="tira">
+
+    <!-- QUADRO 1 · banco. -->
+    <li>
+      <figure>
+        <div class="cena q1" role="img"
+             aria-label="Quadro um: a mesma sala, chão hachurado e parede à direita. Junto à parede, um banco com uma forma sentada segurando um jornal erguido, na altura do rosto. No canto esquerdo, uma lasca de azul entrando pela borda, com uma faixa mais escura na lateral direita.">
+          <span class="num" aria-hidden="true">1</span>
+          <span class="chao"></span>
+          <span class="parede"></span>
+          <span class="banco-assento"></span>
+          <span class="banco-encosto"></span>
+          <span class="leitor"></span>
+          <span class="jornal"></span>
+          <span class="q lasca"><span class="dir" aria-hidden="true"></span></span>
+        </div>
+        <figcaption>banco.</figcaption>
+      </figure>
+    </li>
+
+    <!-- QUADRO 2 · banco. -->
+    <li>
+      <figure>
+        <div class="cena q2" role="img"
+             aria-label="Quadro dois: o quadrado azul atravessou a sala e parou diante do banco. A forma sentada continua com o jornal erguido na altura do rosto. Linhas de velocidade atrás do quadrado.">
+          <span class="num" aria-hidden="true">2</span>
+          <span class="chao"></span>
+          <span class="parede"></span>
+          <span class="banco-assento"></span>
+          <span class="banco-encosto"></span>
+          <span class="leitor"></span>
+          <span class="jornal"></span>
+          <span class="rastro"></span>
+          <span class="q diante"><span class="dir" aria-hidden="true"></span></span>
+        </div>
+        <figcaption>banco.</figcaption>
+      </figure>
+    </li>
+
+    <!-- QUADRO 3 · jornal. -->
+    <li>
+      <figure>
+        <div class="cena q3" role="img"
+             aria-label="Quadro três: o mesmo quadro anterior, mas o jornal desceu para o colo da forma sentada.">
+          <span class="num" aria-hidden="true">3</span>
+          <span class="chao"></span>
+          <span class="parede"></span>
+          <span class="banco-assento"></span>
+          <span class="banco-encosto"></span>
+          <span class="leitor"></span>
+          <span class="jornal baixo"></span>
+          <span class="rastro"></span>
+          <span class="q diante"><span class="dir" aria-hidden="true"></span></span>
+        </div>
+        <figcaption>jornal.</figcaption>
+      </figure>
+    </li>
+
+  </ol>
+
+  <div class="rodape">
+    <span><b>GLYFESSE</b> · a revista do GusWorld</span>
+  </div>
+
+</article>
+
+</body>
+</html>

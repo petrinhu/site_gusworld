@@ -13,7 +13,7 @@
   <div class="classificado">
     <span class="class-id">10.2</span>
     <p class="fala"><span class="prompt">gus@glyfesse&gt;</span> <span class="dito"><b class="verbo">BUYING:</b> card batteries. the good ones run out fast and I dont want to be left without a spare</span></p>
-    <p class="pensa">i'm not telling you what they're for. figuring it out yourself is half the fun...</p>
+    <p class="pensa longo">i'm not telling you what they're for. figuring it out yourself is half the fun...</p>
   </div>
 
   <div class="classificado anon">

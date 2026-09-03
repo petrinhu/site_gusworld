@@ -178,6 +178,16 @@ return [
         'frame_alt_en'   => 'The character Gus in full body: spiky orange hair, '
                           . 'cyan tactical goggles, black coat, fists clenched against a '
                           . 'greenish background.',
+        // Card social próprio (1200x630) desta edição. Gerador em
+        // docs/design/og-card-4.html. Campo OPCIONAL: quem não o traz cai no
+        // default /assets/og-launch.jpg — mas como #4 é a MAIS NOVA no momento
+        // de publicar, é o og:image dela que a home passa a mostrar por padrão
+        // (a #3 já pagou esse preço uma vez com o card faltando; não repetir).
+        'og_image'       => '/assets/og-edicao-4.jpg',
+        // A CAPA da estante em INGLÊS (decisão do líder, 2026-07-25 — ver a
+        // nota da #1). Gerador: docs/design/og-card-4-en.html (o mesmo
+        // desenho, só o texto muda).
+        'capa_en'        => '/assets/og-edicao-4-en.jpg',
         'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
     ],
 

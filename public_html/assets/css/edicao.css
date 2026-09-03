@@ -2367,11 +2367,67 @@ html.lightbox-aberto{overflow:hidden}
   font-family:var(--font-corpo); font-style:italic; font-size:15px; line-height:1.4;
   color:var(--tinta-2); margin-top:7px;
 }
+
+/* ── §11 (edição #4) · o BANCO, o LEITOR e o JORNAL (porte do mock 22) ──
+   Reusa a MESMA sala e o MESMO vocabulário da HQ da #3 (.hq3/.tira/.cena/
+   .chao/.parede/.q/.rastro/.num/figcaption) - só ganha o modificador
+   `.leitura` no wrapper (escopa --banco, a largura do banco junto à parede)
+   e 4 peças novas, todas RETÂNGULO: o banco (assento+encosto), o leitor
+   (silhueta sentada, sólida) e o jornal (retângulo mais claro, erguido ou
+   baixo). ⛔ Nenhuma delas ganha olho, boca ou mão - continua sendo
+   geometria, não desenho. A única marca nova no quadrado é a faixa .dir na
+   face direita: a primeira vez que ele tem um lado que "olha" para alguém. */
+.conteudo .hq3.leitura .cena{--banco:24%}
+.conteudo .hq3 .banco-assento{
+  position:absolute; right:var(--parede); bottom:var(--piso);
+  width:var(--banco,24%); height:7%;
+  background:var(--tinta-2); border:3px solid var(--tinta-preta); z-index:1;
+}
+.conteudo .hq3 .banco-encosto{
+  position:absolute; right:var(--parede); bottom:calc(var(--piso) + 7%);
+  width:6%; height:24%;
+  background:var(--tinta-2); border:3px solid var(--tinta-preta); z-index:1;
+}
+/* o leitor: silhueta sólida (preta), sem borda própria - é sombra, não
+   contorno. Senta em cima do assento, encostado no encosto. */
+.conteudo .hq3 .leitor{
+  position:absolute; right:calc(var(--parede) + 6%); bottom:calc(var(--piso) + 7%);
+  width:13%; height:16%; background:var(--tinta-preta); z-index:2;
+}
+/* o jornal: retângulo mais claro (papel), erguido na altura do rosto nos
+   quadros 1-2 - cobre o topo do leitor por inteiro, de propósito (é o rosto
+   escondido). .baixo (quadro 3) é a ÚNICA diferença da tira inteira: desce
+   pro colo, mais largo e mais raso (deitado, não em pé), e revela o leitor
+   inteiro pela primeira vez - sem balão, sem palavra. */
+.conteudo .hq3 .jornal{
+  position:absolute; right:calc(var(--parede) + 5%); bottom:calc(var(--piso) + 23%);
+  width:15%; height:9%;
+  background:var(--papel); border:2px solid var(--tinta-preta); z-index:3;
+}
+.conteudo .hq3 .jornal.baixo{
+  bottom:calc(var(--piso) + 7%); height:6%; width:17%;
+  right:calc(var(--parede) + 4%);
+}
+/* o quadrado PARA diante do banco (não mais encostado na parede: desta vez
+   tem um banco no caminho) - e o rastro termina no MESMO ponto, não mais na
+   parede. */
+.conteudo .hq3 .q.diante{right:calc(var(--parede) + var(--banco,24%))}
+.conteudo .hq3.leitura .rastro{right:calc(var(--parede) + var(--banco) + var(--q))}
+/* a faixa .dir: a única marca nova no quadrado, presente nos 3 quadros desde
+   o início (nem aparece nem desaparece). Fica na face DIREITA (o lado
+   virado pro banco) - o mínimo de "direção" que a geometria permite sem
+   virar rosto. */
+.conteudo .hq3 .q .dir{
+  position:absolute; top:0; bottom:0; right:0; width:22%;
+  background:#0a3439; pointer-events:none;
+}
 @media print{
   .conteudo .hq3 .tira{grid-template-columns:repeat(3,1fr); gap:10px}
   .conteudo .hq3 .tira > li{break-inside:avoid; page-break-inside:avoid}
   .conteudo .hq3 .cena,.conteudo .hq3 .q,.conteudo .hq3 .chao,
-  .conteudo .hq3 .parede,.conteudo .hq3 .rastro,.conteudo .hq3 .num{
+  .conteudo .hq3 .parede,.conteudo .hq3 .rastro,.conteudo .hq3 .num,
+  .conteudo .hq3 .banco-assento,.conteudo .hq3 .banco-encosto,
+  .conteudo .hq3 .leitor,.conteudo .hq3 .jornal,.conteudo .hq3 .q .dir{
     -webkit-print-color-adjust:exact; print-color-adjust:exact;
   }
 }

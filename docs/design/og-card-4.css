@@ -1,0 +1,93 @@
+/* docs/design/og-card-4.css: o que e' PROPRIO da Edicao #4 "O Rosto e a Voz":
+   o painel da direita e' a TELA DO VISUALIZADOR DE ANIMACAO, com a captura REAL
+   do primeiro teste de rosto do personagem (public_html/assets/frames/edicao-4.png,
+   o mesmo frame que a edicao publica). A edicao e' sobre um rosto que chega,
+   entao o card mostra o rosto -- nao um desenho dele.
+
+   ⚠️ O arquivo publicado JA' teve a barra de titulo cortada na fonte (o mesmo
+   PNG alimenta a linha do tempo do site, onde ninguem recorta por CSS): antes
+   566x570, agora 566x548 -- 22px cortados SO' do topo, nenhuma outra borda
+   tocada. O que sobra para resolver por CSS e' so' o fio de borda de janela na
+   lateral esquerda (~2px) e o CURSOR do mouse parado no fundo, a direita do
+   personagem (na imagem ORIGINAL de 570px de altura ele estava em
+   x:505-520, y:410-425; nas coordenadas atuais, y:388-403). O recorte abaixo
+   pega SO' o personagem contra o fundo, fora a borda, fora o cursor. Nao
+   troque os numeros sem reconferir o recorte: e' higiene, nao enquadramento.
+
+   O recorte, em conta: a janela era x:[70,470] y:[95,525] (400x430) na imagem
+   de 570px de altura; os 22px saíram só do topo, então o x e a largura
+   continuam válidos e só o y desloca: y:[95-22, 525-22] = [73,503] (mesmos
+   400x430). Escala = 300/400 = 0,75 → a imagem de 566x548 vai a 424,5x411,
+   deslocada -52,5px / -54,75px (= -(70×0,75) / -(73×0,75), em fracao de px
+   para nao acumular erro de arredondamento -- ver QA-RECORTE-4 abaixo) dentro
+   do interior de 300x322.
+
+   QA-RECORTE-4 (03/09): comparei por pixel o render ANTES (janela y:[95,525]
+   na imagem de 570px, offset -71px inteiro) e DEPOIS (janela y:[73,503] na
+   imagem de 548px) e sobrou uma diferenca visivel de ~1,2% dos pixels do
+   painel -- nao no personagem em si (posicao/pose batem no lado a lado), e
+   sim ruido de reamostragem: o offset ANTIGO vinha arredondado (-71,25px →
+   -71px) e o NOVO tambem vinha (-54,75px → -55px), e como a imagem e'
+   ESCALADA PARA BAIXO com pixelated (nearest-neighbor), meio pixel de
+   diferenca no deslocamento muda qual pixel de origem cada pixel de tela
+   amostra, em toda a area. Trocado para fracao de px exata (sem arredondar)
+   nos dois offsets: `git show 46625f7:.../edicao-4.png` cortado em 22px do
+   topo bate BIT A BIT (`compare -metric AE` = 0) com o arquivo publicado
+   novo -- a fonte esta' identica, so' a matematica do CSS precisava ser
+   exata.
+
+   O chassi (navy, scanlines, wordmark, tagline, rodape) vive em og-card.css.
+   Compartilhado pelo par pt/en: og-card-4.html e og-card-4-en.html. So o TEXTO
+   difere entre os dois; o desenho e' este, um so'. */
+
+  /* o dek desta edicao e' mais longo que o das anteriores (verbatim, decidido
+     pelo lider) -- reduzido de 38px (chassi) para caber as 4 linhas sem
+     encostar no painel nem no rodape. Largura padrao do chassi (700px) serve
+     sem alteracao: o painel, mais estreito que o da #2/#3, sobra espaco. */
+  .tagline { font-size: 30px; line-height: 1.32; }
+
+  /* ── O PAINEL: a tela onde o rosto do Gus aparece ─────────────────────────── */
+  .tela {
+    position: absolute;
+    z-index: 2;
+    right: 84px; top: 154px;
+    width: 300px; height: 322px;
+    border: 2px solid var(--borda);
+    background: var(--navy);
+    box-shadow:
+      inset 0 0 40px rgba(0,0,0,.5),
+      0 0 0 6px rgba(13,21,32,.6),
+      0 0 34px rgba(77,217,232,.20);
+  }
+
+  /* o INTERIOR recorta a captura e segura a varredura por cima dela */
+  .tela .interior {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+
+  /* a captura real, posicionada pelo recorte descrito no cabecalho */
+  .tela .frame {
+    position: absolute;
+    left: -52.5px; top: -54.75px;
+    width: 424.5px; height: 411px;
+    image-rendering: pixelated;
+  }
+
+  /* scanlines locais: dentro da moldura a varredura e' mais forte (igual #2/#3) */
+  .tela .varredura {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,.22) 3px,
+      rgba(0,0,0,0) 4px
+    );
+  }
+
+  /* vinheta interna: afunda os cantos e devolve o miolo pro rosto */
+  .tela .vinheta {
+    position: absolute; inset: 0;
+    box-shadow: inset 0 0 46px 10px rgba(13,21,32,.62);
+  }
