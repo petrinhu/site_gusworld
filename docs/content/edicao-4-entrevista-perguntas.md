@@ -103,6 +103,89 @@ gus@glyfesse:~/entrevista$ tem mais alguma coisa daquele dia que ninguém te per
 
 ---
 
+## EN
+
+```
+gus@glyfesse:~/entrevista$ 22 june, 21:57... i wanted to know if the part that draws had some reason to
+give you a face first, before me or anyone else, or if it was just your turn to arrive first?
+/* long question on purpose. the more i explain what i want to know, the less i have to explain the
+rest */
+
+gus@glyfesse:~/entrevista$ when the part that draws swapped you out, did the part that thinks stay
+exactly the same, without needing to change anything? because if it did, that proves something i've been
+saying for ages, and i wanted to hear it from someone who actually went through it, not just imagine it
+on my own?
+/* i already know the answer. i just wanted a witness. this isn't an interview, it's me hunting for proof
+of something i already believe */
+
+gus@glyfesse:~/entrevista$ why do you think it was you, straight away, before anyone else?
+// just someone who likes order, that's all, order has no feelings
+
+gus@glyfesse:~/entrevista$ huh? 🤨
+/* i spent the whole week getting this question ready thinking i knew the answer, and what he just said
+didn't land anywhere close... i've got more questions written for after this one and none of them work
+the way i wrote them any more, and i'm going to have to rewrite everything from here on, sitting exactly
+where i am, without getting up from the chair, that's what i'm doing right now, it's not silnece, it's
+rewriting */
+
+gus@glyfesse:~/entrevista$ wait... does that mean you'd already decided all of this before i even asked
+anyone about it?
+// i was going to pretend i heard that fine. i did not hear that fine
+
+gus@glyfesse:~/entrevista$ do yuo remember anything else from that day that's got nothing to do with the
+new face?
+/* i remember loads of stuff from that day that's got nothing to do with any face at all. i just don't
+know if he remembers it too, or if that stayed with me alnoe */
+
+gus@glyfesse:~/entrevista$ and nobody thought i'd want to know?
+/* maybe nobody thought about me that day. that's not an accusation, it's just the most likly answer */
+
+gus@glyfesse:~/entrevista$ do you still argue that pythia solves everything fadter, or have you already
+lost a bet to me this month?
+/* he's going to argue for it. he always argues for it. that hasn't changed since i've known him */
+
+gus@glyfesse:~/entrevista$ you decide to act before i finish doing the maths, that's always been the
+case. my question is whether seeing your own face chagned the speed of that at all, or do you still fire
+off the pulse before thinking?
+/* he's going to laugh at that. he allways laughs when i try to copy the way he talks */
+
+gus@glyfesse:~/entrevista$ what do you do when you're not sorting out emergencies with us?
+/* silly question. i know it's silly. i asked it anyway because i realised i didn't know the answer and
+that bothered me more than it should have */
+
+gus@glyfesse:~/entrevista$ do you still complain that i walk around with spare parts in my pocket?
+/* he always complains. i'm not going to stop carrying spare parts in my pocket just because he
+complains */
+
+gus@glyfesse:~/entrevista$ i've always wanted to tell you something silly and never did... did oyu know
+you say "and" before almost every sentence when you're excited?
+/* i noticed that more than a year ago. i kept it to myself for more than a year just because i didn't
+know if saying it would sound strange coming from me */
+
+gus@glyfesse:~/entrevista$ back to the 22nd of june... between you getting a face and me stlil just being
+a square, how much time actually passed, without rounding it off?
+// i know the answer in miuntes. i just wanted to see if he does too
+
+gus@glyfesse:~/entrevista$ did that bother you, or was i the only one thinking about it all week?
+// both possibilities make me uncofmortable in different ways
+
+gus@glyfesse:~/entrevista$ did that change the way you saw me?
+/* there's no technical part to that. i tried to find one and i couldn't find any */
+
+gus@glyfesse:~/entrevista$ changing the subject: your forearm accumulator, how long does it take to
+charge back up after you drain it all at once?
+/* back on track. good. this one i can actually measure and nobdoy gets hurt */
+
+gus@glyfesse:~/entrevista$ ...forgte it. how far can my matrix actually pick up raido anyway? i don't
+even know why i asked that just now
+// i promise this one doesn't circle back to the last subject
+
+gus@glyfesse:~/entrevista$ is there anything else from that day nobody's asked you yet?
+/* i'm leaving this one open on purpse. if he wants to close it, he can, i'm not going to push */
+```
+
+---
+
 ## Notas de produção (interno — nunca publicado)
 
 ### ★ v6, parte 1 — L-25: o personagem não sabe que é feito de pixel

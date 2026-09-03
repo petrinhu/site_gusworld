@@ -93,6 +93,98 @@ embaixo. não contei isso pra ninguém até agora
 
 ---
 
+## EN
+
+```
+1
+volt@glyfesse:~/entrevista$ guess it just fell into place, mate. i don't think about it too muchh, it
+happened, i liked it, i went with it. some things you don't choose, you just get
+// too soon to tell him. let him sweat a bit more.
+
+2
+volt@glyfesse:~/entrevista$ it stayed the same. not even a tickle. i'm still me, just with a face now.
+your little thinking wires don't answer to new clothes, gus, they just keep doing what they've always
+done
+
+3
+volt@glyfesse:~/entrevista$ because i asked. before anything good happened down here i went and said:
+send mine first. a new kid doesn't follow a voice in the dark, he follows a face he recognises. i wasn't
+going to wait around for a draw
+/* that's what i was holding back on question one. let's see his face now. */
+
+4
+volt@glyfesse:~/entrevista$ that's exactly what you heard. i asked. surprised you, didn't it? you don't
+get thrown that fast very often
+
+5
+volt@glyfesse:~/entrevista$ already had. decided and asked for, both. i didn't sit around waiting for
+anyone to ask if i wanted it, i went and got it. you're still waiting for someone to ask what you want,
+that's the bit i've noticed
+
+6
+volt@glyfesse:~/entrevista$ i remember cracking my wrist testing a new jump for the east stairwell, way
+before i knew a face was coming. hurt more than anything else that dayy, and nobody asked about that
+either
+// he's going to like this one more than the face. i'll bet.
+
+7
+volt@glyfesse:~/entrevista$ nobody thought about it, gus, it wasn't on purpose, leaving you out. it was a
+busy day, a lot going on down here all at once. but you're right to be a bit cross about it, i'd be the
+same
+/* i almost sent a message that day. almost. then the night swallowed it. */
+
+8
+volt@glyfesse:~/entrevista$ pythia still wins. always will. but i did lose a bet this month, the one
+about response time, and you cheated with a rule of three nobody agreed to beforehand
+
+9
+volt@glyfesse:~/entrevista$ a face doesn't change the pulse. a face changes the mirror. i still fire off
+the pulse before i think, it's just that now i watch my own face doing it, and that's kind of ridiculou
+
+10
+volt@glyfesse:~/entrevista$ i teach the new kids not to slip on the walkway, i test new boots until a
+part breaks, and every now and then i just sit and listen to the pipe breathe. it compiles and runs, you
+know? not everything has to turn into an emergency
+
+11
+volt@glyfesse:~/entrevista$ always. you walk around like a travelling workshop, clinking every time you
+go up a staircase. one day that spare part is going to give you away from a mile off
+
+12
+volt@glyfesse:~/entrevista$ didn't know that, mate. and now that you've said it i'm going to catch myself
+doing it all the time, cheerss for that
+
+13
+volt@glyfesse:~/entrevista$ and that one i can't give you straight. it wasn't much, a day, two at most,
+but i don't count the hou like you do, i count laps, not the clock
+
+14
+volt@glyfesse:~/entrevista$ and no, it didn't bother me. i don't chew over that kind of thing, it
+happened, i move on. but i'm glad you spent the whole week thinking about it, means it mattered
+
+15
+volt@glyfesse:~/entrevista$ no. face isn't what i follow, gus. i follow whoever shows up when it's
+needed. that's what you've always been, square or not
+// i already had this answer ready too. but that part i'm not telling.
+
+16
+volt@glyfesse:~/entrevista$ i never let it charge all the way just to know the exact time, i always
+drain it early just to feel it go. but roughly, give or take, about twenty minutes, if i've got the
+patience to wait, which i rarely havee
+
+17
+volt@glyfesse:~/entrevista$ no idea, mate, that's a part that thinks conversation, not mine. all i know
+is you've picked up a signal from far enough away to leave my jaw on the floor, so it's got to be a lot
+more than you need
+
+18
+volt@glyfesse:~/entrevista$ there is. i wanted you to be the first to see it, before anyone else down
+here. i haven't told anyone that until now
+/* first time i've said that part out loud. it's strange hearing it from the outside. */
+```
+
+---
+
 ## Notas de produção (internas — não publicar)
 
 ### Como a resposta 3 foi calibrada para o `Hã?`

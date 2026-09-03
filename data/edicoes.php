@@ -165,11 +165,19 @@ return [
         'slug_en'        => 'edition-4',
         'titulo_pt'      => 'O Rosto e a Voz',
         'titulo_en'      => 'The Face and the Voice',
-        'dek_pt'         => '',
-        'dek_en'         => '',
-        'frame'          => null,
-        'frame_alt_pt'   => null,
-        'frame_alt_en'   => null,
+        'dek_pt'         => 'Um rosto chegou para o quadrado azul, e semanas depois '
+                          . 'alguém no mundo abriu a boca para responder pela primeira vez.',
+        'dek_en'         => 'A face arrived for the blue square, and weeks later '
+                          . 'somebody in the world finally opened their mouth to answer.',
+        // Fonte física: resources/frames/primeiro_teste_animacao_gus_pixelado_varios_sprites__t8s.png
+        // Publicar em: public_html/assets/frames/edicao-4.png
+        'frame'          => '/assets/frames/edicao-4.png',
+        'frame_alt_pt'   => 'O personagem Gus em corpo inteiro: cabelo laranja '
+                          . 'espetado, óculos táticos ciano, casaco preto, punhos cerrados '
+                          . 'sobre um fundo esverdeado.',
+        'frame_alt_en'   => 'The character Gus in full body: spiky orange hair, '
+                          . 'cyan tactical goggles, black coat, fists clenched against a '
+                          . 'greenish background.',
         'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
     ],
 
