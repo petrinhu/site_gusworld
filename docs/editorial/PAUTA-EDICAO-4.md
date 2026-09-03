@@ -361,3 +361,30 @@ Medido em 03/09: a Edição #3 no ar serve **zero** emoji, e a `PixelOperatorMon
    não descobrir na auditoria.
 
 Vai para o `TST-A11Y` e para o gate de RENDER. ⛔ Não resolver no texto.
+
+### ⛔ CORREÇÃO DE ATRIBUIÇÃO — a frase de fecho é da REPORTAGEM, não do Editorial (03/09/2026)
+
+**Achado pelo agente que escreveu o Editorial, e é erro do orquestrador**, repetido várias vezes ao líder.
+
+A pauta (e eu) tratamos *"a coisa mais frágil que existe aqui escolheu justamente aqueles três dias para
+aprender a andar"* como **a linha de fecho do Editorial da #3**, e mandamos a ponte da #4 ser escrita
+contra ela.
+
+**A frase é real e está publicada** — mas em **`sec-04.php`, a REPORTAGEM DE CAPA**. O Editorial da #3
+fecha de outro jeito, no bloco de `//`:
+
+```
+// medi o atraso entre a tecla e o passo, dois quadros
+// dá pra melhorar isso
+```
+
+★ **E o fecho verdadeiro é melhor ponte do que o falso:** ele é o menino respondendo ao vazio deixado pelas
+pessoas com a única coisa que responde de volta — a máquina — e transformando isso em **número** no mesmo
+gesto. A #4 é justamente a edição em que **alguém responde de volta**. A ponte fica mais forte, não mais
+fraca.
+
+**O agente escreveu contra o texto publicado de verdade**, não contra a frase mal atribuída — conferiu na
+fonte antes de aceitar o que a pauta dizia. **O Editorial entregue está certo; a pauta é que estava errada**,
+e fica corrigida aqui.
+
+⚠️ **A lição, e ela já se repetiu hoje:** verifiquei a memória e a pauta, e não verifiquei o publicado.
