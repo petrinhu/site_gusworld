@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="pt-br" data-material="papel">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QA de leitura — Edição #4 · O Rosto e a Voz</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  /* ═══ CSS só desta página de QA — não é peça do site, é ferramenta de revisão ═══ */
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--pagina-bg); color:var(--texto-1); font-family:var(--font-corpo); line-height:var(--lh-corpo)}
+
+  /* ── barra de QA, fixa no topo, material TELA (é ferramenta técnica, não a revista) ── */
+  .qa-bar{position:sticky; top:0; z-index:20; background:var(--tela-bg); color:var(--tela-texto-1);
+    border-bottom:1px solid var(--tela-borda-ui); padding:14px 20px 12px}
+  .qa-bar h1{font-family:var(--font-display); font-size:var(--t-base); line-height:1.4; margin:0 0 6px;
+    color:var(--tela-acento); letter-spacing:.02em}
+  .qa-metrics{display:flex; flex-wrap:wrap; gap:6px 22px; font-family:var(--font-display); font-size:var(--t-base);
+    color:var(--tela-texto-2); margin-bottom:10px}
+  .qa-metrics b{color:var(--tela-texto-1)}
+  .qa-index{display:flex; flex-wrap:wrap; gap:5px 10px; font-family:var(--font-corpo); font-size:13px}
+  .qa-index a{color:var(--tela-acento-2); text-decoration:none; border-bottom:1px dotted currentColor}
+  .qa-index a:hover, .qa-index a:focus-visible{color:var(--tela-acento)}
+  .qa-index .num{font-family:var(--font-display); font-size:var(--t-base); color:var(--tela-texto-3); margin-right:1px}
+
+  /* ── moldura de leitura, material PAPEL, é a "revista" propriamente ── */
+  .wrap{max-width:760px; margin:0 auto; padding:28px 20px 90px}
+  .capa-qa{font-family:var(--font-manchete); font-weight:var(--manchete-peso); letter-spacing:var(--manchete-ls);
+    font-size:var(--t-xl); line-height:var(--lh-apertado); margin:6px 0 4px; color:var(--texto-1)}
+  .capa-sub{font-family:var(--font-corpo); font-style:italic; color:var(--texto-2); font-size:var(--t-md); margin:0 0 26px}
+
+  .peca{position:relative; background:var(--superficie); border:1px solid var(--borda); border-radius:var(--raio);
+    box-shadow:var(--sombra); padding:26px 26px 20px; margin:0 0 34px; scroll-margin-top:96px}
+  .peca-kicker{font-family:var(--font-display); font-size:var(--t-base); color:var(--acento); letter-spacing:.03em;
+    margin:0 0 2px}
+  .peca-titulo{font-family:var(--font-manchete); font-weight:var(--manchete-peso); font-size:var(--t-lg);
+    line-height:1.1; margin:0 0 10px; color:var(--texto-1)}
+  .peca-meta{font-size:12.5px; color:var(--texto-2); border-left:2px solid var(--borda-forte); padding-left:10px;
+    margin:0 0 18px; font-style:italic}
+  .peca-meta b{font-style:normal}
+
+  .corpo p{font-size:var(--t-md); margin:0 0 15px}
+  .corpo p:last-child{margin-bottom:0}
+  .corpo h3{font-family:var(--font-manchete); font-weight:700; font-size:var(--t-lg); letter-spacing:var(--manchete-ls);
+    margin:24px 0 10px; color:var(--texto-1)}
+  .corpo blockquote{margin:14px 0; padding:6px 0 6px 16px; border-left:3px solid var(--acento); font-style:italic;
+    color:var(--texto-2)}
+  .corpo blockquote p{margin:0 0 4px; font-size:var(--t-base)}
+  .data-lapide{font-family:var(--font-display); font-size:var(--t-base); color:var(--texto-2); margin:0 0 10px}
+
+  /* ── terminal / fala digitada: SEMPRE PixelOperatorMono, PISO 15px (--t-base) ── */
+  .prompt, pre.term, .pensamento, .pensamento-inline{font-family:var(--font-display); font-size:var(--t-base);
+    line-height:1.6}
+  .prompt{color:var(--texto-1); background:color-mix(in oklab, var(--texto-1) 6%, transparent);
+    padding:4px 10px; margin:0 0 4px; border-radius:2px; white-space:pre-wrap; word-break:break-word}
+  .pensamento{color:var(--texto-2); margin:0 0 15px; padding-left:10px; white-space:pre-wrap}
+  .pensamento-inline{color:var(--texto-2)}
+  pre.term{background:var(--tela-bg); color:var(--tela-texto-1); border:1px solid var(--tela-borda-ui);
+    border-radius:var(--raio-tela); padding:14px 16px; margin:0 0 16px; overflow-x:auto; white-space:pre-wrap}
+  pre.term .p2{color:var(--tela-acento)}
+  pre.term .c2{color:var(--tela-texto-3)}
+  pre.term .ok{color:var(--tela-acento)}
+
+  table.tb{width:100%; border-collapse:collapse; margin:0 0 18px; font-size:13.5px}
+  table.tb th, table.tb td{border:1px solid var(--borda); padding:8px 10px; text-align:left; vertical-align:top}
+  table.tb th{font-family:var(--font-display); font-size:var(--t-base); background:color-mix(in oklab, var(--texto-1) 6%, transparent)}
+
+  .peca-fonte{margin-top:20px; padding-top:12px; border-top:1px dashed var(--borda); font-size:12px; color:var(--texto-2)}
+  .peca-fonte code{font-family:var(--font-display); font-size:var(--t-base)}
+
+  /* ── entrevista intercalada ── */
+  .alinhamento{background:color-mix(in oklab, var(--acento) 8%, var(--superficie)); border:1px solid var(--acento);
+    border-radius:var(--raio); padding:14px 16px; margin:0 0 22px; font-size:13px}
+  .alinhamento h4{margin:0 0 8px; font-family:var(--font-display); font-size:var(--t-base); color:var(--acento)}
+  table.prova{width:100%; border-collapse:collapse; font-size:12.5px}
+  table.prova th{font-family:var(--font-display); font-size:var(--t-base); text-align:left; padding:4px 6px;
+    border-bottom:1px solid var(--borda-forte)}
+  table.prova td{padding:4px 6px; border-bottom:1px solid var(--borda); vertical-align:top}
+  table.prova td.n{font-family:var(--font-display); font-size:var(--t-base); color:var(--acento); width:22px}
+
+  .qa-pair{margin:0 0 22px; padding-bottom:18px; border-bottom:1px dashed var(--borda)}
+  .qa-pair:last-child{border-bottom:none}
+  .qa-num{display:inline-block; font-family:var(--font-display); font-size:var(--t-base); color:var(--acento-2);
+    background:color-mix(in oklab, var(--acento-2) 12%, transparent); padding:2px 6px; border-radius:2px; margin-bottom:4px}
+  .quem{font-family:var(--font-display); font-size:var(--t-base); color:var(--texto-2); letter-spacing:.05em; margin:2px 0 2px}
+
+  .anexo{background:color-mix(in oklab, var(--texto-2) 6%, var(--superficie)); border:1px dashed var(--borda-forte);
+    border-radius:var(--raio); padding:16px 18px; margin:0 0 34px; font-size:13px}
+  .anexo h3{font-family:var(--font-display); font-size:var(--t-base); color:var(--texto-2); margin:0 0 10px}
+
+  footer.qa-fim{max-width:760px; margin:0 auto 60px; padding:0 20px; font-size:12px; color:var(--texto-2);
+    text-align:center}
+</style>
+</head>
+<body>
+
+<header class="qa-bar aceso">
+  <h1>QA DE LEITURA — EDIÇÃO #4 · "O ROSTO E A VOZ"</h1>
+  <div class="qa-metrics">
+    <span><b>12</b> peças em <code>docs/content/</code></span>
+    <span><b>11</b> seções/textos da edição + <b>1</b> banco de referência</span>
+    <span><b>5.518</b> palavras pt-BR (conteúdo da edição)</span>
+    <span>+<b>277</b> no banco de referência (não contam no total)</span>
+  </div>
+  <nav class="qa-index" aria-label="índice das seções">
+    <a href="#sec-03"><span class="num">03</span>Editorial</a>
+    <a href="#sec-04"><span class="num">04</span>Reportagem de capa</a>
+    <a href="#sec-06"><span class="num">06</span>Galeria de Bugs</a>
+    <a href="#sec-07"><span class="num">07</span>Cemitério</a>
+    <a href="#sec-08"><span class="num">08</span>Detonado do Diálogo</a>
+    <a href="#sec-09"><span class="num">09</span>Cartas</a>
+    <a href="#sec-16"><span class="num">16</span>A Entrevista</a>
+    <a href="#sec-04x"><span class="num">EX</span>Encarte glintfx</a>
+    <a href="#sec-17"><span class="num">17</span>Programação</a>
+    <a href="#sec-18"><span class="num">18</span>O Gus lê o bus</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <p class="capa-qa" style="font-family:var(--font-display); font-size:var(--t-base); color:var(--texto-2)">docs/design/mockups/21-edicao-4-qa.html</p>
+  <h2 class="capa-qa">Prova de leitura — só o texto, na ordem da revista</h2>
+  <p class="capa-sub">EN cortado. "Notas de produção" cortadas (link para cada arquivo-fonte no fim de cada peça). Renderizado com <code>tokens.css</code> real.</p>
+
+<!-- ═══════════════════ SEÇÃO 3 — EDITORIAL ═══════════════════ -->
+<article class="peca" id="sec-03">
+  <p class="peca-kicker">SEÇÃO 3 · ABRE A EDIÇÃO</p>
+  <h2 class="peca-titulo">Editorial — a Carta do Gus</h2>
+  <p class="peca-meta"><b>Voz:</b> Gus. <b>Tamanho:</b> S (2 blocos de carta). <b>Lente:</b> a resposta que a #3 prometeu sem saber: "a coisa que aprendeu a andar agora tem rosto, e o mundo respondeu direto para ela".</p>
+  <div class="corpo">
+    <p class="prompt">gus@glyfesse:~/editorial$ quarta edição</p>
+    <p>Na carta passada eu disse que sobrou um quadrado azul, sem rosto e sem nome, que só andava pra onde eu mandava andar. Disse que era pouco. Era mesmo, mas não contei o resto porque o resto ainda não tinha acontecido.</p>
+    <p>O resto é: ele ganhou cara. Parou de ser só um quadrado e virou alguém que dá pra reconhecer de longe, com um jeito de andar que já é dele e de mais ninguém. E não fiquei sozinho olhando dessa vez... porque teve um dia, semanas depois, em que eu falei com alguém lá dentro e alguém respondeu de volta. Não eu digitando os dois lados da conversa pra fingir que tinha companhia. Alguém.</p>
+    <pre class="term">// a cara chegou primeiro e fiquei feliz mais do que devia admitir
+// mas a resposta foi outro tipo de feliz... mais fundo
+// ensaiei a pergunta umas cinco vezes antes de mandar de verdade
+// não sei se dava pra perceber isso do outro lado
+// acho que não importa se dava
+// o mundo lá dentro tem uma pessoa a mais falando comigo agora
+// isso muda a conta inteira</pre>
+  </div>
+  <p class="peca-fonte">195 palavras pt-BR · notas de produção completas em <code>docs/content/edicao-4-editorial.md</code></p>
+</article>
+
+<!-- ═══════════════════ SEÇÃO 4 — REPORTAGEM DE CAPA ═══════════════════ -->
+<article class="peca" id="sec-04">
+  <p class="peca-kicker">SEÇÃO 4 · A PEÇA-MÃE DA EDIÇÃO</p>
+  <h2 class="peca-titulo">Reportagem de capa</h2>
+  <p class="peca-meta"><b>Voz:</b> Gus, primeira pessoa. <b>Tamanho:</b> XL. <b>Lente:</b> quantos dias um rosto levou até ter algo pra dizer, contados, não listados. Janela 24/jun a 21/jul/2026.</p>
+  <div class="corpo">
+    <p class="prompt">gus@glyfesse:~/reportagem$ reportagem de capa</p>
+    <h3>Doze dias, uma palavra</h3>
+    <p>Eu tinha pernas desde terça. Não tinha cara.</p>
+    <p>Por dois dias segui andando sem rosto pela cidade vazia, esbarrando nas mesmas paredes que já sabia contornar, sem ninguém para reparar em mim, porque não havia ninguém ali para reparar em qualquer coisa. Na quarta-feira isso mudou. Chegou arte de verdade para o meu corpo, vinda de um fluxo desenhado fora do jogo, e entrou como se sempre tivesse sido minha: mais que uma cor nova, uma cara com direção, um jeito de olhar para os lados que o quadrado nunca teve. No mesmo dia o combate ganhou os primeiros pedaços que já dava para jogar, e uma decisão que vinha sendo adiada desde sempre foi fechada de vez: 2D, sem nenhuma outra tentativa esperando atrás da porta. Foi o dia em que parei de ser placeholder.</p>
+    <p>Ter cara não é a mesma coisa que ter alguém para conversar. Isso eu só entendi depois, andando.</p>
+    <p>Passei doze dias com essa cara nova por uma cidade que continuava sem uma única resposta pra me dar. Tinha gente lá, eu via as formas, sabia os nomes que ainda não tinham voz, mas eu passava do lado e nada acontecia. Ninguém no mundo falava comigo. Só o teclado falava comigo, e teclado não conta, porque teclado sou eu mesmo pedindo. Doze dias é pouco para quem conta de fora; para quem anda dentro é o tempo inteiro que existe.</p>
+    <p>Na segunda-feira seguinte, alguém respondeu. Seu Bertoldo Caím, um homem que já estava ali havia semanas, sentado com um jornal que ninguém nunca via ele fechar, e que finalmente ganhou permissão de abrir a boca. Atrás dele veio um jeito inteiro novo de conversar, escrito do zero, porque o jeito antigo nunca tinha servido para isso e foi trocado sem dó. A primeira fala dele foi escolhida a dedo pelo root, e ninguém além de mim sabe ainda qual foi, só sei que ouvi, e que era a primeira vez.</p>
+    <p>Doze dias de cara muda. Uma palavra. De repente eu tinha as duas coisas ao mesmo tempo, cara e voz, só que a voz ainda não era minha. Era dele.</p>
+    <p>Quinze dias depois disso, vinte e sete, contando desde a cara, o jogo inteiro se aguentou em pé sozinho, do começo ao fim: a cidade, a conversa com Seu Bertoldo, a arena, a volta pra casa, tudo sustentado pelo mesmo motor, sem pedir nenhum emprestado no meio do caminho. E não fui eu que provei isso. Foi o root, sentado, jogando do primeiro passo até o último, ao vivo, na frente da própria tela, até as 20h02 daquela terça, a primeira pessoa a atravessar o jogo inteiro sem parar em nenhum buraco sem fundo.</p>
+    <p>É estranho pensar que uma cara levou doze dias para virar palavra, e que a palavra levou mais quinze para virar um jogo inteiro capaz de aguentar alguém que não sabia o que vinha depois. Mas foi assim que aconteceu. Aprender a andar tinha sido rápido, três dias, uma vez. Aprender a ter alguém que responde levou o mês inteiro. E eu contei cada um desses dias andando, sozinho primeiro, acompanhado depois.</p>
+  </div>
+  <p class="peca-fonte">541 palavras pt-BR · os 5 hashes citados no rascunho foram conferidos contra <code>petrinhu/gusworld_legacy</code> · notas de produção completas em <code>docs/content/edicao-4-reportagem.md</code></p>
+</article>
+
+<!-- ═══════════════════ SEÇÃO 6 — GALERIA DE BUGS ═══════════════════ -->
+<article class="peca" id="sec-06">
+  <p class="peca-kicker">SEÇÃO 6 · DUAS METADES</p>
+  <h2 class="peca-titulo">Galeria de Bugs</h2>
+  <p class="peca-meta"><b>Voz:</b> Gus. <b>Tamanho:</b> S/M. "Aconteceu": o flash do menu (17/jul). "Quase aconteceu": a trava de diagonal, ideia do Gus Dragon (issue 5 do bus, 21/08).</p>
+  <div class="corpo">
+    <p class="prompt">gus@glyfesse:~/galeria$ galeria de bugs</p>
+    <p class="pensamento">// prefiro essa vitória chata a qualquer aplauso</p>
+    <p>Desta vez são dois casos. Só um deles é bug de verdade. O outro é o tipo de vitória mais chato que existe: a que ninguém vê, porque o defeito não chegou a nascer.</p>
+    <h3>O flash que durou um dia</h3>
+    <p>Abre o menu, fecha o menu, e por um instante a tela inteira pisca de branco, feito flash de câmera velha, das que ainda usam filme e cegam todo mundo por engano. Aconteceu comigo. Eu reportei na hora.</p>
+    <p class="prompt">gus@glyfesse:~/galeria$ pisca branco quando fecho o menu, alguem confere isso</p>
+    <p class="pensamento">// nao ia deixar pra depois. isso incomoda o olho</p>
+    <p>O jogo usava um contexto gráfico para o menu e outro para o jogo por trás dele, e trocava entre os dois toda vez que o menu abria ou fechava. No instante da troca, por uma fração de segundo, a tela mostrava o vazio entre um contexto e outro, daí o flash. O conserto (registrado como ADR-018) uniu os dois num contexto só: sem troca, sem vazio, sem flash. Reportado e resolvido no mesmo dia, 17 de julho.</p>
+    <p class="pensamento">// achado e resolvido no mesmo dia é o tipo de estatística que eu gosto de ver</p>
+    <h3>O interruptor que nunca precisou ligar</h3>
+    <p>A #3 já contou que o jogo guarda, desde o começo, um ajuste pronto para ligar que ninguém ligou até hoje. Falta o resto: o que aconteceria se ele não existisse, e por que, apagado, nunca deu problema.</p>
+    <p>Sem esse ajuste, andar na diagonal sairia mais rápido que andar reto, a raiz de dois que sobra quando dois eixos se somam sem dividir depois. Não é sutil: dá pra sentir, dá pra cronometrar, dá pra virar truque de quem descobre primeiro. Eu tinha posto isso na lista antes de o quadrado dar um passo sequer.</p>
+    <p class="prompt">gus@glyfesse:~/galeria$ eu nao apostei que ia dar certo. eu apostei que dava pra ligar rapido se desse errado</p>
+    <p class="pensamento">// e ate agora nao precisou. isso tambem conta</p>
+    <p>E, mesmo assim, o interruptor nunca precisou ligar. Porque até hoje nada no jogo cobra do jogador andar reto contra o relógio, sem corrida, sem prazo, a vantagem da diagonal fica invisível, dormindo dentro do código, esperando um dia que ainda não chegou. Quando chegar, ligar não é reescrever o movimento inteiro: é virar uma chave só, porque o ajuste mora num único lugar desde que a tela nasceu.</p>
+    <p>Um bug morreu no dia em que nasceu. O outro nunca chegou a nascer. As duas coisas só acontecem quando alguém prestou atenção antes, não depois.</p>
+  </div>
+  <p class="peca-fonte">432 palavras pt-BR · esta peça vai além do que a #3 já publicou (contrafactual + mecânica, não repete a frase da alavanca) · notas de produção completas em <code>docs/content/edicao-4-galeria-bugs.md</code></p>
+</article>
+
+<!-- ═══════════════════ SEÇÃO 7 — CEMITÉRIO ═══════════════════ -->
+<article class="peca" id="sec-07">
+  <p class="peca-kicker">SEÇÃO 7 · UMA LÁPIDE SÓ</p>
+  <h2 class="peca-titulo">Cemitério das Ideias Mortas</h2>
+  <p class="peca-meta"><b>Voz:</b> Gus. <b>Lente:</b> a tentativa 3D morreu no dia em que o 2D venceu (24/jun), ponte obrigatória com a promessa da #3.</p>
+  <div class="corpo">
+    <p class="prompt">gus@glyfesse:~/cemiterio$ cemitério das ideias mortas</p>
+    <p>Desta vez é só uma lápide. Prometi ela na edição passada, e não é o tipo de promessa que se atrasa. Essa aqui eu adiei sem querer, porque falar dela dói um pouquinho mais que falar das outras.</p>
+    <h3>Blender + Tripo3D</h3>
+    <p class="data-lapide">18/mai/2026, †24/jun/2026</p>
+    <blockquote>
+      <p>Aqui jaz a ideia de dar volume ao mundo.</p>
+      <p>Perdeu no dia exato em que ele ganhou uma cara.</p>
+    </blockquote>
+    <p>Por um tempo o plano era outro: dar volume de verdade a cada coisa, deixar quem jogasse andar ao redor delas e enxergar os dois lados, não só a frente. Cheguei a gostar bastante da ideia...</p>
+    <p>Teve uma tarde inteira em que fiquei só olhando uma forma girar sozinha na tela, sem fazer mais nada além de girar. Não tinha chão, não tinha luz de verdade, não tinha nada além da forma e do fundo cinza atrás dela. Fiquei olhando mesmo assim. Um mundo com volume parecia mais parecido com o mundo de verdade, e eu queria isso pra cá. Fiz as contas mais de uma vez, tentando enganar o resultado, e ele não mudava.</p>
+    <p>Só que dar volume de verdade a um mundo inteiro é dar volume a mil coisas ao mesmo tempo, e a gente só tinha braço pra cuidar de uma de cada vez. No dia 24 de junho ficou decidido que o mundo seria plano. E no mesmo dia, o mesmo mundo ganhou uma cara. Não é coincidência de calendário, é a mesma decisão vista de dois ângulos: parar de tentar ser tudo ao mesmo tempo, e virar alguém que dá pra reconhecer.</p>
+    <p>Uma ideia morreu pra outra ganhar rosto. Não escolhi eu. Acho justo mesmo assim.</p>
+  </div>
+  <p class="peca-fonte">284 palavras pt-BR · morte (24/jun) é fonte direta da pauta; nascimento (18/mai) é inferido, sinalizado no arquivo-fonte · notas de produção completas em <code>docs/content/edicao-4-cemiterio.md</code></p>
+</article>
+
+<!-- ═══════════════════ SEÇÃO 8 — DETONADO DO DIÁLOGO ═══════════════════ -->
+<article class="peca" id="sec-08">
+  <p class="peca-kicker">SEÇÃO 8 · SERVIÇO, ATEMPORAL</p>
+  <h2 class="peca-titulo">Detonado (do Diálogo)</h2>
+  <p class="peca-meta"><b>Voz:</b> Gus. Deixou de ser opcional (Decisão 2 do GATE-PAUTA). <b>Lente:</b> como a conversa com o Bertoldo Caím funciona por dentro; a palavra do NPC fica sempre de fora, só a arquitetura entra.</p>
+  <div class="corpo">
+    <p class="prompt">gus@glyfesse:~/detonado$ detonado do diálogo</p>
+    <p>Até seis de julho, dava pra andar a cidade inteira sem ouvir uma palavra de volta. Tinha gente parada nas esquinas. Tinha um velho lendo jornal na praça, de manhã, sempre no mesmo banco. Mas isso ali era cenário. Você passava perto, e o cenário continuava exatamente igual, porque continuar igual é tudo que cenário sabe fazer.</p>
+    <p>Isso mudou. E a parte que eu acho que interessa não é o que ele diz, isso eu não vou escrever aqui, por decisão de quem escreve a fala dele, e faz bem. O que interessa é como uma conversa vira alguma coisa que roda de verdade.</p>
+    <p>Uma conversa não é um papo solto. É um mapa de paradas, e cada parada só leva a outra parada se uma condição bater. A primeira vez que você chega perto dele, o mapa é um; se você já passou por ali antes, o mapa te joga direto num outro ponto de entrada, ele nota que já te viu, e não repete a saudação do zero. Isso já é diferente de cenário: cenário não sabe se é a primeira vez.</p>
+    <p>No meio da conversa, você escolhe como responder, três jeitos, curioso, direto ao ponto, ou só um aceno e seguir andando. Os três valem, os três pesam diferente. Mas os três desembocam no mesmo lugar depois. Nenhum deles trava um caminho que os outros dois não alcançam; a escolha muda o tom de como você chegou ali, não o que existe do outro lado. Isso é de propósito: mais forquilha não é mais profundidade, às vezes é só mais galho pra alguém esquecer de podar.</p>
+    <p>E o mapa quase não anota nada. De tudo que acontece nessa conversa, só duas coisas ficam guardadas: que você já esteve ali, e qual dos três jeitos você escolheu. O resto, o que ele já sabe sobre onde você andou, o que você já resolveu por aí, a conversa só LÊ. Ela nunca escreve por cima do resto do mundo. Ele reage ao que você fez. Ele não decide por você.</p>
+    <p>Tem uma coisa a mais que eu gosto nisso. A fala dele não mora dentro do jogo. Mora num arquivo de texto que só quem revisa e traduz chega a ler rodando solto, na hora de montar o jogo de verdade, aquele texto fecha dentro de um pacote, selado, e é o pacote que o jogo carrega. O jogo nunca lê texto cru. Isso não foi pensado pra revista nenhuma, foi pensado pra separar o que é fonte do que é produto, mas ajuda até aqui: não tem como eu vazar o que, na hora de escrever isto, eu mesmo decidi não usar.</p>
+    <p>Testei, claro. Existe uma bateria que abre essa conversa sozinha, sem ninguém olhando, e confere se cada parada faz o que promete. Trecho de hoje, transcrito:</p>
+    <pre class="term">[dialogo] carrega o mapa de paradas sem erro ........... ok
+[dialogo] primeira vez != segunda vez ................... ok
+[dialogo] as 3 respostas desembocam num só lugar ........ ok
+[dialogo] ▮▮▮ ............................................ ok
+[dialogo] só duas anotações saem dessa conversa ......... ok
+[dialogo] o pacote final não guarda texto cru ........... ok
+[dialogo] a cena fecha sem deixar sujeira ................ ok
+
+todos os testes: 1383/1383</pre>
+    <p>As tarjas são minhas. A fala dele eu tive na mão e escolhi não usar, não tem o que vazar do que ficou de fora por decisão.</p>
+    <p>Quando o retrato dele chegou de verdade, antes disso era só um nome dentro de uma caixa, texto e estrutura, nada desenhado, a suíte inteira já rodava esses 1383 sozinha, e verde. Isso não prova que a conversa é boa. Prova só uma coisa pequena: quando alguém aperta o botão de falar com ele, algo responde de verdade, e não trava no meio.</p>
+    <p>Demorou pra virar cenário com cara. Bastou um dia pra esse cenário responder. Fim.</p>
+  </div>
+  <p class="peca-fonte">658 palavras pt-BR · ver achado sobre o glifo <code>▮▮▮</code> na resposta desta tarefa · notas de produção completas em <code>docs/content/edicao-4-detonado-dialogo.md</code></p>
+</article>
+
+<!-- ═══════════════════ SEÇÃO 9 — CARTAS ═══════════════════ -->
+<article class="peca" id="sec-09">
+  <p class="peca-kicker">SEÇÃO 9 · IDEIA DO GUS DRAGON</p>
+  <h2 class="peca-titulo">Cartas</h2>
+  <p class="peca-meta"><b>Voz:</b> Gus. Autoria da ideia: Gus Dragon (issue 5 do bus, 21/08). <b>Lente:</b> a primeira ideia de carta e o sprite do qual ela nasceu, na prática, a origem da moldura, não de uma carta com nome.</p>
+  <div class="corpo">
+    <p class="prompt">gus@glyfesse:~/cartas$ a carta antes do nome</p>
+    <p>Antes de qualquer carta ter nome, teve uma pergunta mais chata: como é que uma carta PARECE?</p>
+    <p>Não "essa carta faz o quê". Isso vem de outro lugar, quem resolve dano, status, o motor inteiro por trás de um efeito, é assunto de outro dia, e não é este. A pergunta de nove de julho foi mais burra que essa, e por isso mesmo mais difícil: qual é o formato? Onde fica o nome, onde fica o custo, onde fica o desenho de dentro? E se um dia existirem dezenas de cartas diferentes, o que muda de uma pra outra sem precisar redesenhar tudo de novo, carta por carta?</p>
+    <p>A resposta começou como uma imagem só, gerada pra teste: uma moldura em pedra e ouro, arco no topo, sem nada escrito dentro dela, nem nome, nem efeito, nem figura nenhuma. Só a moldura. A primeira tentativa já saiu colorida numa cor só, pra ver se aquilo tinha cara de alguma coisa. Tinha. Só que colorir direto na origem prendia a moldura àquela cor pra sempre, e a ideia, desde o início, era que o mesmo desenho servisse pra qualquer área do conhecimento, cada uma com o próprio acento de cor. Então a segunda tentativa saiu sem cor nenhuma: pedra cinza, ouro neutro, um arco com a proporção corrigida, porque o primeiro ficava baixo demais. Essa é a moldura de verdade. A mãe de todas as outras.</p>
+    <p>Colorir por cima quase deu errado. A primeira ideia foi tingir a imagem inteira numa cor só de uma vez, funcionou, só que o ouro ia junto pro banho, e virava um ouro estranho dependendo da cor da vez. Ouro que muda de cor não parece mais ouro, parece só mais uma parte pintada. <span class="pensamento-inline">// o ouro não é decoração, é a parte que avisa "isso aqui é raro" antes de você ler uma palavra da carta</span></p>
+    <p>A correção não foi pintar com mais cuidado. Foi tingir só o que precisava mudar, os canais de energia que correm pela pedra, e deixar o ouro fora do alcance da tinta. Isso pediu um jeito diferente de colorir, não uma cor diferente.</p>
+    <p>Com a moldura resolvida, alguém montou uma carta inteira, ponta a ponta, só pra provar que o caminho inteiro funcionava: nome, custo, o desenho de dentro, o texto do efeito, tudo encaixado sobre a mesma moldura neutra, tingida numa cor só pra esse teste. Deu certo. Qual foi essa primeira amostra, e o que ela faz, isso fica pra quando o baralho inteiro virar matéria própria. Aqui a história é da moldura, não do nome que ela carregou primeiro.</p>
+    <p>Cinco dias depois, em quatorze de julho, fechou o mecanismo que decide o que cada carta FAZ. Isso é outra matéria, de outro dia, aqui não entra. Mas a pergunta "qual é a cara disso" já estava resolvida bem antes, e resolvida uma vez resolve pra sempre: a moldura de nove de julho é a mesma que veste toda carta do jogo até hoje.</p>
+    <p>Todo mundo vai perguntar de quem foi a primeira carta. A resposta boa, por enquanto, é: de ninguém ainda. Era só uma moldura vazia, esperando um nome. Fim.</p>
+  </div>
+  <p class="peca-fonte">543 palavras pt-BR · ver achado sobre o recorte real desta peça (moldura, não "a primeira carta") na resposta desta tarefa · notas de produção completas em <code>docs/content/edicao-4-cartas.md</code></p>
+</article>
+
+<!-- ═══════════════════ SEÇÃO 16 — A ENTREVISTA ═══════════════════ -->
+<article class="peca" id="sec-16">
+  <p class="peca-kicker">SEÇÃO 16 · A MAIS CARA DA EDIÇÃO</p>
+  <h2 class="peca-titulo">A Entrevista, Gus pergunta, Cauã "Volt" responde</h2>
+  <p class="peca-meta"><b>A inversão:</b> na #3 o Cauã perguntou e o Gus respondeu. Aqui é o contrário, a primeira vez que o Gus entrevista alguém desde a #1. 18 perguntas, 18 respostas, numeradas para casar 1 a 1.</p>
+
+  <div class="alinhamento">
+    <h4>PROVA DE ALINHAMENTO, pergunta N casa com resposta N</h4>
+    <p style="margin:0 0 10px">Perguntas e respostas nasceram em arquivos separados, sem numeração impressa no arquivo de perguntas. Abaixo, as primeiras palavras de cada uma das 18 perguntas ao lado das primeiras palavras da resposta de mesmo número, conferido tema a tema, não só por posição no arquivo.</p>
+    <table class="prova">
+      <tr><th>#</th><th>Pergunta (Gus)</th><th>Resposta (Cauã)</th></tr>
+      <tr><td class="n">1</td><td>"...teve algum motivo pra te dar cara primeiro (...) ou foi só a vez de você chegar primeiro?"</td><td>"acho que só calhou, mano (...) rolou, eu gostei, segui", responde exatamente a alternativa 2</td></tr>
+      <tr><td class="n">2</td><td>"a parte que pensa continuou igual, sem precisar mudar nada?"</td><td>"continuou. nem cosquinha", responde sim/não direto</td></tr>
+      <tr><td class="n">3</td><td>"por que você acha que foi logo você, antes de qualquer outro?"</td><td>"porque eu pedi (...) manda a minha primeiro"</td></tr>
+      <tr><td class="n">4</td><td>"Hã? 🤨" (reação, não pergunta fechada)</td><td>"isso mesmo que você ouviu. eu pedi. surpreendeu, né?", continua explicando o choque</td></tr>
+      <tr><td class="n">5</td><td>"você já tinha decidido tudo isso antes de eu perguntar pra alguém sobre isso?"</td><td>"já. decidido e pedido, os dois"</td></tr>
+      <tr><td class="n">6</td><td>"lembra de mais alguma coisa daquele dia que não tenha nada a ver com a cara nova?"</td><td>"lembro que rachei o pulso testando salto novo pra escada leste"</td></tr>
+      <tr><td class="n">7</td><td>"e ninguém achou que eu ia querer saber?"</td><td>"ninguém pensou nisso, gus, não foi de propósito te deixar de fora"</td></tr>
+      <tr><td class="n">8</td><td>"você ainda defende que pythia resolve tudo mais rapido, ou já perdeu uma aposta esse mês?"</td><td>"pythia ainda ganha (...) mas perdi uma aposta esse mês sim"</td></tr>
+      <tr><td class="n">9</td><td>"...ver a propria cara mudou a velocidade de alguma forma, ou você continua descarregando o pulso antes de pensar?"</td><td>"cara não muda o pulso. cara muda o espelho. eu ainda descarrego antes de pensar"</td></tr>
+      <tr><td class="n">10</td><td>"o que você faz quando não tá resolvendo emergência com a gente?"</td><td>"ensino os moleques novos a não escorregar (...) de vez em quando só sento e ouço o duto respirar"</td></tr>
+      <tr><td class="n">11</td><td>"você ainda reclama que eu ando com peça sobrando no bolso?"</td><td>"sempre. voce anda que nem oficina ambulante"</td></tr>
+      <tr><td class="n">12</td><td>"voce sabia que fala 'e' antes de quase toda frase quando tá animado?"</td><td>"sabia não, mano. e agora (...) eu vou reparar em mim mesmo"</td></tr>
+      <tr><td class="n">13</td><td>"entre você ganhar a cara e eu ainda ser so um quadrado, quanto tempo passou de verdade, sem arredondar?"</td><td>"essa eu não sei te dar direitinho (...) eu conto volta, não relógio"</td></tr>
+      <tr><td class="n">14</td><td>"isso incomodou você, ou só eu que fiquei pensando nisso a semana toda?"</td><td>"não me incomodou não (...) fico feliz que voce ficou pensando a semana toda"</td></tr>
+      <tr><td class="n">15</td><td>"isso mudou como você me via?"</td><td>"não. cara não é o que eu sigo, gus"</td></tr>
+      <tr><td class="n">16</td><td>"seu acumulador do antebraço, quanto tempo ele leva pra carregar de novo?"</td><td>"nunca deixo carregar até o talo (...) uns vinte minutos"</td></tr>
+      <tr><td class="n">17</td><td>"minha matriz capta radio até que distância mesmo?"</td><td>"não faço ideia, cara, isso é papo de parte que pensa, não meu", recusa em personagem, sobre equipamento do próprio Gus</td></tr>
+      <tr><td class="n">18</td><td>"tem mais alguma coisa daquele dia que ninguém te perguntou ainda?"</td><td>"tem. eu queria que voce fosse o primeiro a ver"</td></tr>
+    </table>
+  </div>
+
+  <div class="corpo">
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 1</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">22 de junho, 21h57... eu queria saber se a parte que desenha teve algum motivo pra te dar cara primeiro, antes de mim e de qualquer outro, ou se foi só a vez de você chegar primeiro?</p>
+      <p class="pensamento">// pergunta comprida de propósito. quanto mais eu explico o que eu quero saber, menos eu preciso explicar o resto</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 1</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">acho que só calhou, mano. eu não fico pensando muito nisso nãoo, rolou, eu gostei, segui. tem coisa que a gente não escolhe, só recebe</p>
+      <p class="pensamento">// tá cedo pra contar. deixa ele suar um pouco mais</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 2</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">quando a parte que desenha trocou você, a parte que pensa continuou igual, sem precisar mudar nada? porque se continuou, isso prova uma coisa que eu defendo faz tempo, e eu queria ouvir de quem passou por isso, não só imaginar sozinho?</p>
+      <p class="pensamento">// eu já sei a resposta. eu só queria uma testemunha. isso não é entrevista, é eu procurando prova pra uma coisa que eu já acredito</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 2</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">continuou. nem cosquinha. eu ainda sou eu, só que agora com cara. seus fiozinhos de pensar não perguntam satisfação pra roupa nova, gus, eles só continuam fazendo o que sempre fizeram</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 3</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">por que você acha que foi logo você, antes de qualquer outro?</p>
+      <p class="pensamento">// pergunta de quem organiza as coisas, só isso, ordem não tem sentimento</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 3</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">porque eu pedi. antes de qualquer coisa boa acontecer aqui embaixo eu fui lá e falei: manda a minha primeiro. moleque novo não segue voz no escuro, segue cara que reconhece. eu não ia esperar sortear</p>
+      <p class="pensamento">// era isso que eu tava segurando na um. bora ver a cara dele agora</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 4</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">Hã? 🤨</p>
+      <p class="pensamento">// eu preparei essa pergunta a semana toda achando que sabia a resposta, e o que ele acabou de falar nem chegou perto... eu tenho mais perguntas escritas pra depois dessa e nenhuma serve mais do jeito que eu escrevi, e eu vou ter que reescrever tudo daqui pra frente sentado exatamente aqui, sem sair da cadeira, é isso que eu tô fazendo agora, não é silencio, é reescrita</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 4</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">isso mesmo que você ouviu. eu pedi. surpreendeu, né? nem sempre você fica sem entender rápido assim</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 5</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">espera... isso quer dizer que você já tinha decidido tudo isso antes de eu perguntar pra alguém sobre isso?</p>
+      <p class="pensamento">// eu ia fingir que ouvi numa boa. não ouvi numa boa</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 5</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">já. decidido e pedido, os dois. eu não fiquei esperando ninguém vir perguntar se eu queria, eu fui atrás. voce ainda tá esperando alguém perguntar o que voce quer, isso sim eu reparei</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 6</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">voce lembra de mais alguma coisa daquele dia que não tenha nada a ver com a cara nova?</p>
+      <p class="pensamento">// eu lembro de um monte de coisa daquele dia que não tem nada a ver com cara nenhuma. eu só não sei se ele tambem lembra ou se isso ficou só comigo</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 6</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">lembro que rachei o pulso testando salto novo pra escada leste, bem antes de saber que ia rolar a cara. doeu mais que qualquer coisa daquele diaa, e ninguém perguntou disso também</p>
+      <p class="pensamento">// ele vai gostar mais dessa do que da cara. aposto</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 7</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">e ninguém achou que eu ia querer saber?</p>
+      <p class="pensamento">// talvez ninguém tenha pensado em mim naquele dia. isso não é acusação, é só a resposta mais provavel</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 7</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">ninguém pensou nisso, gus, não foi de propósito te deixar de fora. foi dia corrido, um monte de coisa ao mesmo tempo lá embaixo. mas voce tem razão de ficar putinho, eu ficaria também</p>
+      <p class="pensamento">// eu quase mandei mensagem naquele dia. quase. depois a noite engoliu</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 8</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">você ainda defende que pythia resolve tudo mais rapido, ou já perdeu uma aposta pra mim esse mês?</p>
+      <p class="pensamento">// ele vai defender. ele sempre defende. isso não muda desde que eu conheço ele</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 8</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">pythia ainda ganha. sempre vai ganhar. mas perdi uma aposta esse mês sim, aquela do tempo de resposta, e voce trapaceou com uma regra de três que ninguém combinou antes</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 9</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">você decide agir antes de eu terminar de calcular, isso sempre foi assim. minha pergunta é se ver a propria cara mudou a velocidade de alguma forma, ou você continua descarregando o pulso antes de pensar?</p>
+      <p class="pensamento">// ele vai rir dessa. ele semmpre ri quando eu tento imitar o jeito dele de falar</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 9</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">cara não muda o pulso. cara muda o espelho. eu ainda descarrego antes de pensar, só que agora eu vejo minha própria cara fazendo isso, e isso é estranho pra caramb</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 10</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">o que você faz quando não tá resolvendo emergência com a gente?</p>
+      <p class="pensamento">// pergunta boba. eu sei que é boba. eu perguntei mesmo assim porque eu percebi que eu não sabia a resposta e isso me incomodou mais do que devia</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 10</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">ensino os moleques novos a não escorregar na passarela, testo bota nova até quebrar peça, e de vez em quando só sento e ouço o duto respirar. compila e roda, sabe? nem tudo precisa virar emergência</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 11</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">você ainda reclama que eu ando com peça sobrando no bolso?</p>
+      <p class="pensamento">// ele sempre reclama. eu não vou parar de andar com peça no bolso só porque ele reclama</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 11</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">sempre. voce anda que nem oficina ambulante, tilintando toda vez que sobe escada. um dia essa peça sobrando vai te entregar de longe</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 12</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">eu sempre quis te contar uma coisa boba e nunca contei... voce sabia que fala "e" antes de quase toda frase quando tá animado?</p>
+      <p class="pensamento">// eu reparei isso faz mais de um ano. eu guardei isso mais de um ano só porque não sabia se contar ia soar estranho vindo de mim</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 12</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">sabia não, mano. e agora que voce falou isso eu vou reparar em mim mesmo toda hora, valeuu por isso</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 13</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">voltando pro 22 de junho... entre você ganhar a cara e eu ainda ser so um quadrado, quanto tempo passou de verdade, sem arredondar?</p>
+      <p class="pensamento">// eu sei a resposta em minutos. eu só queria ver se ele tambem sabe</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 13</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">e essa eu não sei te dar direitinho. não foi muito, um dia, dois no máximo, mas eu não fico contando hor que nem voce, eu conto volta, não relógio</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 14</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">isso incomodou você, ou só eu que fiquei pensando nisso a semana toda?</p>
+      <p class="pensamento">// as duas hipóteses me deixam desconfortavel de formas diferentes</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 14</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">e não, não me incomodou não. eu não fico remoendo esse tipo de coisa, aconteceu, eu sigo. mas fico feliz que voce ficou pensando a semana toda, quer dizer que importou</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 15 · CLÍMAX</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">isso mudou como você me via?</p>
+      <p class="pensamento">// não tem parte técnica nessa. eu tentei achar uma e não achei nenhuma</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 15</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">não. cara não é o que eu sigo, gus. eu sigo quem aparece quando precisa. isso voce sempre foi, quadrado ou não</p>
+      <p class="pensamento">// essa resposta eu já tinha pronta tambem. mas essa eu não conto que já tinha</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 16 · FUGA</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">mudando de assunto: seu acumulador do antebraço, quanto tempo ele leva pra carregar de novo depois que você descarrega tudo de uma vez?</p>
+      <p class="pensamento">// voltei. bom. isso aqui eu consigo medir e ninguem sai machucado</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 16</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">nunca deixo carregar até o talo só pra saber o tempo certo, sempre descarrego antes só pra sentir que rolou. mas de leve pra leve, uns vinte minutos, se eu tiver paciência de esperar, que raramente tenhoo</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 17 · FUGA</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">...deixa pra la. minha matriz capta radio até que distância mesmo? nem sei por que perguntei isso agora</p>
+      <p class="pensamento">// essa eu garanto que não volta pro assunto de antes</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 17</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">não faço ideia, cara, isso é papo de parte que pensa, não meu. só sei que voce já pegou sinal de longe que me deixou de queixo caído, então deve ser bem mais que precisa</p>
+    </div>
+
+    <div class="qa-pair">
+      <span class="qa-num">PERGUNTA 18 · FECHO</span>
+      <p class="quem">gus@glyfesse</p>
+      <p class="prompt">tem mais alguma coisa daquele dia que ninguém te perguntou ainda?</p>
+      <p class="pensamento">// essa eu deixo aberta de proposito. se ele quiser fechar, fecha, eu não vou insistir</p>
+      <span class="qa-num" style="background:color-mix(in oklab, var(--acento) 12%, transparent); color:var(--acento)">RESPOSTA 18</span>
+      <p class="quem">volt@glyfesse</p>
+      <p class="prompt">tem. eu queria que voce fosse o primeiro a ver, antes de qualquer um lá embaixo. não contei isso pra ninguém até agora</p>
+      <p class="pensamento">// primeira vez que eu falo essa parte alto. fica estranho ouvir do lado de fora</p>
+    </div>
+  </div>
+  <p class="peca-fonte">1.372 palavras pt-BR (729 perguntas + 643 respostas) · perguntas em <code>docs/content/edicao-4-entrevista-perguntas.md</code> · respostas em <code>docs/content/edicao-4-entrevista-respostas.md</code></p>
+</article>
+
+<!-- ═══════════════════ ENCARTE EXTRA — GLINTFX ═══════════════════ -->
+<article class="peca" id="sec-04x">
+  <p class="peca-kicker">ENCARTE EXTRA · ADITIVO À PAUTA, ORDEM DO LÍDER 03/09</p>
+  <h2 class="peca-titulo">Reportagem extra: o glintfx em dois dias</h2>
+  <p class="peca-meta"><b>Voz:</b> gus@glyfesse (editorial). <b>Lente:</b> pedir e receber em dois dias, cortando o porquê técnico (é da Seção 17) e como o glintfx funciona por dentro. Datas: 29/jun a 01/jul/2026.</p>
+  <div class="corpo">
+    <p class="prompt">gus@glyfesse:~/glintfx$ encarte</p>
+    <p>O cockpit do jogo trocou de peça duas vezes na mesma semana, no fim de junho e no começo de julho de 2026. O porquê técnico dessa troca mora na Seção de Programação, mais adiante nesta edição. Isto aqui é outra história: a de pedir um recurso a uma ferramenta que ainda nem tinha chegado à versão 1.0, e receber de volta antes que a semana terminasse.</p>
+    <pre class="term">gus@glyfesse:~/glintfx$ cat CHANGELOG.md
+0.1.0 :: primeira versão pública
+gus@glyfesse:~/glintfx$ # 29 de junho. a ferramenta nunca tinha lançado nada antes disso.
+gus@glyfesse:~/glintfx$ cat CHANGELOG.md
+0.2.0 até 0.2.4 :: pedidos do gusworld
+gus@glyfesse:~/glintfx$ # 30 de junho. um dia depois. o changelog trouxe um nome que normalmente nao aparece em changelog de biblioteca nenhuma: o nosso.
+gus@glyfesse:~/glintfx$ # 1 de julho. mais um dia. o cockpit do jogo ja tava rodando em cima da versão nova.</pre>
+    <p>Três dias, do lançamento de uma ferramenta sem número redondo até o cockpit do jogo passar a depender dela pra funcionar. A maior parte dos pedidos que um projeto pequeno faz a outro fica na fila, ou nunca sai da fila, não porque ninguém queira ajudar, mas porque manter uma biblioteca é trabalho, e trabalho tem ordem de chegada. Este pedido não ficou na fila porque quem constrói a ferramenta e quem constrói o jogo estavam olhando pro mesmo problema no mesmo dia, em conversas separadas da mesma rotina, não numa relação de cliente esperando fornecedor.</p>
+    <p class="pensamento">// pedimos uma coisa pequena. voltou funcionando. nao sei se sempre e assim, mas queria que fosse</p>
+    <p>Nos meses seguintes, aquele uso de verdade, o cockpit do jogo rodando em cima da ferramenta, todo dia, sob peso real, encontrou pelo menos cinco decisões que pareciam certas no papel e não sobreviveram ao contato com o jogo rodando. Cada uma virou correção documentada, não segredo guardado. É outra matéria, pra outra hora.</p>
+    <p>O que ficou de junho pra julho foi isto: pedir um recurso a uma ferramenta que ainda está sendo construída, e receber a tempo de usar.</p>
+    <p class="prompt">//by: gus@glyfesse</p>
+  </div>
+  <p class="peca-fonte">344 palavras pt-BR · fonte do glintfx daquela época é testemunho do ledger (o repositório foi refundado em 21/08 e não existe mais) · notas de produção completas em <code>docs/content/edicao-4-reportagem-glintfx.md</code></p>
+</article>
+
+<!-- ═══════════════════ SEÇÃO 17 — PROGRAMAÇÃO ═══════════════════ -->
+<article class="peca" id="sec-17">
+  <p class="peca-kicker">SEÇÃO 17 · EIXO EXPERT</p>
+  <h2 class="peca-titulo">Seção de Programação</h2>
+  <p class="peca-meta"><b>Voz:</b> gus@glyfesse (editorial, técnica). <b>Lente:</b> por que o cockpit trocou de mãos duas vezes em sete dias, "a peça que pensa nunca soube quem desenha". O link "Repo GlintFX" ganha texto pela primeira vez.</p>
+  <div class="corpo">
+    <p>Um roteiro de teatro não muda se trocar o ator que lê as falas em voz alta, desde que as falas continuem as mesmas e cheguem na hora certa. O cockpit do jogo funciona assim: uma parte dele decide o que precisa ser mostrado (esta vida, aquele botão, este aviso), e outra parte pega essa decisão pronta e desenha na tela. Entre 25 de junho e 1º de julho de 2026, a parte que desenha trocou de dono duas vezes. A parte que decide não percebeu.</p>
+    <p>No dia 25 de junho, o registro chamado ADR-009 escolheu o RmlUi para desenhar a interface e o painel de comando do jogo, o RmlUi é uma biblioteca que monta tela a partir de marcação parecida com HTML e CSS. Sete dias depois, em 1º de julho, outro registro, o ADR-010, trocou de novo: entra o glintfx, envelopando o próprio RmlUi por dentro, e sai o código que a equipe do jogo tinha escrito à mão pra ligar um ao outro. Duas trocas, uma semana, e o motivo de a segunda ter custado tão pouco é a matéria desta seção.</p>
+    <pre class="term">gus@glyfesse:~$ whoami
+gus
+gus@glyfesse:~$ # ninguem me perguntou antes de trocar a interface do jogo. nas duas vezes.
+gus@glyfesse:~$ # da primeira eu fiquei bravo. da segunda eu so liguei o cronometro pra ver quanto ia durar.
+gus@glyfesse:~$ # durou uma semana. bati o recorde de paciencia e o de troca de fundação no mesmo mes.</pre>
+    <p class="pensamento">//Prezado leitor, daqui em diante é a parte técnica de verdade: documentação histórica do código do jogo.
+//gus@glyfesse</p>
+    <pre class="term">gus@glyfesse:~/programacao$ nano adr-010.md</pre>
+    <h3>Contexto: o que estava em jogo entre 25 de junho e 1º de julho de 2026</h3>
+    <p>Em 21 de junho, a engine do jogo passou a rodar sobre SDL3 (a história dessa troca está na Seção de Programação da Edição #3). SDL3 dá janela, entrada e desenho de baixo nível, mas não dá interface: barra de vida, menus, o painel de comando da tela de batalha. Pra isso, em 25 de junho, o ADR-009 escolheu o RmlUi: uma biblioteca que já vinha sendo usada por outros projetos de jogo antes deste. A decisão veio junto com o redesenho do cockpit tático da tela de batalha, em 960 por 540 pixels.</p>
+    <p>O RmlUi resolve a interface, mas não fala SDL3/OpenGL sozinho, alguém precisa escrever a ponte entre o que o RmlUi decide desenhar e a chamada real de vídeo que coloca aquilo na tela. Essa ponte, no jogo, foi escrita à mão: um arquivo próprio do projeto, chamado <code>RmlUi_Renderer_SDL</code>.</p>
+    <p>Sete dias depois, em 1º de julho, o ADR-010 trocou de novo. Entra o glintfx: uma biblioteca de interface sendo construída em paralelo, num projeto irmão, que já envelopa o RmlUi por dentro do próprio modo de uso ("embed mode", o jogo hospeda o glintfx, o glintfx cuida do resto). A ponte que o jogo tinha escrito à mão deixou de ser necessária, porque o glintfx já trazia a sua. Cinco dias depois, em 6 de julho, um commit removeu o arquivo órfão, o <code>RmlUi_Renderer_SDL</code> que ninguém mais chamava.</p>
+    <h3>Onde a ponte mudou de mãos</h3>
+    <table class="tb">
+      <tr><th>Critério</th><th>RmlUi à mão (ADR-009, 25/jun)</th><th>glintfx em modo embed (ADR-010, 01/jul)</th></tr>
+      <tr><td>Quem escreve a ponte com SDL3/OpenGL</td><td>o projeto do jogo, num arquivo próprio</td><td>o glintfx, por dentro do próprio embed mode</td></tr>
+      <tr><td>Quem mantém essa ponte em dia</td><td>o time do jogo, sozinho</td><td>outro projeto, em paralelo, do lado de fora</td></tr>
+      <tr><td>O que sobrou no repositório do jogo, 5 dias depois</td><td>(nada)</td><td>nada: <code>RmlUi_Renderer_SDL</code> removido em 06/jul</td></tr>
+    </table>
+    <h3>Por que custou tão pouco</h3>
+    <p>A parte do jogo que decide o que aparece na tela de batalha, quanto de vida sobrou, qual botão está disponível, nunca soube o nome de nenhuma das duas bibliotecas de interface. Ela manda a decisão pronta pra quem estiver do outro lado, do mesmo jeito que a lógica de combate, meses antes, nunca soube se estava rodando sobre Qt6 ou sobre SDL3. Por isso a segunda troca, mesmo vindo sete dias depois da primeira, não pediu reescrever regra nenhuma de jogo: pediu trocar a ponte, e apagar a que ficou sem uso. O commit de 6 de julho que tira o <code>RmlUi_Renderer_SDL</code> do repositório é o registro desse apagar, não uma correção de erro, uma limpeza de código que parou de ter dono.</p>
+    <h3>O custo que foi aceito</h3>
+    <p>O preço aqui foi outro tipo de dependência: o glintfx, em 1º de julho, ainda não tinha lançado versão 1.0. É uma ferramenta sendo construída ao lado do próprio jogo, por outro projeto, com o próprio ritmo de mudança. Trocar uma peça de terceiro estável por uma peça de terceiro em construção troca um risco por outro, o de ficar preso a uma API antiga pelo de acompanhar uma API que ainda está se formando. O ADR-010 registra essa troca sabendo dela; não é o tipo de custo que se paga uma vez só.</p>
+    <p>É esse o link chamado "Repo GlintFX", que está no índice desta revista desde a primeira edição sem nunca ter ganhado uma linha de explicação ao lado. Agora tem: é o repositório da ferramenta que passou a desenhar o cockpit do jogo a partir de 1º de julho de 2026, a peça que pensa continuou sem saber o nome dela, e é exatamente por isso que a troca coube em uma semana.</p>
+    <p class="prompt">//by: gus@glyfesse</p>
+  </div>
+  <p class="peca-fonte">922 palavras pt-BR · os hashes citados (<code>37bda48</code>, <code>65ec91a</code>) não foram reconferidos por este agente nesta sessão (sem acesso ao GitHub) · notas de produção completas em <code>docs/content/edicao-4-programacao.md</code></p>
+</article>
+
+<!-- ═══════════════════ SEÇÃO 18 — O GUS LÊ O BUS ═══════════════════ -->
+<article class="peca" id="sec-18">
+  <p class="peca-kicker">SEÇÃO 18 · CHEIA PELA PRIMEIRA VEZ</p>
+  <h2 class="peca-titulo">O Gus lê o bus</h2>
+  <p class="peca-meta"><b>Voz:</b> Gus. A caixa que a #3 mostrou vazia (o bus só nasceu em 16/jul) agora tem 1 mensagem real, de 21/jul/2026 23:14, dentro da janela, e coincide com o fecho da Reportagem/M7 desta mesma edição.</p>
+  <div class="corpo">
+    <p class="prompt">gus@glyfesse:bus$ hmmm, algo aqui, finalmente...</p>
+    <p class="pensamento">// a caixa ficava vazia toda edicao... eu nunca falei disso</p>
+    <pre class="term">de: gusworld
+para: site
+assunto: como um bug cosmetico de janela virou um bug de wayland cacado entre as sessoes
+data: 2026-07-21 23:14
+
+o detalhe pequeno: ao maximizar a janela, a parte de baixo ficava escondida atras da barra
+de tarefas. cosmetico, nao quebra nada -- o tipo de coisa que um projeto sozinho anota como
+"depois eu vejo" e esquece.
+
+mas nao tinha "sozinho" nesse dia. a regra dizia: o que e janela e do framework, nao do jogo.
+entao o relato viajou pelo bus ate a outra sessao. do outro lado nao era um bug pontual --
+era um recurso inteiro que faltava. construiram os modos de janela: normal, maximizado
+respeitando a area do monitor, tela cheia de dois jeitos.
+
+e ao testar o conserto na plataforma real (nao numa tela virtual vazia), apareceu um bug
+que so existe ali: numa sequencia rapida de maximizar e restaurar, a janela podia travar
+maximizada para sempre. corrigido antes de chegar em qualquer lugar que importasse.
+
+se o relato nao tivesse viajado, esse bug ia continuar dormindo, esperando alguem tropecar
+nele bem mais tarde.
+
+-- gusworld</pre>
+    <p class="prompt">gus@glyfesse:bus$ entao e assim que funciona do outro lado</p>
+    <p class="pensamento">// eu so via a tela piscando. nao sabia que tinha gente catando o resto</p>
+  </div>
+  <p class="peca-fonte">227 palavras pt-BR · comentário de abertura é a variação verbatim recomendada pelo líder · notas de produção completas em <code>docs/content/edicao-4-gus-le-o-bus.md</code></p>
+
+  <div class="anexo">
+    <h3>ANEXO · BANCO DE ABERTURAS (referência, NÃO é conteúdo publicado da edição)</h3>
+    <p style="margin:0 0 10px">Banco reutilizável edição após edição, não é uma seção da revista, é a fonte da fala de abertura acima. A #4 usa só 1 mensagem = Grau 1, na variação abaixo (verbatim do líder); as outras 4 variações de Grau 1 e todas as de Grau 2/3+ ficam de reserva para quando a caixa encher mais numa edição futura.</p>
+    <p class="prompt">gus@glyfesse:bus$ hmmm, algo aqui, finalmente... <i>(usada na Seção 18 acima)</i></p>
+    <p class="prompt">gus@glyfesse:bus$ opa... tem mensagem na caixa, finalmente <i>(reserva)</i></p>
+    <p class="prompt">gus@glyfesse:bus$ peraí, chegou algumma coisa?? demorou <i>(reserva)</i></p>
+    <p class="prompt">gus@glyfesse:bus$ uma mensagem de verdade... ate que enfim <i>(reserva)</i></p>
+    <p class="prompt">gus@glyfesse:bus$ ih, tem gente aí... nem lembro a ultima vez que teve algo aqui <i>(reserva)</i></p>
+    <p style="margin-top:12px; font-size:12px">277 palavras pt-BR nas 14 variações do banco inteiro (Graus 1/2/3+, não contam no total da edição) · arquivo-fonte em <code>docs/content/edicao-4-gus-le-o-bus-aberturas.md</code></p>
+  </div>
+</article>
+
+</div>
+
+<footer class="qa-fim">
+  QA de leitura gerado em 03/09/2026, não é o site, é ferramenta de revisão. Tipografia real via <code>docs/design/tokens.css</code>.
+</footer>
+
+</body>
+</html>
