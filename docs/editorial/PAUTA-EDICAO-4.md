@@ -295,3 +295,41 @@ qualquer das opções que o líder tinha na mesa.
 ★ Isto também **não é** licença para elogiar mais do que o fato sustenta. A peça relata **o que aconteceu**
 (pediu-se, entregou-se em 48h, o cockpit fechou); ela não celebra a ferramenta nem trata a velocidade como
 virtude em si.
+
+### ⛔ CORREÇÃO DE FATO — a trava de diagonal JÁ FOI PUBLICADA na #3 (03/09/2026)
+
+**Erro do orquestrador, apontado pelo agente das lentes e confirmado na fonte.**
+
+A §3.1 desta pauta afirmava que a trava de diagonal *"ficou de fora"* da Galeria de Bugs da #3, e o
+orquestrador celebrou isso como *"o achado que salva a metade 'quase aconteceu'"* — inclusive relatando
+assim ao líder. **É falso.** `src/content/edicao-3/pt/sec-06.php` traz, **publicado**, em dois lugares:
+
+- na tabela, linha 35: *"travar na diagonal · a diagonal saía mais rápida que o movimento reto · **alavanca deixada pronta e desligada, no ponto único de ajuste**"*
+- e na prosa, linha 42: *"A **alavanca da diagonal está pronta e desligada desde o primeiro dia da tela**"*
+
+★ **A origem do erro:** a memória `gus_dragon_avisou_antes` diz que *"a Galeria da #3 tem UM bug, não
+quatro"*, e eu li isso como *"os outros três não foram usados"*. Não é o que está escrito — os outros três
+aparecem **na tabela do que ele previu**, com o desfecho de cada um; o que a #3 tem é **um bug narrado**.
+Confundi "narrado" com "citado". **Verifiquei a memória e não verifiquei o publicado.**
+
+⛔ **Consequência obrigatória para a Galeria de Bugs da #4:** repetir a frase da alavanca **republica o que
+já saiu**, e é exatamente a duplicação que a §10 preveniu entre a Seção 17 e a Reportagem extra — só que
+aqui ninguém tinha olhado.
+
+**A peça tem de ir ALÉM do fato já publicado.** Não *"a alavanca existe"* (dito), mas:
+- **o contrafactual** — o que teria acontecido sem ela;
+- **a mecânica** — por que ela nunca precisou disparar;
+- e o recall da #3 reduzido a **uma linha**, só para o leitor não ter de reler.
+
+### ⛔ EXTENSÃO DE ESCOPO — a trava do "não piscar" vale também para a Seção 17
+
+Achado do mesmo agente: o **ADR-009** (RmlUi como UI/HUD, 25/jun) e o **ADR-010** (adota o glintfx
+envelopando o RmlUi, 01/jul) são **a mesma dependência** que a §10 identifica como a que foi apresentada
+como biblioteca própria escrita do zero e motivou a refundação de 21/08.
+
+A trava *"proibido piscar para o leitor"*, fixada na §10 para a Reportagem extra, **vale igualmente para a
+Seção de Programação** — é o mesmo fato, contado do outro ângulo. Não é decisão nova; é a mesma decisão,
+dita em voz alta para a peça que ainda não a tinha ouvido.
+
+⛔ E a consequência prática que a lente dela já registra: **nenhum elogio à adoção como vitória.** Descrever
+o que ela resolveu tecnicamente naquele instante, sem prever o que viria em agosto.
