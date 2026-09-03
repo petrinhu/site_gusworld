@@ -1,12 +1,17 @@
 # Edição #4 · Seção 16 · A Entrevista — perguntas do Gus ao Cauã "Volt"
 
-> **Status: RASCUNHO DE PERGUNTAS, v4 (18 perguntas, escala da casa). Aguarda resposta de outro agente
-> (persona Cauã) + GATE-CONTEUDO + GATE-SPOILER.**
+> **Status: RASCUNHO DE PERGUNTAS, v6 (18 perguntas, mundo intacto, testado sem os `//`). Aguarda resposta
+> de outro agente (persona Cauã, que vai receber ESTE arquivo com os `//` removidos mecanicamente) + GATE-
+> CONTEUDO + GATE-SPOILER.**
 > Produzido em 2026-09-03. O texto abaixo é só o lado do Gus — nenhuma resposta foi escrita.
-> **v1** usou régua de voz errada (descartada). **v2** corrigiu a régua contra `gus.md`/`caua-volt.md`.
-> **v3** inseriu `Hã? 🤨` (ordem do líder). **v4** expande de 8 para 18 perguntas — *"8 são poucas"*, ordem
-> do líder — **replanejando a escada inteira**, não pendurando perguntas no fim. A #3 tem 18 perguntas e
-> 18 respostas na fonte; esta é a escala da casa.
+>
+> **Histórico das versões:** **v1** régua de voz errada. **v2** corrigiu contra `gus.md`/`caua-volt.md`.
+> **v3** inseriu `Hã? 🤨`. **v4** expandiu 8→18. **v5** corrigiu falta de território pessoal (18→20). **v6**
+> — esta — corrige **duas coisas de uma vez**: (a) **L-25**, lei nova (`GODS_LAWS.md`): nenhum personagem
+> sabe que é feito de pixel, então todo vocabulário de produção (pipeline, commit, sprite, pixel, hitbox,
+> build) saiu da boca e da cabeça do Gus; (b) a peça foi **testada com os `//` tapados** — regra nova do
+> líder, porque o agente que vai escrever o Cauã recebe o arquivo **sem os pensamentos** (ninguém lê
+> pensamento de ninguém, só o leitor da revista lê os dois lados). Voltou a 18 perguntas.
 >
 > **Lente aprovada (`ROTEIRO-ENTREVISTAS.md`):** *Cauã "Volt" sob perguntas pela primeira vez, pela lente
 > de ter sido ele, e não o Gus, o primeiro rosto que o retângulo vestiu (22/jun, 21h57) — cortando qualquer
@@ -21,25 +26,19 @@
 ## O texto (pt-br) — só as perguntas
 
 ```
-gus@glyfesse:~/entrevista$ 22 de junho, 21h57... eu queria saber se foi a parte que desenha que decidiu
-te processar primeiro por causa da ordem no pipeline, ou se alguem escolheu você especificamente antes de
-qualquer outro personagem, porque isso muda o que eu vou perguntar depois?
-// pergunta comprida de propósito. quanto mais eu explico o mecanismo, menos eu preciso explicar o resto
+gus@glyfesse:~/entrevista$ 22 de junho, 21h57... eu queria saber se a parte que desenha teve algum motivo
+pra te dar cara primeiro, antes de mim e de qualquer outro, ou se foi só a vez de você chegar primeiro?
+// pergunta comprida de propósito. quanto mais eu explico o que eu quero saber, menos eu preciso explicar
+o resto
 
-gus@glyfesse:~/entrevista$ quando a parte que desenha trocou você, a lógica por baixo continuou identica,
-sem precisar reescrever nada? porque se continuou, isso prova uma coisa que eu defendo faz tempo, e eu
-queria ouvir de quem passou pelo processo, não só ler no commit?
+gus@glyfesse:~/entrevista$ quando a parte que desenha trocou você, a parte que pensa continuou igual, sem
+precisar mudar nada? porque se continuou, isso prova uma coisa que eu defendo faz tempo, e eu queria ouvir
+de quem passou por isso, não só imaginar sozinho?
 // eu já sei a resposta. eu só queria uma testemunha. isso não é entrevista, é eu procurando prova pra
 uma coisa que eu já acredito
 
-gus@glyfesse:~/entrevista$ antes de ir pro jogo de verdade, teve alguma build separada só pra testar a
-sua cara nova, ou já foi direto pra build principal sem passar por nada no meio?
-// pergunta três e eu ainda não perguntei nada que doa. eu tô contando quantas eu consigo fazer assim
-antes de ter que parar de contar
-
-gus@glyfesse:~/entrevista$ você sabe por que a sua arte veio primeiro, antes de qualquer outro
-personagem?
-// pergunta de produção, só isso, pipeline não tem sentimento
+gus@glyfesse:~/entrevista$ por que você acha que foi logo você, antes de qualquer outro?
+// pergunta de quem organiza as coisas, só isso, ordem não tem sentimento
 
 gus@glyfesse:~/entrevista$ Hã? 🤨
 // eu preparei essa pergunta a semana toda achando que sabia a resposta, e o que ele acabou de falar nem
@@ -47,9 +46,14 @@ chegou perto... eu tenho mais perguntas escritas pra depois dessa e nenhuma serv
 escrevi, e eu vou ter que reescrever tudo daqui pra frente sentado exatamente aqui, sem sair da cadeira,
 é isso que eu tô fazendo agora, não é silencio, é reescrita
 
-gus@glyfesse:~/entrevista$ espera... isso quer dizer que você já tinha decidido antes de eu perguntar pra
-alguém sobre isso?
+gus@glyfesse:~/entrevista$ espera... isso quer dizer que você já tinha decidido tudo isso antes de eu
+perguntar pra alguém sobre isso?
 // eu ia fingir que ouvi numa boa. não ouvi numa boa
+
+gus@glyfesse:~/entrevista$ voce lembra de mais alguma coisa daquele dia que não tenha nada a ver com a
+cara nova?
+// eu lembro de um monte de coisa daquele dia que não tem nada a ver com cara nenhuma. eu só não sei se
+ele tambem lembra ou se isso ficou só comigo
 
 gus@glyfesse:~/entrevista$ e ninguém achou que eu ia querer saber?
 // talvez ninguém tenha pensado em mim naquele dia. isso não é acusação, é só a resposta mais provavel
@@ -59,19 +63,24 @@ aposta pra mim esse mês?
 // ele vai defender. ele sempre defende. isso não muda desde que eu conheço ele
 
 gus@glyfesse:~/entrevista$ você decide agir antes de eu terminar de calcular, isso sempre foi assim.
-minha pergunta é se ver a propria cara na tela mudou a velocidade de alguma forma, ou você continua
-descarregando o pulso antes de pensar?
+minha pergunta é se ver a propria cara mudou a velocidade de alguma forma, ou você continua descarregando
+o pulso antes de pensar?
 // ele vai rir dessa. ele semmpre ri quando eu tento imitar o jeito dele de falar
 
-gus@glyfesse:~/entrevista$ seu pulso de emp conta como colisao separada da corrida, ou é tudo a mesma
-verificação?
-// pergunta chata pra maioria das pessoas. pra gente isso é assunto de recreio
+gus@glyfesse:~/entrevista$ o que você faz quando não tá resolvendo emergência com a gente?
+// pergunta boba. eu sei que é boba. eu perguntei mesmo assim porque eu percebi que eu não sabia a
+resposta e isso me incomodou mais do que devia
 
-gus@glyfesse:~/entrevista$ a gente só concorda quando é sobre outra pessoa da party, ja reparou nisso?
-// é verdade e é engraçado e eu não vou explicar por que é engraçado
+gus@glyfesse:~/entrevista$ você ainda reclama que eu ando com peça sobrando no bolso?
+// ele sempre reclama. eu não vou parar de andar com peça no bolso só porque ele reclama
+
+gus@glyfesse:~/entrevista$ eu sempre quis te contar uma coisa boba e nunca contei... voce sabia que fala
+"e" antes de quase toda frase quando tá animado?
+// eu reparei isso faz mais de um ano. eu guardei isso mais de um ano só porque não sabia se contar ia
+soar estranho vindo de mim
 
 gus@glyfesse:~/entrevista$ voltando pro 22 de junho... entre você ganhar a cara e eu ainda ser so um
-retângulo, quanto tempo passou de verdade, sem arredondar?
+quadrado, quanto tempo passou de verdade, sem arredondar?
 // eu sei a resposta em minutos. eu só queria ver se ele tambem sabe
 
 gus@glyfesse:~/entrevista$ isso incomodou você, ou só eu que fiquei pensando nisso a semana toda?
@@ -80,15 +89,12 @@ gus@glyfesse:~/entrevista$ isso incomodou você, ou só eu que fiquei pensando n
 gus@glyfesse:~/entrevista$ isso mudou como você me via?
 // não tem parte técnica nessa. eu tentei achar uma e não achei nenhuma
 
-gus@glyfesse:~/entrevista$ mudando de assunto: sua sprite tem quantos pixels de largura, e o acumulador
-dos antebraços conta como parte do hitbox ou é só efeito visual?
-// voltei. bom. aqui ninguem sai machucado e eu sei exatamente quanttas casas decimais a resposta vai ter
+gus@glyfesse:~/entrevista$ mudando de assunto: seu acumulador do antebraço, quanto tempo ele leva pra
+carregar de novo depois que você descarrega tudo de uma vez?
+// voltei. bom. isso aqui eu consigo medir e ninguem sai machucado
 
-gus@glyfesse:~/entrevista$ espera... isso que você acabou de falar tem a ver com a pergunta de antes ou é
-coincidencia?
-// eu tentei fugir e a fuga voltou pro mesmo lugar. isso não deveria ser engraçado mas é
-
-gus@glyfesse:~/entrevista$ ...deixa pra la. quantos joules o pulso acumula ate descarregar?
+gus@glyfesse:~/entrevista$ ...deixa pra la. minha matriz capta radio até que distância mesmo? nem sei
+por que perguntei isso agora
 // essa eu garanto que não volta pro assunto de antes
 
 gus@glyfesse:~/entrevista$ tem mais alguma coisa daquele dia que ninguém te perguntou ainda?
@@ -99,122 +105,138 @@ gus@glyfesse:~/entrevista$ tem mais alguma coisa daquele dia que ninguém te per
 
 ## Notas de produção (interno — nunca publicado)
 
-### ★ A expansão pra 18 (ordem do líder) — o novo mapa da escada
+### ★ v6, parte 1 — L-25: o personagem não sabe que é feito de pixel
 
-*"8 são poucas"*, verbatim do líder, medindo contra a #3 (18 perguntas/18 respostas na fonte,
-`docs/content/edicao-3-entrevista.md`). A instrução foi explícita: **não pendurar perguntas no fim** —
-**replanejar a escada inteira** para o comprimento novo. Oito fases, dezoito perguntas:
+Lei nova, verbatim do líder: *"O personagem não sabe que é um boneco... Para ele, o mundo de gusworld é
+real. Não faz sentido perguntar quantos pixels..."* + *"A parte técnica se coloca nas seções técnicas."*
+Virou `GODS_LAWS.md` L-25. **Não é proibição de assunto — é exigência de vocabulário.** A #3 já mostrava o
+registro certo no próprio clímax dela (*"eu já tinha cara, e você era um quadrado. dói?"*), sem uma
+palavra de produção.
 
-| Fase | Perguntas | O que faz |
+**Tabela de tradução aplicada nesta v6:**
+
+| ⛔ De produção (saiu) | ✅ De dentro (entrou) | Onde |
+|---|---|---|
+| *"processar primeiro... ordem no pipeline"* | *"teve algum motivo pra te dar cara primeiro... ou foi só a vez de você chegar primeiro"* | pergunta 1 |
+| *"a lógica por baixo... não só ler no commit"* | *"a parte que pensa... não só imaginar sozinho"* | pergunta 2 |
+| *"pipeline não tem sentimento"* (no `//`) | *"ordem não tem sentimento"* | `//` da pergunta 3 |
+| *"sua sprite tem quantos pixels de largura... conta como parte do hitbox ou é só efeito visual"* | *"seu acumulador do antebraço, quanto tempo ele leva pra carregar de novo"* | pergunta 16 (fuga #1) — trocou pixel/hitbox por uma pergunta sobre o **acumulador dos antebraços**, que é equipamento canônico do Cauã (`caua-volt.md`), não peça de motor gráfico |
+| *"retângulo"* (no corpo da pergunta 13, herdado da v5) | *"quadrado"* | pergunta 13 — "retângulo genérico" também soava a peça de produção (a forma abstrata *antes* de ganhar corpo); "quadrado" é o que o próprio Gus já chamou a si mesmo na #3, então é vocabulário de dentro |
+
+**O que ficou e por quê:** *"a parte que desenha"* e *"a parte que pensa"* são vocabulário **aprovado**
+(tabela do líder, e já usados na #3) — são a forma como o Gus, de dentro do mundo, explica pra si mesmo
+como corpo e mente se relacionam, sem nomear motor gráfico nenhum. *"Joules"*, na pergunta que virou a
+fuga #2 (Matriz Ortodôntica), foi **substituído por completo** — não porque "joule" seja proibido em si
+(é uma unidade real, do tipo que o Gus usaria pra qualquer coisa física, como chama almoço de "input
+calórico"), mas porque a pergunta antiga media a **capacidade do pulso do Cauã** de um jeito que soava
+mais engenharia de jogo do que curiosidade sobre um poder real; a nova pergunta (alcance da própria
+antena) é mais claramente "curiosidade técnica sobre um corpo real", no mesmo registro do "input
+calórico" já canônico.
+
+### ★ v6, parte 2 — o teste do `//` tapado
+
+Regra nova do líder, verbatim: *"na hora de criar o agente de resposta, ele não pode responder os
+comentários `//`, pois representam pensamentos e pessoas não leem pensamentos."* O agente que escrever o
+Cauã recebe este arquivo **com os `//` apagados mecanicamente** — não é uma instrução para ele ignorar,
+é remoção física. Rodei o teste pedido: **tapei todos os `//` e li só as 18 falas em sequência.**
+
+**O que quebrou, e o conserto:**
+
+- A pergunta 3 (antes: *"você sabe por que a sua arte veio primeiro, antes de qualquer outro
+  personagem?"*) é **fechada** — admite "sim"/"não" — e o `Hã? 🤨` logo depois dependia de uma resposta
+  densa que só existia no meu raciocínio (o `//`), não no texto. **Reescrita como pergunta aberta:**
+  *"por que você acha que foi logo você, antes de qualquer outro?"* — pede uma teoria, não um fato, e
+  qualquer resposta séria a isso tende a ser longa o bastante pra justificar o `Hã? 🤨` sozinha, sem
+  precisar do `//` pra explicar por quê.
+- **O resto passou no teste sem mudança de conteúdo** (só a limpeza de vocabulário da L-25, que também
+  ajuda aqui: pergunta sem jargão é mais fácil de sustentar sozinha). Lidas em sequência, as 18 falas
+  formam uma entrevista que se sustenta: cada pergunta é compreensível por si, nenhuma depende de um fato
+  que só apareceu num `//` anterior.
+- **Consequência de método pra daqui em diante, registrada porque vale pra toda a série:** todo `//`
+  agora é escrito sabendo que **é só para o leitor** — nunca uma instrução escondida para o outro lado da
+  entrevista, e nunca o lugar onde mora uma informação que a pergunta precisava. Isso já estava certo por
+  acaso na maior parte da v5; a pergunta 3/`Hã?` era o único ponto real de falha.
+
+### Território pessoal (mantido da v5, é a segunda correção que gerou a v5→v6)
+
+O líder perguntou, antes da lei do pixel: *"não tem nenhuma pergunta de ordem pessoal? só técnica?"* — e
+o `ROTEIRO-ENTREVISTAS.md` já diferenciava: *"revelar personagem ≠ revelar arco. Nome, idade, facção,
+linguagem e **temperamento** já são públicos."* A política de spoiler protege o **enredo**, não a
+**humanidade**.
+
+| # | Pergunta | Território | Por que não é arco |
+|:-:|---|---|---|
+| **6** | *"lembra de mais alguma coisa daquele dia que não tenha nada a ver com a cara nova?"* | Memória compartilhada, sem conteúdo de enredo | Pede uma lembrança qualquer — o conteúdo é escolha de quem responde, a pergunta não puxa família, facção ou história de fundo |
+| **10** | *"o que você faz quando não tá resolvendo emergência com a gente?"* | Hábito / tempo livre | Pergunta de rotina pessoal, não de contexto de facção — nem nomeia os Dutos Infernais |
+| **11** | *"você ainda reclama que eu ando com peça sobrando no bolso?"* | Implicância boba de convivência | É sobre um hábito do próprio Gus, puro atrito de amizade |
+| **12** | *"você sabia que fala 'e' antes de quase toda frase quando tá animado?"* | Observação pessoal guardada há tempo | Tique de fala, não biografia — e o fato de o Gus ter guardado isso por mais de um ano caracteriza **ele**, não o Cauã |
+
+### O mapa da escada (18 perguntas, 8 fases)
+
+| Fase | Perguntas | Nota |
 |---|:--:|---|
-| **A — Fachada** | 1-4 | Comprida, técnica, racionalizada. Cresce de 2 pra 4 perguntas: o leitor sente a fuga se prolongar antes de quebrar. A pergunta 4 é curta de propósito — é a isca que precisa render resposta densa pro degrau seguinte |
-| **B — A quebra** | 5 (`Hã? 🤨`) | Recalculada pra cair na **5ª posição**, não mais na 3ª. Com o dobro de fachada (4 perguntas em vez de 2), ela tem tempo de ficar de pé o bastante pra a quebra doer, sem esticar a ponto do leitor desistir antes |
-| **C — Descida gradual** | 6-7 | Onde a v3 caía direto de comprida pra nua, a v4 abre espaço pra um degrau intermediário: ele ainda está processando o choque, mas já não sustenta o fôlego da fachada |
-| **D — O meio de verdade** | 8-11 | ★ **Novo na v4.** Banter técnico e afetuoso, sem tensão — o *"velocidade × cálculo, banter constante, aliança sólida"* que `caua-volt.md` descreve e que a v3 (tensa do início ao fim) nunca teve espaço pra mostrar. Dois meninos que se dão bem também é caracterização |
-| **E — Reaproximação** | 12-13 | A peça volta a ficar séria, encurtando de novo — não de choque, de escolha: ele decide voltar ao assunto que doeu |
-| **F — Clímax** | 14 | A pergunta mais nua da peça, sem verniz técnico nenhum |
-| **G — Fuga múltipla** | 15-17 | ★ **Também novo na v4.** A ficha descreve a fuga como padrão, não evento único: ele foge (15, comprida/técnica), é puxado de volta (16, curta, pego de novo de surpresa), foge outra vez (17, mais curta que a primeira fuga — não recupera a fachada inteira) |
-| **H — Fecho** | 18 | Continua sendo uma pergunta só, e continua aberta |
-
-**Por que a pergunta 4 mudou de posição:** na v3, "por que você, antes de qualquer outro?" vinha depois do
-`Hã? 🤨`. Na v4, ela **provoca** o `Hã? 🤨` — é a pergunta 4, curta o bastante pra pedir uma resposta que
-pode surpreender, e é essa surpresa que justifica o colapso de uma sílaba na pergunta 5.
-
-**Por que "isso incomodou você" (13) não é o clímax:** ela pergunta sobre o efeito no Cauã, não sobre o
-efeito no próprio Gus. O clímax de verdade (14) é a única pergunta da peça inteira em que o Gus pergunta
-sobre **si mesmo através do olhar do outro** — é a mais exposta porque é a mais pessoal, não a mais curta
-em caracteres (o `Hã? 🤨`, na fase B, é mais curto ainda, mas é colapso de choque, não de conteúdo; ver
-"Notas de produção" da v3 abaixo, que já registrava essa distinção entre os dois tipos de colapso).
+| **A — Fachada** | 1-3 | Comprida, técnica-mas-de-dentro, racionalizada. A 3 foi reescrita **aberta** pra sustentar o `Hã?` sem precisar do `//` |
+| **B — A quebra** | 4 (`Hã? 🤨`) | Cai depois da fachada, provocada por uma pergunta que **por natureza** convida resposta longa |
+| **C — Descida gradual** | 5-7 | Inclui a pergunta de memória (6), que também é a primeira injeção de território pessoal fora do assunto do sprite |
+| **D — O meio de verdade** | 8-12 | Banter técnico-mas-afetuoso (Pythia, velocidade×cálculo) **e** banter sobre nada (rotina, implicância, tique de fala) — as duas coisas que faltavam antes da v5 |
+| **E — Reaproximação** | 13-14 | Volta ao assunto sério, encurtando de novo |
+| **F — Clímax** | 15 | A pergunta mais nua da peça |
+| **G — Fuga** | 16-17 | Reduzida de 3 pra 2 movimentos pra caber no orçamento de 18 perguntas (era foge/puxado de volta/foge de novo; agora é foge/foge de novo, ainda um padrão repetido, só mais compacto) — se houver espaço numa próxima revisão, o "puxado de volta" do meio é o primeiro candidato a voltar |
+| **H — Fecho** | 18 | Mesma pergunta, mesma função: aberta, sem forçar resposta |
 
 ### Por que a escada de 8 degraus (a versão completa) NÃO foi usada
 
-`gus.md` é explícito: a escada da rachadura (passivo-agressivo corporal, rispidez, silêncio, ironia
-maliciosa, tiro de despedida) **só vale para gente de FORA do círculo de confiança da party**. O Cauã é
-o Companion #1, e a ficha classifica o atrito dos dois como **"leve, afetuoso"** nos dois documentos.
-Aplicar a escada inteira aqui erraria a relação — o Gus não vai embromar, nem ficar frio, nem soltar
-ironia maliciosa contra o próprio melhor amigo. **Dentro do círculo ele é direto** — e a forma que essa
-direção toma nesta peça são o `Hã? 🤨` (fase B) e a pergunta 14 (fase F): curtos, sem defesa, ditos sem
-rodeio. É franqueza, não colapso social. A v4, com mais espaço, consegue mostrar os dois primeiros
-degraus da escada (comprido racionalizado → menor) **e** a fuga como padrão repetido — mas os degraus
-adversariais (4 a 8: corporal, rispidez, silêncio punitivo, ironia maliciosa, despedida) continuam de
-fora, por não caberem numa relação de confiança.
+`gus.md`: a escada da rachadura inteira (passivo-agressivo corporal, rispidez, silêncio, ironia maliciosa,
+tiro de despedida) **só vale para gente de FORA do círculo de confiança da party**. O Cauã é Companion #1,
+atrito "leve, afetuoso" nos dois documentos-fonte. Aplicar a escada inteira erraria a relação. **Dentro do
+círculo ele é direto** — a forma que isso toma aqui são o `Hã? 🤨` e a pergunta-clímax (15): curtos, sem
+defesa. A fase D é a prova textual de que é confiança, não rendição.
 
 ### O que conscientemente NÃO perguntei, e por quê
 
-- **Nada da vida pessoal do Cauã fora deste evento** — nada sobre o irmão, a Subestação 7, os Dutos
-  Infernais como comunidade, a disputa de facção interna, nem a missão de recrutamento em si (mesmo sendo
-  conteúdo de abertura, ela não está na lista de fatos declarados públicos pelo `ROTEIRO-ENTREVISTAS`, que
-  restringe a nome/idade/facção/linguagem/temperamento — fiquei do lado seguro dessa fronteira mesmo na
-  expansão, quando havia mais espaço e mais tentação de preencher com material de fundo).
-- **Nada que peça pro Cauã confirmar o desconforto do Gus.** Nenhuma pergunta tipo "você percebeu que
-  isso me incomodou" — o Gus nunca verbaliza sentimento diretamente (regra fixa da ficha, seção "Não
-  fazer"); ele deixa a pergunta 14 nua e o `Hã? 🤨` cru, e é só isso que ele se permite.
-- **Nada sobre o resto da fila de entrevistas** nem sobre quem vem depois — informação de produção, que
-  o Gus dentro da ficção não tem.
-- **Nada depois de 21 de julho de 2026** — a janela da edição para no M7.
-- **Nenhum nome de ferramenta ou tecnologia real** na boca do Gus — vocabulário in-universe
-  ("a parte que desenha") como na #3.
-- **Nenhuma pergunta que dependa de contexto que só o Gus tem.** As 18 são legíveis sozinhas, porque quem
-  for responder (outro agente, persona Cauã) não vê este raciocínio — inclusive o `Hã? 🤨`, cujo `//` é
-  privado e não muda o que precisa ser respondido (que é, simplesmente, repetir ou reformular o que foi
-  dito na pergunta 4).
+- **Nada da vida pessoal do Cauã que seja ENREDO** — irmão, Subestação 7, os Dutos Infernais como
+  comunidade em disputa, a facção como trama. Pertence à fila da party quando chegar a vez de aprofundar.
+- **Nada que peça pro Cauã confirmar o desconforto do Gus.** O Gus não verbaliza sentimento diretamente
+  (regra fixa da ficha); ele deixa a pergunta 15 nua e o `Hã? 🤨` cru, só isso.
+- **Nada sobre o resto da fila de entrevistas.** Informação de produção que o Gus, dentro da ficção, não
+  tem — e que, depois da L-25, sei que ele **realmente** não tem, porque nem sabe que existe uma "fila".
+- **Nada depois de 21 de julho de 2026.**
+- **Nenhum vocabulário de produção** (ver tabela L-25 acima) — não só por regra de spoiler, mas porque
+  quebraria o mundo do próprio personagem.
+- **Nenhuma pergunta que dependa de contexto que só o Gus tem** — confirmado pelo teste do `//` tapado.
 
-### Correções da ficha (onde o briefing original estava errado)
+### Correções acumuladas (histórico)
 
-O briefing que recebi antes de ler `gus.md`/`caua-volt.md` dizia: *"o Gus é tímido e prefere falar pouco;
-a pergunta dele é curta; se ficar longa, você errou a personagem."* **Isso está invertido**, e a v1 deste
-documento (descartada) seguiu essa regra errada à risca — todas as perguntas nasceram curtas, sem curva
-nenhuma. A ficha corrige em dois pontos, os dois usados desde a v2 e mantidos na v4:
-
-1. **"'O Gus fala pouco' NÃO é lei"** — é seção com esse título literal em `gus.md`. Fala curta é
-   **desinteresse mascarado**, não o padrão dele. Em **ato social induzido** (que é exatamente uma
-   entrevista pra revista), a fala **começa longa** (fuga técnica, ele entrega demais de propósito) e
-   **encurta progressivamente** conforme a couraça técnica racha — o pensamento continua longo e acelera
-   o tempo todo. Na v4 essa curva ganha fases nomeadas (ver tabela acima) em vez de ficar implícita.
-2. **A escada de 8 degraus tem escopo declarado** e não estava no briefing original: só vale fora do
-   círculo de confiança da party. Como o Cauã está dentro desse círculo (`caua-volt.md`: atrito com o Gus
-   é **"leve, afetuoso"**), os degraus adversariais não entram aqui — o que substitui isso é a franqueza
-   sem defesa do `Hã? 🤨` e da pergunta-clímax, e agora também o **meio de verdade** (fase D), que é a
-   prova textual de que a relação é de confiança e não de rendição.
-
-**O que sobrevive de todas as versões anteriores, confirmado pela ficha:** o `//` longo e denso o tempo
-todo; sem ponto final nas falas; `?`/`!` livres; erro de digitação mecânico e proporcional (nunca
-gramática); zero rótulo clínico; zero menção a tecnologia real ou a evento pós-21/jul; nenhuma pergunta
-sobre arco pessoal ou spoiler de roster.
+1. **Régua de voz:** em ato induzido, a fala do Gus **começa longa** (fuga técnica) e **encurta**
+   progressivamente — não o contrário, como o briefing original dizia.
+2. **Escopo da escada:** os degraus adversariais só valem fora do círculo de confiança; o Cauã está
+   dentro.
+3. **Território pessoal:** política de spoiler protege arco, não temperamento — corrigido na v5.
+4. **L-25:** nenhum personagem sabe que é feito de pixel — corrigido nesta v6, com tabela de tradução
+   acima.
+5. **O `//` é só para o leitor:** nenhuma fala pode depender de informação que só existe num `//` —
+   testado e corrigido nesta v6 (pergunta 3).
 
 ### ★ Regra de dose dos erros de digitação (ordem do líder)
 
-Duas falas dele, verbatim: *"'povvo' foi proposital"* (da peça irmã, "O Gus lê o bus") e **"lembre dos
-erros de digitação eventuais"**. "Eventuais" manda nas duas direções: ⛔ **não escrever tudo certo** (texto
-impecável contradiz um menino de 11 digitando rápido) e ⛔ **não salpicar em toda linha** (erro em toda
-frase vira deboche da criança). **Na v4, o volume dobrou proporcionalmente ao texto** (a v3 tinha ~395
-palavras e 8 typos; a v4 tem quase o dobro do texto e cerca do dobro de typos — mesma taxa, não taxa
-fixa).
+Verbatim: *"'povvo' foi proposital"* + **"lembre dos erros de digitação eventuais"**: nem tudo certo, nem
+salpicado em toda linha. **Só duas classes, as duas da MÃO, nunca da CABEÇA:**
 
-**Só duas classes valem, e as duas são da MÃO, nunca da CABEÇA:**
-
-| Classe | Usados nesta v4 |
+| Classe | Usados nesta v6 |
 |---|---|
-| **Acento comido** | `alguem`, `identica`, `provavel`, `rapido`, `propria`, `colisao`, `ja`, `so`, `tambem`, `desconfortavel`, `ninguem`, `coincidencia`, `la`, `ate`, `proposito` |
-| **Letra dobrada** | `semmpre`, `quanttas` |
+| **Acento comido** | `voce` (×2), `tambem` (×2), `provavel`, `rapido`, `propria`, `so`, `desconfortavel`, `silencio`, `ninguem`, `la`, `radio`, `proposito` |
+| **Letra dobrada** | `semmpre` |
 
 ⛔ **Nunca** erro de quem não sabe escrever (concordância, ortografia de palavra difícil, mas/mais
-trocados) — o Gus lê rápido em duas línguas e estuda por prazer; esse erro contradiz o personagem inteiro.
-**O teste:** o erro tem que ser algo que a mão fez, nunca algo que a cabeça não sabia.
-
-**A pergunta 14 (clímax) continua deliberadamente sem nenhum typo** — mesmo critério da #3, onde as
-respostas mais nuas/curtas do Gus (`eu tava sorrindo`, `já`) também vinham limpas. Erro de dedo no momento
-de maior exposição soaria como piada, não como verdade. **Padrão observado, não uma regra nova imposta:**
-os typos se concentram mais nas fases relaxadas (D, o meio de verdade) do que na fachada tensa (A) — o que
-combina com a própria mecânica do personagem (digitar rápido e sem cuidado é mais fácil quando ele está à
-vontade do que quando está performando controle).
+trocados). **O teste:** o erro tem que ser algo que a mão fez, nunca algo que a cabeça não sabia. A
+**pergunta 15 (clímax)** continua sem nenhum typo, mesmo critério da #3.
 
 ### Continuidade com a #3
 
-- A pergunta 2 reaproveita, de propósito, a mesma metáfora que o próprio Gus usou pra se defender na #3
-  ("a parte que desenha" vs. "a parte que pensa") — agora ele usa a própria arquitetura como ferramenta
-  pra entrevistar, não pra se explicar.
-- O fechamento (pergunta 18) espelha o gesto que o Cauã teve com ele na #3 — abrir espaço sem insistir —
-  sem que o texto aponte isso.
-- A fase D (o meio de verdade) é a primeira vez, em qualquer entrevista da série, em que a peça **não**
-  está sob tensão — decisão consciente pra equilibrar a curva emocional da seção como um todo.
+- A pergunta 2 reaproveita a mesma metáfora que o próprio Gus usou pra se defender na #3 ("a parte que
+  desenha" vs. "a parte que pensa") — agora ele a usa pra entrevistar, não pra se explicar.
+- O fechamento (pergunta 18) espelha o gesto que o Cauã teve com ele na #3 — abrir espaço sem insistir.
+- A pergunta 12 (a observação guardada há um ano) ecoa a resposta que o próprio Gus guardou desde março,
+  revelada na #3 — o mesmo mecanismo de "pronto, nunca dito", agora do lado de quem pergunta.
+- A pergunta 13 usa **"quadrado"**, não "retângulo" — é a palavra que o próprio Gus já usou pra si mesmo
+  na #3, e evita o meio-termo de produção que "retângulo genérico" carregava.
