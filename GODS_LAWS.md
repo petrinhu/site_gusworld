@@ -42,6 +42,7 @@
 | [L-22](#l-22) | instalar, remover ou atualizar pacote de sistema | Pedir autorização. Nunca falhar calado; `sudo` sempre com `-A` |
 | [L-23](#l-23) | afirmar que algo está feito, limpo ou verificado | A prova é a inspeção do objeto, não a saída do seu comando |
 | [L-24](#l-24) | ver qualquer coisa vinda do Gus Dragon, em qualquer canal do bus | Pedido dele é PRIORIDADE e é SEMPRE respondido. Não existe "depois" |
+| [L-25](#l-25) | escrever fala ou pensamento de QUALQUER personagem do jogo | Para ele, GusWorld é REAL. Ele não sabe que é feito de pixel. O técnico vai nas seções técnicas |
 
 ---
 
@@ -395,6 +396,35 @@ O `PROTOCOL.md` **já obrigava** a Resposta 2 (*"AUTOMÁTICA SEMPRE"*) e mesmo a
 - **Prioridade não é promessa de instantaneidade.** O limite da L-15 continua e continua sendo **dito a ele**: sessão não é serviço rodando. Aviso e resposta saem enquanto alguém está com o projeto aberto. ⛔ Não prometer aviso instantâneo.
 - **Prioridade não é aprovação.** Ideia dele entra na pauta pelo caminho normal: absorve → ack → **decisão do líder** → Resposta 2. Agente nenhum aprova ideia dele sozinho.
 - **Nunca minta para uma criança**, e adeque a linguagem a 11 anos — o que **não** significa simplificar o conteúdo técnico: ele estuda game dev por conta e anunciou bugs antes de acontecerem (L-08).
+
+## L-25
+
+**Data:** 03/09/2026. **Verbatim do líder:** *"O personagem não sabe que é um boneco... Para ele, o mundo de gusworld é real. Não faz sentido perguntar quantos pixels..."* e, em seguida, *"A parte técnica se coloca nas seções técnicas"* — dada com a instrução explícita de **adotar daqui para a frente**.
+
+**Nenhum personagem do jogo sabe que é feito de pixel.** Para o Gus, para o Cauã "Volt", para todos: **GusWorld é o mundo real**. Eles vivem nele.
+
+⛔ **Logo, é proibido perguntar ou dizer, na boca de um personagem:** quantos pixels tem o sprite, o que é hitbox, qual commit, qual build, o que é pipeline, quantos frames tem a animação. **Perguntar a alguém quantos pixels tem o rosto dele não é uma pergunta — é um erro de mundo.**
+
+### ★ Mas eles FALAM da construção do jogo. A diferença é o registro.
+
+Isto não é proibição de assunto, é **exigência de vocabulário**. A #3 acertou e é o precedente:
+
+| ✅ De dentro (figurado, vivido) | ⛔ De produção (técnico, de fora) |
+|---|---|
+| *"a parte que desenha"* | a camada de render, o renderer |
+| *"a parte que pensa"* | a lógica, o core |
+| *"ter cara"*, *"ser um quadrado"* | ter sprite, ser placeholder |
+| *"o quadrado grudava na quina"* | colisão AABB, hitbox |
+
+O clímax publicado da #3 é a prova de que dá: **`volt@glyfesse:~/entrevista$ curiosidade: eu já tinha cara, e você era um quadrado. dói?`** — o assunto é exatamente a troca do placeholder pelo primeiro sprite, e **nenhuma palavra de produção aparece**.
+
+### Onde o técnico mora, então
+
+**Nas seções técnicas**, e só nelas: a **Reportagem**, a **Seção de Programação**, o **Detonado**, a **Galeria de Bugs**. Ali a revista fala como revista — cita ADR, commit, medida, nome de arquivo. **A voz da revista sabe o que os personagens não sabem**, e essa assimetria é o desenho, não um problema a resolver.
+
+⚠️ **Isto NÃO revoga** o canon de que personagem e pessoa real convivem no mesmo plano ([[a_voz_do_site]] §PERSONAGEM E PESSOA REAL): o Cauã pode opinar sobre o jogo *"como se fosse gente daqui"*, e o Gus personagem pode citar o Gus Dragon em terceira pessoa. **Conviver no mesmo plano não é saber que se é um boneco** — as duas coisas são independentes, e confundi-las foi o erro que gerou esta lei.
+
+**Como se testa uma fala:** leia como se o personagem fosse uma pessoa e o mundo dele fosse real. Se a frase virar absurda — *"quantos pixels tem seu rosto?"* — ela é de produção e está na seção errada.
 
 ---
 
