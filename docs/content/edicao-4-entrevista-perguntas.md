@@ -38,7 +38,7 @@ de quem passou por isso, não só imaginar sozinho?
 uma coisa que eu já acredito */
 
 gus@glyfesse:~/entrevista$ por que você acha que foi logo você, antes de qualquer outro?
-// pergunta de quem organiza as coisas, só isso, ordem não tem sentimento
+/* pergunta de quem organiza as coisas, só isso, ordem não tem sentimento */
 
 gus@glyfesse:~/entrevista$ Hã? 🤨
 /* eu preparei essa pergunta a semana toda achando que sabia a resposta, e o que ele acabou de falar nem
@@ -56,23 +56,23 @@ cara nova?
 ele tambem lembra ou se isso ficou só comigo */
 
 gus@glyfesse:~/entrevista$ e ninguém achou que eu ia querer saber?
-// talvez ninguém tenha pensado em mim naquele dia. isso não é acusação, é só a resposta mais provavel
+/* talvez ninguém tenha pensado em mim naquele dia. isso não é acusação, é só a resposta mais provavel */
 
 gus@glyfesse:~/entrevista$ você ainda defende que pythia resolve tudo mais rapido, ou já perdeu uma
 aposta pra mim esse mês?
-// ele vai defender. ele sempre defende. isso não muda desde que eu conheço ele
+/* ele vai defender. ele sempre defende. isso não muda desde que eu conheço ele */
 
 gus@glyfesse:~/entrevista$ você decide agir antes de eu terminar de calcular, isso sempre foi assim.
 minha pergunta é se ver a propria cara mudou a velocidade de alguma forma, ou você continua descarregando
 o pulso antes de pensar?
-// ele vai rir dessa. ele semmpre ri quando eu tento imitar o jeito dele de falar
+/* ele vai rir dessa. ele semmpre ri quando eu tento imitar o jeito dele de falar */
 
 gus@glyfesse:~/entrevista$ o que você faz quando não tá resolvendo emergência com a gente?
 /* pergunta boba. eu sei que é boba. eu perguntei mesmo assim porque eu percebi que eu não sabia a
 resposta e isso me incomodou mais do que devia */
 
 gus@glyfesse:~/entrevista$ você ainda reclama que eu ando com peça sobrando no bolso?
-// ele sempre reclama. eu não vou parar de andar com peça no bolso só porque ele reclama
+/* ele sempre reclama. eu não vou parar de andar com peça no bolso só porque ele reclama */
 
 gus@glyfesse:~/entrevista$ eu sempre quis te contar uma coisa boba e nunca contei... voce sabia que fala
 "e" antes de quase toda frase quando tá animado?
@@ -98,7 +98,7 @@ por que perguntei isso agora
 // essa eu garanto que não volta pro assunto de antes
 
 gus@glyfesse:~/entrevista$ tem mais alguma coisa daquele dia que ninguém te perguntou ainda?
-// essa eu deixo aberta de proposito. se ele quiser fechar, fecha, eu não vou insistir
+/* essa eu deixo aberta de proposito. se ele quiser fechar, fecha, eu não vou insistir */
 ```
 
 ---

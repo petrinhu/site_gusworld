@@ -32,7 +32,7 @@ gus@glyfesse:bus$ peraí, chegou algumma coisa?? demorou
 // eu não ia admitir que eu tava esperando
 
 gus@glyfesse:bus$ uma mensagem de verdade... ate que enfim
-// eu tinha até parado de checar toda hora... mentira, eu não tinha parado
+/* eu tinha até parado de checar toda hora... mentira, eu não tinha parado */
 
 gus@glyfesse:bus$ ih, tem gente aí... nem lembro a ultima vez que teve algo aqui
 // eu lembro sim. eu só não vou dizer a data

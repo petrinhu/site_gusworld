@@ -39,7 +39,7 @@ gus@glyfesse:~$ # da primeira eu fiquei bravo. da segunda eu so liguei o cronome
 gus@glyfesse:~$ # durou uma semana. bati o recorde de paciencia e o de troca de fundação no mesmo mes.
 ```
 
-//Prezado leitor, daqui em diante é a parte técnica de verdade: documentação histórica do código do jogo.
+/* Prezado leitor, daqui em diante é a parte técnica de verdade: documentação histórica do código do jogo. */
 //gus@glyfesse
 
 ```
@@ -90,7 +90,7 @@ gus@glyfesse:~$ # first time i got mad. second time i just started a timer to se
 gus@glyfesse:~$ # it lasted a week. tied my own record for patience and for foundation swaps in the same month.
 ```
 
-//Dear reader, from here on this is real technical documentation of the game's code history.
+/* Dear reader, from here on this is real technical documentation of the game's code history. */
 //gus@glyfesse
 
 ```

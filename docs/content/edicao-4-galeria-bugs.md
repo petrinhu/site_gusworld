@@ -32,7 +32,7 @@ Abre o menu, fecha o menu, e por um instante a tela inteira pisca de branco — 
 
 O jogo usava um contexto gráfico para o menu e outro para o jogo por trás dele, e trocava entre os dois toda vez que o menu abria ou fechava. No instante da troca, por uma fração de segundo, a tela mostrava o vazio entre um contexto e outro — daí o flash. O conserto (registrado como ADR-018) uniu os dois num contexto só: sem troca, sem vazio, sem flash. Reportado e resolvido no mesmo dia, 17 de julho.
 
-`// achado e resolvido no mesmo dia é o tipo de estatística que eu gosto de ver`
+`/* achado e resolvido no mesmo dia é o tipo de estatística que eu gosto de ver */`
 
 **O interruptor que nunca precisou ligar**
 

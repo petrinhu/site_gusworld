@@ -74,7 +74,7 @@ aconteceu, eu sigo. mas fico feliz que voce ficou pensando a semana toda, quer d
 15
 volt@glyfesse:~/entrevista$ não. cara não é o que eu sigo, gus. eu sigo quem aparece quando precisa. isso
 voce sempre foi, quadrado ou não
-// essa resposta eu já tinha pronta tambem. mas essa eu não conto que já tinha
+/* essa resposta eu já tinha pronta tambem. mas essa eu não conto que já tinha */
 
 16
 volt@glyfesse:~/entrevista$ nunca deixo carregar até o talo só pra saber o tempo certo, sempre descarrego
@@ -88,7 +88,7 @@ voce já pegou sinal de longe que me deixou de queixo caído, então deve ser be
 18
 volt@glyfesse:~/entrevista$ tem. eu queria que voce fosse o primeiro a ver, antes de qualquer um lá
 embaixo. não contei isso pra ninguém até agora
-// primeira vez que eu falo essa parte alto. fica estranho ouvir do lado de fora
+/* primeira vez que eu falo essa parte alto. fica estranho ouvir do lado de fora */
 ```
 
 ---

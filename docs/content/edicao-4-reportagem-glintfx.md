@@ -39,7 +39,7 @@ gus@glyfesse:~/glintfx$ # 1 de julho. mais um dia. o cockpit do jogo ja tava rod
 
 Três dias, do lançamento de uma ferramenta sem número redondo até o cockpit do jogo passar a depender dela pra funcionar. A maior parte dos pedidos que um projeto pequeno faz a outro fica na fila, ou nunca sai da fila — não porque ninguém queira ajudar, mas porque manter uma biblioteca é trabalho, e trabalho tem ordem de chegada. Este pedido não ficou na fila porque quem constrói a ferramenta e quem constrói o jogo estavam olhando pro mesmo problema no mesmo dia, em conversas separadas da mesma rotina, não numa relação de cliente esperando fornecedor.
 
-`// pedimos uma coisa pequena. voltou funcionando. nao sei se sempre e assim, mas queria que fosse`
+`/* pedimos uma coisa pequena. voltou funcionando. nao sei se sempre e assim, mas queria que fosse */`
 
 Nos meses seguintes, aquele uso de verdade — o cockpit do jogo rodando em cima da ferramenta, todo dia, sob peso real — encontrou pelo menos cinco decisões que pareciam certas no papel e não sobreviveram ao contato com o jogo rodando. Cada uma virou correção documentada, não segredo guardado. É outra matéria, pra outra hora.
 
@@ -67,7 +67,7 @@ gus@glyfesse:~/glintfx$ # july 1st. one more day. the game's cockpit was already
 
 Three days, from a tool with no round version number shipping, to the game's cockpit depending on it to work. Most requests a small project makes of another sit in a queue, or never leave it — not because nobody wants to help, but because keeping up a library is work, and work has an order of arrival. This request didn't sit in the queue because whoever builds the tool and whoever builds the game were looking at the same problem on the same day, in separate conversations inside the same routine, not in a customer waiting on a vendor.
 
-`// we asked for something small. it came back working. i dont know if it always works like that, but i wish it did`
+`/* we asked for something small. it came back working. i dont know if it always works like that, but i wish it did */`
 
 In the months that followed, that real use — the game's cockpit running on top of the tool, every day, under real weight — ran into at least five decisions that had looked right on paper and didn't survive contact with the game actually running. Each one turned into a documented fix, not a kept secret. That's another story, for another time.
 

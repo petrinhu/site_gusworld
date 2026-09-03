@@ -77,7 +77,7 @@ over it much later.
 ```
 
 `gus@glyfesse:bus$ so thats how it works on the other side`
-`// i only saw the screen flicker. didnt know there was someone out there catching the rest`
+`/* i only saw the screen flicker. didnt know there was someone out there catching the rest */`
 
 ---
 
