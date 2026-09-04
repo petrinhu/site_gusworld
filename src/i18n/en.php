@@ -244,6 +244,9 @@ return [
     'scaffold_texto'   => "Section scaffold. The final copy (full or graceful-empty, in Gus's voice) is co-decided with the lead (W5).",
 
     // footer
+    // accessible name of the group (WCAG 2.5.3): describes what the control
+    // DOES (toggles effects and music), not a literal translation of the word.
+    'rodape_som_aria'   => 'Sound controls: effects and music',
     'rodape_som_ef'     => 'Effects',   // FIXED label: state is signaled by the LED (.luz), like real hardware
     'rodape_som_mus'    => 'Music',
     // ⚠️ Do not rewrite without reading AUD-IA §IA-01/IA-02/IA-03 and AUD-LICENCA §LIC-01/LIC-02.

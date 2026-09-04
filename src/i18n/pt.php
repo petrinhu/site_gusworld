@@ -251,6 +251,9 @@ return [
     'scaffold_texto'   => 'Seção em scaffold. A copy definitiva (cheia ou vazio-com-graça, na voz do Gus) é co-decidida com o líder (W5).',
 
     // rodapé
+    // nome acessível do grupo (WCAG 2.5.3): descreve a FUNÇÃO do controle
+    // (liga/desliga efeitos e música), não a tradução literal da palavra.
+    'rodape_som_aria'   => 'Controles de som: efeitos e música',
     'rodape_som_ef'     => 'Efeitos',   // rótulo FIXO: o estado é sinalizado pelo LED (.luz), como no hardware real
     'rodape_som_mus'    => 'Música',
     // ⚠️ NÃO reescrever sem ler AUD-IA §IA-01/IA-02/IA-03 e AUD-LICENCA §LIC-01/LIC-02.

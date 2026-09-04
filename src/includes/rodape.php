@@ -15,7 +15,7 @@ declare(strict_types=1);
 ?>
 <footer class="rodape" role="contentinfo">
   <div class="rodape-inner">
-    <div class="som" aria-label="Som">
+    <div class="som" aria-label="<?= h((string) $t['rodape_som_aria']) ?>">
       <button type="button" class="som-btn" data-som="efeitos" aria-pressed="true">
         <span class="luz" aria-hidden="true"></span><?= h((string) $t['rodape_som_ef']) ?>
       </button>

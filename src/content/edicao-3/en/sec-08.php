@@ -13,7 +13,7 @@
 
    ⚠️ WIDTHS QUANTISED BY POSITION. The 4 fixed widths (4ch/11ch/7ch/9ch) are assigned by
    the LINE's nth-of-type, never by content, so the bar length cannot leak a letter count.
-   ⚠️ The aria-label says exactly "trecho censurado" and nothing else.
+   ⚠️ The aria-label says exactly "censored excerpt" and nothing else.
 
    ⚠️ The root's closing line stays in PORTUGUESE, byte for byte as the creator authorised
    it (2026-08-01), with the English gloss right below - exactly as the source does.
@@ -47,7 +47,7 @@
     <span class="cab">test battery output · slice</span>
     <div class="det-linhas">
       <div class="det-linha">
-        <span class="nome">[arena] building <b class="det-tarja" role="img" aria-label="trecho censurado"></b></span>
+        <span class="nome">[arena] building <b class="det-tarja" role="img" aria-label="censored excerpt"></b></span>
         <span class="pontos" aria-hidden="true">..........................................................................................</span>
         <span class="ok">ok</span>
       </div>
@@ -57,7 +57,7 @@
         <span class="ok">ok</span>
       </div>
       <div class="det-linha">
-        <span class="nome">[arena] <b class="det-tarja" role="img" aria-label="trecho censurado"></b> does not act outside its own turn</span>
+        <span class="nome">[arena] <b class="det-tarja" role="img" aria-label="censored excerpt"></b> does not act outside its own turn</span>
         <span class="pontos" aria-hidden="true">..........................................................................................</span>
         <span class="ok">ok</span>
       </div>
@@ -72,7 +72,7 @@
         <span class="ok">ok</span>
       </div>
       <div class="det-linha">
-        <span class="nome">[arena] <b class="det-tarja" role="img" aria-label="trecho censurado"></b></span>
+        <span class="nome">[arena] <b class="det-tarja" role="img" aria-label="censored excerpt"></b></span>
         <span class="pontos" aria-hidden="true">..........................................................................................</span>
         <span class="ok">ok</span>
       </div>
