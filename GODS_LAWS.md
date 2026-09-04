@@ -397,6 +397,26 @@ O `PROTOCOL.md` **já obrigava** a Resposta 2 (*"AUTOMÁTICA SEMPRE"*) e mesmo a
 - **Prioridade não é aprovação.** Ideia dele entra na pauta pelo caminho normal: absorve → ack → **decisão do líder** → Resposta 2. Agente nenhum aprova ideia dele sozinho.
 - **Nunca minta para uma criança**, e adeque a linguagem a 11 anos — o que **não** significa simplificar o conteúdo técnico: ele estuda game dev por conta e anunciou bugs antes de acontecerem (L-08).
 
+### ★ Adendo de 04/09/2026: o achado dele é MATÉRIA, não nota de rodapé
+
+**Verbatim do líder:** *"Achados do gus sempre são especiais."*
+
+Dado ao decidir onde entrava a observação dele de 22/07 sobre o menu inicial precisar de arte
+própria. As opções que levei eram "carta curta" ou "guardar para depois"; ele **recusou as duas** e
+mandou virar **reportagem**.
+
+**A regra, generalizada por ele:** achado do Gus Dragon não é item de lista nem linha de crédito
+dentro de peça alheia. **Tem tratamento editorial próprio**, e o porte se decide pelo achado, nunca
+pelo espaço que sobrou na edição.
+
+⚠️ Isto **não** é licença para inflar: matéria pequena continua pequena. É proibição de **rebaixar**
+por conveniência de diagramação, que era exatamente o que as minhas duas opções faziam.
+
+⚠️ Vale junto com o crédito completo: **"Gus Dragon, playtester, Revisor Adversarial de Design"**,
+sempre os dois papéis, sempre em tom seco, sem adjetivo de ternura e sem "para a idade".
+
+---
+
 ## L-25
 
 **Data:** 03/09/2026. **Verbatim do líder:** *"O personagem não sabe que é um boneco... Para ele, o mundo de gusworld é real. Não faz sentido perguntar quantos pixels..."* e, em seguida, *"A parte técnica se coloca nas seções técnicas"* — dada com a instrução explícita de **adotar daqui para a frente**.
