@@ -101,10 +101,12 @@ eq(
     montar_contexto($por_numero[1], 'pt')['og_image'],
     'a #1 aponta para o próprio card de lançamento'
 );
-// ★ a #3 ganhou card próprio em 2026-08-04 (decisão editorial). Ela é a MAIS
-// NOVA publicada, e é por isso que este campo pesa mais que os outros: é o card
-// dela que a home serve no link nu (og_card_banca(), sem `?ed=`), ou seja, é a
-// porta da frente do site. Antes disso a home saía com o card de LANÇAMENTO.
+// ★ a #3 ganhou card próprio em 2026-08-04 (decisão editorial) — foi ela quem,
+// naquele momento, era a MAIS NOVA publicada. Hoje a mais nova é a #4
+// (publicada em 03/09/2026, com card próprio desde o publish), mas o campo
+// da #3 continua exercitado abaixo por si só: é o card DELA que estas duas
+// asserções travam, não o papel de "mais nova" (esse é o og-banca-ed.test.php
+// que trava, resolvendo pelo link nu).
 eq(
     '/assets/og-edicao-3.jpg',
     montar_contexto($por_numero[3], 'pt')['og_image'],
@@ -129,7 +131,7 @@ foreach (edicoes_publicadas($edicoes) as $e) {
         $cards_publicados[(int) $e['numero']] = $rel;
     }
 }
-eq(3, count($cards_publicados), 'piso: as 3 edições publicadas declaram card próprio (o laço abaixo não roda vazio)');
+eq(4, count($cards_publicados), 'piso: as 4 edições publicadas declaram card próprio (o laço abaixo não roda vazio)');
 
 foreach ($cards_publicados as $num => $rel) {
     $card = __DIR__ . '/../public_html' . $rel;

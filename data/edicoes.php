@@ -150,15 +150,13 @@ return [
         'na_linha_tempo' => true, // 1º (e único, no lançamento) ponto visual do scrubber
     ],
 
-    // ── #4+ · EXEMPLO DE RASCUNHO (NÃO renderizado) ──────────────────────────
-    // Demonstra o mecanismo do drip: estado 'rascunho' fica no array mas NUNCA
-    // aparece na banca/linha (os helpers o filtram). Publicar = trocar a string
-    // abaixo para 'publicada'. Mantido deliberadamente vago e sem frame para
-    // não spoilar nada. Preencher titulo/dek/frame reais só na hora de publicar.
+    // ── #4 · O ROSTO E A VOZ ──────────────────────────────────────────────────
+    // Publicada em 03/09/2026: o mecanismo do drip fez a travessia completa
+    // (estado 'rascunho' → 'publicada'), a edição sai da banca/linha do zero.
     [
         'numero'         => 4,
         'revisao'        => 1,
-        'estado'         => 'rascunho',
+        'estado'         => 'publicada',
         'data'           => '2026-07-06',
         'atualizada_em'  => '2026-09-03',
         'slug_pt'        => 'edicao-4',
@@ -188,6 +186,33 @@ return [
         // nota da #1). Gerador: docs/design/og-card-4-en.html (o mesmo
         // desenho, só o texto muda).
         'capa_en'        => '/assets/og-edicao-4-en.jpg',
+        // UPTIME das sessões de trabalho no expediente do masthead (ver a
+        // nota da #3). Capturado no publish real via `scripts/uptime-sessoes.sh`
+        // e CONGELADO: registro histórico datado, não um contador vivo.
+        'uptime'         => ['jogo' => 108, 'glintfx' => 108], // capturado em 03/09/2026 22:51
+        'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
+    ],
+
+    // ── #5+ · EXEMPLO DE RASCUNHO (NÃO renderizado) ──────────────────────────
+    // Demonstra o mecanismo do drip: estado 'rascunho' fica no array mas NUNCA
+    // aparece na banca/linha (os helpers o filtram). Publicar = trocar a string
+    // abaixo para 'publicada'. Mantido deliberadamente vago e sem frame para
+    // não spoilar nada. Preencher titulo/dek/frame/data reais só na hora de
+    // publicar. É o marcador do drip que a #4 deixou de ser ao publicar: o
+    // array sempre reserva a próxima vaga.
+    [
+        'numero'         => 5,
+        'revisao'        => 1,
+        'estado'         => 'rascunho',
+        'slug_pt'        => 'edicao-5',
+        'slug_en'        => 'edition-5',
+        'titulo_pt'      => '',
+        'titulo_en'      => '',
+        'dek_pt'         => '',
+        'dek_en'         => '',
+        'frame'          => null,
+        'frame_alt_pt'   => null,
+        'frame_alt_en'   => null,
         'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
     ],
 
