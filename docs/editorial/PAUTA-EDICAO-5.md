@@ -211,7 +211,7 @@ conveniência de diagramação.
   tras, e nao a tela de onde o jogador estava"*. Fonte: `Projects/GusWorld/TODO.md`, linha 134, item F7
   (*"ideia do Gus Dragon (autoria dele), nascida de feedback de PLAYTEST"*, commit `485c604` de 22/07);
   bus 24/07 20:20, item 7 ("a arte do menu" como fatia da onda). **A data da arte (resolvida em 04/09, sem
-  pergunta):** a única fonte é a nota do quadro do jogo, que diz que a arte entrou no dia seguinte ao achado;
+  pergunta):** ⚠️ **CORRIGIDO EM 04/09/2026, ERRO DE FATO:** a afirmação de que "a arte entrou no dia seguinte" é **falsa** e nasceu de um resumo que eu não conferi na fonte. O item `F7` do `TODO.md` do jogo (linha 134) diz o contrário: a decisão do líder à época foi **reaproveitar o monitor CRT do boot**, em vez de encomendar arte nova, e o item está **`⏳ Pendente` e bloqueado**, porque é inteiramente da camada que desenha, que ainda não existe. **Sem data.** A peça conta o arco verdadeiro: ele apontou por **convenção do gênero, não gosto pessoal** (a nota do quadro diz isso com estas palavras), a observação virou decisão fechada, e a decisão espera. O que segue abaixo era a formulação errada, mantida só para o leitor entender a correção;
   a peça escreve **"no dia seguinte"** e **não crava data**. Não há o que confirmar, há o que não afirmar.
 - **Onde mora e em que forma:** peça própria, porte **S** (é o porte do achado), hospedada como **caixa ao
   fim da Reportagem de capa**, no molde do encarte do glintfx da #4: âncora própria (`#sec-04-menu`), prompt
