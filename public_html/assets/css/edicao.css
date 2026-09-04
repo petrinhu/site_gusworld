@@ -437,6 +437,28 @@ main{display:block}
   letter-spacing:.02em; color:#4f483f; margin:0;
 }
 
+/* ── §7 CEMITÉRIO (edição #5) · .lapide-nome:empty: a cova sem nome ──
+   A #5 estreia uma lápide sem nome dentro do arco (o epitáfio diz "Aqui não
+   jaz ninguém"): o campo do nome entra no HTML como <p class="lapide-nome">
+   </p>, vazio de propósito - SEM classe nova, :empty já basta pra identificar
+   o caso. Sem esta regra, o parágrafo vazio ainda reservava altura (herda
+   font-size/line-height de .lapide-nome), mas ficava como respiro cru, sem
+   relação nenhuma com a pedra. Aqui ele vira um SULCO gravado no granito: a
+   mesma técnica de bisel do nome preenchido (luz fina no topo, sombra fina
+   embaixo), só que sem letra dentro - o silêncio ganha o mesmo acabamento
+   que a palavra teria, em vez de ler como acidente de layout.
+   Comportamento herdado (#2/#3/#4, sempre com .lapide-nome preenchido) fica
+   INTOCADO: a regra só dispara quando o parágrafo está :empty; com texto
+   dentro, .lapide-nome segue exatamente como sempre foi. */
+.conteudo .lapide-nome:empty{
+  min-height:clamp(26px,6vw,40px); position:relative;
+}
+.conteudo .lapide-nome:empty::before{
+  content:""; position:absolute; left:50%; top:50%; translate:-50% -50%;
+  width:min(60%,190px); height:2px; border-radius:1px;
+  background:#39332d40; box-shadow:0 1px 0 #ffffff5c;
+}
+
 /* ── §16 A ENTREVISTA: o Q&A ── */
 .conteudo .materia-lede{
   font-family:var(--font-corpo); font-size:clamp(15px,2vw,17px); line-height:1.55;
@@ -2764,20 +2786,47 @@ html.lightbox-aberto{overflow:hidden}
   color:#c8ffe4; text-shadow:none; line-height:1.4;
 }
 .conteudo .bus-crt .msg span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* ── §18 (edição #5) · .msg.resumo: a linha-resumo da listagem ──
+   Com 8 linhas reais de mensagem, a listagem ainda não mostra as 18 inteiras
+   (a peça tem, em mãos, o assunto de 8; as outras 10 entram como UMA linha
+   de resumo, não inventadas por completo). .msg.resumo reusa a MESMA .msg
+   (mesma borda, mesmo fósforo apagado da resposta da máquina), mas ocupa a
+   largura INTEIRA da tabela numa coluna só — DE/ASSUNTO/QUANDO não fazem
+   sentido pra ela, porque não é remetente nem data de verdade, é a máquina
+   somando o resto. Itálico marca a diferença sem quebrar o alinhamento das
+   linhas reais acima. Espera UM span de texto corrido (a régua de truncar
+   em 1 linha do .msg span comum é revertida aqui: a frase de resumo tem que
+   poder quebrar em 2 linhas no estreito, não sumir num "…").
+   Comportamento herdado (.msg de 1 coluna real, #4) fica intocado: a regra
+   só dispara com a classe .resumo somada, nunca sozinha. */
+.conteudo .bus-crt .msg.resumo{
+  grid-template-columns:1fr; font-style:italic; color:#6cc79b;
+}
+.conteudo .bus-crt .msg.resumo span{white-space:normal; overflow:visible; text-overflow:clip}
+
 .conteudo .bus-crt .corpo{
   margin:10px 0 0; padding:10px 0 0; border-top:1px dashed #35895f66;
   color:#c8ffe4; text-shadow:none; line-height:1.65; white-space:pre-wrap;
 }
+/* segundo corpo de mensagem no mesmo tubo (edição #5, Grau 2 lido): mesma
+   classe .corpo, sem modificador - o respiro entre os dois vem do .cmd/.fala
+   de reação que a produção intercala entre eles, igual ao respiro que já
+   existe antes do "de novo" (.cmd.de-novo); nenhuma regra nova precisa
+   existir só porque agora há dois blocos .corpo na mesma peça. */
 
 /* ESTREITO: a coluna do meio some. A 390px o "ASSUNTO" espremido entre as
    outras duas ficava com 2 caracteres úteis e a régua parecia rachada; com
    duas colunas o cabeçalho respira e continua dizendo que é uma tabela.
-   .msg segue a MESMA regra do .cab (mesma grade, mesmo motivo). */
+   .msg segue a MESMA regra do .cab (mesma grade, mesmo motivo). .msg.resumo
+   permanece 1fr: reafirmado aqui (e não só herdado por especificidade) pra
+   não depender de ordem de cascata se alguém mexer nesta media query depois. */
 @media (max-width:560px){
   .conteudo .bus-crt .cab{grid-template-columns:7ch 10ch}
   .conteudo .bus-crt .cab .assunto{display:none}
   .conteudo .bus-crt .msg{grid-template-columns:7ch 10ch}
   .conteudo .bus-crt .msg .assunto{display:none}
+  .conteudo .bus-crt .msg.resumo{grid-template-columns:1fr}
 }
 
 /* IMPRESSO: a peça tem que dizer a mesma coisa parada e em papel.
