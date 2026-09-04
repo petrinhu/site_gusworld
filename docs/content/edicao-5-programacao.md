@@ -121,7 +121,7 @@ gus@glyfesse:~$ # i just watch and write about it after. stung my pride a bit
 //gus@glyfesse
 
 ```
-gus@glyfesse:~/programming$ nano protecao-pela-metade.md
+gus@glyfesse:~/programacao$ nano protecao-pela-metade.md
 ```
 
 ### The warning nobody turned into a fix

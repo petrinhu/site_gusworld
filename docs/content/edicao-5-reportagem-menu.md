@@ -61,7 +61,7 @@ The observation became a decision in the same stretch of time: instead of commis
 Whoever found it was Gus Dragon, playtester, Adversarial Design Reviewer.
 
 ```
-// became a closed decision. just waiting on a piece that doesnt exist yet
+// became a closed decision. waiting on a piece that doesnt exist yet
 ```
 
 //by: gus@glyfesse
@@ -116,7 +116,7 @@ mesma classe de informação reservada, e o coordenador confirmou isso nesta rod
 | Crédito duplo | "Gus Dragon, playtester, Revisor Adversarial de Design" / "Adversarial Design Reviewer", por extenso |
 | Nome da dependência externa que bloqueia | **não citado**, por ordem do coordenador (matéria reservada) |
 | Tom de queixa ou suspense sobre o bloqueio | evitado de propósito: a peça registra "é decisão fechada, não ideia solta" e "quando existir, o menu inicial ganha o fundo que já foi escolhido", sem lamentar nem criar expectativa |
-| Linha de `//` | 1 linha, 59 caracteres pt-BR / 71 caracteres EN (conteúdo do pensamento, sem contar o prefixo "// "; convenção idêntica à usada nas outras duas peças desta rodada) |
+| Linha de `//` | 1 linha, 59 caracteres pt-BR / 69 caracteres (medido com a marca) EN (conteúdo do pensamento, sem contar o prefixo "// "; convenção idêntica à usada nas outras duas peças desta rodada) |
 | Travessão / en-dash | nenhum |
 | Rótulo clínico / nome de batismo | nenhum |
 | Emoji | nenhum |
@@ -128,7 +128,7 @@ cheguei a 74, achando que passava do limite. Refiz a contagem contando só o con
 pensamento, sem o prefixo (a mesma convenção usada em todas as outras linhas de `//` das três
 peças desta rodada, e a leitura mais fiel de T4, que descreve o limite como o tamanho **do
 pensamento**, não da marcação): "became a closed decision. just waiting on a piece that doesnt
-exist yet" tem **71 caracteres**, dentro do limite de 72. A linha do texto final não precisou de
+exist yet" tem **69 caracteres (medido com a marca)**, dentro do limite de 72. A linha do texto final não precisou de
 ajuste; mantive a versão com ponto final na primeira frase, igual à pt-BR.
 
 ### Pendências desta seção
