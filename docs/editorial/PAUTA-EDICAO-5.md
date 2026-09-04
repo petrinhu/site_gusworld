@@ -1,15 +1,20 @@
 # Pauta da Edição #5 da Glyfesse (mapa de edição)
 
-> Artefato de saída do estágio **E1** do `PIPELINE-EDICAO.md`. **Status: PROPOSTA, aguardando GATE-PAUTA.**
-> Escrita em 2026-09-04, um dia depois de a #4 ir ao ar (03/09), e revisada no mesmo dia com duas decisões do
-> líder: o terceiro movimento corrigido por ele (§1, item 3, e a trava de tom da §1.1) e D2 fechada (o
-> analisador estático de 23/07 é o fato da lente; o material de 24/07 vai ao Detonado com divisória, §5.2).
-> A lente já foi aprovada pelo líder (§1);
-> o que este documento leva ao gate é o **mapa** (o que vai em cada seção, de qual fonte, com que porte), as
-> **divisórias** entre seções que tocam o mesmo episódio, as **opções de título, dek, data e imagem**, e a
-> **lista de decisões** que só ele pode tomar (§12). Nada aqui é copy final: toda fala ou pensamento do Gus
-> proposto neste documento está **pendente de aprovação do líder** (L-08: submeter sempre, inclusive achando
-> que entendeu).
+> Artefato de saída do estágio **E1** do `PIPELINE-EDICAO.md`.
+>
+> **GATE-PAUTA FECHADO em 2026-09-04.** O líder decidiu as dezessete questões deste documento (§12, todas
+> fechadas no mesmo dia), corrigiu o terceiro movimento da lente com a própria formulação (§1, item 3; trava
+> de redação em §1.1) e fez de um achado do Gus Dragon uma lei (adendo da L-24: achado dele tem peça
+> própria). O mapa abaixo é a versão fechada, pronta para o E2 (briefs) e o loop das seções.
+>
+> **O que ainda depende de material externo (não de decisão):** a tirinha da Seção 11, obra encomendada a um
+> profissional, que não publica sem forma do crédito, licença, consentimento e declaração de IA resolvidos
+> (§9); e os dois prints de 07/08, que viram `frame` e Pôster só se os dois passarem na higiene e no gate de
+> spoiler (§8, §11 risco 14). Nenhum dos dois segura as outras seções.
+>
+> Escrita em 2026-09-04, um dia depois de a #4 ir ao ar (03/09). Nada aqui é copy final: toda fala ou
+> pensamento do Gus proposto neste documento passa pelos gates do loop da seção (GATE-LENTE, GATE-CONTEUDO,
+> GATE-COPY) como toda fala dele (L-08: submeter sempre, inclusive achando que entendeu).
 > Autor do rascunho: Capitolino (CPO), a pedido da thread principal. Fontes: `GODS_LAWS.md` (site e global),
 > `PAUTA-EDICAO-4.md`, `PIPELINE-EDICAO.md` §1.5 e §5, `ROTEIRO-ENTREVISTAS.md`, `src/lib/secoes.php`,
 > `data/edicoes.php`, os 17 partials pt da #4, `HISTORICO_GUS_ECOSSISTEMA` (memória, filtrada pela janela),
@@ -125,20 +130,14 @@ curiosidade simpática ou num acaso de método. O canon já registra (`gus_drago
 - **Data-âncora 3, 7 e 8 de agosto (sexta e sábado):** o playtest do Gus Dragon e a contagem.
 - **Janela coberta: 22 de julho a 8 de agosto de 2026.** Nenhum dia da janela foi consumido pela #4 (ela
   fechou em 21/07); não há fronteira a respeitar no início, só no fim.
-- **O campo `data` de `data/edicoes.php` (D11).** O líder respondeu **"22/07 a 07/08"**, um intervalo; o campo
-  é **uma data só** (é ele que ordena a banca e a linha do tempo), e não se inventa campo novo no `$edicoes`
-  para isso. **Leitura aplicada pela thread principal, marcada como dela, a confirmar com ele:** o campo
-  recebe **`2026-07-22`**, o dia de abertura, pelo critério das edições anteriores (datam pelo marco de
-  abertura); e **o intervalo aparece no texto**, onde a edição narra a própria janela, como a #4 fez na
-  Reportagem. **Onde o intervalo cabe no molde, e a recomendação:** (1) **na abertura da Reportagem de capa**,
-  no primeiro parágrafo, do jeito que a #4 datou as suas ("Entre 25 de junho e 1º de julho de 2026" na
-  Programação; "Doze dias" na Reportagem): é o lugar natural, porque a Reportagem é a peça que percorre os
-  três movimentos, e é o que recomendo; (2) na nota do editor (§3.2), em meia frase ("de 22 de julho a 7 de
-  agosto"), como eco, se o líder quiser o intervalo duas vezes; (3) **não no dek** (é copy de vitrine, e o
-  dek ainda está aberto) e **não no colofão** (a `colo-data` é mecânica: `data_por_extenso()` do campo único,
-  e mudar isso seria campo novo por outro nome). Observação de fato, não decisão: a contagem de linhas é de
-  08/08, um dia depois do fim do intervalo que ele deu; a Reportagem narra a contagem como "no dia seguinte",
-  o que é verdade e não briga com o intervalo.
+- **O campo `data` de `data/edicoes.php` (D11, decidida pelo líder em 04/09/2026).** Ele deu a janela
+  **"22/07 a 07/08"**; o campo é uma data só (é ele que ordena a banca e a linha do tempo) e não se inventa
+  campo novo no `$edicoes`. **Decisão:** o campo recebe **`2026-07-22`**, o dia de abertura, pelo critério das
+  edições anteriores (datam pelo marco de abertura); e a janela **"de 22 de julho a 7 de agosto" aparece no
+  primeiro parágrafo da Reportagem de capa**, do jeito que a #4 datou as suas peças em prosa. Não vai no dek
+  (é copy de vitrine) nem no colofão (a `colo-data` é mecânica: `data_por_extenso()` do campo único). Observação
+  de fato: a contagem de linhas é de 08/08, um dia depois do fim da janela dada; a Reportagem a narra como "no
+  dia seguinte", o que é verdade e não briga com a janela.
 
 ---
 
@@ -209,11 +208,11 @@ edição.** Não é licença para inflar (matéria pequena continua pequena); é
 conveniência de diagramação.
 - **O achado:** em 22/07, por feedback de playtest, ele apontou que o menu inicial mostrava a cena de onde o
   jogador estava, em vez de arte própria: *"o menu inicial (so ele) em geral tem alguma arte, ou animacao por
-  tras, e nao a tela de onde o jogador estava"*. A arte do menu foi feita na mesma semana (a mensagem do bus
-  de 24/07 cita "a arte do menu" como fatia da onda). Fonte: `Projects/GusWorld/TODO.md`, linha 134, item F7
+  tras, e nao a tela de onde o jogador estava"*. Fonte: `Projects/GusWorld/TODO.md`, linha 134, item F7
   (*"ideia do Gus Dragon (autoria dele), nascida de feedback de PLAYTEST"*, commit `485c604` de 22/07);
-  bus 24/07 20:20, item 7. **A confirmar com o líder:** a data em que a arte do menu entrou (a árvore atual
-  só tem a nota do TODO).
+  bus 24/07 20:20, item 7 ("a arte do menu" como fatia da onda). **A data da arte (resolvida em 04/09, sem
+  pergunta):** a única fonte é a nota do quadro do jogo, que diz que a arte entrou no dia seguinte ao achado;
+  a peça escreve **"no dia seguinte"** e **não crava data**. Não há o que confirmar, há o que não afirmar.
 - **Onde mora e em que forma:** peça própria, porte **S** (é o porte do achado), hospedada como **caixa ao
   fim da Reportagem de capa**, no molde do encarte do glintfx da #4: âncora própria (`#sec-04-menu`), prompt
   próprio (`gus@glyfesse:~/menu$`), fonte própria (`docs/content/edicao-5-reportagem-menu.md`), e o mesmo
@@ -427,7 +426,7 @@ descrever nenhum personagem, com a frase do custo (D12 decidida, 04/09). Nenhuma
 
 | | Reportagem de capa (§4, o corpo) | Caixa própria (§4, `#sec-04-menu`) |
 |---|---|---|
-| **Responde** | O que parecia conferido, em três movimentos; no terceiro, o playtest de 07/08 e a contagem de 08/08 | Um achado só: o menu inicial mostrava a cena de onde o jogador estava, ele apontou em 22/07, a arte própria entrou na mesma semana |
+| **Responde** | O que parecia conferido, em três movimentos; no terceiro, o playtest de 07/08 e a contagem de 08/08 | Um achado só: o menu inicial mostrava a cena de onde o jogador estava, ele apontou em 22/07, a arte própria entrou "no dia seguinte" (sem cravar data) |
 | **Pode** | Dizer, no primeiro bloco, que 22/07 foi também o dia de um achado dele, em meia frase, apontando para a caixa | Citar o verbatim dele; dizer o que o menu mostrava antes e o que passou a mostrar; o crédito nos dois papéis |
 | **Proibido** | Narrar o menu, o verbatim de 22/07 ou a arte nova (é da caixa) | O clipping de 07/08, o número de linhas, qualquer parte dos três movimentos (é do corpo); qualquer palavra que só faça sentido para quem sabe de agosto |
 | **Trava §1.1** | vale | vale |
@@ -466,13 +465,21 @@ dele; cobre os três movimentos sem privilegiar nenhum. Vai para `titulo_pt` e `
 registra que só um par de fontes cabe a manchete em 390px; o GATE-CAPA precisa do print em 390px antes de
 fechar (§11, risco 6).
 
-**Dek: ABERTO.** A pergunta levada a ele foi só do título. Opções (spoiler-safe: descrevem o marco de
-progresso, não lore):
+**Dek: DECIDIDO pelo líder em 04/09/2026: a opção A, o arco inteiro.** Vai para `dek_pt` e `dek_en`
+(spoiler-safe: descreve o marco de progresso, não lore):
 
-| Opção | pt | en |
-|---|---|---|
-| **A** (recomendada) | Tiraram o jogo velho de baixo do novo com todo o cuidado, e o que se perdeu estava fora do alcance do cuidado. Semanas depois, dois jogaram o jogo novo inteiro: um foi procurar onde ele quebrava, e depois perguntou o tamanho dele. | They pulled the old game out from under the new one with every care, and what got lost sat just outside that care's reach. Weeks later, two people played the new game start to finish: one went looking for where it would break, and then asked how big it was. |
-| B | Um mês de checagens feitas com cuidado, do lado errado da cerca. E no fim um número, contado em vez de chutado. | A month of careful checks, on the wrong side of the fence. And at the end a number, counted instead of guessed. |
+| | Texto |
+|---|---|
+| pt | Tiraram o jogo velho de baixo do novo com todo o cuidado, e o que se perdeu estava fora do alcance do cuidado. Semanas depois, dois jogaram o jogo novo inteiro: um foi procurar onde ele quebrava, e depois perguntou o tamanho dele. |
+| en | They pulled the old game out from under the new one with every care, and what got lost sat just outside that care's reach. Weeks later, two people played the new game start to finish: one went looking for where it would break, and then asked how big it was. |
+
+**Conferido contra a trava §1.1:** as duas versões afirmam a especialização sem hedge ("um foi procurar onde
+ele quebrava" / "one went looking for where it would break"), sem adjetivo de ternura, sem "para a idade" e
+sem exclamação; a versão em inglês não amaciou (não há "somehow", "luckily", "just a kid" nem equivalente).
+
+**Risco de render, novo (§11, risco 16):** este dek é bem mais longo que os anteriores (a #4 tem 2 linhas; este
+tem 4 em 390px, estimado, a medir), e o dek aparece na banca e nos dois feeds. O GATE-CAPA precisa ver o
+print da banca em 390px **com este dek**, não só a manchete.
 
 ---
 
@@ -559,7 +566,7 @@ resolvidas; as outras dezesseis seções **não esperam por ela** (§11, risco 1
 | 22/07 17:06 | bus, gusworld para site | Obituário da fundação C# (`MATERIA-OBITUARIO-CSHARP`) | §7 (matéria-mãe); §4 (um parágrafo); §13 (o identificador); §18 (só na listagem) |
 | 22/07 | ledger, jogo | M8 decommission: 172 arquivos + submódulo; M9 higiene; CI Windows verde | §4 (datas e números; o "172" só tem o bus como fonte, ver §15) |
 | 21/06 e 25/07 | repo do jogo (somente leitura), `docs/tech/adr/ADR-005-license-gpl3-assets-ccbysa.md`, linhas 46 e 118 | O pedido de "arquivar" o repositório da fundação C# e o carimbo de 25/07: *"sem efeito. O repo foi apagado em vez de arquivado, no M8"* | §7 (segunda fonte da lápide; sem nomear o host) |
-| 22/07 | repo do jogo, `TODO.md` linha 134 (item F7) | Achado do Gus Dragon, por playtest: o menu inicial precisa de arte própria; arte feita na mesma semana | §4, caixa própria (reportagem do achado, D16; lei, adendo da L-24) |
+| 22/07 | repo do jogo, `TODO.md` linha 134 (item F7) | Achado do Gus Dragon, por playtest: o menu inicial precisa de arte própria; arte feita "no dia seguinte", segundo a nota (a peça não crava data) | §4, caixa própria (reportagem do achado, D16; lei, adendo da L-24) |
 | 22/07 | repo do jogo, `GODS_LAWS.md` do jogo, L-35 (linhas 761 e 763) | *"em 22/07/2026 uma sonda de janela abriu na sessão viva do líder por dois a três minutos"*: corrobora a classe de incidente dos fios 1 e 4 da Programação | §17 (data do incidente do glintfx; a mensagem de 23/07 diz "no meio da madrugada") |
 | 23/07 08:20 | bus, glintfx para site | Proteção pela metade (`MATERIA-PROTECAO-PELA-METADE`) | §17 (fios 1 a 3); §4 (uma frase) |
 | 23/07 09:40 | bus, gusworld para site | A sessão que fechou o board (`MATERIA-BOARD-M9-VERIFICACAO`) | §18 (gate cego, `git add -A`); §4 (o fio "a verificação achar que tinha verificado") |
@@ -663,10 +670,14 @@ próxima pauta parte de um ledger que mente (é a lição da L-14 do site aplica
     `edicao-3/en/sec-08.php` é cirúrgico, mas sobe no mesmo deploy da #5 e exige a prova de que a #3 não
     regrediu em mais nada, no mesmo rigor que a #4 usou ao mexer no CSS compartilhado: render da #3 em pt e en
     antes e depois, comparado, e a prova final da E4 cobrindo as duas edições, não só a nova.
+16. **O dek é bem mais longo que os anteriores, e aparece na banca e nos dois feeds.** O da #4 ocupa duas
+    linhas em 390px; este deve ocupar quatro (estimativa, a medir no render). O GATE-CAPA precisa ver o print
+    da **banca** em 390px com este dek, não só a manchete; e o card social (1200x630) precisa ser gerado com
+    o dek inteiro, sem cortar frase no meio.
 
 ---
 
-## 12. As decisões que precisam do líder (prontas para `AskUserQuestion`, uma por pergunta, recomendada primeiro, até 4 por rodada)
+## 12. As decisões (TODAS FECHADAS pelo líder em 04/09/2026; registro do processo)
 
 | # | Decisão | Opções (recomendada primeiro) |
 |---|---|---|
@@ -679,13 +690,13 @@ próxima pauta parte de um ledger que mente (é a lição da L-14 do site aplica
 | **D7** | A HQ | **DECIDIDA pelo líder em 04/09/2026: obra encomendada a um profissional** (*"Será uma tirinha que encomendei a um profissional."*). Formato respondido; ficam as pendências de publicação da §9, com dono: crédito, licença, consentimento e declaração de IA (o líder); higiene (main); `alt` (nós escrevemos, ele aprova). A Seção 11 não publica sem os quatro primeiros; as outras não esperam |
 | **D8** | O Gus lê o bus | **DECIDIDA pelo líder em 04/09/2026: escada completa, até a ironia.** Abre duas mensagens comentando antes de cada uma; na terceira o tom vira ironia. As duas que ele abre: as memórias da era Godot (22/07) e o gate cego da paridade de traduções (23/07). Estreia do terceiro degrau: marco da série; a formulação da ironia vai a ele como toda fala do Gus |
 | **D9** | Errata | **DECIDIDA pelo líder em 04/09/2026: publica a errata e leva o conserto no mesmo deploy.** `A11Y-ED3-EN-TARJA` vira pré-requisito do deploy da #5; a Errata deixa de ser vazio; a copy é fala do Gus e vai a ele; o conserto toca edição publicada e exige prova de que a #3 não regrediu (§11, risco 15) |
-| **D10** | Título e dek | **Título DECIDIDO pelo líder em 04/09/2026: "O Que Parecia Conferido" / "What Looked Checked"** (risco de 23 caracteres em 390px mantido, §11 risco 6). **Dek ABERTO:** a pergunta era só do título; opções A e B na §7 |
-| **D11** | Campo `data` | **Ele respondeu "22/07 a 07/08"** (intervalo). Leitura aplicada pela thread principal, **marcada como dela, a confirmar**: campo `data` = `2026-07-22` (abertura, critério das edições anteriores) e o intervalo no texto, na abertura da Reportagem de capa (§2, com as alternativas e o que não serve) |
+| **D10** | Título e dek | **DECIDIDOS pelo líder em 04/09/2026.** Título: "O Que Parecia Conferido" / "What Looked Checked" (risco de 23 caracteres em 390px, §11 risco 6). Dek: a opção A, o arco inteiro, pt e en na §7, conferido contra a trava §1.1 (risco do comprimento na banca e nos feeds, §11 risco 16) |
+| **D11** | Campo `data` | **DECIDIDA pelo líder em 04/09/2026:** campo `data` = `2026-07-22` (o dia de abertura, critério das edições anteriores); a janela "de 22 de julho a 7 de agosto" aparece no primeiro parágrafo da Reportagem de capa (§2) |
 | **D12** | A falha do elenco na Reportagem | **DECIDIDA pelo líder em 04/09/2026: abstrata, com a frase do custo.** Conta que um elenco inteiro saiu com a aparência errada, sem descrever nenhum personagem, e mantém a lição "custo de terceiro é custo" |
 | **D13** | Quem jogou em 07/08 | **Deixou de ser pergunta: FATO registrado pelo líder em 04/09/2026**, verbatim: *"eu fiz o playtest e não achei nada. Gus fez e foi ele quem encontrou, pois ele já foi buscando esses erros dado ser erro comum. Tanto que encontrou."* O root jogou o demo inteiro e não achou nada; o Gus Dragon jogou depois e achou os dois clippings, porque estuda jogos e o filtro dele para essa classe de defeito é mais especializado (*"O filtro dele como estudioso de jogos é mais especializado que o meu."*). Redação sob a trava §1.1 |
 | **D14** | A cerca da retirada da biblioteca de interface (04/08) e do que orbita aquela dependência | **DECIDIDA pelo líder em 04/09/2026: "deixa para a #6".** Reserva nomeada: fora da #5 e marcada para a #6, com item próprio no `TODO.md` e nota no ledger (§1, §10.2) |
 | **D15** | Vocabulário da Galeria | **DECIDIDA pelo líder em 04/09/2026: do mundo.** "Um inimigo que faz ronda", "alguém do lugar", "um bloco"; nada de "NPC", "androide inimigo", "prop de cenário". Fronteira de registro contra a Reportagem técnica registrada na §5.4, para nenhum revisor uniformizar |
-| **D16** | O achado do Gus Dragon sobre a arte do menu inicial (22/07) | **DECIDIDA pelo líder em 04/09/2026, e virou LEI (adendo datado da L-24 no `GODS_LAWS.md` do site).** Verbatim: *"Entra como reportagem. Achados do gus sempre são especiais."* Recusou carta curta e recusou guardar. Peça própria, **confirmado por ele em 04/09**: caixa ao fim da Reportagem de capa com âncora e abertura próprias, entrada própria na tabela de prioridade, porte S (§3.1); divisória em §5.4. Resta confirmar só a data da arte do menu |
+| **D16** | O achado do Gus Dragon sobre a arte do menu inicial (22/07) | **DECIDIDA pelo líder em 04/09/2026, e virou LEI (adendo datado da L-24 no `GODS_LAWS.md` do site).** Verbatim: *"Entra como reportagem. Achados do gus sempre são especiais."* Recusou carta curta e recusou guardar. Peça própria, **confirmado por ele em 04/09**: caixa ao fim da Reportagem de capa com âncora e abertura próprias, entrada própria na tabela de prioridade, porte S (§3.1); divisória em §5.4. A data da arte do menu: a peça escreve "no dia seguinte" (única fonte: a nota do quadro do jogo) e não crava data |
 | **D17** | Cartas (Seção 9, metade Cartas) | **DECIDIDA pelo líder em 04/09/2026: vazio com graça.** Uma linha curta admitindo que não houve carta de leitor de novo, aproveitando a copy da Errata (*"Cartas: nenhuma de leitor, de novo."*); fala do Gus, vai a ele como toda fala dele |
 
 ---
@@ -698,29 +709,28 @@ headless (Firefox) e geração de card são **trabalho pesado**: um de cada vez.
 auditoria no modelo mais recente, implementação no anterior.
 
 **Onda 0, pré-produção (sem agente pesado).**
-- Main leva ao líder o que sobrou aberto, numa rodada só: o **dek** (D10, opções A e B da §7), a
-  **confirmação da leitura de D11** (campo `data` = `2026-07-22` e o intervalo "22/07 a 07/08" na abertura da
-  Reportagem), e a **data da arte do menu** (D16, fato). Todas as outras decisões, D1 a D17, estão fechadas
-  (04/09).
+- Nenhuma decisão pendente: D1 a D17 fechadas em 04/09. O que a onda 0 pede ao líder é **material**, não
+  decisão: os dois prints de 07/08 (D6/D5) e, para a tirinha (D7), as quatro respostas da §9 (forma do
+  crédito, licença, consentimento, uso de IA).
 - Main registra a reserva de D14 no `TODO.md` (`MATERIA-RMLUI-SAI`, INBOX, "reservado para a #6") e no
-  ledger, e grava título, `data` e o `estado` (segue `rascunho`) na entrada da #5 de `data/edicoes.php` via
-  `backend-engineer`, na onda 5.
-- Se D9 = publicar (decidido): `frontend-engineer` corrige os quatro `aria-label` de
+  ledger; título, dek e `data` já decididos entram na entrada da #5 de `data/edicoes.php` via
+  `backend-engineer` na onda 5 (o `estado` segue `rascunho` até o GATE-GO).
+- D9 (decidido): `frontend-engineer` corrige os quatro `aria-label` de
   `edicao-3/en/sec-08.php`; `qa-engineer` renderiza a #3 em pt e en antes e depois e compara (edição
   publicada não pode regredir); o conserto **espera o deploy da #5** e é pré-requisito dele (L-11: deploy
   manual, uma autorização só, para as duas coisas juntas).
-- Main pede ao líder os dois prints de 07/08 (D6) e, para a HQ (D7), as quatro respostas da §9 (crédito,
-  licença, consentimento, IA); abre e olha cada arquivo antes de versionar.
-- Main confirma que `TODO.md` existe (existe; `ED5-PAUTA` está na INBOX) e move o item para a tabela quando o
-  gate fechar.
+- Main abre e olha cada arquivo recebido (prints, tirinha) antes de versionar (L-02).
+- `TODO.md` existe; `ED5-PAUTA` está na INBOX e, com o gate fechado, vai para a tabela de pendências com o
+  status tocado no mesmo commit (L-14), apontando para este documento.
 - `technical-writer` (1 agente) corrige o ledger (§10.4): linhas de 24/06 a 21/07 recebem `#4`; o mapa de
   janelas do cabeçalho é atualizado.
 
 **Onda 1, briefs e lentes (E2 + S1). 1 agente.**
 - `product-manager` escreve o brief por seção cheia (escopo, ângulo, fonte primária com caminho absoluto,
-  tamanho, pt+en) e o angle statement de uma linha de cada uma das nove; leva também as travas desta pauta
-  (divisórias da §5, não piscar, L-25, crédito duplo, sem travessão, `//` até 72).
-- Main leva ao GATE-LENTE: nove perguntas, três rodadas.
+  tamanho, pt+en) e o angle statement de uma linha de cada uma das dez peças com escrita (§4); leva também
+  as travas desta pauta (divisórias da §5, §1.1, não piscar, L-25, fronteira de registro da §5.4, crédito
+  duplo, sem travessão, `//` até 72).
+- Main leva ao GATE-LENTE: dez perguntas, três rodadas.
 
 **Onda 2, rascunhos (S2). Até 4 agentes, em duas sub-ondas.**
 - 2a (4 vivos): `narrative-writer` A = Reportagem + a caixa do achado do Gus Dragon (fonte própria,
@@ -739,7 +749,8 @@ auditoria no modelo mais recente, implementação no anterior.
 - `revisor-textual` (line + copyedit: tela×papel, bilíngue, `//` até 72, sem travessão, N maiúsculo em pixel
   ≥ 15px, honestidade dos apartes com fonte real).
 - `compliance-legal` produz o parecer de spoiler (party, Galeria, retratos); **só instrui**; o líder decide.
-- Main leva GATE-CONTEUDO (9), GATE-SPOILER (por item), GATE-COPY (9 cheias + vazios re-gate), em rodadas de 4.
+- Main leva GATE-CONTEUDO (10), GATE-SPOILER (por item), GATE-COPY (10 cheias + vazios re-gate), em rodadas
+  de 4.
 
 **Onda 4, arte, montagem dos partials e render (S7 a S9). Até 4 agentes; render serial.**
 - `frontend-engineer`: os 34 partials (`src/content/edicao-5/{pt,en}/sec-03` a `sec-19`), a caixa do achado
