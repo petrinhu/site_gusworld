@@ -528,6 +528,23 @@ main{display:block}
   font-family:var(--font-corpo); font-style:italic; font-size:clamp(16px,2.2vw,18px);
   line-height:1.5; color:var(--tinta-preta);
 }
+/* DEFEITO MEDIDO (#5, ED5-PAUTA): os dois <pre><code> desta seção (a nota
+   RESSALVA e o trecho do ponteiro nulo) não tinham NENHUMA regra própria - só
+   .conteudo code, que estiliza o token embutido na prosa, não o bloco. Sem
+   overflow-x, <pre> nunca quebra linha e empurra a PÁGINA inteira: medido em
+   390px, document.documentElement.scrollWidth ia a 693px em pt e 685px em en
+   (303px e 295px de rolagem morta, fundo vazio à direita do código cortado);
+   window.scrollX chegava a existir de verdade ao forçar o fim da rolagem.
+   Mesmo princípio que .conteudo .tela-real já usa (comentário acima): a CAIXA
+   rola, o body nunca rola. Uma regra só resolve os dois blocos porque nenhum
+   tem classe própria (nem deve ganhar - ver comentário de sec-17.php) e
+   porque overflow-x:auto preserva as quebras de linha ORIGINAIS em ambos: no
+   2º bloco (código C++ de verdade) isso é obrigatório, quebrar no meio do
+   token seria pior que rolar; no 1º bloco (nota em prosa formatada como
+   trecho de terminal) a mesma regra também resolve sem precisar de uma
+   segunda classe/exceção - white-space:pre-wrap foi cogitado e descartado
+   por partir o código do 2º bloco no meio da linha. */
+.conteudo pre{max-width:100%; overflow-x:auto}
 /* o gancho do efeito CRT/nano (§17) e o gancho da tela do BUS (§18): a peça
    VISUAL é de outra leva. Marcador de slot reservado (dev), no espírito do
    .scaffold — nunca um bloco vazio invisível. */
