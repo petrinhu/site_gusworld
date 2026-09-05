@@ -105,21 +105,21 @@ $base = SITE_BASE_URL;
 $pt   = render_banca_html('pt');
 $en   = render_banca_html('en');
 
-// O dado real de hoje: #4 (a mais nova, publicada em 03/09/2026), #3, #2 e #1
-// publicadas — as QUATRO com arte de capa. A #4 nasceu com o par dela
-// (`og_image` + `capa_en`) já no publish, então a estante enche: 4 folhas, 4
-// artes, mais nova primeiro. É a ORDEM que estas duas travam (a arte da #4 tem
+// O dado real de hoje: #5 (a mais nova, publicada em 05/09/2026), #4, #3, #2 e
+// #1 publicadas — as CINCO com arte de capa. A #5 nasceu com o par dela
+// (`og_image` + `capa_en`) já no publish, então a estante enche: 5 folhas, 5
+// artes, mais nova primeiro. É a ORDEM que estas duas travam (a arte da #5 tem
 // de vir na frente, não no fim) e o CASAMENTO edição→arte: uma troca de índice
 // entre folhas aqui é invisível a olho nu.
 eq(
-    ['/assets/og-edicao-4.jpg', '/assets/og-edicao-3.jpg', '/assets/og-edicao-2.jpg', '/assets/og-launch.jpg'],
+    ['/assets/og-edicao-5.jpg', '/assets/og-edicao-4.jpg', '/assets/og-edicao-3.jpg', '/assets/og-edicao-2.jpg', '/assets/og-launch.jpg'],
     capas_do_html($pt),
-    'PT: as 4 artes em português, mais nova primeiro (#4, #3, #2, #1 — a da #1 é o card de lançamento)'
+    'PT: as 5 artes em português, mais nova primeiro (#5, #4, #3, #2, #1 — a da #1 é o card de lançamento)'
 );
 eq(
-    ['/assets/og-edicao-4-en.jpg', '/assets/og-edicao-3-en.jpg', '/assets/og-edicao-2-en.jpg', '/assets/og-edicao-1-en.jpg'],
+    ['/assets/og-edicao-5-en.jpg', '/assets/og-edicao-4-en.jpg', '/assets/og-edicao-3-en.jpg', '/assets/og-edicao-2-en.jpg', '/assets/og-edicao-1-en.jpg'],
     capas_do_html($en),
-    'EN: as mesmas 4 edições, cada uma com a arte em INGLÊS (#4, #3, #2, #1)'
+    'EN: as mesmas 5 edições, cada uma com a arte em INGLÊS (#5, #4, #3, #2, #1)'
 );
 
 // ── A FRONTEIRA: o card SOCIAL não segue o idioma ───────────────────────────
@@ -130,19 +130,19 @@ eq(
 // variante nenhuma em jogo. Desde então, quem quer que seja a mais nova tem de
 // trazer `og_image` E `capa_en`: a home carrega um card que TEM gêmeo em
 // inglês, e é só a partir daí que a fronteira "capa muda de idioma, meta tag
-// não" está de fato sendo exercitada no /en/. A mais nova de hoje é a #4.
+// não" está de fato sendo exercitada no /en/. A mais nova de hoje é a #5.
 // ⚠️ A pré-condição logo abaixo trava exatamente isso e tem de mirar SEMPRE na
-// edição que hoje é a mais nova (aqui, a #4) — travada na #3 antiga, ela
-// continuaria passando só porque a #3 não saiu do ar (deixou de provar a
+// edição que hoje é a mais nova (aqui, a #5) — travada na #4 antiga, ela
+// continuaria passando só porque a #4 não saiu do ar (deixou de provar a
 // fronteira que descreve, sem ninguém notar).
 eq(
     true,
-    str_contains($en, 'og-edicao-4-en.jpg'),
+    str_contains($en, 'og-edicao-5-en.jpg'),
     'pré-condição: a arte EN da mais nova existe na página /en/ (sem ela, a asserção anti-vazamento passaria à toa)'
 );
 eq(og_do_html($pt), og_do_html($en), 'a meta tag social é a MESMA nos dois idiomas (o card não segue o idioma)');
-eq($base . '/assets/og-edicao-4.jpg', og_do_html($pt), 'og:image em /pt/ = o card próprio da #4 (a mais nova é a vitrine viva)');
-eq($base . '/assets/og-edicao-4.jpg', og_do_html($en), 'og:image em /en/ = o MESMO card em PORTUGUÊS (nunca a variante og-edicao-4-en)');
+eq($base . '/assets/og-edicao-5.jpg', og_do_html($pt), 'og:image em /pt/ = o card próprio da #5 (a mais nova é a vitrine viva)');
+eq($base . '/assets/og-edicao-5.jpg', og_do_html($en), 'og:image em /en/ = o MESMO card em PORTUGUÊS (nunca a variante og-edicao-5-en)');
 eq($base . '/assets/og-edicao-2.jpg', og_do_html(render_banca_html('en', '2')), 'en ?ed=2 → card português da #2');
 // ⚠️ MENSAGEM CORRIGIDA (era "→ o default"): a #1 DECLARA `og_image` desde
 // 2026-07-25, e o arquivo que ela declara é o mesmo que o head.php usa de
@@ -159,12 +159,14 @@ eq(
 );
 
 // ── as duas estantes seguem com a MESMA quantidade de capas ─────────────────
-// 4 publicadas hoje (#4, #3, #2, #1). O que este par trava não é o número em
-// si, e sim que a variante de idioma NÃO some nem duplica folha: as duas
-// estantes listam exatamente as mesmas edições, mudando só a arte.
-$conta = static fn (string $html): int => substr_count($html, 'class="ed folha"');
-eq(4, $conta($pt), 'pt: 4 capas publicadas (#4, #3, #2, #1)');
-eq(4, $conta($en), 'en: as mesmas 4 capas (a variante não some nem duplica capa)');
+// DERIVADO de edicoes_publicadas() (não cravado): o que este par trava não é o
+// número em si, e sim que a variante de idioma NÃO some nem duplica folha —
+// as duas estantes listam exatamente as mesmas edições, mudando só a arte.
+$conta            = static fn (string $html): int => substr_count($html, 'class="ed folha"');
+$edicoes_reais    = require __DIR__ . '/../data/edicoes.php';
+$total_publicadas = count(edicoes_publicadas($edicoes_reais));
+eq($total_publicadas, $conta($pt), "pt: {$total_publicadas} capas publicadas (#5, #4, #3, #2, #1)");
+eq($total_publicadas, $conta($en), 'en: as mesmas capas (a variante não some nem duplica capa)');
 eq($conta($pt), $conta($en), 'as duas estantes listam a MESMA quantidade de folhas');
 
 // ── zero CLS: a arte EN entra com width/height reais do arquivo ─────────────
@@ -191,22 +193,25 @@ $pt_fix = render_banca_html('pt', null, $sem_card_na_2);
 $en_fix = render_banca_html('en', null, $sem_card_na_2);
 
 eq(
-    ['/assets/og-edicao-4.jpg', '/assets/og-edicao-3.jpg', '/assets/og-launch.jpg'],
+    ['/assets/og-edicao-5.jpg', '/assets/og-edicao-4.jpg', '/assets/og-edicao-3.jpg', '/assets/og-launch.jpg'],
     capas_do_html($pt_fix),
     'pt: a edição sem card sai da lista de artes (a folha fica, o <img> não)'
 );
 eq(
-    ['/assets/og-edicao-4-en.jpg', '/assets/og-edicao-3-en.jpg', '/assets/og-edicao-1-en.jpg'],
+    ['/assets/og-edicao-5-en.jpg', '/assets/og-edicao-4-en.jpg', '/assets/og-edicao-3-en.jpg', '/assets/og-edicao-1-en.jpg'],
     capas_do_html($en_fix),
     'en: idem — sem card não há nem variante de idioma para cair'
 );
-eq(4, $conta($pt_fix), 'pt: a edição sem arte CONTINUA na estante (4 folhas, uma sem capa)');
-eq(4, $conta($en_fix), 'en: idem (a ausência de arte não some com a folha nem duplica)');
+eq($total_publicadas, $conta($pt_fix), "pt: a edição sem arte CONTINUA na estante ({$total_publicadas} folhas, uma sem capa)");
+eq($total_publicadas, $conta($en_fix), 'en: idem (a ausência de arte não some com a folha nem duplica)');
 
 // ── os arquivos existem mesmo no disco (capa quebrada = buraco na estante) ──
 // ★ ENUMERADO a partir do dado, não à mão: lista escrita à mão envelhece calada
-// (a da #3 teria ficado de fora, e hoje a da #4 também). O piso abaixo impede o
-// laço de rodar VAZIO e "passar" sem ter verificado arquivo nenhum.
+// (a da #3 ficou de fora um dia, e a da #4/#5 também). O piso abaixo é
+// DERIVADO (total de publicadas × os 2 idiomas do site) em vez de cravado: além
+// de impedir o laço de rodar VAZIO, ele prova a invariante real "toda publicada
+// tem arte NAS DUAS línguas, e nenhuma colide de nome com outra" — se um dia
+// uma faltar (ou pt/en colidirem), a contagem cai abaixo do produto e acusa.
 $artes = [];
 foreach (edicoes_publicadas($edicoes_reais) as $e) {
     foreach (SITE_IDIOMAS as $lang) {
@@ -218,7 +223,9 @@ foreach (edicoes_publicadas($edicoes_reais) as $e) {
 }
 $artes = array_keys($artes);
 sort($artes);
-eq(8, count($artes), 'piso: as 4 publicadas rendem 8 artes distintas (pt + en) — o laço abaixo não roda vazio');
+$piso_artes = $total_publicadas * count(SITE_IDIOMAS);
+eq(true, $piso_artes > 0, 'piso: existe ao menos 1 arte esperada (a suíte não roda contra array vazio)');
+eq($piso_artes, count($artes), "piso: as {$total_publicadas} publicadas rendem {$piso_artes} artes distintas (pt + en) — o laço abaixo não roda vazio");
 
 foreach ($artes as $rel) {
     $caminho = __DIR__ . '/../public_html' . $rel;

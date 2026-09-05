@@ -142,23 +142,23 @@ eq(true, str_contains($com_ponto, 'data-rotulo='), 'com 1 ponto: o rótulo curto
 eq(false, str_contains($com_ponto, 'class="lt-vazio"'), 'com 1 ponto: o vazio-com-graça some');
 
 // ═══ 3. O GUARD ANTI-RASCUNHO (mudou de fixture, não de valor) ══════════════
-// A #4 era o rascunho que provava "rascunho não entra na linha". Publicada ela,
-// o fixture passa a ser a #5 — o exemplo de drip que o data/edicoes.php mantém
+// A #5 era o rascunho que provava "rascunho não entra na linha". Publicada ela,
+// o fixture passa a ser a #6 — o exemplo de drip que o data/edicoes.php mantém
 // de propósito, e que já nasce com na_linha_tempo => true.
-// ⚠️ A #5 nasce SEM frame (para não spoilar), e edição sem frame não vira ponto
+// ⚠️ A #6 nasce SEM frame (para não spoilar), e edição sem frame não vira ponto
 // de jeito nenhum: o teste passaria mesmo com o filtro anti-rascunho quebrado.
 // Por isso o frame é injetado AQUI, em memória — assim a ÚNICA coisa que segura
-// a #5 fora do scrubber é o estado 'rascunho'.
+// a #6 fora do scrubber é o estado 'rascunho'.
 $por_numero = [];
 foreach ($edicoes as $e) {
     $por_numero[(int) $e['numero']] = $e;
 }
-eq('rascunho', (string) ($por_numero[5]['estado'] ?? ''), 'pré-condição: a #5 é o rascunho que serve de fixture deste guard');
-eq(true, ($por_numero[5]['na_linha_tempo'] ?? false) === true, 'pré-condição: a #5 é da era visual (só o estado a segura fora)');
+eq('rascunho', (string) ($por_numero[6]['estado'] ?? ''), 'pré-condição: a #6 é o rascunho que serve de fixture deste guard');
+eq(true, ($por_numero[6]['na_linha_tempo'] ?? false) === true, 'pré-condição: a #6 é da era visual (só o estado a segura fora)');
 
 $rascunho_visual = [];
 foreach ($edicoes as $e) {
-    if ((int) $e['numero'] === 5) {
+    if ((int) $e['numero'] === 6) {
         $e['frame']        = '/assets/frames/edicao-3.png'; // um frame qualquer que exista em disco
         $e['frame_alt_pt'] = 'frame de teste';
         $e['frame_alt_en'] = 'test frame';
@@ -168,7 +168,7 @@ foreach ($edicoes as $e) {
 $com_rascunho = secao_linha(html_banca('pt', $rascunho_visual));
 
 eq(true, str_contains($com_rascunho, 'data-num="3"'), 'controle: a #3 (publicada) continua sendo ponto da linha');
-eq(false, str_contains($com_rascunho, 'data-num="5"'), 'guard: a #5 (RASCUNHO, visual E com frame) fica fora da linha');
+eq(false, str_contains($com_rascunho, 'data-num="6"'), 'guard: a #6 (RASCUNHO, visual E com frame) fica fora da linha');
 
 if ($falhas > 0) {
     fwrite(STDERR, "\n{$falhas} de {$n} asserções FALHARAM\n");

@@ -131,7 +131,15 @@ foreach (edicoes_publicadas($edicoes) as $e) {
         $cards_publicados[(int) $e['numero']] = $rel;
     }
 }
-eq(4, count($cards_publicados), 'piso: as 4 edições publicadas declaram card próprio (o laço abaixo não roda vazio)');
+// DERIVADO (não cravado): a contagem de publicadas vem de edicoes_publicadas(),
+// a fonte de verdade — não de um número lido à mão que envelhece a cada
+// publish (foi o que quebrou quando a #5 saiu do rascunho). O piso real
+// continua sendo "maior que zero": comparar as duas contagens prova que
+// NENHUMA publicada ficou sem `og_image` (uma invariante de produto, não um
+// acidente de implementação — as duas contagens vêm de laços diferentes).
+$total_publicadas = count(edicoes_publicadas($edicoes));
+eq(true, $total_publicadas > 0, 'piso: existe ao menos 1 edição publicada (a suíte não roda contra array vazio)');
+eq($total_publicadas, count($cards_publicados), "piso: as {$total_publicadas} edições publicadas declaram card próprio (o laço abaixo não roda vazio)");
 
 foreach ($cards_publicados as $num => $rel) {
     $card = __DIR__ . '/../public_html' . $rel;

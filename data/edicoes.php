@@ -261,4 +261,36 @@ return [
         'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
     ],
 
+    // ── #6+ · EXEMPLO DE RASCUNHO (NÃO renderizado) ──────────────────────────
+    // Demonstra o mecanismo do drip: estado 'rascunho' fica no array mas NUNCA
+    // aparece na banca/linha (os helpers o filtram). Publicar = trocar a string
+    // abaixo para 'publicada'. Mantido deliberadamente vago e sem frame para
+    // não spoilar nada. Preencher titulo/dek/frame/data reais só na hora de
+    // publicar. É o marcador do drip que a #5 deixou de ser ao publicar: o
+    // array sempre reserva a próxima vaga.
+    //
+    // ★ ELA NÃO É ENFEITE (ED5-PAUTA): é a FIXTURE VIVA de que
+    // tests/linha-tempo-vazia.test.php e tests/og-banca-ed.test.php dependem
+    // para provar o guard anti-vazamento de rascunho — sem NENHUM 'rascunho'
+    // neste array, os dois guards passam à toa (nada sobra pra filtrar) e não
+    // testam mais nada. Isso já aconteceu uma vez: quando a #5 foi publicada
+    // sem deixar sucessora, a suíte ficou vermelha por FALTA de fixture, não
+    // por bug. Ao publicar a #6 de verdade, criar a #7 com este mesmo molde
+    // ANTES de rodar a suíte de novo — nunca depois.
+    [
+        'numero'         => 6,
+        'revisao'        => 1,
+        'estado'         => 'rascunho',
+        'slug_pt'        => 'edicao-6',
+        'slug_en'        => 'edition-6',
+        'titulo_pt'      => '',
+        'titulo_en'      => '',
+        'dek_pt'         => '',
+        'dek_en'         => '',
+        'frame'          => null,
+        'frame_alt_pt'   => null,
+        'frame_alt_en'   => null,
+        'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
+    ],
+
 ];
