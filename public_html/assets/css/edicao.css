@@ -2472,6 +2472,38 @@ html.lightbox-aberto{overflow:hidden}
   }
 }
 
+/* ── §11 (edição #5) · a TIRINHA ENCOMENDADA ──────────────────────────────
+   Obra de terceiro (arte real, não CSS): duas montagens do MESMO artista —
+   horizontal (4 quadros numa linha, 1196×284) e quadrada (4 quadros em 2×2,
+   659×585) — trocadas por <picture>/<source media>, HTML puro, zero JS. O
+   corte de 680px é MEDIDO (a matemática inteira está no comentário do
+   partial, src/content/edicao-5/{pt,en}/sec-11.php): os 2 layouts são o
+   MESMO conjunto de quadros desenhados quase no mesmo tamanho nativo, só
+   REARRANJADOS (1 fileira × grade 2×2) — então "legível" é a mesma ESCALA
+   (largura da coluna ÷ largura original do arquivo) nos dois, e o corte é o
+   viewport onde a escala da horizontal alcança a escala já validada como
+   legível da quadrada a 390px.
+   width/height em CADA fonte = as dimensões reais dos 2 arquivos, então a
+   troca de imagem pela media query NUNCA empurra layout (zero CLS nas 2
+   pontas). max-width:100% mantém a arte dentro da coluna de leitura (74ch,
+   igual a toda .conteudo), nunca maior que o texto ao redor. */
+.conteudo .tirinha{margin:0 0 clamp(14px,2.2vw,18px)}
+.conteudo .tirinha-link{
+  display:block; position:relative; line-height:0;
+  border:1px solid var(--borda); border-radius:var(--raio-tela);
+  overflow:hidden; background:#000;
+}
+.conteudo .tirinha-link:focus-visible{outline:2px solid var(--acento); outline-offset:3px}
+.conteudo .tirinha img{display:block; width:100%; height:auto}
+/* a legenda: só o endereço, no MESMO padrão "→ destino" dos links fixos do
+   índice (src/i18n/*.php, links_fixos) — não repete o crédito ao artista
+   (esse mora no Expediente, sec-19; decisão do líder, ver o cabeçalho do
+   partial). */
+.conteudo .tirinha figcaption{
+  font-family:var(--font-display); font-size:15px; line-height:1.5; color:var(--tinta-2);
+  margin:8px 0 0; padding-left:9px; border-left:2px solid var(--tinta-ciano);
+}
+
 /* ═══════════════════════════════════════════════════════════════════════
    §13 · o ENCARTE CENTRAL (porte do mock 19)
    ★ A peça não é o quadrado, é a MOLDURA em volta dele: moldura dupla, marcas
