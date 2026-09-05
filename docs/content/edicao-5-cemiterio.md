@@ -25,8 +25,8 @@
 > ⛔ **Travas:** T3 integral (nada da refundação, nada de nome de host: usar "o servidor remoto"), T5 (zero
 > travessão/emoji), sem o número "172 arquivos" (só a Reportagem tem essa fonte firme), sem repetir a lápide
 > "C# .NET 8 AOT" além da linha de referência.
-> **Status:** rascunho v1, aguardando `GATE-CONTEUDO` do editor-geral; **epitáfio ainda proposto**, não
-> decisão fechada (pauta, §3.1 e D-pendente).
+> **Status:** rascunho v1, aguardando `GATE-CONTEUDO` do editor-geral. **Epitáfio FECHADO pelo líder em
+> 05/09/2026:** ficam as duas linhas que a pauta propunha, sem alteração de texto (pauta, §3.1).
 
 ---
 
@@ -129,9 +129,9 @@ usava, na verdade: o obituário original já não tem nenhum), e onde o `.php` p
 ### Pendências desta seção
 
 - `GATE-CONTEUDO` do editor-geral.
-- **Epitáfio ainda proposto na pauta, não decisão fechada:** "Aqui não jaz ninguém. / O corpo ia ser
-  guardado. Foi apagado." (pt) e a tradução equivalente (en) usadas nesta peça são a proposta da pauta,
-  citada verbatim; confirmar com o líder antes do `GATE-CONTEUDO`.
+- **Epitáfio FECHADO pelo líder em 05/09/2026:** "Aqui não jaz ninguém. / O corpo ia ser guardado. Foi
+  apagado." (pt) e a tradução equivalente (en) usadas nesta peça são o texto decidido, citado verbatim; não
+  há pendência de confirmação no `GATE-CONTEUDO` quanto a este ponto.
 - `GATE-SPOILER`: não se aplica (registro técnico de produção, não narrativa de lore).
 - Copyedit formal (`revisor-textual`) e prova final.
 - Arte: **nenhuma nova**, o layout de lápide vem das edições anteriores e não re-gate.

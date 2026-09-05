@@ -394,8 +394,8 @@ que guarda só o ponteiro, e a nota de rodapé para uma obra que não existe.
 
 **Escopo — entra (a cova é do CORPO, não da decisão; a #3 já enterrou a decisão de sair):**
 - Uma lápide só: `a fundação C#`, datas `mai/2026` a `22/jul/2026`.
-- Epitáfio (proposto na pauta, ainda pendente): *"Aqui não jaz ninguém. / O corpo ia ser guardado. Foi
-  apagado."*
+- Epitáfio (FECHADO pelo líder em 05/09/2026, sem alteração ao texto da pauta): *"Aqui não jaz ninguém. /
+  O corpo ia ser guardado. Foi apagado."*
 - A prosa carrega a matéria: a tag `pre-m8-godot-legacy`, criada para preservar, guarda só o ponteiro (é
   assim que submódulo funciona); a limpeza local levou o único clone; o remoto foi apagado em vez de
   arquivado, contra o parecer *"apagar o repo remoto seria irreversível de verdade; não recomendo"*;
@@ -442,8 +442,8 @@ personagem vivendo dentro do mundo ficcional sendo perguntado sobre a própria e
 
 **Travas verbatim que valem aqui:** T3 (integral, sobretudo a matéria reservada), T4, T5.
 
-**Pendências:** GATE-CONTEUDO; confirmar o epitáfio proposto com o líder (ainda marcado como proposta na
-pauta, não decisão fechada); zero arte nova (layout reaproveitado).
+**Pendências:** GATE-CONTEUDO; zero arte nova (layout reaproveitado). Epitáfio fechado pelo líder em
+05/09/2026, sem pendência de confirmação.
 
 ---
 
@@ -763,40 +763,41 @@ agente desenha, roteiriza, propõe quadro ou "sugere ajuste".
 Fonte primária: `/home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld/docs/editorial/PAUTA-EDICAO-5.md`,
 §9 (tabela das 8 pendências, cada uma com dono) e §11 risco 12.
 
-### A2. Os dois prints de 07/08 — `frame` da edição e Pôster (D5, D6)
+### A2. O logo do GusWorld: `frame` da edição e Pôster (D5, D6, substituídas em 05/09/2026)
 
-**Não são peças com escrita nova.** D6: o `frame` da capa sai de um dos dois prints do achado do Gus Dragon
-de 07/08, que o líder vai fornecer. D5: o segundo print vira o Pôster, em par com a capa. Qual vai para onde,
-o líder escolhe no gate de capa, vendo os dois.
+**Não é peça com escrita nova.** ⚠️ **ATUALIZADO 05/09/2026:** D5 e D6 (04/09, os dois prints do playtest
+de 07/08) foram substituídas pelo líder. O `frame` da capa e o Pôster (Seção 13) passam a ser a **mesma
+peça**: o logo do GusWorld, um dragão em neon vermelho gravado numa laje de pedra escura, asas em bronze,
+fumaça subindo, entregue pelo líder. Duas coisas dele ficam registradas: a arte **é gerada por inteligência
+artificial** (confirmado por ele) e por isso o site tem de declarar (`docs/auditoria/AUD-IA-2026-08-04.md`,
+achado IA-02: declarar é a defesa); e a marca **é o logo do jogo GusWorld**, não selo de facção nem marca do
+playtester. O arquivo ainda não chegou ao disco.
 
 **O que é possível preparar agora:**
-- **`frame_alt` nos dois idiomas**, descrevendo só a figura (o que a tela mostra: o inimigo em ronda, o
-  bloco, a cidade) — mas só depois de os prints chegarem e passarem na higiene (L-02: abrir e olhar antes de
-  versionar, só a janela do jogo, sem desktop/barra/terminal) e no GATE-SPOILER.
-- **A ficha do Pôster**, no molde `.chapa.retrato` da #4, com só o que é medido (dimensões do print) — sem
-  inventar dado.
-- **As duas alternativas de contingência, já prontas para não travar a edição se um dos prints reprovar:**
-  - Alternativa A: *"O único retrato que sobrou"*, o identificador do commit da fundação C#
-    (`f10faff73f33c180d046a5e7372ca34e8ce6a986`) composto em pixel na chapa do encarte, com a ficha reduzida
-    a *"40 caracteres, nenhum arquivo"*. Zero asset, zero risco de higiene, zero escrita nova.
-  - Alternativa C: chapa vazia com a legenda *"retrato de um arquivo que não existe mais"*.
+- **`frame_alt` nos dois idiomas**, descrevendo só a figura (o dragão, a laje, a fumaça), mas só depois de
+  o arquivo chegar e passar na higiene (L-02: abrir e olhar antes de versionar) e no GATE-SPOILER.
+- **A ficha do Pôster**, no molde `.chapa.retrato` da #4, com só o que for medido (dimensões do arquivo),
+  sem inventar dado.
+- **A frase de declaração de uso de IA** para esta peça, a submeter ao líder antes do render (a auditoria já
+  reprovou a fórmula genérica do rodapé, IA-03; esta peça precisa de declaração própria, não da frase padrão).
+
+**As duas alternativas de contingência que existiam para o caso de os prints de 07/08 reprovarem
+(identificador do commit; chapa vazia) deixaram de valer e não são mais marcador de nada.**
 
 **O que fica como marcador até o material chegar:**
-- O conteúdo visual dos dois prints (não sei o que mostram; a higiene é quem vai dizer).
-- Qual dos dois vira capa e qual vira pôster (escolha do líder no gate de capa).
-- Se qualquer um dos dois reprovar na higiene ou no spoiler, **a decisão volta ao líder**; não vira "usa o
-  outro" por conta própria (regra explícita da pauta, D5/D6).
+- O conteúdo exato do arquivo do logo (dimensões, formato); não sei ainda, a higiene é quem vai dizer.
 
 Fonte primária: `/home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld/docs/editorial/PAUTA-EDICAO-5.md`,
-§8 (a imagem da edição e o Pôster) e §11 risco 14.
+§8 (a imagem da edição e o Pôster, atualizada em 05/09/2026) e §11 riscos 9 e 14.
 
 ---
 
 ## Nota final sobre o que este documento NÃO decide
 
 Nenhuma das dez peças acima tem, neste brief, uma linha de texto final aprovada. Copies citadas como
-"propostas" na pauta (a fala da Errata, o epitáfio do Cemitério, a formulação da ironia d'O Gus lê o bus)
-continuam propostas até o `GATE-COPY`/`GATE-CONTEUDO`; este documento organiza escopo e fonte, não substitui
+"propostas" na pauta (a fala da Errata, a formulação da ironia d'O Gus lê o bus) continuam propostas até o
+`GATE-COPY`/`GATE-CONTEUDO` (o epitáfio do Cemitério, citado nesta lista em versões anteriores deste
+documento, foi FECHADO pelo líder em 05/09/2026 e sai dela); este documento organiza escopo e fonte, não substitui
 o julgamento do líder na leitura final. Onde a pauta já registra um verbatim do líder como fato fechado
 (D1-D17), este brief o trata como fechado; onde a pauta registra algo como "proposta" ou "recomendo", este
 brief preserva a mesma marcação, sem promover proposta a decisão.

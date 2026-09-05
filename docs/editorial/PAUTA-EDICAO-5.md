@@ -9,8 +9,10 @@
 >
 > **O que ainda depende de material externo (não de decisão):** a tirinha da Seção 11, obra encomendada a um
 > profissional, que não publica sem forma do crédito, licença, consentimento e declaração de IA resolvidos
-> (§9); e os dois prints de 07/08, que viram `frame` e Pôster só se os dois passarem na higiene e no gate de
-> spoiler (§8, §11 risco 14). Nenhum dos dois segura as outras seções.
+> (§9); e o logo do GusWorld (dragão em neon, entregue pelo líder em 05/09/2026, arte gerada por IA a
+> declarar), que vira `frame` e Pôster juntos assim que o arquivo chegar e passar na higiene e no gate de
+> spoiler (§8, §11 riscos 9 e 14; substitui os dois prints de 07/08 de D5/D6). Nenhum dos dois segura as
+> outras seções.
 >
 > Escrita em 2026-09-04, um dia depois de a #4 ir ao ar (03/09). Nada aqui é copy final: toda fala ou
 > pensamento do Gus proposto neste documento passa pelos gates do loop da seção (GATE-LENTE, GATE-CONTEUDO,
@@ -160,7 +162,7 @@ Porte medido contra os partials pt da #4: **S** = 2 a 4 parágrafos; **M** = 6 a
 | 10 | Classificados in-world | vazio com graça | Reusar idêntico | #1 (mesmos typos, mesmos IDs), como a #4 fez |
 | 11 | HQ | **obra encomendada a um profissional** (D7 decidida, 04/09) | *"A tirinha eu vou fornecer, não faça."* / *"Será uma tirinha que encomendei a um profissional."* Nenhum agente desenha, roteiriza ou propõe quadros. **Não publica sem crédito, licença, consentimento e declaração de IA resolvidos** (§9); as outras seções não esperam por ela | Arte de terceiro, fornecida pelo líder |
 | 12 | Próximos Lançamentos | vazio com graça | Reusar #1 (a linha do root), atualizando só a ressalva interna: o que segue de fora do que já foi contado | #1 |
-| 13 | Pôster central | **CHEIA** (print, zero escrita), D5 decidida em 04/09 | **O segundo print de 07/08, em par com a capa:** o mesmo episódio em duas superfícies; qual vai onde, o líder escolhe no gate de capa. **Dependência dura:** só existe se os dois prints passarem na higiene e no spoiler; senão volta ao líder, com as alternativas da §8 vivas | Os dois prints do líder (D6); molde `.chapa.retrato` da #4 |
+| 13 | Pôster central | **CHEIA** (arte, zero escrita), D5 substituída em 05/09 | **O logo do GusWorld, em par com a capa:** a mesma peça nas duas superfícies (§8); arte gerada por IA, a declarar. **Dependência:** só existe quando o arquivo chegar e passar na higiene e no spoiler; as alternativas antigas (identificador do commit; chapa vazia) não valem mais | O logo do líder (D6, substituída); molde `.chapa.retrato` da #4 |
 | 14 | Brinde | vazio com graça | Reusar #1 | #1 (os 2 downloadables) |
 | 15 | Cupom recortável | cheia (recorrente) | Reusar o mini-app | `src/includes/cupom.php` |
 | 16 | A Entrevista | **CHEIA** (L) | **Jaci "Proxy" Vanderbist** (D3 decidida, 04/09: segue a fila da party, sem reabrir a ordem nem criar trilha B), com a regra nova: o entrevistado nunca vê o `//` | `ROTEIRO-ENTREVISTAS.md` |
@@ -248,8 +250,8 @@ conveniência de diagramação.
 **Seção 7, Cemitério.** A #3 já enterrou "Godot 4" e "C# .NET 8 AOT" (ambos 19/mai a 21/jun, a *decisão* de
 sair), e até disse que "o corpo ficou instalado no computador até 22 de julho". **Re-enterrar é publicar a
 mesma história duas vezes.** A cova da #5 é outra: é a do **corpo**. Proposta: uma lápide só, `a fundação C#`,
-datas `mai/2026` a `22/jul/2026`, epitáfio em duas linhas (proposta, pendente: *"Aqui não jaz ninguém. / O
-corpo ia ser guardado. Foi apagado."*), e a prosa carrega o que é a matéria: a tag `pre-m8-godot-legacy`, criada
+datas `mai/2026` a `22/jul/2026`, epitáfio em duas linhas (**FECHADO pelo líder em 05/09/2026**: *"Aqui não
+jaz ninguém. / O corpo ia ser guardado. Foi apagado."*), e a prosa carrega o que é a matéria: a tag `pre-m8-godot-legacy`, criada
 para preservar, guarda só o ponteiro (é assim que submódulo funciona); a limpeza local levou o único clone; o
 remoto foi apagado em vez de arquivado, contra o parecer *"apagar o repo remoto seria irreversível de verdade;
 não recomendo"*; varreram lixeira, packs e disco: não há cópia; **nada funcional se perdeu, perdeu-se o
@@ -355,7 +357,6 @@ sugestão; ele escolhe, ajusta ou recusa. Sem ponto final nas falas e nos `//`; 
 - **Seção 5, A Nota:** `gus@glyfesse:~/nota$ a nota` / *"Como dar nota a um jogo que perdeu o chão velho e continuou de pé? Assim:"* / Arquitetura: *existe, e agora não tem mais nada do jogo antigo embaixo* / Gráficos: *1 (a mesma cara; ninguém mexeu nela este mês)* / Jogabilidade: *um personagem que anda, conversa, luta e ganha; jogado do começo ao fim por dois, e quem estuda jogos achou onde rangia* / Texto: *10, de novo* / `// o chão antigo saiu e eu nem senti... isso é bom ou é assustador`. (Trava §1.1: seco.)
 - **Seção 9, Errata:** `gus@glyfesse:~/errata$ errata + cartas` / *"Errata: quatro edições, e o primeiro erro apareceu. Não foi um leitor que achou; foi alguém daqui, revisando outra coisa. Na edição #3 em inglês, a tarja preta do Detonado dizia 'trecho censurado' em português para quem lê com leitor de tela. Quem ouvia em inglês ouvia uma frase que não era da língua. Corrigido junto com esta edição. Cartas: nenhuma de leitor, de novo."* / `// a gente conferiu a tarja. ninguem conferiu em que lingua`.
 - **Seção 12, Próximos Lançamentos:** reusar a linha do root da #1 (*"A intenção é semanal. Mais ou menos... 'devezenquandal' fica mais fácil de afirmar."*). A ressalva interna (comentário PHP) passa a dizer: o motor de cartas por inteiro e o save continuam de fora; o menu de pausa e a colisão entram (narrados nesta edição).
-- **Seção 13, Pôster, se ficar vazio (opção C de D5):** o molde de chapa da #3/#4 com o quadro em branco e a legenda *"retrato de um arquivo que não existe mais"* (é a mesma ideia da opção A, sem o identificador; ver §8).
 - **Seção 19, nota do editor (root):** `root@glyfesse:~/expediente$ nota do editor` / *"Na edição passada escrevi que nada se perde, só espera a vez. Desta vez algo se perdeu, e foi justamente o que estava marcado para ser guardado. Fica registrado onde deve: numa lápide. O resto do mês foi conferir. No fim, joguei o jogo inteiro e não achei nada. O Gus Dragon jogou depois e achou dois defeitos, porque estuda jogos e o filtro dele para isso é mais especializado que o meu. Aí perguntou o tamanho do jogo e recebeu um número, não uma estimativa."* (Trava §1.1: o root afirma a especialização dele, seco, sem elogio e sem cena de orgulho.)
 
 ---
@@ -381,8 +382,8 @@ encarte do glintfx fez na #4. Ver §11 para o que encolher se a produção pesar
 **Dez peças com escrita real**, uma a mais que a #4: a décima é a caixa do achado (D16), que nasceu de lei e
 não de espaço.
 
-**O Pôster central** é arte CSS (zero escrita, se D5 = opção A); **A Nota** e a **nota do editor** são copy
-curta de gate, não peça.
+**O Pôster central** é arte (zero escrita: o logo do GusWorld, §8); **A Nota** e a **nota do editor** são
+copy curta de gate, não peça.
 
 ---
 
@@ -503,32 +504,29 @@ print da banca em 390px **com este dek**, não só a manchete.
   aberto; pela legenda, não é o playtest, e "motor anterior" o aproxima da matéria reservada. **Não
   recomendo**; fica registrado para que ninguém o "descubra" depois.
 
-**Logo, a constatação honesta:** no repositório não há captura utilizável da janela. **D6 decidida pelo
-líder em 04/09/2026: o `frame` da edição sai dos dois prints do achado do Gus Dragon, de 07/08, que ele vai
-fornecer.** Condições, mantidas da recomendação: a thread principal abre e olha cada um antes de versionar (só
-a janela do jogo; sem desktop, barra, terminal ou conteúdo pessoal, L-02); os dois passam pelo GATE-SPOILER
-(o que a tela mostra: o inimigo em ronda, o bloco, a cidade); a fonte física vai para `resources/frames/` e a
-publicação para `public_html/assets/frames/edicao-5.png`, com `frame_alt` nos dois idiomas descrevendo só a
-figura. **Se qualquer um dos dois reprovar na higiene ou no spoiler, a decisão volta ao líder; não vira "usa o
-outro" por conta própria.** Qual dos dois é o `frame` também é escolha dele, no gate de capa, com os dois
-prints à vista.
+**Logo, a constatação honesta:** no repositório não há captura utilizável da janela.
 
-**Pôster central: D5 decidida pelo líder em 04/09/2026: o segundo print de 07/08 vira o pôster, formando
-par com a capa.** Um print é a imagem da edição, o outro é o encarte: o mesmo episódio em duas superfícies.
-Qual vai para a capa e qual para o pôster é escolha dele no gate de capa, depois de ver os dois.
+**NOVA DECISÃO do líder, 05/09/2026, substitui D5 e D6 para a capa e o pôster.** O pôster (Seção 13) e a
+capa (`frame`) passam a ser a mesma peça: o **logo do GusWorld**, entregue pelo líder hoje: um dragão em
+neon vermelho gravado numa laje de pedra escura, asas em bronze, fumaça subindo. O plano dos dois prints do
+playtest de 07/08 para essas duas superfícies (D5 e D6, ambas de 04/09) fica sem efeito. Duas coisas do
+líder ficam registradas, verbatim ou por confirmação direta dele:
 
-**Dependência dura, registrada como risco (§11, item 14):** o par só existe se os dois prints chegarem e
-**os dois** passarem na higiene (L-02: só a janela do jogo) e no GATE-SPOILER. Se um reprovar, a decisão
-volta ao líder (não vira "usa o que sobrou"), e as duas alternativas abaixo continuam vivas:
+- **A arte é gerada por inteligência artificial**, confirmado pelo líder quando perguntado. Logo, o site
+  tem de declarar isso, pela mesma regra que já reprovou um lançamento anterior:
+  `docs/auditoria/AUD-IA-2026-08-04.md`, achado IA-02 ("o uso de IA para ARTE não está declarado em lugar
+  nenhum do site"). Declarar é a defesa.
+- **A marca é o logo do jogo GusWorld**, não selo de facção nem marca do playtester.
 
-- **Alternativa A:** *"O único retrato que sobrou."* O identificador do commit da fundação C#,
-  `f10faff73f33c180d046a5e7372ca34e8ce6a986`, composto em pixel na chapa do encarte, com a ficha reduzida a
-  uma linha (*"40 caracteres, nenhum arquivo"*). Zero asset, zero risco de higiene, zero escrita; a mesma
-  classe de arte CSS que a #3 usou; proveniência na mensagem do bus de 22/07.
-- **Alternativa C:** chapa vazia com a legenda (§3.2).
+**O arquivo ainda não chegou ao disco** ("Aguarde o caminho do arquivo"). Pôster e capa ficam **decididos,
+aguardando só o arquivo**, não mais "sem material".
 
-A chapa do pôster, com print dentro, reusa o modificador `.chapa.retrato` da #4 (um `<img>` dentro da chapa);
-a ficha traz só o que é medido (dimensões do print), como a #4 fez.
+**As duas alternativas de contingência do pôster deixaram de valer** (nasciam para o caso de os prints de
+07/08 reprovarem na higiene ou no spoiler; a decisão de 05/09/2026 tira o pôster dessa dependência) e saem
+deste documento.
+
+A chapa do pôster segue reusando o modificador `.chapa.retrato` da #4 (um `<img>` dentro da chapa) assim que
+o arquivo do logo chegar; a ficha traz só o que for medido do arquivo entregue (dimensões), como a #4 fez.
 
 ---
 
@@ -639,9 +637,11 @@ próxima pauta parte de um ledger que mente (é a lição da L-14 do site aplica
    de qualquer render.
 8. **A Errata depende de um deploy.** Se a correção da #3 em inglês não for no mesmo deploy da #5, a errata
    anuncia conserto inexistente. Ou vai junto, ou a errata muda para "corrigiremos", ou sai (D9).
-9. **O pôster com o identificador do commit.** É a primeira vez que a revista publica um hash. Não é segredo
-   nem spoiler; mas é preciso conferir com o líder que o identificador pode ir a público (D5), porque uma vez
-   publicado não sai.
+9. **O logo (capa e pôster) é gerado por IA, e o site precisa declarar isso.** O líder confirmou quando
+   perguntado (§8, decisão de 05/09/2026). A `AUD-IA` (docs/auditoria/AUD-IA-2026-08-04.md, achado IA-02) já
+   reprovou um lançamento anterior por uso de IA em arte não declarado; a produção confere, antes do GATE-GO,
+   que a declaração cobre esta peça e não repete a fórmula genérica que a própria auditoria marcou como
+   insuficiente (IA-03).
 10. **Higiene de asset**, como sempre: qualquer imagem (prints de 07/08, a tirinha) é aberta e olhada antes de
     rastrear; nome de batismo nunca, em texto, `alt`, arquivo ou commit.
 11. **O dinheiro do líder na Reportagem: decidido (D12).** A frase do custo entra (*"claro que custou, pago
@@ -657,15 +657,13 @@ próxima pauta parte de um ledger que mente (é a lição da L-14 do site aplica
 13. **A caixa do achado e a Reportagem contando a mesma história.** A caixa é peça própria por lei (D16), e
     a Reportagem de capa abre no mesmo dia (22/07). A divisória da §5.4 dá ao corpo meia frase e à caixa o
     resto; o revisor da onda 3 confere que o menu inicial aparece uma vez só.
-14. **Duas seções dependem de material que ainda não chegou, e nenhuma das duas segura as demais.** A
-    tirinha (Seção 11, obra encomendada; §9) e os dois prints de 07/08 (o `frame` e o Pôster, D6 e D5). Para
-    os prints a dependência é dura: **o par capa e pôster só existe se os dois chegarem e os dois passarem na
-    higiene (L-02) e no GATE-SPOILER**; se um reprovar, a decisão volta ao líder (não vira "usa o que sobrou"),
-    e as outras duas opções do pôster (§8) continuam vivas como alternativa. Qual print vai para a capa e qual
-    para o pôster é escolha dele no gate de capa, com os dois à vista. As dezesseis seções restantes seguem
-    a onda normal; se o material não chegar até o GATE-GO, o líder decide entre segurar a edição e publicar
-    sem as duas superfícies (a HQ entra em revisão; o `frame` fica nulo como na #1 e na #2, e o pôster cai na
-    opção A ou C).
+14. **A capa e o pôster dependem de um arquivo que ainda não chegou.** §8, decisão do líder de 05/09/2026:
+    o `frame` e o Pôster passam a ser a mesma peça, o logo do GusWorld, substituindo o plano dos dois prints
+    de 07/08 (D6/D5). A dependência é de um arquivo só: **capa e pôster só existem quando ele chegar**,
+    passar na higiene (L-02) e no GATE-SPOILER. As duas alternativas de contingência que a pauta desenhava
+    para os prints (identificador do commit; chapa vazia) saíram do documento. As dezesseis seções restantes
+    seguem a onda normal; se o arquivo não chegar até o GATE-GO, o líder decide entre segurar a edição e
+    publicar sem a superfície (o `frame` fica nulo, como na #1 e na #2).
 15. **O conserto da #3 em inglês toca edição publicada (D9).** Trocar quatro `aria-label` em
     `edicao-3/en/sec-08.php` é cirúrgico, mas sobe no mesmo deploy da #5 e exige a prova de que a #3 não
     regrediu em mais nada, no mesmo rigor que a #4 usou ao mexer no CSS compartilhado: render da #3 em pt e en
@@ -685,8 +683,8 @@ próxima pauta parte de um ledger que mente (é a lição da L-14 do site aplica
 | **D2** | Qual fato a frase "o verificador automático achou o travamento" nomeia | **DECIDIDA pelo líder em 04/09/2026: o analisador estático de 23/07** (travamento de ponteiro nulo em objeto já movido, que a revisão adversarial humana deixou passar). O fato de 24/07 (a sabotagem que travou o teste) não é descartado: vai para o Detonado da Pausa com a divisória da §5.2 |
 | **D3** | Entrevistado da #5 | **DECIDIDA pelo líder em 04/09/2026: Jaci "Proxy" Vanderbist.** Segue a fila da party, sem reabrir a ordem nem criar trilha B; a pergunta sobre intercalar trilhas cai junto |
 | **D4** | Detonado | **DECIDIDA pelo líder em 04/09/2026: entra cheio, o Detonado da Pausa** (M), com o material de 24/07 dentro (a sabotagem que fez o teste travar em vez de reprovar, e o limite de tempo que faltava). A divisória contra a Programação (§5.2) vale integralmente |
-| **D5** | Pôster central | **DECIDIDA pelo líder em 04/09/2026: o segundo print de 07/08 vira o pôster, em par com a capa** (o mesmo episódio em duas superfícies). Dependência dura: só se os dois prints passarem na higiene e no spoiler; se um reprovar, volta ao líder, e as alternativas (identificador do commit; chapa vazia) seguem vivas. Qual print vai para a capa e qual para o pôster: ele escolhe no gate de capa, depois de ver os dois |
-| **D6** | `frame` da edição | **DECIDIDA pelo líder em 04/09/2026: os dois prints do achado do Gus Dragon, de 07/08, fornecidos por ele.** Condições: main abre e olha antes de versionar (só a janela do jogo), GATE-SPOILER nos dois; se qualquer um reprovar, volta ao líder, não vira "usa o outro". Qual dos dois é o `frame`: ele escolhe no gate de capa |
+| **D5** | Pôster central | **DECIDIDA pelo líder em 04/09/2026 (o segundo print de 07/08 vira o pôster, em par com a capa); SUBSTITUÍDA por ele em 05/09/2026: o pôster passa a ser o logo do GusWorld** (ver §8), a mesma peça da capa. As alternativas de contingência (identificador do commit; chapa vazia) saíram do documento |
+| **D6** | `frame` da edição | **DECIDIDA pelo líder em 04/09/2026 (os dois prints do achado do Gus Dragon, de 07/08); SUBSTITUÍDA por ele em 05/09/2026: o `frame`/capa passa a ser o logo do GusWorld** (ver §8), entregue pelo líder, ainda sem o arquivo em disco; arte gerada por IA, a declarar (docs/auditoria/AUD-IA-2026-08-04.md, IA-02) |
 | **D7** | A HQ | **DECIDIDA pelo líder em 04/09/2026: obra encomendada a um profissional** (*"Será uma tirinha que encomendei a um profissional."*). Formato respondido; ficam as pendências de publicação da §9, com dono: crédito, licença, consentimento e declaração de IA (o líder); higiene (main); `alt` (nós escrevemos, ele aprova). A Seção 11 não publica sem os quatro primeiros; as outras não esperam |
 | **D8** | O Gus lê o bus | **DECIDIDA pelo líder em 04/09/2026: escada completa, até a ironia.** Abre duas mensagens comentando antes de cada uma; na terceira o tom vira ironia. As duas que ele abre: as memórias da era Godot (22/07) e o gate cego da paridade de traduções (23/07). Estreia do terceiro degrau: marco da série; a formulação da ironia vai a ele como toda fala do Gus |
 | **D9** | Errata | **DECIDIDA pelo líder em 04/09/2026: publica a errata e leva o conserto no mesmo deploy.** `A11Y-ED3-EN-TARJA` vira pré-requisito do deploy da #5; a Errata deixa de ser vazio; a copy é fala do Gus e vai a ele; o conserto toca edição publicada e exige prova de que a #3 não regrediu (§11, risco 15) |
@@ -709,9 +707,10 @@ headless (Firefox) e geração de card são **trabalho pesado**: um de cada vez.
 auditoria no modelo mais recente, implementação no anterior.
 
 **Onda 0, pré-produção (sem agente pesado).**
-- Nenhuma decisão pendente: D1 a D17 fechadas em 04/09. O que a onda 0 pede ao líder é **material**, não
-  decisão: os dois prints de 07/08 (D6/D5) e, para a tirinha (D7), as quatro respostas da §9 (forma do
-  crédito, licença, consentimento, uso de IA).
+- Nenhuma decisão pendente: D1 a D17 fechadas em 04/09; D5/D6 substituídas em 05/09 (capa e pôster passam a
+  ser o logo do GusWorld, §8). O que a onda 0 pede ao líder é **material**, não decisão: o arquivo do logo
+  (capa e pôster) e, para a tirinha (D7), as quatro respostas da §9 (forma do crédito, licença, consentimento,
+  uso de IA).
 - Main registra a reserva de D14 no `TODO.md` (`MATERIA-RMLUI-SAI`, INBOX, "reservado para a #6") e no
   ledger; título, dek e `data` já decididos entram na entrada da #5 de `data/edicoes.php` via
   `backend-engineer` na onda 5 (o `estado` segue `rascunho` até o GATE-GO).
@@ -719,7 +718,7 @@ auditoria no modelo mais recente, implementação no anterior.
   `edicao-3/en/sec-08.php`; `qa-engineer` renderiza a #3 em pt e en antes e depois e compara (edição
   publicada não pode regredir); o conserto **espera o deploy da #5** e é pré-requisito dele (L-11: deploy
   manual, uma autorização só, para as duas coisas juntas).
-- Main abre e olha cada arquivo recebido (prints, tirinha) antes de versionar (L-02).
+- Main abre e olha cada arquivo recebido (o logo, a tirinha) antes de versionar (L-02).
 - `TODO.md` existe; `ED5-PAUTA` está na INBOX e, com o gate fechado, vai para a tabela de pendências com o
   status tocado no mesmo commit (L-14), apontando para este documento.
 - `technical-writer` (1 agente) corrige o ledger (§10.4): linhas de 24/06 a 21/07 recebem `#4`; o mapa de
@@ -826,8 +825,9 @@ cortes da §11 são reais e não cortam promessa.
    ("o servidor remoto" basta), e a L-29 global manda purgar links a ele. Não citar o nome do host.
    O número "172 arquivos" (ledger) vem só do bus e da mensagem das memórias (22/07); a árvore atual não o
    corrobora nem o desmente. Usar como "cento e setenta e dois arquivos, segundo o registro do dia", ou omitir.
-2. **O conteúdo dos dois prints de 07/08.** Estão na máquina do líder e ele vai fornecê-los (D6); não sei se
-   mostram só a janela do jogo, e é a higiene da main que vai dizer.
+2. **O conteúdo do arquivo do logo.** Decisão do líder de 05/09/2026 (§8): o logo do GusWorld substitui os
+   dois prints de 07/08 como capa e pôster. O arquivo ainda não chegou ao disco; não sei que dimensões ou
+   formato ele traz, e é a higiene da main que vai dizer se passa sem ajuste.
 3. **O `para:` de cinco mensagens do glintfx (22/07 e 24/07).** Contei oito endereçadas a `site` pelo cabeçalho;
    as outras cinco são prováveis pelo contexto ("este é o quinto material" na de 23/07). A produção confere
    antes de escrever o `[N]` da fórmula.
