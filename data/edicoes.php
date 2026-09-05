@@ -193,23 +193,36 @@ return [
         'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
     ],
 
-    // ── #5+ · EXEMPLO DE RASCUNHO (NÃO renderizado) ──────────────────────────
-    // Demonstra o mecanismo do drip: estado 'rascunho' fica no array mas NUNCA
-    // aparece na banca/linha (os helpers o filtram). Publicar = trocar a string
-    // abaixo para 'publicada'. Mantido deliberadamente vago e sem frame para
-    // não spoilar nada. Preencher titulo/dek/frame/data reais só na hora de
-    // publicar. É o marcador do drip que a #4 deixou de ser ao publicar: o
-    // array sempre reserva a próxima vaga.
+    // ── #5 · O QUE PARECIA CONFERIDO ──────────────────────────────────────────
+    // Janela: 22/jul a 8/ago/2026. `data` = 2026-07-22 (D11, decidida pelo líder
+    // em 04/09/2026): a data é o dia de abertura da janela, pelo critério das
+    // edições anteriores (datam pelo marco de abertura); a janela por extenso
+    // ("de 22 de julho a 7 de agosto") vai no 1º parágrafo da Reportagem de
+    // capa, não aqui. Título e dek: D10, decididos pelo líder em 04/09/2026
+    // (docs/editorial/PAUTA-EDICAO-5.md, §7) — copiados verbatim.
+    // ⚠️ RASCUNHO: não publicar (estado permanece 'rascunho' até ordem do líder).
     [
         'numero'         => 5,
         'revisao'        => 1,
         'estado'         => 'rascunho',
+        'data'           => '2026-07-22',
         'slug_pt'        => 'edicao-5',
         'slug_en'        => 'edition-5',
-        'titulo_pt'      => '',
-        'titulo_en'      => '',
-        'dek_pt'         => '',
-        'dek_en'         => '',
+        'titulo_pt'      => 'O Que Parecia Conferido',
+        'titulo_en'      => 'What Looked Checked',
+        'dek_pt'         => 'Tiraram o jogo velho de baixo do novo com todo o cuidado, '
+                          . 'e o que se perdeu estava fora do alcance do cuidado. Semanas '
+                          . 'depois, dois jogaram o jogo novo inteiro: um foi procurar onde '
+                          . 'ele quebrava, e depois perguntou o tamanho dele.',
+        'dek_en'         => 'They pulled the old game out from under the new one with '
+                          . 'every care, and what got lost sat just outside that care\'s '
+                          . 'reach. Weeks later, two people played the new game start to '
+                          . 'finish: one went looking for where it would break, and then '
+                          . 'asked how big it was.',
+        // O `frame` sai dos dois prints do achado do Gus Dragon de 07/08/2026
+        // (D6, decidida pelo líder em 04/09/2026), ainda com ele fora deste
+        // repositório. Fica `null` até ele escolher, vendo os dois, qual vai
+        // para a capa e qual para o pôster (docs/editorial/PAUTA-EDICAO-5.md, §8).
         'frame'          => null,
         'frame_alt_pt'   => null,
         'frame_alt_en'   => null,
