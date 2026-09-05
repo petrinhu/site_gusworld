@@ -105,7 +105,7 @@
       <img src="/assets/edicao-5/Tirinha-Petrus-082026-02-quadrada.png"
            width="659" height="585"
            loading="lazy" decoding="async"
-           alt="Tirinha em quatro quadros. No primeiro, fundo preto com o logotipo pixelado &ldquo;SUPORTE_&rdquo;, uma caveira no lugar do O. Nos outros três, dois atendentes de camisa branca e crachá conversam ao lado de um notebook aberto — na tela dele, um personagem de cabelo laranja. Um deles pergunta que perigos obscuros se escondem na Selve Sombria Tecnorgânica; o outro (que troca de nome no crachá a cada quadro: Thomas, depois Alva, depois Edison) responde só &ldquo;raízes quadradas&rdquo;; o primeiro reage que isso não tem nada de obscuro, e o segundo devolve que ele nunca viu o boletim de matemática dele. No rodapé da arte, o endereço vidadesuporte.com.br.">
+           alt="Tirinha em quatro quadros. No primeiro, fundo preto com o logotipo pixelado &ldquo;SUPORTE_&rdquo;, uma caveira no lugar do O. Nos outros três, dois atendentes de camisa branca e crachá conversam ao lado de um notebook aberto: na tela dele, um personagem de cabelo laranja. Um deles pergunta que perigos obscuros se escondem na Selve Sombria Tecnorgânica; o outro (que troca de nome no crachá a cada quadro: Thomas, depois Alva, depois Edison) responde só &ldquo;raízes quadradas&rdquo;; o primeiro reage que isso não tem nada de obscuro, e o segundo devolve que ele nunca viu o boletim de matemática dele. No rodapé da arte, o endereço vidadesuporte.com.br.">
     </picture>
   </a>
   <figcaption>&rarr; vidadesuporte.com.br</figcaption>

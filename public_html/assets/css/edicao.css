@@ -2841,11 +2841,18 @@ html.lightbox-aberto{overflow:hidden}
   margin:10px 0 0; padding:10px 0 0; border-top:1px dashed #35895f66;
   color:#c8ffe4; text-shadow:none; line-height:1.65; white-space:pre-wrap;
 }
-/* segundo corpo de mensagem no mesmo tubo (edição #5, Grau 2 lido): mesma
-   classe .corpo, sem modificador - o respiro entre os dois vem do .cmd/.fala
-   de reação que a produção intercala entre eles, igual ao respiro que já
-   existe antes do "de novo" (.cmd.de-novo); nenhuma regra nova precisa
-   existir só porque agora há dois blocos .corpo na mesma peça. */
+/* DUAS TELAS na mesma figura (edição #5, reestruturado 05/09/2026, ordem do
+   líder - ED5-PAUTA): a 2ª mensagem não mora mais no mesmo tubo da 1ª -
+   ganhou seu PRÓPRIO .crt-scr/.crt-tela, irmão do primeiro dentro do mesmo
+   <figure>, e a reação de Grau 1 + a fala de Grau 2 que ficavam presas atrás
+   do role="img" agora são <p class="fala">/<p class="pensa"> reais, FORA das
+   duas telas, entre elas. .corpo segue genérico e sem modificador: cada tubo
+   tem no máximo um. O respiro entre a fala/pensa do meio e a tela seguinte
+   já vem de graça (margem própria do .pensa); só faltava o respiro entre a
+   PRIMEIRA tela e a fala que vem logo depois dela (medido: 0px, as duas
+   bordas se tocavam) - a regra abaixo é a única que esta reestruturação
+   pediu. */
+.conteudo .bus-crt .crt-scr + .fala{margin-top:clamp(10px,1.6vw,14px)}
 
 /* ESTREITO: a coluna do meio some. A 390px o "ASSUNTO" espremido entre as
    outras duas ficava com 2 caracteres úteis e a régua parecia rachada; com
