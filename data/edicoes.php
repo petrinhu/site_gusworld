@@ -219,13 +219,41 @@ return [
                           . 'reach. Weeks later, two people played the new game start to '
                           . 'finish: one went looking for where it would break, and then '
                           . 'asked how big it was.',
-        // O `frame` sai dos dois prints do achado do Gus Dragon de 07/08/2026
-        // (D6, decidida pelo líder em 04/09/2026), ainda com ele fora deste
-        // repositório. Fica `null` até ele escolher, vendo os dois, qual vai
-        // para a capa e qual para o pôster (docs/editorial/PAUTA-EDICAO-5.md, §8).
-        'frame'          => null,
-        'frame_alt_pt'   => null,
-        'frame_alt_en'   => null,
+        // O plano de `frame` sair dos dois prints do achado do Gus Dragon de
+        // 07/08/2026 (D6) morreu: o líder entregou, em 05/09/2026, um arquivo
+        // diferente (o brasão da família de Gus - o personagem, não o Gus
+        // Dragon playtester -, também logo do jogo GusWorld; imagem do
+        // repositório do jogo (que é READ-ONLY), recebida em 05/09/2026,
+        // com sha256 conferido idêntico contra a cópia em
+        // public_html/assets/edicao-5/logo-gusworld.jpg).
+        // `image-rendering:pixelated` em .capa-frame/.ed-frame/.lt-item-frame
+        // (edicao.css) é CONSCIENTE, não defeito: o líder viu a comparação
+        // renderizada e decidiu manter a regra herdada mesmo a peça não sendo
+        // pixel art (decisão de 05/09/2026, mesma que vale para .chapa.retrato
+        // do pôster em sec-13.php). O alt abaixo é o de CAPA/banca/linha do
+        // tempo - descreve a mesma figura do pôster, sem a moldura de "pôster
+        // central"; conferido contra o alt do pôster, não copiado por reflexo.
+        'frame'          => '/assets/edicao-5/logo-gusworld.jpg',
+        'frame_alt_pt'   => 'O brasão da família de Gus e o logo do jogo '
+                          . 'GusWorld: um dragão estilizado em linhas '
+                          . 'angulares, com o corpo enrolado em espiral, '
+                          . 'entalhado em relevo numa laje de pedra escura. '
+                          . 'Os sulcos do entalhe brilham em vermelho, as '
+                          . 'pontas das asas são de cobre escurecido, e fios '
+                          . 'de fumaça sobem dos sulcos.',
+        'frame_alt_en'   => "The coat of arms of Gus's family and the "
+                          . 'GusWorld game logo: a stylized angular dragon, '
+                          . 'its body coiled into a spiral, carved in relief '
+                          . 'into a dark stone slab. The carved grooves glow '
+                          . 'red, the wing tips are dark oxidized copper, and '
+                          . 'wisps of smoke rise from the grooves.',
+        // Card social próprio (1200x630) desta edição. Gerador em
+        // docs/design/og-card-5.html (o par pt/en, mesmo padrão da #4).
+        'og_image'       => '/assets/og-edicao-5.jpg',
+        // A CAPA da estante em INGLÊS (decisão do líder, 2026-07-25 — ver a
+        // nota da #1). Gerador: docs/design/og-card-5-en.html (o mesmo
+        // desenho, só o texto muda).
+        'capa_en'        => '/assets/og-edicao-5-en.jpg',
         'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
     ],
 

@@ -1,40 +1,36 @@
 <?php
-/* Pôster central (#5) · PLACEHOLDER, por ordem do líder (04/09/2026, verbatim:
-   "faça tudo, deixe as partes faltantes com placeholder para quando eu
-   entregar"). Molde herdado de edicao-4/pt/sec-13.php: moldura, marcas de
-   corte, cruzes de registro, .chapa (SEM o modificador .retrato, porque não
-   há retrato ainda), filete, ficha e vinco.
+/* Pôster central (#5) · o brasão da família de Gus, também logo do jogo
+   GusWorld - agora com a imagem real dentro da chapa. Fonte: uma imagem
+   (1408x1408) do repositório do jogo, que é READ-ONLY, recebida do líder em
+   05/09/2026 e copiada sem qualquer alteração para
+   public_html/assets/edicao-5/logo-gusworld.jpg - checksum sha256 conferido
+   idêntico byte a byte entre origem e cópia. Moldura, marcas de corte, cruzes
+   de registro, barra de cor e vinco seguem intocados da #3/#4 (edicao.css
+   §13); a .chapa ganha o modificador .retrato (mesmo da #4) e um <img> de
+   verdade no lugar do quadrado ciano chapado.
 
-   ⚠️ O QUE FALTA, exatamente, para o líder entregar (docs/editorial/
-   BRIEFS-EDICAO-5.md, Apêndice A2, D5/D6): DOIS PRINTS do achado do Gus
-   Dragon de 07/08/2026 (o playtest do clipping). Um dos dois vira o `frame`
-   da capa da edição, o outro vira este Pôster - qual vai para onde, o líder
-   escolhe no gate de capa, vendo os dois. Até lá:
-     - SEM QUALQUER <img>: nenhum src apontando para arquivo inexistente
-       (quebraria a página). O lugar da imagem é um bloco vazio, comentado.
-     - Faltam os DOIS `alt` (pt e en) descrevendo só a FIGURA (o que a tela
-       mostra: o inimigo em ronda, o bloco, a cidade - zero lore, zero função
-       de jogo não anunciada), que só podem ser escritos depois de ver o
-       print e passar pelo GATE-SPOILER.
-     - Falta a legenda/crédito definitivos (título do pôster, ficha de
-       dimensão medida do arquivo real).
-     - Se qualquer um dos dois prints reprovar na higiene (L-02: abrir e
-       olhar antes de versionar, zero desktop/barra/terminal/tela pessoal) ou
-       no GATE-SPOILER, a decisão volta ao líder - não vira "usa o outro" por
-       conta própria (regra explícita da pauta, D5/D6).
-     - Existem DUAS alternativas de contingência já desenhadas na pauta, se
-       os dois prints reprovarem: (A) o identificador do commit da fundação
-       C# composto em pixel na chapa ("40 caracteres, nenhum arquivo"); (C)
-       chapa vazia com a legenda "retrato de um arquivo que não existe mais".
-       Nenhuma das duas foi escolhida aqui - é decisão do líder no gate de
-       capa, não desta montagem.
+   ⚠️ image-rendering:pixelated É CONSCIENTE, NÃO DEFEITO: o líder viu a
+   comparação renderizada (serrilhado vs. suave) e decidiu manter o pixelated
+   herdado de .chapa.retrato (decisão de 05/09/2026) - a peça não é pixel art,
+   mas a moldura trata toda imagem do mesmo jeito, e o serrilhado resultante
+   foi aceito de olhos abertos. Não trocar essa regra sem nova ordem.
 
-   A seção RENDERIZA sem erro neste estado: nenhum <img>, nenhum atributo
-   src, nada quebrado. O que existe é só a moldura vazia + o próprio
-   comentário acima, para quem for completar não perder o que falta. */
+   ⚠️ A arte é gerada por inteligência artificial: PixelLab (geração) e Grok
+   Imagine (tratamento), confirmado pelo líder em 05/09/2026. Declarado seco
+   na ficha técnica abaixo, sem defesa por intenção - regra fixada depois de a
+   AUD-IA reprovar o lançamento da #3 por servir arte gerada sem declarar.
+
+   O brasão é do Gus PERSONAGEM (o protagonista de ficção) - nenhuma relação
+   com o Gus Dragon, o playtester real. Nome de era, facção ou qualquer outra
+   casa da história não entra: só os dois fatos liberados pelo líder (brasão
+   da família + logo do jogo). O alt descreve a FIGURA que a imagem mostra,
+   mais esses dois fatos, sem lore adicional. */
 ?>
 <div class="enc">
   <div class="quadro">
+    <?php /* as cruzes de registro são filhas DO QUADRO, não do .enc: ancoradas no .enc
+       o "bottom" mediria a partir do fim do crédito e a cruz de baixo cairia em cima
+       da linha de crédito (visto no render do mock da #3). */ ?>
     <span class="registro topo" aria-hidden="true"></span>
     <span class="registro base" aria-hidden="true"></span>
     <span class="corte tl" aria-hidden="true"></span>
@@ -45,27 +41,20 @@
     <p class="kicker">encarte destacável</p>
 
     <div class="cabeca">
-      <h3 class="titulo">Pôster<br>pendente</h3>
-      <span class="tarja">aguardando o material de 07/08</span>
+      <h3 class="titulo">O brasão<br>de Gus</h3>
+      <span class="tarja">e o logo do jogo</span>
     </div>
 
     <div class="filete" aria-hidden="true"></div>
 
-    <div class="chapa">
-      <?php /* PLACEHOLDER: nenhum <img> aqui de propósito (ver comentário de
-         cabeçalho). Quando o líder entregar um dos dois prints de 07/08:
-           1. copiar sem alteração para public_html/assets/edicao-5/ com
-              sha256 conferido idêntico entre origem e cópia (mesmo processo
-              do retrato-bertoldo.png da #4);
-           2. acrescentar .chapa.retrato (mesmo modificador da #4) e o <img>
-              com width/height reais, loading="lazy", decoding="async";
-           3. escrever os DOIS alt (pt/en) só depois do GATE-SPOILER aprovar
-              o que a figura mostra;
-           4. atualizar a .ficha abaixo com a dimensão real medida. */ ?>
+    <div class="chapa retrato">
+      <img src="/assets/edicao-5/logo-gusworld.jpg" width="1408" height="1408"
+           loading="lazy" decoding="async"
+           alt="O brasão da família de Gus e o logo do jogo GusWorld: um dragão estilizado em linhas angulares, com o corpo enrolado em espiral, entalhado em relevo numa laje de pedra escura. Os sulcos do entalhe brilham em vermelho, as pontas das asas são de cobre escurecido, e fios de fumaça sobem dos sulcos.">
     </div>
 
     <p class="ficha">
-      <span><b>pendente de material</b></span>
+      <span><b>1.408 &times; 1.408 px</b> &middot; PixelLab (geração) &middot; Grok Imagine (tratamento)</span>
       <span class="barra" aria-hidden="true">
         <i class="k"></i><i class="c"></i><i class="m"></i><i class="g"></i><i class="w"></i>
       </span>

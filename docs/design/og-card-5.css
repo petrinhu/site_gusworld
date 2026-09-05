@@ -1,0 +1,69 @@
+/* docs/design/og-card-5.css: o que e' PROPRIO da Edicao #5 "O Que Parecia Conferido":
+   o painel da direita e' o BRASAO do jogo GusWorld (public_html/assets/edicao-5/
+   logo-gusworld.jpg, 1408x1408, quadrado), o mesmo arquivo que virou `frame` da
+   edicao em data/edicoes.php. Sem recorte: a imagem e' quadrada e o painel
+   tambem e', entao o arquivo inteiro cabe sem cortar nada.
+
+   `image-rendering: pixelated` na imagem e' decisao CONSCIENTE do lider
+   (05/09/2026, ver o comentario de `frame` em data/edicoes.php): a mesma regra
+   herdada de .capa-frame/.ed-frame/.lt-item-frame (edicao.css) se aplica aqui
+   mesmo a peca nao sendo pixel art -- identidade visual unica pro card, nao
+   defeito.
+
+   O chassi (navy, scanlines, wordmark, tagline, rodape) vive em og-card.css.
+   Compartilhado pelo par pt/en: og-card-5.html e og-card-5-en.html. So o TEXTO
+   difere entre os dois; o desenho e' este, um so'. */
+
+  /* o dek desta edicao e' quase o dobro do da #4 (230 caracteres em pt, 257 em
+     en, contra 117/111 da #4) -- risco medido em PAUTA-EDICAO-5.md, §11, risco
+     16. Reduzido de 38px (chassi) para caber o dek INTEIRO, sem cortar frase,
+     dentro do espaco vertical entre o wordmark e o rodape. Largura padrao do
+     chassi (700px) serve sem alteracao: o painel (300px, igual #4) sobra o
+     mesmo espaco de folga que ja funcionava na #4. */
+  .tagline { font-size: 27px; line-height: 1.32; }
+
+  /* ── O PAINEL: a tela onde o brasao do jogo esta' entalhado ──────────────── */
+  .tela {
+    position: absolute;
+    z-index: 2;
+    right: 84px; top: 165px;
+    width: 300px; height: 300px;
+    border: 2px solid var(--borda);
+    background: var(--navy);
+    box-shadow:
+      inset 0 0 40px rgba(0,0,0,.5),
+      0 0 0 6px rgba(13,21,32,.6),
+      0 0 34px rgba(77,217,232,.20);
+  }
+
+  /* o INTERIOR recorta a imagem e segura a varredura por cima dela */
+  .tela .interior {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+
+  /* o brasao inteiro: quadrado contra quadrado, sem recorte nem sobra */
+  .tela .frame {
+    position: absolute;
+    left: 0; top: 0;
+    width: 300px; height: 300px;
+    image-rendering: pixelated;
+  }
+
+  /* scanlines locais: dentro da moldura a varredura e' mais forte (igual #2/#3/#4) */
+  .tela .varredura {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,.22) 3px,
+      rgba(0,0,0,0) 4px
+    );
+  }
+
+  /* vinheta interna: afunda os cantos e devolve o miolo pro brasao */
+  .tela .vinheta {
+    position: absolute; inset: 0;
+    box-shadow: inset 0 0 46px 10px rgba(13,21,32,.62);
+  }
