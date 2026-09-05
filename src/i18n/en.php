@@ -269,8 +269,8 @@ return [
     // ── PRIVACY POLICY (REMED-LGPD) ────────────────────────────────────────────
     // Text copied VERBATIM from docs/legal/politica-privacidade-rascunho.md,
     // EN block. Keys mirror pt.php key-for-key (see that file's header comment
-    // for the split-around-<code> convention and the one non-literal key,
-    // 'log_prazo').
+    // for the split-around-<code> convention and the non-literal keys
+    // 'log_lead2' / 'log_prazo' / 'log_corpo_b').
     'privacidade' => [
         'titulo'     => 'Glyfesse Privacy Policy',
         'atualizado' => 'Last updated: [DATE TO BE SET AT PUBLICATION]',
@@ -300,14 +300,14 @@ return [
 
         'log_lead1'   => "The server's automatic log.",
         'log_corpo_a' => 'Like almost every site on the internet, the hosting service we use automatically records a technical list of visits: your connection\'s number (called an IP address), the page requested, the date and time, and the type of browser. This is done by the hosting service itself, to keep the site running and secure, and mainly serves to diagnose problems.',
-        'log_lead2'   => 'How long that log is kept:',
-        // NOT a literal copy of the draft: this retention period used to be
-        // marked as a decision pending from the lead; he decided on
-        // 2026-09-05 (up to 30 days). See
+        'log_lead2'   => 'What Glyfesse does with that log:',
+        // NOT a literal copy of the draft: describes what is known about the
+        // server log, without promising a retention period (that depends on
+        // hosting-panel configuration, not yet confirmed). See
         // docs/legal/politica-privacidade-rascunho.md, section "O que é do
         // líder decidir", decision 2.
-        'log_prazo'   => 'up to 30 days.',
-        'log_corpo_b' => 'After that, the log is deleted.',
+        'log_prazo'   => 'We do not use that list for anything else.',
+        'log_corpo_b' => 'It is also not mixed with any other information on the site.',
 
         'links_lead'  => 'You may also notice links off the site.',
         'links_corpo' => "Some articles link elsewhere: the game's repository on GitHub, a guest artist's profile, an editorial partner's site. Clicking them opens another site, with its own rules. We do not automatically send anything to those places just because you visited Glyfesse.",

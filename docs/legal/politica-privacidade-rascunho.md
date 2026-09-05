@@ -15,10 +15,13 @@
 > texto entra no site (secao do Expediente ou pagina propria) e uma decisao do lider,
 > ainda em aberto ao decision 1 no fim deste dossie.
 >
-> **Nao decido por conta propria** onde falta decisao do lider: os dois lugares
-> que traziam a marca de decisao pendente no corpo da politica (retencao do
-> registro do servidor) foram resolvidos pelo lider em 05/09/2026, decisao 2 no
-> fim deste dossie: ate 30 dias.
+> **Nao decido por conta propria** onde falta decisao do lider: o lugar que
+> trazia a marca de decisao pendente no corpo da politica (retencao do
+> registro do servidor) foi decidido pelo lider em 05/09/2026 pela manha, com
+> um prazo fixo, e revertido por ele mesmo, no mesmo dia, porque ninguem conferiu se
+> o painel do servico de hospedagem de fato cumpre esse prazo. O texto abaixo
+> ja reflete a reversao: descreve o que o registro e e para que serve, sem
+> prometer prazo. Ver decisao 2, no fim deste dossie.
 
 ---
 
@@ -173,8 +176,8 @@ de hospedagem que usamos grava, automaticamente, uma lista técnica de visitas: 
 número de identificação da sua conexão (chamado de IP), a página pedida, a data e
 hora, e o tipo de navegador. Isso é feito pelo próprio serviço de hospedagem, para
 manter o site funcionando e seguro, e serve principalmente para diagnosticar
-problemas. **Por quanto tempo esse registro fica guardado:** até 30 dias. Depois
-desse prazo, o registro é apagado.
+problemas. **O que a Glyfesse faz com esse registro:** Não usamos essa lista para
+mais nada. Ela também não é misturada com nenhuma outra informação do site.
 
 **Você também pode notar links para fora do site.** Algumas matérias linkam para
 outros lugares: o repositório do jogo no GitHub, o perfil de um artista convidado,
@@ -250,8 +253,9 @@ your email for a mailing list, and we do not pass it on to anyone.
 hosting service we use automatically records a technical list of visits: your
 connection's number (called an IP address), the page requested, the date and
 time, and the type of browser. This is done by the hosting service itself, to
-keep the site running and secure, and mainly serves to diagnose problems. **How
-long that log is kept:** up to 30 days. After that, the log is deleted.
+keep the site running and secure, and mainly serves to diagnose problems. **What
+Glyfesse does with that log:** We do not use that list for anything else. It is
+also not mixed with any other information on the site.
 
 **You may also notice links off the site.** Some articles link elsewhere: the
 game's repository on GitHub, a guest artist's profile, an editorial partner's
@@ -306,7 +310,8 @@ ao mais completo:
 
 - **Opcao A -- declarar e prazar.** Manter o log, declarar a finalidade (seguranca
   e diagnostico), fixar uma retencao curta. O intervalo que a pratica aceita como
-  proporcional para um site sem conta e **7 a 30 dias**. Custo: exige conferir, no
+  proporcional para um site sem conta vai de alguns dias a cerca de um mes.
+  Custo: exige conferir, no
   painel do servico de hospedagem, se ha controle de rotacao/expurgo automatico
   nesse prazo -- se o painel so oferecer rotacao mensal ou anual, a promessa escrita
   pode nao bater com o que o painel realmente faz, e isso teria que ser verificado
@@ -320,10 +325,20 @@ ao mais completo:
   segue em tudo o mais. Custo: perde-se a capacidade de diagnosticar problema
   tecnico via log (ex.: descobrir de onde veio um pico de erro).
 
-**Decisao tomada pelo lider em 05/09/2026: Opcao A, declarar e prazar, com
-retencao de ate 30 dias.** O texto pt-BR e EN acima ja traz esse prazo. Falta
-conferir, no painel do servico de hospedagem, se existe expurgo automatico
-dentro desse prazo, antes do deploy (ver `TODO.md`, item `REMED-LGPD`).
+**O lider escolheu a Opcao A (declarar e prazar) na manha de 05/09/2026, com
+uma retencao de prazo fixo, e reverteu essa escolha no mesmo dia**, depois que eu
+levei a ele o problema: ninguem tinha conferido, no painel do servico de
+hospedagem, se existe expurgo automatico dentro desse prazo. Apagar nao e
+coisa do codigo do site, e configuracao do painel; sem essa conferencia, a
+pagina estaria prometendo um numero que pode nao bater com o que a hospedagem
+realmente faz. Diante de tres saidas (confirmar no painel, mandar conferir no
+servidor, ou tirar o prazo da pagina), **o lider escolheu tirar o prazo.** O
+texto pt-BR e EN acima ja reflete isso: descreve o que o registro e, quem
+grava e para que serve, e que o site nao usa nem mistura esse registro com
+mais nada, sem prometer prazo nenhum. Fica em aberto, sem bloquear nada: se
+algum dia o painel (ou a configuracao de rotacao no proprio servidor) for
+conferido, um prazo medido pode voltar ao texto (ver `TODO.md`, item
+`REMED-LGPD`).
 
 ### 3. Enquadramento como agente de pequeno porte (dispensa de Encarregado/DPO formal)
 

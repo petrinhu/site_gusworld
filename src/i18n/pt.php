@@ -280,10 +280,12 @@ return [
     // escopo desta tarefa "corrigir" a prosa). As chaves *_lead são o trecho em
     // negrito de abertura de cada parágrafo; *_antes/*_depois cercam um trecho
     // <code> que o template insere sem tradução (e-mail, nome de cookie,
-    // localStorage). 'log_prazo' é a ÚNICA frase que não é cópia literal: no
-    // rascunho, o prazo do registro do servidor ficava marcado como decisão
-    // pendente do líder; aqui já vem com a decisão dele (05/09/2026, até 30
-    // dias). Ver docs/legal/politica-privacidade-rascunho.md, decisão 2.
+    // localStorage). 'log_lead2', 'log_prazo' e 'log_corpo_b' não são cópia
+    // literal do rascunho: descrevem o que se sabe sobre o registro do
+    // servidor (quem grava, para que serve, que o site não usa nem mistura
+    // esse registro com mais nada) sem prometer prazo de retenção. O prazo
+    // depende de configuração do painel de hospedagem, ainda não conferida.
+    // Ver docs/legal/politica-privacidade-rascunho.md, decisão 2.
     'privacidade' => [
         'titulo'     => 'Política de Privacidade da Glyfesse',
         'atualizado' => 'Última atualização: [DATA A DEFINIR NA PUBLICACAO]',
@@ -313,13 +315,14 @@ return [
 
         'log_lead1'   => 'O registro automático do servidor.',
         'log_corpo_a' => 'Como quase todo site na internet, o serviço de hospedagem que usamos grava, automaticamente, uma lista técnica de visitas: o número de identificação da sua conexão (chamado de IP), a página pedida, a data e hora, e o tipo de navegador. Isso é feito pelo próprio serviço de hospedagem, para manter o site funcionando e seguro, e serve principalmente para diagnosticar problemas.',
-        'log_lead2'   => 'Por quanto tempo esse registro fica guardado:',
-        // NÃO é cópia literal do rascunho: o prazo aqui ficava marcado como
-        // decisão pendente do líder; ele decidiu em 05/09/2026 (até 30 dias).
-        // Ver docs/legal/politica-privacidade-rascunho.md, seção "O que é do
+        'log_lead2'   => 'O que a Glyfesse faz com esse registro:',
+        // NÃO é cópia literal do rascunho: descreve o que se sabe sobre o
+        // registro do servidor, sem prometer prazo de retenção (isso depende
+        // do painel de hospedagem, ainda não conferido). Ver
+        // docs/legal/politica-privacidade-rascunho.md, seção "O que é do
         // líder decidir", decisão 2.
-        'log_prazo'   => 'até 30 dias.',
-        'log_corpo_b' => 'Depois desse prazo, o registro é apagado.',
+        'log_prazo'   => 'Não usamos essa lista para mais nada.',
+        'log_corpo_b' => 'Ela também não é misturada com nenhuma outra informação do site.',
 
         'links_lead'  => 'Você também pode notar links para fora do site.',
         'links_corpo' => 'Algumas matérias linkam para outros lugares: o repositório do jogo no GitHub, o perfil de um artista convidado, o site de um parceiro editorial. Clicar neles abre outro site, com as próprias regras. Nós não mandamos nada automaticamente para esses lugares só por você visitar a Glyfesse.',
