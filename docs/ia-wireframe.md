@@ -319,7 +319,7 @@ O `D-STACK` é **decisão exclusiva do líder**; isto é o insumo que faltava, n
 5. **1 endpoint backend vivo:** poll do cupom (POST, persistência, `no-store`, fora da CDN). Todo o resto é cacheável; a CDN precisa suportar bypass de `/api/*` e purge-on-publish do que nasce de `$edicoes`.
 6. **Pixel art na web:** `image-rendering: pixelated` + escala inteira + sprites via CSS `steps()` — exigência de CSS, não de servidor.
 7. **Peças interativas client-side já testadas:** quadradinho, cupom, álbum (`localStorage`), som — lógica pura sob TDD zero-dep (`node --test` em dev/CI; o no-Node do Hostinger é runtime, não impede teste).
-8. **Zero terceiro por padrão** (`D-ANALYTICS`/`ZERO-DADO`): sem analytics, sem cookie, sem CDN de fonte externa — fontes e assets servidos do próprio domínio.
+8. **Zero terceiro por padrão** (`D-ANALYTICS`/`ZERO-DADO`): sem analytics de terceiro, sem CDN de fonte externa — fontes e assets servidos do próprio domínio. Único cookie do site: o do voto do cupom (`glyfesse_votou`), funcional e de primeira parte, não identifica o visitante.
 9. **Config de servidor:** `.htaccess` (redirect da raiz, `ErrorDocument` por diretório, headers de cache), compatível com o Hostinger Premium **sem Node**.
 10. **Funciona sem JS:** navegação, leitura, troca de idioma e CRT-off nunca dependem de JS.
 

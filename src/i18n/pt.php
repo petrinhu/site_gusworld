@@ -261,7 +261,7 @@ return [
     // colofão da §19 ("todos os direitos reservados"); (2) declarar o uso de IA em ARTE,
     // não só em código, NOMEANDO a ferramenta; (3) zero defesa por intenção ("a IA é
     // ferramenta, o criativo é do criador") e zero defesa por credencial. Declarar é a defesa.
-    'rodape_licenca'    => 'Código do site: Apache 2.0. Texto e arte da revista: todos os direitos reservados. Feito com IA: o código com Claude; a arte com PixelLab (sprites) e Tripo3D (pôster 3D).',
+    'rodape_licenca'    => 'Código do site: Apache 2.0. Texto e arte da revista: todos os direitos reservados. Feito com IA: o código com Claude; a arte com PixelLab (sprites; logo, gerado), Grok Imagine (logo, tratado) e Tripo3D (pôster 3D).',
     'rodape_contato'    => 'Fale com a redação',
     'build_tag_aria'    => 'versão desta edição',   // aria-label do carimbo de build (expert)
 
