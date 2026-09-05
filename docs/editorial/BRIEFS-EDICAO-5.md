@@ -829,3 +829,4 @@ banca usa (`target="_blank" rel="noopener"`, com `aria-label` descrevendo o dest
 leitor não perder a leitura da edição. ⚠️ São **dois links diferentes** e nenhum substitui o outro:
 a **arte** na `sec-11` leva a `vidadesuporte.com.br`; o **nome** na `sec-19` leva ao perfil dele.
 
+★ **CONSENTIMENTO DO ARTISTA, decidido pelo líder em 04/09/2026:** *"Não precisa, é encomenda paga"*. Ele entende que creditar quem assinou um trabalho pago é prática normal e dispensa aceite formal. **O quarto item do gate da §9 está fechado**, e a Seção 11 não tem mais pendência de direitos: crédito, licença, declaração de IA e consentimento, todos decididos por ele hoje.
