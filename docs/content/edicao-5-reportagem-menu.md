@@ -1,7 +1,8 @@
 # Glyfesse #5: caixa própria: a reportagem do achado do Gus Dragon (`#sec-04-menu`) (rascunho v2)
 
-> Peça própria por lei (D16, adendo datado da L-24 do `GODS_LAWS.md` do site, 04/09/2026, verbatim
-> do líder: *"Entra como reportagem. Achados do gus sempre são especiais."*). Hospedada como caixa
+> Peça própria por lei (D16, adendo datado da L-24 do `GODS_LAWS.md` do site, 04/09/2026: o líder
+> recusou as duas opções levadas e mandou virar reportagem, verbatim: *"Achados do gus sempre são
+> especiais."*). Hospedada como caixa
 > ao fim do partial da Reportagem de capa, no molde do encarte do glintfx da #4
 > (`src/content/edicao-4/pt/sec-04.php`, linhas 48-74): âncora própria `#sec-04-menu`, prompt
 > próprio, fonte própria (este arquivo).

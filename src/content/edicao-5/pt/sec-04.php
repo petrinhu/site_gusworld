@@ -22,9 +22,10 @@
 
    ★ CAIXA DO ACHADO DO GUS DRAGON (docs/content/edicao-5-reportagem-menu.md,
    ## pt-BR, verbatim, v2 já corrigida): peça própria por lei, adendo datado
-   da L-24 do GODS_LAWS.md do site (D16, 04/09/2026, verbatim do líder:
-   "Entra como reportagem. Achados do gus sempre são especiais."). Entra como
-   CAIXA ao final desta reportagem, no molde do encarte do glintfx da #4 (ver
+   da L-24 do GODS_LAWS.md do site (D16, 04/09/2026: o líder recusou as duas
+   opções levadas e mandou virar reportagem, verbatim: "Achados do gus sempre
+   são especiais."). Entra como CAIXA ao final desta reportagem, no molde do
+   encarte do glintfx da #4 (ver
    src/content/edicao-4/pt/sec-04.php, linhas 48-74): âncora própria
    #sec-04-menu para link profundo, prompt próprio. Div, não figure (figure
    tem margem lateral de navegador não resetada neste CSS - desalinharia a

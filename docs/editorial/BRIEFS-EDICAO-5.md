@@ -262,8 +262,8 @@ cena de onde o jogador estava em vez de ter arte própria.
 ⚠️ **CORRIGIDO EM 04/09/2026, ERRO DE FATO:** a afirmação de que "a arte entrou no dia seguinte" é **falsa** e nasceu de um resumo que eu não conferi na fonte. O item `F7` do `TODO.md` do jogo (linha 134) diz o contrário: a decisão do líder à época foi **reaproveitar o monitor CRT do boot**, em vez de encomendar arte nova, e o item está **`⏳ Pendente` e bloqueado**, porque é inteiramente da camada que desenha, que ainda não existe. **Sem data.** A peça conta o arco verdadeiro: ele apontou por **convenção do gênero, não gosto pessoal** (a nota do quadro diz isso com estas palavras), a observação virou decisão fechada, e a decisão espera.
 
 **Por que esta peça existe e por que tem regra própria:** D16, decidida pelo líder em 04/09/2026, virou
-**adendo datado da L-24 do `GODS_LAWS.md` do site**. Verbatim do líder: *"Entra como reportagem. Achados do
-gus sempre são especiais."* Ele recusou as duas opções levadas (carta curta ou guardar). A regra,
+**adendo datado da L-24 do `GODS_LAWS.md` do site**. Ele recusou as duas opções levadas (carta curta ou
+guardar) e mandou virar reportagem. Verbatim do líder: *"Achados do gus sempre são especiais."* A regra,
 generalizada por ele: **achado do Gus Dragon não é item de lista nem linha dentro de peça alheia; tem
 tratamento editorial próprio, e o porte se decide pelo achado, nunca pelo espaço que sobrou na edição.** Não
 é licença para inflar (matéria pequena continua pequena); é proibição de rebaixar por conveniência de
