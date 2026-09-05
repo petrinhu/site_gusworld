@@ -47,3 +47,17 @@ function url_banca(string $idioma): string
 {
     return SITE_BASE_URL . '/' . $idioma . '/';
 }
+
+/**
+ * A URL absoluta da Política de Privacidade num idioma (REMED-LGPD).
+ *
+ * Página fixa (não vem de $edicoes): o arquivo físico muda de nome por
+ * idioma (privacidade.php / privacy.php), igual à pasta física já muda
+ * (pt/en). Usada pelo canonical/hreflang do head, pela LCD do masthead e
+ * pelo link do rodapé — um lugar só para a URL não divergir entre os três.
+ */
+function url_privacidade(string $idioma): string
+{
+    $pagina = $idioma === 'pt' ? 'privacidade.php' : 'privacy.php';
+    return SITE_BASE_URL . '/' . $idioma . '/' . $pagina;
+}

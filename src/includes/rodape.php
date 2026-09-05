@@ -3,8 +3,12 @@ declare(strict_types=1);
 /**
  * src/includes/rodape.php — footer[contentinfo]: som + licença + contato.
  *
- * Espera $t (i18n do idioma). SEM lista de navegação: não há outras páginas a
- * listar (IA-WIREFRAME §3.1) — a banca é o hub, o índice é o roteador interno.
+ * Espera $t (i18n do idioma) e $idioma (bare, já disponível em todo template
+ * que requer este partial). ⚠️ Deixou de ser verdade que "não há outras
+ * páginas a listar" (afirmação antiga daqui, de antes do REMED-LGPD): a banca
+ * segue sendo o HUB editorial, mas agora existe uma segunda página fixa (a
+ * Política de Privacidade), e todo rodapé do site linka para ela — não é uma
+ * lista de navegação completa, é o único link legal mínimo.
  *
  * Os 2 botões de som (efeitos ON / música OFF por padrão) já são reais: o estado
  * default vai no aria-pressed aqui, e o JS de enhancement (som-core.js + som.js)
@@ -28,6 +32,7 @@ declare(strict_types=1);
 
     <p class="contato">
       <a href="mailto:gusworld@gusworld.site"><?= h((string) $t['rodape_contato']) ?></a>
+      · <a href="<?= h(url_privacidade($idioma)) ?>"><?= h((string) $t['rodape_privacidade']) ?></a>
     </p>
 
     <?php /* build-tag EXPERT: o versionamento completo (Vol.Ed.Rev + build) em

@@ -256,12 +256,71 @@ return [
     // by credential. Disclosing is the defense.
     'rodape_licenca'    => 'Site code: Apache 2.0. Magazine text and art: all rights reserved. Made with AI: the code with Claude; the art with PixelLab (sprites; logo, generated), Grok Imagine (logo, refined) and Tripo3D (3D poster).',
     'rodape_contato'    => 'Contact the newsroom',
+    // footer link to the Privacy Policy (REMED-LGPD) — present in every
+    // footer, in both languages.
+    'rodape_privacidade' => 'Privacy Policy',
     'build_tag_aria'    => 'version of this edition',   // aria-label of the build stamp (expert)
 
     // 404 (minimal — the in-world microcopy is a ux-writer + lead slot)
     'erro_404_titulo'  => 'Page not found',
     'erro_404_texto'   => 'This edition does not exist (yet) or the address changed.',
     'erro_404_voltar'  => 'Back to the stand',
+
+    // ── PRIVACY POLICY (REMED-LGPD) ────────────────────────────────────────────
+    // Text copied VERBATIM from docs/legal/politica-privacidade-rascunho.md,
+    // EN block. Keys mirror pt.php key-for-key (see that file's header comment
+    // for the split-around-<code> convention and the one non-literal key,
+    // 'log_prazo').
+    'privacidade' => [
+        'titulo'     => 'Glyfesse Privacy Policy',
+        'atualizado' => 'Last updated: [DATE TO BE SET AT PUBLICATION]',
+        'meta_desc'  => "Glyfesse is this site's magazine, telling the story of making the game GusWorld. This text explains, in plain language, what the site keeps about visitors, what it does not keep, and how to reach us about it.",
+        'intro'      => "Glyfesse is this site's magazine, telling the story of making the game GusWorld. This text explains, in plain language, what the site keeps about visitors, what it does not keep, and how to reach us about it.",
+
+        'responsavel_lead'   => 'Who is responsible for this site.',
+        'responsavel_antes'  => 'You can write to',
+        'responsavel_depois' => 'anytime, with any question or request about your data.',
+
+        'nao_faz_lead'  => 'What Glyfesse does NOT do.',
+        'nao_faz_corpo' => 'There is no sign-up, no login, no user account. We do not sell or share any information about you with anyone. We do not use advertising or tracking tools (no Google Analytics or anything like it). There is no profile of you stored anywhere.',
+
+        'cookie_lead'   => 'The only "token" we keep in your browser: a cookie.',
+        'cookie_antes'  => "A cookie is a small file your browser stores at a site's request, to remember something later. Ours is called",
+        'cookie_depois' => '. It only shows up when you vote in the coupon poll, in an issue\'s footer. It exists only to remember "this person already voted," so the page shows the result instead of the form again. It lasts up to 180 days (roughly one magazine season). It does not carry your name, or a number, or anything that tells you apart from anyone else: it is the exact same value for everyone who votes. If you clear your browser\'s cookies, nothing breaks: you can just vote again.',
+
+        'localstorage_lead'   => 'What stays only on your own device.',
+        'localstorage_antes'  => 'Some parts of the site store things directly in your browser (the technology is called',
+        'localstorage_depois' => "), without sending anything to our server: which stickers you already stuck in the album, whether sound and music are on or off, and whether you already voted in this issue's coupon. That stays only on your device. We do not see or keep that information. If you clear this site's data in your browser, all of it disappears, and nobody keeps a copy.",
+
+        'cupom_lead'  => 'The coupon poll.',
+        'cupom_corpo' => 'When you vote, we add one to a running count (for example: "option A: 41 votes"). We do not store who voted for what. The server does not know, and cannot know, what your choice was once the page closes.',
+
+        'email_lead'  => 'If you email us.',
+        'email_corpo' => 'We keep the message only to be able to reply. We do not use your email for a mailing list, and we do not pass it on to anyone.',
+
+        'log_lead1'   => "The server's automatic log.",
+        'log_corpo_a' => 'Like almost every site on the internet, the hosting service we use automatically records a technical list of visits: your connection\'s number (called an IP address), the page requested, the date and time, and the type of browser. This is done by the hosting service itself, to keep the site running and secure, and mainly serves to diagnose problems.',
+        'log_lead2'   => 'How long that log is kept:',
+        // ⚠️ NOT a literal copy of the draft: replaces the [TO BE SET BY THE
+        // LEAD] mark with a sentence that closes the read without a hole. The
+        // mark itself (with the decision-2 reference) becomes an HTML comment
+        // in the template.
+        'log_prazo'   => 'this is still being decided by whoever runs the site, within whatever the hosting panel allows configuring.',
+        'log_corpo_b' => 'Once that is decided, this line will be updated with the exact retention period.',
+
+        'links_lead'  => 'You may also notice links off the site.',
+        'links_corpo' => "Some articles link elsewhere: the game's repository on GitHub, a guest artist's profile, an editorial partner's site. Clicking them opens another site, with its own rules. We do not automatically send anything to those places just because you visited Glyfesse.",
+
+        'criancas_lead'  => 'Children.',
+        'criancas_corpo' => "We know part of this magazine's readership is 11, 12, 13 years old. The site does not ask for age, does not ask for sign-up, and does not store any personal information about anyone, child or adult.",
+
+        'direitos_lead'   => 'Your rights.',
+        'direitos_antes'  => 'You can ask what we keep about you, ask us to correct something wrong, or ask us to delete it. The honest answer, because it is true: since there is no sign-up or login, we usually have no way to know "which visitor is you" to answer an individual request -- which is, by itself, a form of protecting your privacy. If you want to delete what stays in your browser (album, sound, "already voted"), you can do that yourself by clearing this site\'s data in your browser settings. For any other request, write to',
+        'direitos_depois' => '.',
+
+        'mudancas_lead'  => 'Changes to this policy.',
+        'mudancas_corpo' => 'If this text changes, the date at the top changes with it.',
+    ],
 
     // STRUCTURAL section names (anatomy labels, not content)
     'grupos' => [

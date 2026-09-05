@@ -263,12 +263,76 @@ return [
     // ferramenta, o criativo é do criador") e zero defesa por credencial. Declarar é a defesa.
     'rodape_licenca'    => 'Código do site: Apache 2.0. Texto e arte da revista: todos os direitos reservados. Feito com IA: o código com Claude; a arte com PixelLab (sprites; logo, gerado), Grok Imagine (logo, tratado) e Tripo3D (pôster 3D).',
     'rodape_contato'    => 'Fale com a redação',
+    // link do rodapé para a Política de Privacidade (REMED-LGPD) — presente em
+    // todo rodapé, nos dois idiomas.
+    'rodape_privacidade' => 'Política de Privacidade',
     'build_tag_aria'    => 'versão desta edição',   // aria-label do carimbo de build (expert)
 
     // 404 (mínimo — a microcopy in-world definitiva é slot do ux-writer + líder)
     'erro_404_titulo'  => 'Página não encontrada',
     'erro_404_texto'   => 'Esta edição não existe (ainda) ou o endereço mudou.',
     'erro_404_voltar'  => 'Voltar à banca',
+
+    // ── POLÍTICA DE PRIVACIDADE (REMED-LGPD) ──────────────────────────────────
+    // Texto copiado VERBATIM de docs/legal/politica-privacidade-rascunho.md,
+    // bloco pt-BR — inclusive a ausência de acentos do rascunho original (o
+    // texto está pendente de aprovação do líder e sign-off de advogado; não é
+    // escopo desta tarefa "corrigir" a prosa). As chaves *_lead são o trecho em
+    // negrito de abertura de cada parágrafo; *_antes/*_depois cercam um trecho
+    // <code> que o template insere sem tradução (e-mail, nome de cookie,
+    // localStorage). 'log_prazo' é a ÚNICA frase que não é cópia literal: ela
+    // substitui a marca "[A DEFINIR PELO LIDER]" do rascunho por uma frase que
+    // fecha o parágrafo sem buraco; a marca em si vira comentário HTML no
+    // template (visível na fonte da página, nunca ao leitor).
+    'privacidade' => [
+        'titulo'     => 'Política de Privacidade da Glyfesse',
+        'atualizado' => 'Última atualização: [DATA A DEFINIR NA PUBLICACAO]',
+        'meta_desc'  => 'A Glyfesse é a revista deste site, que conta a produção do jogo GusWorld. Este texto explica, em linguagem simples, o que o site guarda sobre quem visita, o que ele não guarda, e como falar com a gente sobre isso.',
+        'intro'      => 'A Glyfesse é a revista deste site, que conta a produção do jogo GusWorld. Este texto explica, em linguagem simples, o que o site guarda sobre quem visita, o que ele não guarda, e como falar com a gente sobre isso.',
+
+        'responsavel_lead'   => 'Quem responde por este site.',
+        'responsavel_antes'  => 'Você pode escrever para',
+        'responsavel_depois' => 'a qualquer momento, com qualquer dúvida ou pedido sobre seus dados.',
+
+        'nao_faz_lead'  => 'O que a Glyfesse NÃO faz.',
+        'nao_faz_corpo' => 'Não existe cadastro, não existe login, não existe conta de usuário. Não vendemos nem compartilhamos nenhuma informação sua com ninguém. Não usamos ferramentas de propaganda nem de rastreamento (nada de Google Analytics ou parecido). Não existe um perfil seu guardado em lugar nenhum.',
+
+        'cookie_lead'   => 'O único "bilhete" que guardamos no seu navegador: um cookie.',
+        'cookie_antes'  => 'Um cookie é um pequeno arquivo que o seu navegador guarda a pedido de um site, para lembrar de alguma coisa depois. O nosso se chama',
+        'cookie_depois' => '. Ele só aparece quando você vota na enquete do cupom, no rodapé de uma edição. Ele serve só para lembrar "esta pessoa já votou", para que a página mostre o resultado em vez do formulário de novo. Ele dura até 180 dias (mais ou menos uma temporada de edições da revista). Ele não tem o seu nome, nem número, nem nada que separe você de outra pessoa: é sempre o mesmo valor para todo mundo que vota. Se você apagar os cookies do seu navegador, nada quebra: você só pode votar de novo.',
+
+        'localstorage_lead'   => 'O que fica guardado só no seu próprio aparelho.',
+        'localstorage_antes'  => 'Algumas partes do site guardam coisas direto no seu navegador (a tecnologia chama isso de',
+        'localstorage_depois' => '), sem mandar nada para o nosso servidor: quais figurinhas do álbum você já colou, se o som e a música estão ligados ou desligados, e se você já votou no cupom desta edição. Isso fica só no seu aparelho. Nós não vemos nem guardamos essa informação. Se você limpar os dados deste site no seu navegador, tudo isso some, e ninguém mais tem uma cópia.',
+
+        'cupom_lead'  => 'A enquete do cupom.',
+        'cupom_corpo' => 'Quando você vota, a gente soma mais um número numa lista de contagem (por exemplo: "opção A: 41 votos"). Não guardamos quem votou em que. O servidor não sabe, e nem consegue saber, qual foi a sua escolha depois que a página fecha.',
+
+        'email_lead'  => 'Se você nos escrever um e-mail.',
+        'email_corpo' => 'Guardamos a mensagem só para poder responder. Não usamos seu e-mail para lista de avisos, não repassamos para ninguém.',
+
+        'log_lead1'   => 'O registro automático do servidor.',
+        'log_corpo_a' => 'Como quase todo site na internet, o serviço de hospedagem que usamos grava, automaticamente, uma lista técnica de visitas: o número de identificação da sua conexão (chamado de IP), a página pedida, a data e hora, e o tipo de navegador. Isso é feito pelo próprio serviço de hospedagem, para manter o site funcionando e seguro, e serve principalmente para diagnosticar problemas.',
+        'log_lead2'   => 'Por quanto tempo esse registro fica guardado:',
+        // ⚠️ NÃO é cópia literal do rascunho: substitui a marca [A DEFINIR PELO
+        // LIDER] por uma frase que fecha a leitura sem buraco. A marca em si
+        // (com a referência à decisão 2) vira comentário HTML no template.
+        'log_prazo'   => 'isso ainda está sendo decidido pelo responsável pelo site, dentro do que o painel do serviço de hospedagem permitir configurar.',
+        'log_corpo_b' => 'Assim que isso for decidido, esta linha será atualizada com o prazo exato.',
+
+        'links_lead'  => 'Você também pode notar links para fora do site.',
+        'links_corpo' => 'Algumas matérias linkam para outros lugares: o repositório do jogo no GitHub, o perfil de um artista convidado, o site de um parceiro editorial. Clicar neles abre outro site, com as próprias regras. Nós não mandamos nada automaticamente para esses lugares só por você visitar a Glyfesse.',
+
+        'criancas_lead'  => 'Crianças.',
+        'criancas_corpo' => 'Sabemos que parte de quem lê esta revista tem 11, 12, 13 anos. O site não pede idade, não pede cadastro, e não guarda nenhuma informação pessoal de ninguém, criança ou adulto.',
+
+        'direitos_lead'   => 'Seus direitos.',
+        'direitos_antes'  => 'Você pode pedir para saber o que guardamos sobre você, corrigir algo errado, ou pedir para apagar. A resposta honesta, porque é a verdade: como não existe cadastro nem login, normalmente não temos como saber "qual visitante é você" para atender um pedido individual (o que já é, por si só, uma forma de proteger sua privacidade). Se você quiser apagar o que fica no seu navegador (álbum, som, "já votei"), pode fazer isso você mesmo, limpando os dados do site nas configurações do seu navegador. Para qualquer outro pedido, escreva para',
+        'direitos_depois' => '.',
+
+        'mudancas_lead'  => 'Mudanças nesta política.',
+        'mudancas_corpo' => 'Se este texto mudar, a data no topo muda junto.',
+    ],
 
     // nomes ESTRUTURAIS das seções (rótulos da anatomia, não conteúdo)
     'grupos' => [

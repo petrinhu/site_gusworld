@@ -121,81 +121,81 @@ no fim deste dossie.
 
 ## pt-BR
 
-*(Texto para publicacao. Sujeito a aprovacao do lider e a sign-off de advogado
-humano antes de ir ao ar. Local de publicacao: a definir, ver decisao 1.)*
+*(Texto para publicação. Sujeito a aprovação do líder e a sign-off de advogado
+humano antes de ir ao ar. Local de publicação: a definir, ver decisão 1.)*
 
-### Politica de Privacidade da Glyfesse
+### Política de Privacidade da Glyfesse
 
-**Ultima atualizacao:** [DATA A DEFINIR NA PUBLICACAO]
+**Última atualização:** [DATA A DEFINIR NA PUBLICACAO]
 
-A Glyfesse e a revista deste site, que conta a producao do jogo GusWorld. Este texto
-explica, em linguagem simples, o que o site guarda sobre quem visita, o que ele nao
+A Glyfesse é a revista deste site, que conta a produção do jogo GusWorld. Este texto
+explica, em linguagem simples, o que o site guarda sobre quem visita, o que ele não
 guarda, e como falar com a gente sobre isso.
 
-**Quem responde por este site.** Voce pode escrever para
-`gusworld@gusworld.site` a qualquer momento, com qualquer duvida ou pedido sobre
+**Quem responde por este site.** Você pode escrever para
+`gusworld@gusworld.site` a qualquer momento, com qualquer dúvida ou pedido sobre
 seus dados.
 
-**O que a Glyfesse NAO faz.** Nao existe cadastro, nao existe login, nao existe conta
-de usuario. Nao vendemos nem compartilhamos nenhuma informacao sua com ninguem. Nao
+**O que a Glyfesse NÃO faz.** Não existe cadastro, não existe login, não existe conta
+de usuário. Não vendemos nem compartilhamos nenhuma informação sua com ninguém. Não
 usamos ferramentas de propaganda nem de rastreamento (nada de Google Analytics ou
-parecido). Nao existe um perfil seu guardado em lugar nenhum.
+parecido). Não existe um perfil seu guardado em lugar nenhum.
 
-**O unico "bilhete" que guardamos no seu navegador: um cookie.** Um cookie e um
+**O único "bilhete" que guardamos no seu navegador: um cookie.** Um cookie é um
 pequeno arquivo que o seu navegador guarda a pedido de um site, para lembrar de
-alguma coisa depois. O nosso se chama `glyfesse_votou`. Ele so aparece quando voce
-vota na enquete do cupom, no rodape de uma edicao. Ele serve so para lembrar "esta
-pessoa ja votou", para que a pagina mostre o resultado em vez do formulario de novo.
-Ele dura ate 180 dias (mais ou menos uma temporada de edicoes da revista). Ele nao
-tem o seu nome, nem numero, nem nada que separe voce de outra pessoa: e sempre o
-mesmo valor para todo mundo que vota. Se voce apagar os cookies do seu navegador,
-nada quebra: voce so pode votar de novo.
+alguma coisa depois. O nosso se chama `glyfesse_votou`. Ele só aparece quando você
+vota na enquete do cupom, no rodapé de uma edição. Ele serve só para lembrar "esta
+pessoa já votou", para que a página mostre o resultado em vez do formulário de novo.
+Ele dura até 180 dias (mais ou menos uma temporada de edições da revista). Ele não
+tem o seu nome, nem número, nem nada que separe você de outra pessoa: é sempre o
+mesmo valor para todo mundo que vota. Se você apagar os cookies do seu navegador,
+nada quebra: você só pode votar de novo.
 
-**O que fica guardado so no seu proprio aparelho.** Algumas partes do site guardam
+**O que fica guardado só no seu próprio aparelho.** Algumas partes do site guardam
 coisas direto no seu navegador (a tecnologia chama isso de `localStorage`), sem
-mandar nada para o nosso servidor: quais figurinhas do album voce ja colou, se o som
-e a musica estao ligados ou desligados, e se voce ja votou no cupom desta edicao.
-Isso fica so no seu aparelho. Nos nao vemos nem guardamos essa informacao. Se voce
-limpar os dados deste site no seu navegador, tudo isso some, e ninguem mais tem uma
-copia.
+mandar nada para o nosso servidor: quais figurinhas do álbum você já colou, se o som
+e a música estão ligados ou desligados, e se você já votou no cupom desta edição.
+Isso fica só no seu aparelho. Nós não vemos nem guardamos essa informação. Se você
+limpar os dados deste site no seu navegador, tudo isso some, e ninguém mais tem uma
+cópia.
 
-**A enquete do cupom.** Quando voce vota, a gente soma mais um numero numa lista de
-contagem (por exemplo: "opcao A: 41 votos"). Nao guardamos quem votou em que. O
-servidor nao sabe, e nem consegue saber, qual foi a sua escolha depois que a pagina
+**A enquete do cupom.** Quando você vota, a gente soma mais um número numa lista de
+contagem (por exemplo: "opção A: 41 votos"). Não guardamos quem votou em que. O
+servidor não sabe, e nem consegue saber, qual foi a sua escolha depois que a página
 fecha.
 
-**Se voce nos escrever um e-mail.** Guardamos a mensagem so para poder responder.
-Nao usamos seu e-mail para lista de avisos, nao repassamos para ninguem.
+**Se você nos escrever um e-mail.** Guardamos a mensagem só para poder responder.
+Não usamos seu e-mail para lista de avisos, não repassamos para ninguém.
 
-**O registro automatico do servidor.** Como quase todo site na internet, o servico
-de hospedagem que usamos grava, automaticamente, uma lista tecnica de visitas: o
-numero de identificacao da sua conexao (chamado de IP), a pagina pedida, a data e
-hora, e o tipo de navegador. Isso e feito pelo proprio servico de hospedagem, para
+**O registro automático do servidor.** Como quase todo site na internet, o serviço
+de hospedagem que usamos grava, automaticamente, uma lista técnica de visitas: o
+número de identificação da sua conexão (chamado de IP), a página pedida, a data e
+hora, e o tipo de navegador. Isso é feito pelo próprio serviço de hospedagem, para
 manter o site funcionando e seguro, e serve principalmente para diagnosticar
 problemas. **Por quanto tempo esse registro fica guardado:** [A DEFINIR PELO LIDER
--- ver decisao 2 deste projeto]. Assim que isso for decidido, esta linha sera
+-- ver decisao 2 deste projeto]. Assim que isso for decidido, esta linha será
 atualizada com o prazo exato.
 
-**Voce tambem pode notar links para fora do site.** Algumas materias linkam para
-outros lugares: o repositorio do jogo no GitHub, o perfil de um artista convidado,
-o site de um parceiro editorial. Clicar neles abre outro site, com as proprias
-regras. Nos nao mandamos nada automaticamente para esses lugares so por voce
+**Você também pode notar links para fora do site.** Algumas matérias linkam para
+outros lugares: o repositório do jogo no GitHub, o perfil de um artista convidado,
+o site de um parceiro editorial. Clicar neles abre outro site, com as próprias
+regras. Nós não mandamos nada automaticamente para esses lugares só por você
 visitar a Glyfesse.
 
-**Criancas.** Sabemos que parte de quem le esta revista tem 11, 12, 13 anos. O site
-nao pede idade, nao pede cadastro, e nao guarda nenhuma informacao pessoal de
-ninguem, criança ou adulto.
+**Crianças.** Sabemos que parte de quem lê esta revista tem 11, 12, 13 anos. O site
+não pede idade, não pede cadastro, e não guarda nenhuma informação pessoal de
+ninguém, criança ou adulto.
 
-**Seus direitos.** Voce pode pedir para saber o que guardamos sobre voce, corrigir
-algo errado, ou pedir para apagar. A resposta honesta, porque e a verdade: como
-nao existe cadastro nem login, normalmente nao temos como saber "qual visitante e
-voce" para atender um pedido individual -- o que ja e, por si so, uma forma de
-proteger sua privacidade. Se voce quiser apagar o que fica no seu navegador (album,
-som, "ja votei"), pode fazer isso voce mesmo, limpando os dados do site nas
-configuracoes do seu navegador. Para qualquer outro pedido, escreva para
+**Seus direitos.** Você pode pedir para saber o que guardamos sobre você, corrigir
+algo errado, ou pedir para apagar. A resposta honesta, porque é a verdade: como
+não existe cadastro nem login, normalmente não temos como saber "qual visitante é
+você" para atender um pedido individual (o que já é, por si só, uma forma de
+proteger sua privacidade). Se você quiser apagar o que fica no seu navegador (álbum,
+som, "já votei"), pode fazer isso você mesmo, limpando os dados do site nas
+configurações do seu navegador. Para qualquer outro pedido, escreva para
 `gusworld@gusworld.site`.
 
-**Mudancas nesta politica.** Se este texto mudar, a data no topo muda junto.
+**Mudanças nesta política.** Se este texto mudar, a data no topo muda junto.
 
 ---
 
