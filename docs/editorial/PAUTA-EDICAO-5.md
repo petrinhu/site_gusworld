@@ -591,8 +591,8 @@ resolvidas; as outras dezesseis seções **não esperam por ela** (§11, risco 1
 12/08 em diante: tudo. Inclui os marcos do Gus Dragon de 21 e 22/08 (entram na edição de agosto, com o
 mérito dito com o nome dele), a issue pública na Anthropic (15/08, sensível, decisão do líder), o ADR-0023
 (18/08), o censo (19/08), a retratação (20/08), o portão que varre zero (21/08), a refundação (21/08,
-reservada), a identidade visual do Vance Dragon (01/09; **não** pode ser o pôster desta edição: anacronismo),
-e a onda da bateria (02/09).
+reservada), o glifo oficial do jogo, brasão da linhagem do personagem (01/09; como fato narrado segue fora
+da janela, mas como peça de capa e pôster desta edição é a exceção D18), e a onda da bateria (02/09).
 
 ### 10.4 Manutenção do ledger (pré-condição, não decisão)
 
@@ -696,6 +696,7 @@ próxima pauta parte de um ledger que mente (é a lição da L-14 do site aplica
 | **D15** | Vocabulário da Galeria | **DECIDIDA pelo líder em 04/09/2026: do mundo.** "Um inimigo que faz ronda", "alguém do lugar", "um bloco"; nada de "NPC", "androide inimigo", "prop de cenário". Fronteira de registro contra a Reportagem técnica registrada na §5.4, para nenhum revisor uniformizar |
 | **D16** | O achado do Gus Dragon sobre a arte do menu inicial (22/07) | **DECIDIDA pelo líder em 04/09/2026, e virou LEI (adendo datado da L-24 no `GODS_LAWS.md` do site).** Verbatim: *"Entra como reportagem. Achados do gus sempre são especiais."* Recusou carta curta e recusou guardar. Peça própria, **confirmado por ele em 04/09**: caixa ao fim da Reportagem de capa com âncora e abertura próprias, entrada própria na tabela de prioridade, porte S (§3.1); divisória em §5.4. A data da arte do menu: a peça escreve "no dia seguinte" (única fonte: a nota do quadro do jogo) e não crava data |
 | **D17** | Cartas (Seção 9, metade Cartas) | **DECIDIDA pelo líder em 04/09/2026: vazio com graça.** Uma linha curta admitindo que não houve carta de leitor de novo, aproveitando a copy da Errata (*"Cartas: nenhuma de leitor, de novo."*); fala do Gus, vai a ele como toda fala dele |
+| **D18** | A trava de anacronismo do pôster e da capa (§10.3, medida contra o repositório do jogo) | **REVOGADA pelo líder em 05/09/2026: o pôster (§13) e a capa (§8) podem ser o brasão da linhagem do personagem, também logo oficial do jogo**, decidido no repositório do jogo em 01/09/2026, nos commits `1fb399d` e `5bb7914` (a variante usada é a quadrada, 1408 por 1408 pontos, exigida pela moldura do pôster ser quadrada por construção), mesmo essa marca sendo posterior à janela narrada da #5 (22/07 a 08/08/2026). A trava original media certo o fato (a marca é mesmo de 01/09) mas errava a régua: a regra da casa não é "nada posterior à data-âncora entra", é "não quebrar a ordem da narrativa" (cronologia ascendente). Um pôster e uma capa são encarte visual, não afirmam data nem narram fato; a linha do tempo da revista já é ordenada por evolução visual das peças, não por data de publicação dentro da ficção, e o líder aceitou conscientemente esse custo. A trava foi apagada de §10.3, não arquivada. **Nota de desambiguação:** "Vance" nomeia a linhagem do personagem no jogo (o brasão é da família dele); não tem relação com Gus Dragon, o playtester real |
 
 ---
 
