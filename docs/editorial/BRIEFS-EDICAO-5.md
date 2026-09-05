@@ -800,3 +800,32 @@ continuam propostas até o `GATE-COPY`/`GATE-CONTEUDO`; este documento organiza 
 o julgamento do líder na leitura final. Onde a pauta já registra um verbatim do líder como fato fechado
 (D1-D17), este brief o trata como fechado; onde a pauta registra algo como "proposta" ou "recomendo", este
 brief preserva a mesma marcação, sem promover proposta a decisão.
+
+---
+
+## ★ Decisões do líder de 04/09/2026 sobre a tirinha (Seção 11) e o Expediente (Seção 19)
+
+A tirinha **chegou** e é obra encomendada e paga pelo líder ao artista, entregue em **duas montagens**
+pelo próprio artista: horizontal (1196x284) e quadrada (659x585). As duas vão ao ar, trocadas pela
+largura da tela em HTML puro, sem JavaScript, porque medi que a horizontal fica ilegível em 390px
+(71 pixels de altura) e a quadrada fica legível (265 pixels, texto 3,7 vezes maior). ⛔ **Não cortar,
+não recompor, não redimensionar a arte.**
+
+**Direitos, decididos por ele:** propriedade **do líder**, que pagou pela encomenda; **licença: a
+mesma do site**; **não houve uso de IA** na produção, então a declaração do rodapé **não muda**.
+
+**O link**, verbatim: *"Apenas devemos deixar ela clicável para ir ao site vidadesuporte.com.br"* e
+*"o clique abre em aba separada, não sai do nosso site"*. Padrão idêntico ao da banca
+(`src/templates/banca.php:131-138`): `target="_blank" rel="noopener"`, com `aria-label` descrevendo o
+destino. A banca não avisa que abre em nova aba; a tirinha segue o mesmo, por coerência com o
+publicado.
+
+★ **CRÉDITO NO EXPEDIENTE (Seção 19), decidido por ele:** o nome do artista entra, e é
+**André Farias**, **linkado ao perfil dele no X** (`https://x.com/Andre_Suporte`). Ordem verbatim:
+*"andre farias deve linkar ao perfil X dele"*.
+
+Quem montar a `sec-19` precisa incluir o nome como link, no mesmo padrão de link externo que a
+banca usa (`target="_blank" rel="noopener"`, com `aria-label` descrevendo o destino), para o
+leitor não perder a leitura da edição. ⚠️ São **dois links diferentes** e nenhum substitui o outro:
+a **arte** na `sec-11` leva a `vidadesuporte.com.br`; o **nome** na `sec-19` leva ao perfil dele.
+
