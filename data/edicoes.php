@@ -200,11 +200,11 @@ return [
     // ("de 22 de julho a 7 de agosto") vai no 1º parágrafo da Reportagem de
     // capa, não aqui. Título e dek: D10, decididos pelo líder em 04/09/2026
     // (docs/editorial/PAUTA-EDICAO-5.md, §7) — copiados verbatim.
-    // ⚠️ RASCUNHO: não publicar (estado permanece 'rascunho' até ordem do líder).
+    // Publicada em 05/09/2026 por ordem do líder, com o uptime capturado no ato.
     [
         'numero'         => 5,
         'revisao'        => 1,
-        'estado'         => 'rascunho',
+        'estado'         => 'publicada',
         'data'           => '2026-07-22',
         'slug_pt'        => 'edicao-5',
         'slug_en'        => 'edition-5',
@@ -254,6 +254,10 @@ return [
         // nota da #1). Gerador: docs/design/og-card-5-en.html (o mesmo
         // desenho, só o texto muda).
         'capa_en'        => '/assets/og-edicao-5-en.jpg',
+        // UPTIME das sessões de trabalho no expediente do masthead (ver a
+        // nota da #3). Capturado no publish real via `scripts/uptime-sessoes.sh`
+        // e CONGELADO: registro histórico datado, não um contador vivo.
+        'uptime'         => ['jogo' => 14, 'glintfx' => 139], // capturado em 05/09/2026 06:37
         'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
     ],
 

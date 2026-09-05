@@ -301,12 +301,13 @@ return [
         'log_lead1'   => "The server's automatic log.",
         'log_corpo_a' => 'Like almost every site on the internet, the hosting service we use automatically records a technical list of visits: your connection\'s number (called an IP address), the page requested, the date and time, and the type of browser. This is done by the hosting service itself, to keep the site running and secure, and mainly serves to diagnose problems.',
         'log_lead2'   => 'How long that log is kept:',
-        // ⚠️ NOT a literal copy of the draft: replaces the [TO BE SET BY THE
-        // LEAD] mark with a sentence that closes the read without a hole. The
-        // mark itself (with the decision-2 reference) becomes an HTML comment
-        // in the template.
-        'log_prazo'   => 'this is still being decided by whoever runs the site, within whatever the hosting panel allows configuring.',
-        'log_corpo_b' => 'Once that is decided, this line will be updated with the exact retention period.',
+        // NOT a literal copy of the draft: this retention period used to be
+        // marked as a decision pending from the lead; he decided on
+        // 2026-09-05 (up to 30 days). See
+        // docs/legal/politica-privacidade-rascunho.md, section "O que é do
+        // líder decidir", decision 2.
+        'log_prazo'   => 'up to 30 days.',
+        'log_corpo_b' => 'After that, the log is deleted.',
 
         'links_lead'  => 'You may also notice links off the site.',
         'links_corpo' => "Some articles link elsewhere: the game's repository on GitHub, a guest artist's profile, an editorial partner's site. Clicking them opens another site, with its own rules. We do not automatically send anything to those places just because you visited Glyfesse.",

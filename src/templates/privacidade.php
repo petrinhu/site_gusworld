@@ -89,14 +89,7 @@ require __DIR__ . '/../includes/head.php';
       <p><strong><?= h((string) $p['email_lead']) ?></strong> <?= h((string) $p['email_corpo']) ?></p>
 
       <p><strong><?= h((string) $p['log_lead1']) ?></strong> <?= h((string) $p['log_corpo_a']) ?>
-        <strong><?= h((string) $p['log_lead2']) ?></strong> <?= h((string) $p['log_prazo']) ?><!--
-          [A DEFINIR PELO LIDER] / [TO BE SET BY THE LEAD]: prazo de retencao do
-          access_log do servidor de hospedagem. Decisao do lider, depende do
-          painel de hospedagem (nao e codigo, nao se inventa aqui). Ver
-          docs/legal/politica-privacidade-rascunho.md, secao "O que e do lider
-          decidir", decisao 2. Quando a decisao sair, esta linha e o comentario
-          sao atualizados juntos.
-        --> <?= h((string) $p['log_corpo_b']) ?></p>
+        <strong><?= h((string) $p['log_lead2']) ?></strong> <?= h((string) $p['log_prazo']) ?> <?= h((string) $p['log_corpo_b']) ?></p>
 
       <p><strong><?= h((string) $p['links_lead']) ?></strong> <?= h((string) $p['links_corpo']) ?></p>
 

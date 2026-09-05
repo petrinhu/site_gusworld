@@ -16,8 +16,9 @@
 > ainda em aberto ao decision 1 no fim deste dossie.
 >
 > **Nao decido por conta propria** onde falta decisao do lider: os dois lugares
-> marcados `[A DEFINIR PELO LIDER]` no corpo da politica (retencao do registro do
-> servidor) ficam assim ate a decisao 2, no fim deste dossie, ser resolvida.
+> que traziam a marca de decisao pendente no corpo da politica (retencao do
+> registro do servidor) foram resolvidos pelo lider em 05/09/2026, decisao 2 no
+> fim deste dossie: ate 30 dias.
 
 ---
 
@@ -172,9 +173,8 @@ de hospedagem que usamos grava, automaticamente, uma lista técnica de visitas: 
 número de identificação da sua conexão (chamado de IP), a página pedida, a data e
 hora, e o tipo de navegador. Isso é feito pelo próprio serviço de hospedagem, para
 manter o site funcionando e seguro, e serve principalmente para diagnosticar
-problemas. **Por quanto tempo esse registro fica guardado:** [A DEFINIR PELO LIDER
--- ver decisao 2 deste projeto]. Assim que isso for decidido, esta linha será
-atualizada com o prazo exato.
+problemas. **Por quanto tempo esse registro fica guardado:** até 30 dias. Depois
+desse prazo, o registro é apagado.
 
 **Você também pode notar links para fora do site.** Algumas matérias linkam para
 outros lugares: o repositório do jogo no GitHub, o perfil de um artista convidado,
@@ -251,9 +251,7 @@ hosting service we use automatically records a technical list of visits: your
 connection's number (called an IP address), the page requested, the date and
 time, and the type of browser. This is done by the hosting service itself, to
 keep the site running and secure, and mainly serves to diagnose problems. **How
-long that log is kept:** [TO BE SET BY THE LEAD -- see decision 2 of this
-project]. Once that is decided, this line will be updated with the exact
-retention period.
+long that log is kept:** up to 30 days. After that, the log is deleted.
 
 **You may also notice links off the site.** Some articles link elsewhere: the
 game's repository on GitHub, a guest artist's profile, an editorial partner's
@@ -322,8 +320,10 @@ ao mais completo:
   segue em tudo o mais. Custo: perde-se a capacidade de diagnosticar problema
   tecnico via log (ex.: descobrir de onde veio um pico de erro).
 
-Qualquer que seja a escolha, a linha marcada `[A DEFINIR PELO LIDER]` no texto pt-BR
-e EN acima e atualizada com o prazo ou a decisao exata.
+**Decisao tomada pelo lider em 05/09/2026: Opcao A, declarar e prazar, com
+retencao de ate 30 dias.** O texto pt-BR e EN acima ja traz esse prazo. Falta
+conferir, no painel do servico de hospedagem, se existe expurgo automatico
+dentro desse prazo, antes do deploy (ver `TODO.md`, item `REMED-LGPD`).
 
 ### 3. Enquadramento como agente de pequeno porte (dispensa de Encarregado/DPO formal)
 

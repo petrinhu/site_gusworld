@@ -280,10 +280,10 @@ return [
     // escopo desta tarefa "corrigir" a prosa). As chaves *_lead são o trecho em
     // negrito de abertura de cada parágrafo; *_antes/*_depois cercam um trecho
     // <code> que o template insere sem tradução (e-mail, nome de cookie,
-    // localStorage). 'log_prazo' é a ÚNICA frase que não é cópia literal: ela
-    // substitui a marca "[A DEFINIR PELO LIDER]" do rascunho por uma frase que
-    // fecha o parágrafo sem buraco; a marca em si vira comentário HTML no
-    // template (visível na fonte da página, nunca ao leitor).
+    // localStorage). 'log_prazo' é a ÚNICA frase que não é cópia literal: no
+    // rascunho, o prazo do registro do servidor ficava marcado como decisão
+    // pendente do líder; aqui já vem com a decisão dele (05/09/2026, até 30
+    // dias). Ver docs/legal/politica-privacidade-rascunho.md, decisão 2.
     'privacidade' => [
         'titulo'     => 'Política de Privacidade da Glyfesse',
         'atualizado' => 'Última atualização: [DATA A DEFINIR NA PUBLICACAO]',
@@ -314,11 +314,12 @@ return [
         'log_lead1'   => 'O registro automático do servidor.',
         'log_corpo_a' => 'Como quase todo site na internet, o serviço de hospedagem que usamos grava, automaticamente, uma lista técnica de visitas: o número de identificação da sua conexão (chamado de IP), a página pedida, a data e hora, e o tipo de navegador. Isso é feito pelo próprio serviço de hospedagem, para manter o site funcionando e seguro, e serve principalmente para diagnosticar problemas.',
         'log_lead2'   => 'Por quanto tempo esse registro fica guardado:',
-        // ⚠️ NÃO é cópia literal do rascunho: substitui a marca [A DEFINIR PELO
-        // LIDER] por uma frase que fecha a leitura sem buraco. A marca em si
-        // (com a referência à decisão 2) vira comentário HTML no template.
-        'log_prazo'   => 'isso ainda está sendo decidido pelo responsável pelo site, dentro do que o painel do serviço de hospedagem permitir configurar.',
-        'log_corpo_b' => 'Assim que isso for decidido, esta linha será atualizada com o prazo exato.',
+        // NÃO é cópia literal do rascunho: o prazo aqui ficava marcado como
+        // decisão pendente do líder; ele decidiu em 05/09/2026 (até 30 dias).
+        // Ver docs/legal/politica-privacidade-rascunho.md, seção "O que é do
+        // líder decidir", decisão 2.
+        'log_prazo'   => 'até 30 dias.',
+        'log_corpo_b' => 'Depois desse prazo, o registro é apagado.',
 
         'links_lead'  => 'Você também pode notar links para fora do site.',
         'links_corpo' => 'Algumas matérias linkam para outros lugares: o repositório do jogo no GitHub, o perfil de um artista convidado, o site de um parceiro editorial. Clicar neles abre outro site, com as próprias regras. Nós não mandamos nada automaticamente para esses lugares só por você visitar a Glyfesse.',
