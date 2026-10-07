@@ -436,3 +436,17 @@ depender de terceiro.
    mídia, e tudo isso é posterior à janela.
 8. **A data de v0.6.0.0 (06/10)** vem do índice de memória do GlintFx; as outras marcas vêm do
    `DECISOES_AUTONOMAS.md`. Nenhuma foi conferida por `git tag` (as tags existem em `packed-refs`).
+
+---
+
+## 13. GATE-PAUTA: decisões do líder (07/10/2026 15:40:23, por AskUserQuestion, verbatim das opções escolhidas)
+
+- **D1:** "Sim, de 04 a 20/08". A #6 conta de 04/08 a 20/08. A refundação e os marcos do Gus de 21 e 22/08 ficam para a #7.
+- **D3:** "Sim, seco, só fatos já públicos". A Reportagem conta que a sessão de IA propôs três atalhos e que o líder os barrou, e cita a issue pública de 15/08.
+- **D2:** "O Caminho Mais Fácil". O líder confirmou, verbatim: **"Sim, são minhas palavras"**. A atribuição a ele está conferida.
+- **D4:** **"Segura a edição"**. A #6 só sai com as respostas do homenageado na Seção 16. Não há saída sem a entrevista.
+- **D5:** "Opcao 1. Seja bem claro que a arte é do artista andré, o mesmo da edicao anterior e ponha o link dele e o @ dele do x".
+  - Entra uma linha no Expediente dizendo que a tira cita arte do jogo (brasão e sprite) gerada por IA e declarada no rodapé.
+  - Fica claro que a arte da tira é do artista André, o mesmo da #5, com o link dele e o @ no X (ver `BRIEFS-EDICAO-5.md`).
+- **D6:** "Não, a #6 sai sem brinquedo".
+- **D7:** "opcao um". Os rótulos antigos de "#6" em `EDICOES-ESTOQUE+` e `D-BRINQUEDOS` passam para a numeração atual. Junto veio uma ordem nova: pesquisar stacks e bibliotecas (Vue, TypeScript etc.) que facilitem produzir esta edição e as próximas, lembrando que o plano da Hostinger não aceita Node.js. Fontes: o projeto da Unibra em `/home/petrus/IDrive/Documentos/direito/unibra/` e pesquisa na web.
