@@ -868,3 +868,21 @@ dek, o `alt`, os epitáfios, a nota do editor, as linhas do Expediente) continua
 GATE-CONTEUDO; este documento organiza escopo e fonte e não substitui o julgamento do líder. Onde a pauta registra
 um verbatim dele como decisão fechada (D1 a D7), este brief a trata como fechada; onde registra "proposta" ou
 "recomendo", preservo a mesma marcação.
+
+---
+
+## Respostas do líder (07/10/2026 17:10:21, por AskUserQuestion; opção escolhida verbatim)
+
+- **PQ1 resolvida pelo main, sem nova pergunta:** a opção de D3 que o líder escolheu dizia "Só entram fatos que já estão no canal ou já são públicos". Os fatos que só existem no bus entram, citados com fonte e data.
+- **PQ2:** "Só \"prefiro quebrar tudo\"". A parte sobre dinheiro fica fora.
+- **PQ3:** "Ficam fora". Saem as duas frases da issue sobre custo e sobre suspender a distribuição.
+- **PQ4:** "Fica para a #7". A frase do "wrapper" sai, e o bus abre a mensagem condensada sem ela.
+- **PQ5:** "Sim, uma frase". Entra "são 6 telas e não 7".
+- **PQ8:** "Não, só os 687 e 398 arquivos".
+- **PQ12:** "Sim, palavra por palavra". Só a troca mecânica de travessão e emoji, e a tradução para o inglês vai ao líder.
+- **PQ13:** "Sim, uma linha seca". O Expediente declara o método da Entrevista, sem nome.
+- **PQ15:** "Sim, por data e sem número".
+- **PQ16 resolvida pelo main:** a pergunta de 07/10 era "As falas e os pensamentos do Gus nas perguntas [...] Estão aprovadas?", e o líder respondeu "aprovadas". A aprovação cobriu as perguntas e os `//`.
+- **PQ18 resolvida pelo D5:** "Seja bem claro que a arte é do artista andré, o mesmo da edicao anterior". A linha diz "o mesmo artista da edição passada", com nome, @ e link.
+- **A11 (main):** o repositório atual do jogo começa em 21/08. O `git log --all` tem 0 commits de 04/08 a 20/08, porque a história anterior não está nesse repositório. **Nenhuma peça afirma "jogo parado"** sem outra fonte.
+- **Ainda abertas:** PQ6, PQ7, PQ9, PQ10, PQ11, PQ14 e PQ17.
