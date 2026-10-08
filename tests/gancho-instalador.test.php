@@ -87,6 +87,24 @@ chmod($r2 . '/.git/hooks/pre-push', 0755);
 eq(1, $rc, 'gancho diferente ja existente: recusa com saida 1');
 eq($alheio, (string) @file_get_contents($r2 . '/.git/hooks/pre-push'), 'gancho alheio fica intacto');
 
+// 3b. pre-push que e link simbolico, mesmo com conteudo igual ao esperado, NAO e "ja instalado"
+$r6 = novo_diretorio('gancho-r6-');
+$tmp[] = $r6;
+repo_de_brinquedo($r6, 0);
+file_put_contents($r6 . '/alvo-do-link', LINHA_ESPERADA);
+chmod($r6 . '/alvo-do-link', 0755);
+symlink($r6 . '/alvo-do-link', $r6 . '/.git/hooks/pre-push');
+[$rc, $out] = sh(escapeshellarg($instalador) . ' --repo ' . escapeshellarg($r6));
+eq(1, $rc, 'link simbolico com conteudo igual: recusa com saida 1');
+verdadeiro(str_contains($out, 'RECUSADO'), 'e diz RECUSADO: ' . $out);
+verdadeiro(is_link($r6 . '/.git/hooks/pre-push'), 'o link continua sendo link');
+$r7 = novo_diretorio('gancho-r7-');
+$tmp[] = $r7;
+repo_de_brinquedo($r7, 0);
+symlink($r7 . '/nao-existe', $r7 . '/.git/hooks/pre-push');
+[$rc] = sh(escapeshellarg($instalador) . ' --repo ' . escapeshellarg($r7));
+eq(1, $rc, 'link simbolico quebrado tambem e recusado');
+
 // 4. o gancho instalado barra o push quando o preci falha, e deixa passar quando passa
 foreach ([[1, false], [0, true]] as [$codigoPreci, $deveAceitar]) {
     $r = novo_diretorio('gancho-r3-');
