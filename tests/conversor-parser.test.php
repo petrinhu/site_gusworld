@@ -101,6 +101,10 @@ eq(['fala:gus:termina em 12'], itens($n[0] ?? []), 'numero no meio de fala quebr
 lanca(fn() => nos("a\n\n```\n// x\n", 1), ConversorErro::class, 'cerca nao fechada', 'cerca sem fecho');
 lanca(fn() => nos("<div>cru</div>"), ConversorErro::class, 'HTML cru', 'HTML cru e recusado');
 lanca(fn() => nos("texto <b>negrito</b>"), ConversorErro::class, 'HTML cru', 'tag no meio do texto tambem');
+lanca(fn() => nos("fecha a tag solta </p> no meio"), ConversorErro::class, 'HTML cru', 'tag de fechamento tambem e HTML cru');
+lanca(fn() => nos("texto <!-- comentario --> texto"), ConversorErro::class, 'HTML cru', 'comentario HTML e HTML cru');
+lanca(fn() => nos("```\n// pensa <i>x</i>\n```"), ConversorErro::class, 'HTML cru', 'HTML cru dentro de cerca');
+lanca(fn() => nos("- item <b>x</b>"), ConversorErro::class, 'HTML cru', 'HTML cru em item de lista');
 eq('a < b e c > d', nos('a < b e c > d')[0]['texto'] ?? null, 'sinais soltos de < e > nao sao HTML');
 lanca(fn() => nos("## Titulo errado"), ConversorErro::class, 'fora do dialeto', 'cabecalho nivel 2 no bloco');
 lanca(fn() => nos("> citacao"), ConversorErro::class, 'fora do dialeto', 'citacao no bloco');
