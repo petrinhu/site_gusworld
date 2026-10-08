@@ -83,6 +83,9 @@ function emissor_item_de_voz(array $item): string
 
 function emissor_escape(string $texto): string
 {
+    if (!mb_check_encoding($texto, 'UTF-8')) {
+        throw new ConversorErro('texto com UTF-8 invalido (o escape apagaria o texto em silencio): ' . bin2hex(substr($texto, 0, 24)));
+    }
     return htmlspecialchars($texto, ENT_NOQUOTES | ENT_HTML5, 'UTF-8');
 }
 

@@ -87,6 +87,13 @@ eq("  <p>a</p>\n\n  <p>b</p>", emite($dois, ['recuo' => 2]), 'recuo de 2, branco
 eq("    <p>a</p>\n\n    <p>b</p>", emite($dois, ['recuo' => 4]), 'recuo de 4');
 eq("  <ul>\n    <li>um</li>\n  </ul>", emite([['tipo' => 'lista', 'itens' => ['um'], 'linha' => 1]], ['recuo' => 2]), 'recuo soma com o recuo interno');
 
+// UTF-8 invalido nao pode apagar texto em silencio
+$ruim = "abc\xC3\x28def";
+lanca(fn() => emite([['tipo' => 'paragrafo', 'texto' => $ruim, 'linha' => 3]]), ConversorErro::class, 'UTF-8', 'UTF-8 invalido em paragrafo');
+lanca(fn() => emite([voz(it_fala('gus', $ruim))]), ConversorErro::class, 'UTF-8', 'UTF-8 invalido em fala');
+lanca(fn() => emite([voz(it_pensa($ruim))]), ConversorErro::class, 'UTF-8', 'UTF-8 invalido em pensamento');
+lanca(fn() => emite([['tipo' => 'lista', 'itens' => [$ruim], 'linha' => 3]]), ConversorErro::class, 'UTF-8', 'UTF-8 invalido em item de lista');
+
 // vazio e erros
 eq('', emite([]), 'sem nos, sem saida');
 lanca(fn() => emite([['tipo' => 'numero', 'numero' => 1, 'linha' => 4]]), ConversorErro::class, 'numero', 'numero nao e emitivel');
