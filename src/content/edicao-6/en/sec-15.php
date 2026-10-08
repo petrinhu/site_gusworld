@@ -1,5 +1,5 @@
 <?php
-/* Cut-out coupon (insert §15): the site's ONLY LIVE backend — the poll
+/* Cut-out coupon (insert §15): the site's ONLY LIVE backend - the poll
    (api/cupom-voto.php). Recurring in #6: the SAME mini-app as #1 to #5. Same piece as the newsstand (DRY): just delegates to the
    shared include src/includes/cupom.php. The copy is bilingual via i18n
    ($t['banca']['cupom']), so the pt and en partials include the same file.
