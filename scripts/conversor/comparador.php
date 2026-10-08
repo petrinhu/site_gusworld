@@ -14,7 +14,7 @@ const COMPARADOR_TRECHO = 40;
  */
 function comparador_normalizar(string $texto): string
 {
-    $texto = preg_replace('/<\?php\s*\/\*.*?\*\/\s*\?>\n?/s', '', $texto) ?? $texto;
+    $texto = preg_replace('/<\?php\s*\/\*(?:(?!\*\/).)*\*\/\s*\?>\n?/s', '', $texto) ?? $texto;
     return str_ends_with($texto, "\n") ? substr($texto, 0, -1) : $texto;
 }
 

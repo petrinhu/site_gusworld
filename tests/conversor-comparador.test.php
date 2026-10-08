@@ -34,6 +34,12 @@ eq(false, cmp("<?php echo 1; ?>\n<p>a</p>", '<p>a</p>')['igual'], 'bloco PHP com
 eq(false, cmp("<?php /* c */ echo 1; ?>\n<p>a</p>", '<p>a</p>')['igual'], 'comentario seguido de codigo no mesmo bloco: nao sai');
 eq(false, cmp('<p>/* nao e php */</p>', '<p></p>')['igual'], 'barra-asterisco fora de <?php nao e comentario');
 
+// N1 nao atravessa blocos: um bloco com codigo no meio de dois comentarios nao pode ser engolido
+$atravessa = "<?php /* g */ ?>\n<p>A</p>\n<?php /* x */ echo \$ctx[\"a\"]; ?>\n<p>DIFERENTE</p>\n<?php /* y */ ?>\n<p>B</p>";
+eq(false, cmp($atravessa, "<p>A</p>\n<p>B</p>")['igual'], 'N1 nao atravessa bloco com codigo (era falso igual)');
+eq("<p>A</p>\n<?php /* x */ echo \$ctx[\"a\"]; ?>\n<p>DIFERENTE</p>\n<p>B</p>", comparador_normalizar($atravessa), 'so os dois blocos de puro comentario saem');
+eq(true, cmp("<?php /* a */ ?>\n<p>A</p>\n<?php /* b */ ?>\n<p>B</p>", "<p>A</p>\n<p>B</p>")['igual'], 'dois comentarios puros separados por texto continuam saindo');
+
 // diferenca de uma letra acha linha e coluna (1-based, no texto normalizado)
 $r = cmp("<p>um</p>\n<p>dois</p>\n", "<p>um</p>\n<p>dpis</p>\n");
 eq(false, $r['igual'], 'uma letra diferente');
