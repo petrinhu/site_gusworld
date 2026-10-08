@@ -35,7 +35,14 @@ function gerar_calcular(string $raiz, int $edicao): array
     if (!is_file($receitaPath)) {
         return ['arquivos' => [], 'erros' => ["receita nao encontrada: {$receitaPath}"]];
     }
-    $receita = require $receitaPath;
+    try {
+        $receita = require $receitaPath;
+    } catch (Throwable $e) {
+        return ['arquivos' => [], 'erros' => ["receita invalida ({$receitaPath}): " . $e::class . ': ' . $e->getMessage()]];
+    }
+    if (!is_array($receita) || !is_array($receita['secoes'] ?? null)) {
+        return ['arquivos' => [], 'erros' => ["receita invalida ({$receitaPath}): deve devolver um array com a chave \"secoes\" (array)"]];
+    }
     $erros = [];
     foreach (array_keys($receita) as $chave) {
         if ($chave !== 'secoes') {
@@ -43,9 +50,13 @@ function gerar_calcular(string $raiz, int $edicao): array
         }
     }
     $arquivos = [];
-    foreach ($receita['secoes'] ?? [] as $numero => $secao) {
+    foreach ($receita['secoes'] as $numero => $secao) {
         if (!is_int($numero) || $numero < 1 || $numero > 99) {
             $erros[] = "{$receitaPath}: numero de secao invalido \"{$numero}\"";
+            continue;
+        }
+        if (!is_array($secao) || !is_array($secao['partes'] ?? null)) {
+            $erros[] = "{$receitaPath}: receita invalida na secao {$numero}: precisa ser um array com \"partes\" (array)";
             continue;
         }
         foreach (GERAR_IDIOMAS as $idioma) {
@@ -70,11 +81,7 @@ function gerar_secao(string $raiz, array $secao, string $idioma, array &$erros):
             throw new ConversorErro("parte sem fonte/inicio para o idioma {$idioma}");
         }
         $nome = $def['fonte'];
-        $caminho = "{$raiz}/docs/content/{$nome}";
-        $md = is_file($caminho) ? file_get_contents($caminho) : false;
-        if ($md === false) {
-            throw new ConversorErro("fonte nao encontrada: {$nome}");
-        }
+        $md = gerar_ler_fonte($raiz, $nome);
         try {
             $linhas = fonte_bloco($md, $def['inicio'], $def['fim'] ?? null, $def['ocorrencia'] ?? null);
             $nos = parser_nos($linhas);
@@ -89,21 +96,65 @@ function gerar_secao(string $raiz, array $secao, string $idioma, array &$erros):
             $fontes[] = $nome;
         }
     }
-    $html = montagem_secao($secao, $nosPorParte);
+    try {
+        $html = montagem_secao($secao, $nosPorParte);
+    } catch (ConversorErro $e) {
+        throw new ConversorErro(implode(', ', $fontes) . ': ' . $e->getMessage(), $e->linha, $e);
+    }
     $cabecalho = '<?php /* GERADO por scripts/gerar-secoes.php a partir de docs/content/' . implode(', ', $fontes)
         . '. Não edite à mão: corrija a fonte e gere de novo. */ ?>';
     return $cabecalho . "\n" . $html . "\n";
 }
 
-/** Grava com escrita atomica por arquivo (temporario + rename). */
-function gerar_gravar(string $destino, string $conteudo): bool
+/** Le uma fonte CONFINADA a RAIZ/docs/content/ (sem "..", sem caminho absoluto, sem escapar por link). */
+function gerar_ler_fonte(string $raiz, mixed $nome): string
 {
-    $dir = dirname($destino);
-    if (!is_dir($dir) && !mkdir($dir, 0755, true) && !is_dir($dir)) {
-        return false;
+    if (!is_string($nome) || $nome === '' || str_starts_with($nome, '/') || str_contains($nome, "\0")
+        || in_array('..', explode('/', $nome), true)) {
+        throw new ConversorErro('fonte fora de docs/content: "' . (is_string($nome) ? $nome : gettype($nome)) . '"');
     }
-    $tmp = $destino . '.tmp';
-    return file_put_contents($tmp, $conteudo) !== false && rename($tmp, $destino);
+    $base = realpath("{$raiz}/docs/content");
+    $real = realpath("{$raiz}/docs/content/{$nome}");
+    if ($base === false || $real === false || !is_file($real)) {
+        throw new ConversorErro("fonte nao encontrada: {$nome}");
+    }
+    if (!str_starts_with($real, $base . '/')) {
+        throw new ConversorErro("fonte fora de docs/content (por link): \"{$nome}\"");
+    }
+    $md = file_get_contents($real);
+    if ($md === false) {
+        throw new ConversorErro("fonte ilegivel: {$nome}");
+    }
+    return $md;
+}
+
+/**
+ * Grava TODOS os arquivos da edicao em duas fases: primeiro cada um num temporario ao lado; so se
+ * todos os temporarios foram escritos, renomeia. Falha de escrita apaga os temporarios nossos e
+ * nao deixa nenhum destino tocado.
+ * @param array<string,string> $conteudos caminho absoluto => conteudo
+ * @return string|null mensagem de erro, ou null se gravou
+ */
+function gerar_gravar_tudo(array $conteudos): ?string
+{
+    $escritos = [];
+    foreach ($conteudos as $destino => $conteudo) {
+        $dir = dirname($destino);
+        $tmp = $destino . '.tmp';
+        if ((!is_dir($dir) && !mkdir($dir, 0755, true) && !is_dir($dir)) || @file_put_contents($tmp, $conteudo) === false) {
+            foreach ($escritos as $feito) {
+                @unlink($feito);
+            }
+            return "falha ao escrever {$tmp}; nada foi gravado";
+        }
+        $escritos[] = $tmp;
+    }
+    foreach ($conteudos as $destino => $_) {
+        if (!rename($destino . '.tmp', $destino)) {
+            return "falha ao renomear {$destino}.tmp (os anteriores desta edicao ja foram renomeados)";
+        }
+    }
+    return null;
 }
 
 function gerar_principal(array $argv): int
@@ -159,11 +210,14 @@ function gerar_principal(array $argv): int
         printf("verificados=%d divergentes=%d\n", count($calculo['arquivos']), $divergentes);
         return $divergentes === 0 ? 0 : 1;
     }
+    $destinos = [];
     foreach ($calculo['arquivos'] as $relativo => $conteudo) {
-        if (!gerar_gravar("{$base}/{$relativo}", $conteudo)) {
-            fwrite(STDERR, "{$relativo}: falha ao gravar\n");
-            return 1;
-        }
+        $destinos["{$base}/{$relativo}"] = $conteudo;
+    }
+    $falha = gerar_gravar_tudo($destinos);
+    if ($falha !== null) {
+        fwrite(STDERR, $falha . "\n");
+        return 1;
     }
     printf("gerados=%d\n", count($calculo['arquivos']));
     return 0;

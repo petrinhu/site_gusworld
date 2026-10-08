@@ -127,6 +127,82 @@ file_put_contents($rec, str_replace("'tipo' => 'prosa',", "'tipo' => 'prosa', 'h
 eq(1, $rc, 'chave desconhecida na receita sai 1');
 verdadeiro(str_contains($out, 'chave desconhecida'), 'diz qual chave: ' . $out);
 
+// 9a. --verificar com o arquivo ausente como UNICA divergencia
+$r = copia_da_fixture();
+$tmp[] = $r;
+cli($r, '--edicao', '99');
+unlink($r . '/src/content/edicao-99/en/sec-05.php');
+[$rc, $out] = cli($r, '--edicao', '99', '--verificar');
+eq(1, $rc, '--verificar: ausente sozinho ja sai 1');
+verdadeiro(str_contains($out, 'en/sec-05.php: ausente'), 'nomeia o ausente: ' . $out);
+verdadeiro(str_contains($out, 'verificados=4 divergentes=1'), 'conta exatamente 1 divergente: ' . $out);
+
+// 9b. a fonte da receita fica confinada a docs/content/
+$r = copia_da_fixture();
+$tmp[] = $r;
+copy($r . '/docs/content/brinquedo.md', $r . '/fora.md');
+$rec = $r . '/docs/content/receitas/edicao-99.php';
+file_put_contents($rec, str_replace("'fonte' => 'brinquedo.md'", "'fonte' => '../../fora.md'", (string) file_get_contents($rec)));
+[$rc, $out] = cli($r, '--edicao', '99');
+eq(1, $rc, 'fonte que escapa de docs/content sai 1');
+verdadeiro(str_contains($out, 'fora de docs/content'), 'diz o motivo: ' . $out);
+verdadeiro(!file_exists($r . '/src'), 'e nao grava nada');
+file_put_contents($rec, str_replace("'fonte' => '../../fora.md'", "'fonte' => '/etc/hostname'", (string) file_get_contents($rec)));
+[$rc, $out] = cli($r, '--edicao', '99');
+eq(1, $rc, 'fonte absoluta sai 1');
+verdadeiro(str_contains($out, 'fora de docs/content'), 'fonte absoluta tambem e recusada: ' . $out);
+
+// 9b2. link simbolico dentro de docs/content que aponta para fora (inclusive para uma pasta irma de nome parecido)
+$r = copia_da_fixture();
+$tmp[] = $r;
+mkdir($r . '/docs/content-outro', 0755, true);
+copy($r . '/docs/content/brinquedo.md', $r . '/docs/content-outro/x.md');
+symlink($r . '/docs/content-outro/x.md', $r . '/docs/content/link.md');
+$rec = $r . '/docs/content/receitas/edicao-99.php';
+file_put_contents($rec, str_replace("'fonte' => 'brinquedo.md'", "'fonte' => 'link.md'", (string) file_get_contents($rec)));
+[$rc, $out] = cli($r, '--edicao', '99');
+eq(1, $rc, 'link que escapa para pasta irma sai 1');
+verdadeiro(str_contains($out, 'fora de docs/content (por link)'), 'diz que e por link: ' . $out);
+
+// 9c. a gravacao e atomica por edicao: falha de escrita no meio nao deixa pt sem en
+$r = copia_da_fixture();
+$tmp[] = $r;
+mkdir($r . '/src/content/edicao-99/en/sec-05.php.tmp', 0755, true); // o temporario do ultimo arquivo nao pode ser criado
+[$rc, $out] = cli($r, '--edicao', '99');
+eq(1, $rc, 'falha de escrita sai 1: ' . $out);
+foreach (['pt/sec-03.php', 'en/sec-03.php', 'pt/sec-05.php', 'en/sec-05.php'] as $a) {
+    verdadeiro(gerado($r, $a) === null, "falha de escrita: {$a} nao ficou gravado");
+}
+$sobras = glob($r . '/src/content/edicao-99/*/*.tmp') ?: [];
+eq(['en/sec-05.php.tmp'], array_map(static fn(string $f): string => basename(dirname($f)) . '/' . basename($f), $sobras), 'nenhum temporario nosso sobrou (so o diretorio que o teste plantou)');
+
+// 9d. receita que nao devolve array, ou com forma errada: erro de conteudo (1), nunca TypeError
+foreach ([
+    'devolve string' => "<?php return 'texto';",
+    'secoes nao e array' => "<?php return ['secoes' => 'x'];",
+    'secao nao e array' => "<?php return ['secoes' => [3 => 'x']];",
+    'partes nao e array' => "<?php return ['secoes' => [3 => ['tipo' => 'prosa', 'partes' => 'x']]];",
+    'erro de sintaxe' => '<?php return [;',
+] as $caso => $codigo) {
+    $r = copia_da_fixture();
+    $tmp[] = $r;
+    file_put_contents($r . '/docs/content/receitas/edicao-99.php', $codigo);
+    [$rc, $out] = cli($r, '--edicao', '99');
+    eq(1, $rc, "receita {$caso}: sai 1 (nao 255): " . $out);
+    verdadeiro(str_contains($out, 'receita'), "receita {$caso}: a mensagem diz que e a receita: " . $out);
+    verdadeiro(!str_contains($out, 'Fatal') && !str_contains($out, 'Stack trace'), "receita {$caso}: sem trace de PHP");
+    verdadeiro(!file_exists($r . '/src'), "receita {$caso}: nada gravado");
+}
+
+// 9e. erro da montagem nomeia as fontes
+$r = copia_da_fixture();
+$tmp[] = $r;
+$pergunt = $r . '/docs/content/brinquedo-perguntas.md';
+file_put_contents($pergunt, str_replace("\n\ngus@glyfesse:~/entrevista\$ segunda pergunta", '', (string) file_get_contents($pergunt)));
+[$rc, $out] = cli($r, '--edicao', '99');
+eq(1, $rc, 'contagem desigual de perguntas e respostas sai 1');
+verdadeiro(str_contains($out, 'brinquedo-perguntas.md') && str_contains($out, 'brinquedo-respostas.md') && str_contains($out, 'em numero diferente'), 'o erro da montagem nomeia as duas fontes: ' . $out);
+
 // 9. nenhuma regra do conversor cita secao, edicao ou arquivo
 $achou = [];
 foreach (glob(__DIR__ . '/../scripts/conversor/*.php') ?: [] as $f) {
