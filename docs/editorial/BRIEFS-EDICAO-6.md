@@ -908,3 +908,4 @@ um verbatim dele como decisão fechada (D1 a D7), este brief a trata como fechad
 - **GATE-CONTEUDO do Cemitério (07/10/2026 23:33:30, AskUserQuestion):** "Aprovado como está". A pedra nasce em 22/06 e o texto diz que a escolha formal foi em 25/06 (ADR-009), sem contradizer a #4. Epitáfio EN ainda a confirmar.
 - **GATE-CONTEUDO da Reportagem v2 (07/10/2026 23:46:21, AskUserQuestion):** "Aprovada como está". Fica a ligação "nome que ele dá ao gesto inteiro" entre o terceiro atalho e o hábito de religar as bibliotecas.
 - **GATE-CONTEUDO da Galeria (07/10/2026 23:47:23, AskUserQuestion):** "Aprovada como está", com o parágrafo do stencil e as duas falas do Gus.
+- **GATE-CONTEUDO da Programação (07/10/2026 23:48:25, AskUserQuestion):** "Aprovada como está", com a desculpa nano × vim e os erros de digitação propositais.
