@@ -515,7 +515,7 @@ metadata:
 ## Auditoria de segurança v0.9.2 (security-engineer, 2026-06-14) — patches locais DESCARTADOS
 v0.9.1/v0.9.2 são byte-idênticas nos arquivos de segurança; os fixes entraram na v0.9.1. Os 2 patches locais da v0.8.0 (clamp de path + `var class_name`→`cls_name`) viraram REDUNDANTES (upstream cobre, às vezes mais estrito) e foram descartados na atualização. **Nenhum patch local a manter.**
 - **CRÍTICO-1 path traversal — FECHA (validado empírico).** `_normalize_path` + `_virtual_path_escapes_root` (`funplay_core_tools.gd:4357+`) conta profundidade de segmentos, rejeita `..` acima da raiz res://. Harness 30 vetores → 0 leaks. file-tools de escrita usam `_normalize_project_path` (mais estrito, exige `res://`, rejeita `user://`+traversal).
-- **CRÍTICO-2 CSRF/auth — FECHA-PARCIAL.** Token SHA256 auto-gerado fail-closed (sem token = 401), Origin/Referer allow-list `127.0.0.1`/`localhost`/`::1` (só em POST), bind estrito loopback `127.0.0.1`. `/health` não vaza o token.
+- **CRÍTICO-2 CSRF/auth — FECHA-PARCIAL.** Token SHA256 auto-gerado fail-closed (sem token, 401), Origin/Referer allow-list `127.0.0.1`/`localhost`/`::1` (só em POST), bind estrito loopback `127.0.0.1`. `/health` não vaza o token.
 
 ## Resíduos (menores, nenhum bloqueante)
 - **R-1 symlink (NÃO fecha):** file-tools seguem symlink DENTRO do projeto que aponte pra fora (sem `realpath`/canonicalize). Precondição: write no projeto (= já comprometido). Nosso patch antigo tinha o mesmo furo. Único ganho real de uma trava extra anti-symlink.
