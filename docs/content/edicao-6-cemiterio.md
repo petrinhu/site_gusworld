@@ -58,7 +58,7 @@ Issue #5's grave was empty: what was supposed to be kept inside it disappeared b
 
 RmlUi is an interface library written by other people: it builds the menus and the screens. It first shows up in the game's record on June 22nd, 2026, in the change of foundation from Qt6 to SDL3 (ADR-008, the decision record that listed SDL3, RmlUi and miniaudio). On June 25th, ADR-009 chose it for the interface and the HUD, the information panel that sits on top of the game. On July 1st, ADR-010 started using it inside GlintFX, the game's graphics engine (Issue #4 tells that swap).
 
-The order to take it out came on August 4th: root decided to take the third-party libraries out one by one, starting with it. The date on the stone is a different one, August 20th, because that is the day the name left.
+It was decreed out on August 4th: root decided to take the third-party libraries out one by one, starting with it. The date on the stone is a different one, August 20th, because that is the day the name left.
 
 That day, RmlUi's name and the names of the other third-party libraries were replaced by a marker in 687 files of GlintFX and in 398 of the game. The `src/rml/` folder became `src/_m_/`. No file was deleted and no line was deleted. Only the text changed, and the hole was left in plain sight.
 

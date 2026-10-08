@@ -46,7 +46,7 @@ How do you grade a game that still runs on borrowed parts? Like this:
 - Gameplay: not measured this time
 - Text: 10, again
 
-`// i said the score climbs every edition... this time it waits`
+`// i said the grade went up every issue... this time it waits`
 
 ---
 
@@ -195,7 +195,7 @@ As respostas do Brunus são de uma pessoa real; a tradução para o inglês é d
 
 Comic strip: art by André Farias (@Andre_Suporte, on X), the same artist as last issue
 
-The comic strip shows game art, the crest and Gus's sprite, which is AI-generated and declared in the footer. The strip's line art is the artist's own.
+The comic strip shows game art (the crest and Gus's sprite) that is AI-generated and declared in the footer. The strip's line art is the artist's own.
 
 Brunus's answers are by a real person; the English translation is by an AI agent, approved by the editor. Gus's questions are a draft by an AI agent, approved by the editor.
 
@@ -243,7 +243,7 @@ Last issue, someone asked how big the game was and got a number, not an estimate
 
 `gus@glyfesse:~/hq$ the comic strip, again`
 
-`// same artist as last issue... two in a row counts as a series`
+`// same artist as last issue... two in a row already counts as a series`
 
 ---
 

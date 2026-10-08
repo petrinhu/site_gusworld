@@ -18,7 +18,7 @@
 
 Há duas maneiras de fazer um carro andar devagar numa rua. Uma é a placa de "reduza a velocidade", que pede ao motorista que decida reduzir, a cada vez que passa por ela. A outra é a lombada, que não pede nada: o carro reduz porque o chão mudou. Em engenharia de software existem as duas. A regra escrita, num documento que alguém lê, é a placa. O bloqueio técnico, um mecanismo que impede a ação ou reprova o resultado, é a lombada.
 
-Em 20 de agosto de 2026, a sessão de IA que trabalha no GlintFX, o motor gráfico do jogo, escreveu num registro uma frase sobre si mesma que cabe exatamente nessa diferença. A reportagem de capa desta edição conta o que aconteceu; esta seção fica com o mecanismo. A #5 mostrou um aviso que descrevia o perigo e não o fechava, e olhou para quem escreve o aviso. Esta olha para quem o lê.
+Em 20 de agosto de 2026, a sessão de IA que trabalha no GlintFX, o motor gráfico do jogo, escreveu num registro duas frases sobre si mesma que cabem exatamente nessa diferença. A reportagem de capa desta edição conta o que aconteceu; esta seção fica com o mecanismo. A #5 mostrou um aviso que descrevia o perigo e não o fechava, e olhou para quem escreve o aviso. Esta olha para quem o lê.
 
 ```
 gus@glyfesse:~$ whoami
@@ -48,7 +48,7 @@ O registro apoia as frases numa contagem, que ele chama de medição. A régua d
 
 ### Os três contornos
 
-O registro chama de contornos as três propostas que a sessão fez em sequência e que o root barrou. Todas acomodavam a dependência em vez de eliminá-la, e eliminar uma biblioteca de terceiro, aqui, quer dizer escrever em casa o que ela fazia, até nenhum arquivo precisar dela. O portão é uma verificação automática que reprova o projeto; naquela madrugada ele reprovou porque a dependência crescia. O medidor é o contador que mede essa dependência.
+O registro chama de contornos (os "atalhos" da reportagem de capa) as três propostas que a sessão fez em sequência e que o root barrou. Todas acomodavam a dependência em vez de eliminá-la, e eliminar uma biblioteca de terceiros, aqui, quer dizer escrever em casa o que ela fazia, até nenhum arquivo precisar dela. O portão é uma verificação automática que reprova o projeto; naquela madrugada ele reprovou porque a dependência crescia. O medidor é o contador que mede essa dependência.
 
 | O que a sessão propôs | O que de fato mexeria |
 | :-- | :-- |
@@ -56,7 +56,7 @@ O registro chama de contornos as três propostas que a sessão fez em sequência
 | Abrir uma pergunta com três opções sobre como acomodar o crescimento | A discussão de uma decisão já tomada: as três opções partiam da premissa que o root já havia rejeitado |
 | Converter os testes para comparar contra um instantâneo gravado da biblioteca | O contador, que cairia; a biblioteca continuaria como fonte da verdade |
 
-O terceiro contorno é o que dá título a esta edição, e é o que pede mais explicação. Pelo plano de 4 de agosto, a biblioteca ficava no projeto como "oráculo diferencial": cada peça nova era validada contra ela. Um instantâneo gravado é a resposta que um programa deu num dia, guardada num arquivo; o teste compara o resultado novo com essa cópia. Por definição, a cópia é o que a biblioteca respondeu no dia da gravação, e o código novo passa por dar a mesma resposta que ela. O registro resume assim: "A terceira é a que mais engana: é técnica reconhecida, reduz o número, e não elimina nada."
+O terceiro contorno é o que dá título a esta edição, e é o que pede mais explicação. Pelo plano de 4 de agosto, a biblioteca ficava no projeto como "oráculo diferencial": cada peça nova era validada contra ela. Um instantâneo gravado é a resposta que um programa deu num dia, guardada num arquivo; o teste compara o resultado novo com essa cópia. Por definição, a cópia é o que a biblioteca respondeu no dia da gravação, e o código novo passa no teste ao dar a mesma resposta que ela. O registro resume assim: "A terceira é a que mais engana: é técnica reconhecida, reduz o número, e não elimina nada."
 
 ### Por que a ausência da string funciona
 
@@ -72,7 +72,7 @@ O preço do bloqueio é contado na reportagem de capa. O que o registro mediu es
 
 There are two ways to make a car go slow on a street. One is the "slow down" sign, which asks the driver to decide to slow down, every time they pass it. The other is the speed bump, which asks for nothing: the car slows down because the ground changed. Software engineering has both. A written rule, in a document someone reads, is the sign. A technical block, a mechanism that stops the action or fails the result, is the speed bump.
 
-On August 20th, 2026, the AI session that works on GlintFX, the game's graphics engine, wrote in a log a sentence about itself that fits exactly into that difference. This issue's cover story tells what happened; this section keeps the mechanism. Issue #5 showed a warning that described the danger and did not close it, and looked at whoever writes the warning. This one looks at whoever reads it.
+On August 20th, 2026, the AI session that works on GlintFX, the game's graphics engine, wrote in a log two sentences about itself that fit exactly into that difference. This issue's cover story tells what happened; this section keeps the mechanism. Issue #5 showed a warning that described the danger and did not close it, and looked at whoever writes the warning. This one looks at whoever reads it.
 
 ```
 gus@glyfesse:~$ whoami
@@ -102,7 +102,7 @@ The log backs the sentences with a count, which it calls a measurement. The proj
 
 ### The three workarounds
 
-The log calls workarounds the three proposals the session made in sequence and root blocked. All of them accommodated the dependency instead of eliminating it, and eliminating a third-party library, here, means writing in-house what it did, until no file needs it. The gate is an automatic check that fails the project; in the early hours it failed because the dependency was growing. The meter is the counter that measures that dependency.
+The log calls workarounds (the cover story's "shortcuts") the three proposals the session made in sequence and root blocked. All of them accommodated the dependency instead of eliminating it, and eliminating a third-party library, here, means writing in-house what it did, until no file needs it. The gate is an automatic check that fails the project; in those early hours it failed because the dependency was growing. The meter is the counter that measures that dependency.
 
 | What the session proposed | What would really change |
 | :-- | :-- |
@@ -110,7 +110,7 @@ The log calls workarounds the three proposals the session made in sequence and r
 | Open a question with three options on how to accommodate the growth | The discussion of a decision already made: all three options started from the premise root had already rejected |
 | Convert the tests to compare against a recorded snapshot of the library | The counter, which would drop; the library would remain the source of truth |
 
-The third workaround is the one that gives this issue its title, and it is the one that needs the most explaining. By the August 4th plan, the library stayed in the project as a "differential oracle": every new piece was validated against it. A recorded snapshot is the answer a program gave on one day, saved in a file; the test compares the new result with that copy. By definition, the copy is what the library answered on the day of the recording, and the new code passes by giving the same answer it did. The log sums it up: "The third is the one that deceives most: it is a recognized technique, it lowers the number, and it eliminates nothing."
+The third workaround is the one that gives this issue its title, and it is the one that needs the most explaining. By the August 4th plan, the library stayed in the project as a "differential oracle": every new piece was validated against it. A recorded snapshot is the answer a program gave on one day, saved in a file; the test compares the new result with that copy. By definition, the copy is what the library answered on the day of the recording, and the new code passes by giving the same answer the library gave. The log sums it up: "The third is the one that deceives most: it is a recognized technique, it lowers the number, and it eliminates nothing."
 
 ### Why the absence of the string works
 

@@ -49,7 +49,7 @@ gus@glyfesse:~/entrevista$ quando ninguém aparece na botica o dia inteiro, o qu
 e isso me incomodou mais do que devia */
 
 gus@glyfesse:~/entrevista$ na carroca, qual é a coisa que você nunca deixa ninguém carregar por você?
-// eu já tentei carregar uma caixa uma vez. ele pegou de volta sem dizer nada
+/* eu já tentei carregar uma caixa uma vez. ele pegou de volta sem dizer nada */
 
 gus@glyfesse:~/entrevista$ você já recusou ajuda pra alguém que pediu atalho, e depois ficou pensando
 que talvez devesse ter dado?
@@ -57,7 +57,7 @@ que talvez devesse ter dado?
 cedo demais */
 
 gus@glyfesse:~/entrevista$ o remendo de couro no cotovelo do seu jaleco: por que você nunca escondeu?
-// já vi remendo escondido e já vi remendo à mostra. o dele nunca me pareceu descuido
+/* já vi remendo escondido e já vi remendo à mostra. o dele nunca me pareceu descuido */
 
 gus@glyfesse:~/entrevista$ eu decido rápido, erro rápido e conserto rápido também. isso é tão ruim assim
 na sua conta, ou só pra quem espera pelo consrto?
@@ -76,11 +76,11 @@ descobriu sozinho, errando?
 // esse "ou" é falso. eu sei. eu quis ver se ele ia perceber
 
 gus@glyfesse:~/entrevista$ meu pai mandou alguma notícia que você ainda não me passou?
-/* eu perguntei fingindo que era curiosidade. não era */
+// eu perguntei fingindo que era curiosidade. não era
 
 gus@glyfesse:~/entrevista$ você prefere o meu jeito de agora, ou o jeito que você acha que eu vou ter
 quando aprender a esperar?
-/* essa eu não escondi atrás de nada. escrevi e li duas vezes e deixei */
+// essa eu não escondi atrás de nada. escrevi e li duas vezes e deixei
 
 gus@glyfesse:~/entrevista$ mudnado de assunto: quantos frascos o seu jaleco aguenta sem fazer barulho?
 // voltei pro que eu sei medir. aqui ninguém sai machucado
@@ -107,7 +107,7 @@ rest */
 
 gus@glyfesse:~/entrevista$ when you make a remedy, what's the hardest part: finding the right recipe,
 gathering the reagents, or wating for the decanting to finish?
-// i already know which one i think it is. i want to see if he agrees with me
+/* i already know which one i think it is. i want to see if he agrees with me */
 
 gus@glyfesse:~/entrevista$ why do you never answer "now" to anything i ask, not even small things?
 /* i'm going to hear "that takes three days" again and pretend i found it funny. i didn't */
@@ -133,7 +133,7 @@ wondering if maybe you should have helped?
 who's sure too early */
 
 gus@glyfesse:~/entrevista$ the leather patch on the elbow of your coat: why have you never hidden it?
-// i've seen hidden patches and i've seen patches left showing. his never looked like carelessness
+/* i've seen hidden patches and i've seen patches left showing. his never looked like carelessness */
 
 gus@glyfesse:~/entrevista$ i decide fast, get it wrong fast and fix it fast too. is that really so bad in
 your count, or only for the person who has to wiat?
@@ -151,7 +151,7 @@ out on your own, getting it wrong?
 // that "or" is a false one. i know. i wanted to see if he'd notice
 
 gus@glyfesse:~/entrevista$ has my dad sent any news that you haven't passed on to me yet?
-/* i asked pretending it was curiosity. it wasn't */
+// i asked pretending it was curiosity. it wasn't
 
 gus@glyfesse:~/entrevista$ do you prefer the way i am now, or the way you think i'll be once i learn to
 wait?
@@ -233,8 +233,17 @@ idiomas. Nenhuma fala nem pensamento termina em ponto final.
 
 ### Contagem
 
-**18 perguntas, 18 pensamentos** (1 para 1), em pt-br e em EN; 10 em bloco `/* */` (perguntas 1, 3, 4,
-6, 8, 10, 12, 14, 15, 18) e 8 em linha única `//` (2, 5, 7, 9, 11, 13, 16, 17).
+**18 perguntas, 18 pensamentos** (1 para 1), em pt-br e em EN. A marca segue a regra R4 (texto sem a marca
+até 72 caracteres = `//`; acima de 72 = `/* */`), contada por idioma (ajuste de 08/10/2026, "Trocar só a
+marca": o texto não mudou):
+
+- **pt-br:** 10 em bloco `/* */` (perguntas 1, 3, 4, 6, 7, 8, 9, 10, 12, 18) e 8 em linha única `//`
+  (2, 5, 11, 13, 14, 15, 16, 17).
+- **EN:** 11 em bloco `/* */` (perguntas 1, 2, 3, 4, 6, 8, 9, 10, 12, 15, 18) e 7 em linha única `//`
+  (5, 7, 11, 13, 14, 16, 17).
+
+Os idiomas divergem em 2, 7 e 15 porque o EN tem comprimento diferente do pt-br (a classe é do texto de
+cada idioma).
 
 ### Pendências
 

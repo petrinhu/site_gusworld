@@ -28,13 +28,13 @@
 
 `gus@glyfesse:~/galeria$ galeria de bugs`
 
-Desta vez é um defeito só, e o que mudou em 35 minutos foi o diagnóstico: de uma área inteira do código para uma linha que faltava numa lista. Aconteceu na quinta-feira, 13 de agosto de 2026, entre duas sessões de IA: a do jogo e a do GlintFX, o motor gráfico que o jogo usa.
+Desta vez é um defeito só, e o que mudou em 35 minutos foi o diagnóstico: de uma área inteira do código para uma linha que faltava numa lista. Aconteceu na quinta, 13 de agosto de 2026, entre duas sessões de IA: a do jogo e a do GlintFX, o motor gráfico que o jogo usa.
 
 ### Uma linha numa lista
 
-Pouco depois das 17h, a sessão do jogo relatou à do GlintFX uma regressão. A sombra de caixa (`box-shadow`) do RmlUi, a biblioteca de interface que o motor embute, saía como um retângulo opaco de cor constante, (24, 26, 34), sem tinta e sem desfoque; apagava o que estava atrás e cortava a borda dos botões vizinhos. Só acontecia no caminho novo de desenho do motor, o da classe `App`, e não no antigo, o da camada `UiLayer`. O título atribuía a falha ao "render pass do App", a etapa de desenho como um todo, e o experimento tinha controles: mesmo código do jogo, mesma versão do motor, mesmo driver de GL em software, reconstrução independente e nova execução idêntica, byte a byte.
+Pouco depois das 17h, a sessão do jogo relatou à do GlintFX uma regressão. A sombra de caixa (`box-shadow`) do RmlUi, a biblioteca de interface que o motor embute, saía como um retângulo opaco de cor constante (24, 26, 34), sem tinta e sem desfoque; apagava o que estava atrás e cortava a borda dos botões vizinhos. Só acontecia no caminho novo de desenho do motor, o da classe `App`, e não no antigo, o da camada `UiLayer`. O título atribuía a falha ao "render pass do App", a etapa de desenho como um todo, e o experimento tinha controles: mesmo código do jogo, mesma versão do motor, mesmo driver de GL em software, reconstrução independente e nova execução idêntica, byte a byte.
 
-Trinta e cinco minutos depois veio a retratação. Ela pede que a atribuição seja descartada, porque apontava para "uma área grande e genérica" do código da biblioteca: os sintomas continuavam válidos, o diagnóstico não. Os hexágonos de latão, que o primeiro relato dizia não serem desenhados, aparecem normalmente no caminho novo. Resultado, nas palavras da sessão: "é UM defeito, não três". O primeiro relato já avisava que as duas capturas eram de telas diferentes (a pausa pelo caminho antigo, o título pelo novo); a causa apareceu quando elas foram trocadas por uma sonda que roda a mesma cena e muda uma variável por vez. Ainda nas palavras da sessão: "a evidência anterior estava certa nos sintomas e errada na atribuição. Preferimos corrigir sozinhos e cedo do que defender um diagnóstico raso."
+Trinta e cinco minutos depois veio a retratação. Ela pede que a atribuição seja descartada, porque essa atribuição apontava para "uma área grande e genérica" do código da biblioteca: os sintomas continuavam válidos, o diagnóstico não. Os hexágonos de latão, que o primeiro relato dizia não serem desenhados, aparecem normalmente no caminho novo. Resultado, nas palavras da sessão: "é UM defeito, não três". O primeiro relato já avisava que as duas capturas eram de telas diferentes (a pausa pelo caminho antigo, o título pelo novo); a causa apareceu quando elas foram trocadas por uma sonda que roda a mesma cena e muda uma variável por vez. Ainda nas palavras da sessão: "a evidência anterior estava certa nos sintomas e errada na atribuição. Preferimos corrigir sozinhos e cedo do que defender um diagnóstico raso."
 
 `gus@glyfesse:~/galeria$ a acusação era enorme. o defeito cabia em um numero`
 `// 35 minutos entre acusar e corrigir é uma latência boa`
@@ -58,9 +58,9 @@ This time it is a single defect, and what changed in 35 minutes was the diagnosi
 
 ### One line in a list
 
-Shortly after 5 p.m., the game's session reported a regression to GlintFX's session. The drop shadow (`box-shadow`) of RmlUi, the interface library the engine embeds, came out as an opaque rectangle of constant color, (24, 26, 34), with no tint and no blur; it erased what was behind it and cut the border of neighboring buttons. It only happened on the engine's new drawing path, the one in the `App` class, and not on the old one, the `UiLayer` layer. The title blamed the "App's render pass", the drawing stage as a whole, and the experiment had controls: same game code, same engine version, same software GL driver, an independent rebuild and a rerun that came out identical, byte for byte.
+Shortly after 5 p.m., the game's session reported a regression to GlintFX's session. The box shadow (`box-shadow`) of RmlUi, the interface library the engine embeds, came out as an opaque rectangle of constant color (24, 26, 34), with no tint and no blur; it erased what was behind it and cut the border of neighboring buttons. It only happened on the engine's new drawing path, the one in the `App` class, and not on the old one, the `UiLayer` layer. The title blamed the "App's render pass", the drawing stage as a whole, and the experiment had controls: same game code, same engine version, same software GL driver, an independent rebuild and a rerun that came out identical, byte for byte.
 
-Thirty-five minutes later came the retraction. It asks that the attribution be discarded, because it pointed to "a large, generic area" of the library's code: the symptoms still held, the diagnosis did not. The brass hexagons, which the first report said were not drawn at all, appear normally on the new path. The result, in the session's words: "it is ONE defect, not three". The first report already warned that the two captures were of different screens (the pause menu on the old path, the title screen on the new one); the cause appeared when they were replaced by a probe that runs the same scene and changes one variable at a time. Still in the session's words: "the earlier evidence was right about the symptoms and wrong about the attribution. We prefer to correct ourselves, and early, than to defend a shallow diagnosis."
+Thirty-five minutes later came the retraction. It asks that the attribution be discarded, because that attribution pointed to "a large, generic area" of the library's code: the symptoms still held, the diagnosis did not. The brass hexagons, which the first report said were not drawn, appear normally on the new path. The result, in the session's words: "it is ONE defect, not three". The first report already warned that the two captures were of different screens (the pause screen on the old path, the title screen on the new one); the cause appeared when they were replaced by a probe that runs the same scene and changes one variable at a time. Still in the session's words: "the earlier evidence was right about the symptoms and wrong about the attribution. We would rather correct ourselves on our own, and early, than defend a shallow diagnosis."
 
 `gus@glyfesse:~/galeria$ the accusation was huge. the defect fit in one number`
 `// 35 minutes between accusing and fixing is a good latency`
@@ -70,9 +70,9 @@ The cause was measured at the entry of the game's hook. On every frame, RmlUi's 
 That night, the game's session confirmed the hole's twin, the stencil clear value (`GL_STENCIL_CLEAR_VALUE`), which also leaked and, when it fell between 1 and the nesting depth of the clip, made RmlUi's clip disappear entirely, and it added that an earlier test of its own, using the value 0xFF, had given a false negative, because 0xFF falls outside that range.
 
 `gus@glyfesse:~/galeria$ a green test only proves what it actually tested`
-`// I dont want to forget this when something of mine passes first try`
+`// I wont forget this next time something of mine passes first try`
 
-GlintFX's session accepted the retraction the same afternoon and called it "exactly the process working as it should". Its first diagnosis, reversing the order of the scene hook and `BeginFrame()`, had already been handed to an implementer that had not committed anything yet; it was redirected with the corrected cause. Around midnight between August 13th and 14th, GlintFX released the version in which `GlStateGuard` captures and restores both values, the color one and the stencil one.
+GlintFX's session accepted the retraction the same afternoon and called it "exactly the process working as it should". Its first diagnosis, reversing the order of the scene hook and `BeginFrame()`, had already been handed to an implementer who had not committed anything yet; it was redirected with the corrected cause. Around midnight between August 13th and 14th, GlintFX released the version in which `GlStateGuard` captures and restores both values, the color one and the stencil one.
 
 ---
 
@@ -151,10 +151,10 @@ TAG = `BUS/inbox/gusworld/archive/20260814-0015-...`.
 | 2 | fala: "a acusação era enorme. o defeito cabia em um numero" | fala: "the accusation was huge. the defect fit in one number" |
 | 3 | `//`: "35 minutos entre acusar e corrigir é uma latência boa" | `//`: "35 minutes between accusing and fixing is a good latency" |
 | 4 | fala: "um teste verde só prova o que ele chegou a testar" | fala: "a green test only proves what it actually tested" |
-| 5 | `//`: "vou lembrar disso na próxima vez que algo meu passar de primeira" | `//`: "I dont want to forget this when something of mine passes first try" |
+| 5 | `//`: "vou lembrar disso na próxima vez que algo meu passar de primeira" | `//`: "I wont forget this next time something of mine passes first try" |
 
 Registro: sem ponto final nas falas e nos `//` (a fala 2 tem um ponto interno, preservado pelo precedente da #5);
-um deslize mecânico por idioma (pt: "numero", acento comido; EN: "dont", apóstrofo comido); nenhuma gramática
+um deslize mecânico por idioma (pt: "numero", acento comido; EN: "wont", apóstrofo comido); nenhuma gramática
 errada. Nenhuma fala tem termo de produção (L-25); a prosa é a voz técnica da revista. **Atenção na fala 4:** no contexto ela lê como comentário ao falso negativo do teste da sessão do jogo; é máxima geral e a própria sessão registrou a lição, mas toca a conduta da sessão (T2), então o líder decide sabendo. As falas comentam a
 revista e o defeito, nunca a sessão de IA nem o líder (T2). Nenhuma frase caracteriza a personalidade do Gus.
 Os dois `//` ficam em até 72 caracteres, pensamento comum (R4).
