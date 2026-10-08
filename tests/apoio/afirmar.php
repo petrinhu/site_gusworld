@@ -8,6 +8,7 @@ declare(strict_types=1);
  * nao o roda como teste. Uso:
  *   require __DIR__ . '/apoio/afirmar.php';
  *   eq(esperado, obtido, 'mensagem');  verdadeiro(cond, 'mensagem');
+ *   lanca(fn() => ..., Classe::class, 'trecho da mensagem', 'mensagem');
  *   terminar();   // imprime "ALL GREEN (N asserções)" ou sai 1
  */
 
@@ -29,6 +30,19 @@ function eq(mixed $esperado, mixed $obtido, string $msg): void
 function verdadeiro(bool $cond, string $msg): void
 {
     eq(true, $cond, $msg);
+}
+
+/** Afirma que $f lanca $classe e que a mensagem contem $trecho. */
+function lanca(callable $f, string $classe, string $trecho, string $msg): void
+{
+    try {
+        $f();
+    } catch (Throwable $e) {
+        eq($classe, $e::class, $msg . ' (classe do erro)');
+        verdadeiro(str_contains($e->getMessage(), $trecho), $msg . ' (mensagem contem "' . $trecho . '": ' . $e->getMessage() . ')');
+        return;
+    }
+    eq($classe, 'nada lancado', $msg . ' (esperava erro)');
 }
 
 function terminar(): never
