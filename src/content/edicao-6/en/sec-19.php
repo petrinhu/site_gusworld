@@ -20,7 +20,7 @@
     Comic strip: art by <a href="https://x.com/Andre_Suporte" target="_blank" rel="noopener" aria-label="Visit André Farias's profile on X">André Farias (@Andre_Suporte, on X)</a>, the same artist as last issue
   </p>
 
-  <p class="colo-creditos">The comic strip shows game art, the crest and Gus's sprite, which is AI-generated and declared in the footer. The strip's line art is the artist's own.</p>
+  <p class="colo-creditos">The comic strip shows game art (the crest and Gus's sprite) that is AI-generated and declared in the footer. The strip's line art is the artist's own.</p>
 
   <p class="colo-creditos">Brunus's answers are by a real person; the English translation is by an AI agent, approved by the editor. Gus's questions are a draft by an AI agent, approved by the editor.</p>
 

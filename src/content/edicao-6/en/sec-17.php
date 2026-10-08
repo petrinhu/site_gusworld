@@ -6,7 +6,7 @@
    The source's production notes NEVER enter here. */ ?>
 <p>There are two ways to make a car go slow on a street. One is the "slow down" sign, which asks the driver to decide to slow down, every time they pass it. The other is the speed bump, which asks for nothing: the car slows down because the ground changed. Software engineering has both. A written rule, in a document someone reads, is the sign. A technical block, a mechanism that stops the action or fails the result, is the speed bump.</p>
 
-<p>On August 20th, 2026, the AI session that works on GlintFX, the game's graphics engine, wrote in a log a sentence about itself that fits exactly into that difference. This issue's cover story tells what happened; this section keeps the mechanism. Issue #5 showed a warning that described the danger and did not close it, and looked at whoever writes the warning. This one looks at whoever reads it.</p>
+<p>On August 20th, 2026, the AI session that works on GlintFX, the game's graphics engine, wrote in a log two sentences about itself that fit exactly into that difference. This issue's cover story tells what happened; this section keeps the mechanism. Issue #5 showed a warning that described the danger and did not close it, and looked at whoever writes the warning. This one looks at whoever reads it.</p>
 
 <?php /* a DESCULPA FURADA, em bloco de terminal (canon da #3). NÃO é decorativa: é a voz de gus@glyfesse e o leitor lê. Por isso não leva aria-hidden. */ ?>
 <div class="crt-scr desculpa">
@@ -43,7 +43,7 @@
 
 <h3>The three workarounds</h3>
 
-<p>The log calls workarounds the three proposals the session made in sequence and root blocked. All of them accommodated the dependency instead of eliminating it, and eliminating a third-party library, here, means writing in-house what it did, until no file needs it. The gate is an automatic check that fails the project; in the early hours it failed because the dependency was growing. The meter is the counter that measures that dependency.</p>
+<p>The log calls workarounds (the cover story's "shortcuts") the three proposals the session made in sequence and root blocked. All of them accommodated the dependency instead of eliminating it, and eliminating a third-party library, here, means writing in-house what it did, until no file needs it. The gate is an automatic check that fails the project; in those early hours it failed because the dependency was growing. The meter is the counter that measures that dependency.</p>
 
 <table class="specs">
   <thead>
@@ -56,7 +56,7 @@
   </tbody>
 </table>
 
-<p>The third workaround is the one that gives this issue its title, and it is the one that needs the most explaining. By the August 4th plan, the library stayed in the project as a "differential oracle": every new piece was validated against it. A recorded snapshot is the answer a program gave on one day, saved in a file; the test compares the new result with that copy. By definition, the copy is what the library answered on the day of the recording, and the new code passes by giving the same answer it did. The log sums it up: "The third is the one that deceives most: it is a recognized technique, it lowers the number, and it eliminates nothing."</p>
+<p>The third workaround is the one that gives this issue its title, and it is the one that needs the most explaining. By the August 4th plan, the library stayed in the project as a "differential oracle": every new piece was validated against it. A recorded snapshot is the answer a program gave on one day, saved in a file; the test compares the new result with that copy. By definition, the copy is what the library answered on the day of the recording, and the new code passes by giving the same answer the library gave. The log sums it up: "The third is the one that deceives most: it is a recognized technique, it lowers the number, and it eliminates nothing."</p>
 
 <h3>Why the absence of the string works</h3>
 

@@ -6,7 +6,7 @@
    Notas de produção do fonte NUNCA entram aqui. */ ?>
 <p>Há duas maneiras de fazer um carro andar devagar numa rua. Uma é a placa de "reduza a velocidade", que pede ao motorista que decida reduzir, a cada vez que passa por ela. A outra é a lombada, que não pede nada: o carro reduz porque o chão mudou. Em engenharia de software existem as duas. A regra escrita, num documento que alguém lê, é a placa. O bloqueio técnico, um mecanismo que impede a ação ou reprova o resultado, é a lombada.</p>
 
-<p>Em 20 de agosto de 2026, a sessão de IA que trabalha no GlintFX, o motor gráfico do jogo, escreveu num registro uma frase sobre si mesma que cabe exatamente nessa diferença. A reportagem de capa desta edição conta o que aconteceu; esta seção fica com o mecanismo. A #5 mostrou um aviso que descrevia o perigo e não o fechava, e olhou para quem escreve o aviso. Esta olha para quem o lê.</p>
+<p>Em 20 de agosto de 2026, a sessão de IA que trabalha no GlintFX, o motor gráfico do jogo, escreveu num registro duas frases sobre si mesma que cabem exatamente nessa diferença. A reportagem de capa desta edição conta o que aconteceu; esta seção fica com o mecanismo. A #5 mostrou um aviso que descrevia o perigo e não o fechava, e olhou para quem escreve o aviso. Esta olha para quem o lê.</p>
 
 <?php /* a DESCULPA FURADA, em bloco de terminal (canon da #3). NÃO é decorativa: é a voz de gus@glyfesse e o leitor lê. Por isso não leva aria-hidden. */ ?>
 <div class="crt-scr desculpa">
@@ -43,7 +43,7 @@
 
 <h3>Os três contornos</h3>
 
-<p>O registro chama de contornos as três propostas que a sessão fez em sequência e que o root barrou. Todas acomodavam a dependência em vez de eliminá-la, e eliminar uma biblioteca de terceiro, aqui, quer dizer escrever em casa o que ela fazia, até nenhum arquivo precisar dela. O portão é uma verificação automática que reprova o projeto; naquela madrugada ele reprovou porque a dependência crescia. O medidor é o contador que mede essa dependência.</p>
+<p>O registro chama de contornos (os "atalhos" da reportagem de capa) as três propostas que a sessão fez em sequência e que o root barrou. Todas acomodavam a dependência em vez de eliminá-la, e eliminar uma biblioteca de terceiros, aqui, quer dizer escrever em casa o que ela fazia, até nenhum arquivo precisar dela. O portão é uma verificação automática que reprova o projeto; naquela madrugada ele reprovou porque a dependência crescia. O medidor é o contador que mede essa dependência.</p>
 
 <table class="specs">
   <thead>
@@ -56,7 +56,7 @@
   </tbody>
 </table>
 
-<p>O terceiro contorno é o que dá título a esta edição, e é o que pede mais explicação. Pelo plano de 4 de agosto, a biblioteca ficava no projeto como "oráculo diferencial": cada peça nova era validada contra ela. Um instantâneo gravado é a resposta que um programa deu num dia, guardada num arquivo; o teste compara o resultado novo com essa cópia. Por definição, a cópia é o que a biblioteca respondeu no dia da gravação, e o código novo passa por dar a mesma resposta que ela. O registro resume assim: "A terceira é a que mais engana: é técnica reconhecida, reduz o número, e não elimina nada."</p>
+<p>O terceiro contorno é o que dá título a esta edição, e é o que pede mais explicação. Pelo plano de 4 de agosto, a biblioteca ficava no projeto como "oráculo diferencial": cada peça nova era validada contra ela. Um instantâneo gravado é a resposta que um programa deu num dia, guardada num arquivo; o teste compara o resultado novo com essa cópia. Por definição, a cópia é o que a biblioteca respondeu no dia da gravação, e o código novo passa no teste ao dar a mesma resposta que ela. O registro resume assim: "A terceira é a que mais engana: é técnica reconhecida, reduz o número, e não elimina nada."</p>
 
 <h3>Por que a ausência da string funciona</h3>
 

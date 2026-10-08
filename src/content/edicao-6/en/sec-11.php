@@ -17,7 +17,7 @@
    in the footer: the colophon says so. The source's production notes NEVER enter here. */
 ?>
 <p class="fala"><span class="prompt">gus@glyfesse:~/hq$</span> <span class="dito">the comic strip, again</span></p>
-<p class="pensa">same artist as last issue... two in a row counts as a series</p>
+<p class="pensa">same artist as last issue... two in a row already counts as a series</p>
 
 <figure class="tirinha tirinha-vertical">
   <a class="tirinha-link" href="https://vidadesuporte.com.br" target="_blank" rel="noopener"
