@@ -50,6 +50,12 @@ $r = v('//by: gus@glyfesse');
 eq('assinatura', $r['tipo'] ?? null, '//by: e assinatura');
 eq('by: gus@glyfesse', $r['texto'] ?? null, 'texto da assinatura mantem "by:"');
 
+// 6b. so "//by:" e assinatura; "//by..." qualquer e pensamento comum
+$r = v('//bypass total');
+eq('pensa', $r['tipo'] ?? null, '//bypass nao e assinatura');
+eq('bypass total', $r['texto'] ?? null, 'texto do //bypass');
+eq('pensa', v('//by sem dois pontos')['tipo'] ?? null, '//by sem ":" e pensamento');
+
 // 7. numero: so puro; entre crases e prosa, nao
 eq('numero', v('12')['tipo'] ?? null, 'linha so com numero');
 eq(12, v('12')['numero'] ?? null, 'valor do numero');
@@ -67,6 +73,9 @@ eq(null, v(''), 'linha vazia');
 lanca(fn() => v('root@glyfesse> oi'), ConversorErro::class, 'prompt fora do padrao', 'formato antigo root@glyfesse>');
 lanca(fn() => v('gus@glyfesse oi'), ConversorErro::class, 'prompt fora do padrao', 'sem :caminho$');
 lanca(fn() => v('gus@glyfesse:~/x$'), ConversorErro::class, 'sem texto', 'fala sem texto');
+lanca(fn() => v('gus@glyfesse:~/x$oi'), ConversorErro::class, 'prompt fora do padrao', 'prompt sem espaco depois do $');
+lanca(fn() => v('Gus@glyfesse:~/x$ oi'), ConversorErro::class, 'prompt fora do padrao', 'persona com maiuscula e erro, nao paragrafo');
+lanca(fn() => v('`Gus@glyfesse:~/x$ oi`'), ConversorErro::class, 'prompt fora do padrao', 'persona com maiuscula entre crases tambem');
 lanca(fn() => v('//'), ConversorErro::class, 'sem texto', 'pensamento vazio');
 lanca(fn() => v('/*  */'), ConversorErro::class, 'sem texto', 'longo vazio');
 
@@ -75,6 +84,7 @@ eq(true, voz_inicia_item('gus@glyfesse:~/x$ oi'), 'prompt inicia item');
 eq(true, voz_inicia_item('// x'), '// inicia item');
 eq(true, voz_inicia_item('/* x'), '/* aberto inicia item');
 eq(true, voz_inicia_item('root@glyfesse> x'), 'prompt antigo tambem "inicia" (para o erro aparecer)');
+eq(true, voz_inicia_item('Gus@glyfesse:~/x$ oi'), 'prompt com maiuscula tambem "inicia" (para o erro aparecer)');
 eq(false, voz_inicia_item('continuacao da fala'), 'continuacao nao inicia');
 eq(false, voz_inicia_item('  // indentado'), 'indentado e continuacao');
 

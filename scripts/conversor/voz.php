@@ -5,7 +5,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/erro.php';
 
 /** Prefixo de uma linha de prompt: persona@glyfesse (o resto e validado em voz_classificar). */
-const VOZ_PREFIXO_PROMPT = '/^[a-z][a-z0-9_-]*@glyfesse/';
+const VOZ_PREFIXO_PROMPT = '/^[A-Za-z][A-Za-z0-9_-]*@glyfesse/';
 const VOZ_PROMPT_COMPLETO = '/^([a-z][a-z0-9_-]*)@glyfesse:(\S+)\$ (\S.*)$/';
 
 /**
@@ -28,7 +28,7 @@ function voz_classificar(string $linha): ?array
     }
     if (preg_match(VOZ_PREFIXO_PROMPT, $conteudo) === 1) {
         if (preg_match(VOZ_PROMPT_COMPLETO, $conteudo, $m) !== 1) {
-            if (preg_match('/^[a-z][a-z0-9_-]*@glyfesse:\S+\$\s*$/', $conteudo) === 1) {
+            if (preg_match('/^[A-Za-z][A-Za-z0-9_-]*@glyfesse:\S+\$\s*$/', $conteudo) === 1) {
                 throw new ConversorErro("fala sem texto: \"{$conteudo}\"");
             }
             throw new ConversorErro("prompt fora do padrao (esperado persona@glyfesse:caminho\$ fala): \"{$conteudo}\"");
