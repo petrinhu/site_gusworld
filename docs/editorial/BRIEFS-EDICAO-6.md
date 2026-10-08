@@ -897,3 +897,9 @@ um verbatim dele como decisão fechada (D1 a D7), este brief a trata como fechad
 - **PQ14:** "Sim, o placar 31 e 5". A capa tem arte em código.
 - **PQ17:** "Sim, vazio com graça". O pôster fica vazio com graça.
 - **Todas as perguntas dos briefs estão respondidas.**
+
+### Resposta do líder ao GATE-CONTEUDO da Reportagem (07/10/2026 23:26:51, por AskUserQuestion, verbatim)
+
+> acrescente que preferi quebrar tudo pois, por mais que eu insistisse em retirar as libs externas, você insistia em envelopar e ligar novamente com as libs que pedi pra tirar e foi isso que chamei de caminho mais fácil. Você sempre queria seguir o caminho mais fácil, ligando de novo nas libs que seriam proibidas. Uma hora me irritei e apaguei o repo glintfx do github e criei um novo limpo. Da mesma forma fiz com o jogo, apaguei o repositório de recriei um do nada. Para evitar que novamente você continuasse insistindo, criei o GODS LAWS md (tem dado certo). AS decisões, lore e outras coisas que não eram código do jogo, foram buscadas em um .git salvo na pasta temp que depois mandei colocar em um repo legado do jogo, com medo de que tivesse aidna codigo antigo que se propagasse novamente e recomecei o jogo do zero também, bem definido o que é do framework e o que é do jogo, deixando MUITO claro que o framework é para distribuiçao, pois outra grande insistência contínua sua era que glintfx era para uso apenas com GusWorld e eu precisava ficar lembrando isso a cada fatia e me irritava cada vez mais.
+
+- **Status:** a Reportagem NÃO está aprovada como v1; o líder pediu acréscimo. Parte do acréscimo (apagar e recriar os repositórios, o repo legado, a criação do GODS_LAWS) cai depois de 20/08, fora do recorte D1 e dentro de `MATERIA-REFUNDACAO-DOS-REPOS` (reservada para a #7). O alcance vai ao líder antes da v2.
