@@ -70,6 +70,8 @@ foreach ([
     '&ndash;' => 'antes &NDASH; depois',
     '&#8212;' => 'antes &#8212; depois',
     '&#x2013;' => 'antes &#x2013; depois',
+    '&#08212; (zero a esquerda)' => 'antes &#08212; depois',
+    '&#x002013; (zeros a esquerda)' => 'antes &#x002013; depois',
 ] as $nome => $texto) {
     eq(['R3'], so_regras(travas([paragrafo($texto)])), "R3 reprova em paragrafo: {$nome}");
 }
@@ -95,6 +97,12 @@ verdadeiro(str_starts_with($r[0] ?? '', 'a.md:12: R4: '), 'R4 aponta a linha do 
 $r = travas([paragrafo('a ' . TRAVESSAO_EM . ' b', 1), voz_no([fala('ponto.', 3), pensa('outro.', false, 4)], 3)]);
 eq(['R3', 'R1', 'R2'], so_regras($r), 'violacoes na ordem em que aparecem');
 eq(['a.md:1', 'a.md:3', 'a.md:4'], array_map(static fn(string $m): string => implode(':', array_slice(explode(':', $m), 0, 2)), $r), 'cada uma com a sua linha');
+
+// UTF-8 invalido nao pode silenciar a trava: falha com erro
+$ruim = "abc\xC3\x28def";
+lanca(fn() => travas([paragrafo($ruim, 4)]), ConversorErro::class, 'UTF-8', 'UTF-8 invalido em paragrafo');
+lanca(fn() => travas([voz_no([fala($ruim, 5)])]), ConversorErro::class, 'UTF-8', 'UTF-8 invalido em fala');
+lanca(fn() => travas([voz_no([pensa($ruim, false, 6)])]), ConversorErro::class, 'UTF-8', 'UTF-8 invalido em pensamento');
 
 // numero e nos sem texto nao geram nada
 eq([], travas([['tipo' => 'numero', 'numero' => 3, 'linha' => 1]]), 'numero nao e verificado');

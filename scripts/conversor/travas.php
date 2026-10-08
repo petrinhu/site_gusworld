@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /** Limite de caracteres (sem a marca) acima do qual o pensamento pede a marca longa. */
 const TRAVAS_LIMITE_PENSA_COMUM = 72;
-const TRAVAS_TRAVESSAO = '/\x{2014}|\x{2013}|&mdash;|&ndash;|&#8212;|&#8211;|&#x2014;|&#x2013;/iu';
+const TRAVAS_TRAVESSAO = '/\x{2014}|\x{2013}|&mdash;|&ndash;|&#0*821[12];|&#x0*201[34];/iu';
 
 /**
  * Travas de copy: aponta violacao das regras mecanicas nos nos do parser.
@@ -67,6 +67,9 @@ function travas_item_de_voz(array $item, callable $aponta): void
 
 function travas_travessao(string $texto, int $linha, callable $aponta): void
 {
+    if (!mb_check_encoding($texto, 'UTF-8')) {
+        throw new ConversorErro('texto com UTF-8 invalido (a trava R3 nao consegue ler): ' . bin2hex(substr($texto, 0, 24)), $linha);
+    }
     if (preg_match(TRAVAS_TRAVESSAO, $texto) === 1) {
         $aponta($linha, 'R3', $texto);
     }
