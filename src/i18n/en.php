@@ -254,7 +254,7 @@ return [
     // reserved"); (2) disclose AI use in ART, not only code, NAMING the tool; (3) carry no
     // defense by intent ("AI is the tool, the creative part is the creator's") and no defense
     // by credential. Disclosing is the defense.
-    'rodape_licenca'    => 'Site code: Apache 2.0. Magazine text and art: all rights reserved. Made with AI: the code with Claude; the text drafted with AI agents and reviewed by the editor; the art with PixelLab (sprites; logo, generated), Grok Imagine (logo, refined) and Tripo3D (3D poster).',
+    'rodape_licenca'    => 'Site code: Apache 2.0. Magazine text and art: all rights reserved, except third-party works credited in the Colophon. Made with AI: the code with Claude; the text drafted with AI agents and reviewed by the editor; the art with PixelLab (sprites; logo, generated), Grok Imagine (logo, refined) and Tripo3D (3D poster).',
     'rodape_contato'    => 'Contact the newsroom',
     // footer link to the Privacy Policy (REMED-LGPD) — present in every
     // footer, in both languages.
