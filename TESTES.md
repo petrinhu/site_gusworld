@@ -23,6 +23,12 @@ E o critério de sucesso **não é métrica** (ver `conceito.md` §4): *"se apen
 
 ---
 
+## Comando da suite
+
+`scripts/testes.sh` roda todo `tests/*.test.php` e `tests/*.test.js`, um arquivo por vez, e imprime as contagens; `scripts/testes.sh --autoteste` prova que o próprio portão reprova o que deve reprovar. O `scripts/preci.sh` chama o primeiro.
+
+---
+
 ## Os testes que independem de stack
 
 ### `TST-A11Y` — Acessibilidade (o mais importante deste site)

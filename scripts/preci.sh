@@ -8,7 +8,7 @@
 #
 # Roda em ordem e FALHA (exit != 0) no primeiro erro. Se tudo passar,
 # termina com "ALL GREEN".
-#   1. testes puros dos mini-apps (node --test + node:assert - ZERO npm/vitest/jest)
+#   1. testes: scripts/testes.sh (tests/) e os dos mockups (node --test + node:assert - ZERO npm/vitest/jest)
 #   2. varredura de segredo versionado
 #   3. varredura de nome de menor (ver NOTA abaixo - e TODO de proposito)
 #   4. validador HTML (vnu/tidy) - se nenhum estiver no PATH, PULA com aviso
@@ -27,13 +27,16 @@ die(){ printf '%s%s%s\n' "$C_ERR" "$*" "$C_NC" >&2; exit 1; }
 
 say "${C_DIM}== preci :: gate de pre-push ==${C_NC}"
 
-# --- 1. testes puros dos mini-apps ---
+# --- 1. testes (suite do site + mockups) ---
 command -v node >/dev/null || die "node nao encontrado (teste e DEV/CI, roda na maquina de dev)."
-say "${C_DIM}[1/4] node --test dos mini-apps...${C_NC}"
+command -v php >/dev/null || die "php nao encontrado (a suite tests/*.test.php precisa dele)."
+say "${C_DIM}[1/4] testes: scripts/testes.sh (tests/*.test.php e tests/*.test.js)...${C_NC}"
+"$ROOT/scripts/testes.sh" || die "testes falharam. Corrija antes de fazer push."
+say "${C_DIM}      testes dos mockups (docs/design/mockups/js)...${C_NC}"
 # NOTA: `node --test <dir>/` sem glob NAO descobre os arquivos nesta versao
 # de Node (confirmado v22.22.2: precisa de padrao glob explicito, ou
 # nenhum argumento pra auto-discovery no cwd). Por isso o glob abaixo.
-node --test 'docs/design/mockups/js/**/*.test.js' || die "testes falharam. Corrija antes de fazer push."
+node --test 'docs/design/mockups/js/**/*.test.js' || die "testes dos mockups falharam. Corrija antes de fazer push."
 
 # --- 2. segredo versionado ---
 say "${C_DIM}[2/4] varredura de segredo...${C_NC}"
