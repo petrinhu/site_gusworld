@@ -1,0 +1,18 @@
+ACEITE DO CONVERSOR - edicao 5 - 2026-10-08 02:47:21
+
+== CAMADA 1: numeros crus ==
+universo: 12 arquivos
+fora do universo: 22 arquivos
+comparados: 12
+iguais: 12
+diferentes: 0
+pt: 6/6
+en: 6/6
+travas: 0
+
+informativo: 0 diferenca(s) sumiriam se o espaco entre tags fosse ignorado (nao muda o veredito)
+
+== CAMADA 2: veredito ==
+criterio: docs/tecnico/ACEITE-CONVERSOR.md (estrito: so N1 e N2; APROVADO so com todos iguais, por idioma)
+VEREDITO: APROVADO
+nota: a classe (D1 a D6) de cada diferenca e atribuida pelo reviewer, nunca por quem implementou

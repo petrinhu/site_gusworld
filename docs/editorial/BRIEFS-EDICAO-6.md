@@ -16,6 +16,8 @@
 > escreve abre o arquivo, não lê o resumo de quem brifa). Onde este brief e a pauta divergirem, **a pauta vence,
 > menos nos achados da §2 abaixo**, que são correções por leitura da fonte e estão marcadas como tal.
 >
+> **Dialeto para quem escreve (08/10/2026):** o texto corrido da #6 em `docs/content/*.md` segue as regras de marcação de `docs/content/DIALETO.md`. Leia antes de escrever ou revisar: ele diz o que cada marca vira na página (por exemplo, `//` vira pensamento do personagem) e o que o programa conversor recusa (por exemplo, HTML escrito à mão).
+>
 > **Limite de método, dito de saída:** esta rodada rodou **sem Bash** (sem `date`, `git log`, `git pull`,
 > `sha256sum`). Li o bus (clone local, só leitura) por Read/Grep/Glob, os partials publicados da #5, o
 > `data/edicoes.php`, a imagem da tirinha e a página pública da issue citada. Nada foi executado. As tarefas que

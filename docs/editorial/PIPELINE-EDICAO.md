@@ -217,6 +217,10 @@ Roda para cada seção do mapa. Seção em **vazio com graça** pula S2-S5 (não
 - **Quem:** `art-director` / `visual-design-director`.
 - **Output:** a seção diagramada (HTML/CSS).
 - **Gate:** nenhum (interno); a aprovação vem no render (S9). **Arte reaproveitada não re-gate:** layout idêntico reaproveitado de edição anterior não passa por novo GATE-RENDER — só render **novo ou alterado** é gated.
+- **Texto corrido: gerado, não digitado à mão.** Parte das seções de texto corrido não é montada à mão. Um programa, o **conversor** (`scripts/gerar-secoes.php`), lê o texto em `docs/content/` e produz o **partial** de cada seção: o pedaço de HTML que vai para `src/content/edicao-N/`. Qual arquivo de texto alimenta qual seção é dito pela **receita** da edição, o arquivo `docs/content/receitas/edicao-N.php`. Para gerar, na raiz do projeto: `php scripts/gerar-secoes.php --edicao N`.
+  - **Fonte única:** `docs/content/*.md` é a única fonte desse texto. Erro de texto se corrige no `.md` e se gera de novo. Corrigir o partial não adianta: a próxima geração apaga a correção.
+  - **Partial gerado não se edita à mão.** O teste `tests/conversor-deriva.test.php` gera tudo de novo e reprova se o arquivo gravado for diferente.
+  - **Seção feita à mão continua à mão.** Quem decide quais seções entram no conversor em cada edição é a receita dela. Seções que seguem no formato antigo (lápide, tela CRT, tabela, pôster, HQ, cupom, expediente com dado do contexto) são o **molde**: continuam feitas à mão, e a receita diz quais são.
 
 ### S8. Render + QA visual
 - **O que acontece:** renderiza headless no **Firefox/Gecko** (`--new-instance --profile`; filtro SVG precisa dimensão explícita) e um `qa-engineer` **independente do art-director** confere o print contra o checklist item a item. **Higiene de asset:** qualquer imagem derivada de captura é verificada "só o alvo, sem tela ao redor" antes de virar tracked.
