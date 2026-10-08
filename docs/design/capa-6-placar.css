@@ -1,0 +1,110 @@
+/* docs/design/capa-6-placar.css: a ARTE DA CAPA da Edicao #6 "O Caminho Mais Facil",
+   em CSS puro, do design system do site (tokens --navy/--ciano/--magenta/--tela-*
+   de og-card.css e tokens.css). NUNCA o UI Kit do jogo. Zero captura, zero IA.
+
+   O que e': o PLACAR PARADO do GlintFX em 20/08 (bus de 19 e 20/08): 31 arquivos de
+   interface e 5 de janela, "identicos ao marco inicial da campanha". Duas contagens,
+   cada uma com um icone (painel de interface, janela) e uma linha RETA entre dois
+   marcadores no mesmo nivel: o marco inicial (vazado) e 20/08 (cheio). O contador
+   nao saiu do lugar.
+
+   Neutra de idioma DE PROPOSITO: `frame` e' um so' para pt e en (data/edicoes.php),
+   entao a imagem so' tem numeros, icones e uma data. Sem letra: nada de N maiusculo
+   em fonte pixel pequena (vira H abaixo de 15px).
+
+   Grade: unidade de 8px, quadrado 1200x1200. Exportada em 1200 para que o painel
+   300px do card social seja EXATAMENTE 1/4 (unidade de 2px, sem tremer) e a
+   miniatura da linha do tempo (~240px) nao vire papa: nada fino demais, nada de
+   scanline dentro do PNG (a varredura vive no chassi do card, nao aqui).
+
+   Render: ver o cabecalho de og-card.css, com --window-size=1200,1200. Saida:
+   public_html/assets/edicao-6/placar-31-e-5.png */
+
+@font-face {
+  font-family: "PixelOperatorMono";
+  src: url("../../public_html/assets/fonts/PixelOperatorMono.woff2") format("woff2");
+  font-weight: 400; font-display: block;
+}
+@font-face {
+  font-family: "PixelOperatorMono";
+  src: url("../../public_html/assets/fonts/PixelOperatorMono-Bold.woff2") format("woff2");
+  font-weight: 700; font-display: block;
+}
+
+:root {
+  --navy:      #0d1520;
+  --ciano:     #4dd9e8;
+  --ciano-alto:#6ff0ff;
+  --magenta:   #cd58e1;
+  --tela-1:    #dce8f5;
+  --tela-2:    #9fb2c8;
+  --tela-3:    #798da2;
+  --borda:     #486486;
+  --u: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1200px; height: 1200px; }
+
+body {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(90% 70% at 50% 42%, rgba(77,217,232,.13), transparent 62%),
+    radial-gradient(70% 60% at 100% 100%, rgba(205,88,225,.10), transparent 60%),
+    linear-gradient(170deg, #111d2c 0%, var(--navy) 58%, #0a1017 100%);
+  font-family: "PixelOperatorMono", monospace;
+  color: var(--tela-1);
+}
+/* vinheta: afunda os cantos, devolve o miolo ao placar */
+body::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  box-shadow: inset 0 0 200px 30px rgba(0,0,0,.5);
+}
+
+/* a data: o unico texto da imagem */
+.data {
+  position: absolute; left: 96px; top: 64px;
+  font-size: 96px; letter-spacing: .02em; color: var(--tela-2);
+}
+
+/* cada placar: coluna com o numero, o icone e a linha reta */
+.placar { position: absolute; top: 232px; }
+.placar.a { left: 96px;  width: 592px; }
+.placar.b { left: 760px; width: 344px; }
+
+.num {
+  margin-left: -34px;
+  font-size: 560px; line-height: 1; font-weight: 700;
+  letter-spacing: -.04em; white-space: nowrap;
+}
+.a .num { color: var(--ciano-alto);
+  text-shadow: 0 0 3px rgba(111,240,255,.9), 0 0 48px rgba(77,217,232,.5), 0 0 110px rgba(77,217,232,.25); }
+.b .num { color: var(--magenta);
+  text-shadow: 0 0 3px rgba(205,88,225,.9), 0 0 48px rgba(205,88,225,.45), 0 0 110px rgba(205,88,225,.2); }
+
+/* a linha reta: marco inicial (vazado) ... 20/08 (cheio), mesmo nivel */
+.linha { position: relative; height: 40px; margin-top: 56px; }
+.linha::before { /* o fio */
+  content: ""; position: absolute; left: 24px; right: 24px; top: 16px; height: 8px;
+}
+.a .linha::before { background: var(--ciano); }
+.b .linha::before { background: var(--magenta); }
+.linha i { position: absolute; top: 0; width: 40px; height: 40px; }
+.linha i.ini { left: 0;  background: var(--navy); }
+.linha i.fim { right: 0; }
+.a .linha i.ini { border: 8px solid var(--ciano); }
+.a .linha i.fim { background: var(--ciano-alto); box-shadow: 0 0 24px rgba(111,240,255,.6); }
+.b .linha i.ini { border: 8px solid var(--magenta); }
+.b .linha i.fim { background: var(--magenta); box-shadow: 0 0 24px rgba(205,88,225,.55); }
+
+/* ICONES (pixel puro, multiplos de 8): painel de interface e janela */
+.icone { position: relative; width: 160px; height: 128px; margin-top: 56px;
+         border: 8px solid var(--tela-2); background: var(--navy); }
+/* interface: um botao largo, dois botoes pequenos e um controle deslizante */
+.ui::before { content: ""; position: absolute; left: 16px; top: 16px; width: 80px; height: 24px; background: var(--tela-2); }
+.ui::after  { content: ""; position: absolute; left: 16px; top: 56px; width: 112px; height: 8px; background: var(--tela-3); box-shadow: 0 24px 0 var(--tela-3); }
+/* janela: barra de titulo cheia com tres pontos, corpo vazio */
+.jan { }
+.jan::before { content: ""; position: absolute; left: -8px; top: -8px; right: -8px; height: 32px; background: var(--tela-2); }
+.jan::after  { content: ""; position: absolute; left: 8px; top: 0; width: 8px; height: 8px; background: var(--navy);
+               box-shadow: 16px 0 0 var(--navy), 32px 0 0 var(--navy); }

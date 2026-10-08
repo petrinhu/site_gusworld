@@ -1,0 +1,61 @@
+/* docs/design/og-card-6.css: o que e' PROPRIO da Edicao #6 "O Caminho Mais Facil":
+   o painel da direita e' a ARTE DA CAPA em CSS (o placar parado, 31 e 5), o PNG
+   public_html/assets/edicao-6/placar-31-e-5.png (1200x1200, quadrado), o mesmo
+   arquivo que vira `frame` da edicao em data/edicoes.php. Gerador da arte:
+   capa-6-placar.html. O painel e' quadrado como a imagem, entao nada e' cortado;
+   300px e' exatamente 1/4 de 1200 (a unidade de 8px da arte cai em 2px).
+
+   Mesmo painel da #5 (og-card-5.css): `image-rendering: pixelated` e' a regra
+   herdada de .capa-frame/.ed-frame/.lt-item-frame (edicao.css).
+
+   O chassi (navy, scanlines, wordmark, tagline, rodape) vive em og-card.css.
+   Compartilhado pelo par pt/en: og-card-6.html e og-card-6-en.html. So o TEXTO
+   difere entre os dois; o desenho e' este, um so'. */
+
+  /* dek aprovado pelo lider em 07/10/2026 (205 caracteres em pt, 213 em en):
+     entre a #4 (117) e a #5 (230). 28px cabe o dek INTEIRO, sem cortar frase, na
+     largura padrao do chassi (700px), com folga ao painel de 300px. */
+  .tagline { font-size: 28px; line-height: 1.32; }
+
+  /* ── O PAINEL: a tela onde o placar esta' aceso ──────────────────────────── */
+  .tela {
+    position: absolute;
+    z-index: 2;
+    right: 84px; top: 165px;
+    width: 300px; height: 300px;
+    border: 2px solid var(--borda);
+    background: var(--navy);
+    box-shadow:
+      inset 0 0 40px rgba(0,0,0,.5),
+      0 0 0 6px rgba(13,21,32,.6),
+      0 0 34px rgba(77,217,232,.20);
+  }
+
+  .tela .interior { position: absolute; inset: 0; overflow: hidden; }
+
+  /* a arte inteira: quadrado contra quadrado, sem recorte nem sobra */
+  .tela .frame {
+    position: absolute;
+    left: 0; top: 0;
+    width: 300px; height: 300px;
+    image-rendering: pixelated;
+  }
+
+  /* scanlines locais: dentro da moldura a varredura e' mais forte (igual #2 a #5) */
+  .tela .varredura {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,.22) 3px,
+      rgba(0,0,0,0) 4px
+    );
+  }
+
+  /* vinheta interna mais leve que a da #5: o placar e' texto-imagem e nao pode
+     escurecer nas bordas (o numero 31 encosta perto da esquerda) */
+  .tela .vinheta {
+    position: absolute; inset: 0;
+    box-shadow: inset 0 0 34px 6px rgba(13,21,32,.5);
+  }
