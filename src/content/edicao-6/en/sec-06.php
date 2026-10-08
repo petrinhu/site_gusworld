@@ -1,0 +1,22 @@
+<?php /* GERADO por scripts/gerar-secoes.php a partir de docs/content/edicao-6-galeria-bugs.md. Não edite à mão: corrija a fonte e gere de novo. */ ?>
+<p class="fala"><span class="prompt">gus@glyfesse:~/galeria$</span> <span class="dito">bug gallery</span></p>
+
+<p>This time it is a single defect, and what changed in 35 minutes was the diagnosis: from a whole area of the code to one line missing from a list. It happened on Thursday, August 13th, 2026, between two AI sessions: the game's and GlintFX's, the graphics engine the game runs on.</p>
+
+<h3>One line in a list</h3>
+
+<p>Shortly after 5 p.m., the game's session reported a regression to GlintFX's session. The drop shadow (<code>box-shadow</code>) of RmlUi, the interface library the engine embeds, came out as an opaque rectangle of constant color, (24, 26, 34), with no tint and no blur; it erased what was behind it and cut the border of neighboring buttons. It only happened on the engine's new drawing path, the one in the <code>App</code> class, and not on the old one, the <code>UiLayer</code> layer. The title blamed the "App's render pass", the drawing stage as a whole, and the experiment had controls: same game code, same engine version, same software GL driver, an independent rebuild and a rerun that came out identical, byte for byte.</p>
+
+<p>Thirty-five minutes later came the retraction. It asks that the attribution be discarded, because it pointed to "a large, generic area" of the library's code: the symptoms still held, the diagnosis did not. The brass hexagons, which the first report said were not drawn at all, appear normally on the new path. The result, in the session's words: "it is ONE defect, not three". The first report already warned that the two captures were of different screens (the pause menu on the old path, the title screen on the new one); the cause appeared when they were replaced by a probe that runs the same scene and changes one variable at a time. Still in the session's words: "the earlier evidence was right about the symptoms and wrong about the attribution. We prefer to correct ourselves, and early, than to defend a shallow diagnosis."</p>
+
+<p class="fala"><span class="prompt">gus@glyfesse:~/galeria$</span> <span class="dito">the accusation was huge. the defect fit in one number</span></p>
+<p class="pensa">35 minutes between accusing and fixing is a good latency</p>
+
+<p>The cause was measured at the entry of the game's hook. On every frame, RmlUi's <code>BeginFrame()</code> sets the color used to clear the screen to (0, 0, 0, 0), transparent. Then the game's hook runs (<code>set_frame_callback</code>), which legitimately swaps that color for (24, 26, 34) to paint the city background. Only then does RmlUi blur the shadow: the pass calls <code>glClear(GL_COLOR_BUFFER_BIT)</code> without setting the color again, counting on the value <code>BeginFrame()</code> left behind. With the value dirty, the shadow layer is born opaque instead of transparent, with the color of the city background. The hook's contract promised to restore the GL state after it, and the one in charge of that is <code>GlStateGuard</code>, which did not keep <code>GL_COLOR_CLEAR_VALUE</code>: the string <code>CLEAR_VALUE</code> appeared zero times in the guard's file. Restoring exactly (0, 0, 0, 0) fixed it; restoring with alpha 1 did not.</p>
+
+<p>That night, the game's session confirmed the hole's twin, the stencil clear value (<code>GL_STENCIL_CLEAR_VALUE</code>), which also leaked and, when it fell between 1 and the nesting depth of the clip, made RmlUi's clip disappear entirely, and it added that an earlier test of its own, using the value 0xFF, had given a false negative, because 0xFF falls outside that range.</p>
+
+<p class="fala"><span class="prompt">gus@glyfesse:~/galeria$</span> <span class="dito">a green test only proves what it actually tested</span></p>
+<p class="pensa">I dont want to forget this when something of mine passes first try</p>
+
+<p>GlintFX's session accepted the retraction the same afternoon and called it "exactly the process working as it should". Its first diagnosis, reversing the order of the scene hook and <code>BeginFrame()</code>, had already been handed to an implementer that had not committed anything yet; it was redirected with the corrected cause. Around midnight between August 13th and 14th, GlintFX released the version in which <code>GlStateGuard</code> captures and restores both values, the color one and the stencil one.</p>
