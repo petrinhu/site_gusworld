@@ -120,15 +120,19 @@ Letters: none from readers, once more.
 
 ## 4. Seção 12, Próximos Lançamentos (vazio com graça)
 
-> Opção (a) do brief: a mesma linha do root da #1 a #5, **mas no formato novo de prompt** (`root@glyfesse:~/proximos$`).
-> O caminho `proximos` é preenchimento meu (não há precedente de caminho para esta seção). Alternativa (b) está nas
-> notas, à espera da pergunta ao líder. Fala do root: submeter.
+> **GATE-COPY, resposta verbatim do líder: "1+2"** = a linha de sempre do root (opção a) E a linha nova (opção b),
+> juntas, nessa ordem, no formato novo de prompt (`root@glyfesse:~/proximos$`). O caminho `proximos` é preenchimento meu
+> (não há precedente de caminho para esta seção). **Único ajuste meu:** a linha nova dizia "A intenção era semanal. Desta
+> vez não haverá...", o que contradiz "A intenção é semanal" logo acima; cortei a oração repetida e ficou "Desta vez não
+> haverá..." (EN idem). Fato da segunda linha: `escombros:61`. Fala do root: submeter.
 
 ## pt-BR
 
 `root@glyfesse:~/proximos$ próximos lançamentos`
 
 A intenção é semanal. Mais ou menos... 'devezenquandal' fica mais fácil de afirmar.
+
+Desta vez não haverá versão nova da biblioteca até ela cobrir janela, entrada, contexto gráfico e texto.
 
 ---
 
@@ -138,51 +142,32 @@ A intenção é semanal. Mais ou menos... 'devezenquandal' fica mais fácil de a
 
 The intention is weekly. More or less... 'every-so-oftenly' is easier to promise.
 
+This time there will be no new version of the library until it covers window, input, graphics context and text.
+
 ---
 
 ## 5. Seção 13, Pôster central (vazio com graça, PQ17: "Sim, vazio com graça")
 
-> **Opção A (recomendada): a moldura do encarte (a das #3 a #5, `edicao.css` §13) com a chapa vazia.** Sem fala do
-> Gus: a graça é a pompa inteira em volta de nada, e a regra da moldura é "zero escrita dentro da chapa". Ordem dos
-> parágrafos do bloco, um por elemento: (1) kicker; (2) título, com quebra de linha depois de "pôster" (EN: depois de
-> "issue's"); (3) tarja; (4) `aria-label` da chapa; (5) ficha técnica; (6) crédito, lado esquerdo; (7) crédito, lado
-> direito. Sem 31 e 5 (é a capa, PQ14), sem sublinhado (é do Cemitério). A cor e o preenchimento da chapa são do
-> `visual-design-director`. A Opção B (ícone de imagem quebrada, molde da #1) está nas notas. Passa por GATE-COPY e
-> GATE-RENDER como todo vazio.
+> **GATE-COPY, resposta do líder: "Imagem quebrada"** = a variante B, o molde da #1
+> (`src/content/edicao-1/pt/sec-13.php` e `en/sec-13.php`: glifo SVG de imagem quebrada, mais `.poster-cap` e
+> `.poster-sub`, estilos em `edicao.css` `.poster-quebrada`). **Substitui a antiga opção A** (moldura do encarte com
+> chapa vazia), que saiu do arquivo. O glifo é o da #1, sem arte nova. Ordem dos parágrafos do bloco: (1) legenda
+> (`.poster-cap`); (2) linha menor (`.poster-sub`, em que os pontos médios viram `&middot;`). Sem 31 e 5 (é a capa,
+> PQ14), sem sublinhado (é do Cemitério). Texto sem fala do Gus. Passa por GATE-RENDER como todo vazio.
 
 ## pt-BR
 
-encarte destacável
+O pôster desta edição não carregou.
 
-O pôster desta edição
-
-em branco
-
-Uma chapa vazia, sem nada dentro. Esta edição não traz pôster.
-
-0 × 0 px · nenhuma cor
-
-Glyfesse nº 6 · pôster central
-
-destaque pela dobra
+img/poster.png · 404 · volta na próxima
 
 ---
 
 ## EN
 
-pull-out insert
+This issue's poster did not load.
 
-This issue's poster
-
-blank
-
-An empty plate, with nothing inside it. This issue has no poster.
-
-0 × 0 px · no colour
-
-Glyfesse no. 6 · centrefold
-
-tear along the fold
+img/poster.png · 404 · back next issue
 
 ---
 
@@ -192,9 +177,9 @@ tear along the fold
 > **O texto abaixo é só o texto visível; o HTML é do `frontend-engineer`** (spec do link nas notas). Linha 1: D5 do
 > líder, verbatim: *"Seja bem claro que a arte é do artista andré, o mesmo da edicao anterior e ponha o link dele e o @
 > dele do x"*; nome e URL copiados de `src/content/edicao-5/pt/sec-19.php:36` (`https://x.com/Andre_Suporte`).
-> Linha 2: D5 (linha de IA da tira). Linha 3: PQ13 ("Sim, uma linha seca"), **sem nome real**, na forma
-> da redação do brief §4.9, que casa com a decisão dele. A variante com uma cláusula sobre a tradução para o inglês
-> está nas notas (pergunta Q3 ao líder). `compliance-legal` confere as linhas 2 e 3 contra o rodapé (`src/i18n/pt.php:264`).
+> Linha 2: D5 (linha de IA da tira). Linha 3: PQ13 ("Sim, uma linha seca"), **sem nome real**, agora **com a cláusula
+> da tradução para o inglês** (GATE-COPY, resposta do líder à Q3: "Sim, acrescentar"). `compliance-legal` confere as linhas
+> 2 e 3 contra o rodapé (`src/i18n/pt.php:264`).
 
 ## pt-BR
 
@@ -202,7 +187,7 @@ Tirinha: arte de André Farias (@Andre_Suporte, no X), o mesmo artista da ediç�
 
 A tirinha mostra arte do jogo, o brasão e o sprite do Gus, gerada por IA e declarada no rodapé. O traço da tirinha é do artista.
 
-As respostas do Brunus são de uma pessoa real; as perguntas do Gus são rascunho de agente de IA aprovado pelo editor.
+As respostas do Brunus são de uma pessoa real; a tradução para o inglês é de um agente de IA, aprovada pelo editor. As perguntas do Gus são rascunho de agente de IA, aprovado pelo editor.
 
 ---
 
@@ -212,7 +197,7 @@ Comic strip: art by André Farias (@Andre_Suporte, on X), the same artist as las
 
 The comic strip shows game art, the crest and Gus's sprite, which is AI-generated and declared in the footer. The strip's line art is the artist's own.
 
-Brunus's answers are by a real person; Gus's questions are a draft by an AI agent, approved by the editor.
+Brunus's answers are by a real person; the English translation is by an AI agent, approved by the editor. Gus's questions are a draft by an AI agent, approved by the editor.
 
 ---
 
@@ -441,8 +426,9 @@ texto, e o formato de prompt novo vale mesmo assim, porque a DIALETO recusa o an
 | Manchete, janela, D1 a D7, PQ6 a PQ18 | decisão do líder (`BRIEFS-EDICAO-6.md`, "Respostas do líder") |
 | D5: "o mesmo artista da edição passada", nome, @ e link; linha de IA da tira | decisão do líder (verbatim na peça 6) |
 | PQ11: abertura da HQ "Nova e curta", sem reagir ao sprite | decisão do líder; **o texto da fala e do `//` é preenchimento meu** |
-| PQ13: Expediente declara o método da Entrevista, sem nome | decisão do líder; a redação é a do brief §4.9; **a cláusula da tradução é variante minha, só nas notas (Q3)** |
-| PQ17: pôster vazio com graça | decisão do líder; **a copy das duas opções é minha (Q2)** |
+| PQ13: Expediente declara o método da Entrevista, sem nome | decisão do líder; a redação é a do brief §4.9; a cláusula da tradução é decisão do líder no GATE-COPY ("Sim, acrescentar"); o texto dela é meu |
+| PQ17: pôster vazio com graça | decisão do líder; no GATE-COPY ele escolheu "Imagem quebrada" (molde da #1); o texto da legenda é meu |
+| Próximos Lançamentos | decisão do líder no GATE-COPY: "1+2" (as duas linhas, nessa ordem); único ajuste meu é o tempo verbal da segunda |
 | Texto da Nota, "não medido desta vez", `//` de Nota, Detonado, Errata, Cartas, HQ | preenchimento meu (voz do Gus, T7: submeter) |
 | Detonado: parágrafo | proposta do brief §4.12(a), com a troca de "jogo" por "código" |
 | Caminho `~/proximos` | preenchimento meu: não há precedente (busca em `src/` e `docs/` não achou `~/proximos`) |
@@ -457,22 +443,9 @@ texto, e o formato de prompt novo vale mesmo assim, porque a DIALETO recusa o an
 4. **Tamanho da tirinha:** a tarefa informa 600×668; eu vi a imagem, não medi (sem Bash). O main mede e grava `width` e `height` reais.
 5. **Discrepância de prompt na #5 (FATO):** `src/content/edicao-5/pt/sec-12.php:8` (e `en/sec-12.php:8`) ainda traz `root@glyfesse&gt;`, formato antigo, embora a memória `voz_prompt_shell` registre "corrigir só da #5 em diante". Não toquei na #5. A peça 4 usa o formato novo.
 
-### Alternativas (nunca lidas pelo conversor; ficam aqui até o líder escolher)
+### Alternativa ainda aberta (nunca lida pelo conversor)
 
-**Próximos Lançamentos, opção (b) do brief** (fala nova do root; fonte do fato: `escombros:61`, *"não haverá release nova até o motor próprio cobrir janela, entrada, contexto gráfico e texto"*):
-
-- pt: `root@glyfesse:~/proximos$ próximos lançamentos` / A intenção era semanal. Desta vez não haverá versão nova da biblioteca até ela cobrir janela, entrada, contexto gráfico e texto.
-- en: `root@glyfesse:~/proximos$ what's next` / The intention was weekly. This time there will be no new version of the library until it covers window, input, graphics context and text.
-
-**Pôster, opção B** (molde da #1, `src/content/edicao-1/pt/sec-13.php`: glifo de imagem quebrada, dois textos sob ele):
-
-- pt: legenda `O pôster desta edição não carregou.` e linha menor `img/poster.png · 404 · volta na próxima`
-- en: caption `This issue's poster did not load.` and small line `img/poster.png · 404 · back next issue`
-
-**Colofão, linha da Entrevista com a cláusula da tradução** (variante; argumento L-09: a versão em inglês vai mostrar palavras de uma pessoa real traduzidas por agente de IA, e a linha seca não diz isso; a cláusula só é verdadeira quando a tradução existir, e vai ao GATE-CONTEUDO junto com ela, PQ12):
-
-- pt: Entrevista: as respostas do Brunus são de uma pessoa real; a tradução para o inglês é de um agente de IA, aprovada pelo editor. As perguntas do Gus são rascunho de agente de IA, aprovado pelo editor.
-- en: Interview: Brunus's answers are by a real person; the English translation is by an AI agent, approved by the editor. Gus's questions are a draft by an AI agent, approved by the editor.
+As escolhas de Próximos, Pôster e da linha da Entrevista foram decididas no GATE-COPY e estão aplicadas nos blocos 4, 5 e 6. A cláusula da tradução (bloco 6) só é verdadeira quando a tradução existir; ela vai ao GATE-CONTEUDO junto com as respostas (PQ12).
 
 **Nota, variante da linha de Arquitetura** (registro figurado, sem o instrumento da Reportagem; a L-25 lista como técnicas Reportagem, Programação, Detonado e Galeria, e a Nota da #5 usou "chão velho"):
 
