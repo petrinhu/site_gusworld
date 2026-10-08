@@ -49,6 +49,14 @@ lanca(fn() => fonte_bloco("## A\nx\n---\n", '## A', 'FIM'), ConversorErro::class
 // 7b. BOM no inicio da fonte: a primeira linha nao casa, e a mensagem diz por que
 lanca(fn() => fonte_bloco("\u{FEFF}## A\nx\n---\n", '## A'), ConversorErro::class, 'BOM', 'BOM no inicio da fonte explica a causa');
 
+// 7c. sem BOM, a mensagem NAO fala de BOM
+try {
+    fonte_bloco("## A\nx\n---\n", '## FR');
+} catch (ConversorErro $e) {
+    verdadeiro(!str_contains($e->getMessage(), 'BOM'), 'sem BOM a mensagem nao menciona BOM: ' . $e->getMessage());
+    verdadeiro(str_contains($e->getMessage(), 'nao encontrado'), 'e continua dizendo nao encontrado');
+}
+
 // 8. o erro carrega a linha original
 $linhaDoErro = -1;
 try {
