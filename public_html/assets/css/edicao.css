@@ -2512,6 +2512,9 @@ html.lightbox-aberto{overflow:hidden}
 }
 .conteudo .tirinha-link:focus-visible{outline:2px solid var(--acento); outline-offset:3px}
 .conteudo .tirinha img{display:block; width:100%; height:auto}
+/* #6: a tirinha é UMA imagem vertical de 600x668 (JPEG de mensageiro). O link para no tamanho nativo
+   e nunca amplia (A15 do brief); abaixo de 600px de coluna ela encolhe com a coluna (width:100% do img). */
+.conteudo .tirinha-vertical .tirinha-link{max-width:600px}
 /* a legenda: só o endereço, no MESMO padrão "→ destino" dos links fixos do
    índice (src/i18n/*.php, links_fixos) — não repete o crédito ao artista
    (esse mora no Expediente, sec-19; decisão do líder, ver o cabeçalho do
