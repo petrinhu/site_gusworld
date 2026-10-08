@@ -13,6 +13,9 @@ declare(strict_types=1);
  * Grava RAIZ/src/content/edicao-N/{pt,en}/sec-NN.php.
  * TUDO e calculado em memoria antes do primeiro byte gravado: qualquer erro ou trava (R1 a R4)
  * sai 1, imprime "arquivo:linha: ..." e nao grava nada.
+ * A gravacao e em duas fases: escreve todos os .tmp e so entao renomeia. Falha de ESCRITA nao toca
+ * nenhum destino. Falha no RENAME (rara; ex.: destino e um diretorio) pode deixar parte da edicao ja
+ * renomeada: sai 1 e a mensagem diz isso; gere de novo depois de corrigir a causa.
  * Codigos de saida: 0 ok, 1 falha de conteudo/receita/divergencia, 2 uso errado.
  */
 
@@ -81,6 +84,9 @@ function gerar_secao(string $raiz, array $secao, string $idioma, array &$erros):
             throw new ConversorErro("parte sem fonte/inicio para o idioma {$idioma}");
         }
         $nome = $def['fonte'];
+        if (!is_string($def['inicio']) || !is_string($def['fim'] ?? '') || !is_int($def['ocorrencia'] ?? 1)) {
+            throw new ConversorErro("receita invalida: inicio e fim devem ser texto e ocorrencia, inteiro (fonte " . (is_string($nome) ? $nome : gettype($nome)) . ')');
+        }
         $md = gerar_ler_fonte($raiz, $nome);
         try {
             $linhas = fonte_bloco($md, $def['inicio'], $def['fim'] ?? null, $def['ocorrencia'] ?? null);

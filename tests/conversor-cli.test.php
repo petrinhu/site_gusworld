@@ -55,6 +55,9 @@ foreach (ARQUIVOS as $a) {
     eq(file_get_contents(FIXTURE . '/esperado/' . $a), gerado($r, $a), "gerado identico ao esperado: {$a}");
 }
 
+// 1b. depois de uma geracao bem-sucedida nao sobra nenhum temporario
+eq([], glob($r . '/src/content/edicao-99/*/*.tmp') ?: [], 'sem *.tmp apos gerar com sucesso');
+
 // 2. gerar de novo e idempotente
 [$rc] = cli($r, '--edicao', '99');
 eq(0, $rc, 'segunda geracao sai 0');
@@ -175,6 +178,37 @@ foreach (['pt/sec-03.php', 'en/sec-03.php', 'pt/sec-05.php', 'en/sec-05.php'] as
 }
 $sobras = glob($r . '/src/content/edicao-99/*/*.tmp') ?: [];
 eq(['en/sec-05.php.tmp'], array_map(static fn(string $f): string => basename(dirname($f)) . '/' . basename($f), $sobras), 'nenhum temporario nosso sobrou (so o diretorio que o teste plantou)');
+
+// 9c2. falha NO RENAME (destino e um diretorio nao vazio): sai 1 e diz a verdade sobre o estado
+$r = copia_da_fixture();
+$tmp[] = $r;
+mkdir($r . '/src/content/edicao-99/en/sec-05.php', 0755, true);
+file_put_contents($r . '/src/content/edicao-99/en/sec-05.php/preso', 'x');
+[$rc, $out] = cli($r, '--edicao', '99');
+eq(1, $rc, 'falha no rename sai 1');
+verdadeiro(str_contains($out, 'falha ao renomear') && str_contains($out, 'ja foram renomeados'), 'diz que os anteriores ja foram renomeados: ' . $out);
+
+// 9c3. nome de fonte com NUL ou que nao e texto: erro de conteudo, sem trace
+foreach (['NUL no nome' => ['"brinquedo.md\\0x"', 'fora de docs/content'], 'inteiro' => ['123', 'fora de docs/content'], 'array' => ["['a']", 'fora de docs/content'], 'nulo' => ['null', 'sem fonte']] as $caso => [$valor, $trecho]) {
+    $r = copia_da_fixture();
+    $tmp[] = $r;
+    $rec = $r . '/docs/content/receitas/edicao-99.php';
+    file_put_contents($rec, preg_replace_callback("/'fonte' => 'brinquedo\\.md'/", static fn(): string => "'fonte' => {$valor}", (string) file_get_contents($rec), 1));
+    [$rc, $out] = cli($r, '--edicao', '99');
+    eq(1, $rc, "fonte {$caso}: sai 1: " . $out);
+    verdadeiro(!str_contains($out, 'Stack trace') && !str_contains($out, 'Fatal'), "fonte {$caso}: sem trace");
+    verdadeiro(str_contains($out, $trecho), "fonte {$caso}: a mensagem diz '{$trecho}': " . $out);
+    verdadeiro(!file_exists($r . '/src'), "fonte {$caso}: nada gravado");
+}
+foreach (['inicio inteiro' => "'inicio' => 5", 'inicio array' => "'inicio' => []"] as $caso => $trocar) {
+    $r = copia_da_fixture();
+    $tmp[] = $r;
+    $rec = $r . '/docs/content/receitas/edicao-99.php';
+    file_put_contents($rec, preg_replace("/'inicio' => '## pt-BR'/", $trocar, (string) file_get_contents($rec), 1));
+    [$rc, $out] = cli($r, '--edicao', '99');
+    eq(1, $rc, "receita com {$caso}: sai 1: " . $out);
+    verdadeiro(!str_contains($out, 'Stack trace') && !str_contains($out, 'Fatal'), "receita com {$caso}: sem trace");
+}
 
 // 9d. receita que nao devolve array, ou com forma errada: erro de conteudo (1), nunca TypeError
 foreach ([
