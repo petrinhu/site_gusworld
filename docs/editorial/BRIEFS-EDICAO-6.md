@@ -915,3 +915,4 @@ um verbatim dele como decisão fechada (D1 a D7), este brief a trata como fechad
 - **Mesma ordem, digitada pelo líder direto nesta sessão (07/10/2026 23:54:43):** "autorizo push no github quando acabar faltando apenas a entrevista. Apenas quando tiver a entrevista, vamos colocar em produção."
 - **Dek da capa (07/10/2026 23:56:02, AskUserQuestion):** "Aprovado como está". pt: "O mês abriu com uma estimativa: tirar as peças emprestadas uma por uma, começando pela de interface. Fechou com um número que não se moveu, e com tudo quebrado de propósito para que ele se movesse." en: a tradução do brief §4.10.
 - **Ordem do líder (07/10/2026 23:56:25, verbatim):** "siga até acabar tudo exceto a entrevista. Push e pause aguardando a entrevista. Faça commits de segurança a cada parte"
+- **GATE-CONTEUDO do Gus lê o bus (08/10/2026 05:16:32, AskUserQuestion):** "Aprovado como está" (variações nas duas aberturas, fala do "povvo" canônica, fecho que declara a condensação).
