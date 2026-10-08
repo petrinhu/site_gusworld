@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # scripts/preci.sh - gate de pre-push dos mini-apps (quadradinho e afins).
 #
-# NAO esta ativado por padrao (nenhum agent mexe na config git do usuario).
-# Pra ligar como hook automatico, o lider roda:
-#   git config core.hooksPath .githooks
-# (.githooks/pre-push chama este script antes de todo `git push`)
+# Pra ligar como hook automatico: scripts/instalar-gancho.sh (grava
+# .git/hooks/pre-push de uma linha que chama .githooks/pre-push, que chama este
+# script antes de todo `git push`). NAO use `git config core.hooksPath .githooks`:
+# sobrepoe o core.hooksPath global e desliga os ganchos globais neste repo.
 #
 # Roda em ordem e FALHA (exit != 0) no primeiro erro. Se tudo passar,
 # termina com "ALL GREEN".
