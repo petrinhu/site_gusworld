@@ -33,7 +33,8 @@ function fonte_bloco(string $md, string $inicio, ?string $fim = null, ?int $ocor
         }
     }
     if ($achadas === []) {
-        throw new ConversorErro("inicio \"{$inicio}\" nao encontrado");
+        $dica = str_starts_with($md, "\u{FEFF}") ? ' (a fonte comeca com BOM UTF-8; regrave sem BOM)' : '';
+        throw new ConversorErro("inicio \"{$inicio}\" nao encontrado{$dica}");
     }
     if ($ocorrencia === null && count($achadas) > 1) {
         throw new ConversorErro("inicio \"{$inicio}\" aparece " . count($achadas) . ' vezes; informe a ocorrencia', $achadas[1] + 1);

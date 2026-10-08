@@ -40,9 +40,14 @@ eq([['n' => 2, 't' => 'linha']], fonte_bloco($m6, '## A'), 'CRLF: \\r nao vaza p
 lanca(fn() => fonte_bloco($md, '## FR'), ConversorErro::class, 'nao encontrado', 'inicio inexistente');
 lanca(fn() => fonte_bloco("## A\nx\n---\n## A\ny\n---\n", '## A'), ConversorErro::class, 'aparece 2 vezes', 'inicio duplicado sem ocorrencia');
 lanca(fn() => fonte_bloco($m5, '---', null, 9), ConversorErro::class, 'ocorrencia 9', 'ocorrencia alem das que existem');
+lanca(fn() => fonte_bloco($m5, '---', null, 4), ConversorErro::class, 'ocorrencia 4', 'ocorrencia = total + 1 (limite exato) nao existe');
+lanca(fn() => fonte_bloco($m5, '---', null, 0), ConversorErro::class, 'ocorrencia 0', 'ocorrencia 0 nao existe');
 lanca(fn() => fonte_bloco("## A\n\n\n---\n", '## A'), ConversorErro::class, 'vazio', 'bloco vazio');
 lanca(fn() => fonte_bloco("## A\nx\ny\n", '## A'), ConversorErro::class, 'sem fim', 'bloco sem --- de fecho');
 lanca(fn() => fonte_bloco("## A\nx\n---\n", '## A', 'FIM'), ConversorErro::class, 'sem fim', 'fim explicito inexistente');
+
+// 7b. BOM no inicio da fonte: a primeira linha nao casa, e a mensagem diz por que
+lanca(fn() => fonte_bloco("\u{FEFF}## A\nx\n---\n", '## A'), ConversorErro::class, 'BOM', 'BOM no inicio da fonte explica a causa');
 
 // 8. o erro carrega a linha original
 $linhaDoErro = -1;
