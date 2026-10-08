@@ -2888,6 +2888,25 @@ html.lightbox-aberto{overflow:hidden}
   .conteudo .bus-crt .msg.resumo{grid-template-columns:1fr}
 }
 
+/* ── §18 (edição #6) · .bus-larga: a listagem de 15 assuntos sem corte ──
+   QA I-4: com a grade herdada (7ch/22ch/10ch) e `white-space:nowrap` em todo span, o assunto
+   era cortado com reticências até em 1280px e "mapeditor" (9 letras) estourava os 7ch da coluna
+   DE. Esta classe MODIFICADORA existe só para a #6 (a #5 publicada segue com as regras acima,
+   intocadas): DE com 10ch (cabe os 9 de "mapeditor"), ASSUNTO elástico que QUEBRA LINHA em vez
+   de cortar, QUANDO com 7ch. Em tela estreita o ASSUNTO continua escondido pela regra herdada
+   (display:none, mais específica que a minha só em `white-space`), e a grade vira 10ch/10ch
+   para o DE caber também em 390px: 10ch + 10ch + 4px de vão são ~170px, sem rolagem lateral.
+   `min-width:0` deixa a coluna 1fr encolher dentro do tubo em vez de empurrar a página. */
+.conteudo .bus-crt.bus-larga .cab,
+.conteudo .bus-crt.bus-larga .msg{grid-template-columns:10ch minmax(0,1fr) 7ch}
+.conteudo .bus-crt.bus-larga .msg .assunto{
+  white-space:normal; overflow:visible; text-overflow:clip; min-width:0; overflow-wrap:anywhere;
+}
+@media (max-width:560px){
+  .conteudo .bus-crt.bus-larga .cab,
+  .conteudo .bus-crt.bus-larga .msg{grid-template-columns:10ch 10ch}
+}
+
 /* IMPRESSO: a peça tem que dizer a mesma coisa parada e em papel.
    O cursor perde o pisca e fica SÓLIDO (continua sendo o cursor no prompt),
    e as cores do tubo são preservadas — como as outras peças da #3 fazem. */

@@ -11,15 +11,15 @@
    Cada aria-label descreve só a própria tela e nunca repete a fala do Gus. Classes todas existentes (.bus-crt, .cx, .cab,
    .msg, .conta, .corpo, .fim); nenhuma classe nova. Fala e pensamento em ASCII sem acento (é tela, D-ACENTOS); `povvo`
    é grafia do líder, não se corrige. As 15 linhas da listagem usam os assuntos encurtados do fonte.
-   ⚠️ Para o QA: "mapeditor" tem 9 caracteres e a coluna DE é 7ch (.msg, edicao.css); conferir se o remetente corta
-   com reticências. A coluna ASSUNTO some abaixo de 560px por desenho. */
+   Classe modificadora .bus-larga (QA I-4, só #6, edicao.css): DE com 10ch para os 9 de "mapeditor", ASSUNTO quebrando
+   linha em vez de cortar com reticências. A coluna ASSUNTO some abaixo de 560px por desenho. */
 ?>
 <p class="fala"><span class="prompt">gus@glyfesse:~/bus$</span> <span class="dito">opa... tem mensagem na caixa, finalmente</span></p>
 <p class="pensa">eu checava sempre, mesmo sabendo que ia vir vazio</p>
 
 <p>O primeiro item é de um remetente novo.</p>
 
-<figure class="bus-crt">
+<figure class="bus-crt bus-larga">
   <div class="crt-scr" role="img"
        aria-label="Uma tela de tubo verde mostrando a caixa de entrada do bus, com quinze mensagens. O comando bus --inbox foi rodado e a listagem mostra quinze linhas com remetente, assunto e data: duas do mapeditor, em 14 e 15 de agosto, e treze do glintfx, de 15 a 20 de agosto. O contador diz quinze recebidas. Abaixo da listagem, dentro da mesma tela, aparece por extenso o corpo da primeira mensagem, do mapeditor, de 14 de agosto: o anúncio de um projeto irmão do jogo, uma ferramenta interna do líder para editar à mão mapas que não ficaram bons, de uso estritamente interno, sem pedido de ação.">
     <div class="crt-tela">

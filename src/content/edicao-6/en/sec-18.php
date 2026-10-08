@@ -11,15 +11,15 @@
    Each aria-label describes only its own screen and never repeats Gus's line. All classes already exist; none new.
    Gus's lines are ASCII without accents (it is a screen); `povvo` is the lead's spelling in the pt version.
    Dates in the listing are US-style (08/14), like the other EN pieces.
-   ⚠️ For QA: "mapeditor" has 9 characters and the FROM column is 7ch (.msg, edicao.css); check whether the sender is
-   cut with an ellipsis. The SUBJECT column disappears below 560px by design. */
+   Modifier class .bus-larga (QA I-4, #6 only, edicao.css): FROM at 10ch for the 9 of "mapeditor", SUBJECT wraps
+   instead of being cut with an ellipsis. The SUBJECT column disappears below 560px by design. */
 ?>
 <p class="fala"><span class="prompt">gus@glyfesse:~/bus$</span> <span class="dito">hey... theres a message in the box, finally</span></p>
 <p class="pensa">i always checked, even knowing it would come back empty</p>
 
 <p>The first item is from a new sender.</p>
 
-<figure class="bus-crt">
+<figure class="bus-crt bus-larga">
   <div class="crt-scr" role="img"
        aria-label="A green tube screen showing the bus inbox, with fifteen messages. The command bus --inbox was run and the listing shows fifteen rows with sender, subject and date: two from mapeditor, on August 14th and 15th, and thirteen from glintfx, from August 15th to 20th. The counter says fifteen received. Below the listing, inside the same screen, the body of the first message appears in full, from mapeditor, August 14th: the announcement of a sister project of the game, an internal tool of the lead for hand-editing maps that did not turn out well, for strictly internal use, with no request for action.">
     <div class="crt-tela">
