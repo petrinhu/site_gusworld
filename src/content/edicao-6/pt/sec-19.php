@@ -24,7 +24,9 @@
 
   <p class="colo-creditos">As respostas do Brunus são de uma pessoa real; a tradução para o inglês é de um agente de IA, aprovada pelo editor. As perguntas do Gus são rascunho de agente de IA, aprovado pelo editor.</p>
 
-  <p class="colo-direitos">Todos os direitos reservados.</p>
+  <p class="colo-creditos">Texto: rascunhado com agentes de IA e revisado pelo editor.</p>
+
+  <p class="colo-direitos">Todos os direitos reservados, exceto a tirinha, de André Farias, publicada com autorização do artista.</p>
 </div>
 
 <hr class="colo-sep">

@@ -189,6 +189,10 @@ A tirinha mostra arte do jogo, o brasão e o sprite do Gus, gerada por IA e decl
 
 As respostas do Brunus são de uma pessoa real; a tradução para o inglês é de um agente de IA, aprovada pelo editor. As perguntas do Gus são rascunho de agente de IA, aprovado pelo editor.
 
+Texto: rascunhado com agentes de IA e revisado pelo editor.
+
+Todos os direitos reservados, exceto a tirinha, de André Farias, publicada com autorização do artista.
+
 ---
 
 ## EN
@@ -198,6 +202,10 @@ Comic strip: art by André Farias (@Andre_Suporte, on X), the same artist as las
 The comic strip shows game art (the crest and Gus's sprite) that is AI-generated and declared in the footer. The strip's line art is the artist's own.
 
 Brunus's answers are by a real person; the English translation is by an AI agent, approved by the editor. Gus's questions are a draft by an AI agent, approved by the editor.
+
+Text: drafted with AI agents and reviewed by the editor.
+
+All rights reserved, except the comic strip, by André Farias, published with the artist's permission.
 
 ---
 

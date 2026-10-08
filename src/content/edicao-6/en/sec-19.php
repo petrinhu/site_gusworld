@@ -24,7 +24,9 @@
 
   <p class="colo-creditos">Brunus's answers are by a real person; the English translation is by an AI agent, approved by the editor. Gus's questions are a draft by an AI agent, approved by the editor.</p>
 
-  <p class="colo-direitos">All rights reserved.</p>
+  <p class="colo-creditos">Text: drafted with AI agents and reviewed by the editor.</p>
+
+  <p class="colo-direitos">All rights reserved, except the comic strip, by André Farias, published with the artist's permission.</p>
 </div>
 
 <hr class="colo-sep">
