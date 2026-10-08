@@ -104,8 +104,11 @@ eq($esperado, montagem_secao($ent, [$perguntas, $respostas]), 'entrevista: par c
 lanca(fn() => montagem_secao($ent, [$perguntas, [n(1), g(f('jaci', 'r1'))]]), ConversorErro::class, 'perguntas e respostas', 'contagem desigual reprova');
 lanca(fn() => montagem_secao($ent, [$perguntas, [n(1), g(f('jaci', 'r1')), n(3), g(f('jaci', 'r2'))]]), ConversorErro::class, 'numeracao', 'numeracao com buraco reprova');
 lanca(fn() => montagem_secao($ent, [$perguntas, [n(2), g(f('jaci', 'r1')), n(1), g(f('jaci', 'r2'))]]), ConversorErro::class, 'numeracao', 'numeracao fora de ordem reprova');
-lanca(fn() => montagem_secao($ent, [$perguntas, [g(f('jaci', 'r1')), g(f('jaci', 'r2'))]]), ConversorErro::class, 'numero', 'resposta sem numero reprova');
-lanca(fn() => montagem_secao($ent, [[p('texto solto')], $respostas]), ConversorErro::class, 'pergunta', 'pergunta que nao e voz reprova');
+lanca(fn() => montagem_secao($ent, [$perguntas, [g(f('jaci', 'r1')), g(f('jaci', 'r2'))]]), ConversorErro::class, 'esperado o numero da resposta antes do texto', 'resposta sem numero reprova (mensagem exata)');
+lanca(fn() => montagem_secao($ent, [$perguntas, [n(1), g(f('jaci', 'r1')), n(2)]]), ConversorErro::class, 'sem o grupo de voz que o segue', 'numero sem resposta no fim (quantidade impar)');
+lanca(fn() => montagem_secao($ent, [$perguntas, [n(1), n(2)]]), ConversorErro::class, 'a resposta 1 nao e um grupo de voz', 'numero seguido de numero');
+lanca(fn() => montagem_secao($ent, [$perguntas, [n(1), g(f('jaci', 'r1')), n(2), p('texto')]]), ConversorErro::class, 'a resposta 2 nao e um grupo de voz', 'resposta que e paragrafo');
+lanca(fn() => montagem_secao($ent, [[p('texto solto')], $respostas]), ConversorErro::class, 'pergunta 1 nao e um grupo de voz', 'pergunta que nao e voz reprova (mensagem exata)');
 lanca(fn() => montagem_secao(['tipo' => 'entrevista', 'partes' => [parte()]], [$perguntas]), ConversorErro::class, 'exatamente 2 partes', 'entrevista com uma parte so');
 lanca(fn() => montagem_secao(['tipo' => 'entrevista', 'partes' => [parte(['envolver' => ['tag' => 'div']]), parte()]], [$perguntas, $respostas]), ConversorErro::class, 'envolver', 'entrevista nao aceita envolver');
 
@@ -114,6 +117,15 @@ lanca(fn() => montagem_secao(['tipo' => 'prosa', 'partes' => [parte()], 'html' =
 lanca(fn() => montagem_secao(['tipo' => 'prosa', 'partes' => [parte(['texto' => 'x'])]], [[p('a')]]), ConversorErro::class, 'chave desconhecida "texto"', 'chave desconhecida na parte');
 lanca(fn() => montagem_secao(['tipo' => 'prosa', 'partes' => [['pt' => ['fonte' => 'a', 'inicio' => 'b', 'html' => 'c']]]], [[p('a')]]), ConversorErro::class, 'chave desconhecida "html"', 'chave desconhecida no idioma');
 lanca(fn() => montagem_secao(['tipo' => 'prosa', 'partes' => [parte(['envolver' => ['tag' => 'div', 'onclick' => 'x']])]], [[p('a')]]), ConversorErro::class, 'chave desconhecida "onclick"', 'chave desconhecida em envolver');
+// cada nivel da receita tem a sua lista fechada, e a mensagem diz o nivel
+lanca(fn() => montagem_secao(['tipo' => 'prosa', 'partes' => [parte(['fonte' => 'x.md'])]], [[p('a')]]), ConversorErro::class, 'chave desconhecida "fonte" na receita (parte)', 'fonte no nivel da parte (e do idioma)');
+lanca(fn() => montagem_secao(['tipo' => 'prosa', 'partes' => [parte(['inicio' => 'x'])]], [[p('a')]]), ConversorErro::class, 'chave desconhecida "inicio" na receita (parte)', 'inicio no nivel da parte');
+lanca(fn() => montagem_secao(['tipo' => 'prosa', 'partes' => [parte(['id' => 'x'])]], [[p('a')]]), ConversorErro::class, 'chave desconhecida "id" na receita (parte)', 'id no nivel da parte (e de envolver)');
+lanca(fn() => montagem_secao(['tipo' => 'prosa', 'partes' => [parte()], 'envolver' => []], [[p('a')]]), ConversorErro::class, 'chave desconhecida "envolver" na receita (secao)', 'envolver no nivel da secao');
+lanca(fn() => montagem_secao(['tipo' => 'prosa', 'partes' => [['pt' => ['fonte' => 'a', 'inicio' => 'b'], 'en' => ['classe_lista' => 'x']]]], [[p('a')]]), ConversorErro::class, 'chave desconhecida "classe_lista" na receita (idioma en)', 'classe_lista no nivel do idioma');
+lanca(fn() => montagem_secao(['tipo' => 'prosa', 'partes' => [parte(['envolver' => ['tag' => 'div', 'fonte' => 'x']])]], [[p('a')]]), ConversorErro::class, '(envolver)', 'chave estranha em envolver diz o nivel');
+// as chaves permitidas em cada nivel sao aceitas
+eq("<p>a</p>", montagem_secao(['tipo' => 'prosa', 'partes' => [['pt' => ['fonte' => 'a', 'inicio' => 'b', 'fim' => 'c', 'ocorrencia' => 2], 'en' => ['fonte' => 'a', 'inicio' => 'b']]]], [[p('a')]]), 'fim e ocorrencia sao chaves validas do idioma');
 lanca(fn() => montagem_secao(['tipo' => 'mosaico', 'partes' => [parte()]], [[p('a')]]), ConversorErro::class, 'tipo desconhecido', 'tipo desconhecido');
 lanca(fn() => montagem_secao(['tipo' => 'prosa', 'partes' => [parte(['envolver' => ['tag' => 'DIV>']])]], [[p('a')]]), ConversorErro::class, 'tag', 'tag invalida em envolver');
 lanca(fn() => montagem_secao(['tipo' => 'sequencia', 'partes' => [parte(), parte()]], [[p('a')]]), ConversorErro::class, 'nos por parte', 'numero de listas de nos diferente do de partes');
