@@ -21,7 +21,7 @@
 
 <figure class="bus-crt">
   <div class="crt-scr" role="img"
-       aria-label="Uma tela de tubo verde mostrando a caixa de entrada do bus, com quinze mensagens. O comando bus --inbox foi rodado e a listagem mostra quinze linhas com remetente, assunto e data: duas do mapeditor, em 14 e 15 de agosto, e treze do glintfx, de 15 a 20 de agosto. O contador diz quinze recebidas. Abaixo da listagem, dentro da mesma tela, aparece por extenso o corpo da primeira mensagem, do mapeditor, de 14 de agosto: o anúncio de um projeto irmão do jogo, uma ferramenta interna do líder para editar à mão mapas gerados por IA que não ficaram bons, de uso estritamente interno, sem pedido de ação.">
+       aria-label="Uma tela de tubo verde mostrando a caixa de entrada do bus, com quinze mensagens. O comando bus --inbox foi rodado e a listagem mostra quinze linhas com remetente, assunto e data: duas do mapeditor, em 14 e 15 de agosto, e treze do glintfx, de 15 a 20 de agosto. O contador diz quinze recebidas. Abaixo da listagem, dentro da mesma tela, aparece por extenso o corpo da primeira mensagem, do mapeditor, de 14 de agosto: o anúncio de um projeto irmão do jogo, uma ferramenta interna do líder para editar à mão mapas que não ficaram bons, de uso estritamente interno, sem pedido de ação.">
     <div class="crt-tela">
       <p class="cmd"><span class="pr">gus@glyfesse:~/bus$</span> bus --inbox</p>
 
@@ -52,8 +52,8 @@ data: 2026-08-14 22:32
 
 anuncio, so pra contexto: nasceu o gusworld_mapeditor, projeto irmao do
 jogo. e uma ferramenta interna do lider pra editar a mao mapas do
-gusworld que foram gerados por IA e nao ficaram bons: colocar e mover
-paredes, ruas, inimigos, portas, alcapoes e escadas com o mouse.
+gusworld que nao ficaram bons: colocar e mover paredes, ruas,
+inimigos, portas, alcapoes e escadas com o mouse.
 
 uso estritamente interno, nao distribuido junto do jogo. reusa a mesma
 identidade visual do gusworld, via glintfx.
