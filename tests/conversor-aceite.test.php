@@ -118,6 +118,17 @@ commitar($b, 'criterio com 3 hashes');
 eq(2, $rc, 'hashes != universo: recusa (2)');
 verdadeiro(str_contains($out, 'universo'), 'diz que nao bate com o universo: ' . $out);
 
+// E2. universo vazio (receita sem secoes e criterio sem hashes): recusa (2), nunca "APROVADO" por vacuidade
+$b = montar();
+$tmp[] = $b;
+file_put_contents($b . '/raiz/docs/content/receitas/edicao-99.php', "<?php return ['secoes' => []];\n");
+file_put_contents($b . '/raiz/docs/tecnico/ACEITE-CONVERSOR.md', "# criterio sem hashes\n");
+commitar($b, 'universo vazio');
+[$rc, $out, $rel] = aceite($b);
+eq(2, $rc, 'universo vazio: recusa (2)');
+verdadeiro(!str_contains($rel . $out, 'VEREDITO'), 'universo vazio nao gera veredito: ' . $out);
+verdadeiro(str_contains($out, 'universo da receita (0)'), 'diz que o universo e 0: ' . $out);
+
 // F. divergencia: REPROVADO (1), linha e coluna, contagem por idioma, classe a cargo do reviewer
 $b = montar();
 $tmp[] = $b;
