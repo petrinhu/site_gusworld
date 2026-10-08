@@ -9,8 +9,8 @@ declare(strict_types=1);
  */
 final class ConversorErro extends RuntimeException
 {
-    public function __construct(string $mensagem, public readonly int $linha = 0)
+    public function __construct(string $mensagem, public readonly int $linha = 0, ?Throwable $anterior = null)
     {
-        parent::__construct($mensagem);
+        parent::__construct($mensagem, 0, $anterior);
     }
 }
