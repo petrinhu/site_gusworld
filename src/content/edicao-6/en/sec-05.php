@@ -10,4 +10,4 @@
   <li>Text: 10, again</li>
 </ul>
 
-<p class="pensa">i said the score climbs every edition... this time it waits</p>
+<p class="pensa">i said the grade went up every issue... this time it waits</p>
