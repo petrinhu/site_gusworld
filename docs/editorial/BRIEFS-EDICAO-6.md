@@ -886,3 +886,14 @@ um verbatim dele como decisão fechada (D1 a D7), este brief a trata como fechad
 - **PQ18 resolvida pelo D5:** "Seja bem claro que a arte é do artista andré, o mesmo da edicao anterior". A linha diz "o mesmo artista da edição passada", com nome, @ e link.
 - **A11 (main):** o repositório atual do jogo começa em 21/08. O `git log --all` tem 0 commits de 04/08 a 20/08, porque a história anterior não está nesse repositório. **Nenhuma peça afirma "jogo parado"** sem outra fonte.
 - **Ainda abertas:** PQ6, PQ7, PQ9, PQ10, PQ11, PQ14 e PQ17.
+
+### Respostas do líder, rodadas 3 e 4 (07/10/2026 22:38:12)
+
+- **PQ9:** "20/08, com o decreto no texto".
+- **PQ10:** o epitáfio é **"Aqui jaz um nome. O corpo continua de pé."**, a proposta 1, escolhida pelo líder.
+- **PQ6:** "15, essas duas". São o anúncio do mapeditor de 14/08 e a pausa de 15/08.
+- **PQ7:** **"Registro técnico"**. A Galeria explica o defeito em linguagem técnica, e NÃO de dentro do mundo.
+- **PQ11:** "Nova e curta". A abertura da HQ não reage ao sprite.
+- **PQ14:** "Sim, o placar 31 e 5". A capa tem arte em código.
+- **PQ17:** "Sim, vazio com graça". O pôster fica vazio com graça.
+- **Todas as perguntas dos briefs estão respondidas.**
