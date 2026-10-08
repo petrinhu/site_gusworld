@@ -283,13 +283,29 @@ return [
         'estado'         => 'rascunho',
         'slug_pt'        => 'edicao-6',
         'slug_en'        => 'edition-6',
-        'titulo_pt'      => '',
-        'titulo_en'      => '',
-        'dek_pt'         => '',
-        'dek_en'         => '',
-        'frame'          => null,
-        'frame_alt_pt'   => null,
-        'frame_alt_en'   => null,
+        // Ficha montada em 08/10/2026 (ED6-PAUTA, autorizada pelo líder): título D2, dek aprovado em 07/10/2026
+        // (brief §4.10), capa = o placar 31 e 5 (PQ14, GATE-CAPA aprovado). `estado` segue 'rascunho' até o GATE-GO
+        // e `uptime` fica vazio: é capturado no passo do deploy (scripts/uptime-sessoes.sh).
+        'data'           => '2026-08-04',
+        'titulo_pt'      => 'O Caminho Mais Fácil',
+        'titulo_en'      => 'The Easy Way',
+        'dek_pt'         => 'O mês abriu com uma estimativa: tirar as peças emprestadas uma por uma, '
+                          . 'começando pela de interface. Fechou com um número que não se moveu, '
+                          . 'e com tudo quebrado de propósito para que ele se movesse.',
+        'dek_en'         => 'The month opened with an estimate: take out the borrowed parts one by one, '
+                          . 'starting with the interface one. It closed on a number that did not move, '
+                          . 'and with everything broken on purpose so that it would.',
+        'frame'          => '/assets/edicao-6/placar-31-e-5.png',
+        'frame_alt_pt'   => 'Um placar parado numa tela escura, com a data 20/08: o número 31 em ciano, '
+                          . 'sobre o ícone de um painel de interface, e o número 5 em magenta, sobre o '
+                          . 'ícone de uma janela. Sob cada número, uma linha reta liga um marcador vazado '
+                          . 'a um marcador cheio, no mesmo nível: nada se moveu.',
+        'frame_alt_en'   => 'A frozen scoreboard on a dark screen, dated 20/08: the number 31 in cyan above '
+                          . 'an interface-panel icon, and the number 5 in magenta above a window icon. '
+                          . 'Under each number, a straight line joins a hollow marker to a filled one at '
+                          . 'the same level: nothing moved.',
+        'og_image'       => '/assets/og-edicao-6.jpg',
+        'capa_en'        => '/assets/og-edicao-6-en.jpg',
         'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
     ],
 
