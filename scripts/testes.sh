@@ -17,9 +17,9 @@
 
 set -euo pipefail
 
-# Piso de arquivos de teste: 19 .test.php + 9 .test.js (cresce com a trilha do conversor).
+# Piso de arquivos de teste: 20 .test.php + 9 .test.js (cresce com a trilha do conversor).
 # Apagar um teste exige baixar este numero DE PROPOSITO, no mesmo commit.
-PISO_ARQUIVOS=28
+PISO_ARQUIVOS=29
 
 # Contadores globais preenchidos por rodar_php e rodar_js.
 PHP_ENC=0; PHP_ROD=0; PHP_OK=0; PHP_FALHA=0; PHP_ASSERTS=0
