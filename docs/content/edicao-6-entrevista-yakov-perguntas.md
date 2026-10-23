@@ -44,7 +44,7 @@ gus@glyfesse:~/entrevista$ a placa que você me passou semana passada não liga.
 gus@glyfesse:~/entrevista$ você lê os relatórios da mina até o fim, todos. eu leio rápido e entendo tudo. você lê devagar e acha coisa que eu não achei. quem tá certo?
 /* eu leio rápido e ainda assim não acho o erro na primeira vez. isso me irrita mais do que devia */
 
-gus@glyfesse:~/entrevista$ se eu pedir pra pular a parte de escutar e ir dirto pra picareta, você faz? uma vez só
+gus@glyfesse:~/entrevista$ você escuta o solo antes de cavar, eu sei disso. se eu pedir pra pular essa parte uma vez só e ir dirto pra picareta, você faz?
 /* uma vez só é o que eu peço de verdade. não quero um atalho pro resto da vida, nem pra mim nem pra ele */
 
 gus@glyfesse:~/entrevista$ a regra de segurança que você escreveu, a que mais salvou gente: você ainda abre o código dela de vez em quando? o que você procura?
@@ -104,7 +104,7 @@ gus@glyfesse:~/entrevista$ the circuit board you gave me last week doesn't turn 
 gus@glyfesse:~/entrevista$ you read the mine reprots all the way to the end, every one. i read fast and get everything. you read slow and find things i missed. who's right?
 /* i read fast and still miss the error the first time. it bugs me more than it should */
 
-gus@glyfesse:~/entrevista$ if i asked you to skip the listening part and go straight to digging, would you do it? just once
+gus@glyfesse:~/entrevista$ you listen to the soil before you dig, i know that. if i asked you to skip that part just once and go straight to the pickaxe, would you do it?
 /* just once is what i'm actually asking for. i'm not asking for a shortcut for the rest of my life */
 
 gus@glyfesse:~/entrevista$ the safety rule you wrote, the one that saved the most people: do you still open its code every now and then? what do you look for?
