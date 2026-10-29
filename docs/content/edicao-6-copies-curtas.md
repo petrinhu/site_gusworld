@@ -187,7 +187,7 @@ Tirinha: arte de André Farias (@Andre_Suporte, no X), o mesmo artista da ediç�
 
 A tirinha mostra arte do jogo, o brasão e o sprite do Gus, gerada por IA e declarada no rodapé. O traço da tirinha é do artista.
 
-As respostas do Brunus são de uma pessoa real; a tradução para o inglês é de um agente de IA, aprovada pelo editor. As perguntas do Gus são rascunho de agente de IA, aprovado pelo editor.
+As respostas do Yakov são de uma pessoa real; a tradução para o inglês é de um agente de IA, aprovada pelo editor. As perguntas do Gus são rascunho de agente de IA, aprovado pelo editor.
 
 Texto: rascunhado com agentes de IA e revisado pelo editor.
 
@@ -201,7 +201,7 @@ Comic strip: art by André Farias (@Andre_Suporte, on X), the same artist as las
 
 The comic strip shows game art (the crest and Gus's sprite) that is AI-generated and declared in the footer. The strip's line art is the artist's own.
 
-Brunus's answers are by a real person; the English translation is by an AI agent, approved by the editor. Gus's questions are a draft by an AI agent, approved by the editor.
+Yakov's answers are by a real person; the English translation is by an AI agent, approved by the editor. Gus's questions are a draft by an AI agent, approved by the editor.
 
 Text: drafted with AI agents and reviewed by the editor.
 
@@ -286,6 +286,7 @@ Comic strip in four panels, plus a banner below. In the first, a black backgroun
 > ocorrências do marcador (18 por idioma), de propósito; a varredura pré-GO exige 0 no partial.** Quando as respostas
 > chegarem, cada linha de marcador é trocada pelas palavras dele, como vierem (PQ12), e um `//` dele, se houver, entra
 > como `pensa brunus` (o Gus não o vê).
+> **Ficou sem uso em 29/10/2026:** a entrevista publicada desta edição é a do Yakov (ordem do líder de 23/10/2026, "Quem fizer primeiro, colocamos no ar"). O arquivo do Brunus continua; ele pode responder para uma edição futura.
 
 ## pt-BR
 

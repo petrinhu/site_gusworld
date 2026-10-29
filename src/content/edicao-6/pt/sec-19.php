@@ -22,7 +22,7 @@
 
   <p class="colo-creditos">A tirinha mostra arte do jogo, o brasão e o sprite do Gus, gerada por IA e declarada no rodapé. O traço da tirinha é do artista.</p>
 
-  <p class="colo-creditos">As respostas do Brunus são de uma pessoa real; a tradução para o inglês é de um agente de IA, aprovada pelo editor. As perguntas do Gus são rascunho de agente de IA, aprovado pelo editor.</p>
+  <p class="colo-creditos">As respostas do Yakov são de uma pessoa real; a tradução para o inglês é de um agente de IA, aprovada pelo editor. As perguntas do Gus são rascunho de agente de IA, aprovado pelo editor.</p>
 
   <p class="colo-creditos">Texto: rascunhado com agentes de IA e revisado pelo editor.</p>
 

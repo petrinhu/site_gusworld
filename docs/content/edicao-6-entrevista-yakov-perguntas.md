@@ -1,11 +1,12 @@
 # Edição #6 · Seção 16 · A Entrevista (alternativa): perguntas do Gus ao tio Yakov Vance
 
-> **Status: RASCUNHO DE PERGUNTAS, v1 (18 perguntas, mundo intacto, testado sem os `//`). Entrevista ALTERNATIVA
-> à do Brunus, por ordem do líder de 23/10/2026: *"Brunus ainda não respondeu a entrevista, após esses dias. Vamos
-> fazer uma alternativa, crie a entrevista para Yakov que peço ao homenageado. Quem fizer primeiro, colocamos no ar"*.
-> Aguarda a resposta do homenageado (ninguém escreve a fala do Yakov) + GATE-CONTEUDO + GATE-SPOILER (obrigatório e
-> sem exceção antes de qualquer render, `ROTEIRO-ENTREVISTAS.md`). Produzido em 2026-10-23. O texto abaixo é só o lado
-> do Gus: nenhuma resposta do Yakov foi escrita, sugerida nem imaginada.
+> **Status: perguntas APROVADAS pelo líder em 23/10/2026; respostas do homenageado chegaram em 29/10/2026** (v1, 18 perguntas,
+> mundo intacto, testado sem os `//`). Entrevista ALTERNATIVA à do Brunus, por ordem do líder de 23/10/2026: *"Brunus ainda
+> não respondeu a entrevista, após esses dias. Vamos fazer uma alternativa, crie a entrevista para Yakov que peço ao
+> homenageado. Quem fizer primeiro, colocamos no ar"*. As respostas ficam em `docs/content/edicao-6-entrevista-yakov-respostas.md`.
+> A conferência de GATE-CONTEUDO + GATE-SPOILER (obrigatória e sem exceção antes de qualquer render, `ROTEIRO-ENTREVISTAS.md`)
+> sobre as respostas não foi feita nesta atualização. Produzido em 2026-10-23. O texto abaixo é só o lado do Gus: as
+> respostas do Yakov não estão aqui.
 >
 > **L-08: toda fala e todo pensamento do Gus abaixo é RASCUNHO e vai ao líder para aprovar antes de qualquer uso.**
 > Nenhum agente aprova fala do Gus.

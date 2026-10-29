@@ -9,7 +9,7 @@ declare(strict_types=1);
  * (edicao-6-copies-curtas.md), a ocorrencia escolhe o bloco (tabela de ocorrencias nas Notas de producao da fonte).
  * Fora daqui, de proposito (molde a mao, PLANO-CONVERSOR 2.5): Bus (18), Cemiterio (7), Programacao (17), HQ (11),
  * Proximos (12), Poster (13) e Expediente (19).
- * Chaves: tipo, partes{pt,en{fonte,inicio,fim,ocorrencia},envolver{tag,id,classe},classe_lista}.
+ * Chaves: tipo, partes{pt,en{fonte,inicio,fim,ocorrencia},envolver{tag,id,classe},classe_lista,verbatim}.
  */
 
 return [
@@ -63,18 +63,24 @@ return [
                 'en' => ['fonte' => 'edicao-6-copies-curtas.md', 'inicio' => '## EN', 'ocorrencia' => 3],
             ]],
         ],
-        // A Entrevista: as 18 perguntas do Gus (aprovadas) e a moldura das 18 respostas (ENTREVISTA-PENDENTE, peca 10).
+        // A Entrevista com o tio Yakov, por ordem do lider de 23/10/2026 ("Quem fizer primeiro, colocamos no ar"):
+        // as 18 perguntas do Gus (aprovadas em 23/10/2026) e as 18 respostas do Yakov (pessoa real, verbatim; em
+        // edicao-6-entrevista-yakov-respostas.md, aprovadas em 29/10/2026). A moldura ENTREVISTA-PENDENTE do Brunus
+        // (copies-curtas, peca 10) saiu desta receita, mas o arquivo continua.
         // As 7 marcas que a R4 reprovava foram trocadas no .md por decisao do lider ("Trocar so a marca", 08/10/2026).
         16 => [
             'tipo' => 'entrevista',
             'partes' => [
                 [
-                    'pt' => ['fonte' => 'edicao-6-entrevista-perguntas.md', 'inicio' => '## O texto (pt-br): só as perguntas'],
-                    'en' => ['fonte' => 'edicao-6-entrevista-perguntas.md', 'inicio' => '## EN'],
+                    'pt' => ['fonte' => 'edicao-6-entrevista-yakov-perguntas.md', 'inicio' => '## pt-BR'],
+                    'en' => ['fonte' => 'edicao-6-entrevista-yakov-perguntas.md', 'inicio' => '## EN'],
                 ],
                 [
-                    'pt' => ['fonte' => 'edicao-6-copies-curtas.md', 'inicio' => '## pt-BR', 'ocorrencia' => 10],
-                    'en' => ['fonte' => 'edicao-6-copies-curtas.md', 'inicio' => '## EN', 'ocorrencia' => 10],
+                    'pt' => ['fonte' => 'edicao-6-entrevista-yakov-respostas.md', 'inicio' => '## pt-BR'],
+                    'en' => ['fonte' => 'edicao-6-entrevista-yakov-respostas.md', 'inicio' => '## EN'],
+                    // Respostas verbatim de pessoa real: a R1 (ponto final) nao vale aqui. Decisao do lider de 29/10/2026.
+                    // So esta parte tem a chave; as perguntas do Gus seguem com a R1.
+                    'verbatim' => true,
                 ],
             ],
         ],

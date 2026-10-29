@@ -1,112 +1,112 @@
-<?php /* GERADO por scripts/gerar-secoes.php a partir de docs/content/edicao-6-entrevista-perguntas.md, edicao-6-copies-curtas.md. Não edite à mão: corrija a fonte e gere de novo. */ ?>
+<?php /* GERADO por scripts/gerar-secoes.php a partir de docs/content/edicao-6-entrevista-yakov-perguntas.md, edicao-6-entrevista-yakov-respostas.md. Não edite à mão: corrija a fonte e gere de novo. */ ?>
 <div class="entrev">
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">i wrote something down a while ago and never asked: you measure everything in days, in winters, in seasons, and i've never caught you getting the count wrong. do you really count on your fingers, or are the fingers just so i think you're counting?</span></p>
-    <p class="pensa longo">long question on purpose. the more i explain what i want to know, the less i have to explain the rest</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">you listen to the ground before you dig. i write the code first and test it after. is that the same thing, or just a slower way to get to the same place?</span></p>
+    <p class="pensa">i want him to see that i know what he does</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">I think it's a bit different. Listening to the ground is like writing plans before programming</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">when you make a remedy, what's the hardest part: finding the right recipe, gathering the reagents, or wating for the decanting to finish?</span></p>
-    <p class="pensa longo">i already know which one i think it is. i want to see if he agrees with me</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">when a mine robot stops in the middle of the tunnel, what do you look at first: the code you wrote, the sensor that failed, or whoever sent it in?</span></p>
+    <p class="pensa longo">i already know the order he uses. i want to see if he says the same one, or if there's another nobody asked for</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">I look at the logs first. If I built the robot, it certainly has logs, and in them I'll find the "[error]" telling me where to look</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">why do you never answer "now" to anything i ask, not even small things?</span></p>
-    <p class="pensa longo">i'm going to hear "that takes three days" again and pretend i found it funny. i didn't</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">the part of the mine system you still haven't let anyone review: what is it, and why that one?</span></p>
+    <p class="pensa longo">he must keep one part to himself. everybody does. i want to know which part is his</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">On the contrary. If there's a passage, everyone should know about it, even if going in is forbidden because of the risk of a cave-in. And when in doubt, I ask for help reviewing</span></p>
   </div>
 
   <div class="troca">
     <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">huh?</span></p>
-    <p class="pensa longo">i had more questions written for after this one, thinking i knew the answer, and i didn't. i'm going to reorganise everything sitting right here, without getting up from the chair, that's not silence, it's rewriting</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="pensa">the next one had a number. i deleted it</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">I ate the number. I love irrational numbers</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">is there anything that takes one minute and you pretend it takes tehre days?</span></p>
-    <p class="pensa">i think there is. i think he knows i think so</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">you told me every piece listens to the board before it moves. the rook doesn't listen to anything, it just goes straight. did you make that up so id play better?</span></p>
+    <p class="pensa">the rook goes straight. i think he made that part up</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">The bishop also moves straight, on straight diagonals. The queen moves in straight lines. The knight uses two straight lines... If they listen to the board, they know where to go</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">when nobody comes into the shop all day long, what do you do with your hands?</span></p>
-    <p class="pensa longo">silly question. i know it's silly. i asked it anyway because i realised i didn't know the answer and that bothered me more than it should have</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">the circuit board you gave me last week doesn't turn on. did you know it doesn't, or did you think i'd figure something out?</span></p>
+    <p class="pensa longo">i took it home anyway, same as always. i still don't know if it was a gift or a test</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">I don't even remember the board. If I knew it didn't turn on, it was because I knew you'd make it work. If I didn't know, it was my own inattention</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">on the cart, what's the one thing you never let anybody carry for you?</span></p>
-    <p class="pensa">i tried carrying a crate once. he took it back without saying a word</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">you read the mine reprots all the way to the end, every one. i read fast and get everything. you read slow and find things i missed. who's right?</span></p>
+    <p class="pensa longo">i read fast and still miss the error the first time. it bugs me more than it should</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">When there are risks, you need calm, so you don't decide wrong and don't let anything slip through. But speed is also needed if it's urgent. Both are right. If I find something, it's more from experience than from speed</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">have you ever turned down someoen who asked for a shortcut, and then kept wondering if maybe you should have helped?</span></p>
-    <p class="pensa longo">i never think that, i don't think. i wanted to know if it's different for him or if i'm the only one who's sure too early</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">you listen to the soil before you dig, i know that. if i asked you to skip that part just once and go straight to the pickaxe, would you do it?</span></p>
+    <p class="pensa longo">just once is what i'm actually asking for. i'm not asking for a shortcut for the rest of my life</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">It depends on the situation. If it's for leisure, in soil or rock where I can understand without listening, why not? Sometimes even the sound of the pickaxe already serves as listening to the soil</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">the leather patch on the elbow of your coat: why have you never hidden it?</span></p>
-    <p class="pensa longo">i've seen hidden patches and i've seen patches left showing. his never looked like carelessness</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">the safety rule you wrote, the one that saved the most people: do you still open its code every now and then? what do you look for?</span></p>
+    <p class="pensa longo">at night he goes up on the roof and the antenna is the only thing he turns on. i think the code waits for him</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">I don't believe in code without errors. I try to build mental scenarios to find a problem and broaden the rule</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">i decide fast, get it wrong fast and fix it fast too. is that really so bad in your count, or only for the person who has to wiat?</span></p>
-    <p class="pensa longo">i want him to say it isn't bad. i know he won't. i want to see how he's going to not say it</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">in the mine, going fast has already cost people. i know that. i go fast too. do you think i'm a risk?</span></p>
+    <p class="pensa longo">that one is heavy, i know. i don't know how to make it lighter without looking scared of the answer</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">Everything is flawed, and everything, including me, is a risk. If you know the weight of your actions, you already reduce the risk, because you'll try to do it right</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">if i get one of your recipes wrong twice in a row, do you let me try a third time on my own, or do you take the vial out of my hand?</span></p>
-    <p class="pensa">i bet he lets me try. i don't know if that makes me feel calm</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">i tried to unlock a test robot and got it wrong twice. on the third time, do you let me try, or do you take the panel out of my hand?</span></p>
+    <p class="pensa longo">i know which of the two i'd rather. i don't know if i'd have the nerve to say it out loud</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">We learn a lot from trial and error. If it takes a while, I can give hints, but I leave it in your hands</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">jaci makes an ampoule one way and you make it another. who's right?</span></p>
-    <p class="pensa longo">he's going to say both. i want to hear him say which one he'd pick if he couldn't say both</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">my dad taught me to code, you taught me chess. which one of you teahces better?</span></p>
+    <p class="pensa longo">i know it's unfair to ask. i asked anyway, because it's the only question i had ready</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">Neither and both.</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">the hardest recipe you ever learned: did someone teach you, or did you work it out on your own, getting it wrong?</span></p>
-    <p class="pensa">that "or" is a false one. i know. i wanted to see if he'd notice</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">what did you learn from a mine mistake that no manual had written down?</span></p>
+    <p class="pensa longo">this is the one i most want to know. if he doesn't want to tell it, that's fine, but i wanted to ask</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">The mistake is underestimating the rock and thinking you already understand everything just because you've listened to the rock</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">has my dad sent any news that you haven't passed on to me yet?</span></p>
-    <p class="pensa">i asked pretending it was curiosity. it wasn't</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">you talk to my dad at night, over the radio. have you told him anything about me that i don't know yet?</span></p>
+    <p class="pensa">this is the closest to home. if he wants to pass it on, he can</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">Maybe yes, maybe no 👀</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">do you prefer the way i am now, or the way you think i'll be once i learn to wait?</span></p>
-    <p class="pensa longo">i didn't hide this one behind anything. i wrote it, read it twice and left it</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">when i'm sure and you're not... what do you want me to do?</span></p>
+    <p class="pensa longo">i wrote this one once and didn't change a single word. it's the one i most wanted to hear him answer</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">Is there a risk? Show why it's right and, once confirmed, you can go ahead</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">changing the sbuject: how many vials can your coat carry without clinking?</span></p>
-    <p class="pensa">back to something i can measure. nobody gets hurt here</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">the hemlet you wear in the mine has a scratch across the middle. is it from a fall, or from when you got angry at something?</span></p>
+    <p class="pensa longo">i noticed it on the first visit and didn't ask. i'm asking now because enough time has passed</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">It's scratched?!</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">...forget it. do your safety goggles sit on your forehead because you forgot to pull them down, or because you don't need them any more?</span></p>
-    <p class="pensa">i promise this one doesn't circle back to the last subject</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">your phone stays on the table face down. is that so you don't see things, or so nobody sees you?</span></p>
+    <p class="pensa longo">i noticed he flips it every time i start talking. i don't know if that's about me, and i don't want to ask yet</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">My priority is whoever is close by and interacting. If I turn it face down, it's so the phone doesn't get in the way</span></p>
   </div>
 
   <div class="troca">
-    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">is there anything i haven't asked yet because i didn't have the patience to wait for the answer?</span></p>
-    <p class="pensa longo">i'm leaving this open on purpose. if he wants to close it, he can, i'm not going to push</p>
-    <p class="fala"><span class="prompt">brunus@glyfesse:~/entrevista$</span> <span class="dito">ENTREVISTA-PENDENTE</span></p>
+    <p class="fala"><span class="prompt">gus@glyfesse:~/entrevista$</span> <span class="dito">have you heard anything in me that you haven't said yet... it can be the small thing</span></p>
+    <p class="pensa longo">i'm leaving this one open on purpose. if he wants to say it, he says it. if he doesn't, i won't push</p>
+    <p class="fala"><span class="prompt">yakov@glyfesse:~/entrevista$</span> <span class="dito">I heard your head wanting to solve everything, and your heart frustrated. Breathe. Calm down, listen to yourself, and make decisions</span></p>
   </div>
 
 </div>

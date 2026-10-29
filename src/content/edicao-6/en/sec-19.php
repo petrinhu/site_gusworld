@@ -22,7 +22,7 @@
 
   <p class="colo-creditos">The comic strip shows game art (the crest and Gus's sprite) that is AI-generated and declared in the footer. The strip's line art is the artist's own.</p>
 
-  <p class="colo-creditos">Brunus's answers are by a real person; the English translation is by an AI agent, approved by the editor. Gus's questions are a draft by an AI agent, approved by the editor.</p>
+  <p class="colo-creditos">Yakov's answers are by a real person; the English translation is by an AI agent, approved by the editor. Gus's questions are a draft by an AI agent, approved by the editor.</p>
 
   <p class="colo-creditos">Text: drafted with AI agents and reviewed by the editor.</p>
 
