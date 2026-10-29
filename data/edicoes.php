@@ -261,31 +261,16 @@ return [
         'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
     ],
 
-    // ── #6+ · EXEMPLO DE RASCUNHO (NÃO renderizado) ──────────────────────────
-    // Demonstra o mecanismo do drip: estado 'rascunho' fica no array mas NUNCA
-    // aparece na banca/linha (os helpers o filtram). Publicar = trocar a string
-    // abaixo para 'publicada'. Mantido deliberadamente vago e sem frame para
-    // não spoilar nada. Preencher titulo/dek/frame/data reais só na hora de
-    // publicar. É o marcador do drip que a #5 deixou de ser ao publicar: o
-    // array sempre reserva a próxima vaga.
-    //
-    // ★ ELA NÃO É ENFEITE (ED5-PAUTA): é a FIXTURE VIVA de que
-    // tests/linha-tempo-vazia.test.php e tests/og-banca-ed.test.php dependem
-    // para provar o guard anti-vazamento de rascunho — sem NENHUM 'rascunho'
-    // neste array, os dois guards passam à toa (nada sobra pra filtrar) e não
-    // testam mais nada. Isso já aconteceu uma vez: quando a #5 foi publicada
-    // sem deixar sucessora, a suíte ficou vermelha por FALTA de fixture, não
-    // por bug. Ao publicar a #6 de verdade, criar a #7 com este mesmo molde
-    // ANTES de rodar a suíte de novo — nunca depois.
+    // ── #6 · O CAMINHO MAIS FÁCIL ─────────────────────────────────────────────
     [
         'numero'         => 6,
         'revisao'        => 1,
-        'estado'         => 'rascunho',
+        'estado'         => 'publicada',
         'slug_pt'        => 'edicao-6',
         'slug_en'        => 'edition-6',
         // Ficha montada em 08/10/2026 (ED6-PAUTA, autorizada pelo líder): título D2, dek aprovado em 07/10/2026
-        // (brief §4.10), capa = o placar 31 e 5 (PQ14, GATE-CAPA aprovado). `estado` segue 'rascunho' até o GATE-GO
-        // e `uptime` fica vazio: é capturado no passo do deploy (scripts/uptime-sessoes.sh).
+        // (brief §4.10), capa = o placar 31 e 5 (PQ14, GATE-CAPA aprovado). Publicada em 29/10/2026 por ordem
+        // do líder, com o uptime capturado no ato.
         'data'           => '2026-08-04',
         'titulo_pt'      => 'O Caminho Mais Fácil',
         'titulo_en'      => 'The Easy Way',
@@ -306,7 +291,43 @@ return [
                           . 'the same level: nothing moved.',
         'og_image'       => '/assets/og-edicao-6.jpg',
         'capa_en'        => '/assets/og-edicao-6-en.jpg',
+        // UPTIME das sessões de trabalho no expediente do masthead (ver a
+        // nota da #3). Capturado no publish real via `scripts/uptime-sessoes.sh`
+        // e CONGELADO: registro histórico datado, não um contador vivo.
+        'uptime'         => ['jogo' => 1313, 'glintfx' => 508], // capturado em 29/10/2026 09:45
         'na_linha_tempo' => true, // era visual — entrará no scrubber quando publicar
+    ],
+
+    // ── #7 · RASCUNHO (NÃO renderizado) ───────────────────────────────────────
+    // Demonstra o mecanismo do drip: estado 'rascunho' fica no array mas NUNCA
+    // aparece na banca/linha (os helpers o filtram). Publicar = trocar a string
+    // abaixo para 'publicada'. Mantido deliberadamente vago e sem frame para
+    // não spoilar nada. Preencher titulo/dek/frame/data reais só na hora de
+    // publicar. É o marcador do drip que a #6 deixou de ser ao publicar: o
+    // array sempre reserva a próxima vaga.
+    //
+    // ★ ELA NÃO É ENFEITE (ED5-PAUTA): é a FIXTURE VIVA de que
+    // tests/linha-tempo-vazia.test.php e tests/og-banca-ed.test.php dependem
+    // para provar o guard anti-vazamento de rascunho — sem NENHUM 'rascunho'
+    // neste array, os dois guards passam à toa (nada sobra pra filtrar) e não
+    // testam mais nada. Isso já aconteceu uma vez: quando a #5 foi publicada
+    // sem deixar sucessora, a suíte ficou vermelha por FALTA de fixture, não
+    // por bug. Ao publicar a #7 de verdade, criar a #8 com este mesmo molde
+    // ANTES de rodar a suíte de novo — nunca depois.
+    [
+        'numero'         => 7,
+        'revisao'        => 1,
+        'estado'         => 'rascunho',
+        'slug_pt'        => 'edicao-7',
+        'slug_en'        => 'edition-7',
+        'titulo_pt'      => '',
+        'titulo_en'      => '',
+        'dek_pt'         => '',
+        'dek_en'         => '',
+        'frame'          => null,
+        'frame_alt_pt'   => null,
+        'frame_alt_en'   => null,
+        'na_linha_tempo' => true, // era visual: entrará no scrubber quando publicar
     ],
 
 ];
