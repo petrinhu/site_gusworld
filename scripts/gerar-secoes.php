@@ -94,7 +94,7 @@ function gerar_secao(string $raiz, array $secao, string $idioma, array &$erros):
         } catch (ConversorErro $e) {
             throw new ConversorErro($nome . ($e->linha > 0 ? ":{$e->linha}" : '') . ': ' . $e->getMessage(), 0, $e);
         }
-        foreach (travas_verificar($nos, $nome) as $violacao) {
+        foreach (travas_verificar($nos, $nome, travas_verbatim_da_parte($parte)) as $violacao) {
             $erros[] = $violacao;
         }
         $nosPorParte[] = $nos;

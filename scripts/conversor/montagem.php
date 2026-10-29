@@ -15,6 +15,7 @@ require_once __DIR__ . '/emissor.php';
  *            pt, en        {fonte, inicio, fim, ocorrencia}  (a casca resolve; aqui so se valida)
  *            envolver      {tag, id, classe}                 (recua o conteudo 2 espacos)
  *            classe_lista  string                            (classe do <ul>)
+ *            verbatim      true|false                        (true: a R1 nao vale nas falas desta parte; ver travas)
  * Nada de HTML, texto ou numero de secao/edicao dentro da receita.
  *
  * @param array<string,mixed> $receita
@@ -27,7 +28,7 @@ function montagem_secao(array $receita, array $nosPorParte): string
     $tipo = $receita['tipo'] ?? null;
     $partes = $receita['partes'] ?? [];
     foreach ($partes as $parte) {
-        montagem_validar_chaves($parte, ['pt', 'en', 'envolver', 'classe_lista'], 'parte');
+        montagem_validar_chaves($parte, ['pt', 'en', 'envolver', 'classe_lista', 'verbatim'], 'parte');
         foreach (['pt', 'en'] as $idioma) {
             montagem_validar_chaves($parte[$idioma] ?? [], ['fonte', 'inicio', 'fim', 'ocorrencia'], "idioma {$idioma}");
         }

@@ -95,7 +95,7 @@ function aceite_gerar(string $raiz, array $secao, string $idioma): array
             } catch (ConversorErro $e) {
                 throw new ConversorErro($nome . ($e->linha > 0 ? ":{$e->linha}" : '') . ': ' . $e->getMessage(), 0, $e);
             }
-            array_push($travas, ...travas_verificar($nos, $nome));
+            array_push($travas, ...travas_verificar($nos, $nome, travas_verbatim_da_parte($parte)));
             $nosPorParte[] = $nos;
         }
         return ['html' => montagem_secao($secao, $nosPorParte) . "\n", 'erro' => null, 'travas' => $travas];

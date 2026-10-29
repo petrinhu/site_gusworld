@@ -14,11 +14,12 @@ const TRAVAS_TRAVESSAO = '/\x{2014}|\x{2013}|&mdash;|&ndash;|&#0*821[12];|&#x0*2
  *   R4 a marca decide a classe: sem a marca, ate 72 caracteres pede "//", mais que isso pede o longo
  * So le os nos recebidos (o recorte publicavel); nota interna nunca chega aqui.
  * A trava NUNCA corrige: so aponta.
+ * $verbatim = true (chave 'verbatim' da parte da receita) desliga SO a R1, nas falas desta chamada.
  *
  * @param list<array<string,mixed>> $nos
  * @return list<string> "arquivo:linha: regra: trecho"
  */
-function travas_verificar(array $nos, string $arquivo): array
+function travas_verificar(array $nos, string $arquivo, bool $verbatim = false): array
 {
     $achados = [];
     $aponta = static function (int $linha, string $regra, string $texto) use (&$achados, $arquivo): void {
@@ -38,7 +39,7 @@ function travas_verificar(array $nos, string $arquivo): array
             case 'voz':
             case 'pensa_bloco':
                 foreach ($no['itens'] as $item) {
-                    travas_item_de_voz($item, $aponta);
+                    travas_item_de_voz($item, $aponta, $verbatim);
                 }
                 break;
         }
@@ -46,11 +47,22 @@ function travas_verificar(array $nos, string $arquivo): array
     return $achados;
 }
 
-function travas_item_de_voz(array $item, callable $aponta): void
+/**
+ * Chave 'verbatim' da parte da receita: resposta verbatim de pessoa real (decisao do lider de 29/10/2026).
+ * So o valor true liga a excecao; qualquer outro valor (ou ausencia) mantem a R1 valendo (fail-closed).
+ *
+ * @param array<string,mixed> $parte
+ */
+function travas_verbatim_da_parte(array $parte): bool
+{
+    return ($parte['verbatim'] ?? false) === true;
+}
+
+function travas_item_de_voz(array $item, callable $aponta, bool $verbatim = false): void
 {
     $linha = $item['linha'];
     $texto = $item['texto'];
-    if ($item['tipo'] === 'fala' && travas_termina_em_ponto($texto)) {
+    if ($item['tipo'] === 'fala' && !$verbatim && travas_termina_em_ponto($texto)) {
         $aponta($linha, 'R1', $texto);
     }
     if ($item['tipo'] === 'pensa' && travas_termina_em_ponto($texto)) {

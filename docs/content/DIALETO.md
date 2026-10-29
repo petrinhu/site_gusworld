@@ -56,6 +56,7 @@ As travas leem **só os blocos publicáveis** (nunca nota interna nem `## Notas 
 `arquivo:linha: regra: trecho`.
 
 - **R1. Fala sem ponto final.** O texto da fala não termina em `.` isolado. Reticências (`...`) são permitidas, por canon.
+  Exceção: a chave `'verbatim' => true` na parte da receita (resposta verbatim de pessoa real, decisão do líder de 29/10/2026) desliga só a R1 nas falas dessa parte; R2, R3 e R4 continuam valendo, e sem a chave nada muda.
 - **R2. Pensamento sem ponto final.** Mesma regra, para `//` e `/* */`.
 - **R3. Zero travessão.** Nenhum U+2014, U+2013, `&mdash;` ou `&ndash;` em texto publicável.
 - **R4. A marca decide a classe.** `//` é comum, `/* */` é longo. A trava reprova se a marca contradiz o
