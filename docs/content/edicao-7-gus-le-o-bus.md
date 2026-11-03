@@ -1,6 +1,6 @@
 # Edição #7 · Seção 18 · O Gus lê o bus
 
-> RASCUNHO v2, submeter ao líder. Escrito pelo `technical-writer` a partir do brief §4.7 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 437 a 454). v1 em `457da4b`. Esta versão aplica a decisão do líder de 03/11/2026 sobre a coluna ASSUNTO ("Assunto real, cortado nos spoilers (Recomendado)") e os ajustes G-M1 a G-M6 da revisão textual.
+> APROVADO pelo líder em 03/11/2026 ("Aprovo como está"); o en segue ao líder junto com as outras traduções. Escrito pelo `technical-writer` a partir do brief §4.7 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 437 a 454). v1 em `457da4b`. Esta versão aplica a decisão do líder de 03/11/2026 sobre a coluna ASSUNTO ("Assunto real, cortado nos spoilers (Recomendado)") e os ajustes G-M1 a G-M6 da revisão textual.
 > N = 15, fixado no brief (O1, linhas 610 a 617); a recontagem por `para: site` é do main. Abertas: as duas candidatas da PAUTA §4.7 (linha 248), a do pedido (22/08) e a da espera (24/08). Nenhuma das mensagens proibidas é aberta (ver Notas, item 1).
 > Fórmula (`canon_gus_le_o_bus_formula`, ordem do líder de 03/09): a 1ª, "hmmm, algo aqui, finalmente..."; a 2ª, "eita, mais uma..." antes de ler; da 3ª em diante, ironia pela contagem. O comentário vem sempre antes da leitura.
 > Toda fala e todo pensamento do Gus são rascunho ao líder (T7, L-08). "povvo" é grafia do líder e não se corrige. Falas, pensamentos e mensagens do bus em ASCII sem acento (tela, D-ACENTOS); a prosa do editor vai acentuada.
@@ -212,6 +212,7 @@ He closes the box with thirteen messages left unopened. Some he recognizes by su
 - **G-M6:** en "he asked to be told without having to ask".
 - **Fala de 3+ mantida** ("15 mensagens? esse povvo nao vive sem mim mesmo..."), com o mesmo N da #6 (decisão G-Q1 a).
 - **Montagem à mão, como a #6** (G-C2). O molde HTML não foi feito aqui.
+- **Aprovação do líder (03/11/2026, AskUserQuestion, verbatim: "Aprovo como está").** Aprovou o texto pt inteiro, incluindo o espelho "eles falam de mim. acho" e "isso eu nao consigo ignorar". Fechadas as pendências desta seção: (1) o Gus Dragon como espelho (G-M3 a), aprovado; (2) a fala de 3+ com o mesmo N da #6, mantida, aprovada; (3) a coluna DE em minúsculo (glintfx), como a #6, aprovada; (4) assuntos reais na listagem com os cinco neutros e o "ordem do root" do 0610, aprovados junto com o texto. Pendente só o en, que segue ao líder com as outras traduções.
 
 ### 4. Erros de digitação deliberados (dose: 1 a cada 40 a 80 palavras de fala)
 
