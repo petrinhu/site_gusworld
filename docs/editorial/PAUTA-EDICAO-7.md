@@ -1,4 +1,4 @@
-# Pauta da Edição #7 da Glyfesse (mapa de edição, PROPOSTA, revisão 4)
+# Pauta da Edição #7 da Glyfesse (mapa de edição, PROPOSTA, revisão 5)
 
 > Artefato de saída do estágio **E1** do `PIPELINE-EDICAO.md` (§3). **Nada aqui está decidido além do que a §16
 > registra como decisão do líder.** O documento PROPÕE; toda decisão é do líder, no GATE-PAUTA, e a recomendação
@@ -8,6 +8,8 @@
 > abriu a edição e entregou as respostas do homenageado à entrevista do Brunus. Autor do rascunho: Capitolino
 > (CPO), no passo 2 da L-16 global. **Revisão 2 (03/11/2026):** refeita depois da rodada 1 do GATE-PAUTA (D1, D2,
 > D4 e D6, §16). A D1 escolhida pelo líder fez da refundação a Reportagem de capa inteira, e o mapa mudou.
+> **Revisão 5 (03/11/2026):** registra a rodada 4 (D12, D11, D14 e D15, §16); a HQ passa a ser criada pela revista,
+> a edição ganha um brinquedo, e o conserto do terminal em 390 pontos vale da #7 em diante (D19 e D20 novas).
 > **Revisão 4 (03/11/2026):** registra a rodada 3 (D5, D8, D9 e D10, §16) e ajusta a Seção 16 e as ondas.
 > **Revisão 3 (03/11/2026):** registra a rodada 2 (D3, D7, D13 e D18, §16) e as datas de nascimento dos cinco
 > arquivos de lei, conferidas pelo main no git (§3.1).
@@ -51,7 +53,8 @@ de 02 e 03/09), o Cemitério (duas lápides pela D13 **[LÍDER]**: os repositór
 deu) e a Galeria (o buraco na coleta achado pelo Gus Dragon). A lente aprovada (D2, L-A) costura as duas metades: o
 recomeço com regra escrita é a capa (e as leis nasceram nele, de 21 a 29/08, datas na §3.1), a regra que não olhava
 é o resto. Título: **"Apagar Tudo" / "Delete Everything"** (D3 **[LÍDER]**). A caixa do determinismo fica dentro da
-Reportagem (D4 **[LÍDER]**). A Seção 16 é a entrevista do Brunus, já respondida. **Oito peças com escrita nova**, e
+Reportagem (D4 **[LÍDER]**). A Seção 16 é a entrevista do Brunus, já respondida. **Oito peças com escrita nova, mais uma HQ criada pela revista e
+um brinquedo** (rodada 4), e
 a Reportagem é a peça mais sensível que a revista já fez.
 
 ---
@@ -142,7 +145,7 @@ auditoria (D18, nova).
 
 | # | Seção | Estado na #7 [CPO] | Recorte (uma frase) | Fonte primária |
 |---|---|---|---|---|
-| 1 | Capa | cheia (montagem) | **Manchete: "Apagar Tudo" / "Delete Everything"** (D3 **[LÍDER]**); imagem: D12, aberta | Molde das #1 a #6 |
+| 1 | Capa | cheia (montagem) | **Manchete: "Apagar Tudo" / "Delete Everything"** (D3 **[LÍDER]**); imagem: **terminal com um registro só** (D12 **[LÍDER]**), arte em CSS convertida em PNG | Molde das #1 a #6 |
 | 2 | Índice | cheia (montagem) | `↩ a banca`, seções, 3 links fixos | Idêntico à #6 |
 | 3 | Editorial (Carta do Gus) | **CHEIA** (S) | Responde ao último pensamento publicado da #6 e apresenta o entrevistado. De dentro, sem palavra de produção (L-25). Voz: rascunho ao líder (L-08) | `edicao-6/pt/sec-03.php:14` |
 | 4 | Reportagem de capa | **CHEIA** (L), **a mais sensível até hoje** | **A refundação, inteira** (D1): a causa que a #6 não contou, com a frase do líder palavra por palavra e com data (D7), o apagamento de 21/08, o que foi guardado e o que não foi, o mapeditor zerado em 22/08, e o recomeço com as leis escritas, que nasceram de 21 a 29/08 (§3.1). Mais a **caixa do determinismo** (D4), com âncora. Consome `MATERIA-REFUNDACAO-DOS-REPOS` | `TODO.md:193`; `BRIEFS-EDICAO-6.md:908`; `GlintFx/CLAUDE.md:105, 235`; memória `reference_gusworld_legacy`; `archive/20260824-1946-...:14`; ledger, linhas 152-153 |
@@ -152,7 +155,7 @@ auditoria (D18, nova).
 | 8 | Detonado | vazio com graça | Nada roda; não existe código de jogo ainda (03/09). Copy ao GATE-COPY | Ledger, linha 159 |
 | 9 | Errata + Cartas | **Cartas: CHEIA** (M); Errata: vazio | **A carta do Gus Dragon:** a ideia aprovada em 21/08, o adendo de batalha de 22/08 e as duas respostas dele de 03/09. **D5 [LÍDER]: pedido e crédito juntos** (o pedido dele palavra por palavra no papel pautado em CSS, crédito seco nos dois papéis, e a fala do Gus personagem contando o destino, rascunho ao líder pela L-08). GATE-SPOILER. Errata só vira cheia se a prova da #6 em produção achar erro real | `archive/20260822-0840-...glitch-em-batalha.md`; ledger, linhas 129, 147, 155; `TODO.md:194` |
 | 10 | Classificados in-world | vazio com graça | Reusar idêntico (#1) | #1 |
-| 11 | HQ | a decidir (D11) | Se houver tirinha nova do artista, entra como na #6; se não, vazio com graça (pool rotativo). Nenhum agente roteiriza ou propõe quadros | `BRIEFS-EDICAO-6.md`, §4.7 |
+| 11 | HQ | **CHEIA, criada pela revista** (M) | **D11 [LÍDER]: *"nao tenho, crie algo"*.** Não há tirinha do artista; a revista cria a HQ. Conceito: **D19**. Roteiro (quadros, falas, pensamentos) por `narrative-designer`, rascunho ao líder (L-08, L-25); arte por `visual-design-director` em CSS e com sprite pronto do jogo, nunca desenho novo à mão (PIPELINE §0, item 6). Declarada no Expediente como feita por agente de IA (L-09) | `PIPELINE-EDICAO.md` §0, item 6; HQ em CRT da #1 e da #3 (`edicao.css:1717-1776`, `:1846-1856`); sprite `docs/design/mockups/sprites/gus-front.png` |
 | 12 | Próximos Lançamentos | vazio com graça | A linha de sempre do root; nada de prazo (03/09) | #1; ledger, linha 159 |
 | 13 | Pôster central | vazio com graça (recomendado) | Sem arte nova. Copy ao GATE-COPY | Molde das #1 a #6 |
 | 14 | Brinde | vazio com graça | Reusar #1 | #1 |
@@ -160,7 +163,7 @@ auditoria (D18, nova).
 | 16 | A Entrevista | **CHEIA** (L), **externa, respostas em mãos** | **O Gus entrevista o NPC Brunus Vetorial; quem responde é o homenageado.** Trabalho novo: tradução EN, moldura, receita. GATE-SPOILER formal | `docs/content/edicao-6-entrevista-perguntas.md`; colagem do líder (fora do repo) |
 | 17 | Seção de Programação | **CHEIA** (L) | **"Olhei e está limpo" e "não olhei nada" produzem a mesma saída verde:** primeira metade, o portão de 21/08, por que os dois autotestes não pegavam, e o terceiro controle; segunda metade (D18 **[LÍDER]**), a lei de paridade de 02/09 e a auditoria que ela obrigou (45, 19, 25), como segunda prova do mesmo padrão | `archive/2026-08-21-portao-varredura-vazia-verde.md`; `archive/2026-08-21-glintfx-estado-madrugada.md:45-61`; `archive/20260903-0530-...:22-44, 58-60` |
 | 18 | O Gus lê o bus | **CHEIA** (M) | N = **15** mensagens para `site` na janela: degrau 3+ da fórmula (ironia). O que ele abre é decisão de S1 | Bus 21/08 a 03/09 |
-| 19 | Expediente | cheia (data-driven) | Créditos, licença, disclosure; **"As respostas do Brunus"**; nota do editor responde à da #6 | `edicao-6/pt/sec-19.php:25, 36` |
+| 19 | Expediente | cheia (data-driven) | Créditos, licença, disclosure; **"As respostas do Brunus"**, com a tradução para o inglês de agente que imita os erros de digitação (D9); **a HQ feita por agente de IA, aprovada pelo editor** (no lugar do crédito do artista da #6); o brinquedo, se tiver arte ou código novo; nota do editor responde à da #6 | `edicao-6/pt/sec-19.php:25, 36` |
 
 ### 3.1 Detalhe das seções que não são óbvias
 
@@ -258,6 +261,8 @@ Reportagem).
 | 6 | **Cemitério** | M | Duas pedras: a que paga o epitáfio da #6 e a da ordem que não existiu (D13) |
 | 7 | **O Gus lê o bus** | M | N alto, degrau de ironia |
 | 8 | **Editorial** | S | Ponte com a #6 e apresentação do Brunus |
+| 9 | **HQ** (nova, D11) | M | O líder pediu; roteiro e arte novos, em CSS e sprite pronto |
+| 10 | **Brinquedo** (novo, D14) | M | Peça interativa nova: lógica pura testada antes (L-13 do site) |
 
 A **caixa do determinismo** (D4) é peça do Gus Dragon hospedada na Reportagem: conta como parte da peça 1 no porte,
 mas tem brief, lente e gate próprios.
@@ -333,15 +338,33 @@ feeds, e numa reportagem sensível não é copy de vitrine solta. Vai ao GATE-CO
 
 ## 8. A imagem da edição (`frame`), o Pôster e o brinquedo
 
-- **Capa (`frame`), reformulada pela D1 [CPO], nesta ordem:** **(a) arte própria em CSS, convertida em PNG**, de um
-  terminal com o histórico do repositório recomeçado: um commit só, o de fundação (`81a8ef1`, *"funda o repositorio com
-  licencas e configuracao de versionamento"*, memória `reference_gusworld_legacy`; data conferida pelo main, 21/08
-  22:13 local; a mensagem se reconfere no próprio commit antes de virar arte), sem nada antes dele;
-  zero captura, zero risco de tela pessoal; (b) a arte da revisão 1, a saída do portão de 21/08 (combina com o tema,
-  não com a Reportagem); (c) frame nulo; (d) arte entregue pelo líder (higiene L-02 e declaração de IA, se gerada). O
-  desenho é do `visual-design-director`, só CSS. **Risco:** capa em terminal herda o defeito de 390 pontos (D15).
+- **Capa (`frame`), DECIDIDA (D12 [LÍDER]: *"Terminal com um registro só (Recomendado)"*):** arte própria em CSS,
+  convertida em PNG, de um terminal com o histórico do repositório recomeçado: um commit só, o de fundação (`81a8ef1`,
+  data conferida pelo main, 21/08 22:13 local; **a mensagem do commit se reconfere no próprio commit antes de virar
+  arte**, porque a da memória `reference_gusworld_legacy` não foi conferida), sem nada antes dele; zero captura, zero
+  risco de tela pessoal. Desenho do `visual-design-director`, só CSS. Herda o conserto do terminal (D15).
 - **Pôster (Seção 13):** vazio com graça, recomendado.
-- **Brinquedo (`D-WEBGL-TELA`, teto de um por edição):** recomendo nenhum. É a D14.
+- **Brinquedo (`D-WEBGL-TELA`, teto de um por edição): DECIDIDO que há um** (D14 [LÍDER]: *"Com um brinquedo"*). Qual,
+  é a **D20**. Travas: um só; CSS primeiro, e three.js só no registro de tela e carregado sob demanda (memória
+  `project_d_webgl_so_na_tela`; o jogo abandonou o 3D, e a revista que narra isso não renderiza 3D sem razão); funciona
+  sem JS ou degrada com graça (o estado-base aparece pronto, como o `crt-nano`, `edicao.css:1759-1776`); lógica pura
+  extraída e coberta por teste antes, em TDD (L-13 do site); verificação no Gecko e em 390 pontos.
+
+### 8.1 Conceitos de HQ para a D19 (uma frase cada; nenhum quadro nem fala escrita aqui) [CPO]
+
+| | Conceito | Ligação com a #7 | Material |
+|---|---|---|---|
+| **H1 (recomendado)** | Três quadros na tela de fósforo verde, como as HQs da #1 e da #3, em que uma tela confere uma coisa que não está ali e responde que está tudo certo | O tema (o portão que dizia OK sem olhar), sem personagem nenhum em cena: zero risco de L-25 | Só CSS e texto, molde CRT existente (`edicao.css:1717-1776, 1846-1856`) |
+| H2 | Três quadros com o sprite atual do Gus diante de uma estante que vai se esvaziando até sobrar um volume só | A capa e o título ("Apagar Tudo", o registro único) | Sprite pronto (`gus-front.png`) e estante em CSS; a fala do Gus vai ao líder (L-08) e não pode ter palavra de produção (L-25) |
+| H3 | Três quadros com o Gus e o quadradinho azul da #3, de volta ao chão vazio do começo | O recomeço do zero e a ponte com a #3 | Sprite pronto e o quadrado em CSS; **risco L-25 alto**: o personagem não sabe que é feito de pixel, e o quadrado só funciona se o roteiro o tratar de dentro do mundo, como a #3 fez |
+
+### 8.2 Opções de brinquedo para a D20 (uma frase cada) [CPO]
+
+| | Brinquedo | Ligação com a #7 | Notas |
+|---|---|---|---|
+| **B1 (recomendado)** | Um portão de bolso: o leitor escolhe uma pasta (cheia, limpa ou vazia), aperta para conferir, e o portão se recusa a dizer "tudo certo" quando não varreu nada | A Programação (o terceiro controle: varredura vazia não é sucesso) | CSS e JS mínimo; a lógica (contar, classificar, recusar o vazio) é pura e testável; sem JS, mostra as três saídas prontas |
+| B2 | O histórico que encolhe: um terminal da capa em que o leitor rola o histórico do repositório e encontra só um registro | A capa e a Reportagem | Quase só CSS; **toca o histórico anterior, que vive em repositório privado**: nenhum número dele entra sem OK do líder (risco 15) |
+| B3 | Um classificador com as três gavetas do catálogo do Gus Dragon (consertado, funcional, possível), em que o leitor arrasta bugs de exemplo | A Galeria e o catálogo dele | Exige bugs de exemplo **fora** do jogo (spoiler) e o crédito duplo; arrastar exige alternativa de teclado (acessibilidade) |
 
 ---
 
@@ -460,8 +483,21 @@ resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
     trata como matéria futura **[INF: memória de 70 dias; reconferir]**.
 11. **Frase sensível de 28/08.** A mensagem do jogo cita o líder irritado, palavra por palavra (`20260828-1652-...:10`).
     Saiu da Reportagem com a D1; se entrar na Programação, só com OK dele.
-12. **[FONTE] `TERMINAL-WRAP-390`** (`TODO.md:177`): a #7 tem terminal na Programação e, se a D12 for (a) ou (b), na
-    capa. D15.
+12. **[FONTE] `TERMINAL-WRAP-390`** (`TODO.md:177`): a #7 tem terminal na Programação, na capa e, se a D19 for H1,
+    na HQ. **D15 [LÍDER]: *"conserte dessa edicao pra diante"*.** Leitura do main, que adoto **[INF]**: o conserto vale
+    da #7 em diante, e a #5 e a #6 publicadas não mudam.
+    - **Onde mora o CSS compartilhado [FONTE]:** o componente de terminal é um só, `.crt-scr` / `.crt-tela`, em
+      `public_html/assets/css/edicao.css:1717-1748` (moldura, tela, scanline em `::after` nas linhas 1739-1744, prompt
+      `.pr` na 1746), mais o `crt-nano` em `:1759-1776` e a desculpa da §17 em `:2110`. O comentário da linha 1718 diz
+      que ele é *"o tijolo comum das pecas artisticas"*. Uma folha só, `edicao.css`, serve todas as edições.
+    - **O que eu não sei:** qual dessas regras causa as faixas que cobrem as linhas quebradas em 390 pontos. O
+      diagnóstico é do `frontend-engineer` na onda 4, com o print `qa-prod/crop-b-pt390-prog.png` da #6.
+    - **Não há gancho por edição no molde [FONTE]:** `src/templates/edicao.php:58` abre só `<article class="edicao">`,
+      sem número. O conserto precisa de um escopo novo (uma classe modificadora usada só nos partials da #7 em diante,
+      ou uma classe de edição no molde, que toca todas as edições e por isso pede o mesmo QA).
+    - **Critério de aceite:** (a) na #7, nenhuma faixa cobre texto em 390 pontos, pt e en; (b) **a #5 e a #6 renderizam
+      iguais antes e depois do conserto**, em 390 e 1280 pontos, pt e en, comparadas pelo `qa-engineer` em captura do
+      Gecko, com diferença de pixel zero; (c) o print antes e depois vai junto do relatório.
 13. **[FONTE] `MDASH-GATE-VAZIO`** (`TODO.md:180`): o portão de travessão relatou zero arquivos varridos num commit de
     conteúdo da #6. Enquanto não for consertado, não protege os commits da #7. É de 29/10: **não vira matéria**. D16.
 14. **[FONTE] `UPTIME-DIRS`** (`TODO.md:179`): consertar ou rodar com as variáveis de ambiente antes do deploy.
@@ -481,6 +517,12 @@ resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
     (`GlintFx/GODS_LAWS.md:100`) e que a auditoria reabriu 19 de 45. Dizer que foi a primeira vez que uma lei do
     arquivo reabriu trabalho exige ler o histórico inteiro dele; sem isso, a frase não entra.
 21. **Fuso no `81a8ef1`.** 21/08 22:13 local é 22/08 01:13 UTC. Quem conferir pela API vê 22/08: a revista usa 21/08.
+22. **A HQ deixa de ser de artista e passa a ser da revista (D11).** O Expediente troca o crédito do artista da #6 pela
+    declaração seca de que roteiro e arte da HQ são de agente de IA, aprovados pelo editor (L-09: a distância entre o
+    dito e o descobrível é o que reprova). Nenhuma arte nova à mão: CSS e sprite pronto (PIPELINE §0, item 6). Se usar
+    sprite gerado por IA, a declaração do rodapé já cobre a origem; conferir antes do GATE-COPY.
+23. **O brinquedo é a única peça com lógica nova (D14).** Mini-app novo nasce testado (L-13 do site): a lógica pura sai
+    em módulo próprio, com teste visto falhando antes do código, e o print não prova lógica. Peso medido antes do GATE-RENDER.
 
 ---
 
@@ -513,18 +555,25 @@ resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
 | **D10** | A resposta 13 sai como está no GATE-SPOILER? | **"Sai como está (Recomendado)"** |
 | **D5** | Nas Cartas, pedido verbatim e crédito nos dois papéis juntos? | **"Pedido e crédito juntos (Recomendado)"** |
 
+### 12.1d Decididas na rodada 4 (03/11/2026, entre 11:37 e 11:42; verbatim na §16)
+
+| # | Pergunta | Escolha do líder |
+|---|---|---|
+| **D12** | A capa é o terminal com o histórico de um registro só? | **"Terminal com um registro só (Recomendado)"** |
+| **D11** | Há tirinha nova do artista? | Texto livre: **"nao tenho, crie algo"** (a revista cria a HQ; conceito na D19) |
+| **D14** | A #7 sai sem brinquedo? | **"Com um brinquedo"** (qual, na D20) |
+| **D15** | O defeito do terminal em 390 pontos é consertado? | Texto livre: **"conserte dessa edicao pra diante"** (vale da #7 em diante; a #5 e a #6 não mudam; critério de aceite no risco 12) |
+
 ### 12.2 Abertas (recomendada primeiro; uma pergunta por vez, L-03)
 
 | # | Pergunta de uma frase | Opções (recomendada primeiro) |
 |---|---|---|
-| **D12** (reformulada) | **A capa é arte em CSS de um terminal com o histórico do repositório recomeçado, um commit só, sob a manchete "Apagar Tudo"?** | **(a) Sim, o histórico de um commit** (conversa com o título: o que sobrou depois de apagar tudo). (b) A saída do portão de 21/08 (combina com o tema, não com a Reportagem). (c) `frame` nulo. (d) Arte do senhor |
-| **D11** | **Há tirinha nova do artista para a #7?** | **(a) Se o senhor tiver, entra como na #6; se não, a HQ fica em vazio com graça.** (b) Encomendar ao mesmo artista |
-| **D14** | **A #7 sai sem brinquedo?** | **(a) Sim.** (b) Um brinquedo, a escolher |
-| **D15** | **O defeito do terminal em 390 pontos é consertado antes do render da Programação da #7?** | **(a) Sim, na onda 4, antes do render.** (b) Segue anotado para depois |
+| **D19** (nova) | **A HQ da #7 é a tela de fósforo verde que confere o que não está ali e responde que está tudo certo (H1)?** | **(a) H1, a tela que diz "tudo certo" sem olhar** (só CSS, sem personagem em cena). (b) H2, o Gus diante de uma estante que se esvazia até sobrar um volume. (c) H3, o Gus e o quadradinho azul da #3 de volta ao chão vazio (risco de L-25). (d) Outro conceito, ditado pelo senhor |
+| **D20** (nova) | **O brinquedo da #7 é o portão de bolso, que se recusa a dizer "tudo certo" quando não varreu nada (B1)?** | **(a) B1, o portão de bolso.** (b) B2, o histórico da capa que só tem um registro (toca o repositório privado). (c) B3, as três gavetas do catálogo do Gus Dragon (exige exemplos fora do jogo). (d) Outro, ditado pelo senhor |
 | **D16** | **O portão de travessão que varreu zero arquivos é consertado antes dos commits de conteúdo da #7?** | **(a) Sim, na onda 0** (L-36 global). (b) Depois da #7 |
 | **D17** | **A moldura `ENTREVISTA-PENDENTE` do Brunus que ficou na fonte da #6 fica como está?** (`edicao-6-copies-curtas.md:281-406`, fora da receita) | **(a) Fica como está** (fonte de edição publicada; não a declaro morta). (b) O senhor a declara revogada e ela sai do arquivo |
 
-**Ordem sugerida das próximas rodadas:** rodada 4: D12, D11, D14, D15. Rodada 5: D16, D17.
+**Ordem sugerida das próximas rodadas:** rodada 5: D19, D20, D16, D17.
 
 ---
 
@@ -534,35 +583,44 @@ resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
   issues e discussions; L-16 e L-24) e reconferir o N = 15. Buscar no GitHub o corpo das issues 3, 6, 7, 8 e 9 do
   bus. **Datas da refundação e das leis já conferidas pelo main (§3.1)**; falta o último commit do legado (§15, item
   1) e **levar ao líder as datas das leis** antes do brief da Reportagem (risco 19). Tarefas 1, 2, 3, 7 e 8 da §9
-  por `technical-writer`. Se a D16 for (a), conserto do portão de
-  travessão por `devops-sre`, com sabotagem de estreia (L-36 global).
+  por `technical-writer`. **Antes do conserto do terminal (D15), o `qa-engineer` grava a referência:** capturas da #5 e
+  da #6 em 390 e 1280 pontos, pt e en, do jeito que estão hoje. Se a D16 for (a), conserto do portão de travessão por
+  `devops-sre`, com sabotagem de estreia (L-36 global).
 - **Onda 1, briefs e lentes (E2 + S1).** Um `product-manager`: `BRIEFS-EDICAO-7.md`, um brief por seção cheia **e um
   brief próprio para a caixa do determinismo**, fonte em caminho absoluto, as divisórias da §5, as travas da §1.2 e a
   L-25. GATE-LENTE por seção com material; a da Reportagem leva a D7 (citação literal com data) e a tabela das leis
-  da §3.1; o dek entra aqui, para o GATE-COPY.
+  da §3.1; o dek entra aqui, para o GATE-COPY. **Briefs novos:** a HQ (conceito da D19) e o brinquedo (D20, com os
+  critérios de aceite e a lista de casos de teste antes de qualquer código).
 - **Onda 2, rascunhos (S2).** `narrative-writer`: Reportagem e Editorial. `technical-writer`: Programação (tamanho L,
   as duas metades), Cemitério (duas lápides; os epitáfios ficam em branco para o líder), Galeria, caixa do
   determinismo e bus. `ux-writer`: Cartas (D5: pedido verbatim, crédito duplo, fala do personagem) e a tradução EN
   das respostas. **Brief da tradução (D9):** traduzir as 18 respostas e reproduzir no inglês erros de digitação
   equivalentes aos do pt, nos mesmos lugares e em quantidade parecida; entregar junto a lista erro a erro (pt ao lado
   do inglês) para o líder aprovar com a tradução; resposta 18 em três linhas, como no pt (D8); sem travessão (R3).
-  **Do lado do Brunus nenhum agente escreve nada em pt.** Três agentes vivos.
+  **Do lado do Brunus nenhum agente escreve nada em pt.** Três agentes vivos. **Em seguida, na mesma onda (o teto é 4
+  vivos):** `narrative-designer` faz o roteiro da HQ (quadros, falas e pensamentos, rascunho ao líder pela L-08 e
+  conferido pela L-25), e só a estrutura; nenhum agente desenha.
 - **Onda 3, edição, copyedit, parecer e spoiler.** `revisor-textual` (restrito na Entrevista: não corrige os erros
   de digitação do pt nem os do inglês, que são decisão do líder, D9; na Reportagem, confere
   frase a frase contra a #6, risco 8); **`compliance-legal` dá parecer sobre a Reportagem** (risco 7) e instrui o de
-  spoiler (Galeria, Cartas, caixa, Entrevista); o líder decide.
-- **Onda 4, arte e render.** `frontend-engineer` (os 34 partials, a receita da #7 com `verbatim` nas respostas, e o
-  conserto da D15 se aprovado), `visual-design-director` (capa e papel pautado das Cartas, só CSS), `qa-engineer`
-  independente no Gecko, em 390 e 1280 pontos. Render serial.
+  spoiler (Galeria, Cartas, caixa, Entrevista, HQ); o líder decide.
+- **Onda 4, arte, brinquedo e render.** `frontend-engineer`: os 34 partials, a receita da #7 com `verbatim` nas
+  respostas, o **conserto do terminal escopado à #7 em diante** (D15; critério de aceite no risco 12), e o
+  **brinquedo em TDD** (D20: lógica pura e teste vistos falhando antes do código, L-13 do site; sem JS degrada com
+  graça). `visual-design-director`: capa (terminal de um registro), papel pautado das Cartas e arte da HQ, só CSS e
+  sprite pronto. `qa-engineer` independente no Gecko, em 390 e 1280 pontos, **mais a comparação da #5 e da #6 antes
+  e depois do conserto do terminal** (diferença de pixel zero). Render serial (um trabalho pesado por vez).
 - **Onda 5, montagem, prova, auditorias e release.** `backend-engineer`: ficha em `data/edicoes.php`, card social,
   uptime no publish (`UPTIME-DIRS`); auditorias **antes** do deploy (L-09); GATE-GO; #8 em rascunho no mesmo commit e
   suíte antes do push; o commit da Reportagem toca o status de `MATERIA-REFUNDACAO-DOS-REPOS`; deploy manual, do líder;
   post linka `/pt/?ed=7`; **o líder posta**; aviso ao Gus Dragon na issue do bus (L-15, L-24), que nesta edição tem
   três peças dele (Galeria, Cartas e a caixa).
 
-**Porte estrutural (L-08 global):** 19 seções, 8 peças com escrita nova mais 1 caixa própria, 1 entrevista com
-tradução, 7 vazios com copy ao gate, 6 decisões abertas (12 fechadas), 2 epitáfios do líder, 1 parecer jurídico novo, cerca de 34 partials, 1
-receita, 10 a 11 arquivos de fonte em `docs/content/`, 1 ficha, 2 cards sociais e 1 a 2 peças de arte em CSS.
+**Porte estrutural (L-08 global):** 19 seções, 10 peças novas (8 de texto, a HQ e o brinquedo) mais 1 caixa própria,
+1 entrevista com tradução, 6 vazios com copy ao gate, 4 decisões abertas (16 fechadas), 1 HQ nova, 1 brinquedo novo com teste, 2 epitáfios do líder, 1 parecer jurídico novo, cerca de 34 partials, 1
+receita, 10 a 11 arquivos de fonte em `docs/content/`, 1 ficha, 2 cards sociais, 3 peças de arte em CSS (capa,
+papel pautado, HQ), 1 módulo de lógica com teste e 1 conserto de CSS compartilhado com comparação de duas edições
+publicadas.
 
 ---
 
@@ -651,3 +709,14 @@ delas vire argumento da capa (risco 17).
   - **D10:** **"Sai como está (Recomendado)"**. A resposta 13 sai como está.
   - **D5:** **"Pedido e crédito juntos (Recomendado)"**. Nas Cartas, o pedido do Gus Dragon palavra por palavra no
     papel pautado, crédito seco nos dois papéis e a fala do Gus personagem sobre o destino.
+- **GATE-PAUTA, rodada 4** (03/11/2026, entre 11:37 e 11:42, por AskUserQuestion, verbatim):
+  - **D12:** **"Terminal com um registro só (Recomendado)"**. A capa é o terminal em CSS com o histórico do repositório
+    recomeçado, um commit só.
+  - **D11:** texto livre do líder, verbatim: **"nao tenho, crie algo"**. Leitura do main, que adoto **[INF]**: não há
+    tirinha do artista, e a revista cria a HQ da #7, dentro dos limites de sempre (o líder não desenha; só CSS, sprite
+    pronto ou captura; declarada no Expediente; falas ao líder). O conceito é a D19.
+  - **D14:** **"Com um brinquedo"**. Qual, é a D20.
+  - **D15:** texto livre do líder, verbatim: **"conserte dessa edicao pra diante"**. Leitura do main, que adoto
+    **[INF]**: o conserto do terminal em 390 pontos vale da #7 em diante, e a #5 e a #6 publicadas não mudam; critério de
+    aceite no risco 12.
+
