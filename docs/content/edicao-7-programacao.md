@@ -10,7 +10,7 @@
 
 Um portão é um programa que confere o trabalho antes de ele ser aceito. Ele segue uma regra escrita, por exemplo "só pode usar bibliotecas desta lista", e responde de um de dois jeitos: "tudo certo" ou "reprovado". A pergunta que quase ninguém faz é outra: o portão olhou para alguma coisa?
 
-Em 21 de agosto de 2026, a sessão de IA que trabalha no GlintFX, o motor gráfico do jogo, montou um portão que disse "tudo certo" depois de olhar zero arquivos. A reportagem de capa conta por que o projeto estava recomeçando. Esta seção fica com a conferência.
+Em 21 de agosto de 2026, a sessão de IA que trabalha no GlintFX, a biblioteca, montou um portão que disse "tudo certo" depois de olhar zero arquivos. A reportagem de capa conta por que o projeto estava recomeçando. Esta seção fica com a conferência.
 
 ```
 gus@glyfesse:~$ whoami
@@ -107,7 +107,7 @@ Quem quiser o caso técnico inteiro, com os registros, os portões e os números
 
 A gate is a program that checks work before it is accepted. It follows a written rule, for example "only libraries from this list may be used", and answers in one of two ways: "all clear" or "rejected". The question almost nobody asks is a different one: did the gate look at anything?
 
-On August 21, 2026, the AI session that works on GlintFX, the game's graphics engine, set up a gate that said "all clear" after looking at zero files. The cover story tells why the project was starting over. This section keeps the check.
+On August 21, 2026, the AI session that works on GlintFX, the library, set up a gate that said "all clear" after looking at zero files. The cover story tells why the project was starting over. This section keeps the check.
 
 ```
 gus@glyfesse:~$ whoami
