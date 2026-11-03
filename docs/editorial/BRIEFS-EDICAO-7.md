@@ -548,7 +548,7 @@ junto da tradução (D9).
 **`ux-writer`**, um arquivo só, `SITE/docs/content/edicao-7-copies-curtas.md`, uma peça por bloco `## pt-BR` / `## EN`
 (molde e tabela de ocorrências: `SITE/docs/content/edicao-6-copies-curtas.md`). Peças: (1) a Nota (fonte: ledger
 `HISTORICO_GUS_ECOSSISTEMA.md:159`, não existe código de jogo e não há prazo); (2) Detonado, vazio; (3) Errata, vazio;
-(4) Classificados, reuso; (5) Próximos Lançamentos; (6) Pôster, vazio; (7) Brinde, reuso; (8) a linha da Entrevista no
+(4) Classificados, reuso; (5) Próximos Lançamentos; (6) Pôster, com a imagem que o líder entregou (§8, M5); (7) Brinde, reuso; (8) a linha da Entrevista no
 Expediente, no molde de `SITE/src/content/edicao-6/pt/sec-19.php:25`, dizendo que as respostas do Brunus são de uma
 pessoa real, que a tradução para o inglês é de agente de IA, aprovada pelo editor, e que **reproduz erros de
 digitação equivalentes aos do original** (D9; declarar é a defesa, L-09); (9) a linha da HQ: roteiro e arte de agente
@@ -816,3 +816,396 @@ dos erros, os textos do terminal da HQ e do brinquedo vão aos gates dele. Nenhu
   §4.5.
 - **PQ7:** **"03/09 e os 11 dias (Recomendado)"**. A pedra da ordem falsa leva a data da correção e a idade que o
   registro dá. Aplicada em §4.6.
+
+### 7.1 GATE-CONTEUDO FECHADO (03/11/2026, tarde, por AskUserQuestion; verbatim)
+
+Todo o texto da #7 está aprovado. Nenhum agente da onda 4 reescreve palavra nenhuma.
+
+- **Reportagem:** "Aprovo como está"; a frase em inglês: "Aprovo".
+- **Caixa do determinismo:** "Aprovo como está" (spoiler liberado).
+- **Programação:** "Aprovo como está" (com as falas do Gus); textos do brinquedo: "Aprovo como estão".
+- **Galeria:** "Aprovo como está" (spoiler das nove invariantes liberado).
+- **Cemitério:** "Aprovo como está"; epitáfios: "Duas pastas, um passado" e "Nunca foi dada" (**rótulos das opções escolhidas; o texto das pedras está em `docs/content/edicao-7-cemiterio.md:19-20, 28`**, e é esse que vai à página).
+- **Cartas:** "Aprovo como está", com a fala trocada por causa da L-25: "Trocar por "nas cartas ainda nao" (Recomendado)".
+- **O Gus lê o bus:** "Aprovo como está", e "Assunto real, cortado nos spoilers (Recomendado)".
+- **HQ:** "Versão A (Recomendado)".
+- **Entrevista, tradução:** "Aprovo como está".
+- **Editorial:** "Aprovo com o parágrafo 3".
+- **Expediente:** "Aprovo como está". **Dek:** "Aprovo".
+- **Detonado:** "Não vou chutar (Recomendado)".
+- **Próximos, Classificados e Brinde:** "Aprovo como está".
+- **Inglês de todas as peças:** "Aprovo como está".
+- **Pôster:** o líder pediu um prompt, gerou no Grok e entregou, verbatim: "o poster está em [imagem]. ANtes ponha o arquivo
+  na pasta certa e depois use". Cópia pública em `SITE/public_html/assets/edicao-7/poster-edicao-7.jpg` (1408 por 1408,
+  commit `de3b867`). A Seção 13 deixa de ser vazio.
+
+---
+
+## 8. Onda 4: ordens de serviço M0 a M9 (conferidas contra a árvore real em 03/11/2026)
+
+**Toda ordem abaixo se despacha com a §3.2 colada**: ela traz os itens 4 a 8 da L-11 global que valem para todas
+(regra de parada, proibidos gerais, armadilhas, leis, formato do relatório). Cada M acrescenta os itens 1, 2 e 3 e o
+que for próprio dele. **Nenhuma ordem reescreve texto aprovado:** o texto vem das fontes, palavra por palavra, e quem
+achar erro PARA e relata.
+
+**Limite de método:** escrevi esta seção sem Bash. As linhas citadas eu abri; nenhum comando abaixo foi rodado por mim.
+
+### 8.1 Ordem e paralelismo (máximo de 4 agentes vivos; 1 trabalho pesado por vez)
+
+| Etapa | Tarefa | Quem | Corre junto com | Pesado? |
+|---|---|---|---|---|
+| 1 | **M0** controle: o comando reproduz a referência? | `qa-engineer` | M1 | **sim** |
+| 1 | **M1** receita, conversor e seções à mão sem arte nova | `frontend-engineer` | M0 | não |
+| 2 | **M5a** pôster na Seção 13 | `frontend-engineer` (outra instância) | M2, M4 | não |
+| 2 | **M4** capa e cards | `visual-design-director` | M5a e a cadeia | **sim**, só nos renders |
+| 2 | **Cadeia do `edicao.css`, EM SÉRIE: M2, depois M3, depois M6, depois M7a** | um agente por vez | M5a, M4 | não |
+| 3 | **M7b** comparação de hash da #5 e da #6 | `qa-engineer` | nada pesado | **sim** |
+| 4 | **M8a** ficha, ainda em rascunho, e **M5b** o rodapé | `backend-engineer` | nada | **sim**, na suíte |
+| 5 | **M9** QA da edição inteira | `qa-engineer` | nada | **sim** |
+| 6 | GATE-RENDER, GATE-CAPA, auditorias (L-09) | líder; auditores | | |
+| 7 | **M8b** publicação, só depois do GATE-GO | `backend-engineer`; o main commita | nada | **sim**, na suíte |
+
+**Por que a cadeia é em série:** só existe um arquivo de CSS servido às edições (`SITE/public_html/assets/css/edicao.css`;
+`tokens.css` é de outra natureza), e dois agentes nunca editam o mesmo arquivo (L-11 global). **Por que M7b vem antes do
+rodapé:** a linha do rodapé é servida em toda página e mudaria o hash da #5 e da #6 (pauta, risco 24). **Por que M8a existe:**
+a capa, o dek e o título saem da ficha (`SITE/src/templates/edicao.php:62-63`); sem ficha não há o que o QA olhar. O `estado`
+continua `rascunho` e só vira `publicada` no ato (M8b), que é o que a sua ordem pede e o que a #6 fez
+(`BRIEFS-EDICAO-6.md:761-767`).
+
+**Commit:** o main commita ao fim de cada M, citando `ED7-PAUTA`, depois de `git diff --cached --stat` (L-23 do site).
+
+**Ver a #7 em rascunho (vale para todo M):**
+`cd /home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld && PREVIEW_EDICAO_NUM=7 php -S 127.0.0.1:8098 -t public_html scripts/preview-router.php > /var/tmp/qa-ed7/prev7.log 2>&1 &`
+Endereços: `http://127.0.0.1:8098/pt/edicao.php?slug=edicao-7` e `http://127.0.0.1:8098/en/edition.php?slug=edition-7`.
+O router nunca grava em `data/edicoes.php` (`SITE/scripts/preview-router.php:12-18`). Ao terminar, mate o servidor pelo PID.
+
+**A conferência de texto das seções à mão (usada em M1, M2, M3, M5a).** Gravar uma vez, fora do repo, em
+`/var/tmp/ed7-texto/conferir.php`:
+
+```php
+<?php
+// uso: php conferir.php <fonte.md> <pt-BR|EN> <partial.php> [ocorrencia]
+[$_, $md, $cab, $par] = $argv;
+$oc = (int) ($argv[4] ?? 1);
+$n = 0; $dentro = false; $bloco = [];
+foreach (file($md, FILE_IGNORE_NEW_LINES) as $l) {
+    if ($l === "## $cab") { $n++; $dentro = ($n === $oc); continue; }
+    if ($dentro && (str_starts_with($l, '## ') || $l === '---')) { break; }
+    if ($dentro) { $bloco[] = $l; }
+}
+if ($bloco === []) { echo "BLOCO VAZIO: varredura quebrada\n"; exit(1); }
+$norm = static fn(string $s): string => trim(preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags($s), ENT_QUOTES | ENT_HTML5, 'UTF-8')));
+$pagina = $norm(preg_replace('/<\?php.*?\?>/s', '', file_get_contents($par)));
+$enc = 0; $falta = [];
+foreach ($bloco as $l) {
+    $l = trim($l);
+    if ($l === '' || $l === '```' || preg_match('/^\|[\s:|-]+\|$/', $l) === 1) { continue; }
+    if (preg_match('/^[A-Z][A-Z-]{9,}$/', $l) === 1) { continue; } // marcador de montagem
+    $partes = str_starts_with($l, '|') ? explode('|', trim($l, '|')) : [$l];
+    foreach ($partes as $p) {
+        $t = trim(preg_replace('/^(#+ |> |\/\/ ?|\/\* ?)/', '', trim(trim($p), '`')));
+        $t = trim(preg_replace('/ ?\*\/$/', '', str_replace(['**', '*', '`'], '', $t)));
+        if ($t === '') { continue; }
+        $enc++;
+        if (!str_contains($pagina, $norm($t))) { $falta[] = $t; }
+    }
+}
+printf("trechos=%d faltando=%d\n", $enc, count($falta));
+foreach ($falta as $f) { echo "FALTA: $f\n"; }
+exit($falta === [] && $enc > 0 ? 0 : 1);
+```
+
+Saída esperada em toda seção à mão: `trechos=N faltando=0`, com N maior que 0, e código de saída 0. **`FALTA:` não se resolve
+mudando a fonte:** PARE e relate. O script compara texto, não desenho; print é com o M9.
+
+### M0. Controle: o comando reproduz a referência?, `qa-engineer` (pesado; rodar antes de qualquer CSS novo)
+
+**Fatos:** a referência da #5 e da #6 está em `/var/tmp/qa-ed7/ref3/`, nomes `edicao-<5|6>-<pt|en>-<390|1280>-<a|b>.png`.
+A altura de janela do método é **H=32000**, com o Firefox isolado.
+**COMANDO-REF3 (FATO: o que o main passou ao `qa-engineer` no despacho de `ref3`; a rodada confirmou 8 pares iguais):**
+`env -u WAYLAND_DISPLAY -u DISPLAY -u DBUS_SESSION_BUS_ADDRESS XDG_RUNTIME_DIR=/var/tmp/qa-ed7/xdg HOME=/var/tmp/qa-ed7/home MOZ_NO_REMOTE=1 MOZ_HEADLESS=1 firefox --headless --new-instance --profile /var/tmp/qa-ed7/perfil --window-size=<W>,32000 --screenshot <png absoluto> '<url>'`,
+com W 390 ou 1280, um Firefox por vez, servidor `php -S 127.0.0.1:8097 -t public_html` a partir de SITE, rotas
+`/pt/edicao.php?slug=edicao-N` e `/en/edition.php?slug=edition-N`, perfil `/var/tmp/qa-ed7/perfil` já com `user.js` pronto.
+O `/var/tmp/qa-ed7/capturar.sh` é da tentativa anterior (altura 900, pasta `ref`): não usar.
+
+1. `/usr/bin/magick identify -format '%w %h\n' /var/tmp/qa-ed7/ref3/edicao-6-pt-390-a.png` → esperado: largura 390, altura 32000.
+   Outro valor: PARE.
+2. Subir a #5 e a #6 como na referência: `cd /home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld && php -S 127.0.0.1:8097 -t public_html > /var/tmp/qa-ed7/m0-servidor.log 2>&1 &` →
+   `curl -s -o /dev/null -w '%{http_code}' 'http://127.0.0.1:8097/pt/edicao.php?slug=edicao-6'` dá `200`.
+3. `mkdir -p /var/tmp/qa-ed7/m0`. Com o COMANDO-REF3, capturar as 8 combinações (edição 5 e 6; `pt/edicao.php?slug=edicao-N` e
+   `en/edition.php?slug=edition-N`; 390 e 1280), um Firefox por vez, em `/var/tmp/qa-ed7/m0/edicao-<N>-<lingua>-<largura>.png`.
+4. Comparar cada uma com a `-a` da referência: `sha256sum` dos dois arquivos. **Esperado: os 8 pares iguais.** Se algum diferir,
+   PARE e relate qual: sem controle verde, a comparação de M7b não prova nada (L-36 global).
+5. Matar o servidor. **Pode tocar:** só `/var/tmp/qa-ed7/m0/`. **Proibido:** apagar ou sobrescrever `ref3`; mexer no repo.
+
+**Aceite:** os 8 hashes iguais, listados no relatório, com o comando usado por extenso.
+
+### M1. Receita, conversor e seções à mão sem arte nova, `frontend-engineer`
+
+**O que passa pelo conversor (receita):** 3, 4, 5, 6, 8 e 16. **À mão, como na #6** (`SITE/docs/content/receitas/edicao-6.php:10-11`):
+7, 12, 17, 18 e 19. **Reuso:** 10, 14 e 15. **Ficam para outros M:** 9 (M3), 11 (M2), 13 (M5a).
+
+**Conferido por mim nas fontes da receita (03/11/2026, por Grep, sem rodar o conversor):** o `parser.php:45-46` recusa linha começada em `> ` ou em `#` que não seja `### `, e `parser.php:59-64` recusa HTML cru. Em `edicao-7-reportagem.md`, `-editorial.md`, `-caixa-determinismo.md`, `-galeria-bugs.md` e nas ocorrências 1 e 2 das copies, as linhas `> ` e as tabelas `|` ficam **fora** dos blocos `## pt-BR` e `## EN` (no cabeçalho ou nas Notas). Nos blocos: limpo. Respostas: 40 linhas de prompt (20 e 20, com as três da resposta 18 nos dois idiomas) e **zero `TRADUCAO-PENDENTE`**. Se o passo 2 ainda assim sair 1, é fato novo: PARE.
+
+1. Criar `SITE/docs/content/receitas/edicao-7.php` com exatamente este conteúdo:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Receita da Edicao #7 (dado puro, sem comportamento). Fora daqui, de proposito (feitas a mao, como na #6):
+ * Cemiterio (7), Errata + Cartas (9, papel pautado), Classificados (10), HQ (11), Proximos (12), Poster (13),
+ * Brinde (14), Cupom (15), Programacao (17), Bus (18) e Expediente (19).
+ */
+
+return [
+    'secoes' => [
+        3 => ['tipo' => 'prosa', 'partes' => [[
+            'pt' => ['fonte' => 'edicao-7-editorial.md', 'inicio' => '## pt-BR'],
+            'en' => ['fonte' => 'edicao-7-editorial.md', 'inicio' => '## EN'],
+        ]]],
+        4 => ['tipo' => 'sequencia', 'partes' => [
+            [
+                'pt' => ['fonte' => 'edicao-7-reportagem.md', 'inicio' => '## pt-BR'],
+                'en' => ['fonte' => 'edicao-7-reportagem.md', 'inicio' => '## EN'],
+            ],
+            [
+                'pt' => ['fonte' => 'edicao-7-caixa-determinismo.md', 'inicio' => '## pt-BR'],
+                'en' => ['fonte' => 'edicao-7-caixa-determinismo.md', 'inicio' => '## EN'],
+                'envolver' => ['tag' => 'div', 'id' => 'sec-04-determinismo'],
+            ],
+        ]],
+        5 => ['tipo' => 'prosa', 'partes' => [[
+            'pt' => ['fonte' => 'edicao-7-copies-curtas.md', 'inicio' => '## pt-BR', 'ocorrencia' => 1],
+            'en' => ['fonte' => 'edicao-7-copies-curtas.md', 'inicio' => '## EN', 'ocorrencia' => 1],
+            'classe_lista' => 'placar',
+        ]]],
+        6 => ['tipo' => 'prosa', 'partes' => [[
+            'pt' => ['fonte' => 'edicao-7-galeria-bugs.md', 'inicio' => '## pt-BR'],
+            'en' => ['fonte' => 'edicao-7-galeria-bugs.md', 'inicio' => '## EN'],
+        ]]],
+        8 => ['tipo' => 'prosa', 'partes' => [[
+            'pt' => ['fonte' => 'edicao-7-copies-curtas.md', 'inicio' => '## pt-BR', 'ocorrencia' => 2],
+            'en' => ['fonte' => 'edicao-7-copies-curtas.md', 'inicio' => '## EN', 'ocorrencia' => 2],
+        ]]],
+        16 => ['tipo' => 'entrevista', 'partes' => [
+            [
+                'pt' => ['fonte' => 'edicao-7-entrevista-brunus-perguntas.md', 'inicio' => '## pt-BR'],
+                'en' => ['fonte' => 'edicao-7-entrevista-brunus-perguntas.md', 'inicio' => '## EN'],
+            ],
+            [
+                'pt' => ['fonte' => 'edicao-7-entrevista-brunus-respostas.md', 'inicio' => '## pt-BR'],
+                'en' => ['fonte' => 'edicao-7-entrevista-brunus-respostas.md', 'inicio' => '## EN'],
+                'verbatim' => true,
+            ],
+        ]],
+    ],
+];
+```
+
+2. `php /home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld/scripts/gerar-secoes.php --edicao 7 > /var/tmp/ed7-m1-gerar.txt 2>&1; echo $?` → esperado: `0`, e 12 arquivos em
+   `SITE/src/content/edicao-7/{pt,en}/` (`sec-03`, `04`, `05`, `06`, `08`, `16`). Saída 1 traz `arquivo:linha: regra`: **PARE, não mude a fonte, não mude
+   a trava**, relate (armadilha: uma fala terminada em ponto nas peças do Gus reprova na R1; texto aprovado só muda com o líder).
+3. Conferir a resposta 18: em `src/content/edicao-7/pt/sec-16.php`, a última `<div class="troca">` tem **três** `<p class="fala">` com o prompt
+   `brunus@glyfesse:~/entrevista$` depois da pergunta (D8). Idem em en. E `/usr/bin/grep -c 'TRADUCAO-PENDENTE' .../src/content/edicao-7/en/sec-16.php || true` dá **0**: o conversor emitiria o marcador como fala sem reclamar.
+4. Reuso: `cp` de `src/content/edicao-6/{pt,en}/sec-10.php`, `sec-14.php` e `sec-15.php` para `src/content/edicao-7/{pt,en}/`. Nesses seis arquivos, trocar só no comentário
+   inicial `Recorrente na #6` por `Recorrente na #7`. Conferir `sed -n` que o HTML não mudou: `diff` contra o original mostra só a linha do comentário.
+5. **À mão, copiando o desenho do molde da #6 e trocando só o texto:**
+
+| Seção | Molde | Fonte do texto | Conferência (`conferir.php`) |
+|---|---|---|---|
+| 7 Cemitério | `src/content/edicao-6/{pt,en}/sec-07.php` | `docs/content/edicao-7-cemiterio.md` (duas pedras; os epitáfios já estão no `.md`, linhas `:19-20` e `:28`, e os nomes "Duas pastas, um passado" e "Nunca foi dada" são os rótulos das opções escolhidas pelo líder, `:91`, **não** texto de pedra) | `pt-BR`, `EN` |
+| 12 Próximos | `src/content/edicao-6/{pt,en}/sec-12.php` | `docs/content/edicao-7-copies-curtas.md`, ocorrência 5 | `pt-BR 5`, `EN 5` |
+| 17 Programação | `src/content/edicao-6/{pt,en}/sec-17.php` | `docs/content/edicao-7-programacao.md`; **a linha `BRINQUEDO-PORTAO-DE-BOLSO` fica como comentário PHP `<?php /* BRINQUEDO-PORTAO-DE-BOLSO */ ?>`** até M6 | `pt-BR`, `EN` |
+| 18 O Gus lê o bus | `src/content/edicao-6/{pt,en}/sec-18.php` | `docs/content/edicao-7-gus-le-o-bus.md` | `pt-BR`, `EN` |
+| 19 Expediente | `src/content/edicao-6/{pt,en}/sec-19.php` | copies, peças 8, 9 e 10 (ocorrências 8, 9, 10); abaixo | um por ocorrência |
+
+6. **Expediente, o que muda em relação à #6:** **sai** o crédito e a linha da tirinha (`sec-19.php:20` e `:23`). **`:25`** vira a peça 8. **Entra** a peça 9, em `<p class="colo-creditos">`. **`:27`
+   fica**, e abaixo dela entra a linha de tradução (decisão do main nas Notas das copies, item 6, letra d): pt *As traduções para o inglês são de agente de IA, aprovadas pelo
+   editor.*, en *The English translations are by an AI agent, approved by the editor.* **`:29`** vira *Todos os direitos reservados.* / *All rights reserved.* A nota do editor vem da peça 10. Título e
+   data continuam vindo do `$ctx`, nunca digitados. O crédito do Gus Dragon **não entra** no Expediente (Notas das copies, item 6, letra b).
+7. Nos comentários iniciais dos partiais à mão, escrever `#7` e a fonte certa. **Notas de produção nunca entram em partial.**
+8. `php -l` em cada arquivo de `src/content/edicao-7/`: `for f in .../src/content/edicao-7/*/*.php; do php -l "$f" || exit 1; done` → esperado: sem erro.
+9. `php .../scripts/gerar-secoes.php --edicao 7 --verificar; echo $?` → esperado: `0`.
+
+**Pode tocar:** `docs/content/receitas/edicao-7.php`, `src/content/edicao-7/**` (menos 09, 11, 13). **Proibido:** `edicao.css`; as fontes `.md`; as edições 1 a 6.
+**Armadilha própria:** partial gerado não se edita à mão (`tests/conversor-deriva.test.php`); os gerados saem das fontes, e esse teste passa a cobrir a #7 sozinho, porque varre toda receita.
+**Aceite:** passos 2, 3, 8 e 9 com as saídas esperadas; `conferir.php` com `faltando=0` em cada linha da tabela; relatório lista os 12 gerados e os partiais à mão.
+
+### M2. HQ em CSS, versão A, sem imagem, `frontend-engineer` (primeiro da cadeia do `edicao.css`)
+
+**Fonte:** `docs/content/edicao-7-hq-roteiro.md:9-75` (quadros aprovados, "Versão A (Recomendado)"), Notas `:85-99`. **Molde:** `src/content/edicao-1/pt/sec-11.php:7-16` (`figure.hq` > `div.hq-strip` > `div.hq-q` > `span.hq-n` e `div.crt-tela`);
+CSS existente: `edicao.css:1791-1803` (a tira empilha abaixo de 600 pontos e fica em 3 colunas acima).
+
+1. Criar `src/content/edicao-7/pt/sec-11.php` e `en/sec-11.php`: `figure.hq`, `div.hq-strip`, três `div.hq-q`, cada um com `span.hq-n aria-hidden="true"` (1, 2, 3) e `div.crt-tela`. Cada linha de tela é um `<p>`, texto exato do roteiro, ASCII sem acento.
+2. O `_` do roteiro **não é texto**: é `<span class="crt-cur" aria-hidden="true"></span>`, numa linha própria (roteiro, `:5`). Quadro 3: a linha da lista não encontrada em `<p class="dim">`; a do veredito com `<span class="pr">`; nada de `.er` (Notas, `:86-88`).
+3. A legenda de cada quadro (`ligada.`, `lendo.`, `lendo.`; `on.`, `reading.`, `reading.`) sob o quadro. O `.hq-q` é flex em linha (`edicao.css:1799-1802`), então a legenda não cabe dentro dele: envolver cada quadro num `<div class="hq-q-col">` que contém o `.hq-q` e um `<p class="hq-leg">`.
+4. Sem legenda do conjunto (roteiro, `:145`). Sem imagem, sem sprite, sem `role` de personagem. Para quem usa leitor de tela, as linhas já são texto; nada de `aria-hidden` nelas.
+5. CSS: acrescentar **ao fim** de `edicao.css` um bloco comentado `§11 (edição #7)`, só com `.hq-q-col{display:flex;flex-direction:column}`, `.hq-q-col .hq-q{flex:1}`, e `.hq-leg` no estilo da legenda da #3 (`edicao.css:2309-2316`, conferir ali o `figcaption`). **Nenhuma regra existente se altera.**
+6. `php -l` nos dois; `conferir.php` no roteiro, `pt-BR` e `EN`. **As únicas faltas admitidas** são as que não são texto de página: `FALTA: _` (o cursor) e `FALTA: Quadro 1`, `2`, `3` (en: `Panel 1`, `2`, `3`), os rótulos do roteiro. Qualquer outra: PARE.
+
+**Pode tocar:** os dois `sec-11.php`; o fim de `edicao.css`. **Proibido:** imagem; mudar o roteiro; JS.
+**Armadilha própria:** o roteiro (`:104`) deixou sem medir a largura de 3 colunas. Se em 1280 uma linha quebrar, **não encurte texto**: relate. O defeito das faixas é o M7.
+**Aceite:** zero `<img`; os dois partiais com três quadros; print em 390 e 1280 ao M9.
+
+### M3. O papel pautado das Cartas e a mancha de suco de uva, `visual-design-director` (segundo da cadeia)
+
+**Fonte de texto:** `docs/content/edicao-7-cartas.md:7-27` e `:31-51` (aprovadas); **Errata:** copies, ocorrência 3. **Molde visual:** `docs/design/mockups/15-gus-no-bus.html:99-145` (folha, fita, pauta, manuscrito), `:162-183` (mancha de uva), `:206-217` (o filtro SVG). Molde da seção: `src/content/edicao-5/pt/sec-09.php`.
+
+1. Criar `src/content/edicao-7/{pt,en}/sec-09.php`, nesta ordem: a Errata (vazia) e depois as falas e o primeiro pensamento das Cartas; a legenda; a folha; o crédito; o pensamento da mancha.
+2. A folha: `figure.caderno` > `div.folha-caderno` > `span.fita` (aria-hidden), `div.pauta` > `p.manuscrito`. **O pedido é igual, letra a letra, nas duas línguas** (o papel fica em português, Notas da Cartas, Q3), com `lang="pt-BR"` no `<p>` da página em inglês. **O erro de digitação do Gus Dragon é dele: nada se corrige.**
+3. A mancha: `span.mancha.uva.pe` (aria-hidden) dentro de `.folha-caderno`, depois de `.pauta`, e o `<svg>` só do filtro `mancha-uva` (`:206-211`) dentro do partial. O filtro da mancha de chocolate não entra.
+4. **A mancha fica fora do texto (memória `project_ideias_do_gus`; `guards_crt_cafe_motion`):** dar à `.pauta` um `padding-bottom` que deixe uma cauda em branco maior que a mancha, ancorar a mancha nessa cauda (`.pe`) e manter o `overflow:hidden` da folha, que corta o resto. Tamanho: `--m-tam` até 90px.
+5. CSS: ao fim de `edicao.css`, bloco `§09 (edição #7)`, tudo sob `.conteudo .caderno`, `.conteudo .folha-caderno` e afins, copiado do mock com os valores de lá. A pauta usa `line-height:28px` e `padding-top:56px` (na fase da pauta, `:121-124`, `:144`). Fonte pixel 15px: é o piso para N maiúsculo (armadilha da §3.2).
+6. O giro (`rotate:-1deg`) pode gerar rolagem em 390: se o M9 medir rolagem, o conserto é conter a folha, e **não** tirar o giro sem relatar.
+7. `conferir.php`: Cartas `pt-BR` e `EN`; Errata com copies, ocorrência 3, nos dois.
+
+**Pode tocar:** os dois `sec-09.php`; o fim de `edicao.css`. **Proibido:** mexer no `.md`; desenhar imagem; regra global de `.mancha`, `.pensa` ou `.fala`.
+**Armadilha própria (L-12 do site):** filtro SVG sem dimensão explícita o Gecko descarta. Manter `x`, `y`, `width` e `height` do filtro como no mock (`:208`). A mancha sumir no print é sintoma disso.
+**Aceite:** `conferir.php` com `faltando=0`; o pedido igual nos dois idiomas (`diff` dos dois `<p class="manuscrito">`); o print do M9 mostra a mancha, e nenhuma letra sob ela, em 390 e 1280, pt e en.
+
+### M4. Capa (terminal com um registro só) e cards sociais, `visual-design-director`
+
+**Fatos:** `/var/tmp/ed7-fontes/capa-81a8ef1.txt` tem três linhas: SHA completo; `2026-08-21 22:13:24 -0300`; a mensagem. **Molde:** `docs/design/capa-6-placar.html` e `.css` (1200 por 1200, um PNG só para pt e en); `docs/design/og-card-6.html`, `og-card-6-en.html` e `og-card-6.css`; chassi `docs/design/og-card.css` (**não mexer: muda todos os cards**, `:10`).
+
+1. Criar `docs/design/capa-7-registro.html` e `.css`: um terminal com o comando `git log --oneline` e **uma única linha de resultado**, os 7 primeiros caracteres do SHA e a mensagem da linha 3, **copiada do arquivo, sem digitar**. Nada antes nem depois. Fundo e cor dos tokens do site (cabeçalho de `capa-6-placar.css:1-3`; nunca o UI Kit do jogo). A linha de mensagem pode quebrar; mínimo legível na miniatura de cerca de 240 pontos (`capa-6-placar.css:15-18`).
+2. Render: `chromium-browser --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,1200 --screenshot=/home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld/public_html/assets/edicao-7/capa-registro.png --virtual-time-budget=4000 file:///home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld/docs/design/capa-7-registro.html` (método de `og-card.css:14-19`). Esperado: PNG de 1200 por 1200 (`magick identify`).
+3. Cards: `docs/design/og-card-7.html`, `og-card-7-en.html` e `og-card-7.css`, no molde da #6. Linha de cima: `vol.1 · #7 · apagar tudo` (en: `delete everything`) e `--edicao 7`. Tagline: o dek aprovado, peça 11, **palavra por palavra** (copies, `:231` e `:237`). Imagem: a capa do passo 2. **A linha `voz` do rodapé do card fica com o marcador `CARD-VOZ-PENDENTE`:** é voz do Gus, vai ao GATE-CAPA com opções do `ux-writer`, e **este agente não a escreve**.
+4. Render dos cards com `--window-size=1200,630` e `magick <png> -quality 85`, saída `public_html/assets/og-edicao-7.jpg` e `og-edicao-7-en.jpg`.
+5. Abrir e olhar os três arquivos (L-23 do site).
+
+**Pode tocar:** os arquivos novos em `docs/design/`, `public_html/assets/edicao-7/capa-registro.png`, `public_html/assets/og-edicao-7*.jpg`. **Proibido:** `og-card.css`; a ficha.
+**Aceite:** hash de 7 caracteres e mensagem iguais ao arquivo-fonte (o relatório cola as duas versões); tamanhos exatos; nenhum nome de pessoa nem caminho de máquina na arte; os três abertos e olhados. Regerar os dois cards se o `voz` mudar.
+
+### M5. O pôster na Seção 13 (M5a) e a linha do rodapé (M5b)
+
+**M5a, `frontend-engineer`, sem CSS novo.**
+
+1. Copiar `src/content/edicao-5/{pt,en}/sec-13.php` para `src/content/edicao-7/{pt,en}/sec-13.php`.
+2. Reescrever o comentário PHP do topo: a imagem é a do líder, gerada no Grok Imagine (03/11/2026), declarada na ficha e no rodapé. **Fica o aviso de `image-rendering:pixelated`, herdado de `.chapa.retrato`, só que a decisão é a da pergunta Q1 da §8.3.**
+3. Trocar os textos pelos da peça 6 das copies, linhas `:135-141` (pt) e `:147-153` (en), na mesma ordem do molde: `kicker`, `titulo`, `tarja`, a ficha (`b` com o tamanho e o resto como está na peça), o `alt`, e as duas linhas de `credito`. `img src="/assets/edicao-7/poster-edicao-7.jpg" width="1408" height="1408"`. Mantém moldura, cortes, registro, barra e vinco.
+4. `magick identify` do JPG → 1408 por 1408. Outro valor: PARE.
+5. `conferir.php` com copies ocorrência 6, pt e en.
+
+**M5b, `backend-engineer`, SÓ DEPOIS DE M7b VERDE (a memória `reference_disclosure_ia_e_licenca` manda a linha crescer a cada arte nova).**
+
+1. Antes: guardar o HTML da #5 e da #6, nas duas línguas, em `/var/tmp/qa-ed7/m5b-antes/` com `curl -s`, servidor em 8097.
+2. `src/i18n/pt.php:264`. Trecho antigo exato: `Grok Imagine (logo, tratado)`. Trecho novo: `Grok Imagine (logo, tratado; pôster, gerado)`.
+3. `src/i18n/en.php:257`. Trecho antigo exato: `Grok Imagine (logo, refined)`. Trecho novo: `Grok Imagine (logo, refined; poster, generated)`.
+4. Conferir: `/usr/bin/grep -c 'pôster, gerado' src/i18n/pt.php || true` dá 1; `/usr/bin/grep -c 'poster, generated' src/i18n/en.php || true` dá 1.
+5. Depois: `curl` de novo, em `/var/tmp/qa-ed7/m5b-depois/`, e `diff`. **Esperado: em cada um dos 4 arquivos, uma única linha muda, a do rodapé.** Qualquer outra: PARE (mudança só no bloco do cupom é voto, e se relata como tal).
+
+**Aceite M5:** `conferir.php` com `faltando=0`; o `diff` da M5b só com o rodapé. O post do X **não** declara (decisão do líder de 05/09/2026, na mesma memória): nenhum agente acrescenta.
+
+### M6. O portão de bolso na página, `frontend-engineer` (terceiro da cadeia)
+
+**Fatos:** `public_html/assets/js/portao-bolso-core.js` e `tests/portao-bolso-core.test.js` existem; a camada DOM não. O núcleo expõe `TEXTOS`, `PASTA_IDS`, `pasta(id)`, `conferir(itens)`, `contagem(r, idioma)` e `mensagem(r, idioma)` (`:135-142`). Textos aprovados: "Aprovo como estão". **A camada DOM não contém texto: lê do núcleo.**
+
+1. Criar **primeiro** `tests/portao-bolso-dom.test.js` (`node:test`, sem dependência), com um `document` falso em memória: elementos com `dataset`, `textContent`, `hidden`, `addEventListener`, e `raiz.querySelector`/`querySelectorAll`. Exigir de `require('../public_html/assets/js/portao-bolso.js').montar(raiz, Core, idioma)`:
+   a. sem raiz (`null`), não lança e devolve `false`;
+   b. com raiz, esconde o bloco `.pb-semjs` e mostra o `.pb-comjs`;
+   c. pasta `vazia` + conferir: a saída tem `Core.mensagem` de recusa e a contagem com `encontrados=0`; nunca o texto de `limpo`;
+   d. pasta `limpa` + conferir: o texto de `limpo`; `cheia`: o de `acusa`.
+2. `node --test /home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld/tests/portao-bolso-dom.test.js > /var/tmp/ed7-pb-red.txt 2>&1; echo $?` → **esperado: diferente de 0** (L-35 global). Se der 0, PARE.
+3. Criar `public_html/assets/js/portao-bolso.js`: UMD leve como o núcleo, nunca ESM; expõe `montar`; no navegador, em `DOMContentLoaded`, procura `#portao-bolso`, lê `data-idioma`, e sai cedo se não houver (padrão do `cupom.js`, comentário em `src/templates/edicao.php:154-158`). Sem `fetch`, sem armazenar nada.
+4. Repetir o comando do passo 2 → **esperado: 0**, `# fail 0`.
+5. Montar nos dois `sec-17.php`, **trocando o comentário** `BRINQUEDO-PORTAO-DE-BOLSO`: `<div class="portao-bolso" id="portao-bolso" data-idioma="pt">` (en: `en`) com título, instrução, **`div.pb-semjs`** e **`div.pb-comjs hidden`**. **Sem JS, a `pb-semjs` mostra as três pastas, cada uma com a resposta pronta** (texto igual ao de `TEXTOS`, nas duas línguas, `core.js:27-56`). A `pb-comjs` tem os três botões de pasta (`data-pasta`), o botão conferir, e a saída com `aria-live="polite"`. Botões `<button type="button">`, foco visível.
+6. Os dois `<script defer>` entram **no próprio partial da #7**, depois do bloco, com `asset()`, como no molde (`src/templates/edicao.php:159-160`): não tocar `edicao.php`, para a #5 e a #6 não mudarem.
+7. Conferir o texto sem JS contra o núcleo: `node -e` que carrega o core e checa que cada texto de `pasta` e `resultado` usado aparece no partial → esperado: nenhum faltando.
+8. CSS: ao fim de `edicao.css`, bloco `§17 (edição #7): portão de bolso`, sob `.conteudo .portao-bolso`. Em 390, botões empilham; alvo de toque de 44 pontos no mínimo. `.pb-comjs[hidden]{display:none}`.
+9. `/usr/bin/grep -rc 'BRINQUEDO-PORTAO-DE-BOLSO' .../src/content/edicao-7 || true` → soma 0.
+10. Subir `PISO_ARQUIVOS` (`scripts/testes.sh:22`) para o total real, contado com `ls .../tests/*.test.php .../tests/*.test.js | /usr/bin/wc -l`. Avisar o main; a suíte completa roda na M8a, não aqui.
+
+**Pode tocar:** `tests/portao-bolso-dom.test.js`, `public_html/assets/js/portao-bolso.js`, os dois `sec-17.php`, o fim de `edicao.css`, a linha 22 de `scripts/testes.sh`. **Proibido:** `portao-bolso-core.js`; `src/templates/edicao.php`; three.js; automação de janela ou de entrada (L-50 global).
+**Aceite:** os códigos de saída dos passos 2 e 4 no relatório; marcador zerado; peso em bytes dos dois JS; print sem JS no M9.
+
+### M7. O conserto do terminal em 390 pontos (O11; D15), só sob classe nova usada na #7
+
+**M7a, `frontend-engineer` (último da cadeia).**
+
+1. Abrir o print citado em `TODO.md`, item `TERMINAL-WRAP-390`: `qa-prod/crop-b-pt390-prog.png`, do QA em produção da #6. Se não achar, PARE e peça o caminho ao main.
+2. Capturar a Programação da #7 em 390 (M0, com o servidor da #7) e achar a regra responsável em `edicao.css:1725-1776`. **Relatar qual é e por quê, com a evidência, antes de mudar.** **Eu não diagnostiquei.**
+3. Corrigir **só** num bloco novo no fim de `edicao.css`, sob `.crt-tela.crt-v7` (ou `.crt-scr.crt-v7`). **Nenhuma regra existente se altera; nenhum seletor sem `.crt-v7`.**
+4. Aplicar a classe em **todo** `crt-tela` da #7: `/usr/bin/grep -rln 'crt-tela' .../src/content/edicao-7`; esperado: ao menos `sec-11` e `sec-17`, pt e en. Os partiais gerados não têm `crt-tela`; se aparecer em um gerado, PARE.
+5. Conferir: `/usr/bin/grep -c 'crt-v7' .../src/content/edicao-5/pt/sec-17.php .../src/content/edicao-6/pt/sec-17.php || true` → 0 nos dois.
+
+**M7b, `qa-engineer` (pesado; depois de M2, M3, M6, M7a e **antes** de M5b e M8a).**
+
+1. Com o mesmo comando do M0, capturar as 8 combinações da #5 e da #6 em `/var/tmp/qa-ed7/pos7/`.
+2. `sha256sum` de cada uma contra a `-a` de `/var/tmp/qa-ed7/ref3/`. **Esperado: os 8 iguais. Um diferente reprova o conserto:** devolver ao M7a. **Não** regravar a referência. **Exceção a relatar, não a reprovar sem olhar:** o cupom (`src/includes/cupom.php`) mostra percentuais do poll, e um voto entre as capturas muda a página. Diferença só na região do cupom é voto, não CSS: o relatório mostra o recorte.
+3. Se todos iguais, sabotagem de estreia numa cópia do CSS **fora da árvore** (L-27 global): servir uma cópia do site com uma regra base do `.crt-tela` alterada, capturar uma combinação, e ver o hash **mudar**. Sem isso, a comparação pode estar cega.
+4. Print em 390 da Programação da #7, pt e en: nenhuma faixa cobre texto.
+
+**Aceite (D15):** na #7, nenhuma faixa cobre texto em 390 pontos, pt e en; os 8 hashes da #5 e da #6 iguais; a sabotagem mudou o hash. O relatório traz o print antes e depois.
+
+### M8. A ficha e a publicação, `backend-engineer`
+
+**M8a, a ficha, `estado` ainda `rascunho` (depois de M7b).** `data/edicoes.php:317-331`, mantendo o `estado`:
+
+```php
+'data'         => '2026-08-21',
+'titulo_pt'    => 'Apagar Tudo',
+'titulo_en'    => 'Delete Everything',
+'dek_pt'       => <copies, linha 231, palavra por palavra>,
+'dek_en'       => <copies, linha 237, palavra por palavra>,
+'frame'        => '/assets/edicao-7/capa-registro.png',
+'frame_alt_pt' => <PROPOSTA ao GATE-CAPA: Um terminal de fósforo verde com o histórico de um repositório: um único registro, o da fundação, e nada antes dele.>,
+'frame_alt_en' => <PROPOSTA ao GATE-CAPA: A green phosphor terminal showing a repository's history: a single entry, the founding one, and nothing before it.>,
+'og_image'     => '/assets/og-edicao-7.jpg',
+'capa_en'      => '/assets/og-edicao-7-en.jpg',
+```
+
+Sem `uptime` ainda. Depois: suíte completa, avisando o main: `.../scripts/testes.sh > /var/tmp/ed7-suite.txt 2>&1; echo $?` → esperado: `0`, última linha `ALL GREEN`. Os testes-guarda injetam card e frame em memória na #7 (`tests/og-banca-ed.test.php:222-237`; `tests/linha-tempo-vazia.test.php:148-167`) e só exigem `estado` rascunho, então a ficha cheia não deveria reprová-los **[INF]**; se reprovar, PARE.
+
+**M8b, no ato da publicação, **só depois do GATE-GO do líder**, tudo num commit só, com a suíte antes do push:**
+
+1. Uptime: `UPTIME_DIR_JOGO=/home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/GusWorld UPTIME_DIR_GLINTFX=/home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/GlintFx /home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld/scripts/uptime-sessoes.sh --php` (`TODO.md`, item `UPTIME-DIRS`; `uptime-sessoes.sh:31`) → colar o bloco na ficha, com a hora da captura em comentário, como `data/edicoes.php:297`.
+2. `estado` da #7 passa a `publicada`. Atualizar o título do bloco (`── #7 · APAGAR TUDO`) e um comentário como o da #6 (`:271-273`).
+3. Criar a #8 logo abaixo, no mesmo molde vazio de `:301-331`: `numero` 8, `slug` `edicao-8` e `edition-8`, `estado` `rascunho`, títulos e dek vazios, `frame` nulo. No comentário dela, as menções passam de #6, #7 e #8 para #7, #8 e #9.
+4. Migrar as fixtures de teste (**o guarda ficaria vermelho sem isto**, comentário em `data/edicoes.php:309-316`):
+   - `tests/og-banca-ed.test.php`: linhas `128`, `222`, `228`, `233`, `239`, `242`, `243`, `245`: `#7` vira `#8`; `$por_numero[7]` vira `[8]`; `=== 7` vira `=== 8`; `render_com_ed('7'` vira `'8'`; `?ed=7` vira `?ed=8`; `$rasc_7` vira `$rasc_8` em todo o arquivo.
+   - `tests/linha-tempo-vazia.test.php`: linhas `148`, `151`, `156`, `157`, `161`, `171`: mesma troca; `data-num="7"` vira `data-num="8"`.
+   - **Não** mexer em `tests/og-image.test.php:50-77` nem em `tests/capa-estante.test.php:45`, que usam a #7 como dado em memória.
+   - Conferir: `/usr/bin/grep -n 'rascunho' tests/og-banca-ed.test.php tests/linha-tempo-vazia.test.php` só cita a #8.
+5. Varredura: `/usr/bin/grep -rlE 'CARD-VOZ-PENDENTE|BRINQUEDO-PORTAO-DE-BOLSO|TRADUCAO-PENDENTE|ENTREVISTA-PENDENTE|REUSO-EDICAO-1|EPITAFIO-DO-LIDER' src/content/edicao-7 docs/design/og-card-7*.html public_html/assets/og-edicao-7* 2>/dev/null | /usr/bin/wc -l` → **esperado: 0**; e `find src/content/edicao-7 -name 'sec-*.php' | /usr/bin/wc -l` → **esperado: 34** (zero arquivos é varredura quebrada).
+6. Suíte completa → esperado: `0` e `ALL GREEN`. **O main commita, confere, faz o push e confere com `git ls-remote`.** **O deploy é do líder, com autorização naquela ocasião (L-11 do site).** O post linka `/pt/?ed=7`, e **o líder posta** (L-20 do site; `PIPELINE-EDICAO.md` §1.5).
+
+**Pode tocar:** `data/edicoes.php`, os dois testes. **Proibido:** deploy; `git push`.
+
+### M9. QA da edição inteira, `qa-engineer` (pesado, independente de quem construiu)
+
+1. Servidor da #7 (cabeçalho da §8). Capturar pt e en, em 390 e 1280, com o comando de M0 e a altura de `ref3`, em `/var/tmp/qa-ed7/m9/`. **Um segundo perfil, com `user_pref("javascript.enabled", false);` em `user.js`,** para os mesmos quatro prints sem JS.
+2. **Abrir e olhar cada print, recortando por seção** (Read aceita imagem; `magick -crop`). A fonte pixel se amplia só com nearest-neighbor (L-06 do site).
+3. **Rolagem horizontal em 390:** `curl -s` da página para `/var/tmp/qa-ed7/m9/med.html`; inserir, com `sed` antes de `</body>`, `<base>` no `<head>` e um `<script>` que escreve `document.documentElement.scrollWidth` e `clientWidth` em letras grandes no topo da página; capturar esse arquivo por `file://` em 390 e ler o print. **Esperado: os dois iguais a 390**, pt e en.
+4. Checklist, item a item, com print de prova:
+   a. as 17 seções, nenhuma com `.scaffold`; capa, dek e índice com os três links;
+   b. Reportagem e caixa, com a âncora `#sec-04-determinismo`;
+   c. Entrevista com as 18 trocas; resposta 18 em três falas; a resposta 12 e as outras com ponto, como vieram;
+   d. HQ: três quadros, nenhum `<img>`, cursor piscando na página e nenhuma linha de "tudo certo" antes da pista;
+   e. Cartas: folha pautada, mancha visível **e fora do texto**, nos quatro prints;
+   f. Pôster: imagem inteira, ficha e `alt` certos; `image-rendering` conforme a Q1;
+   g. Terminal em 390: nenhuma faixa cobre texto (M7);
+   h. Brinquedo: com JS, os botões; sem JS, as três respostas, sem nada quebrado;
+   i. Expediente: as linhas da peça 8 e 9; nenhum crédito de artista; rodapé com "pôster, gerado";
+   j. Nenhum nome real, handle nem tela pessoal (L-01, L-02 do site).
+5. **Consultar o console:** `firefox` headless não mostra; `grep` em `/var/tmp/qa-ed7/prev7.log` por `PHP Warning`, `PHP Fatal` e `404` → esperado: 0, fechando com `|| true` e testando o valor. **Piso:** o log não pode estar vazio (zero requisições é servidor errado).
+
+**Pode tocar:** só `/var/tmp/qa-ed7/m9/`. **Proibido:** corrigir; o QA só reporta. O relatório vai incrementalmente para `/var/tmp/qa-ed7/m9/RELATORIO.md` (L-13 global).
+**Aceite:** cada item com PASSOU ou FALHOU e o caminho do print. **O main re-confere e só então o print vai ao líder** (L-06 do site). Render novo vai ao GATE-RENDER item a item.
+
+### 8.2 Quem faz o quê, resumido
+
+M0, M7b, M9: `qa-engineer`. M1, M2, M5a, M6, M7a: `frontend-engineer` (instâncias separadas, sem cruzar arquivo). M3, M4: `visual-design-director`. M5b, M8: `backend-engineer`. Copy do `voz` do card: `ux-writer`, só as opções, ao GATE-CAPA.
+
+### 8.3 O que depende do líder (uma pergunta por decisão; recomendada primeiro)
+
+| # | Pergunta | Opções | Quando |
+|---|---|---|---|
+| **Q1** | **O pôster da #7 herda o serrilhado da moldura, como o da #5?** (`src/content/edicao-5/pt/sec-13.php:12-16`: o líder manteve o `pixelated` em 05/09 depois de ver a comparação, e a regra diz "não trocar sem nova ordem") | **(a) Herda, e ele decide vendo o print.** (b) Suave só na #7, sob classe nova | com o print de M5a |
+| **Q2** | **O Expediente ganha a linha do brinquedo?** (a linha nunca foi levada ao gate; ficou fora dos onze blocos, Notas das copies, item 1.7) | **(a) Não: o rodapé de toda página já declara que o código é feito com Claude.** (b) Sim, a linha proposta | antes de M1, passo 6 |
+| **Q3** | **Qual é a linha `voz` do card social?** (é voz do Gus; o `ux-writer` traz as opções) | Opções do `ux-writer`, a recomendada primeiro | GATE-CAPA |
+| **Q4** | **O `frame_alt` da capa é o da M8a?** | **(a) Sim, como está.** (b) Outro, ditado por ele | GATE-CAPA |
+
+Os gates de sempre continuam: GATE-RENDER por peça, GATE-CAPA, GATE-GO; o deploy é manual, com autorização naquela ocasião.

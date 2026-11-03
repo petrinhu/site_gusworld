@@ -1,4 +1,4 @@
-# Pauta da Edição #7 da Glyfesse (mapa de edição, revisão 6: GATE-PAUTA FECHADO em 03/11/2026)
+# Pauta da Edição #7 da Glyfesse (mapa de edição, revisão 7: GATE-PAUTA e GATE-CONTEUDO FECHADOS em 03/11/2026)
 
 > Artefato de saída do estágio **E1** do `PIPELINE-EDICAO.md` (§3). **Nada aqui está decidido além do que a §16
 > registra como decisão do líder.** O documento PROPÕE; toda decisão é do líder, no GATE-PAUTA, e a recomendação
@@ -8,6 +8,9 @@
 > abriu a edição e entregou as respostas do homenageado à entrevista do Brunus. Autor do rascunho: Capitolino
 > (CPO), no passo 2 da L-16 global. **Revisão 2 (03/11/2026):** refeita depois da rodada 1 do GATE-PAUTA (D1, D2,
 > D4 e D6, §16). A D1 escolhida pelo líder fez da refundação a Reportagem de capa inteira, e o mapa mudou.
+> **Revisão 7 (03/11/2026, tarde): GATE-CONTEUDO FECHADO.** Todo o texto da #7 está aprovado (verbatim na §16). A
+> Seção 13 deixa de ser vazio: o líder entregou o pôster. A onda 4 está em ordens de serviço completas em
+> `docs/editorial/BRIEFS-EDICAO-7.md` §8.
 > **Revisão 6 (03/11/2026): GATE-PAUTA FECHADO.** As vinte decisões (D1 a D20) estão tomadas (§12.1, verbatim na
 > §16). O passo seguinte, E2, está em `docs/editorial/BRIEFS-EDICAO-7.md`.
 > **Revisão 5 (03/11/2026):** registra a rodada 4 (D12, D11, D14 e D15, §16); a HQ passa a ser criada pela revista,
@@ -159,7 +162,7 @@ auditoria (D18, nova).
 | 10 | Classificados in-world | vazio com graça | Reusar idêntico (#1) | #1 |
 | 11 | HQ | **CHEIA, criada pela revista** (M) | **D11 [LÍDER]: *"nao tenho, crie algo"*.** Não há tirinha do artista; a revista cria a HQ. Conceito (D19 **[LÍDER]**): **H1, a tela de fósforo verde que confere o que não está ali e responde que está tudo certo**, sem personagem em cena. Roteiro (quadros, falas, pensamentos) por `narrative-designer`, rascunho ao líder (L-08, L-25); arte por `visual-design-director` em CSS e com sprite pronto do jogo, nunca desenho novo à mão (PIPELINE §0, item 6). Declarada no Expediente como feita por agente de IA (L-09) | `PIPELINE-EDICAO.md` §0, item 6; HQ em CRT da #1 e da #3 (`edicao.css:1717-1776`, `:1846-1856`); sprite `docs/design/mockups/sprites/gus-front.png` |
 | 12 | Próximos Lançamentos | vazio com graça | A linha de sempre do root; nada de prazo (03/09) | #1; ledger, linha 159 |
-| 13 | Pôster central | vazio com graça (recomendado) | Sem arte nova. Copy ao GATE-COPY | Molde das #1 a #6 |
+| 13 | Pôster central | **CHEIA, imagem entregue pelo líder** | **[LÍDER]** *"o poster está em [imagem]. ANtes ponha o arquivo na pasta certa e depois use"*. Gerada por ele no Grok Imagine; declarada na ficha da chapa e no rodapé, que cresce (L-09; memória `reference_disclosure_ia_e_licenca`) | `public_html/assets/edicao-7/poster-edicao-7.jpg` (1408 por 1408, commit `de3b867`); molde `src/content/edicao-5/pt/sec-13.php`; textos em `docs/content/edicao-7-copies-curtas.md`, peça 6 |
 | 14 | Brinde | vazio com graça | Reusar #1 | #1 |
 | 15 | Cupom recortável | cheia (recorrente) | Reusar o mini-app | `src/includes/cupom.php` |
 | 16 | A Entrevista | **CHEIA** (L), **externa, respostas em mãos** | **O Gus entrevista o NPC Brunus Vetorial; quem responde é o homenageado.** Trabalho novo: tradução EN, moldura, receita. GATE-SPOILER formal | `docs/content/edicao-6-entrevista-perguntas.md`; colagem do líder (fora do repo) |
@@ -345,7 +348,8 @@ feeds, e numa reportagem sensível não é copy de vitrine solta. Vai ao GATE-CO
   data conferida pelo main, 21/08 22:13 local; **a mensagem do commit se reconfere no próprio commit antes de virar
   arte**, porque a da memória `reference_gusworld_legacy` não foi conferida), sem nada antes dele; zero captura, zero
   risco de tela pessoal. Desenho do `visual-design-director`, só CSS. Herda o conserto do terminal (D15).
-- **Pôster (Seção 13):** vazio com graça, recomendado.
+- **Pôster (Seção 13), DECIDIDO:** a imagem que o líder gerou no Grok Imagine e entregou em 03/11/2026, cópia pública em
+  `public_html/assets/edicao-7/poster-edicao-7.jpg`. Montagem e linha do rodapé: `BRIEFS-EDICAO-7.md` §8, M5.
 - **Brinquedo (`D-WEBGL-TELA`, teto de um por edição): DECIDIDO que há um** (D14 [LÍDER]: *"Com um brinquedo"*). Qual
   (D20 [LÍDER]): **B1, o portão de bolso** (§8.2). Travas: um só; CSS primeiro, e three.js só no registro de tela e carregado sob demanda (memória
   `project_d_webgl_so_na_tela`; o jogo abandonou o 3D, e a revista que narra isso não renderiza 3D sem razão); funciona
@@ -529,6 +533,10 @@ resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
     sprite gerado por IA, a declaração do rodapé já cobre a origem; conferir antes do GATE-COPY.
 23. **O brinquedo é a única peça com lógica nova (D14).** Mini-app novo nasce testado (L-13 do site): a lógica pura sai
     em módulo próprio, com teste visto falhando antes do código, e o print não prova lógica. Peso medido antes do GATE-RENDER.
+24. **O rodapé cresce em todas as páginas, e isso reprovaria a comparação da D15 se viesse antes dela.** A linha de
+    licença (`src/i18n/pt.php:264`, `src/i18n/en.php:257`) é servida em toda página, inclusive na #5 e na #6. **[FONTE]**
+    Por isso a ordem da onda 4 põe a comparação de hash (M7) antes da troca do rodapé (M5, parte b). Depois dela, a #5 e a
+    #6 só podem ter mudado nessa linha, conferida por `diff` do HTML (`BRIEFS-EDICAO-7.md` §8).
 
 ---
 
@@ -614,7 +622,8 @@ resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
   de digitação do pt nem os do inglês, que são decisão do líder, D9; na Reportagem, confere
   frase a frase contra a #6, risco 8); **`compliance-legal` dá parecer sobre a Reportagem** (risco 7) e instrui o de
   spoiler (Galeria, Cartas, caixa, Entrevista, HQ); o líder decide.
-- **Onda 4, arte, brinquedo e render.** `frontend-engineer`: os 34 partials, a receita da #7 com `verbatim` nas
+- **Onda 4, arte, brinquedo e render (ordens de serviço M0 a M9, ordem e paralelismo: `BRIEFS-EDICAO-7.md` §8).**
+  `frontend-engineer`: os 34 partials, a receita da #7 com `verbatim` nas
   respostas, o **conserto do terminal escopado à #7 em diante** (D15; critério de aceite no risco 12), e o
   **brinquedo em TDD** (D20: lógica pura e teste vistos falhando antes do código, L-13 do site; sem JS degrada com
   graça). `visual-design-director`: capa (terminal de um registro), papel pautado das Cartas e arte da HQ, só CSS e
@@ -738,4 +747,24 @@ delas vire argumento da capa (risco 17).
   - **D19:** **"(a) A tela que diz tudo certo (Recomendado)"**.
   - **D20:** **"(a) Portão de bolso (Recomendado)"**.
 - **GATE-PAUTA FECHADO** com a rodada 5. O E2 segue em `docs/editorial/BRIEFS-EDICAO-7.md`.
+- **GATE-CONTEUDO** (03/11/2026, tarde, por AskUserQuestion, verbatim; **FECHADO**, todo o texto aprovado):
+  - **Reportagem:** **"Aprovo como está"**; a frase em inglês: **"Aprovo"**.
+  - **Caixa do determinismo:** **"Aprovo como está"** (spoiler liberado).
+  - **Programação:** **"Aprovo como está"** (com as falas do Gus); textos do brinquedo: **"Aprovo como estão"**.
+  - **Galeria de Bugs:** **"Aprovo como está"** (spoiler das nove invariantes liberado).
+  - **Cemitério:** **"Aprovo como está"**; epitáfios: **"Duas pastas, um passado"** e **"Nunca foi dada"** (rótulos das
+    opções escolhidas; o texto das pedras está em `docs/content/edicao-7-cemiterio.md:19-20, 28`).
+  - **Cartas:** **"Aprovo como está"**, com a fala trocada por causa da L-25 do site: **"Trocar por "nas cartas ainda nao"
+    (Recomendado)"**.
+  - **O Gus lê o bus:** **"Aprovo como está"**, e **"Assunto real, cortado nos spoilers (Recomendado)"**.
+  - **HQ:** **"Versão A (Recomendado)"**.
+  - **Entrevista, tradução:** **"Aprovo como está"**.
+  - **Editorial:** **"Aprovo com o parágrafo 3"**.
+  - **Expediente:** **"Aprovo como está"**. **Dek:** **"Aprovo"**.
+  - **Detonado:** **"Não vou chutar (Recomendado)"**.
+  - **Próximos Lançamentos, Classificados e Brinde:** **"Aprovo como está"**.
+  - **Inglês de todas as peças:** **"Aprovo como está"**.
+  - **Pôster:** o líder pediu um prompt, gerou a imagem no Grok Imagine e a entregou, verbatim: **"o poster está em
+    [imagem]. ANtes ponha o arquivo na pasta certa e depois use"**. Cópia pública em
+    `public_html/assets/edicao-7/poster-edicao-7.jpg` (1408 por 1408, commit `de3b867`). A Seção 13 deixa de ser vazio.
 
