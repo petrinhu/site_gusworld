@@ -1,6 +1,6 @@
 # Edição #7 · Seção 4 · Reportagem de capa
 
-> RASCUNHO v3, submeter ao líder. Escrito pelo `narrative-writer` a partir do brief §4.1 de `docs/editorial/BRIEFS-EDICAO-7.md`. Revisão textual e parecer de risco aplicados; decisões do líder de 03/11/2026 nas Notas, seção 2.
+> APROVADA pelo líder em 03/11/2026 (pt: "Aprovo como está"; frase em en: "Aprovo"); o resto do en segue ao líder junto com as outras traduções. Escrito pelo `narrative-writer` a partir do brief §4.1 de `docs/editorial/BRIEFS-EDICAO-7.md`. Revisão textual e parecer de risco aplicados; decisões do líder de 03/11/2026 nas Notas, seção 2.
 > Voz do editor, de fora (L-25: o técnico mora aqui). A única fala de personagem é a linha de prompt do molde, que vai ao líder (T7).
 > Antes do GATE-CONTEUDO: parecer do `compliance-legal` (pauta, risco 7); datas das leis reconferidas com git (Notas, fonte 6); tradução EN aprovada pelo líder.
 > Antes da montagem: a caixa do determinismo (§4.2 do brief, peça própria) precisa existir, porque a frase-ponte de 22/08 aponta para ela.
@@ -141,6 +141,8 @@ Text written with Claude, from the project records; reviewed by the editor.
    - V8: "A Edição 6" só na primeira menção, depois "#6" (pt). No en, "Issue #6" nas duas.
    - Nota L142: a #6 en usa "a layer around them" (`src/content/edicao-6/en/sec-04.php`, linha 22), não "wrapper". Ver a seção 4.
    - **Não consegui localizar com segurança, pelo resumo que recebi, três itens:** V2 (pleonasmo), V6 (dois pontos). Apliquei em V2 o corte de "do zero" em "recomeçado do zero" (pt) e "started again from zero" (en), por leitura própria. V6 ficou sem mudança. Pedido ao coordenador: trecho exato destes dois itens.
+
+7. **Aprovação da Reportagem.** Líder, 03/11/2026, AskUserQuestion (pergunta feita depois de 15:33:23), verbatim: texto em português "Aprovo como está"; tradução inglesa da frase dele "Aprovo". O bloco de status do topo foi trocado para "APROVADA". O resto do en segue ao líder junto com as outras traduções.
 
 ### 3. Fontes (arquivo:linha) e marcação FATO / INFERÊNCIA
 
