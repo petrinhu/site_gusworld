@@ -1,9 +1,9 @@
 # Edição #7 · Seção 7 · Cemitério das Ideias Mortas
 
-> RASCUNHO v2, submeter ao líder. Escrito pelo `technical-writer` a partir do brief §4.6 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 417 a 436). Revisão textual aplicada (ver Notas, seção 0).
+> APROVADO pelo líder em 03/11/2026 ("Aprovo como está"), com os epitáfios escolhidos por ele; o en segue ao líder junto com as outras traduções. Escrito pelo `technical-writer` a partir do brief §4.6 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 417 a 436). Revisão textual aplicada (ver Notas, seções 0 e 2).
 > Voz: Gus-editor, a voz meta da revista (T8 e L-25: o técnico mora no Cemitério). Nenhuma fala de personagem além da linha de prompt, que vai ao líder (T7).
 > Duas lápides (D13, decisão do líder, "As duas (Recomendado)"): os repositórios antigos, de 21/08, que pagam o epitáfio da #6; e a ordem que o líder nunca deu, de 03/09. Só datas e epitáfio nas pedras; o porquê fica na Reportagem.
-> Epitáfios: são do líder. As pedras publicáveis trazem só o marcador. As propostas ficam nas Notas de produção, internas, para ele escolher.
+> Epitáfios: escolhidos pelo líder (ver Notas, seção 2).
 > Molde: `src/content/edicao-6/pt/sec-07.php` e `docs/content/edicao-6-cemiterio.md` (a sintaxe da pedra, com `&#8224;`, copia a da #6).
 
 ---
@@ -16,7 +16,8 @@ A pedra da #6 deixou o corpo de pé. No dia seguinte, 21 de agosto, os arquivos 
 
 ### GlintFX e GusWorld
 **&#8224;21/ago/2026**
-> EPITAFIO-DO-LIDER
+> Aqui jazem duas pastas.
+> Uma guardou o passado. A outra, não.
 
 Os dois repositórios, pastas de projeto com o histórico de cada mudança, foram apagados no mesmo dia, 21 de agosto de 2026. Esta pedra só marca a data. A reportagem de capa conta o porquê.
 
@@ -24,7 +25,7 @@ A segunda pedra é de outra coisa. Num planejamento do GlintFX, uma linha dizia 
 
 ### Windows por último
 **Sustentou onze dias de planejamento errado · &#8224;03/set/2026**
-> EPITAFIO-DO-LIDER
+> Aqui jaz uma ordem que nunca foi dada.
 
 O registro da sessão diz que a linha era "suposição de agente vestida de ordem". Foi "corrigida e marcada como atribuição falsa, não apagada em silêncio".
 
@@ -40,7 +41,8 @@ Issue #6's stone left the body standing. On August 21, the day after, the old Gl
 
 ### GlintFX and GusWorld
 **&#8224;Aug 21 2026**
-> EPITAFIO-DO-LIDER
+> Here lie two folders.
+> One kept the past. The other did not.
 
 Both repositories, project folders that keep the history of each change, were erased on the same day, August 21, 2026. This stone only marks the date. The cover story explains why.
 
@@ -48,7 +50,7 @@ The second stone is for something else. In a planning file of GlintFX, one line 
 
 ### Windows last
 **Sustained eleven days of wrong planning · &#8224;Sep 03 2026**
-> EPITAFIO-DO-LIDER
+> Here lies an order that was never given.
 
 The session's record says the line was "an agent's guess dressed as an order". It was "corrected and marked as a false attribution, not erased in silence".
 
@@ -73,37 +75,20 @@ This section only looks after the two stones.
 - **Decisão do main: "Eu não falei disso" com acento.** Aplicado (pt-BR com acentuação completa, como a #6 fez ao restaurar acentos de citação). Registro sem acento, `:48`.
 - **Decisão do main: citação de `0530:50` para antes de "do líder".** Como estava: a citação entra em "suposição de agente vestida de ordem" e para antes do resto da frase do registro.
 - **Decisão do main: sem frase de ligação com a Programação na pedra 2.** Nenhuma frase nova; o texto não menciona auditoria nem lei de paridade.
-- **Decisão do main: epitáfios.** Continuam como marcador de epitáfio nas pedras, uma vez por pedra e por idioma (pt 2, en 2). As propostas estão na seção 2 abaixo, para o líder escolher.
+- **Decisão do main: epitáfios.** Na v2 eram marcadores; na v3 foram trocados pelos epitáfios escolhidos pelo líder (seção 2 abaixo).
+- **v3 (03/11/2026, aprovação do líder).** Status do topo passou a APROVADO, "Aprovo como está". Epitáfios trocados nas duas pedras, pt e en, na forma de citação da #6 (uma linha por frase). En traduzido: as duas linhas de en foram dadas pelo coordenador. A decisão chegou por relay, e não há registro em arquivo que eu possa conferir. Propostas não escolhidas apagadas. Nenhuma outra frase mudou.
 - **Fonte 9 (tabela, seção 3) atualizada.** A ligação entre o corpo da #6 e a árvore descartada foi retirada do texto. Resta só a sequência temporal, e nenhuma fonte afirma que o RmlUi estava nos arquivos descartados.
 
 ### 1. Status e o que está em aberto
 
-- **Epitáfios: decisão do líder, nenhum está escolhido.** As pedras publicáveis trazem o marcador do epitáfio (a palavra de controle, uma vez por pedra e por idioma). O brief §4.6 manda deixar em branco, e o pedido do main manda propor 2 ou 3 opções por pedra. As duas coisas foram cumpridas assim: o marcador na pedra, as opções abaixo, aqui.
+- **Epitáfios: escolhidos pelo líder em 03/11/2026**, ver seção 2. Não há mais propostas em aberto.
 - **Pedra 1, sem data de nascimento.** Não encontrei nos insumos uma data de nascimento sustentada por `arquivo:linha` para as árvores do GlintFX e do GusWorld. A pedra traz só a de apagamento, 21/08. Se o líder quiser a de nascimento, o main precisa medi-la; não usei memória de projeto.
 - **Acento em "Eu não falei disso".** O registro do bus (`archive/20260903-0530-...:48`) está sem acento em todo o arquivo. Usei acento, pela decisão do main (seção 0).
 - **Idioma da linha de prompt.** A linha `gus@glyfesse:~/cemiterio$` é fala do Gus e vai ao líder como rascunho (T7).
 
-### 2. Propostas de epitáfio (rascunho, o líder escolhe, troca ou dita o dele)
+### 2. Epitáfios escolhidos pelo líder (03/11/2026)
 
-**Pedra 1, GlintFX e GusWorld (pt):**
-1. "Aqui jazem duas árvores. Dali em diante, tudo começou do zero."
-2. "Aqui jazem duas pastas. Uma guardou o passado. A outra, não." (a mais dura; toca a consequência de arquivo, que o T3 pede para não virar a matéria; aparece aqui só como epitáfio)
-3. "Aqui jaz o que estava de pé. Recomeçou-se do zero, por ordem." (a ordem é a do registro: `GlintFx/CLAUDE.md:235`, "o líder determinou início do zero")
-
-**Pedra 1, GlintFX e GusWorld (en):**
-1. "Here lie two trees. From then on, everything started from zero."
-2. "Here lie two folders. One kept its past. The other did not."
-3. "Here lies what was standing. It started over, by order."
-
-**Pedra 2, Windows por último (pt):**
-1. "Aqui jaz uma ordem que nunca foi dada."
-2. "Aqui jaz uma linha de plano. Quem a escreveu foi um agente, não o root."
-3. "Aqui jaz uma ordem sem dono. Ninguém a deu."
-
-**Pedra 2, Windows por último (en):**
-1. "Here lies an order that was never given."
-2. "Here lies a line from a plan. An agent wrote it, not root."
-3. "Here lies an order with no owner. Nobody gave it."
+Escolhidos pelo líder (AskUserQuestion): pedra 1, GlintFX e GusWorld, "Duas pastas, um passado"; pedra 2, Windows por último, "Nunca foi dada". As demais propostas foram apagadas.
 
 ### 3. Fontes (arquivo:linha) e marcação FATO e INFERÊNCIA
 
@@ -131,8 +116,7 @@ Ausente de propósito: o nome do repositório privado com o histórico anterior 
 - **Nome da pedra 1: "GlintFX e GusWorld".** Nomes públicos dos projetos, não handle. O nome do repositório privado não entra aqui.
 - **Ponte à #6 em uma frase** (T1): lembra o epitáfio, não reconta o RmlUi.
 
-### 5. Perguntas que dependem do líder (não decidi nada)
+### 5. Perguntas em aberto (não decidi nada)
 
-1. Epitáfio da pedra 1: a opção 1, a 2 ou a 3, ou um texto dele? Mesma pergunta para a pedra 2.
-2. A pedra 1 fica só com a data de apagamento (21/08), ou o main mede a data de nascimento das árvores?
-3. A glosa "suporte ao Windows" (M3) fica, ou volta a "o Windows por último", como no registro?
+1. A pedra 1 fica só com a data de apagamento (21/08), ou o main mede a data de nascimento das árvores? A aprovação do texto não tratou disso.
+2. A glosa "suporte ao Windows" (M3): a aprovação cobre o texto como está; se o líder quiser a forma literal, é trocar por "o Windows por último".

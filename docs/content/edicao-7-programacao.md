@@ -50,7 +50,7 @@ No registro de 21 de agosto, a sessão do GlintFX resumiu o defeito numa frase:
 
 Os dois controles não pegavam o caso porque ambos rodavam sobre arquivos que existiam. Nenhum exercitava a entrada vazia.
 
-A tabela põe lado a lado o que o portão disse e o que ele tinha olhado. Além do portão de dependência, uma revisão de todos os portões do repositório, feita em 21 de agosto, achou o mesmo defeito em mais sete:
+A tabela põe lado a lado o que o portão disse e o que ele tinha olhado. Além do portão de dependência, a revisão feita em seguida, no mesmo 21 de agosto, achou o mesmo defeito em mais sete portões do repositório:
 
 | O que o portão disse | O que ele tinha olhado |
 | :-- | :-- |
@@ -148,7 +148,7 @@ In the record of August 21, the GlintFX session summed up the defect in one sent
 
 Both self-tests missed the case because they ran on files that existed. None exercised the empty input.
 
-The table puts side by side what the gate said and what it had looked at. Besides the dependency gate, a review of every gate in the repository, done on August 21, found the same defect in seven more:
+The table puts side by side what the gate said and what it had looked at. Besides the dependency gate, the review done right after, on the same August 21, found the same defect in seven more gates of the repository:
 
 | What the gate said | What it had looked at |
 | :-- | :-- |
@@ -227,7 +227,7 @@ Raiz do bus usada nas fontes: `BUS` = `/home/petrus/IDrive/Documentos/projetos_c
 - **Fora do texto, de propósito:** o recomeço e o nascimento das leis (Reportagem); a lei de 28/08 e a frase sensível dela; o canal de avisos (`0530:52-56`); a ordem falsa (`0530:46-50`); o repositório privado e o nome dele; o achado do Gus Dragon (o achado dele não vira linha de peça alheia, adendo de 04/09 da L-24); qualquer linguagem de programação citada.
 - **Montagem (decisão do main, v3).** A Programação será montada à mão, como a #6: o conversor não lê saída de terminal.
 - **Revisão textual aplicada (v3, P-M1 a P-M10).** Citações novas: "A detecção funciona. O buraco é outro." (`portão 21/08:30`) e "Limitação declarada é aceitável; limitação silenciosa não." (`portão 21/08:58`). Aspas em "metade da rede de segurança do código nunca existiu lá." (`0530:41`). Glosas para leigo na primeira ocorrência de cada termo, fora das aspas. Terminal com a quarta linha da fonte (`portão 21/08:26`).
-- **[INF] "todos os portões" (P-M7), sem fonte literal.** A fonte diz que "a auditoria que se seguiu achou o mesmo defeito em mais sete portões do nosso repositório" (`madrugada:51-52`), e a data é 21/08 (`madrugada:3`). A expressão "uma revisão de todos os portões", pedida pela revisão, não está na fonte. Aplicada como pedida; o main decide se o "todos" fica.
+- **P-M7, ajuste do main (v3.1).** A expressão "todos os portões" saiu do texto, pt e en, por não ter fonte. O texto usa a formulação da fonte: "a revisão feita em seguida, no mesmo 21 de agosto" (data 21/08 em `madrugada:3`; "a auditoria que se seguiu achou o mesmo defeito em mais sete portões do nosso repositório" em `madrugada:51-52`).
 - **Voz:** "o root", como na Reportagem v2. Nenhuma palavra da lista de T2 fora de citação. Nada posterior a 03/09.
 - **Desculpa furada nova.** Não repete a da #6 (nano × vim). A linha `nano` segue o molde da #6 com outro nome de arquivo (`portao-varredura-vazia.md`). O digitado do `crt-nano` é decorativo: o CSS anima o comando, e o texto não depende dele.
 
