@@ -3082,3 +3082,30 @@ html.lightbox-aberto{overflow:hidden}
 .crt-tela.crt-v7,
 .crt-tela.crt-v7 *{text-shadow:none}
 .crt-tela.crt-v7 p{filter:drop-shadow(0 0 4px #2ad07a88)}
+
+/* ═══════════════════ M7b · o prompt do bus sem faixa (pós-QA da #7, achado B1) ═══════════════════
+   Defeito (QA m9, 390 pt e en, com e sem JS; print zoom-faixa-bus-pt-390.png): a linha de comando
+   `gus@glyfesse:~/bus$ bus --inbox` saía com DUAS faixas verdes, uma sobre o prompt e outra sobre o
+   comando. Causa: o .cmd herda o text-shadow de blur do .crt-tela (6px, linha 1736) e o .pr tem o
+   seu (7px, linha 1746); no Gecko cada um vira caixa preenchida. As regras do bus que zeram o brilho
+   (.cab, .msg, .conta, .corpo) não cobrem o .cmd, então ele era a única linha com o blur.
+   Por que não o .crt-v7: o `.crt-tela.crt-v7 p` devolveria drop-shadow às réguas e à saída da máquina
+   (.cab, .msg, .conta), que de propósito não têm brilho. Por isso o conserto mora sob um modificador
+   SÓ desta peça (.bus-v7, nas três figuras da sec-18 da #7). Brilho devolvido por drop-shadow no .cmd,
+   que segue o alfa do glifo e não a caixa da linha. Nenhuma regra existente muda. */
+.conteudo .bus-crt.bus-v7 .crt-tela .cmd,
+.conteudo .bus-crt.bus-v7 .crt-tela .cmd .pr{text-shadow:none}
+.conteudo .bus-crt.bus-v7 .crt-tela .cmd{filter:drop-shadow(0 0 4px #2ad07a88)}
+
+/* ═══════════════════ M7b · a HQ da #7 com a linha inteira em 1280 (pós-QA da #7, achados I2 e C1) ═══════════════════
+   Defeito (QA m9, pt 1280; print chk/pt1280-hq.png): "conferencia automatica" (22 caracteres, ~185px a
+   14px) não cabia nos ~176px internos de um quadro de ~226px, e a tira parava em ~856px enquanto a
+   régua da seção ia até ~1135px (o .conteudo é 74ch, e a tira herdava essa largura).
+   Conserto: a tira ganha a largura da FOLHA, com a mesma fórmula do pôster (.conteudo .poster), só a
+   partir de 600px, que é onde ela vira três colunas. O seletor :has(> .hq-strip > .hq-q-col) acerta só a
+   HQ da #7 (é a única que põe .hq-q-col); as HQs da #1 e da #2 não mudam. Em 390 nada dispara. */
+@media (min-width:600px){
+  .conteudo .hq:has(> .hq-strip > .hq-q-col){
+    width:calc(min(1080px,100vw) - 2 * clamp(20px,3.5vw,56px)); box-sizing:border-box;
+  }
+}

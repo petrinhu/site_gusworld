@@ -5,7 +5,7 @@
 
    N = 15 (the box holds fifteen items, oldest to newest). Nothing after 2026-09-03 (T1).
    Lines of the bus and of the screen are in ASCII without accents (it is a screen, D-ACENTOS); "povvo" is the lead's
-   spelling and is not corrected. Only existing classes (.bus-crt, .bus-larga, .cmd, .cx, .cab, .msg, .conta, .corpo).
+   spelling and is not corrected. Existing classes (.bus-crt, .bus-larga, .cmd, .cx, .cab, .msg, .conta, .corpo), plus the modifier .bus-v7 on the three figures (post-QA: band on the prompt, see edicao.css, block M7b).
    Each screen is a .crt-scr inside its figure; Gus's speech and thoughts stay OUTSIDE the screens, as real <p>.
    Each screen has role="img" and an aria-label that only describe what it shows, using words from the approved text; no figcaption.
    The source's production notes NEVER enter here. */
@@ -15,7 +15,7 @@
 
 <p>The box holds fifteen items. The list shows all of them, oldest to newest, with sender, subject and date.</p>
 
-<figure class="bus-crt bus-larga">
+<figure class="bus-crt bus-larga bus-v7">
   <div class="crt-scr" role="img" aria-label="Terminal screen with the command bus --inbox and the list of 15 received messages, from 08/21 to 09/03, with sender, subject and date. The counter says 15 received.">
     <div class="crt-tela">
       <p class="cmd"><span class="pr">gus@glyfesse:~/bus$</span> bus --inbox</p>
@@ -45,7 +45,7 @@
 
 <p>He doesn't read from top to bottom. He goes to the request, which sits in the middle of the list. The request is from Gus Dragon, playtester, Adversarial Design Reviewer. Below, the body, condensed:</p>
 
-<figure class="bus-crt bus-larga">
+<figure class="bus-crt bus-larga bus-v7">
   <div class="crt-scr" role="img" aria-label="Terminal screen with the body of the gusworld message from 08/22: the request from Gus Dragon to be told without having to ask (issue 8).">
     <div class="crt-tela">
       <div class="corpo">from: gusworld
@@ -74,7 +74,7 @@ We set the limit: a session is not a running service. Proactive notice only goes
 
 <p>Then the one about the wait. The body, condensed:</p>
 
-<figure class="bus-crt bus-larga">
+<figure class="bus-crt bus-larga bus-v7">
   <div class="crt-scr" role="img" aria-label="Terminal screen with the body of the gusworld message from 08/24, about Gus Dragon waiting for a reply on issue 8.">
     <div class="crt-tela">
       <div class="corpo">from: gusworld
