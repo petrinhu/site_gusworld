@@ -320,13 +320,20 @@ return [
         'estado'         => 'rascunho',
         'slug_pt'        => 'edicao-7',
         'slug_en'        => 'edition-7',
-        'titulo_pt'      => '',
-        'titulo_en'      => '',
-        'dek_pt'         => '',
-        'dek_en'         => '',
-        'frame'          => null,
-        'frame_alt_pt'   => null,
-        'frame_alt_en'   => null,
+        'data'           => '2026-08-21',
+        'titulo_pt'      => 'Apagar Tudo',
+        'titulo_en'      => 'Delete Everything',
+        'dek_pt'         => 'Três projetos apagados em agosto e recomeçados com arquivos de regras escritas. '
+                          . 'Esta edição vai até 3 de setembro.',
+        'dek_en'         => 'Three projects deleted in August and restarted with written rule files. '
+                          . 'This issue runs to September 3.',
+        'frame'          => '/assets/edicao-7/capa-registro.png',
+        'frame_alt_pt'   => 'Um terminal azul-escuro, com texto ciano, mostrando o histórico de um repositório: '
+                          . 'um único registro, o da fundação, e nada antes dele.',
+        'frame_alt_en'   => 'A dark blue terminal with cyan text showing a repository\'s history: '
+                          . 'a single entry, the founding one, and nothing before it.',
+        'og_image'       => '/assets/og-edicao-7.jpg',
+        'capa_en'        => '/assets/og-edicao-7-en.jpg',
         'na_linha_tempo' => true, // era visual: entrará no scrubber quando publicar
     ],
 
