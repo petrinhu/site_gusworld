@@ -1,7 +1,7 @@
 # Edição #7 · Seção 6 · Galeria de Bugs
 
-> RASCUNHO v2, submeter ao líder. Peça da seção 6 (Galeria de Bugs), brief §4.4 de `docs/editorial/BRIEFS-EDICAO-7.md`. Porte M. Molde: `src/content/edicao-6/pt/sec-06.php` (registro técnico). Voz: editor, de fora (T8). Única linha de personagem: o prompt de nome de seção, por decisão do main, marcado T7 para o líder ver (ver Notas, item 1).
-> Antes do GATE-SPOILER: o número dos invariantes e a frase "a regra chega tarde" (ver Notas, item 1). Antes do GATE-CONTEUDO: parecer do `compliance-legal` e revisão da tradução EN.
+> APROVADA pelo líder em 03/11/2026 ("Aprovo como está"), com o spoiler das nove invariantes liberado; o en segue ao líder junto com as outras traduções. Peça da seção 6 (Galeria de Bugs), brief §4.4 de `docs/editorial/BRIEFS-EDICAO-7.md`. Porte M. Molde: `src/content/edicao-6/pt/sec-06.php` (registro técnico). Voz: editor, de fora (T8). Única linha de personagem: o prompt de nome de seção, por decisão do main, marcado T7 para o líder ver (ver Notas, item 1).
+> GATE-SPOILER liberado pelo líder em 03/11/2026: o número dos invariantes e a frase "a regra chega tarde" estão liberados (ver Notas, item 1). Pendência aberta: a tradução EN, que segue ao líder junto com as outras traduções.
 
 ---
 
@@ -129,8 +129,8 @@ This gallery records the defect and the category it falls in.
   - L8: "A game chest has one rule: once opened, it is emptied." (en).
   - L9: cortada a frase "Não promete conserto e não diz quando algo será feito." (pt) e o equivalente en.
 - **L4 aplicada (v3):** texto exato enviado pelo coordenador, que estava no relatório do revisor. Pt: "e escolher a errada é exatamente como esse tipo de bug volta depois de dado como consertado" virou "e escolher a ferramenta errada é justamente o que faz esse tipo de bug voltar depois de dado como consertado". En: "and choosing the wrong one is exactly how this kind of bug comes back after being marked as fixed" virou "and choosing the wrong one is exactly what makes this kind of bug come back after being marked as fixed".
-- **Prompt de abertura (decisão do main, opção b):** prompt só de nome de seção, como a #6 (`gus@glyfesse:~/galeria$ galeria de bugs`, pt; `gus@glyfesse:~/galeria$ bug gallery`, en). Marcado T7. Isso abre a exceção à §3.2 item 5 por ordem explícita do main, que a registra aqui. O líder vê e decide se fica.
-- **GATE-SPOILER (brief §4.4):** "nove invariantes" e "inegociáveis" vêm de `BUS/archive/20260822-0925-gusworld-marco-gus-bug-2-buraco-na-coleta.md:22`, e o main deixa para o líder no GATE-SPOILER. A frase "a regra chega tarde" e a explicação de que a coleta é o instante do nascimento vêm de `:24`. Nenhum conteúdo dos invariantes além disso. O texto não usa a palavra "carta" (o `:24` usa, e o texto diz "item").
+- **Prompt de abertura (decisão do main, opção b):** prompt só de nome de seção, como a #6 (`gus@glyfesse:~/galeria$ galeria de bugs`, pt; `gus@glyfesse:~/galeria$ bug gallery`, en). Marcado T7. Isso abre a exceção à §3.2 item 5 por ordem explícita do main, que a registra aqui. O líder viu o prompt na pergunta de 03/11/2026 e aprovou o texto como está.
+- **GATE-SPOILER (brief §4.4):** "nove invariantes" e "inegociáveis" vêm de `BUS/archive/20260822-0925-gusworld-marco-gus-bug-2-buraco-na-coleta.md:22`, e o main deixou para o líder no GATE-SPOILER. **Liberado pelo líder em 03/11/2026** (AskUserQuestion, "Aprovo como está"). A frase "a regra chega tarde" e a explicação de que a coleta é o instante do nascimento vêm de `:24`. Nenhum conteúdo dos invariantes além disso. O texto não usa a palavra "carta" (o `:24` usa, e o texto diz "item").
 - **Atribuição de T2:** a tese "a regra não é quebrada; ela chega tarde" e a frase "mesma família de bug, ferramentas opostas" estão atribuídas à sessão do jogo ("na palavra", "na leitura"). A voz do editor só conta os fatos. A tradução EN das citações longas está marcada como tradução no próprio texto.
 - **Citação do item (2):** a versão pt é idêntica a `:16` do mesmo arquivo. Conferida contra o corpo do comentário no bus (`grep -cF` = 1). Os erros de grafia dele (bau, nao, possivel, items, duplicacao) ficam por ser citação verbatim. A tradução EN é minha e precisa de revisão do revisor-textual e do líder.
 - **Crédito (T4):** "Gus Dragon, playtester, Revisor Adversarial de Design" (EN: "Gus Dragon, playtester, Adversarial Design Reviewer") aparece duas vezes por bloco, no catálogo e no item (2), porque T4 manda "sempre nos dois papéis". Decisão do main: manter duas vezes, como o brief exige.
@@ -143,7 +143,7 @@ This gallery records the defect and the category it falls in.
 
 - **Grafia da classificação:** o comentário do item (2) no bus traz "BUG POSSIVEL - (2)", em caixa-alta e sem acento. O texto usa "Bug Possível", a forma do catálogo (`BUS/archive/20260822-0912-gusworld-marco-gus-catalogo-de-bugs.md:19`).
 - **Referência de TODO corrigida:** o brief §4.4 cita `SITE/TODO.md:196-197`, mas `:196` é `MARCO-GUS-DETERMINISMO`. Os IDs da seção estão em `:197` (`MARCO-GUS-CATALOGO-BUGS`) e `:198` (`MARCO-GUS-BUG-COLETA`).
-- **Pendências de revisão:** `revisor-textual`; parecer do `compliance-legal` (spoiler); revisão da tradução EN pelo líder.
+- **Pendências fechadas:** a aprovação do líder em 03/11/2026 cobre o texto e o spoiler, e fecha o parecer do `compliance-legal` (spoiler) e a revisão de conteúdo. Pendência aberta: a tradução EN, que segue ao líder junto com as outras traduções.
 
 ### 2. Fontes e marcação FATO x INFERÊNCIA
 
