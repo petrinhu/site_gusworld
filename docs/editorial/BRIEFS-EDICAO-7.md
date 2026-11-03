@@ -45,7 +45,7 @@
 | Brinquedo | Um (D14): B1, o portão de bolso (D20) | §4.10 |
 | Capa | Terminal com um registro só (D12) | §4.13 |
 | Terminal em 390 pontos | Consertar da #7 em diante; #5 e #6 não mudam (D15) | §6, O3 e O11 |
-| Portão de travessão | Consertar antes dos commits de conteúdo (D16); onde, é a PQ1 | §6, O4 |
+| Portão de travessão | Consertar antes dos commits de conteúdo (D16), só no site (PQ1, §7) | §6, O4 |
 | Moldura `ENTREVISTA-PENDENTE` da #6 | Fica como está (D17) | Nenhuma tarefa |
 | Nome real em `docs/design/conceito.md:41` | Fica como está (decisão do líder na rodada 5) | Nenhuma tarefa; o nome não se copia para lugar nenhum |
 
@@ -115,7 +115,9 @@ no Cemitério (voz meta do editor). Editorial, Entrevista, Cartas (a fala do Gus
 
 Nome de batismo de menor nunca (L-01 do site). Nenhum nome real dos homenageados (o do Brunus, o do Yakov) em texto,
 `alt`, nome de arquivo ou commit. Nenhum handle de GitHub tirado do bus. **O repositório com o histórico anterior do
-jogo é privado:** nome, endereço e contagem de commits só entram conforme a PQ2.
+jogo é privado, e a Reportagem diz o nome dele e a contagem de registros** (PQ2, decisão do líder, §7). **A contagem
+é MEDIDA no ato por comando (O9, passo 3), nunca copiada de memória nem de documento**; o número que a memória
+`reference_gusworld_legacy` traz não se usa.
 
 ### T10. Fato separado de inferência (L-18 global)
 
@@ -135,11 +137,11 @@ trabalho: a fonte não sustenta (pauta, risco 20).
 
 | # | Achado | Fonte (arquivo:linha) | Consequência |
 |---|---|---|---|
-| A1 | **O portão de travessão que varreu zero não é do site.** É o hook global de pre-commit da máquina. Ele só varre o que `is_user_facing()` aceita, e essa função mora fora do projeto | `/home/petrus/.claude/skills/tab_pendencias/tools/hooks/no_mdash_staged.py:11-13, 213, 249-256`; `/home/petrus/.claude/hooks/no_mdash.py:190-235` | Consertar ali muda o portão de **todos** os projetos da máquina, e é arquivo canônico externo ao projeto (L-32 global). Onde consertar é a **PQ1**. O conversor já barra travessão nas seções que ele gera (`SITE/scripts/conversor/travas.php:7, 80-88`); o buraco é o que ele não gera (partials feitos à mão e as fontes `.md`) |
+| A1 | **O portão de travessão que varreu zero não é do site.** É o hook global de pre-commit da máquina. Ele só varre o que `is_user_facing()` aceita, e essa função mora fora do projeto | `/home/petrus/.claude/skills/tab_pendencias/tools/hooks/no_mdash_staged.py:11-13, 213, 249-256`; `/home/petrus/.claude/hooks/no_mdash.py:190-235` | Consertar ali muda o portão de **todos** os projetos da máquina, e é arquivo canônico externo ao projeto (L-32 global). **PQ1 decidida: só no site; nada muda nos hooks globais** (O4). O conversor já barra travessão nas seções que ele gera (`SITE/scripts/conversor/travas.php:7, 80-88`); o buraco é o que ele não gera (partials feitos à mão e as fontes `.md`) |
 | A2 | **O molde da edição não tem gancho por número.** | `SITE/src/templates/edicao.php:58` (`<article class="edicao">`) | O conserto do terminal (D15) precisa de classe modificadora usada só nos partials da #7 em diante (recomendado) ou de classe nova no molde, que toca todas as edições |
 | A3 | **Datas conferidas pelo main no git (03/11/2026), hora local GMT-3**, primeiro commit que adiciona cada `GODS_LAWS.md`: GlintFx `ae3943c7` 21/08 07:05:48; GusWorld `81a8ef1` 21/08 22:13:24 (UTC 22/08 01:13:24; é o primeiro commit do repositório refundado); mapeditor `b205d01` 22/08 00:13:57; site `b4e07a4` 24/08 23:41:13; global `2230a1f` 29/08 23:25:20 | Relato do main a mim, 03/11/2026 (não executei) | Tabela da Reportagem (§4.1). Usar 21/08 para o `81a8ef1`, nunca 22/08 |
 | A4 | **A meia-verdade foi dita ao Gus Dragon na véspera do achado**, isto é, em 21/08, o dia da refundação: *"reagindo a algo que esta sessão tinha dito a ele na véspera"* | `BUS/archive/20260822-0855-gusworld-marco-gus-tensao-determinismo-speedrun.md:14, 20` | **[INF]** A caixa do determinismo e a Reportagem ficam no mesmo dia. A caixa é crédito ao achado e não prova da acusação (pauta, risco 17) |
-| A5 | **A ideia da carta foi aberta em 16/08** (antes da janela) e aprovada em 21/08 | `BUS/archive/20260822-0610-gusworld-ideias-do-gus-sao-marco-historico.md:18` | A data de 16/08 é a **PQ6** (ordem do calendário) |
+| A5 | **A ideia da carta foi aberta em 16/08** (antes da janela) e aprovada em 21/08 | `BUS/archive/20260822-0610-gusworld-ideias-do-gus-sao-marco-historico.md:18` | A data de 16/08 não entra (PQ6, §7) |
 | A6 | **A mensagem de 22/08 06:10 carrega o handle de GitHub do Gus Dragon** | mesmo arquivo, linha 18 | T9: o handle nunca é copiado |
 | A7 | **As duas ideias da issue 5 (21/08) já foram usadas pela #4** | `SITE/docs/editorial/PAUTA-EDICAO-4.md:25` | Não reaparecem como ideia nova. A issue 5 sem resposta pode aparecer no bus como fato |
 | A8 | **A resposta 6 da colagem não tem espaço no fim** (busca por ponto seguido de espaço na linha 36 não achou nada) | `COLAGEM:36` | Nada a normalizar; o precedente do Yakov só tirou espaço de fim de linha (`SITE/docs/content/edicao-6-entrevista-yakov-respostas.md:134`) |
@@ -184,7 +186,7 @@ PARE e relate o que viu, com o texto exato do erro. Não improvise, não contorn
 
 - Escrever em qualquer coisa sob `/home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/GusWorld/`,
   `.../Projects/GlintFx/` ou `.../Projects/gusworld_mapeditor/` (L-00 do site: leitura livre, escrita nunca).
-- Escrever em `/home/petrus/.claude/` (configuração global da máquina), salvo a tarefa O4 se a PQ1 for (b).
+- Escrever em `/home/petrus/.claude/` (configuração global da máquina). Sem exceção nesta edição (PQ1: só no site).
 - Tocar `SITE/src/content/edicao-1/` a `SITE/src/content/edicao-6/`, `SITE/public_html/assets/edicao-1/` a `.../edicao-6/`
   e as fontes `SITE/docs/content/edicao-1-*` a `edicao-6-*`, salvo o `git mv` da tarefa O5.
 - Tocar `SITE/data/edicoes.php` antes da onda de montagem (a ficha da #7 é fixture viva, `data/edicoes.php:301-331`).
@@ -275,7 +277,7 @@ o portão, a auditoria, a ordem falsa e os achados do Gus Dragon.
 
 1. **A janela por extenso** no primeiro parágrafo ("de 21 de agosto a 3 de setembro de 2026" / "from August 21 to
    September 3, 2026").
-2. **A causa.** A frase do líder, palavra por palavra, com a data (D7; data conforme PQ4):
+2. **A causa.** A frase do líder, palavra por palavra, com a data **03/09/2026** (D7; PQ4):
    *"você me enganou, fazendo wrapping de libs externas como se fosse lib original escrita do zero. Tentei refatorar,
    mas você continuou mentindo e precisei apagar tudo."* Fonte: `SITE/TODO.md:193`. A #6 publicou o comportamento
    (religar, os atalhos); esta peça publica o engano e o desfecho. **Uma frase** pode lembrar que a issue pública de
@@ -284,13 +286,16 @@ o portão, a auditoria, a ordem falsa e os achados do Gus Dragon.
    as primeiras decisões do líder no projeto novo, no mesmo dia (mesmo arquivo, `:105`, abrir e citar só o que estiver
    lá); o repositório do jogo refundado, primeiro commit 21/08 22:13 (A3). O que foi guardado e o que não foi:
    *"dois repos zerados no mesmo dia, só um com passado guardado"* (`TODO.md:193`, texto do registro, citar como tal).
-   Como se diz o repositório privado: **PQ2**.
+   **O repositório privado (PQ2):** a peça diz o **nome** e a **contagem de registros**, os dois exatamente como o main
+   os mediu em O9 (passo 3) e gravou em `/var/tmp/ed7-fontes/legado.txt`. O escritor copia de lá; se o arquivo não
+   existir, PARE e peça ao main.
 4. **O terceiro apagamento, sábado 22/08.** O mapeditor zerado e recomeçado:
    `BUS/archive/20260824-1946-mapeditor-apresentacao-nao-precisa-responder.md:14`. O repositório do jogo publicado
    em 22/08 (ledger, `/home/petrus/.claude/projects/-home-petrus-IDrive-Documentos-projetos-claudebrain-Projects-site-gusworld/memory/HISTORICO_GUS_ECOSSISTEMA.md:152`).
 5. **As leis nascem com o recomeço (21/08 a 29/08).** A tabela de A3, em prosa ou em lista. O do GusWorld nasce no
    commit que funda o repositório **[INF: a lei veio antes da primeira linha de código; conferir no próprio commit]**.
-   O arquivo global entra conforme a **PQ3**. **T11.**
+   **O arquivo global entra (PQ3)**, como "o arquivo de leis da máquina inteira", com a data de 29/08, **sem o
+   caminho**. **T11.**
 6. **Âncora da caixa** (§4.2), no ponto em que o texto chega a 22/08.
 7. **Fecho:** o recomeço com regra escrita, sem dizer se deu certo.
 
@@ -311,6 +316,10 @@ citação (aceite 3).
 4. Nenhuma data posterior a 03/09 (grep por `/09` e conferência manual de cada ocorrência).
 5. Cada número e data tem arquivo:linha nas Notas de produção.
 6. Zero travessão e zero emoji (passo 5 comum).
+7. **O nome e a contagem do repositório privado são idênticos aos de `/var/tmp/ed7-fontes/legado.txt`**, e as Notas de
+   produção trazem o comando que os mediu e a data e hora da medição (O9). Número que não veio desse arquivo reprova.
+8. A data da frase do líder é 03/09/2026 nas duas línguas.
+9. O caminho do arquivo de leis global não aparece (grep por `.claude` dá 0).
 
 **Travas:** T1, T2, T3, T5, T6, T7 (fala do root, se houver), T9, T10, T11. **Parecer do `compliance-legal`** antes do
 GATE-CONTEUDO (pauta, risco 7).
@@ -356,7 +365,9 @@ sucesso); a lei de paridade como **lei nova de 02/09** e a auditoria que ela obr
 **Aceite:** a tabela existe nas duas línguas; zero ocorrência de `primeira vez`, `refunda`, `apagad`; os números 45, 19
 e 25 aparecem com arquivo:linha nas notas; passo 5 comum.
 **Travas:** T1, T2, T5, T6, T7 (a fala do Gus na desculpa furada vai ao líder), T10, T11.
-**Nota de render:** o terminal herda o conserto da D15 (O11). O brinquedo entra nesta seção se a PQ5 for (a).
+**Nota de render:** o terminal herda o conserto da D15 (O11). **O brinquedo entra nesta seção, logo depois da tabela
+do portão** (PQ5): o `.md` marca o ponto com uma linha só, `BRINQUEDO-PORTAO-DE-BOLSO`, que o `frontend-engineer` troca
+pela peça na montagem (a varredura antes do GATE-GO exige zero ocorrências do marcador).
 
 ### 4.4 Seção 6, Galeria de Bugs: o baú que abre duas vezes (Gus Dragon)
 
@@ -393,7 +404,8 @@ Memória do formato: `/home/petrus/.claude/projects/-home-petrus-IDrive-Document
 pautado; (b) o crédito seco nos dois papéis; (c) a fala do Gus personagem contando o destino da ideia, rascunho ao
 líder (T7, T8: de dentro, sem palavra de produção); (d) o pensamento sobre a mancha, rascunho ao líder.
 **Não entra:** o handle dele (T9, A6); mecânica além do que ele mesmo escreveu, sem OK do GATE-SPOILER; o que segue
-aberto (`0840:26-28`) como se fosse fechado; a data de 16/08 conforme a **PQ6**; a coleta (Galeria).
+aberto (`0840:26-28`) como se fosse fechado; **a data de 16/08** (PQ6: a peça começa na aprovação de 21/08 e diz
+só que a ideia tinha sido proposta dias antes); a coleta (Galeria).
 **Porte M**, com arte nova (papel pautado e mancha em CSS, nunca desenhada), feita pelo `visual-design-director` na
 onda 4.
 **Aceite:** o pedido no `.md` é idêntico ao texto que o main entregou (o relatório mostra o `diff` vazio entre os
@@ -414,7 +426,8 @@ falei disso"*, *"sustentou onze dias de planejamento errado"*, *"corrigida e mar
 em silêncio"*).
 
 **Entra:** as duas pedras, com data e epitáfio; **os epitáfios ficam em branco, marcados `EPITAFIO-DO-LIDER`**, porque
-são dele; uma linha de ponte à pedra da #6; as datas da ordem falsa conforme a **PQ7**.
+são dele; uma linha de ponte à pedra da #6; **na pedra da ordem falsa, a data da correção (03/09/2026) e a idade
+"onze dias", citadas do registro** (PQ7; `20260903-0530:50`), sem data de nascimento.
 **Não entra:** o porquê da refundação (Reportagem); a auditoria (Programação).
 **Molde:** `SITE/src/content/edicao-6/pt/sec-07.php` (feito à mão). Porte **M**.
 **Aceite:** o marcador `EPITAFIO-DO-LIDER` aparece duas vezes por língua (grep dá 2 em cada bloco) e nenhum epitáfio
@@ -504,7 +517,10 @@ porque não varreu nada. Os textos do terminal vão ao GATE-COPY.
 **Proibido:** three.js (não há razão de tela que o CSS não alcance; memória `project_d_webgl_so_na_tela`); dependência
 de terceiro; ESM; `fetch`; armazenar dado do leitor.
 **Aceite:** os passos 3 e 5 com os códigos de saída esperados no relatório; peso dos dois arquivos JS medido em bytes;
-sem JS, as três respostas visíveis (print do `qa-engineer` com JS desligado); onde ele entra na página: **PQ5**.
+sem JS, as três respostas visíveis (print do `qa-engineer` com JS desligado); **ele entra dentro da Seção de
+Programação, logo depois da tabela do portão (PQ5)**, no lugar do marcador `BRINQUEDO-PORTAO-DE-BOLSO`, e
+`/usr/bin/grep -rc 'BRINQUEDO-PORTAO-DE-BOLSO' /home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld/src/content/edicao-7 || true`
+soma 0 depois da montagem.
 **Travas:** L-13 do site, L-35 e L-36 globais, T6.
 
 ### 4.11 Seção 16, Entrevista: tradução para o inglês das respostas (D9)
@@ -556,7 +572,9 @@ ondas 4 e 5, e o `PIPELINE-EDICAO.md` §1.5. A #8 nasce em rascunho no mesmo com
 
 ---
 
-## 5. Perguntas de produção ao líder (recomendada primeiro; uma frase; uma por vez, L-03)
+## 5. Perguntas de produção ao líder (TODAS RESPONDIDAS em 03/11/2026; respostas na §7)
+
+As perguntas ficam abaixo como foram feitas, para leitura junto das respostas.
 
 | # | Pergunta | Opções (recomendada primeiro) | Quando |
 |---|---|---|---|
@@ -572,8 +590,22 @@ ondas 4 e 5, e o `PIPELINE-EDICAO.md` §1.5. A #8 nasce em rascunho no mesmo com
 
 ## 6. Onda 0: as tarefas antes de qualquer peça (em ordem; cada uma com os oito itens)
 
-**O1 a O3 e O8 a O10 exigem Bash e `gh`; O5 a O7 são de especialista; O4 depende da PQ1; O11 é da onda 4.** Todas
-recebem a §3.2 colada.
+**Todas as tarefas de agente recebem a §3.2 colada.** O11 é da onda 4 e não corre agora.
+
+### Ordem e paralelismo (máximo de 4 agentes vivos; 1 trabalho pesado por vez)
+
+| Bloco | Tarefas | Quem | Pode correr junto com | Pesado? |
+|---|---|---|---|---|
+| A | O1 (bus), O2 (issues), O9 (git, nome e contagem do legado), O8 (ledger) | main, sem agente | os agentes do bloco B | não |
+| B | O5 (`git mv` das perguntas), O6 (arquivo de respostas), O7 (ROTEIRO) | `technical-writer`, até três instâncias, uma por arquivo (nenhum par toca o mesmo arquivo) | O3 e o bloco A | não |
+| B | O3 (prints de referência da #5 e da #6) | `qa-engineer` | O5, O6, O7 | **sim**: é o único pesado do bloco |
+| C | O4 (teste do travessão no site) | `qa-engineer` | nada pesado | **sim** no passo 8 (suíte completa) |
+| D | O10 (primeiro despacho: a Reportagem) | main | n/a | não |
+
+**Dependências:** O4 só começa depois de O5 e O6 (o caso f exige os dois arquivos da entrevista) e depois de O3
+terminar (a suíte completa é pesada e não corre junto com o Firefox). O10 só depois de O1 a O9. O9, passo 3, tem de
+estar feito antes do brief da Reportagem (§4.1, aceite 7). No pico do bloco B há 4 agentes vivos (três
+`technical-writer` e um `qa-engineer`); o main não abre um quinto.
 
 ### O1. Ritual do bus e recontagem (main)
 
@@ -586,7 +618,7 @@ recebem a §3.2 colada.
 
 ### O2. As fontes que só existem no GitHub (main)
 
-1. Buscar o corpo da issue 3 do bus e o comentário de 03/09 18:13 da issue 8, e gravar o texto **fora do repo**, em
+1. `mkdir -p /var/tmp/ed7-fontes` (a pasta de O2 e de O9). Buscar o corpo da issue 3 do bus e o comentário de 03/09 18:13 da issue 8, e gravar o texto **fora do repo**, em
    `/var/tmp/ed7-fontes/issue-3.txt` e `/var/tmp/ed7-fontes/issue-8-0309.txt`.
 2. Entregar ao `ux-writer` só o pedido do Gus Dragon (§4.5), sem o handle (T9).
 
@@ -616,9 +648,10 @@ Trabalho pesado (Firefox headless): um por vez, com aviso ao main.
 **Pode tocar:** só `/var/tmp/qa-ed7/`. **Proibido:** gravar print no repo; mexer em CSS.
 **Aceite:** 16 PNGs; 8 pares com hash igual; relatório com a lista dos hashes.
 
-### O4. O conserto do portão de travessão (D16), `qa-engineer`, só depois da PQ1
+### O4. O conserto do portão de travessão (D16), `qa-engineer`: teste no site (PQ1, "Só no site")
 
-**Se a PQ1 for (a), teste no site (recomendada):**
+**Decisão do líder (PQ1):** o conserto é só no site; **nada muda nos hooks globais da máquina**. O hook global
+continua relatando zero para esses arquivos, e isso fica como está.
 
 1. Ler `SITE/scripts/conversor/travas.php:7` (a expressão `TRAVAS_TRAVESSAO`, que já reconhece o glifo e a entidade)
    e `SITE/tests/apoio/afirmar.php` (as funções `eq`, `verdadeiro`, `terminar`).
@@ -651,13 +684,9 @@ Trabalho pesado (Firefox headless): um por vez, com aviso ao main.
    `/home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld/scripts/testes.sh > /var/tmp/ed7-suite.txt 2>&1; echo $?`
    → **esperado: 0**, última linha `ALL GREEN`.
 
-**Se a PQ1 for (b) ou (c):** este brief não basta. O main pede ao líder a autorização específica para editar
-`/home/petrus/.claude/hooks/no_mdash.py`, copia o arquivo antes (L-32 global), e uma ordem de serviço nova é escrita,
-com o autoteste existente (`/home/petrus/.claude/skills/tab_pendencias/tools/hooks/selftest_no_mdash_staged.py`) visto
-verde antes e depois, e uma sabotagem de estreia.
-
-**Pode tocar (a):** `SITE/tests/travessao-varredura.test.php`, `SITE/scripts/travessao/varredura.php`,
-`SITE/scripts/testes.sh` (só a linha 22). **Proibido:** `/home/petrus/.claude/`.
+**Pode tocar:** `SITE/tests/travessao-varredura.test.php`, `SITE/scripts/travessao/varredura.php`,
+`SITE/scripts/testes.sh` (só a linha 22). **Proibido:** qualquer coisa sob `/home/petrus/.claude/` (PQ1).
+**Depende de:** O5 e O6 prontos (caso f) e O3 terminado (passo 8 é pesado).
 **Aceite:** passos 3, 5, 6 e 8 com as saídas esperadas, no relatório.
 
 ### O5. O arquivo de perguntas do Brunus passa a ser da #7, `technical-writer` (o main commita)
@@ -732,10 +761,22 @@ futura."* passa a dizer que elas foram respondidas em 03/11/2026 e vão na #7.
 1. A mensagem do `81a8ef1`: `git -C /home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/GusWorld log -1 --format='%H%n%ad%n%s' --date=iso 81a8ef1`
    → registrar o texto exato para a arte da capa (§4.13). Leitura só (L-00).
 2. O último commit do repositório anterior, pela API (devolve UTC; converter): `gh api "repos/petrinhu/gusworld_legacy/commits?since=2026-08-20&until=2026-08-23" --jq '.[0].commit.committer.date'`.
+3. **Nome e contagem do repositório privado (PQ2), MEDIDOS agora, nunca copiados de memória:**
+   - nome e visibilidade: `gh api repos/petrinhu/gusworld_legacy --jq '.full_name, .private'` → esperado: duas
+     linhas, o nome e `true`. Se der erro ou `false`, PARE e leve ao líder;
+   - contagem de registros (commits) do ramo padrão, paginada:
+     `gh api --paginate "repos/petrinhu/gusworld_legacy/commits?per_page=100" --jq '.[].sha' > /var/tmp/ed7-fontes/legado-shas.txt; echo $?`
+     → esperado: `0`; depois `/usr/bin/wc -l < /var/tmp/ed7-fontes/legado-shas.txt` dá o número;
+   - conferir que não há repetição: `sort -u /var/tmp/ed7-fontes/legado-shas.txt | /usr/bin/wc -l` → esperado: o mesmo
+     número. Se diferir, PARE;
+   - gravar em `/var/tmp/ed7-fontes/legado.txt` três linhas: o nome como a API devolveu, o número, e a data e hora da
+     medição (de `date '+%d/%m/%Y %H:%M:%S'`). **Esse arquivo é a única fonte do nome e do número para a Reportagem**
+     (§4.1, aceite 7). Fica fora do repo.
 
 ### O10. Primeira leva de despacho (main)
 
-Depois de O1 a O9 (O4 só depois da PQ1): despachar a Reportagem (§4.1) sozinha, com a §3.2 colada.
+Depois de O1 a O9 (O4 incluída): despachar a Reportagem (§4.1) sozinha, com a §3.2 colada e o caminho de
+`/var/tmp/ed7-fontes/legado.txt`.
 
 ### O11. Escopo do conserto do terminal (D15), `frontend-engineer`, onda 4
 
@@ -754,5 +795,24 @@ Depois de O1 a O9 (O4 só depois da PQ1): despachar a Reportagem (§4.1) sozinha
 
 ## Nota final sobre o que este documento NÃO decide
 
-As sete PQs da §5 são do líder. Os epitáfios, o dek, as falas e os pensamentos de personagem, a tradução e a lista
+As sete PQs da §5 já foram respondidas pelo líder (§7). Os epitáfios, o dek, as falas e os pensamentos de personagem, a tradução e a lista
 dos erros, os textos do terminal da HQ e do brinquedo vão aos gates dele. Nenhum agente aprova nada disso.
+
+---
+
+## 7. Respostas do líder às perguntas de produção (03/11/2026, perguntas feitas depois de 13:46:22, por AskUserQuestion; opção escolhida verbatim)
+
+- **PQ1:** **"Só no site (Recomendado)"**. Nada muda nos hooks globais da máquina. Aplicada em O4 e na §3.2.
+- **PQ2:** **"Com nome e contagem"**. A Reportagem diz o nome do repositório privado do histórico anterior e a contagem
+  de registros. A contagem é medida no ato por comando (O9, passo 3), nunca copiada de memória. Aplicada em T9, §4.1
+  (item 3 e aceite 7) e O9.
+- **PQ3:** **"Entra, com a data (Recomendado)"**. O arquivo de leis da máquina inteira entra na Reportagem, com a data de
+  29/08 e sem o caminho. Aplicada em §4.1 (item 5 e aceite 9).
+- **PQ4:** **"03/09 (Recomendado)"**. A frase do "wrapping" leva a data de 03/09/2026. Aplicada em §4.1 (item 2 e
+  aceite 8).
+- **PQ5:** **"Dentro da Programação (Recomendado)"**. O portão de bolso entra na Seção de Programação, logo depois da
+  tabela do portão. Aplicada em §4.3 e §4.10.
+- **PQ6:** **"Começa em 21/08 (Recomendado)"**. As Cartas começam na aprovação de 21/08, sem a data de 16/08. Aplicada em
+  §4.5.
+- **PQ7:** **"03/09 e os 11 dias (Recomendado)"**. A pedra da ordem falsa leva a data da correção e a idade que o
+  registro dá. Aplicada em §4.6.
