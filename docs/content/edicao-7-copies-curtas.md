@@ -135,7 +135,7 @@ This time, no deadline. Not weekly, not every-so-oftenly.
 encarte destacável
 Depois de apagar
 e o que ficou
-1.408 × 1.408 px · Grok Imagine (geração)
+1.408 × 1.408 px · Prompt: Claude · Imagem gerada: Grok Imagine
 Vista de cima de uma mesa de madeira escura, azul-marinho. Há contornos claros de objetos que já não estão lá, retângulos e um círculo, e no centro uma única folha pautada em branco. Uma luz ciano fraca vem da borda de baixo.
 Glyfesse nº 7 · pôster central
 destaque pela dobra
@@ -147,7 +147,7 @@ destaque pela dobra
 pull-out insert
 After the delete
 and what was left
-1,408 × 1,408 px · Grok Imagine (generation)
+1,408 × 1,408 px · Prompt: Claude · Image generated: Grok Imagine
 Top-down view of a dark, navy-blue wooden table. Pale outlines of objects that are no longer there, rectangles and a circle, and in the center a single blank ruled sheet. A faint cyan light comes from the bottom edge.
 Glyfesse no. 7 · centrefold
 tear along the fold
@@ -330,7 +330,7 @@ Os marcadores `REUSO-EDICAO-1-*` e o `ENTREVISTA-PENDENTE` da #6 servem para a v
 - **Peças 1, 2 e 3 (Nota, Detonado, Errata):** "Trocar só esse pensamento (Recomendado)" (03/11/2026, verbatim). Nota e Errata ficam como estão, com os pensamentos. O pensamento do Detonado foi trocado (L-25 do site: "Para ele, GusWorld é REAL"). **Detonado, pensamento:** "Não vou chutar (Recomendado)" (03/11/2026, após 17:54:53, verbatim). Gravado no bloco (item 6.1).
 - **Peças 8, 9 e 10 (Expediente):** "Aprovo como está". **Aprovadas.** Com isso, a frase "Não houve artista nesta edição" (peça 9) fica no bloco (resolve a pergunta 2 do relatório anterior).
 - **Peça 11 (dek):** "Aprovo". **Aprovada**, como está.
-- **Peça 6 (pôster): aprovada a imagem pelo líder** (03/11/2026, verbatim: "o poster está em [imagem]. ANtes ponha o arquivo na pasta certa e depois use"). Alt e ficha a conferir no render. Ficha: "1.408 × 1.408 px · Grok Imagine (geração)" (pt) e "1,408 × 1,408 px · Grok Imagine (generation)" (en). Arquivo: `public_html/assets/edicao-7/poster-edicao-7.jpg`. Verbatim: "me de um prompt para eu gerar um poster no grok, que tenha a ver com a edicao". O líder vai gerar o pôster. Bloco não apagado (ver item 6.2).
+- **Peça 6 (pôster): aprovada a imagem pelo líder** (03/11/2026, verbatim: "o poster está em [imagem]. ANtes ponha o arquivo na pasta certa e depois use"). Alt e ficha a conferir no render. Ficha: "1.408 × 1.408 px · Prompt: Claude · Imagem gerada: Grok Imagine" (pt) e "1,408 × 1,408 px · Prompt: Claude · Image generated: Grok Imagine" (en). Crédito do pôster, verbatim do líder (03/11/2026): "ponha o credito do poster: prompt - claude e imagem gerada - grok". A ficha já traz o crédito, e não há linha de crédito separada com a ferramenta; a linha "Glyfesse nº 7 · pôster central" não repete o nome das ferramentas. Arquivo: `public_html/assets/edicao-7/poster-edicao-7.jpg`. Verbatim: "me de um prompt para eu gerar um poster no grok, que tenha a ver com a edicao". O líder vai gerar o pôster. Bloco não apagado (ver item 6.2).
 - **Peças 4 (Classificados), 5 (Próximos Lançamentos) e 7 (Brinde):** "Aprovo como está" (03/11/2026, verbatim). **Aprovadas.** Reusos da #1 e linha nova de Próximos, como estão.
 - **Resumo do estado (03/11/2026):** aprovadas as peças 1 a 5 e 7 a 11, com o verbatim acima. A peça 6 (pôster) tem a imagem aprovada pelo líder; alt e ficha seguem para conferir no render.
 - **Decisões do main, aplicadas nesta rodada:** (a) a frase "não há código de jogo" fica sem atribuição a pessoa (Notas 1.2); (b) o crédito do Gus Dragon não entra no Expediente (Notas 1.5 fica só como registro); (c) a linha de direitos segue o padrão da #4 e da #5, "Todos os direitos reservados." (Notas 1.4); (d) a linha de tradução segue o padrão, pt "As traduções para o inglês são de agente de IA, aprovadas pelo editor." e en "The English translations are by an AI agent, approved by the editor." (Notas 1.6). A linha de tradução específica da entrevista continua na peça 8.
