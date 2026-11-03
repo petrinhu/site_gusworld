@@ -1,10 +1,10 @@
-# Edição #6 · Seção 16 · A Entrevista: perguntas do Gus ao Brunus "Vetorial" Solveckt
+# Edição #7 · Seção 16 · A Entrevista: perguntas do Gus ao Brunus "Vetorial" Solveckt
 
-> **Status: RASCUNHO DE PERGUNTAS, v1 (18 perguntas, mundo intacto, testado sem os `//`). Aguarda a
-> resposta do homenageado (por ordem do líder, ele mesmo responde; ninguém escreve a fala do Brunus) +
-> GATE-CONTEUDO + GATE-SPOILER (obrigatório e sem exceção antes de qualquer render,
-> `ROTEIRO-ENTREVISTAS.md`).** Produzido em 2026-10-07. O texto abaixo é só o lado do Gus: nenhuma
-> resposta do Brunus foi escrita nem sugerida.
+> **Status: PERGUNTAS APROVADAS pelo líder em 07/10/2026 (18 perguntas, mundo intacto, testado sem os `//`;
+> marca dos pensamentos ajustada em 08/10/2026). Respondidas pelo homenageado e entregues pelo líder em
+> 03/11/2026; as respostas estão em `docs/content/edicao-7-entrevista-brunus-respostas.md`. Publicação na
+> Edição #7 (`docs/editorial/PAUTA-EDICAO-7.md`).** Produzido em 2026-10-07. O texto abaixo é só o lado do
+> Gus: nenhuma resposta do Brunus foi escrita por agente.
 >
 > **⚠️ L-08: toda fala e todo pensamento do Gus abaixo é RASCUNHO e vai ao líder para aprovar antes de
 > qualquer uso.** Nenhum agente aprova fala do Gus.
@@ -20,7 +20,7 @@
 
 ---
 
-## O texto (pt-br): só as perguntas
+## pt-BR
 
 ```
 gus@glyfesse:~/entrevista$ eu anotei uma coisa faz tempo e nunca perguntei: você mede tudo em dia, em

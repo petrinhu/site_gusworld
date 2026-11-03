@@ -60,7 +60,7 @@ Fonte: `Projects/gusworld/docs/narrative/characters/brunus-vetorial.md` (canôni
 
 | | |
 |---|---|
-| **Edição** | **#6** · Brunus Vetorial · **fixado pelo líder em 07/10/2026** (Trilha B). O Gus entrevista; **quem responde é o homenageado real** e nenhum agente escreve a fala do Brunus. Perguntas em `docs/content/edicao-6-entrevista-perguntas.md`; respostas pendentes (a edição segura até elas, D4 da pauta da #6). A decisão aberta de como intercalar a Trilha B com a party **segue aberta**: o líder fixou o Brunus para a #6 e nada além disso |
+| **Edição** | **#7** · Brunus Vetorial · fixado pelo líder em 07/10/2026 (Trilha B) para a #6, que publicou a entrevista do Yakov porque ela chegou primeiro (ordem do líder de 23/10/2026: *"Quem fizer primeiro, colocamos no ar"*); **respondida pelo homenageado e entregue em 03/11/2026, publicada na #7**. O Gus entrevista; **quem responde é o homenageado real** e nenhum agente escreve a fala do Brunus. Perguntas em `docs/content/edicao-7-entrevista-brunus-perguntas.md`; respostas em `docs/content/edicao-7-entrevista-brunus-respostas.md`. A decisão aberta de como intercalar a Trilha B com a party **segue aberta** |
 | **Quem é** | NPC adulto, **não-party**. Boticário-médico-construtor itinerante, sem facção (homem livre) |
 | **Idade** | **~40 de aparência, ~700+ de verdade** — não envelhece desde um experimento de juventude feito em si mesmo. Não é invulnerável: sangra, cansa, pode morrer de trauma |
 | **Função** | Mentor. Guardião da memória do ancestral, voz da paciência para o prodígio impaciente, e a ponte com o pai ausente |
