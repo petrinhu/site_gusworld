@@ -137,7 +137,7 @@ brunus@glyfesse:~/entrevista$ You don't need to answer the question. There are t
 ### Fonte
 
 - **pt:** respostas de uma pessoa real, palavra por palavra, uma por linha, na ordem das 18 perguntas. Nenhuma palavra foi mudada. As 20 linhas copiadas não tinham espaço em branco no fim, então nada precisou ser removido (conferido por script).
-- **en:** rascunho para o líder: tradução feita por agente, ainda sem aprovação. Os 6 erros imitados estão na subseção "Tradução (rascunho para o líder)" abaixo.
+- **en:** APROVADA pelo líder em 03/11/2026: "Aprovo como está". Os 6 erros imitados estão na subseção "Tradução (APROVADA pelo líder em 03/11/2026: "Aprovo como está")" abaixo.
 - **Perguntas:** `docs/content/edicao-7-entrevista-brunus-perguntas.md`.
 
 ### Decisões do líder de 03/11/2026
@@ -149,7 +149,7 @@ brunus@glyfesse:~/entrevista$ You don't need to answer the question. There are t
 
 Nenhum nome real aparece neste arquivo (T9).
 
-### Tradução (rascunho para o líder)
+### Tradução (APROVADA pelo líder em 03/11/2026: "Aprovo como está")
 
 Tabela erro a erro (D9). Cada linha é um erro do pt, na resposta indicada, e o erro equivalente que a tradução reproduz no mesmo ponto da frase. Os seis erros vêm da pauta §16. Nenhum erro do pt foi corrigido.
 
