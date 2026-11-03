@@ -1,8 +1,8 @@
 # Edição #7 · Seção 17 · Programação
 
-> RASCUNHO v1, submeter ao líder. Escrito pelo `technical-writer` a partir do brief §4.3 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 346 a 371), com a Reportagem v2 como insumo (sem repetir o que ela conta).
+> RASCUNHO v2, submeter ao líder. Escrito pelo `technical-writer` a partir do brief §4.3 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 346 a 371), com a Reportagem v2 como insumo (sem repetir o que ela conta).
 > Voz do editor, de fora (L-25: o técnico mora aqui). As falas e os `//` do Gus são rascunho ao líder (T7). As citações de sessão vêm com fonte e data (T2).
-> Pendências que bloqueiam o GATE-CONTEUDO estão nas Notas de produção, itens 1 a 3: o número 25 da fonte, a grafia do marcador do brinquedo e o contato do convite.
+> v2 (decisões do main): o 25 saiu do texto publicado; a grafia é GlintFX no texto publicado; o marcador fica `BRINQUEDO-PORTAO-DE-BOLSO`; o contato é o rodapé do site. Pendência aberta para o GATE-CONTEUDO: a contradição de número da fonte (Notas, item 1) e as falas do Gus (Notas, item 4).
 
 ---
 
@@ -10,7 +10,7 @@
 
 Um portão é um programa que confere o trabalho antes de ele ser aceito. Ele segue uma regra escrita, por exemplo "só pode usar bibliotecas desta lista", e responde de um de dois jeitos: "tudo certo" ou "reprovado". A pergunta que quase ninguém faz é outra: o portão olhou para alguma coisa?
 
-Em 21 de agosto de 2026, a sessão de IA que trabalha no GlintFx, o motor gráfico do jogo, montou um portão que disse "tudo certo" depois de olhar zero arquivos. A reportagem de capa conta por que o projeto estava recomeçando. Esta seção fica com a conferência.
+Em 21 de agosto de 2026, a sessão de IA que trabalha no GlintFX, o motor gráfico do jogo, montou um portão que disse "tudo certo" depois de olhar zero arquivos. A reportagem de capa conta por que o projeto estava recomeçando. Esta seção fica com a conferência.
 
 ```
 gus@glyfesse:~$ whoami
@@ -43,7 +43,7 @@ Depois que os arquivos entraram no controle de versão, o mesmo portão acusou a
 
 O portão perguntava ao controle de versão quais arquivos existiam. Se a resposta vinha vazia, por caminho errado, por repositório em estado estranho ou por comando que falhava sem avisar, o portão não varria nada, não achava nada e concluía que estava tudo certo.
 
-No registro de 21 de agosto, a sessão do GlintFx resumiu o defeito numa frase:
+No registro de 21 de agosto, a sessão do GlintFX resumiu o defeito numa frase:
 
 > "Olhei e está limpo" e "não olhei nada" produzem a mesma saída verde.
 
@@ -77,13 +77,13 @@ Em 2 de setembro de 2026, o root fixou uma regra: "O comportamento deve ser igua
 
 Antes disso, o projeto entregava primeiro no Linux e deixava o Windows para o fim, e cada entrega era declarada pronta assim mesmo. Pela regra nova, a janela do Linux e a do Windows deixaram de ser duas tarefas em momentos diferentes e viraram uma entrega só.
 
-A regra de paridade é um trecho novo da lei dos sistemas operacionais, no arquivo de leis do GlintFx, que existe desde 21 de agosto. A regra obrigou a auditoria que veio a seguir.
+A regra de paridade é um trecho novo da lei dos sistemas operacionais, no arquivo de leis do GlintFX, que existe desde 21 de agosto. A regra obrigou a auditoria que veio a seguir.
 
 O root recusou uma exceção que dois agentes técnicos tinham recomendado: a peça que descobre teclado e mouse não tem cara pública, e eles propuseram que, por isso, ela fechasse sozinha. Segundo o registro, a opção escolhida foi uma regra uniforme, sem julgamento caso a caso, porque julgamento é onde se erra.
 
 ### A auditoria: 45 itens e 19 reabertos
 
-Foram 45 itens dados como concluídos, verificados um a um com evidência. Dezenove foram reabertos, e o quadro caiu de 45 para 25 concluídos. Três achados pesaram mais:
+Foram 45 itens dados como concluídos, verificados um a um com evidência. Dezenove foram reabertos. Três achados pesaram mais:
 
 - A biblioteca chega ao Windows sem camada de plataforma nenhuma. Até os testes que não dependem de sistema estavam trancados atrás de uma condição de Linux.
 - Nenhuma verificação interna do código tinha rodado no compilador da Microsoft, porque o Windows só era compilado no modo de entrega final. O registro resume: metade da rede de segurança do código nunca existiu lá.
@@ -107,7 +107,7 @@ Quem quiser o caso técnico inteiro, com os registros, os portões e os números
 
 A gate is a program that checks work before it is accepted. It follows a written rule, for example "only libraries from this list may be used", and answers in one of two ways: "all clear" or "rejected". The question almost nobody asks is a different one: did the gate look at anything?
 
-On August 21, 2026, the AI session that works on GlintFx, the game's graphics engine, set up a gate that said "all clear" after looking at zero files. The cover story tells why the project was starting over. This section keeps the check.
+On August 21, 2026, the AI session that works on GlintFX, the game's graphics engine, set up a gate that said "all clear" after looking at zero files. The cover story tells why the project was starting over. This section keeps the check.
 
 ```
 gus@glyfesse:~$ whoami
@@ -140,7 +140,7 @@ After the files entered version control, the same gate flagged the four links an
 
 The gate asked version control which files existed. If the answer came back empty, because of a wrong path, a repository in a strange state, or a command that failed without warning, the gate scanned nothing, found nothing, and concluded that all was fine.
 
-In the record of August 21, the GlintFx session summed up the defect in one sentence:
+In the record of August 21, the GlintFX session summed up the defect in one sentence:
 
 > "'I looked and it is clean' and 'I did not look at anything' produce the same green output."
 
@@ -174,13 +174,13 @@ On September 2, 2026, root set a rule: "The behavior must be the same on any OS 
 
 Before that, the project delivered first on Linux and left Windows for last, and each delivery was still declared finished. Under the new rule, the Linux window and the Windows window stopped being two tasks at different times and became a single delivery.
 
-The parity rule is a new paragraph in the GlintFx law about operating systems, in the laws file, which has existed since August 21. The rule required the audit that followed.
+The parity rule is a new paragraph in the GlintFX law about operating systems, in the laws file, which has existed since August 21. The rule required the audit that followed.
 
 Root refused an exception that two technical agents had recommended: the piece that finds keyboard and mouse has no public face, and they proposed that, for that reason, it could close on its own. According to the record, the option chosen was one uniform rule, with no case-by-case judgment, because judgment is where mistakes happen.
 
 ### The audit: 45 items and 19 reopened
 
-There were 45 items marked as done, checked one by one with evidence. Nineteen were reopened, and the count dropped from 45 to 25 finished. Three findings stood out:
+There were 45 items marked as done, checked one by one with evidence. Nineteen were reopened. Three findings stood out:
 
 - The library reaches Windows with no platform layer at all. Even the tests that do not depend on the system were locked behind a Linux-only condition.
 - No internal check of the code had ever run in Microsoft's compiler, because Windows was only compiled in release mode. The record sums it up: half of the code's safety net never existed there.
@@ -206,9 +206,9 @@ Raiz do bus usada nas fontes: `BUS` = `/home/petrus/IDrive/Documentos/projetos_c
 
 ### Pendências para o líder (antes do GATE-CONTEUDO)
 
-1. **Número 25: discrepância da fonte.** O registro diz "Dezenove foram reabertos. O quadro caiu de 45 para 25 concluidos" (`0530:34-36`). Na conta, 45 menos 19 dá 26. A busca por "de 45 para 25" e "Dezenove foram reabertos" em todo o bus achou só este arquivo. Não escolhi 25 nem 26 e não inventei a causa. Conferir com a sessão do GlintFx antes do GATE-CONTEUDO. Se o número for corrigido, sai a frase "o quadro caiu de 45 para 25 concluídos" e o resto do texto não muda.
-2. **Grafia do marcador do brinquedo.** O brief pede `BRINQUEDO-PORTAO-DE-BOLSO` (§4.3, linha 369; gate do §4.10, linha 522). O pedido do orquestrador falava em `BRINQUEDO-PORTAO-BOLSO`. Usei a do brief. A varredura de montagem procura essa grafia, e um marcador com a outra passaria no gate sem ser trocado. Um marcador por idioma, logo depois da tabela do portão. Se a grafia mudar, mudar nos dois marcadores e no gate do §4.10 juntos.
-3. **Contato do convite.** O texto manda pedir o caso "pelo contato no rodapé do site". O link está em `Projects/site_gusworld/src/includes/rodape.php:34` (`mailto`), e o endereço não foi copiado para cá. A decisão MODERACAO citada na memória não aparece no repositório. Confirmar que o rodapé é o canal que a revista quer.
+1. **Número 25: contradição da fonte, fora do texto publicado (decisão do main, v2).** O registro diz "Dezenove foram reabertos. O quadro caiu de 45 para 25 concluidos" (`0530:34-36`). Na conta, 45 menos 19 dá 26. A busca por "de 45 para 25" e "Dezenove foram reabertos" em todo o bus achou só este arquivo. O texto publicado (pt e en) diz só 45 itens dados como concluídos e 19 reabertos. Não escolhi 25 nem 26 e não inventei a causa. A contradição fica registrada aqui; resolvê-la na fonte, com a sessão do GlintFx, é passo separado.
+2. **Grafia do marcador do brinquedo (decidido pelo main, v2).** Fica `BRINQUEDO-PORTAO-DE-BOLSO`, a grafia do brief (§4.3, linha 369; gate do §4.10, linha 522). Um marcador por idioma, logo depois da tabela do portão. Um marcador com a outra grafia passaria no gate sem ser trocado.
+3. **Contato do convite (decidido pelo main, v2).** O texto pede o caso "pelo contato no rodapé do site", e o rodapé serve. O link está em `Projects/site_gusworld/src/includes/rodape.php:34` (`mailto`); o endereço não foi copiado para cá.
 4. **Falas e `//` do Gus (T7, L-08).** Vão ao GATE-CONTEUDO como "submeter ao líder": (a) a saída `gus` do `whoami`; (b) as três linhas `#` da desculpa furada, pt e en; (c) o comando `nano portao-varredura-vazia.md`; (d) a transição `/* ... */` e `//gus@glyfesse`; (e) `//by: gus@glyfesse`. Há um erro de digitação de mão na desculpa em pt (`jaa`), e em en uma falta de apóstrofo (`dont`). Ambos saem sem custo se o líder preferir linha limpa.
 5. **Traduções EN são de agente.** Vão junto da pt. Inclui a frase do líder em inglês (a pt original está na tabela de fatos, item 11) e as duas citações de sessão (itens 5, 8 e 20). Os nomes de saída de terminal (`OK -- ...`) estão em inglês como tradução da linha impressa pelo portão.
 6. **Parecer do `revisor-textual`:** pendente (fase 3 do brief §3.1). Este rascunho não passou por ele.
@@ -246,7 +246,7 @@ Raiz do bus usada nas fontes: `BUS` = `/home/petrus/IDrive/Documentos/projetos_c
 | 14 | Exceção recusada, recomendada por dois agentes técnicos; a razão está na opção escolhida | `GODS_LAWS.md:105`; `0530:30` | FATO (atribuição à opção, não ao root) |
 | 15 | "a auditoria que a lei obrigou" | `0530:32` | FATO |
 | 16 | 45 itens dados como concluídos, verificados um a um | `0530:34` | FATO |
-| 17 | 19 reabertos; "caiu de 45 para 25 concluídos" | `0530:36` | FATO; o 25 está na pendência 1 |
+| 17 | 19 reabertos; a fonte traz "caiu de 45 para 25 concluídos", número que o texto publicado não usa | `0530:36` | FATO; contradição registrada na pendência 1 |
 | 18 | Três achados: camada de plataforma, compilador da Microsoft em modo de entrega final, onze portões que nunca rodaram no Windows | `0530:40-42` | FATO |
 | 19 | Dois portões consertados e provados nos cinco sistemas | `0530:44` | FATO |
 | 20 | "uma verificação que parecia estar funcionando e não estava olhando nada" (quatro de cinco itens) | `0530:58-60` | FATO, citação de sessão de 03/09 |
