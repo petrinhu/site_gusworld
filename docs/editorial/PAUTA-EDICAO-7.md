@@ -1,4 +1,4 @@
-# Pauta da Edição #7 da Glyfesse (mapa de edição, PROPOSTA, revisão 3)
+# Pauta da Edição #7 da Glyfesse (mapa de edição, PROPOSTA, revisão 4)
 
 > Artefato de saída do estágio **E1** do `PIPELINE-EDICAO.md` (§3). **Nada aqui está decidido além do que a §16
 > registra como decisão do líder.** O documento PROPÕE; toda decisão é do líder, no GATE-PAUTA, e a recomendação
@@ -8,6 +8,7 @@
 > abriu a edição e entregou as respostas do homenageado à entrevista do Brunus. Autor do rascunho: Capitolino
 > (CPO), no passo 2 da L-16 global. **Revisão 2 (03/11/2026):** refeita depois da rodada 1 do GATE-PAUTA (D1, D2,
 > D4 e D6, §16). A D1 escolhida pelo líder fez da refundação a Reportagem de capa inteira, e o mapa mudou.
+> **Revisão 4 (03/11/2026):** registra a rodada 3 (D5, D8, D9 e D10, §16) e ajusta a Seção 16 e as ondas.
 > **Revisão 3 (03/11/2026):** registra a rodada 2 (D3, D7, D13 e D18, §16) e as datas de nascimento dos cinco
 > arquivos de lei, conferidas pelo main no git (§3.1).
 > **Nenhuma fala nem pensamento de personagem foi escrito aqui** (L-08 e L-25 do site): onde uma seção depende da
@@ -149,7 +150,7 @@ auditoria (D18, nova).
 | 6 | Galeria de Bugs | **CHEIA** (M) | **O baú que abre duas vezes:** o buraco na coleta achado pelo Gus Dragon em 22/08 dentro do catálogo que ele mesmo instituiu. Registro técnico (precedente PQ7 da #6). Crédito duplo. GATE-SPOILER | `archive/20260822-0912-...catalogo-de-bugs.md`, `archive/20260822-0925-...buraco-na-coleta.md`; `TODO.md:196-197` |
 | 7 | Cemitério das Ideias Mortas | **CHEIA** (M) | **Duas lápides (D13 [LÍDER]):** os repositórios antigos (21/08), que pagam o epitáfio da #6, e a ordem que o líder nunca deu (03/09), curta. A pedra conta data e epitáfio; o porquê é da Reportagem. Os dois epitáfios são do líder | `BRIEFS-EDICAO-6.md:895`; `archive/20260903-0530-...:46-50` |
 | 8 | Detonado | vazio com graça | Nada roda; não existe código de jogo ainda (03/09). Copy ao GATE-COPY | Ledger, linha 159 |
-| 9 | Errata + Cartas | **Cartas: CHEIA** (M); Errata: vazio | **A carta do Gus Dragon:** a ideia aprovada em 21/08, o adendo de batalha de 22/08 e as duas respostas dele de 03/09. Formato e crédito: D5. GATE-SPOILER. Errata só vira cheia se a prova da #6 em produção achar erro real | `archive/20260822-0840-...glitch-em-batalha.md`; ledger, linhas 129, 147, 155; `TODO.md:194` |
+| 9 | Errata + Cartas | **Cartas: CHEIA** (M); Errata: vazio | **A carta do Gus Dragon:** a ideia aprovada em 21/08, o adendo de batalha de 22/08 e as duas respostas dele de 03/09. **D5 [LÍDER]: pedido e crédito juntos** (o pedido dele palavra por palavra no papel pautado em CSS, crédito seco nos dois papéis, e a fala do Gus personagem contando o destino, rascunho ao líder pela L-08). GATE-SPOILER. Errata só vira cheia se a prova da #6 em produção achar erro real | `archive/20260822-0840-...glitch-em-batalha.md`; ledger, linhas 129, 147, 155; `TODO.md:194` |
 | 10 | Classificados in-world | vazio com graça | Reusar idêntico (#1) | #1 |
 | 11 | HQ | a decidir (D11) | Se houver tirinha nova do artista, entra como na #6; se não, vazio com graça (pool rotativo). Nenhum agente roteiriza ou propõe quadros | `BRIEFS-EDICAO-6.md`, §4.7 |
 | 12 | Próximos Lançamentos | vazio com graça | A linha de sempre do root; nada de prazo (03/09) | #1; ledger, linha 159 |
@@ -362,15 +363,15 @@ perguntas 7, 9, 14 e 15 (a colagem traz a versão anterior ao ajuste de 08/10/20
 |---|---|---|---|
 | 1 | `git mv docs/content/edicao-6-entrevista-perguntas.md` para um nome da #7 (proposta: `edicao-7-entrevista-brunus-perguntas.md`, no molde do Yakov) e atualizar título e bloco de status (linhas 1 a 7) | especialista (`technical-writer`), commit do main | O texto das perguntas não muda |
 | 2 | Trocar o cabeçalho `## O texto (pt-br): só as perguntas` (linha 23) por `## pt-BR`, o dialeto da #6 em diante | mesmo | `edicao-6-copies-curtas.md:495` já avisava |
-| 3 | Criar `docs/content/edicao-7-entrevista-brunus-respostas.md` no molde de `edicao-6-entrevista-yakov-respostas.md`: número de 1 a 18, prefixo `brunus@glyfesse:~/entrevista$` (`BRIEFS-EDICAO-6.md:671`), pt verbatim da colagem | especialista | A única normalização com precedente é tirar espaço em branco no fim de linha (`yakov-respostas.md:134`). Resposta 18: D8 |
-| 4 | Tradução EN das 18 respostas | `ux-writer` | Vai ao gate do líder (PQ12); sem travessão (R3); erros de digitação: D9 |
+| 3 | Criar `docs/content/edicao-7-entrevista-brunus-respostas.md` no molde de `edicao-6-entrevista-yakov-respostas.md`: número de 1 a 18, prefixo `brunus@glyfesse:~/entrevista$` (`BRIEFS-EDICAO-6.md:671`), pt verbatim da colagem | especialista | A única normalização com precedente é tirar espaço em branco no fim de linha (`yakov-respostas.md:134`). **Resposta 18 (D8 [LÍDER]): três falas seguidas**, cada linha com o prefixo do Brunus, em linhas consecutivas e **sem linha em branco entre elas** (`montagem.php:119-127` reprova se houver) |
+| 4 | Tradução EN das 18 respostas | `ux-writer` | Vai ao gate do líder (PQ12); sem travessão (R3). **D9 [LÍDER]: imitar os erros em inglês.** O tradutor reproduz no inglês erros de digitação equivalentes, nos mesmos lugares e em quantidade parecida com os do pt, e entrega junto da tradução a **lista dos erros** (cada erro do pt ao lado do erro escolhido no inglês), para o líder aprovar com a tradução. A resposta 18 em inglês também sai em três linhas |
 | 5 | Receita `docs/content/receitas/edicao-7.php`, Seção 16 tipo `entrevista`, parte das respostas com `'verbatim' => true` | `frontend-engineer` | Precedente `receitas/edicao-6.php:71-85` |
 | 6 | Expediente: "As respostas do Brunus" | `ux-writer`, GATE-COPY | `sec-19.php:25` |
 | 7 | `ROTEIRO-ENTREVISTAS.md`: linha 63 diz "#6" e "respostas pendentes"; a tabela "O que já saiu" para na #2 | especialista | Atualizar fato, não declarar nada morto |
 | 8 | Ledger `HISTORICO_GUS_ECOSSISTEMA`, linha 162 ("As perguntas ao Brunus seguem DISPONÍVEIS") | main (memória) | Ao consumir |
 
 **GATE-SPOILER** corre formalmente, mesmo com 3, 9 e 14 decididas: o `compliance-legal` instrui, o líder decide. A
-resposta 13 não estava entre as três (D10).
+resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
 
 ---
 
@@ -430,7 +431,8 @@ resposta 13 não estava entre as três (D10).
    (`scripts/conversor/parser.php:202-203`): as três viram uma fala só. Separadas por linha em branco, a segunda
    **não é aceita** (`parser.php:204-205`). Com o prefixo em cada linha, em linhas seguidas, viram três falas na
    mesma troca (`parser.php:196-198`; `montagem.php:142`); com prefixo e linha em branco, a montagem reprova
-   (`montagem.php:119-127`). Mudar o dialeto é código novo, com teste primeiro (L-13 do site). D8.
+   (`montagem.php:119-127`). Mudar o dialeto é código novo, com teste primeiro (L-13 do site). **Resolvido pela D8
+   [LÍDER] (três falas seguidas):** zero código novo; o risco que sobra é alguém pôr linha em branco entre as três.
 2. **[FONTE] Resposta 6 e o espaço no fim.** O briefing diz que a resposta 6 (uma palavra e um ponto) vem com espaço
    no fim; na colagem em disco a busca não achou o espaço na linha 36. `voz.php:21` corta o espaço do fim de qualquer
    jeito, e o precedente do Yakov só removeu espaço de fim de linha (`yakov-respostas.md:134`). Risco baixo.
@@ -502,23 +504,27 @@ resposta 13 não estava entre as três (D10).
 | **D13** | O Cemitério tem as duas lápides? | **"As duas (Recomendado)"** |
 | **D18** | A auditoria de 02 e 03/09 vira a segunda metade da Programação? | Texto livre: **"opcao 1. E acho que foi aí que foram criadas as gods_laws também"** (opção 1 = sim; a segunda frase é lembrança dele, conferida contra o git na §3.1 e no risco 19) |
 
+### 12.1c Decididas na rodada 3 (03/11/2026, entre 10:55 e 11:37; verbatim na §16)
+
+| # | Pergunta | Escolha do líder |
+|---|---|---|
+| **D8** | A resposta 18 sai como três falas seguidas? | **"Três falas seguidas (Recomendado)"** |
+| **D9** | Os erros de digitação das respostas ficam de fora da tradução? | **"Imitar os erros em inglês"**: o tradutor reproduz no inglês erros de digitação equivalentes, nos mesmos lugares e em quantidade parecida, e a lista entra no relatório da tradução para o líder aprovar |
+| **D10** | A resposta 13 sai como está no GATE-SPOILER? | **"Sai como está (Recomendado)"** |
+| **D5** | Nas Cartas, pedido verbatim e crédito nos dois papéis juntos? | **"Pedido e crédito juntos (Recomendado)"** |
+
 ### 12.2 Abertas (recomendada primeiro; uma pergunta por vez, L-03)
 
 | # | Pergunta de uma frase | Opções (recomendada primeiro) |
 |---|---|---|
-| **D5** | **Nas Cartas, a carta do Gus Dragon sai com o pedido dele palavra por palavra, creditado nos dois papéis, e a fala do Gus personagem contando o destino?** | **(a) Os dois juntos: pedido verbatim, crédito seco nos dois papéis, fala do personagem sobre o destino, papel pautado em CSS.** (b) Só o molde "Gus no Bus", na voz do personagem, sem crédito nominal. (c) Só o crédito seco, sem papel pautado |
 | **D12** (reformulada) | **A capa é arte em CSS de um terminal com o histórico do repositório recomeçado, um commit só, sob a manchete "Apagar Tudo"?** | **(a) Sim, o histórico de um commit** (conversa com o título: o que sobrou depois de apagar tudo). (b) A saída do portão de 21/08 (combina com o tema, não com a Reportagem). (c) `frame` nulo. (d) Arte do senhor |
-| **D8** | **A resposta 18, que tem três linhas, sai com o prefixo do Brunus em cada linha, como três falas seguidas?** | **(a) Sim, três falas na mesma troca, em linhas seguidas, sem linha em branco entre elas** (zero código novo; com linha em branco a montagem reprova). (b) Uma fala só, as linhas juntas por espaço (a quebra some). (c) Mudar o conversor para aceitar quebra dentro da fala (código novo com teste) |
-| **D9** | **Na tradução para o inglês, os erros de digitação das respostas ficam de fora, traduzindo só o sentido?** | **(a) Sim, só o sentido; o Expediente já declara que a tradução é de agente aprovada pelo editor.** (b) Reproduzir erros equivalentes em inglês (não recomendo: põe na mão dele um erro que ele não fez) |
-| **D10** | **No GATE-SPOILER, a resposta 13 sai como está, como as 3, 9 e 14?** | **(a) Sim.** (b) O senhor quer ver o parecer antes |
 | **D11** | **Há tirinha nova do artista para a #7?** | **(a) Se o senhor tiver, entra como na #6; se não, a HQ fica em vazio com graça.** (b) Encomendar ao mesmo artista |
 | **D14** | **A #7 sai sem brinquedo?** | **(a) Sim.** (b) Um brinquedo, a escolher |
 | **D15** | **O defeito do terminal em 390 pontos é consertado antes do render da Programação da #7?** | **(a) Sim, na onda 4, antes do render.** (b) Segue anotado para depois |
 | **D16** | **O portão de travessão que varreu zero arquivos é consertado antes dos commits de conteúdo da #7?** | **(a) Sim, na onda 0** (L-36 global). (b) Depois da #7 |
 | **D17** | **A moldura `ENTREVISTA-PENDENTE` do Brunus que ficou na fonte da #6 fica como está?** (`edicao-6-copies-curtas.md:281-406`, fora da receita) | **(a) Fica como está** (fonte de edição publicada; não a declaro morta). (b) O senhor a declara revogada e ela sai do arquivo |
 
-**Ordem sugerida das próximas rodadas:** rodada 3, capa e Seção 16: D12, D5, D8, D9. Rodada 4: D10, D11, D14, D15.
-Rodada 5: D16, D17.
+**Ordem sugerida das próximas rodadas:** rodada 4: D12, D11, D14, D15. Rodada 5: D16, D17.
 
 ---
 
@@ -536,9 +542,13 @@ Rodada 5: D16, D17.
   da §3.1; o dek entra aqui, para o GATE-COPY.
 - **Onda 2, rascunhos (S2).** `narrative-writer`: Reportagem e Editorial. `technical-writer`: Programação (tamanho L,
   as duas metades), Cemitério (duas lápides; os epitáfios ficam em branco para o líder), Galeria, caixa do
-  determinismo e bus. `ux-writer`: Cartas e a tradução EN das respostas. **Do lado do
-  Brunus nenhum agente escreve nada.** Três agentes vivos.
-- **Onda 3, edição, copyedit, parecer e spoiler.** `revisor-textual` (restrito na Entrevista; na Reportagem, confere
+  determinismo e bus. `ux-writer`: Cartas (D5: pedido verbatim, crédito duplo, fala do personagem) e a tradução EN
+  das respostas. **Brief da tradução (D9):** traduzir as 18 respostas e reproduzir no inglês erros de digitação
+  equivalentes aos do pt, nos mesmos lugares e em quantidade parecida; entregar junto a lista erro a erro (pt ao lado
+  do inglês) para o líder aprovar com a tradução; resposta 18 em três linhas, como no pt (D8); sem travessão (R3).
+  **Do lado do Brunus nenhum agente escreve nada em pt.** Três agentes vivos.
+- **Onda 3, edição, copyedit, parecer e spoiler.** `revisor-textual` (restrito na Entrevista: não corrige os erros
+  de digitação do pt nem os do inglês, que são decisão do líder, D9; na Reportagem, confere
   frase a frase contra a #6, risco 8); **`compliance-legal` dá parecer sobre a Reportagem** (risco 7) e instrui o de
   spoiler (Galeria, Cartas, caixa, Entrevista); o líder decide.
 - **Onda 4, arte e render.** `frontend-engineer` (os 34 partials, a receita da #7 com `verbatim` nas respostas, e o
@@ -551,7 +561,7 @@ Rodada 5: D16, D17.
   três peças dele (Galeria, Cartas e a caixa).
 
 **Porte estrutural (L-08 global):** 19 seções, 8 peças com escrita nova mais 1 caixa própria, 1 entrevista com
-tradução, 7 vazios com copy ao gate, 10 decisões abertas (8 fechadas), 2 epitáfios do líder, 1 parecer jurídico novo, cerca de 34 partials, 1
+tradução, 7 vazios com copy ao gate, 6 decisões abertas (12 fechadas), 2 epitáfios do líder, 1 parecer jurídico novo, cerca de 34 partials, 1
 receita, 10 a 11 arquivos de fonte em `docs/content/`, 1 ficha, 2 cards sociais e 1 a 2 peças de arte em CSS.
 
 ---
@@ -633,3 +643,11 @@ delas vire argumento da capa (risco 17).
     Opção 1 = a auditoria de 02 e 03/09 vira a segunda metade da Programação. **A segunda frase é lembrança dele, não
     decisão**, e o git a contradiz: as leis nasceram de 21 a 29/08, antes da auditoria (datas conferidas pelo main,
     §3.1). O main informa o líder das datas; nenhuma peça diz que as leis nasceram na auditoria.
+- **GATE-PAUTA, rodada 3** (03/11/2026, entre 10:55 e 11:37, por AskUserQuestion, verbatim):
+  - **D8:** **"Três falas seguidas (Recomendado)"**. A resposta 18 sai com o prefixo do Brunus em cada uma das três
+    linhas, consecutivas.
+  - **D9:** **"Imitar os erros em inglês"**. O tradutor reproduz no inglês erros de digitação equivalentes, nos mesmos
+    lugares e em quantidade parecida, e a lista entra no relatório da tradução para o líder aprovar.
+  - **D10:** **"Sai como está (Recomendado)"**. A resposta 13 sai como está.
+  - **D5:** **"Pedido e crédito juntos (Recomendado)"**. Nas Cartas, o pedido do Gus Dragon palavra por palavra no
+    papel pautado, crédito seco nos dois papéis e a fala do Gus personagem sobre o destino.
