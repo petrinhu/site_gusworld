@@ -1,6 +1,6 @@
 # Edição #7 · Seção 11 · HQ: a tela que diz tudo certo
 
-> RASCUNHO v1, submeter ao líder. Roteiro de três quadros, decisão D19 (opção a, "A tela que diz tudo certo") e D11 ("nao tenho, crie algo"), `docs/editorial/PAUTA-EDICAO-7.md` §16 rodada 5 e §8.1 (H1).
+> APROVADO pelo líder em 03/11/2026: versão A ("Versão A (Recomendado)"). Roteiro de três quadros, decisão D19 (opção a, "A tela que diz tudo certo") e D11 ("nao tenho, crie algo"), `docs/editorial/PAUTA-EDICAO-7.md` §16 rodada 5 e §8.1 (H1).
 > Estrutura de tela, não arte: a arte é só CSS sobre o componente de terminal existente (`public_html/assets/css/edicao.css:1717-1776`). Nenhuma imagem, nenhum desenho, nenhuma personagem em cena.
 > Texto de tela em ASCII, sem acento (regra tela×papel, `PIPELINE-EDICAO.md` §4, S4). `_` nos quadros marca o cursor piscante (`.crt-cur`), não é texto.
 > Este arquivo não é insumo do conversor: a HQ é partial à mão, como as da #1 e da #3 (ver as Notas).
@@ -105,7 +105,7 @@ Este bloco é interno e nunca é lido pelo conversor. Nada aqui vai ao ar.
 
 ### 4. Riscos
 
-- **R1, T2 (o alvo é a conferência da sessão).** Lido de fora, o "tudo certo" depois de "lista: nao encontrada" pode parecer gracejo com a sessão de IA, cujo portão é o da Programação. A tela não tem adjetivo nem voz da revista, mas a leitura existe. A variante B é mais contida (ver item 7). Para o GATE-CONTEUDO decidir.
+- **R1, T2 (o alvo é a conferência da sessão).** Lido de fora, o "tudo certo" depois de "lista: nao encontrada" pode parecer gracejo com a sessão de IA, cujo portão é o da Programação. A tela não tem adjetivo nem voz da revista, mas a leitura existe. Risco registrado; o líder aprovou a versão A (ver item 7).
 - **R2, repetição com a Programação.** A HQ e a Programação tratam da mesma ideia (conferir o que não está ali e dizer que está tudo certo). A HQ não repete a tabela nem a saída publicada da Programação (`edicao-7-programacao.md:36-40` e `:54-58`), não usa a frase da sessão (`:48`) e não explica nada (`PAUTA-EDICAO-7.md` §5.1, linha 287). Se o líder achar que a ideia ainda repete a Programação, a alternativa é trocar o alvo, e o roteiro muda só a palavra "lista".
 - **R3, conversor.** Premissa, não medida: o conversor não lê este arquivo. Não há prompt com persona no roteiro, então não há erro de "prompt fora do padrão" (`docs/content/DIALETO.md:47-51`). As linhas de tela sem prompt dentro de bloco cercado não foram testadas pelo conversor.
 - **R4, data.** Nenhuma data aparece na tela nem nas legendas. Nada posterior a 03/09/2026 (T1, `BRIEFS-EDICAO-7.md:56-62`).
@@ -133,34 +133,18 @@ Este bloco é interno e nunca é lido pelo conversor. Nada aqui vai ao ar.
 | Largura de 390 px cabe nos três quadros empilhados | não medido (sem render) | NÃO VERIFICADO, para o `qa-engineer` |
 | Conversor não processa este arquivo | não rodado (sem Bash) | NÃO VERIFICADO |
 
-### 6. Variante B (para o líder comparar)
+### 6. Escolha do líder
 
-Mesmo quadro 1 e mesma economia. Muda o mecanismo da pista: a ausência vira um campo vazio, sem nenhuma palavra que a declare. A tela nunca diz que falhou.
+Houve uma variante B (ausência por campo vazio, sem palavra de falha), não escolhida pelo líder; o texto foi removido deste arquivo.
 
-**B, pt-BR**
+### 7. Decisões do líder (03/11/2026)
 
-```
-Quadro 1: conferencia automatica / _   (legenda: ligada.)
-Quadro 2: conferencia automatica / lista: / _   (legenda: lista.)
-Quadro 3: conferencia automatica / lista: / resultado: tudo certo / _   (legenda: lista.)
-```
+1. **Quadros:** versão A, escolhida por AskUserQuestion (resposta verbatim: "Versão A (Recomendado)").
+2. **Prompt:** sem usuário e sem prompt, como no rascunho.
+3. **Legenda "lendo." no quadro 3:** repetida, como no rascunho.
+4. **Legenda do conjunto:** nenhuma, como no rascunho.
 
-**B, EN**
-
-```
-Panel 1: automatic check / _   (caption: on.)
-Panel 2: automatic check / list: / _   (caption: list.)
-Panel 3: automatic check / list: / result: all clear / _   (caption: list.)
-```
-
-Comparação. **A** é legível de imediato (a palavra "nao encontrada" faz a pista), mas é a mais explícita e a que mais se aproxima de piada sobre a sessão (R1). **B** é a mais contida: a tela não aponta o erro com palavra, e o leitor tem de notar o campo vazio, o que é uma pista mais fraca para leigo. Recomendação do narrative-designer: **A** para o leitor leigo, **B** se o GATE-CONTEUDO achar que A aponta a sessão. Decisão do líder.
-
-### 7. Perguntas ao líder (GATE-CONTEUDO)
-
-1. **Quadros: A ou B?** (A: "lista: nao encontrada", legível. B: campo vazio, mais contido. Ver item 6.)
-2. **Prompt:** sem usuário e sem prompt (proposta desta versão), ou rótulo de programa (sem nome de pessoa)?
-3. **Legenda "lendo." no quadro 3:** aceita a repetição de propósito, ou prefere "lendo." só nos quadros 2 e 3 com outra palavra no 3?
-4. **Legenda do conjunto:** nenhuma (proposta, molde da #3), ou uma neutra ("uma tela, tres quadros")?
+As perguntas 2 a 4 ficaram como estavam no rascunho, porque foi assim que o líder aprovou.
 
 ### 8. Fontes usadas (arquivo:linha)
 
