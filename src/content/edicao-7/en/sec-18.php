@@ -7,7 +7,7 @@
    Lines of the bus and of the screen are in ASCII without accents (it is a screen, D-ACENTOS); "povvo" is the lead's
    spelling and is not corrected. Only existing classes (.bus-crt, .bus-larga, .cmd, .cx, .cab, .msg, .conta, .corpo).
    Each screen is a .crt-scr inside its figure; Gus's speech and thoughts stay OUTSIDE the screens, as real <p>.
-   No role="img" and no aria-label: the screen text is the content, and no new accessibility text was written.
+   Each screen has role="img" and an aria-label that only describe what it shows, using words from the approved text; no figcaption.
    The source's production notes NEVER enter here. */
 ?>
 <p class="fala"><span class="prompt">gus@glyfesse:~/bus$</span> <span class="dito">hmmm, something here, finally...</span></p>
@@ -16,7 +16,7 @@
 <p>The box holds fifteen items. The list shows all of them, oldest to newest, with sender, subject and date.</p>
 
 <figure class="bus-crt bus-larga">
-  <div class="crt-scr">
+  <div class="crt-scr" role="img" aria-label="Terminal screen with the command bus --inbox and the list of 15 received messages, from 08/21 to 09/03, with sender, subject and date. The counter says 15 received.">
     <div class="crt-tela">
       <p class="cmd"><span class="pr">gus@glyfesse:~/bus$</span> bus --inbox</p>
 
@@ -46,7 +46,7 @@
 <p>He doesn't read from top to bottom. He goes to the request, which sits in the middle of the list. The request is from Gus Dragon, playtester, Adversarial Design Reviewer. Below, the body, condensed:</p>
 
 <figure class="bus-crt bus-larga">
-  <div class="crt-scr">
+  <div class="crt-scr" role="img" aria-label="Terminal screen with the body of the gusworld message from 08/22: the request from Gus Dragon to be told without having to ask (issue 8).">
     <div class="crt-tela">
       <div class="corpo">from: gusworld
 to: site
@@ -75,7 +75,7 @@ We set the limit: a session is not a running service. Proactive notice only goes
 <p>Then the one about the wait. The body, condensed:</p>
 
 <figure class="bus-crt bus-larga">
-  <div class="crt-scr">
+  <div class="crt-scr" role="img" aria-label="Terminal screen with the body of the gusworld message from 08/24, about Gus Dragon waiting for a reply on issue 8.">
     <div class="crt-tela">
       <div class="corpo">from: gusworld
 to: site

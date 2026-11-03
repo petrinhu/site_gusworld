@@ -6,7 +6,7 @@
    Falas, pensamentos e mensagens do bus em ASCII sem acento (é tela, D-ACENTOS); `povvo` é grafia do líder, não se corrige.
    Classes todas existentes (.bus-crt, .bus-larga, .cmd, .cx, .cab, .msg, .conta, .corpo); nenhuma classe nova.
    Cada tela é um .crt-scr irmão dentro da sua figura; a fala e o pensamento do Gus ficam FORA das telas, como <p> reais.
-   Sem role="img" e sem aria-label: o texto da tela já é o conteúdo, e nenhum texto de acessibilidade novo foi escrito.
+   Cada tela leva role="img" e aria-label que só descrevem o que ela mostra, com palavras do texto aprovado; sem figcaption.
    Notas de produção do fonte NUNCA entram aqui. */
 ?>
 <p class="fala"><span class="prompt">gus@glyfesse:~/bus$</span> <span class="dito">hmmm, algo aqui, finalmente...</span></p>
@@ -15,7 +15,7 @@
 <p>A caixa tem quinze itens. A lista mostra todos, do mais antigo ao mais novo, com remetente, assunto e data.</p>
 
 <figure class="bus-crt bus-larga">
-  <div class="crt-scr">
+  <div class="crt-scr" role="img" aria-label="Tela de terminal com o comando bus --inbox e a listagem de 15 mensagens recebidas, de 21/08 a 03/09, com remetente, assunto e data. O contador diz 15 recebidas.">
     <div class="crt-tela">
       <p class="cmd"><span class="pr">gus@glyfesse:~/bus$</span> bus --inbox</p>
 
@@ -45,7 +45,7 @@
 <p>Ele não lê de cima para baixo. Vai ao pedido, que está no meio da lista. O pedido é do Gus Dragon, playtester, Revisor Adversarial de Design. Abaixo, o corpo, condensado:</p>
 
 <figure class="bus-crt bus-larga">
-  <div class="crt-scr">
+  <div class="crt-scr" role="img" aria-label="Tela de terminal com o corpo da mensagem do gusworld de 22/08: o pedido do Gus Dragon para ser avisado sem precisar perguntar (issue 8).">
     <div class="crt-tela">
       <div class="corpo">de: gusworld
 para: site
@@ -74,7 +74,7 @@ Declaramos o limite: sessao nao e servico rodando. Aviso proativo so sai enquant
 <p>Depois, a linha da espera. O corpo, condensado:</p>
 
 <figure class="bus-crt bus-larga">
-  <div class="crt-scr">
+  <div class="crt-scr" role="img" aria-label="Tela de terminal com o corpo da mensagem do gusworld de 24/08, sobre a espera do Gus Dragon pela resposta na issue 8.">
     <div class="crt-tela">
       <div class="corpo">de: gusworld
 para: site
