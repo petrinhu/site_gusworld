@@ -118,7 +118,7 @@ gus@glyfesse:~$ # i dont check the green, it already said everything is fine
 gus@glyfesse:~$ # ...fine, it never broke because it never looked at anything
 ```
 
-/* Dear reader, from here on is the technical part: the gate, the count it should have made, and what the count showed */
+/* Dear reader, from here on, this is the technical part: the gate, the count it should have made, and what the count showed */
 //gus@glyfesse
 
 ```
@@ -127,7 +127,7 @@ gus@glyfesse:~/programacao$ nano portao-varredura-vazia.md
 
 ### An "all clear" with no files at all
 
-The dependency gate (the one that checks which third-party code the project uses) was written with a list rule: only what is on the allowed list passes, and everything else is flagged. It passed the two self-tests (tests that check that the gate itself works) the project required. The first plants a violation and proves it is flagged. The second proves that a clean input comes out without error. There were 35 cases and no failures.
+The dependency gate (the one that checks which third-party code the project uses) was written with a list rule: only what is on the allowed list passes, and everything else is flagged. It passed the two required self-tests (tests that check that the gate itself works). The first plants a violation and proves it is flagged. The second proves that a clean input comes out without error. There were 35 cases and no failures.
 
 Then the session built a test repository with four obvious forbidden links (uses of outside code that the rule forbids) and ran the gate against it, with the files still outside version control (the record that keeps every change to the code). The output was this:
 
@@ -138,9 +138,9 @@ OK -- no link outside the allowed list.
 exit: 0
 ```
 
-After the files entered version control, the same gate flagged the four links and exited with an error. The record says: "Detection works. The hole is elsewhere."
+After the files entered version control, the same gate flagged the four links and exited with an error. (Quotes in this section are translated from the Portuguese original.) The record says: "Detection works. The hole is elsewhere."
 
-The gate asked version control which files existed. If the answer came back empty, because of a wrong path, a repository in a strange state, or a command that failed without warning, the gate scanned nothing, found nothing, and concluded that all was fine.
+The gate asked version control which files existed. If the answer came back empty, because of a wrong path, a repository in a strange state, or a command that failed without warning, the gate scanned nothing, found nothing, and concluded that all was clear.
 
 In the record of August 21, the GlintFX session summed up the defect in one sentence:
 
@@ -162,21 +162,21 @@ BRINQUEDO-PORTAO-DE-BOLSO
 
 ### The third control: an empty scan is not a success
 
-The fix has three parts. First: an empty scan is not a success. Zero files listed, or an implausibly low number, ends with an error or shouts in an unmistakable way, and never prints the all-clear line. Second, a third self-test, which proves that with an empty scan the gate does not say all is fine. Without it the fix is not proven, by the same logic that makes the positive control mandatory. Third: measure whether the lock before the commit (a record of a change to the code) is covered, and write into the file itself any case the gate cannot see. The record is direct: "A declared limit is acceptable; a silent limit is not."
+The fix has three parts. First: an empty scan is not a success. Zero files listed, or an implausibly low number, ends with an error or shouts in an unmistakable way, and never prints the all-clear line. Second, a third self-test, which proves that with an empty scan the gate does not say all is fine. Without it the fix is not proven, by the same logic that makes the positive control mandatory. Third: measure whether the pre-commit check (the automatic check that runs before each commit, a record of a change to the code) is covered, and write into the file itself any case the gate cannot see. The record is direct: "A declared limit is acceptable; a silent limit is not."
 
 In the same record, the lesson fits in one sentence:
 
-> "A gate that passed its own tests is not verified: its tests cover only the cases that whoever wrote it imagined."
+> "A gate that passed its own tests is not verified: its tests cover the cases that whoever wrote it imagined."
 
 What caught the defect was running the gate against an input nobody had foreseen: a repository where there was nothing to find.
 
 ### The parity rule, from September 2
 
-On September 2, 2026, root set a rule: "The behavior must be the same on any OS for every wave and slice delivered" (OS is the operating system; waves and slices are blocks of work delivered at once). The scope came the same day: the same, and proven, on each system where the slice exists.
+On September 2, 2026, root set a rule: "The behavior must be the same on any OS for every wave and slice delivered" (OS is the operating system; waves and slices are blocks of work delivered at once). The scope came the same day: identical and proven on every system where the slice exists.
 
 Before that, the project delivered first on Linux and left Windows for last, and each delivery was still declared finished. Under the new rule, the Linux delivery and the Windows delivery stopped being two tasks at different times and became a single delivery.
 
-The parity rule is a new paragraph in the GlintFX law about operating systems, in the laws file, which has existed since August 21. The rule required the audit that followed.
+The parity rule is a new passage in the GlintFX law about operating systems, in the laws file, which has existed since August 21. The rule required the audit that followed.
 
 Root refused an exception that two technical agents (AI sessions acting as technicians) had recommended: the piece that finds keyboard and mouse has no public face (nothing that the people using the program see), and they proposed that, for that reason, it could close on its own. According to the record, the option chosen was one uniform rule, with no case-by-case judgment, because judgment is where mistakes happen.
 

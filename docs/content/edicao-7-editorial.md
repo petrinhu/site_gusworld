@@ -1,8 +1,8 @@
 # Edição #7 · Seção 3 · Editorial (Carta do Gus)
 
-> **RASCUNHO v1, submeter ao líder.** Escrito pelo `narrative-writer` a partir do brief §4.8 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 455 a 467), com as peças aprovadas da #7 lidas antes (Notas, item 2).
+> **APROVADO pelo líder em 03/11/2026 ("Aprovo com o parágrafo 3"); o en segue ao líder junto com as outras traduções.** Escrito pelo `narrative-writer` a partir do brief §4.8 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 455 a 467), com as peças aprovadas da #7 lidas antes (Notas, item 2).
 > Voz: Gus, personagem, registro "de dentro" (T8 e L-25): sem palavra de produção, e o mundo é real para quem está nele. Porte S.
-> **Toda fala e todo `//` do Gus são rascunho ao líder (T7, L-08).** Nenhum está aprovado. A tradução EN também segue ao líder.
+> **Toda fala e todo `//` do Gus foram submetidos ao líder (T7, L-08) e aprovados com a pt em 03/11/2026.** A tradução EN segue ao líder junto com as outras traduções.
 > Formato: `docs/content/DIALETO.md`. O partial sai do `.md`, nunca se corrige à mão.
 
 ---
@@ -55,14 +55,14 @@ The answers run the way he sent them, without a word changed and without my hurr
 
 ## Notas de produção (internas, não publicar)
 
-### 1. Decisões para o líder (a pergunta vai no relatório, nada decidido aqui)
+### 1. Decisões fechadas (líder e main, 03/11/2026)
 
-- **Nome do personagem.** A carta diz "Brunus Vetorial", o nome do personagem, já público no título da Entrevista (`docs/content/edicao-7-entrevista-brunus-respostas.md:1`). O nome da pessoa real não aparece em lugar nenhum desta peça. Confirmar se o T9 aceita o nome do personagem ou se a carta deve dizer só "o Brunus". Minha leitura: aceitável (INFERÊNCIA).
-- **Erro de digitação deliberado: zero.** O molde publicado da #6 não tem nenhum no Editorial, e a dose de erro é da fala curta (`docs/content/DIALETO.md`, e a memória `voz_prompt_shell`, regra de dose). Se o líder quiser um, sugiro um só, no pensamento 2 (`estou` com troca de letra), e ele decide.
-- **Variante do parágrafo central (ver item 6).** A versão A é o texto acima. A variante B é mais curta e está no item 6, para comparação.
-- **Gancho do último pensamento.** "tem uma conta que eu ainda não mostrei, fica pra próxima" é genérico de propósito. Não aponta o achado de 05/09 nem nenhuma peça da #8 (PAUTA §5.3, linhas 298 a 306; T1). Se o líder quiser gancho específico, é decisão dele.
-- **Parágrafo 3 (pergunta).** A carta tem três parágrafos (porte S aceita de 2 a 4). O terceiro é o único que fala do processo: as respostas saem sem palavra mudada (`docs/content/edicao-7-entrevista-brunus-respostas.md:139`). Mantive porque mostra a espera em ação. A revisão de pré-entrega recomendou tirá-lo do texto publicável. Pergunta ao líder: manter ou cortar. Se cortar, a carta fica com dois parágrafos, como a #5 e a #6.
-- **Forma do nome.** Usei "Brunus Vetorial". A Entrevista usa `Brunus "Vetorial" Solveckt` no título, e a #6 usou nome e sobrenome do tio Yakov. Pergunta ao líder: qual forma ele quer na carta.
+- **Parágrafo 3: mantido.** Líder, 03/11/2026, AskUserQuestion, verbatim: "Aprovo com o parágrafo 3". A carta tem três parágrafos (porte S aceita de 2 a 4).
+- **Nome do personagem: "Brunus Vetorial".** Decisão do main, 03/11/2026. O nome da pessoa real não aparece em lugar nenhum desta peça (T9).
+- **Erro de digitação deliberado: zero.** Decisão do main, 03/11/2026, seguindo o molde da #6. Nenhum erro no bloco do Gus.
+- **Parágrafo central: versão A** (a do texto acima). Decisão do main, 03/11/2026. A variante B não foi escolhida (item 6).
+- **Gancho do último pensamento: genérico**, "tem uma conta que eu ainda não mostrei, fica pra próxima". Decisão do main, 03/11/2026. Não aponta o achado de 05/09 nem peça da #8 (PAUTA §5.3; T1).
+- **Forma do nome na Entrevista e na #6.** Não se aplica à carta, que usa "Brunus Vetorial" (decisão acima).
 
 ### 2. Peças lidas antes de escrever, e o que não repeti
 
@@ -98,17 +98,9 @@ The answers run the way he sent them, without a word changed and without my hurr
 - Pensamentos: 6 em pt e 6 em EN, na mesma ordem. Todos aguardam o líder.
 - Sem erro de digitação (decisão de molde, item 1).
 
-### 6. Variante B do parágrafo central (para comparação do líder)
+### 6. Variante B do parágrafo central
 
-O parágrafo central é o do Brunus (segundo parágrafo da versão A). Variante B, pt:
-
-> Nesta edição tem uma entrevista com o Brunus Vetorial. Ele mede tudo em tempo: isso leva três dias, isso leva um inverno. Quando eu pergunto, ele devolve outra pergunta.
-
-Variante B, EN:
-
-> This issue has an interview with Brunus Vetorial. He measures everything in time: that takes three days, that takes a winter. When I ask, he answers with another question.
-
-A variante B corta o "conta nos dedos" e o "não tem pressa", que ficam na versão A.
+Existiu uma variante B do parágrafo central, não escolhida pelo líder; foi apagada do arquivo.
 
 ### 7. Fatos e inferências (L-18)
 
@@ -122,7 +114,7 @@ A variante B corta o "conta nos dedos" e o "não tem pressa", que ficam na vers�
 | 6 | Regra escrita entre as coisas recolocadas (GlintFX, GusWorld, mapeditor, site, máquina, entre 21 e 29/08) | `docs/content/edicao-7-reportagem.md:48` | FATO |
 | 7 | Ideia de que a lei veio antes da primeira linha do projeto | `docs/content/edicao-7-reportagem.md:157` | INFERÊNCIA não usada na Reportagem; não usada aqui |
 | 8 | "fingir que nao espero" já está no bus | `docs/content/edicao-7-gus-le-o-bus.md:84` | FATO; a carta não repete |
-| 9 | "sem uma palavra mudada" (as respostas, sem alteração) | `docs/content/edicao-7-entrevista-brunus-respostas.md:139` | FATO; o parágrafo 3 é pergunta ao líder (item 1) |
+| 9 | "sem uma palavra mudada" (as respostas, sem alteração) | `docs/content/edicao-7-entrevista-brunus-respostas.md:139` | FATO; parágrafo 3 aprovado pelo líder (item 1) |
 | 10 | Frase de encerramento "fica pra próxima" e a conta não mostrada | redação minha | INFERÊNCIA de redação; gancho genérico (T1, PAUTA §5.3) |
 | 11 | Tradução EN de toda a peça | redação minha | INFERÊNCIA; segue ao líder junto com as outras traduções |
 

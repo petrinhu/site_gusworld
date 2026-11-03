@@ -14,7 +14,7 @@
 
 `gus@glyfesse:~/cartas$ mandei dias antes... aprovada em 21 de agosto de 2026`
 
-`gus@glyfesse:~/cartas$ entrou no jeito de guardar os mapas... no jogo ainda nao`
+`gus@glyfesse:~/cartas$ entrou no jeito de guardar os mapas... nas cartas ainda nao`
 
 `// eu escrevi: mais como puzzle, não como arma`
 
@@ -38,9 +38,9 @@ Gus Dragon, playtester, Revisor Adversarial de Design
 
 `gus@glyfesse:~/cartas$ i sent it days before... approved on August 21, 2026`
 
-`gus@glyfesse:~/cartas$ it went into how the maps get saved... not in the game yet`
+`gus@glyfesse:~/cartas$ it went into how the maps get saved... not in the cards yet`
 
-`// i wrote it: more like a puzzle, not a weapon`
+`// i wrote: more like a puzzle, not a weapon`
 
 Request from Gus Dragon, the way he sent it. The paper stays in Portuguese:
 
@@ -64,6 +64,7 @@ Siglas: SITE = `/home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/sit
 - **C-L5 aplicado:** a afirmação sobre o estado do jogo sem fonte saiu das notas; o estado está marcado como "não verificado" (tabela, linha 7; divergência sobre a memória).
 - **Ficam com o líder:** Q0 (primeira pessoa, com a alternativa em terceira na nota), Q6 (a pensa "hoje foi esse dia") e Q8 ("jeito de guardar os mapas"). A fala inteira do Gus também segue submetida ao líder (T7, L-08).
 - **Dito em inglês:** o dito `cards` sob o caminho `cartas` permanece (inconsistência aceita pelo main, junto com Q2a).
+- **Decisão do líder em 03/11/2026, por causa da L-25 do site** (AskUserQuestion, verbatim: "Trocar por "nas cartas ainda nao" (Recomendado)"): a fala 4 em pt passa a "entrou no jeito de guardar os mapas... nas cartas ainda nao"; em en, "...not in the cards yet"; e a pensa en vira "// i wrote: more like a puzzle, not a weapon" (sem "it"). O pt da pensa, "eu escrevi", não muda.
 
 ### 1. Perguntas ao líder (recomendação primeiro; Q1 a Q5 já decididas pelo main, ver item 0)
 
