@@ -3070,3 +3070,15 @@ html.lightbox-aberto{overflow:hidden}
   .conteudo .portao-bolso .pb-pastas{flex-direction:row; flex-wrap:wrap}
   .conteudo .portao-bolso .pb-conferir{display:inline-block; width:auto}
 }
+
+/* ═══════════════════ M7a · terminal em 390 pt (D15) · so a #7 em diante ═══════════════════
+   Defeito (print do QA da #6, crop-b-pt390-prog.png): cada run com text-shadow sai no Gecko
+   (Firefox headless 159, verificado so em headless) como CAIXA verde preenchida sobre a linha,
+   e a caixa cobre a linha vizinha. Fonte: text-shadow com blur no .crt-tela (6px, linha 1736)
+   e no .pr (7px, linha 1746). Bisseccao: sem text-shadow a caixa some; zerar so o .pr nao basta
+   (o .crt-tela herdado continua); blur de 2px ja faz caixa.
+   Conserto: zerar o text-shadow SO sob .crt-v7 e devolver o brilho com drop-shadow por paragrafo,
+   que segue o alfa do glifo e nao a caixa da linha. Nenhuma regra existente muda. */
+.crt-tela.crt-v7,
+.crt-tela.crt-v7 *{text-shadow:none}
+.crt-tela.crt-v7 p{filter:drop-shadow(0 0 4px #2ad07a88)}

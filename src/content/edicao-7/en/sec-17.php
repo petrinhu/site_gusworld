@@ -9,7 +9,7 @@
 
 <?php /* the EXCUSE, in a terminal block. The voice of gus@glyfesse: the reader reads it. So it has no aria-hidden. */ ?>
 <div class="crt-scr desculpa">
-  <div class="crt-tela">
+  <div class="crt-tela crt-v7">
     <p><span class="pr">gus@glyfesse:~$</span> whoami</p>
     <p>gus</p>
     <p><span class="pr">gus@glyfesse:~$</span> <span class="dim"># the gate is old and it never broke. so it works</span></p>
@@ -23,7 +23,7 @@
 
 <?php /* crt-nano: the command being TYPED when the view is entered (CSS steps, the JS only arms it). Decorative (the text already says it all) -> aria-hidden. */ ?>
 <div class="crt-scr crt-nano" aria-hidden="true">
-  <div class="crt-tela">
+  <div class="crt-tela crt-v7">
     <p><span class="pr">gus@glyfesse:~/programacao$</span> <span class="crt-typed">nano&nbsp;</span><span class="crt-key">portao-varredura-vazia.md</span> <span class="crt-cur"></span></p>
   </div>
 </div>
@@ -35,7 +35,7 @@
 <p>Then the session built a test repository with four obvious forbidden links (uses of outside code that the rule forbids) and ran the gate against it, with the files still outside version control (the record that keeps every change to the code). The output was this:</p>
 
 <div class="crt-scr">
-  <div class="crt-tela">
+  <div class="crt-tela crt-v7">
     <p>0 build files, 0 code files, 0 flows scanned</p>
     <p>summary: forbidden=0</p>
     <p>OK -- no link outside the allowed list.</p>

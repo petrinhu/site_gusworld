@@ -9,7 +9,7 @@
 
 <?php /* a DESCULPA, em bloco de terminal. Voz de gus@glyfesse: o leitor lê. Por isso não leva aria-hidden. */ ?>
 <div class="crt-scr desculpa">
-  <div class="crt-tela">
+  <div class="crt-tela crt-v7">
     <p><span class="pr">gus@glyfesse:~$</span> whoami</p>
     <p>gus</p>
     <p><span class="pr">gus@glyfesse:~$</span> <span class="dim"># o portao e velho e nunca quebrou. entao ele funciona</span></p>
@@ -23,7 +23,7 @@
 
 <?php /* crt-nano: o comando sendo DIGITADO ao entrar na view (CSS steps, o JS só arma). Decorativo (o texto já diz tudo) -> aria-hidden. */ ?>
 <div class="crt-scr crt-nano" aria-hidden="true">
-  <div class="crt-tela">
+  <div class="crt-tela crt-v7">
     <p><span class="pr">gus@glyfesse:~/programacao$</span> <span class="crt-typed">nano&nbsp;</span><span class="crt-key">portao-varredura-vazia.md</span> <span class="crt-cur"></span></p>
   </div>
 </div>
@@ -35,7 +35,7 @@
 <p>Depois, a sessão montou um repositório de teste com quatro ligações proibidas óbvias (usos de código de fora que a regra veta) e rodou o portão contra ele, com os arquivos ainda fora do controle de versão (o registro que guarda cada mudança no código). A saída foi esta:</p>
 
 <div class="crt-scr">
-  <div class="crt-tela">
+  <div class="crt-tela crt-v7">
     <p>0 arquivos de compilação, 0 de código, 0 fluxos varridos</p>
     <p>resumo: proibido=0</p>
     <p>OK -- nenhuma ligacao fora da lista permitida.</p>

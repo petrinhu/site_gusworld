@@ -12,7 +12,7 @@
     <div class="hq-q-col">
       <div class="hq-q">
         <span class="hq-n" aria-hidden="true">1</span>
-        <div class="crt-tela">
+        <div class="crt-tela crt-v7">
           <p>conferencia automatica</p>
           <p><span class="crt-cur" aria-hidden="true"></span></p>
         </div>
@@ -24,7 +24,7 @@
     <div class="hq-q-col">
       <div class="hq-q">
         <span class="hq-n" aria-hidden="true">2</span>
-        <div class="crt-tela">
+        <div class="crt-tela crt-v7">
           <p>conferencia automatica</p>
           <p>lendo a lista...</p>
           <p><span class="crt-cur" aria-hidden="true"></span></p>
@@ -37,7 +37,7 @@
     <div class="hq-q-col">
       <div class="hq-q">
         <span class="hq-n" aria-hidden="true">3</span>
-        <div class="crt-tela">
+        <div class="crt-tela crt-v7">
           <p>conferencia automatica</p>
           <p>lendo a lista...</p>
           <p class="dim">lista: nao encontrada</p>

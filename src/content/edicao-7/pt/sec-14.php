@@ -40,7 +40,7 @@ $wall_uri = 'data:image/svg+xml,' . rawurlencode($wall);
     <h3>Papel de parede</h3>
     <p>Um papel de parede de terminal para deixar a área de trabalho no clima. Escala em qualquer resolução (é vetor).</p>
     <div class="crt-scr">
-      <div class="crt-tela">
+      <div class="crt-tela crt-v7">
         <p><span class="pr">gus@glyfesse:~$</span> glyfe --world</p>
         <p class="dim">// compilando um mundo...</p>
         <p><span class="crt-cur" aria-hidden="true"></span></p>
