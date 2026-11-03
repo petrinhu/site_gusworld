@@ -1,0 +1,85 @@
+/* docs/design/capa-7-registro.css: a ARTE DA CAPA da Edicao #7 "Apagar Tudo",
+   em CSS puro, do design system do site (tokens --navy/--ciano/--tela-* de
+   og-card.css e capa-6-placar.css). NUNCA o UI Kit do jogo. Zero captura, zero IA.
+
+   O que e': um terminal com UM comando (`git log --oneline`) e UMA linha de
+   resultado: os 7 primeiros caracteres do SHA 81a8ef1 e a mensagem do commit,
+   copiadas do arquivo-fonte do main (linha 3), letra por letra.
+   Nada antes do comando, nada depois do resultado: sem prompt final, sem
+   cursor, sem barra de titulo. O historico recomecou: um registro so'.
+
+   Neutra de idioma: a mensagem do commit e' em pt e o terminal nao traduz,
+   entao um so' PNG serve pt e en (frame da edicao).
+
+   Grade: unidade de 8px, quadrado 1200x1200. Exportada em 1200 para que o
+   painel 300px do card social seja EXATAMENTE 1/4, e a miniatura de ~240px
+   seja legivel: fonte de 96px vira 24px no painel e ~19px na miniatura de 240
+   (multiplos de 4). Com 64px a miniatura de 240 dava ~13px, ilegivel. Nada
+   fino demais, nada de scanline dentro do PNG (a varredura vive no chassi).
+
+   Render (Firefox/Gecko, isolado, um por vez; servidor estatico proprio na raiz do
+   repo: php -S 127.0.0.1:8099 -t <raiz do repo>, URL .../docs/design/capa-7-registro.html):
+   env -u WAYLAND_DISPLAY -u DISPLAY -u DBUS_SESSION_BUS_ADDRESS XDG_RUNTIME_DIR=<xdg isolado>
+   HOME=<home isolado> MOZ_NO_REMOTE=1 MOZ_HEADLESS=1 firefox --headless --new-instance
+   --profile <perfil isolado> --window-size=1200,1200 --screenshot <png absoluto> <url>
+   Cards: mesmo comando com --window-size=1200,630, depois magick ... -quality 85 para JPG.
+   Render feito por http na raiz do repo (as fontes e a imagem sao caminhos ../../public_html).
+   O teste com file:// nao foi feito; nao assumir que funciona.
+   Saida: public_html/assets/edicao-7/capa-registro.png */
+
+@font-face {
+  font-family: "PixelOperatorMono";
+  src: url("../../public_html/assets/fonts/PixelOperatorMono.woff2") format("woff2");
+  font-weight: 400; font-display: block;
+}
+
+:root {
+  --navy:      #0d1520;
+  --ciano:     #4dd9e8;
+  --ciano-alto:#6ff0ff;
+  --tela-1:    #dce8f5; /* AAA sobre navy */
+  --tela-2:    #9fb2c8;
+  --tela-3:    #798da2;
+  --u: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1200px; height: 1200px; }
+
+body {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(90% 70% at 50% 46%, rgba(77,217,232,.12), transparent 62%),
+    linear-gradient(170deg, #111d2c 0%, var(--navy) 58%, #0a1017 100%);
+  font-family: "PixelOperatorMono", monospace;
+  color: var(--tela-1);
+}
+/* vinheta: afunda os cantos, devolve o miolo ao texto */
+body::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  box-shadow: inset 0 0 200px 30px rgba(0,0,0,.5);
+}
+
+/* o bloco do terminal: centrado na altura, margem de 96px dos dois lados */
+.term {
+  position: absolute; left: 96px; right: 96px; top: 0; bottom: 0;
+  display: flex; flex-direction: column; justify-content: center;
+  font-size: 96px; line-height: 1.375;
+}
+
+/* a linha do comando: prompt apagado, comando em tela-1 */
+.cmd { white-space: pre-wrap; }
+.cmd .pr { color: var(--tela-3); }
+
+/* a linha de resultado: o hash em ciano com brilho, a mensagem em tela-1.
+   Quebra como terminal de verdade: a mensagem que passa da largura volta para
+   a margem esquerda (sem recuo), porque um terminal nao indenta saida. Com 96px
+   a largura util (1008px) cabe ~21 caracteres por linha. */
+.res {
+  color: var(--tela-1);
+  overflow-wrap: anywhere;
+}
+.res .hash {
+  color: var(--ciano-alto);
+  text-shadow: 0 0 2px rgba(111,240,255,.9), 0 0 24px rgba(77,217,232,.55), 0 0 60px rgba(77,217,232,.28);
+}
