@@ -2931,3 +2931,17 @@ html.lightbox-aberto{overflow:hidden}
 @media (prefers-reduced-motion: reduce){
   .conteudo .bus-crt .crt-cur{animation:none; opacity:1}
 }
+
+/* ── §11 (edição #7) · a HQ "a tela que diz tudo certo" (versão A, sem imagem) ──
+   Só regras NOVAS. Os quadros reusam .hq-strip / .hq-q / .crt-tela, que não mudam.
+   Os seletores novos usam .hq-q-col e .hq-leg, nomes que só os partiais da #7 usam.
+   .hq-q é flex em linha, então a legenda vai num wrapper coluna (.hq-q-col): o quadro
+   estica até a altura da linha e as três legendas ficam na mesma altura. */
+.hq-q-col{display:flex; flex-direction:column}
+.hq-q-col .hq-q{flex:1}
+/* a legenda, FORA do quadro: a mesma família e tamanho da figcaption da #3
+   (.conteudo .hq3 figcaption). A margem é explícita: o <p> não herda a da figcaption. */
+.hq-leg{
+  font-family:var(--font-corpo); font-style:italic; font-size:15px; line-height:1.4;
+  color:var(--tinta-2); margin:7px 0 0;
+}
