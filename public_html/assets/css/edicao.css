@@ -2945,3 +2945,85 @@ html.lightbox-aberto{overflow:hidden}
   font-family:var(--font-corpo); font-style:italic; font-size:15px; line-height:1.4;
   color:var(--tinta-2); margin:7px 0 0;
 }
+
+/* ── §09 (edição #7) · as Cartas: o papel pautado e a mancha de suco de uva ──
+   Só regras NOVAS, todas sob .conteudo. Nomes que só os partiais da #7 usam:
+   .caderno, .folha-caderno, .fita, .pauta, .manuscrito, .caderno-legenda,
+   .caderno-credito, .caderno-filtros e .mancha (sempre dentro de .folha-caderno).
+   Molde: docs/design/mockups/15-gus-no-bus.html (:105-183), valores copiados.
+   Desvio 1: a .pauta tem cauda de 96px embaixo (o molde tinha 30px, e a mancha
+   invadia a última linha de texto). A mancha fica nessa cauda, ancorada no .pe.
+   Desvio 2: .caderno-legenda e .caderno-credito têm largura da folha (452px),
+   para a legenda e o crédito ficarem alinhados ao papel.
+   O overflow:hidden da folha é o guard: o que sair da folha é cortado.
+   A pauta, a margem vermelha e a fibra são gradients CSS. Zero imagem, zero JS. */
+.conteudo .caderno{margin:16px 0 0; display:flex; justify-content:center}
+.conteudo .folha-caderno{
+  position:relative; width:100%; max-width:452px;
+  background:#e7dcc0; overflow:hidden;
+  rotate:var(--giro,-1deg);
+  box-shadow:0 1px 0 #0000001c, 0 12px 24px #00000026;
+}
+/* a fita adesiva que prende o pedaço de caderno na página */
+.conteudo .folha-caderno .fita{
+  position:absolute; z-index:3; left:50%; top:-9px; translate:-50% 0;
+  width:88px; height:22px; rotate:-2deg; pointer-events:none;
+  background:linear-gradient(180deg, #cbd6c199, #b8c6ab88);
+  box-shadow:0 1px 2px #00000022;
+  border-left:1px dashed #ffffff44; border-right:1px dashed #ffffff44;
+}
+/* a folha pautada: pauta azul (28px) + margem vermelha. padding-top 56 (2x28)
+   mantém o texto sobre a pauta. padding-bottom 96: a cauda em branco que
+   recebe a mancha (desvio 1). */
+.conteudo .pauta{
+  position:relative; z-index:1; min-height:150px;
+  padding:56px 22px 96px 52px;
+  background:
+    repeating-linear-gradient(to bottom,
+      #0000 0 27px, rgb(58 104 150 / .26) 27px 28px),
+    linear-gradient(90deg,
+      #0000 0 40px, rgb(188 66 72 / .5) 40px 41px, #0000 41px),
+    radial-gradient(120% 80% at 50% 0%, #0000000f, #0000 55%),
+    radial-gradient(120% 90% at 50% 100%, #0000000e, #0000 52%);
+  background-blend-mode:multiply, normal, multiply, multiply;
+}
+/* o pedido, letra a letra. Tinta escura para AA folgado sobre o papel;
+   line-height casado com a pauta (28px) para o texto sentar nas linhas. */
+.conteudo .manuscrito{
+  font-family:var(--font-display); font-size:15px; line-height:28px;
+  color:#2a2118; margin:0; white-space:pre-wrap; word-break:break-word;
+}
+/* legenda e crédito: fora do papel, na folha da revista, na largura do papel */
+.conteudo .caderno-legenda,
+.conteudo .caderno-credito{
+  font-family:var(--font-corpo); font-style:italic; font-size:15px; line-height:1.4;
+  color:var(--tinta-2); max-width:452px; margin:14px auto 0;
+}
+.conteudo .caderno-credito{margin-top:10px}
+/* o svg dos filtros não ocupa layout: 0x0 e absoluto, só para a referência do CSS */
+.conteudo .caderno-filtros{position:absolute; width:0; height:0; overflow:hidden}
+/* A MANCHA: CSS + borda orgânica pelo filtro SVG (#mancha-uva). Dentro da
+   .folha-caderno, nunca sobre o texto: fica na cauda (.pe) e o overflow:hidden corta o resto. */
+.conteudo .folha-caderno .mancha{
+  position:absolute; z-index:2; display:block; pointer-events:none;
+  width:var(--m-tam,90px); aspect-ratio:1.08;
+  left:var(--mx,50%); top:var(--my,50%); translate:-50% -50%;
+  rotate:var(--mg,-7deg);
+  mix-blend-mode:multiply; opacity:var(--m-alpha,.9);
+}
+/* ancorada no PE da folha: cai na cauda em branco, indiferente à altura da pauta */
+.conteudo .folha-caderno .mancha.pe{top:auto; bottom:var(--mb,-20px); translate:-50% 0}
+/* suco de uva: roxo/vinho translúcido, anel de secagem (radial-gradients do molde) */
+.conteudo .folha-caderno .mancha.uva{
+  filter:url(#mancha-uva);
+  background:
+    radial-gradient(circle at 74% 32%, rgb(90 30 82 / .55) 0 5%, #0000 8%),
+    radial-gradient(circle at 26% 72%, rgb(90 30 82 / .5) 0 4%, #0000 7%),
+    radial-gradient(ellipse 44% 47% at 48% 47%,
+      #0000 48%, rgb(96 34 88 / .48) 58%, rgb(66 20 60 / .86) 69%,
+      rgb(96 34 88 / .32) 80%, #0000 89%),
+    radial-gradient(ellipse at 45% 44%,
+      rgb(112 46 102 / .30) 0 46%, rgb(96 34 88 / .14) 60%, #0000 72%);
+}
+/* a posição da uva desta carta: cauda, à direita (as outras manchas variam, ver project_ideias_do_gus) */
+.conteudo .folha-caderno .mancha.uva.pe{--mx:72%; --mb:-20px; --m-tam:90px; --mg:-9deg}
