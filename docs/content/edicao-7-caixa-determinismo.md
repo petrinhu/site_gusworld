@@ -1,7 +1,7 @@
 # Edição #7 · Seção 4 · Caixa do determinismo
 
-> RASCUNHO v2, submeter ao líder. Peça própria da Seção 4 (Reportagem de capa), hospedada como caixa ao fim da Reportagem, no ponto da frase-ponte de 22/08 (`docs/content/edicao-7-reportagem.md:44`). Âncora proposta: `#sec-04-determinismo`. Porte S. Molde: a caixa do menu da #5 (`docs/content/edicao-5-reportagem-menu.md`, cabeçalho). Voz: editor, de fora (L-25 do site). Sem fala nem pensamento de personagem além da linha de prompt (T7, submeter ao líder).
-> Antes do GATE-SPOILER: a troca (linha 26 do bus) e a ironia da carta glitch (linhas 30 a 32) passam pelo líder. Antes do GATE-CONTEUDO: parecer do `compliance-legal` (pauta, risco 7) e revisão da tradução EN.
+> APROVADA pelo líder em 03/11/2026 ("Aprovo como está"), com o spoiler da troca e da ironia liberado; o en segue ao líder junto com as outras traduções. Peça própria da Seção 4 (Reportagem de capa), hospedada como caixa ao fim da Reportagem, no ponto da frase-ponte de 22/08 (`docs/content/edicao-7-reportagem.md:44`). Âncora proposta: `#sec-04-determinismo`. Porte S. Molde: a caixa do menu da #5 (`docs/content/edicao-5-reportagem-menu.md`, cabeçalho). Voz: editor, de fora (L-25 do site). Sem fala nem pensamento de personagem além da linha de prompt (T7, submeter ao líder).
+> GATE-SPOILER: liberado pelo líder em 03/11/2026 (a troca da linha 26 do bus e a ironia da carta glitch, linhas 30 a 32). Antes do GATE-CONTEUDO: parecer do `compliance-legal` (pauta, risco 7) e revisão da tradução EN.
 
 ---
 
@@ -45,15 +45,15 @@ The session pointed out an irony to him. The glitch card (a card in the game, wi
 
 ### 1. Pendências para o líder e para o main
 
-- **GATE-SPOILER (brief §4.2).** A troca (linha 26, inteira) e a ironia (linhas 30 a 32) são mecânica que o líder precisa liberar. A ironia descreve a carta glitch como bug de atravessar parede; o próprio pedido dele já diz isso (`BUS/archive/20260822-0840-gusworld-marco-gus-glitch-em-batalha.md:12-24`, citado na pauta §4.5).
+- **GATE-SPOILER (brief §4.2), FECHADO em 03/11/2026.** A troca (linha 26, inteira) e a ironia (linhas 30 a 32) eram mecânica que o líder precisava liberar, e ele liberou. A ironia descreve a carta glitch como bug de atravessar parede; o próprio pedido dele já diz isso (`BUS/archive/20260822-0840-gusworld-marco-gus-glitch-em-batalha.md:12-24`, citado na pauta §4.5).
 - **Ironia só se a Cartas não usar (brief §4.2).** Entrou porque o brief da Cartas (`docs/editorial/BRIEFS-EDICAO-7.md:385-397`) não cita o Celeste nem o clip. Verificado por grep (03/11/2026, 15:13): a palavra "celeste" aparece 0 vezes em `BRIEFS-EDICAO-7.md` e 0 vezes em `PAUTA-EDICAO-7.md`. **Se o escritor da Cartas usar a ironia, o main corta daqui**, decisão a tomar no GATE-LENTE com as duas peças lado a lado.
-- **Prompt de personagem** (`gus@glyfesse:~/determinismo$ achado`). É fala no formato `persona@glyfesse:caminho$`, então é rascunho ao líder (T7). Se ele não quiser a linha, ela sai e a caixa segue sem ela. A #5 usou prompt, mas o molde não obriga.
+- **Prompt de personagem** (`gus@glyfesse:~/determinismo$ achado`), FECHADO em 03/11/2026: a linha fica, por aprovação do líder. É fala no formato `persona@glyfesse:caminho$` (T7). A #5 usou prompt, mas o molde não obriga.
 - **Título da issue divergente.** O arquivo do bus traz "Quão speedrunnable é o jogo?" (`BUS/archive/20260822-0855-gusworld-marco-gus-tensao-determinismo-speedrun.md:14`). O GitHub devolve "Quao speedrunnable é o jogo?", sem til (`gh issue view 6`, medido em 03/11/2026, 15:13). A caixa não cita o título. Se alguma peça citar, o líder decide qual grafia vale antes.
 - **Perguntas de redação ao líder** (o agente não decide sozinho):
-  - Fecho: removido na v2, por ordem do coordenador (revisão textual). A caixa termina na ironia; não há mais fecho de disclaimer.
+  - Fecho, FECHADO em 03/11/2026: removido na v2, por ordem do coordenador (revisão textual), e aprovado assim pelo líder. A caixa termina na ironia; não há mais fecho de disclaimer.
   - Data: manter "no dia anterior" (fiel a `:14`, "na véspera"), ou trocar por "antes", sem data. "No dia anterior" é o elo que o risco 17 teme.
   - Porte: o texto tem 7 parágrafos, e o brief fixa porte S. Cortar as glosas de clip e demo-dash, ou manter.
-- **Tradução EN** é do agente. Aprovação do líder junto com a pt.
+- **Tradução EN** é do agente. Segue ao líder junto com as outras traduções (status de 03/11/2026).
 - **Parecer do `compliance-legal`** (pauta, risco 7): pendente.
 - **Âncora `#sec-04-determinismo`** é proposta. A montagem fixa.
 - **Referência de TODO desatualizada no brief.** `MARCO-GUS-DETERMINISMO` está em `SITE/TODO.md:196`, não em :195 (hoje :195 é `MARCO-GUS-CARTA-GLITCH`).
@@ -99,3 +99,11 @@ Aplicadas em pt-BR e EN, sem mexer no crédito duplo nem em "no dia anterior":
 - **L4 (en):** "In the August 22 record it read (English translation of the Portuguese original):". A citação em en é tradução do agente, e o rótulo deixa isso dito no texto.
 - **L5 (en):** removido "only" de "was written out in full after his question".
 - **Cabeçalho:** RASCUNHO v1 virou RASCUNHO v2.
+
+### 5. Aprovação do líder (03/11/2026)
+
+- Status do topo: APROVADA pelo líder em 03/11/2026, pergunta feita depois de 16:15:37, AskUserQuestion, verbatim: "Aprovo como está".
+- A pergunta incluía o GATE-SPOILER da troca (save verificável x manipulação de RNG, linha 26) e da ironia da carta glitch (linhas 30 a 32). Ambos ficam liberados.
+- Pendências fechadas: GATE-SPOILER, linha de prompt de personagem (fica) e fecho (sem disclaimer).
+- Pendências que seguem abertas: a ironia só se a Cartas não a usar (checagem do main no GATE-LENTE); "no dia anterior"; porte; parecer do `compliance-legal`; tradução EN, que segue ao líder junto com as outras traduções; âncora `#sec-04-determinismo`, fixada na montagem.
+- O texto da peça não mudou nesta rodada: só o status do topo e estas Notas.

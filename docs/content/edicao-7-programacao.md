@@ -1,6 +1,6 @@
 # Edição #7 · Seção 17 · Programação
 
-> RASCUNHO v2, submeter ao líder. Escrito pelo `technical-writer` a partir do brief §4.3 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 346 a 371), com a Reportagem v2 como insumo (sem repetir o que ela conta).
+> RASCUNHO v3, submeter ao líder. Escrito pelo `technical-writer` a partir do brief §4.3 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 346 a 371), com a Reportagem v2 como insumo (sem repetir o que ela conta).
 > Voz do editor, de fora (L-25: o técnico mora aqui). As falas e os `//` do Gus são rascunho ao líder (T7). As citações de sessão vêm com fonte e data (T2).
 > v2 (decisões do main): o 25 saiu do texto publicado; a grafia é GlintFX no texto publicado; o marcador fica `BRINQUEDO-PORTAO-DE-BOLSO`; o contato é o rodapé do site. Pendência aberta para o GATE-CONTEUDO: a contradição de número da fonte (Notas, item 1) e as falas do Gus (Notas, item 4).
 
@@ -8,7 +8,7 @@
 
 ## pt-BR
 
-Um portão é um programa que confere o trabalho antes de ele ser aceito. Ele segue uma regra escrita, por exemplo "só pode usar bibliotecas desta lista", e responde de um de dois jeitos: "tudo certo" ou "reprovado". A pergunta que quase ninguém faz é outra: o portão olhou para alguma coisa?
+Um portão é um programa que confere o trabalho antes de ele ser aceito. Ele segue uma regra escrita, por exemplo "só pode usar bibliotecas desta lista (conjuntos de código pronto que outros escreveram)", e responde de um de dois jeitos: "tudo certo" ou "reprovado". A pergunta que quase ninguém faz é outra: o portão olhou para alguma coisa?
 
 Em 21 de agosto de 2026, a sessão de IA que trabalha no GlintFX, a biblioteca, montou um portão que disse "tudo certo" depois de olhar zero arquivos. A reportagem de capa conta por que o projeto estava recomeçando. Esta seção fica com a conferência.
 
@@ -29,17 +29,18 @@ gus@glyfesse:~/programacao$ nano portao-varredura-vazia.md
 
 ### Um "tudo certo" sem nenhum arquivo
 
-O portão de dependência foi escrito com uma regra de lista: só passa o que está na lista do permitido, e o resto é acusado. Ele passou nos dois controles de autoteste exigidos. O primeiro planta uma violação e prova que ela é acusada. O segundo prova que uma entrada limpa sai sem erro. Foram 35 casos e nenhuma falha. Os dois controles, porém, rodavam sobre arquivos que existiam.
+O portão de dependência (o que confere quais códigos de terceiros o projeto usa) foi escrito com uma regra de lista: só passa o que está na lista do permitido, e o resto é acusado. Ele passou nos dois controles de autoteste (testes que conferem se o próprio portão funciona) exigidos. O primeiro planta uma violação e prova que ela é acusada. O segundo prova que uma entrada limpa sai sem erro. Foram 35 casos e nenhuma falha.
 
-Depois, a sessão montou um repositório de teste com quatro ligações proibidas óbvias e rodou o portão contra ele, com os arquivos ainda fora do controle de versão. A saída foi esta:
+Depois, a sessão montou um repositório de teste com quatro ligações proibidas óbvias (usos de código de fora que a regra veta) e rodou o portão contra ele, com os arquivos ainda fora do controle de versão (o registro que guarda cada mudança no código). A saída foi esta:
 
 ```
 0 arquivos de compilação, 0 de código, 0 fluxos varridos
 resumo: proibido=0
 OK -- nenhuma ligacao fora da lista permitida.
+saída: 0
 ```
 
-Depois que os arquivos entraram no controle de versão, o mesmo portão acusou as quatro ligações e saiu com erro. A detecção funcionava. O buraco era outro.
+Depois que os arquivos entraram no controle de versão, o mesmo portão acusou as quatro ligações e saiu com erro. No registro, a sessão escreveu: "A detecção funciona. O buraco é outro."
 
 O portão perguntava ao controle de versão quais arquivos existiam. Se a resposta vinha vazia, por caminho errado, por repositório em estado estranho ou por comando que falhava sem avisar, o portão não varria nada, não achava nada e concluía que estava tudo certo.
 
@@ -49,7 +50,7 @@ No registro de 21 de agosto, a sessão do GlintFX resumiu o defeito numa frase:
 
 Os dois controles não pegavam o caso porque ambos rodavam sobre arquivos que existiam. Nenhum exercitava a entrada vazia.
 
-A tabela põe lado a lado o que o portão disse e o que ele tinha olhado. Além do portão de dependência, a auditoria que se seguiu achou o mesmo defeito em mais sete portões do repositório:
+A tabela põe lado a lado o que o portão disse e o que ele tinha olhado. Além do portão de dependência, uma revisão de todos os portões do repositório, feita em 21 de agosto, achou o mesmo defeito em mais sete:
 
 | O que o portão disse | O que ele tinha olhado |
 | :-- | :-- |
@@ -57,13 +58,13 @@ A tabela põe lado a lado o que o portão disse e o que ele tinha olhado. Além 
 | "40 contadores dentro do teto" (portão que vigia o tamanho da dependência, repositório vazio) | Nada medido |
 | Nada: o portão só rodava quando alguém lembrava de chamá-lo à mão | Nada, porque ele não rodava em nenhum fluxo |
 
-Todos os portões achados foram consertados, com um teste de varredura vazia gravado no repositório.
+Todos os portões achados foram consertados, com um teste de varredura vazia (um caso em que o portão não encontra nenhum arquivo para conferir) gravado no repositório.
 
 BRINQUEDO-PORTAO-DE-BOLSO
 
 ### O terceiro controle: varredura vazia não é sucesso
 
-O conserto tem três partes. A primeira: varredura vazia não é sucesso. Zero arquivos enumerados, ou um número implausivelmente baixo, sai com erro ou grita de um jeito inconfundível, e nunca imprime a linha de tudo certo. A segunda é um terceiro controle de autoteste, que prova que, com a varredura vazia, o portão não diz que está tudo certo. Sem ele, o conserto não está provado, pela mesma lógica que torna obrigatório o controle positivo. A terceira: medir se a trava antes do commit está coberta, e escrever no próprio arquivo qualquer caso que fique invisível ao portão. Limitação declarada é aceitável. Limitação silenciosa não.
+O conserto tem três partes. A primeira: varredura vazia não é sucesso. Zero arquivos enumerados, ou um número implausivelmente baixo, sai com erro ou grita de um jeito inconfundível, e nunca imprime a linha de tudo certo. A segunda é um terceiro controle de autoteste, que prova que, com a varredura vazia, o portão não diz que está tudo certo. Sem ele, o conserto não está provado, pela mesma lógica que torna obrigatório o controle positivo. A terceira: medir se a trava antes do commit (um registro de mudança no código) está coberta, e escrever no próprio arquivo qualquer caso que fique invisível ao portão. O registro é direto: "Limitação declarada é aceitável; limitação silenciosa não."
 
 No mesmo registro, a lição cabe numa frase:
 
@@ -73,29 +74,29 @@ O que pegou o defeito foi rodar o portão contra uma entrada que ninguém tinha 
 
 ### A regra de paridade, de 2 de setembro
 
-Em 2 de setembro de 2026, o root fixou uma regra: "O comportamento deve ser igual em qualquer OS para todas as ondas/fatias entregues". O alcance veio no mesmo dia: igual e provado em cada sistema onde a fatia existe.
+Em 2 de setembro de 2026, o root fixou uma regra: "O comportamento deve ser igual em qualquer OS para todas as ondas/fatias entregues" (OS é o sistema operacional; ondas e fatias são blocos de trabalho entregues de uma vez). O alcance veio no mesmo dia: igual e provado em cada sistema onde a fatia existe.
 
-Antes disso, o projeto entregava primeiro no Linux e deixava o Windows para o fim, e cada entrega era declarada pronta assim mesmo. Pela regra nova, a janela do Linux e a do Windows deixaram de ser duas tarefas em momentos diferentes e viraram uma entrega só.
+Antes disso, o projeto entregava primeiro no Linux e deixava o Windows para o fim, e cada entrega era declarada pronta assim mesmo. Pela regra nova, a entrega do Linux e a do Windows deixaram de ser duas tarefas em momentos diferentes e viraram uma entrega só.
 
 A regra de paridade é um trecho novo da lei dos sistemas operacionais, no arquivo de leis do GlintFX, que existe desde 21 de agosto. A regra obrigou a auditoria que veio a seguir.
 
-O root recusou uma exceção que dois agentes técnicos tinham recomendado: a peça que descobre teclado e mouse não tem cara pública, e eles propuseram que, por isso, ela fechasse sozinha. Segundo o registro, a opção escolhida foi uma regra uniforme, sem julgamento caso a caso, porque julgamento é onde se erra.
+O root recusou uma exceção que dois agentes técnicos (sessões de IA com papel técnico) tinham recomendado: a peça que descobre teclado e mouse não tem cara pública (não aparece para quem usa o programa), e eles propuseram que, por isso, ela fechasse sozinha. Segundo o registro, a opção escolhida foi uma regra uniforme, sem julgamento caso a caso, porque julgamento é onde se erra.
 
 ### A auditoria: 45 itens e 19 reabertos
 
 Foram 45 itens dados como concluídos, verificados um a um com evidência. Dezenove foram reabertos. Três achados pesaram mais:
 
-- A biblioteca chega ao Windows sem camada de plataforma nenhuma. Até os testes que não dependem de sistema estavam trancados atrás de uma condição de Linux.
-- Nenhuma verificação interna do código tinha rodado no compilador da Microsoft, porque o Windows só era compilado no modo de entrega final. O registro resume: metade da rede de segurança do código nunca existiu lá.
-- Onze portões de qualidade nunca rodaram no Windows: licença, dependência zero, violação de camada e colisão de nome público.
+- A biblioteca chega ao Windows sem camada de plataforma nenhuma (o trecho do código que fala com cada sistema). Até os testes que não dependem de sistema estavam trancados atrás de uma condição de Linux.
+- Nenhuma verificação interna do código tinha rodado no compilador da Microsoft (o programa que transforma o código em algo que o computador executa), porque o Windows só era compilado no modo de entrega final (a versão otimizada que vai para quem usa). O registro resume: "metade da rede de segurança do código nunca existiu lá."
+- Onze portões de qualidade nunca rodaram no Windows: licença, dependência zero, violação de camada e colisão de nome público (dependência zero: sem código de terceiros; violação de camada: uma parte do código usando outra que não deveria; colisão de nome público: dois nomes iguais visíveis de fora).
 
-Dois desses portões já foram consertados e provados no servidor, nos cinco sistemas.
+Dois desses portões já foram consertados e provados num servidor de testes (um computador que roda o código e confere o resultado), nos cinco sistemas.
 
-O registro de 3 de setembro diz que quatro dos cinco itens que relata são a mesma coisa em roupas diferentes:
+O registro de 3 de setembro lista cinco itens e diz que quatro deles são a mesma coisa em roupas diferentes:
 
 > "uma verificação que parecia estar funcionando e não estava olhando nada."
 
-A reportagem de capa conta a causa e o recomeço. Esta seção fica com a conta: um portão que olhou zero arquivos disse que estava tudo certo, e a auditoria que veio depois reabriu 19 de 45 itens dados como prontos.
+Esta seção fica com a conta: um portão que olhou zero arquivos disse que estava tudo certo, e a auditoria que veio depois reabriu 19 de 45 itens dados como prontos.
 
 Quem quiser o caso técnico inteiro, com os registros, os portões e os números, pode pedir pelo contato no rodapé do site. Este texto é a entrada, não o caso completo.
 
@@ -105,7 +106,7 @@ Quem quiser o caso técnico inteiro, com os registros, os portões e os números
 
 ## EN
 
-A gate is a program that checks work before it is accepted. It follows a written rule, for example "only libraries from this list may be used", and answers in one of two ways: "all clear" or "rejected". The question almost nobody asks is a different one: did the gate look at anything?
+A gate is a program that checks work before it is accepted. It follows a written rule, for example "only libraries (ready-made code sets written by others) from this list may be used", and answers in one of two ways: "all clear" or "rejected". The question almost nobody asks is a different one: did the gate look at anything?
 
 On August 21, 2026, the AI session that works on GlintFX, the library, set up a gate that said "all clear" after looking at zero files. The cover story tells why the project was starting over. This section keeps the check.
 
@@ -126,17 +127,18 @@ gus@glyfesse:~/programacao$ nano portao-varredura-vazia.md
 
 ### An "all clear" with no files at all
 
-The dependency gate was written with a list rule: only what is on the allowed list passes, and everything else is flagged. It passed the two self-tests the project required. The first plants a violation and proves it is flagged. The second proves that a clean input comes out without error. There were 35 cases and no failures. Both self-tests, however, ran on files that existed.
+The dependency gate (the one that checks which third-party code the project uses) was written with a list rule: only what is on the allowed list passes, and everything else is flagged. It passed the two self-tests (tests that check that the gate itself works) the project required. The first plants a violation and proves it is flagged. The second proves that a clean input comes out without error. There were 35 cases and no failures.
 
-Then the session built a test repository with four obvious forbidden links and ran the gate against it, with the files still outside version control. The output was this:
+Then the session built a test repository with four obvious forbidden links (uses of outside code that the rule forbids) and ran the gate against it, with the files still outside version control (the record that keeps every change to the code). The output was this:
 
 ```
 0 build files, 0 code files, 0 flows scanned
 summary: forbidden=0
 OK -- no link outside the allowed list.
+exit: 0
 ```
 
-After the files entered version control, the same gate flagged the four links and exited with an error. Detection worked. The hole was elsewhere.
+After the files entered version control, the same gate flagged the four links and exited with an error. The record says: "Detection works. The hole is elsewhere."
 
 The gate asked version control which files existed. If the answer came back empty, because of a wrong path, a repository in a strange state, or a command that failed without warning, the gate scanned nothing, found nothing, and concluded that all was fine.
 
@@ -144,9 +146,9 @@ In the record of August 21, the GlintFX session summed up the defect in one sent
 
 > "'I looked and it is clean' and 'I did not look at anything' produce the same green output."
 
-Both self-tests missed the case because, again, they ran on files that existed. None exercised the empty input.
+Both self-tests missed the case because they ran on files that existed. None exercised the empty input.
 
-The table puts side by side what the gate said and what it had looked at. Besides the dependency gate, the audit that followed found the same defect in seven more gates of the repository:
+The table puts side by side what the gate said and what it had looked at. Besides the dependency gate, a review of every gate in the repository, done on August 21, found the same defect in seven more:
 
 | What the gate said | What it had looked at |
 | :-- | :-- |
@@ -154,13 +156,13 @@ The table puts side by side what the gate said and what it had looked at. Beside
 | "40 counters within the limit" (gate that watches the size of the dependency, empty repository) | Nothing measured |
 | Nothing: the gate only ran when someone remembered to call it by hand | Nothing, because it did not run in any flow |
 
-Every gate found was fixed, with an empty-scan test recorded in the repository.
+Every gate found was fixed, with an empty-scan test (a case where the gate finds no file to check) recorded in the repository.
 
 BRINQUEDO-PORTAO-DE-BOLSO
 
 ### The third control: an empty scan is not a success
 
-The fix has three parts. First: an empty scan is not a success. Zero files listed, or an implausibly low number, ends with an error or shouts in an unmistakable way, and never prints the all-clear line. Second, a third self-test, which proves that with an empty scan the gate does not say all is fine. Without it the fix is not proven, by the same logic that makes the positive control mandatory. Third: measure whether the lock before the commit is covered, and write into the file itself any case the gate cannot see. A declared limit is acceptable. A silent limit is not.
+The fix has three parts. First: an empty scan is not a success. Zero files listed, or an implausibly low number, ends with an error or shouts in an unmistakable way, and never prints the all-clear line. Second, a third self-test, which proves that with an empty scan the gate does not say all is fine. Without it the fix is not proven, by the same logic that makes the positive control mandatory. Third: measure whether the lock before the commit (a record of a change to the code) is covered, and write into the file itself any case the gate cannot see. The record is direct: "A declared limit is acceptable; a silent limit is not."
 
 In the same record, the lesson fits in one sentence:
 
@@ -170,29 +172,29 @@ What caught the defect was running the gate against an input nobody had foreseen
 
 ### The parity rule, from September 2
 
-On September 2, 2026, root set a rule: "The behavior must be the same on any OS for every wave and slice delivered." The scope came the same day: the same, and proven, on each system where the slice exists.
+On September 2, 2026, root set a rule: "The behavior must be the same on any OS for every wave and slice delivered" (OS is the operating system; waves and slices are blocks of work delivered at once). The scope came the same day: the same, and proven, on each system where the slice exists.
 
-Before that, the project delivered first on Linux and left Windows for last, and each delivery was still declared finished. Under the new rule, the Linux window and the Windows window stopped being two tasks at different times and became a single delivery.
+Before that, the project delivered first on Linux and left Windows for last, and each delivery was still declared finished. Under the new rule, the Linux delivery and the Windows delivery stopped being two tasks at different times and became a single delivery.
 
 The parity rule is a new paragraph in the GlintFX law about operating systems, in the laws file, which has existed since August 21. The rule required the audit that followed.
 
-Root refused an exception that two technical agents had recommended: the piece that finds keyboard and mouse has no public face, and they proposed that, for that reason, it could close on its own. According to the record, the option chosen was one uniform rule, with no case-by-case judgment, because judgment is where mistakes happen.
+Root refused an exception that two technical agents (AI sessions acting as technicians) had recommended: the piece that finds keyboard and mouse has no public face (nothing that the people using the program see), and they proposed that, for that reason, it could close on its own. According to the record, the option chosen was one uniform rule, with no case-by-case judgment, because judgment is where mistakes happen.
 
 ### The audit: 45 items and 19 reopened
 
 There were 45 items marked as done, checked one by one with evidence. Nineteen were reopened. Three findings stood out:
 
-- The library reaches Windows with no platform layer at all. Even the tests that do not depend on the system were locked behind a Linux-only condition.
-- No internal check of the code had ever run in Microsoft's compiler, because Windows was only compiled in release mode. The record sums it up: half of the code's safety net never existed there.
-- Eleven quality gates never ran on Windows: license, zero dependencies, layer violation and public name collision.
+- The library reaches Windows without any platform layer (the part of the code that talks to each system). Even the tests that do not depend on the system were locked behind a Linux-only condition.
+- No internal check of the code had ever run in Microsoft's compiler (the program that turns code into something the computer runs), because Windows was only compiled in release mode (the optimized version given to users). The record sums it up: "half of the code's safety net never existed there."
+- Eleven quality gates never ran on Windows: license, zero dependencies, layer violation and public name collision (zero dependencies: no third-party code; layer violation: one part of the code using another it should not; public name collision: two identical names visible from outside).
 
-Two of these gates have already been fixed and proven on the server, on all five systems.
+Two of these gates have already been fixed and proven on a test server (a computer that runs the code and checks the result), on all five systems.
 
-The record of September 3 says that four of the five items it reports are the same thing in different clothes:
+The record of September 3 lists five items and says that four of them are the same thing in different clothes:
 
 > "a check that seemed to be working and was not looking at anything."
 
-The cover story tells the cause and the restart. This section keeps the count: a gate that looked at zero files said all was fine, and the audit that came after reopened 19 of 45 items marked as finished.
+This section keeps the count: a gate that looked at zero files said all was fine, and the audit that came after reopened 19 of 45 items marked as finished.
 
 Anyone who wants the full technical case, with the records, the gates and the numbers, can ask through the contact in the site footer. This text is the entry point, not the full case.
 
@@ -223,6 +225,9 @@ Raiz do bus usada nas fontes: `BUS` = `/home/petrus/IDrive/Documentos/projetos_c
 - **[INF] O medidor da #6 não está ligado ao texto.** A #6 descreve um portão de dependência e um medidor, reprovado porque a dependência crescia (`src/content/edicao-6/pt/sec-17.php:46`). Não sei se é o mesmo artefato do portão de 21/08 (lista do permitido) nem do portão dos "40 contadores" (`madrugada:52-53`). O texto não afirma que são. Se o revisor achar que o leitor vai juntar os dois, cortar o termo "medidor" da linha da tabela.
 - **Lei de paridade.** Está no corpo da seção `## L-04` do `GlintFx/GODS_LAWS.md`, cujo primeiro registro é de 21/08 (`GODS_LAWS.md:96`). O texto diz "trecho novo da lei dos sistemas operacionais, no arquivo de leis do GlintFx, que existe desde 21 de agosto". Não há a expressão que a T11 proíbe, nem a frase de que as leis nasceram na auditoria.
 - **Fora do texto, de propósito:** o recomeço e o nascimento das leis (Reportagem); a lei de 28/08 e a frase sensível dela; o canal de avisos (`0530:52-56`); a ordem falsa (`0530:46-50`); o repositório privado e o nome dele; o achado do Gus Dragon (o achado dele não vira linha de peça alheia, adendo de 04/09 da L-24); qualquer linguagem de programação citada.
+- **Montagem (decisão do main, v3).** A Programação será montada à mão, como a #6: o conversor não lê saída de terminal.
+- **Revisão textual aplicada (v3, P-M1 a P-M10).** Citações novas: "A detecção funciona. O buraco é outro." (`portão 21/08:30`) e "Limitação declarada é aceitável; limitação silenciosa não." (`portão 21/08:58`). Aspas em "metade da rede de segurança do código nunca existiu lá." (`0530:41`). Glosas para leigo na primeira ocorrência de cada termo, fora das aspas. Terminal com a quarta linha da fonte (`portão 21/08:26`).
+- **[INF] "todos os portões" (P-M7), sem fonte literal.** A fonte diz que "a auditoria que se seguiu achou o mesmo defeito em mais sete portões do nosso repositório" (`madrugada:51-52`), e a data é 21/08 (`madrugada:3`). A expressão "uma revisão de todos os portões", pedida pela revisão, não está na fonte. Aplicada como pedida; o main decide se o "todos" fica.
 - **Voz:** "o root", como na Reportagem v2. Nenhuma palavra da lista de T2 fora de citação. Nada posterior a 03/09.
 - **Desculpa furada nova.** Não repete a da #6 (nano × vim). A linha `nano` segue o molde da #6 com outro nome de arquivo (`portao-varredura-vazia.md`). O digitado do `crt-nano` é decorativo: o CSS anima o comando, e o texto não depende dele.
 
@@ -231,7 +236,7 @@ Raiz do bus usada nas fontes: `BUS` = `/home/petrus/IDrive/Documentos/projetos_c
 | # | Fato no texto | Fonte | Marcação |
 | :-- | :-- | :-- | :-- |
 | 1 | Portão de 21/08; dois autotestes; 35 casos; os dois rodavam sobre arquivos que existem | `portão 21/08:3`, `:12-16`, `:41-43` | FATO |
-| 2 | Repositório de teste com 4 ligações; saída de três linhas, reproduzida sem alteração | `portão 21/08:18-27` | FATO |
+| 2 | Repositório de teste com 4 ligações; saída de quatro linhas (a quarta, `saída: 0`, e `exit: 0` no inglês), reproduzida sem alteração no pt | `portão 21/08:18-27` | FATO |
 | 3 | Depois de versionar, acusou as quatro; "a detecção funciona. O buraco é outro" | `portão 21/08:29-30` | FATO |
 | 4 | Enumeração vazia leva ao OK | `portão 21/08:34-37` | FATO (explicação do registro) |
 | 5 | "Olhei e está limpo" e "não olhei nada" produzem a mesma saída verde | `portão 21/08:39` | FATO, citação de sessão de 21/08 |

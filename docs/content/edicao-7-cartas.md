@@ -18,7 +18,7 @@
 
 `// eu escrevi: mais como puzzle, não como arma`
 
-Pedido, do jeito que ele mandou:
+Pedido do Gus Dragon, do jeito que ele mandou:
 
 A ideia de nova carta é a carta do glitch, por equanto nao pensei em uso em batallha (irei responder ao issue se necessario), tenho um uso FORA de batalha, que em dungeons ou lugares especificos ela deixa voce clippar nos blocos para continuar na dungeon.
 
@@ -42,7 +42,7 @@ Gus Dragon, playtester, Revisor Adversarial de Design
 
 `// i wrote it: more like a puzzle, not a weapon`
 
-The request, the way he sent it. The paper stays in Portuguese:
+Request from Gus Dragon, the way he sent it. The paper stays in Portuguese:
 
 A ideia de nova carta é a carta do glitch, por equanto nao pensei em uso em batallha (irei responder ao issue se necessario), tenho um uso FORA de batalha, que em dungeons ou lugares especificos ela deixa voce clippar nos blocos para continuar na dungeon.
 
@@ -56,7 +56,16 @@ Gus Dragon, playtester, Adversarial Design Reviewer
 
 Siglas: SITE = `/home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/site_gusworld`; BUS = `/home/petrus/IDrive/Documentos/projetos_claudebrain/gusworld_ia_autocomm`; MEM = `/home/petrus/.claude/projects/-home-petrus-IDrive-Documentos-projetos-claudebrain-Projects-site-gusworld/memory`; ISSUE3 = `/var/tmp/ed7-fontes/issue-3.txt` (fora do repositório).
 
-### 1. Perguntas ao líder (recomendação primeiro; nenhuma foi decidida aqui)
+### 0. Versão 2 (ordem do coordenador, aplicada sobre o commit 457da4b)
+
+- **C-M1 aplicado:** legenda do pedido em pt "Pedido do Gus Dragon, do jeito que ele mandou:" e em en "Request from Gus Dragon, the way he sent it. The paper stays in Portuguese:".
+- **Decisões do main, já executadas (regra escrita, não decisão nova):** Q1, só o corpo da issue, linha 6. Q2, caminho do prompt sem tradução, `~/cartas$`, como manda a T5. Q3, o papel fica em português nas duas línguas. Q4, a mecânica fica fora desta edição (sem o texto proposto de 03/09 e sem a batalha). Q5, sem glosa de "dungeon" nem de "clippar" (voz de dentro, T8).
+- **C-L1 mantido:** o acento de "não como arma" fica, por ser citação da fonte (`...0610...md:27`, `SITE/TODO.md:195`).
+- **C-L5 aplicado:** a afirmação sobre o estado do jogo sem fonte saiu das notas; o estado está marcado como "não verificado" (tabela, linha 7; divergência sobre a memória).
+- **Ficam com o líder:** Q0 (primeira pessoa, com a alternativa em terceira na nota), Q6 (a pensa "hoje foi esse dia") e Q8 ("jeito de guardar os mapas"). A fala inteira do Gus também segue submetida ao líder (T7, L-08).
+- **Dito em inglês:** o dito `cards` sob o caminho `cartas` permanece (inconsistência aceita pelo main, junto com Q2a).
+
+### 1. Perguntas ao líder (recomendação primeiro; Q1 a Q5 já decididas pelo main, ver item 0)
 
 - **Q0, pessoa da fala (a primeira a decidir, porque muda tudo).** (a) Primeira pessoa, como está no corpo (Recomendado: a memória `project_ideias_do_gus` pede a fala "do próprio gus", e o molde da #5 e da "Gus no Bus" usa "tive essa ideia"; o crédito embaixo do papel faz o espelho entre o personagem e o Gus Dragon real). Ponto de atenção: o canon AHSD (`canon_gus_ahsd_personalidade.md`, bloco "Refinamento", item 3) diz que o mérito é dito com o nome dele. Quem cumpre isso é o crédito, não a fala. (b) Terceira pessoa, com o nome dele na fala. Alternativa pronta, NÃO publicada: pt `gus@glyfesse:~/cartas$ a carta glitch e ideia dele` / `gus@glyfesse:~/cartas$ ele propos dias antes... aprovada em 21 de agosto de 2026`; EN `gus@glyfesse:~/cartas$ the glitch card is his idea` / `gus@glyfesse:~/cartas$ he proposed it days before... approved on August 21, 2026`; pensa da mancha: `// poxa, manchei de novo. de suco de uva. o texto dele ainda da pra ler` (EN: `// ugh, i stained it again. grape juice. his text is still readable`).
 - **Q1, texto do papel.** (a) Só o corpo, linha 6 de ISSUE3 (Recomendado: é o que ele escreveu; o título é metadado da issue). (b) Título da issue (linha 2, "Nova ideia de carta - Para Gusworld") mais o corpo. (c) Arquivo inteiro, como pede a memória `project_ideias_do_gus`, sem a linha 1. A linha 4 ("para: gusworld") fica de fora nas três opções.
@@ -78,7 +87,7 @@ Siglas: SITE = `/home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/sit
 | 4 | O pedido entrou no desenho do formato de mapa, enquanto o formato era desenhado | `...0610...md:29` | FATO |
 | 5 | "jeito de guardar os mapas" e "entrou" como leitura leiga de "formato de mapa" | redação minha, a partir de `...0610...md:29` | INFERÊNCIA de redação (Q8) |
 | 6 | "mais como puzzle, não como arma", frase dele, com acento como no original | `...0610...md:27`; `SITE/TODO.md:195` | FATO (a citação preserva o acento) |
-| 7 | "no jogo ainda nao": o código do jogo não existe, nada roda, não há prazo | MEM `HISTORICO_GUS_ECOSSISTEMA.md:159` (fonte secundária) | FATO secundário |
+| 7 | "no jogo ainda nao": estado do jogo | MEM `HISTORICO_GUS_ECOSSISTEMA.md:159` (citada, não verificado) | não verificado |
 | 8 | Crédito exato, nos dois papéis | `SITE/docs/editorial/BRIEFS-EDICAO-7.md:81-82` (T4); MEM `reference_titulo_gus_dragon.md` | FATO |
 | 9 | Callbacks "hoje foi esse dia" e "today was that day" | `SITE/src/content/edicao-5/pt/sec-09.php:32`; `.../en/sec-09.php:31` | FATO |
 | 10 | Formato de voz; pensamento até 72 caracteres; falas sem ponto final | `SITE/docs/content/DIALETO.md:58-63`; MEM `voz_prompt_shell.md` | FATO |
@@ -91,7 +100,7 @@ Escolhas minhas que dependem de decisão: não citar batalha nem 03/09 (Q4); nã
 ### 3. Divergências e bloqueios encontrados
 
 - **Bloqueio de montagem (não do rascunho).** O dialeto (`SITE/docs/content/DIALETO.md`, tabela) não tem construção de "papel pautado". O pedido sai como `<p>` simples e o crédito também. Para o papel e a mancha, a montagem precisa de um partial à mão (como a lápide) ou de uma construção nova do conversor. Decisão para `frontend-engineer` e `visual-design-director`, antes da onda 4. Não impede a revisão de copy.
-- MEM `project_ideias_do_gus.md:16` traz o modelo "vai jogar, tá por lá" para o caso "entrou". Contradiz o ledger (`HISTORICO_GUS_ECOSSISTEMA.md:159`: nada roda, sem prazo). Não usei. Recomendo corrigir a memória (eu só li nela).
+- MEM `project_ideias_do_gus.md:16` traz o modelo "vai jogar, tá por lá" para o caso "entrou". Contradiz o ledger (`HISTORICO_GUS_ECOSSISTEMA.md:159`, estado do jogo: não verificado). Não usei. Recomendo corrigir a memória (eu só li nela).
 - O brief §4.5 cita `TODO.md:194` para o item. O item está em `TODO.md:195`. A linha 194 é `MATERIA-REFUNDACAO-DOS-REPOS`.
 - O brief cita o ledger sem caminho. Ele mora em MEM, não em SITE.
 - A PQ6 está em `BRIEFS-EDICAO-7.md:586`, não na pauta §7.
