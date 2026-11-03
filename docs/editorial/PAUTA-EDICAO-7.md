@@ -1,4 +1,4 @@
-# Pauta da Edição #7 da Glyfesse (mapa de edição, PROPOSTA, revisão 5)
+# Pauta da Edição #7 da Glyfesse (mapa de edição, revisão 6: GATE-PAUTA FECHADO em 03/11/2026)
 
 > Artefato de saída do estágio **E1** do `PIPELINE-EDICAO.md` (§3). **Nada aqui está decidido além do que a §16
 > registra como decisão do líder.** O documento PROPÕE; toda decisão é do líder, no GATE-PAUTA, e a recomendação
@@ -8,6 +8,8 @@
 > abriu a edição e entregou as respostas do homenageado à entrevista do Brunus. Autor do rascunho: Capitolino
 > (CPO), no passo 2 da L-16 global. **Revisão 2 (03/11/2026):** refeita depois da rodada 1 do GATE-PAUTA (D1, D2,
 > D4 e D6, §16). A D1 escolhida pelo líder fez da refundação a Reportagem de capa inteira, e o mapa mudou.
+> **Revisão 6 (03/11/2026): GATE-PAUTA FECHADO.** As vinte decisões (D1 a D20) estão tomadas (§12.1, verbatim na
+> §16). O passo seguinte, E2, está em `docs/editorial/BRIEFS-EDICAO-7.md`.
 > **Revisão 5 (03/11/2026):** registra a rodada 4 (D12, D11, D14 e D15, §16); a HQ passa a ser criada pela revista,
 > a edição ganha um brinquedo, e o conserto do terminal em 390 pontos vale da #7 em diante (D19 e D20 novas).
 > **Revisão 4 (03/11/2026):** registra a rodada 3 (D5, D8, D9 e D10, §16) e ajusta a Seção 16 e as ondas.
@@ -155,7 +157,7 @@ auditoria (D18, nova).
 | 8 | Detonado | vazio com graça | Nada roda; não existe código de jogo ainda (03/09). Copy ao GATE-COPY | Ledger, linha 159 |
 | 9 | Errata + Cartas | **Cartas: CHEIA** (M); Errata: vazio | **A carta do Gus Dragon:** a ideia aprovada em 21/08, o adendo de batalha de 22/08 e as duas respostas dele de 03/09. **D5 [LÍDER]: pedido e crédito juntos** (o pedido dele palavra por palavra no papel pautado em CSS, crédito seco nos dois papéis, e a fala do Gus personagem contando o destino, rascunho ao líder pela L-08). GATE-SPOILER. Errata só vira cheia se a prova da #6 em produção achar erro real | `archive/20260822-0840-...glitch-em-batalha.md`; ledger, linhas 129, 147, 155; `TODO.md:194` |
 | 10 | Classificados in-world | vazio com graça | Reusar idêntico (#1) | #1 |
-| 11 | HQ | **CHEIA, criada pela revista** (M) | **D11 [LÍDER]: *"nao tenho, crie algo"*.** Não há tirinha do artista; a revista cria a HQ. Conceito: **D19**. Roteiro (quadros, falas, pensamentos) por `narrative-designer`, rascunho ao líder (L-08, L-25); arte por `visual-design-director` em CSS e com sprite pronto do jogo, nunca desenho novo à mão (PIPELINE §0, item 6). Declarada no Expediente como feita por agente de IA (L-09) | `PIPELINE-EDICAO.md` §0, item 6; HQ em CRT da #1 e da #3 (`edicao.css:1717-1776`, `:1846-1856`); sprite `docs/design/mockups/sprites/gus-front.png` |
+| 11 | HQ | **CHEIA, criada pela revista** (M) | **D11 [LÍDER]: *"nao tenho, crie algo"*.** Não há tirinha do artista; a revista cria a HQ. Conceito (D19 **[LÍDER]**): **H1, a tela de fósforo verde que confere o que não está ali e responde que está tudo certo**, sem personagem em cena. Roteiro (quadros, falas, pensamentos) por `narrative-designer`, rascunho ao líder (L-08, L-25); arte por `visual-design-director` em CSS e com sprite pronto do jogo, nunca desenho novo à mão (PIPELINE §0, item 6). Declarada no Expediente como feita por agente de IA (L-09) | `PIPELINE-EDICAO.md` §0, item 6; HQ em CRT da #1 e da #3 (`edicao.css:1717-1776`, `:1846-1856`); sprite `docs/design/mockups/sprites/gus-front.png` |
 | 12 | Próximos Lançamentos | vazio com graça | A linha de sempre do root; nada de prazo (03/09) | #1; ledger, linha 159 |
 | 13 | Pôster central | vazio com graça (recomendado) | Sem arte nova. Copy ao GATE-COPY | Molde das #1 a #6 |
 | 14 | Brinde | vazio com graça | Reusar #1 | #1 |
@@ -344,8 +346,8 @@ feeds, e numa reportagem sensível não é copy de vitrine solta. Vai ao GATE-CO
   arte**, porque a da memória `reference_gusworld_legacy` não foi conferida), sem nada antes dele; zero captura, zero
   risco de tela pessoal. Desenho do `visual-design-director`, só CSS. Herda o conserto do terminal (D15).
 - **Pôster (Seção 13):** vazio com graça, recomendado.
-- **Brinquedo (`D-WEBGL-TELA`, teto de um por edição): DECIDIDO que há um** (D14 [LÍDER]: *"Com um brinquedo"*). Qual,
-  é a **D20**. Travas: um só; CSS primeiro, e three.js só no registro de tela e carregado sob demanda (memória
+- **Brinquedo (`D-WEBGL-TELA`, teto de um por edição): DECIDIDO que há um** (D14 [LÍDER]: *"Com um brinquedo"*). Qual
+  (D20 [LÍDER]): **B1, o portão de bolso** (§8.2). Travas: um só; CSS primeiro, e three.js só no registro de tela e carregado sob demanda (memória
   `project_d_webgl_so_na_tela`; o jogo abandonou o 3D, e a revista que narra isso não renderiza 3D sem razão); funciona
   sem JS ou degrada com graça (o estado-base aparece pronto, como o `crt-nano`, `edicao.css:1759-1776`); lógica pura
   extraída e coberta por teste antes, em TDD (L-13 do site); verificação no Gecko e em 390 pontos.
@@ -483,8 +485,8 @@ resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
     trata como matéria futura **[INF: memória de 70 dias; reconferir]**.
 11. **Frase sensível de 28/08.** A mensagem do jogo cita o líder irritado, palavra por palavra (`20260828-1652-...:10`).
     Saiu da Reportagem com a D1; se entrar na Programação, só com OK dele.
-12. **[FONTE] `TERMINAL-WRAP-390`** (`TODO.md:177`): a #7 tem terminal na Programação, na capa e, se a D19 for H1,
-    na HQ. **D15 [LÍDER]: *"conserte dessa edicao pra diante"*.** Leitura do main, que adoto **[INF]**: o conserto vale
+12. **[FONTE] `TERMINAL-WRAP-390`** (`TODO.md:177`): a #7 tem terminal na Programação, na capa e na HQ (H1,
+    D19). **D15 [LÍDER]: *"conserte dessa edicao pra diante"*.** Leitura do main, que adoto **[INF]**: o conserto vale
     da #7 em diante, e a #5 e a #6 publicadas não mudam.
     - **Onde mora o CSS compartilhado [FONTE]:** o componente de terminal é um só, `.crt-scr` / `.crt-tela`, em
       `public_html/assets/css/edicao.css:1717-1748` (moldura, tela, scanline em `::after` nas linhas 1739-1744, prompt
@@ -499,7 +501,11 @@ resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
       iguais antes e depois do conserto**, em 390 e 1280 pontos, pt e en, comparadas pelo `qa-engineer` em captura do
       Gecko, com diferença de pixel zero; (c) o print antes e depois vai junto do relatório.
 13. **[FONTE] `MDASH-GATE-VAZIO`** (`TODO.md:180`): o portão de travessão relatou zero arquivos varridos num commit de
-    conteúdo da #6. Enquanto não for consertado, não protege os commits da #7. É de 29/10: **não vira matéria**. D16.
+    conteúdo da #6. Enquanto não for consertado, não protege os commits da #7. É de 29/10: **não vira matéria**.
+    **D16 [LÍDER]: consertar antes.** **[FONTE] achado do E2:** o portão não é do site. É o hook global da máquina
+    (`/home/petrus/.claude/skills/tab_pendencias/tools/hooks/no_mdash_staged.py:213`, que só varre o que a função
+    `is_user_facing()` de `/home/petrus/.claude/hooks/no_mdash.py:190` aceitar), e consertá-lo ali muda o comportamento
+    de todos os projetos. Onde consertar é a PQ1 dos briefs.
 14. **[FONTE] `UPTIME-DIRS`** (`TODO.md:179`): consertar ou rodar com as variáveis de ambiente antes do deploy.
 15. **Higiene.** Nome de batismo de menor nunca; nenhum nome real dos homenageados em texto, `alt`, arquivo ou commit;
     handle de pessoa que aparece no bus não se copia para peça nenhuma; capturas abertas e olhadas antes de rastrear
@@ -564,16 +570,20 @@ resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
 | **D14** | A #7 sai sem brinquedo? | **"Com um brinquedo"** (qual, na D20) |
 | **D15** | O defeito do terminal em 390 pontos é consertado? | Texto livre: **"conserte dessa edicao pra diante"** (vale da #7 em diante; a #5 e a #6 não mudam; critério de aceite no risco 12) |
 
-### 12.2 Abertas (recomendada primeiro; uma pergunta por vez, L-03)
+### 12.1e Decididas na rodada 5 (03/11/2026; verbatim na §16)
 
-| # | Pergunta de uma frase | Opções (recomendada primeiro) |
+| # | Pergunta | Escolha do líder |
 |---|---|---|
-| **D19** (nova) | **A HQ da #7 é a tela de fósforo verde que confere o que não está ali e responde que está tudo certo (H1)?** | **(a) H1, a tela que diz "tudo certo" sem olhar** (só CSS, sem personagem em cena). (b) H2, o Gus diante de uma estante que se esvazia até sobrar um volume. (c) H3, o Gus e o quadradinho azul da #3 de volta ao chão vazio (risco de L-25). (d) Outro conceito, ditado pelo senhor |
-| **D20** (nova) | **O brinquedo da #7 é o portão de bolso, que se recusa a dizer "tudo certo" quando não varreu nada (B1)?** | **(a) B1, o portão de bolso.** (b) B2, o histórico da capa que só tem um registro (toca o repositório privado). (c) B3, as três gavetas do catálogo do Gus Dragon (exige exemplos fora do jogo). (d) Outro, ditado pelo senhor |
-| **D16** | **O portão de travessão que varreu zero arquivos é consertado antes dos commits de conteúdo da #7?** | **(a) Sim, na onda 0** (L-36 global). (b) Depois da #7 |
-| **D17** | **A moldura `ENTREVISTA-PENDENTE` do Brunus que ficou na fonte da #6 fica como está?** (`edicao-6-copies-curtas.md:281-406`, fora da receita) | **(a) Fica como está** (fonte de edição publicada; não a declaro morta). (b) O senhor a declara revogada e ela sai do arquivo |
+| **D16** | O portão de travessão que varreu zero arquivos é consertado antes dos commits de conteúdo da #7? | **"Consertar antes (Recomendado)"** |
+| **D17** | A moldura `ENTREVISTA-PENDENTE` da #6 fica como está? | **"Fica como está (Recomendado)"** |
+| **D19** | A HQ da #7 é a tela de fósforo verde que diz "tudo certo" sem olhar (H1)? | **"(a) A tela que diz tudo certo (Recomendado)"** |
+| **D20** | O brinquedo da #7 é o portão de bolso (B1)? | **"(a) Portão de bolso (Recomendado)"** |
+| achado | O nome real em `docs/design/conceito.md:41` (achado fora do escopo, levado pelo main) | **"Deixar como está (Recomendado)"**. O nome não é reproduzido aqui |
 
-**Ordem sugerida das próximas rodadas:** rodada 5: D19, D20, D16, D17.
+### 12.2 Abertas
+
+**Nenhuma. O GATE-PAUTA está FECHADO** (03/11/2026). As perguntas de produção que sobram são do E2 e estão em
+`docs/editorial/BRIEFS-EDICAO-7.md` §5 (PQ1 em diante).
 
 ---
 
@@ -584,8 +594,8 @@ resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
   bus. **Datas da refundação e das leis já conferidas pelo main (§3.1)**; falta o último commit do legado (§15, item
   1) e **levar ao líder as datas das leis** antes do brief da Reportagem (risco 19). Tarefas 1, 2, 3, 7 e 8 da §9
   por `technical-writer`. **Antes do conserto do terminal (D15), o `qa-engineer` grava a referência:** capturas da #5 e
-  da #6 em 390 e 1280 pontos, pt e en, do jeito que estão hoje. Se a D16 for (a), conserto do portão de travessão por
-  `devops-sre`, com sabotagem de estreia (L-36 global).
+  da #6 em 390 e 1280 pontos, pt e en, do jeito que estão hoje. Conserto do portão de travessão (D16), com teste visto
+  vermelho antes, no lugar que a PQ1 dos briefs decidir. Detalhe passo a passo: `BRIEFS-EDICAO-7.md` §6.
 - **Onda 1, briefs e lentes (E2 + S1).** Um `product-manager`: `BRIEFS-EDICAO-7.md`, um brief por seção cheia **e um
   brief próprio para a caixa do determinismo**, fonte em caminho absoluto, as divisórias da §5, as travas da §1.2 e a
   L-25. GATE-LENTE por seção com material; a da Reportagem leva a D7 (citação literal com data) e a tabela das leis
@@ -617,7 +627,7 @@ resposta 13 não estava entre as três e **sai como está** (D10 **[LÍDER]**).
   três peças dele (Galeria, Cartas e a caixa).
 
 **Porte estrutural (L-08 global):** 19 seções, 10 peças novas (8 de texto, a HQ e o brinquedo) mais 1 caixa própria,
-1 entrevista com tradução, 6 vazios com copy ao gate, 4 decisões abertas (16 fechadas), 1 HQ nova, 1 brinquedo novo com teste, 2 epitáfios do líder, 1 parecer jurídico novo, cerca de 34 partials, 1
+1 entrevista com tradução, 6 vazios com copy ao gate, 0 decisões de pauta abertas (20 fechadas), 1 HQ nova, 1 brinquedo novo com teste, 2 epitáfios do líder, 1 parecer jurídico novo, cerca de 34 partials, 1
 receita, 10 a 11 arquivos de fonte em `docs/content/`, 1 ficha, 2 cards sociais, 3 peças de arte em CSS (capa,
 papel pautado, HQ), 1 módulo de lógica com teste e 1 conserto de CSS compartilhado com comparação de duas edições
 publicadas.
@@ -719,4 +729,13 @@ delas vire argumento da capa (risco 17).
   - **D15:** texto livre do líder, verbatim: **"conserte dessa edicao pra diante"**. Leitura do main, que adoto
     **[INF]**: o conserto do terminal em 390 pontos vale da #7 em diante, e a #5 e a #6 publicadas não mudam; critério de
     aceite no risco 12.
+- **GATE-PAUTA, rodada 5** (03/11/2026, por AskUserQuestion, verbatim; a primeira pergunta saiu depois de 11:42:02, e
+  a da D19 depois de 13:29:53):
+  - **D16:** **"Consertar antes (Recomendado)"**.
+  - **D17:** **"Fica como está (Recomendado)"**.
+  - **Achado do nome real em `docs/design/conceito.md:41`:** **"Deixar como está (Recomendado)"** (o nome já é público
+    nos créditos do jogo; documento interno). O nome não é reproduzido neste arquivo.
+  - **D19:** **"(a) A tela que diz tudo certo (Recomendado)"**.
+  - **D20:** **"(a) Portão de bolso (Recomendado)"**.
+- **GATE-PAUTA FECHADO** com a rodada 5. O E2 segue em `docs/editorial/BRIEFS-EDICAO-7.md`.
 
