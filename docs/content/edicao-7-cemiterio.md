@@ -46,13 +46,13 @@ Issue #6's stone left the body standing. On August 21, the day after, the old Gl
 
 Both repositories, project folders that keep the history of each change, were erased on the same day, August 21, 2026. This stone only marks the date. The cover story explains why.
 
-The second stone is for something else. In a planning file of GlintFX, one line said that putting Windows support last was an explicit order from root. Asked about it, root denied it: "I did not say that".
+The second stone is for something else. In a GlintFX planning, one line said that putting Windows support last was an explicit order from root. Asked about it, root denied it (English translation of the Portuguese original): "I did not say that".
 
 ### Windows last
-**Sustained eleven days of wrong planning · &#8224;Sep 03 2026**
+**Kept alive eleven days of wrong planning · &#8224;Sep 03 2026**
 > Here lies an order that was never given.
 
-The session's record says the line was "an agent's guess dressed as an order". It was "corrected and marked as a false attribution, not erased in silence".
+The session's record says (English translation of the Portuguese original) the line was "an agent's guess dressed as an order". It was "corrected and marked as a false attribution, not erased in silence".
 
 This section only looks after the two stones.
 

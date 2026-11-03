@@ -63,7 +63,7 @@ Esta galeria registra o defeito e a casa em que ele está.
 
 ### The chest that opens twice
 
-A game chest has one rule: once opened, it is emptied. Nobody told the chest. In item (2)'s example, from The Legend of Zelda: The Wind Waker, the chest opened a second time and left the player in a "buggy state", meaning a point where the game stops behaving as it was designed to. In GusWorld the case is different: the code for collecting items did not exist yet.
+A game chest has one rule: once opened, it is emptied. Nobody told the chest. In the example from item (2), from The Legend of Zelda: The Wind Waker, the chest opened a second time and left the player in a buggy state, meaning a point where the game stops behaving as it was designed to. In GusWorld the case is different: the code for collecting items did not exist yet.
 
 ### The catalog
 
@@ -79,9 +79,9 @@ The third rule puts the items in a single post, numbered (1), (2) and so on. A d
 
 At 9:18 AM on the same day (Brasília time), Gus Dragon, playtester, Adversarial Design Reviewer, classified item (2) as Bug Possível and wrote the following (English translation of the Portuguese original):
 
-"A common bug in Zelda: The Wind Waker is being able to open a chest twice, ending up in a buggy state. Just noting so that it is not possible to open 2 item collections at the same time, whether to change hitboxes or to duplicate items"
+"A common bug in Zelda: The Wind Waker is being able to open a chest twice, ending up in a buggy state. Just noting so that it is not possible to open 2 item collections at the same time, whether to change hitboxes or for item duplication"
 
-Hitbox is the invisible area that decides when an object is touched by the player. Collection is the moment the item is born and enters the inventory, the list of what the character carries. Before answering, the game's session checked the case and confirmed it.
+The original spelling was not corrected; this English keeps the meaning, not the typos. Hitbox is the invisible area that decides when an object is touched by the player. Collection is the moment the item is born and enters the inventory, the list of what the character carries. Before answering, the game's session checked the case and confirmed it.
 
 ### The gap
 
