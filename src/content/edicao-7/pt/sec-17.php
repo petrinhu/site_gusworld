@@ -1,7 +1,7 @@
 <?php /* Seção de Programação (#7) · o eixo expert - fonte: docs/content/edicao-7-programacao.md (## pt-BR).
    Molde à mão (PLANO-CONVERSOR 2.5): estrutura da #6 (intro, desculpa no terminal, transição //, nano, subtópicos <h3>
    e tabela, //by:), sem classe nova. Transcrição fiel: o texto NÃO foi alterado. A linha do marcador do brinquedo é um
-   marcador de montagem, fica como comentário PHP até o M6 (o brinquedo ainda não existe).
+   marcador de montagem, foi trocada pelo brinquedo do portão no M6.
    Notas de produção do fonte NUNCA entram aqui. */ ?>
 <p>Um portão é um programa que confere o trabalho antes de ele ser aceito. Ele segue uma regra escrita, por exemplo "só pode usar bibliotecas desta lista (conjuntos de código pronto que outros escreveram)", e responde de um de dois jeitos: "tudo certo" ou "reprovado". A pergunta que quase ninguém faz é outra: o portão olhou para alguma coisa?</p>
 
@@ -70,7 +70,47 @@
 
 <p>Todos os portões achados foram consertados, com um teste de varredura vazia (um caso em que o portão não encontra nenhum arquivo para conferir) gravado no repositório.</p>
 
-<?php /* BRINQUEDO-PORTAO-DE-BOLSO */ ?>
+<?php /* O brinquedo do portão de bolso (M6). Sem JS, o bloco pb-semjs mostra as três respostas prontas, com o texto aprovado do núcleo. Com JS, a camada esconde esse bloco e liga o pb-comjs. Os dois scripts existem só nesta edição: a #5 e a #6 não carregam nada disso. */ ?>
+<div class="portao-bolso" id="portao-bolso" data-idioma="pt">
+  <h4 class="pb-titulo">Portão de bolso</h4>
+  <div class="crt-scr">
+    <div class="crt-tela">
+      <div class="pb-semjs">
+        <div class="pb-pasta">
+          <p class="pb-nome">pasta cheia</p>
+          <p class="pb-pronta">Reprovado. Achei um problema nesta pasta.</p>
+          <p class="pb-pronta-cont">encontrados=3 analisados=3 falharam=1</p>
+        </div>
+        <div class="pb-pasta">
+          <p class="pb-nome">pasta limpa</p>
+          <p class="pb-pronta">Tudo certo. Olhei cada arquivo da pasta e nenhum tem problema.</p>
+          <p class="pb-pronta-cont">encontrados=3 analisados=3 falharam=0</p>
+        </div>
+        <div class="pb-pasta">
+          <p class="pb-nome">pasta vazia</p>
+          <p class="pb-pronta">Não disse tudo certo. A pasta está vazia: não olhei nada, e portão que não olha nada não aprova.</p>
+          <p class="pb-pronta-cont">encontrados=0 analisados=0 falharam=0</p>
+        </div>
+      </div>
+      <div class="pb-comjs" hidden>
+        <p class="pb-instrucao" id="pb-instrucao-pt">Escolha uma pasta e aperte conferir.</p>
+        <div class="pb-pastas" role="group" aria-labelledby="pb-instrucao-pt">
+          <button type="button" data-pasta="cheia" aria-pressed="false">pasta cheia</button>
+          <button type="button" data-pasta="limpa" aria-pressed="false">pasta limpa</button>
+          <button type="button" data-pasta="vazia" aria-pressed="false">pasta vazia</button>
+        </div>
+        <button type="button" class="pb-conferir" disabled>conferir</button>
+        <div class="pb-saida" aria-live="polite">
+          <p class="pb-res"></p>
+          <p class="pb-cont"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php /* echo em vez do atalho de saída curta: o conferir.php não lê o src com o atalho. O HTML gerado é o mesmo. */ ?>
+<script src="<?php echo h(asset('/assets/js/portao-bolso-core.js')); ?>" defer></script>
+<script src="<?php echo h(asset('/assets/js/portao-bolso.js')); ?>" defer></script>
 
 <h3>O terceiro controle: varredura vazia não é sucesso</h3>
 

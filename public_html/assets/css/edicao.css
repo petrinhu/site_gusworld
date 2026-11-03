@@ -3027,3 +3027,46 @@ html.lightbox-aberto{overflow:hidden}
 }
 /* a posição da uva desta carta: cauda, à direita (as outras manchas variam, ver project_ideias_do_gus) */
 .conteudo .folha-caderno .mancha.uva.pe{--mx:72%; --mb:-20px; --m-tam:90px; --mg:-9deg}
+
+/* ═══════════════════ §17 (edição #7) · portão de bolso ═══════════════════
+   O brinquedo da Programação (M6). Reusa o tijolo da casa (.crt-scr carcaça +
+   .crt-tela tubo verde, como o crt-nano e o desculpa). Corpo em ui-monospace, nunca
+   a pixel: o texto "Não disse..." tem N maiúsculo e a PixelOperatorMono o rasteriza
+   como H abaixo de 15px. Mobile-first: botões empilhados, alvo de toque de 44px no
+   mínimo. Sem animação, então nada a desligar em prefers-reduced-motion. */
+.conteudo .portao-bolso{margin:clamp(14px,2.4vw,20px) 0}
+.conteudo .portao-bolso .pb-titulo{
+  font-family:var(--font-manchete); font-weight:700; font-size:var(--t-md);
+  line-height:var(--lh-apertado); color:var(--tinta-preta); margin:0 0 8px;
+}
+/* sem o brilho do .crt-tela: no Gecko o halo de 6px funde as linhas de texto numa
+   faixa retangular clara atrás da frase (medido no render do M6). Mesmo critério do
+   .bus-crt .conta: onde o leitor lê, a faixa sai. */
+.conteudo .portao-bolso .crt-tela{font-size:14px; text-shadow:none}
+.conteudo .portao-bolso [hidden]{display:none}
+.conteudo .portao-bolso .pb-pasta{margin:0 0 14px}
+.conteudo .portao-bolso .pb-nome{color:#8affc0; margin:0 0 2px}
+.conteudo .portao-bolso .pb-pronta{color:#dcfff0; margin:0 0 2px}
+.conteudo .portao-bolso .pb-pronta-cont,
+.conteudo .portao-bolso .pb-cont{color:#7fd9a6; font-size:.92em}
+.conteudo .portao-bolso .pb-instrucao{color:#8affc0; margin:0 0 10px}
+.conteudo .portao-bolso .pb-pastas{display:flex; flex-direction:column; gap:8px; margin:0 0 10px}
+.conteudo .portao-bolso button{
+  font:inherit; font-size:14px; line-height:1.3;
+  min-height:44px; min-width:44px; padding:10px 14px;
+  text-align:left; cursor:pointer;
+  color:#8affc0; background:#0c2417;
+  border:1px solid #5dfc9a; border-radius:var(--raio-tela);
+}
+.conteudo .portao-bolso button:hover{background:#12351f}
+.conteudo .portao-bolso button[aria-pressed="true"]{
+  background:#5dfc9a; color:#050a06; box-shadow:0 0 10px #5dfc9a66;
+}
+.conteudo .portao-bolso button:disabled{opacity:.45; cursor:not-allowed}
+.conteudo .portao-bolso button:focus-visible{outline:2px solid var(--gw-ciano); outline-offset:2px}
+.conteudo .portao-bolso .pb-conferir{display:block; width:100%}
+.conteudo .portao-bolso .pb-saida{min-height:4.6em; margin-top:8px}
+@media (min-width:600px){
+  .conteudo .portao-bolso .pb-pastas{flex-direction:row; flex-wrap:wrap}
+  .conteudo .portao-bolso .pb-conferir{display:inline-block; width:auto}
+}

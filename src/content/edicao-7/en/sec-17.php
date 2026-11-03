@@ -1,7 +1,7 @@
 <?php /* Programming Section (#7) · the expert axis - source: docs/content/edicao-7-programacao.md (## EN).
    Hand-built mould (PLANO-CONVERSOR 2.5): the #6 structure (intro, terminal excuse, // transition, nano, <h3> subheads
    and table, //by:), no new class. Faithful transcription: the text was NOT changed. The toy marker line
-   is an assembly marker, kept as a PHP comment until M6 (the toy does not exist yet).
+   is an assembly marker, replaced by the gate toy in M6.
    The source's production notes NEVER enter here. */ ?>
 <p>A gate is a program that checks work before it is accepted. It follows a written rule, for example "only libraries (ready-made code sets written by others) from this list may be used", and answers in one of two ways: "all clear" or "rejected". The question almost nobody asks is a different one: did the gate look at anything?</p>
 
@@ -70,7 +70,47 @@
 
 <p>Every gate found was fixed, with an empty-scan test (a case where the gate finds no file to check) recorded in the repository.</p>
 
-<?php /* BRINQUEDO-PORTAO-DE-BOLSO */ ?>
+<?php /* The pocket gate toy (M6). Without JS, the pb-semjs block shows the three ready answers, with the approved text from the core. With JS, the layer hides that block and turns on the pb-comjs. The two scripts exist only in this edition: #5 and #6 load nothing of this. */ ?>
+<div class="portao-bolso" id="portao-bolso" data-idioma="en">
+  <h4 class="pb-titulo">Pocket gate</h4>
+  <div class="crt-scr">
+    <div class="crt-tela">
+      <div class="pb-semjs">
+        <div class="pb-pasta">
+          <p class="pb-nome">full folder</p>
+          <p class="pb-pronta">Rejected. I found a problem in this folder.</p>
+          <p class="pb-pronta-cont">found=3 checked=3 failed=1</p>
+        </div>
+        <div class="pb-pasta">
+          <p class="pb-nome">clean folder</p>
+          <p class="pb-pronta">All clear. I checked every file in the folder and none has a problem.</p>
+          <p class="pb-pronta-cont">found=3 checked=3 failed=0</p>
+        </div>
+        <div class="pb-pasta">
+          <p class="pb-nome">empty folder</p>
+          <p class="pb-pronta">Not all clear. The folder is empty: I checked nothing, and a gate that checks nothing does not approve.</p>
+          <p class="pb-pronta-cont">found=0 checked=0 failed=0</p>
+        </div>
+      </div>
+      <div class="pb-comjs" hidden>
+        <p class="pb-instrucao" id="pb-instrucao-en">Pick a folder and press check.</p>
+        <div class="pb-pastas" role="group" aria-labelledby="pb-instrucao-en">
+          <button type="button" data-pasta="cheia" aria-pressed="false">full folder</button>
+          <button type="button" data-pasta="limpa" aria-pressed="false">clean folder</button>
+          <button type="button" data-pasta="vazia" aria-pressed="false">empty folder</button>
+        </div>
+        <button type="button" class="pb-conferir" disabled>check</button>
+        <div class="pb-saida" aria-live="polite">
+          <p class="pb-res"></p>
+          <p class="pb-cont"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php /* echo instead of the short output tag: conferir.php does not read src written with the short tag. The HTML produced is the same. */ ?>
+<script src="<?php echo h(asset('/assets/js/portao-bolso-core.js')); ?>" defer></script>
+<script src="<?php echo h(asset('/assets/js/portao-bolso.js')); ?>" defer></script>
 
 <h3>The third control: an empty scan is not a success</h3>
 
