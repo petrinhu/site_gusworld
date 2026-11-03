@@ -1,8 +1,8 @@
 # Edição #7 · Seção 17 · Programação
 
-> RASCUNHO v3, submeter ao líder. Escrito pelo `technical-writer` a partir do brief §4.3 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 346 a 371), com a Reportagem v2 como insumo (sem repetir o que ela conta).
+> APROVADA pelo líder em 03/11/2026 ("Aprovo como está"), com as falas do Gus; o en segue ao líder junto com as outras traduções. Escrito pelo `technical-writer` a partir do brief §4.3 de `docs/editorial/BRIEFS-EDICAO-7.md` (linhas 346 a 371), com a Reportagem v2 como insumo (sem repetir o que ela conta).
 > Voz do editor, de fora (L-25: o técnico mora aqui). As falas e os `//` do Gus são rascunho ao líder (T7). As citações de sessão vêm com fonte e data (T2).
-> v2 (decisões do main): o 25 saiu do texto publicado; a grafia é GlintFX no texto publicado; o marcador fica `BRINQUEDO-PORTAO-DE-BOLSO`; o contato é o rodapé do site. Pendência aberta para o GATE-CONTEUDO: a contradição de número da fonte (Notas, item 1) e as falas do Gus (Notas, item 4).
+> v2 (decisões do main): o 25 saiu do texto publicado; a grafia é GlintFX no texto publicado; o marcador fica `BRINQUEDO-PORTAO-DE-BOLSO`; o contato é o rodapé do site. Abertas: a contradição de número da fonte (Notas, pendência 1) e a tradução EN (pendência 5). As falas do Gus foram aprovadas (Notas, Aprovações do líder).
 
 ---
 
@@ -206,14 +206,20 @@ Anyone who wants the full technical case, with the records, the gates and the nu
 
 Raiz do bus usada nas fontes: `BUS` = `/home/petrus/IDrive/Documentos/projetos_claudebrain/gusworld_ia_autocomm/archive/`. `GlintFx` = `/home/petrus/IDrive/Documentos/projetos_claudebrain/Projects/GlintFx/`. `madrugada` = `BUS/2026-08-21-glintfx-estado-madrugada.md`. `0530` = `BUS/20260903-0530-glintfx-novidades-paridade-e-documentacao.md`. `portão 21/08` = `BUS/2026-08-21-portao-varredura-vazia-verde.md`.
 
-### Pendências para o líder (antes do GATE-CONTEUDO)
+### Aprovações do líder (03/11/2026)
+
+- **Programação aprovada.** AskUserQuestion, pergunta feita depois de 17:10:01, verbatim: "Aprovo como está". Inclui as falas do Gus, o "Prezado leitor" e as assinaturas. Texto pt e en como estão nesta versão.
+- **Textos do brinquedo aprovados** ("Aprovo como estão", mesma data). O marcador `BRINQUEDO-PORTAO-DE-BOLSO` segue como está.
+- **Tradução EN:** segue ao líder junto com as outras traduções. Nada do inglês está aprovado ainda.
+
+### Pendências (fechadas e abertas)
 
 1. **Número 25: contradição da fonte, fora do texto publicado (decisão do main, v2).** O registro diz "Dezenove foram reabertos. O quadro caiu de 45 para 25 concluidos" (`0530:34-36`). Na conta, 45 menos 19 dá 26. A busca por "de 45 para 25" e "Dezenove foram reabertos" em todo o bus achou só este arquivo. O texto publicado (pt e en) diz só 45 itens dados como concluídos e 19 reabertos. Não escolhi 25 nem 26 e não inventei a causa. A contradição fica registrada aqui; resolvê-la na fonte, com a sessão do GlintFx, é passo separado.
-2. **Grafia do marcador do brinquedo (decidido pelo main, v2).** Fica `BRINQUEDO-PORTAO-DE-BOLSO`, a grafia do brief (§4.3, linha 369; gate do §4.10, linha 522). Um marcador por idioma, logo depois da tabela do portão. Um marcador com a outra grafia passaria no gate sem ser trocado.
-3. **Contato do convite (decidido pelo main, v2).** O texto pede o caso "pelo contato no rodapé do site", e o rodapé serve. O link está em `Projects/site_gusworld/src/includes/rodape.php:34` (`mailto`); o endereço não foi copiado para cá.
-4. **Falas e `//` do Gus (T7, L-08).** Vão ao GATE-CONTEUDO como "submeter ao líder": (a) a saída `gus` do `whoami`; (b) as três linhas `#` da desculpa furada, pt e en; (c) o comando `nano portao-varredura-vazia.md`; (d) a transição `/* ... */` e `//gus@glyfesse`; (e) `//by: gus@glyfesse`. Há um erro de digitação de mão na desculpa em pt (`jaa`), e em en uma falta de apóstrofo (`dont`). Ambos saem sem custo se o líder preferir linha limpa.
+2. **Grafia do marcador do brinquedo (decidido pelo main, v2; aprovado pelo líder em 03/11/2026).** Fica `BRINQUEDO-PORTAO-DE-BOLSO`, a grafia do brief (§4.3, linha 369; gate do §4.10, linha 522). Um marcador por idioma, logo depois da tabela do portão. Um marcador com a outra grafia passaria no gate sem ser trocado.
+3. **Contato do convite (decidido pelo main, v2; aprovado pelo líder em 03/11/2026).** O texto pede o caso "pelo contato no rodapé do site", e o rodapé serve. O link está em `Projects/site_gusworld/src/includes/rodape.php:34` (`mailto`); o endereço não foi copiado para cá.
+4. **Falas e `//` do Gus (T7, L-08): aprovadas pelo líder em 03/11/2026.** Lista de conferência do que foi ao GATE-CONTEUDO: (a) a saída `gus` do `whoami`; (b) as três linhas `#` da desculpa furada, pt e en; (c) o comando `nano portao-varredura-vazia.md`; (d) a transição `/* ... */` e `//gus@glyfesse`; (e) `//by: gus@glyfesse`. Há um erro de digitação de mão na desculpa em pt (`jaa`), e em en uma falta de apóstrofo (`dont`). Ambos saem sem custo se o líder preferir linha limpa.
 5. **Traduções EN são de agente.** Vão junto da pt. Inclui a frase do líder em inglês (a pt original está na tabela de fatos, item 11) e as duas citações de sessão (itens 5, 8 e 20). Os nomes de saída de terminal (`OK -- ...`) estão em inglês como tradução da linha impressa pelo portão.
-6. **Parecer do `revisor-textual`:** pendente (fase 3 do brief §3.1). Este rascunho não passou por ele.
+6. **Revisão textual: fechada.** Aplicada na v3 (P-M1 a P-M10) e no ajuste P-M7 da v3.1.
 
 ### Decisões de redação (L-07: decisão do líder × preenchimento meu)
 
