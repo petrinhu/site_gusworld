@@ -128,7 +128,7 @@ This time, no deadline. Not weekly, not every-so-oftenly.
 
 ## 6. Seção 13, Pôster central (vazio com graça, variante "imagem quebrada" da #1)
 
-> **Variante A, recomendada.** A legenda da #6 dizia "volta na próxima". A #7 é a próxima, e o pôster não voltou: a legenda diz isso. A variante B está nas Notas, item 1.3. Glifo e markup são os da #1 (`src/content/edicao-1/pt/sec-13.php`), sem arte nova. Passa por GATE-RENDER como todo vazio. Re-gate sempre (GATE-COPY).
+> **SUSPENSA: o líder vai gerar um pôster no Grok.** Resposta do líder (03/11/2026, verbatim): "me de um prompt para eu gerar um poster no grok, que tenha a ver com a edicao". O vazio não foi aprovado. O bloco abaixo não se apaga; é a variante A de quando havia vazio (ver Notas, seção 6). Variante A (vazio): a legenda da #6 dizia "volta na próxima". A #7 é a próxima, e o pôster não voltou: a legenda diz isso. A variante B está nas Notas, item 1.3. Glifo e markup são os da #1 (`src/content/edicao-1/pt/sec-13.php`), sem arte nova. Passa por GATE-RENDER como todo vazio. Re-gate sempre (GATE-COPY).
 
 ## pt-BR
 
@@ -316,3 +316,46 @@ Nenhum `/* */` nesta edição. Nenhuma fala nem `//` termina com ponto (R1 e R2)
 | 11 | Dek da capa | capa | 11 | 11 | não é partial: vai a `data/edicoes.php` (`dek_pt`, `dek_en`) |
 
 Os marcadores `REUSO-EDICAO-1-*` e o `ENTREVISTA-PENDENTE` da #6 servem para a varredura pré-GO: nenhum deles pode aparecer em partial publicado. As linhas propostas nas Notas 1.4 (direitos), 1.5 (crédito do Gus Dragon), 1.6 (tradução) e 1.7 (brinquedo) ficam fora desta tabela até o líder decidir.
+
+### 6. Respostas do líder (03/11/2026, AskUserQuestion, verbatim) e status
+
+- **Peças 1, 2 e 3 (Nota, Detonado, Errata):** "Trocar só esse pensamento (Recomendado)". Nota e Errata ficam como estão, com os pensamentos. O pensamento do Detonado sai (L-25 do site: "Para ele, GusWorld é REAL"). Substituto proposto no item 6.1, **não gravado no bloco**, aguardando aprovação.
+- **Peças 8, 9 e 10 (Expediente):** "Aprovo como está". **Aprovadas.** Com isso, a frase "Não houve artista nesta edição" (peça 9) fica no bloco (resolve a pergunta 2 do relatório anterior).
+- **Peça 11 (dek):** "Aprovo". **Aprovada**, como está.
+- **Peça 6 (pôster): SUSPENSA.** O vazio não foi aprovado. Verbatim: "me de um prompt para eu gerar um poster no grok, que tenha a ver com a edicao". O líder vai gerar o pôster. Bloco não apagado (ver item 6.2).
+- **Peças 4 (Classificados), 5 (Próximos Lançamentos) e 7 (Brinde):** aguardando resposta do líder.
+- **Decisões do main, aplicadas nesta rodada:** (a) a frase "não há código de jogo" fica sem atribuição a pessoa (Notas 1.2); (b) o crédito do Gus Dragon não entra no Expediente (Notas 1.5 fica só como registro); (c) a linha de direitos segue o padrão da #4 e da #5, "Todos os direitos reservados." (Notas 1.4); (d) a linha de tradução segue o padrão, pt "As traduções para o inglês são de agente de IA, aprovadas pelo editor." e en "The English translations are by an AI agent, approved by the editor." (Notas 1.6). A linha de tradução específica da entrevista continua na peça 8.
+
+#### 6.1 Pensamentos propostos para o Detonado (peça 2), recomendado primeiro
+
+Todos no formato `//`, sem ponto final, até 72 caracteres sem a marca. Sem "roda", sem "jogo". Ancoragem no canon: traço 5 (justiça binária, certo é certo, sem zona cinzenta), leitura minha, a submeter ao líder (L-08).
+
+pt:
+1. `// ainda tem decisão sem resposta. não vou chutar pra ter o que mostrar` (69 caracteres)
+2. `// eu não mostro passo a passo de decisão que ainda não fechou` (59)
+3. `// o que falta decidir não cabe num detonado` (44)
+
+en:
+1. `// decisions still open. i won't guess to have something to show` (60)
+2. `// i don't show a walkthrough for a decision that isn't closed` (60)
+3. `// what is still undecided doesn't fit in a walkthrough` (54)
+
+Recomendação: a 1 (pt) e a 1 (en). Ela não fala de código nem de jogo, e o Gus só recusa inventar resposta, sem saber nada que não saiba no mundo dele.
+
+#### 6.2 Pôster no Grok: prompt proposto ao líder (para ele gerar)
+
+Prompt pt, formato quadrado 1:1, para casar com a chapa de 1.408 × 1.408 da #5:
+
+> Pôster quadrado, fundo azul-marinho quase preto. No centro, uma lousa de pedra escura e lisa, metade já apagada, com um rastro de apagador cortando a superfície. Luz fria de tela vinda de cima, sem brilho excessivo. Sem personagem, sem rosto, sem dragão, sem brasão, sem logotipo, sem letras nem números na imagem. Espaço livre no terço de baixo para a legenda. Ilustração digital sóbria, linhas limpas, contraste baixo, paleta de azul-marinho, ciano apagado e um toque de magenta.
+
+Motivo das exclusões: o brasão e o logo são do jogo (a #5 os usou em `src/content/edicao-5/pt/sec-13.php:2-10`, com sha256 conferido na origem), e o Grok não deve reproduzi-los; letras geradas por IA saem erradas.
+
+#### 6.3 Declaração do pôster (padrão da #5)
+
+A #5 não tem linha de IA no colofão. A declaração ficou em dois lugares: a ficha técnica da chapa (`src/content/edicao-5/pt/sec-13.php:57`, "PixelLab (geração) · Grok Imagine (tratamento)") e o rodapé (`src/i18n/pt.php:264`, `src/i18n/en.php:257`). Propostas, no mesmo padrão:
+
+- **Ficha da chapa, pt:** "[dimensão] px · Grok Imagine (geração)". **en:** "[size] px · Grok Imagine (generation)". A dimensão sai do arquivo gerado, não é estimada.
+- **Rodapé, pt:** trocar "Grok Imagine (logo, tratado)" por "Grok Imagine (logo, tratado; pôster, gerado)". **en:** "Grok Imagine (logo, refined; poster, generated)". Mudança site-wide: fica com o main e o `compliance-legal`, não foi gravada.
+- **Linha do Expediente, opcional (fora do padrão da #5), pt:** "O pôster desta edição foi gerado com Grok Imagine, a partir de um prompt de agente de IA aprovado pelo editor." **en:** "This issue's poster was generated with Grok Imagine, from an AI agent's prompt approved by the editor." Recomendação: não incluir, para não fugir do padrão; a ficha e o rodapé já declaram.
+
+Observação para o main: o rodapé pt (`src/i18n/pt.php:264`) diz "exceto obras de terceiros creditadas no Expediente". A fonte CC0 do Brinde é de terceiro e não tem crédito no Expediente. Conferir com o `compliance-legal`.
