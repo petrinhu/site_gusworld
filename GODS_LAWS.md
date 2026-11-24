@@ -84,12 +84,12 @@ Deixe fora desta lei `public_html/assets/edicao-1/tui_claude*.png`: o `cost R$` 
 
 ## L-03
 
-**Data:** 2026-07-23 (formato), regra permanente (obrigatoriedade). **Verbatim:** *"askuserquestion é para ser enviado SEM painel lateral, canonize"* e, no `CLAUDE.md` da raiz: *"**Nunca decidir sozinho** (stack, design, escopo): opções via **AskUserQuestion**, uma por vez, WIP do líder = 1."*
+**Data:** 2026-07-23 (formato), regra permanente (obrigatoriedade). **Verbatim:** *"askuserquestion é para ser enviado SEM painel lateral, canonize"* e, no `CLAUDE.md` da raiz: *"**Nunca decidir sozinho** (stack, design, escopo): opções via **AskUserQuestion**, uma por vez, WIP do líder = 1."* Alinhamento ao global de 23/11/2026, por AskUserQuestion: *"Alinhar ao global (Recomendado)"*.
 
 Leve por **`AskUserQuestion`** toda decisão que não é sua, nunca em prosa no chat, como "vou trazer isso depois" ou como bullet numa lista:
 
 - **Nunca use o campo `preview`**, que faz a interface abrir o painel lateral que o líder não quer: só `label` + `description`.
-- **Faça uma pergunta por vez**: o WIP dele é 1.
+- **Leve as pendências juntas num `AskUserQuestion` só, com até 4 perguntas**, como manda a L-01 global.
 - Ponha a opção **recomendada primeiro**, marcada.
 - Ponha o detalhe técnico (código, comparação, número) **no corpo da mensagem**, antes da pergunta, e deixe as opções curtas e auto-explicativas.
 
@@ -248,7 +248,7 @@ Deixe spoiler e embargo trafegarem no bus, que é **PRIVADO** (verificado na fon
 
 ## L-17
 
-**Data:** 2026-08-24, adaptada da **L-19 do mapeditor**, da **L-04/L-33 do GusWorld** e da **L-17 do GlintFx**, por ordem do líder: *"veja quais leis deles, glintfx e gusworld podemos adaptar aqui"*. **Verbatim original:** *"PROIBIDO monolitos."*
+**Data:** 2026-08-24, adaptada da **L-19 do mapeditor**, da **L-04/L-33 do GusWorld** e da **L-17 do GlintFx**, por ordem do líder: *"veja quais leis deles, glintfx e gusworld podemos adaptar aqui"*. **Verbatim original:** *"PROIBIDO monolitos."* Alinhamento ao global de 23/11/2026, por AskUserQuestion: *"Alinhar ao global (Recomendado)"*.
 
 Julgue o monolito de forma **QUALITATIVA**: sem número nem portão de CI que mede linha e falha, com a fiscalização na revisão.
 
@@ -268,21 +268,13 @@ Trate como monolito a unidade que acumula **razões diferentes de mudar**, não 
 | **O `i18n`** | O dicionário acumula texto de interface, texto editorial e regra de formatação | "Tudo que é string mora aqui" |
 | **O documento de pauta** | Um arquivo que é pauta **e** briefing **e** relatório de auditoria **e** registro de decisão | "Está tudo num lugar só, fica fácil de achar" |
 
-### As cinco perguntas do revisor
-
-1. **A pergunta das leis.** Quais leis obrigariam esta unidade a mudar? Uma: sã. Duas ou mais, não relacionadas: monolito em formação.
-2. **A frase sem "e".** Descreva a unidade numa frase; se precisar de "e" ligando verbos de natureza diferente, reprove. Ponha a frase escrita no relatório.
-3. **O teste monta o mundo?** Para exercitar UM comportamento, o arrange precisa da edição inteira montada?
-4. **O que entra pelo `include`/`import`?** A unidade puxa grupos que não conversam entre si?
-5. **Quem paga a próxima feature?** No `git log --stat` da fatia, a coisa nova aterrissou em quais arquivos? Se toda seção nova cai no mesmo arquivo, esse arquivo é o monolito nascendo. **Responda com o diff: é a mais objetiva.**
-
 ### Sinais precoces
 
 O mesmo arquivo no diff de todas as fatias · nome sem substantivo de domínio (`Helper`, `Utils`, `Manager`) · um `utils.php` acumulando função solta · e **a frase "é só mais um bloco" como justificativa**, o som do monolito crescendo: verdadeira em cada passo, falsa na soma.
 
 ### O que esta lei NÃO proíbe
 
-**Unidade grande e coesa**: tamanho não é o critério. **`data/edicoes.php` agregar os dados**: ele **é** o agregado, e monolito é acúmulo de **comportamento**, não de dados. **Fragmentar por contagem** reprova nas mesmas cinco perguntas.
+**Unidade grande e coesa**: tamanho não é o critério. **`data/edicoes.php` agregar os dados**: ele **é** o agregado, e monolito é acúmulo de **comportamento**, não de dados. **Fragmentar por contagem** também reprova na revisão.
 
 ## L-18
 
