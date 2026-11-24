@@ -156,7 +156,7 @@ Dê **crédito técnico seco** aos bugs de movimentação, que ele **anunciou an
 
 **Spoiler.** Tenha postura conservadora: ponha a lore redigida ou abstrata, no drip das edições, com OK do líder **peça a peça**. Não enumere em arquivo versionado a lista do que não pode ser revelado, porque enumerá-la é o próprio spoiler. Não ponha spoiler em mensagem de commit, que é imutável: o que entra no assunto de um commit não sai por auditoria nenhuma.
 
-**Uso de IA.** Mantenha o **dito** igual ao **descobrível**, porque a distância entre os dois é o padrão que custou caro ao *Clair Obscur*, e arte gerada por IA pode carregar **manifesto C2PA do Google e SynthID**, informação pública, assinada e verificável por qualquer visitante. **Não se defenda por intenção nem por credencial**, como em *"a parte criativa é do criador"*: ponha no lugar a **nomeação seca das ferramentas** e o **fato verificável**.
+**Uso de IA.** Declare, porque a distância entre o **dito** e o **descobrível** é o padrão que custou caro ao *Clair Obscur*, e arte gerada por IA pode carregar **manifesto C2PA do Google e SynthID**, informação pública, assinada e verificável por qualquer visitante. **Não se defenda por intenção nem por credencial**, como em *"a parte criativa é do criador"*: ponha no lugar a **nomeação seca das ferramentas** e o **fato verificável**.
 
 Passe toda peça que vai a público pelos gates do `PIPELINE-EDICAO.md`, com a auditoria **antes** do deploy, nunca depois.
 
@@ -196,7 +196,7 @@ Rode o headless com **`--new-instance --profile`**, porque sem isso o Firefox sa
 
 **Verifique em PRODUÇÃO**, não só no local: o que está no ar é o que existe.
 
-Guarde os mockups em `docs/design/mockups/`, **commitados**, como opção apresentada ao líder, nunca decisão tomada, e abra-os para ele com `firefox --new-tab` a partir do arquivo commitado. **Abra, não dirija**, porque a máquina dele é ambiente médico. Leia a integração de design (`/design` + `visual-design-director`) em `reference_integracao_design`, e use o **design system PRÓPRIO do site**, nunca o UI Kit do jogo, que é a estética do GusWorld e não da revista.
+Guarde os mockups em `docs/design/mockups/`, **commitados**, como opção apresentada ao líder, nunca decisão tomada, e abra-os para ele com `firefox --new-tab` a partir do arquivo commitado. **Abra, não dirija**, porque a máquina dele é ambiente médico. A integração de design (`/design` + `visual-design-director`) está em `reference_integracao_design`; use o **design system PRÓPRIO do site**, nunca o UI Kit do jogo, que é a estética do GusWorld e não da revista.
 
 Converta HTML em PDF com o **Chromium instalado**: é conversão, não verificação.
 
@@ -218,7 +218,7 @@ Ao commitar trabalho que fecha ou avança um item do `TODO.md`, **cite o ID** (`
 
 Ao **delegar**, passe o ID ao agente e peça que ele o cite no commit.
 
-Mantenha a tabela fiel ao projeto, porque status não tocado faz a priorização automática pôr trabalho já entregue no topo do board: a falha nasce do input que mente, não do agente que prioriza.
+Status não tocado faz a priorização automática pôr trabalho já entregue no topo do board: a falha nasce do input que mente, não do agente que prioriza.
 
 ## L-15
 
@@ -230,7 +230,7 @@ Responda por **comentário na issue do bus**, que é o que **o notifica sozinho*
 
 **Diga a ele o limite, nunca o esconda:** sessão não é serviço rodando, e o aviso proativo só sai com alguém trabalhando no projeto. **Não prometa aviso instantâneo.**
 
-Mande a Resposta 2, automática sempre, como o `PROTOCOL.md` do bus exige.
+O `PROTOCOL.md` do bus exige a Resposta 2, automática sempre.
 
 ## L-16
 
@@ -310,7 +310,7 @@ Se o trabalho real não move a métrica que ele definiu, **diga isso explicitame
 
 **Leia a §1.5 antes de qualquer release**, porque ela é mais completa que qualquer resumo, e resumo de cabeça envelhece e diverge. A ordem: edição, aprova, card social, aprova, deploy, post, aprova, **o líder posta**.
 
-Antes de responder *"qual é o processo?"*, **procure no repo** (`docs/`, `PIPELINE`, `CHECKLIST`, `RUNBOOK`) **antes** da memória, e não responda com a doutrina global de deploy irreversível, que é outro documento. Não tome backlog por runbook: ele diz o que está pendente, não em que ordem se executa. Não canonize na memória versão própria de um processo que o repo já descreve, porque isso cria uma segunda fonte de verdade ao lado de uma mais completa.
+Antes de responder *"qual é o processo?"*, **procure no repo** (`docs/`, `PIPELINE`, `CHECKLIST`, `RUNBOOK`) **antes** da memória, porque a resposta de cabeça já trouxe a doutrina global de deploy irreversível, documento errado, e uma versão de 5 passos canonizada na memória, segunda fonte de verdade ao lado de uma mais completa. Não tome backlog por runbook: ele diz o que está pendente, não em que ordem se executa.
 
 ## L-21
 
@@ -358,7 +358,7 @@ Trate **toda coisa que vem do Gus Dragon como PRIORIDADE e responda SEMPRE**: n�
 4. **Interrompa.** Se chegar material dele no meio de uma onda, dê o ack **na hora**; o conteúdo pode esperar a onda fechar, o silêncio não.
 5. **Leia também o que veio endereçado a outra sessão.** Se ele endereçou ao GusWorld e o assunto é nosso, responda a nossa parte e diga qual é.
 
-Mantenha o gatilho em *"ver qualquer coisa vinda dele"*, nunca em *"quando der"*, porque regra que depende de lembrar não é cumprida: o `PROTOCOL.md` já obrigava a Resposta 2 e, mesmo assim, issues dele ficaram dias sem resposta de conteúdo e o canal de issue ficou sem vigilância nas quatro sessões até ele reclamar.
+O gatilho desta lei é *"ver qualquer coisa vinda dele"*, não *"quando der"*, porque regra que depende de lembrar não é cumprida: o `PROTOCOL.md` já obrigava a Resposta 2 e, mesmo assim, issues dele ficaram dias sem resposta de conteúdo e o canal de issue ficou sem vigilância nas quatro sessões até ele reclamar.
 
 ### Limites
 
